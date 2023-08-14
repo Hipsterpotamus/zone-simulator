@@ -2,7 +2,7 @@ function elementUp(){
     $('#player-stats').html(entityHtmlOutput(g.p,true));
     $('#enemy-stats').html(entityHtmlOutput(g.cEnemy,false));
     $('#combat-timer').text(Math.floor((c.cTick/(50*60))+':'+Math.floor((c.cTick%(50*60))/50)));
-}z
+}
 function entityHtmlOutput(entity, playerQ){
     let htmlOutput = '';
     if(playerQ){
