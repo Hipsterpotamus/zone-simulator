@@ -2,7 +2,7 @@ function combatTick(){
     g.cTick += 1;
     if(g.cTick%g.cEnemy.aS==0){
         if(Math.random()>(g.p.dodge*0.01)){
-            let enemyDMG = g.cEnemy.dmg-calcPlayerArm(player);
+            let enemyDMG = (g.cEnemy.calcDmg()-calcPlayerArm(player));
             if (enemyDMG < 0){enemyDMG = 0;}
             g.p.hp-=enemyDMG;
         }
@@ -10,12 +10,16 @@ function combatTick(){
     }
     if(g.cTick%g.p.aS==0){
         if(Math.random()>(cEnemy.dodge*0.01)){
-            let playerDMG = calcPlayerDmg(player);
+            let playerDMG = g.p.calcDmg();
             playerDMG -= cEnemy.arm;
             if (playerDMG<0) {playerDMG=0;}
             g.cEnemy.hp-=playerDMG;
             g.p.hp-=cEnemy.thorn;
         }
+    }
+
+    if(g.cTick%g.p.regenRate==0){
+
     }
 }  
 
