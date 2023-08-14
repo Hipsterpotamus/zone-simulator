@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> 
+        <title>
+            Title
+        </title>
+        <link rel="stylesheet" href="style.css">
+        <script src = "game.js"></script>
+    </head>
+
+    <body>
+        <div id = 'start-screen'>
+            <div id = 'character-select-scroll'>
+                <button class="char-button selected-char" id = "char-button-ben">
+                    <h3>Ben</h3>
+                    <p class = 'char-subtitle'>The Benefactor</p>
+                    <p class = 'char-desc'>Receives a gift upon entering a new zone</p>
+                  </button>
+                <button class="char-button" id = "char-button-colette">
+                    <h3>Colette</h3>
+                    <p class = 'char-subtitle'>The Collector</p>
+                    <p class = 'char-desc'>Gains Double the amount of items, but can't gain more level heal</p>
+                </button>
+                <button class="char-button" id = "char-button-colette">
+                    <h3>Nina</h3>
+                    <p class = 'char-subtitle'>The Ninja</p>
+                    <p class = 'char-desc'>Starts with 33% Dodge Change and +20% Damage, but receives only 50% of the effect of armor</p>
+                </button>
+                <button class="char-button" id = "char-button-colette">
+                    <h3>Robert</h3>
+                    <p class = 'char-subtitle'>The Robot</p>
+                    <p class = 'char-desc'>Fully heals after every fight, but can't gain ANY health during battle.</p>
+                </button>
+                <button class="char-button" id = "char-button-colette">
+                    <h3>Tanner</h3>
+                    <p class = 'char-subtitle'>The Tank</p>
+                    <p class = 'char-desc'>Obtains two times the protection from armor, but gains half the benefit from speed and mana gain boosts</p>
+                </button>
+                <button class="char-button" id = "char-button-colette">
+                    <h3>Florence</h3>
+                    <p class = 'char-subtitle'>The Flourisher</p>
+                    <p class = 'char-desc'>Obtains 50% more gold from enemy encounters, but cannot use items against bosses</p>
+                </button>
+                <button class="char-button" id = "char-button-colette">
+                    <h3>Phillip</h3>
+                    <p class = 'char-subtitle'>The Physician</p>
+                    <p class = 'char-desc'>Receives a 30% bonus to all healing, but cannot apply bleed</p>
+                </button>
+    
+            </div>
+    
+            <div class="center-content">
+                <h1 class="large-title">Zone Simulator</h1>
+                <button class="large-button">Begin the Zone</button>
+            </div>
+        </div>
+        <div id = 'game-screen'>
+            <div class="game-header">
+                <p class = "header-p" id = "zone-text">zone: 1–1</p><p class = 'header-p' id = 'place-text'>shop</p><p class = "header-p" id = "gold-text">gold: 0</p>
+            </div>
+            <div class='non-game-header'>
+                
+                <div class='fifth-tab' id = 'player-stat-tab'>
+                    <p class = "stat-display" id = "player-stats">
+                        You<br>
+                        hp : 42/67<br>
+                        dmg : 10 (2 + 8)<br>
+                        time: 25<br>
+                        armor : 6 (4 + 2)<br>
+                        regen : 2 (1 + 1)<br>
+                        bleed : 2 (0 + 2)<br>
+
+                    </p>
+                </div>
+                <div class='fifth-tab' id = 'enemy-tab'>
+                    <p class = "stat-display" id = "enemy-stats">
+                        Lady bug<br>
+                        hp : 36/51<br>
+                        dmg : 7<br>
+                        time: 25<br>
+                        armor : 8<br>
+                        regen : 1<br>
+                        bleed : 3<br>
+                    </p>
+                </div>
+
+
+                <div class='fifth-tab' id = 'equip-tab'>
+                    <div class = 'equip-container' id = 'weapon-container'>
+                        <div class = 'title-container'>
+                            <p class = 'equip-title' id = 'weapon-select-title'>weapon:</p>
+                            <select class = 'equip-select' id ='weapon-select'>
+
+                            </select>
+                        </div>
+                        <p class = 'equip-stats' id = 'weapon-stats'>
+                            dmg: 1<br>
+                            armor: 3<br>
+                            regen: 1<br>
+                        </p>
+                    </div>
+                    
+
+                    <div class = 'equip-container' id = 'head-container'>
+                        <div class = 'title-container'>
+                            <p class = 'equip-title' id = 'head-select-title'>head:</p>
+                            <select class = 'equip-select' id ='head-select'>
+
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class = 'equip-container' id = 'chest-container'>
+                        <div class = 'title-container'>
+                            <p class = 'equip-title' id = 'chest-select-title'>chest:</p>
+                            <select class = 'equip-select' id ='chest-select'>
+
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class = 'equip-container' id = 'legs-container'>
+                        <div class = 'title-container'>
+                            <p class = 'equip-title' id = 'legs-select-title'>legs:</p>
+                            <select class = 'equip-select' id ='legs-select'>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class = 'equip-container' id = 'feet-container'>
+                        <div class = 'title-container'>
+                            <p class = 'equip-title' id = 'feet-select-title'>feet:</p>
+                            <select class = 'equip-select' id ='feet-select'>
+
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class='fifth-tab' id = 'large-tab'>
+                    <div class = 'large-tab-row' id = 'items-tab-row'></div>
+                    <div class = 'large-tab-row' id = 'center-tab-row'>
+                        <div class = 'major-title-container'>
+                            <p id = 'large-tab-title'>Shop:</p>
+                        </div>
+                        <div class = 'content-container'>
+                            <div id = 'content-central-box'>
+                                <button id = ''>buy Gun: 30 gold <br>(+4 xb dgm )</button>
+                                <button id = ''>buy Sword: 55 gold <br>(+dsb ego gm )</button>
+                                <button id = ''>buy Apple: 32 gold <br>(+dsb ddsb gm bee)</button>
+                                <button id = ''>buy Gun: 30 gold <br>(+4 xb dgm )</button>
+                                <button id = ''>buy Win Game: 400 gold <br>(2000 damage all enemies)</button>
+                                <button id = ''>buy Sword: 55 gold <br>(+dsb ego gm )</button>
+                                <button id = ''>buy Apple: 32 gold <br>(+dsb ddsb gm bee)</button>
+                                <button id = ''>buy Alpha Juice: 4300 gold <br>(405 damage to all enemies and forge a courting spell)</button>
+                            </div>
+                        </div>
+                        <div class = 'button-container'>
+                            <button id = 'go-next'>Go to Next Level</button>
+                        </div>
+                    </div>
+                    <div class = 'large-tab-row' id = 'magic-tab-row'></div>
+                </div>
+            </div>  
+        </div>
+      
+    </body>
+</html>
