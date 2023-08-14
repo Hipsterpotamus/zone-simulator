@@ -68,38 +68,37 @@ class entity{
         return (this.getByType('weapon','regen')+this.getByType('head','regen')+this.getByType('chest','regen')+this.getByType('legs','regen')+this.getByType('feet','regen'));
     }
     calcAs() {
-        
-        let cpas = (this.aSLvl+this.getByType('weapon','attack speed')+this.getByType('head','attack speed')+this.getByType('chest','attack speed')+this.getByType('legs','attack speed')+this.getByType('feet','attack speed'));
+        let rawAS = (this.aSLvl+this.getByType('weapon','attack speed')+this.getByType('head','attack speed')+this.getByType('chest','attack speed')+this.getByType('legs','attack speed')+this.getByType('feet','attack speed'));
 
-        if (cpas >= 85){
-            cpas -= 85;
-            if (cpas <= 2){
+        if (rawAS >= 85){
+            rawAS -= 85;
+            if (rawAS <= 2){
                 this.aS = 15;
-            }else if(cpas <= 3){
+            }else if(rawAS <= 3){
                 this.aS = 14;
-            }else if(cpas<= 5){
+            }else if(rawAS<= 5){
                 this.aS = 13;
-            }else if(cpas <= 8){
+            }else if(rawAS <= 8){
                 this.aS = 12;
-            }else if(cpas<= 13){
+            }else if(rawAS<= 13){
                 this.aS = 11;
-            }else if(cpas <= 21){
+            }else if(rawAS <= 21){
                 this.aS = 10;
-            }else if(cpas<= 34){
+            }else if(rawAS<= 34){
                 this.aS = 9;
-            }else if(cpas<= 55){
+            }else if(rawAS<= 55){
                 this.aS = 8;
-            }else if(cpas <= 89){
+            }else if(rawAS <= 89){
                 this.aS = 7;
-            }else if(cpas <= 144){
+            }else if(rawAS <= 144){
                 this.aS = 6;
-            }else if (cpas<=233){
+            }else if (rawAS<=233){
                 this.aS = 5;
-            }else if (cpas<=377){
+            }else if (rawAS<=377){
                 this.aS = 4;
-            }else if (cpas<=610){
+            }else if (rawAS<=610){
                 this.aS = 3;
-            }else if (cpas<=987){
+            }else if (rawAS<=987){
                 this.aS = 2;
             }else{
                 this.aS = 1;
@@ -160,6 +159,12 @@ class entity{
             }
         }else{
             return foundEquip;
+        }
+    }
+    gainHp(healAmount){
+        this.hp += healAmount;
+        if(this.maxhp<this.hp){
+            this.hp = this.maxhp;
         }
     }
 }
