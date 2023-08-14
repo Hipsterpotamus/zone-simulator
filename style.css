@@ -253,3 +253,10 @@ body, html {
   line-height:5vh;
   font-size: 1.9vh;
 }
+
+#combatTimer{
+  text-align: center;
+  font-size: 13vh;
+  font-weight: bold;
+  margin: 4.5vh 0 0 0;
+}
