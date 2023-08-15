@@ -38,7 +38,9 @@ class Entity{
             }
         }
     }
-    calcDmg(){
+    // QUESTION: Why aren't you just doing `this.getByType('weapon').dmg' since the Equippable will already have the stat? Seems like the `stat` parameter is unnecessary in getByType
+    // And with that, you could make it simplier with calcStat(statName) and replace these first 3 with just `this.getByType(type).statName + ...`
+    calcDmg(){ 
        return (this.getByType('weapon','dmg')+this.getByType('head','dmg')+this.getByType('chest','dmg')+this.getByType('legs','dmg')+this.getByType('feet','dmg'));
     }
     calcArm(){
