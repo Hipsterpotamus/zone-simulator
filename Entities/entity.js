@@ -1,5 +1,5 @@
 class Entity{
-    constructor(name, type, health, attackspeed, damage, armor, gold, regen, complexStats) {
+    constructor(name, type, health, attackspeed, damage, armor, gold, regen, complexStats) { 
         this.name = name;
         this.type = type;
         this.hp = health;
@@ -24,22 +24,30 @@ class Entity{
             'feet':[new Equippable(true, 'none', 'feet', 'none', 0, 0, 0, 0)],
         }
         if(complexStats){
-            if(complexStats.lifedrain){
-                this.lifedrain=complexStats.lifedrain;
-            }
-            if(complexStats.thorn){
-                this.thorn = complexStats.thorn;
-            }
-            if(complexStats.antiheal){
-                this.antiheal = complexStats.antiheal;
-            }
-            if(complexStats.dodge){
-                this.dodge = complexStats.dodge;
-            }
+            
+            // if(complexStats.lifedrain){
+            //     this.lifedrain=complexStats.lifedrain;
+            // }
+            // if(complexStats.thorn){
+            //     this.thorn = complexStats.thorn;
+            // }
+            // if(complexStats.antiheal){
+            //     this.antiheal = complexStats.antiheal;
+            // }
+            // if(complexStats.dodge){
+            //     this.dodge = complexStats.dodge;
+            // }
+
+            // This does the same thing, and allows for more complex stats to be added without having to add them
+            Object.keys(complexStats).forEach((stat)=>{
+                this[stat] = complexStats[stat];
+            })
         }
     }
-    calcDmg(){
-       return (this.dmg+this.getByType('weapon','dmg')+this.getByType('head','dmg')+this.getByType('chest','dmg')+this.getByType('legs','dmg')+this.getByType('feet','dmg'));
+    // QUESTION: Why aren't you just doing `this.getByType('weapon').dmg' since the Equippable will already have the stat? Seems like the `stat` parameter is unnecessary in getByType
+    // And with that, you could make it simplier with calcStat(statName) and replace these first 3 with just `this.getByType(type).statName + ...`
+    calcDmg(){ 
+       return (this.getByType('weapon','dmg')+this.getByType('head','dmg')+this.getByType('chest','dmg')+this.getByType('legs','dmg')+this.getByType('feet','dmg'));
     }
     calcArm(){
         return (this.arm+this.getByType('weapon','armor')+this.getByType('head','armor')+this.getByType('chest','armor')+this.getByType('legs','armor')+this.getByType('feet','armor'));
@@ -90,43 +98,56 @@ class Entity{
     }
     getByType(type,stat){
         let foundEquip;
-        switch(type){
-            case 'weapon':
-                for(let x = 0;x<this.inv.weapon.length;x+=1){
-                    if(this.inv.weapon[x].equipped == true){
-                        foundEquip = this.inv.weapon[x];
-                    }
-                }
-            break;
-            case 'head':
-                for(let y = 0;y<this.inv.head.length;y+=1){
-                    if(this.inv.head[y].equipped == true){
-                        foundEquip = this.inv.head[y];
-                    }
-                }
-            break;
-            case 'chest':
-                for(let z = 0;z<this.inv.chest.length;z+=1){
-                    if(this.inv.chest[z].equipped == true){
-                        foundEquip = this.inv.chest[z];
-                    }
-                }
-            break;
-            case 'legs':
-                for(let a = 0;a<this.inv.legs.length;a+=1){
-                    if(this.inv.legs[a].equipped == true){
-                        foundEquip = this.inv.legs[a];
-                    }
-                }
-            break;
-            case 'feet':
-                for(let b = 0;b<this.inv.feet.length;b+=1){
-                    if(this.inv.feet[b].equipped == true){
-                        foundEquip = this.inv.feet[b];
-                    }
-                }
-            break;
+        // This will do the same thing without all of the cases
+        for(let x = 0;x<this.inv[type].length;x+=1){
+            if(this.inv[type][x].equipped == true){
+                foundEquip = this.inv[type][x]
+            }
         }
+          // This also does the same thing and is easier to read than the for loop, it's slower but the performance difference is negligible
+        // this.inv[type].forEach((item)=>{
+        //     if(item.equipped == true){
+        //         foundEquip = item;
+        //     }
+        // })
+
+        // switch(type){
+        //     case 'weapon':
+        //         for(let x = 0;x<this.inv.weapon.length;x+=1){
+        //             if(this.inv.weapon[x].equipped == true){
+        //                 foundEquip = this.inv.weapon[x]
+        //             }
+        //         }
+        //     break;
+        //     case 'head':
+        //         for(let y = 0;y<this.inv.head.length;y+=1){
+        //             if(this.inv.head[y].equipped == true){
+        //                 foundEquip = this.inv.head[y]
+        //             }
+        //         }
+        //     break;
+        //     case 'chest':
+        //         for(let z = 0;z<this.inv.chest.length;z+=1){
+        //             if(this.inv.chest[z].equipped == true){
+        //                 foundEquip = this.inv.chest[z]
+        //             }
+        //         }
+        //     break;
+        //     case 'legs':
+        //         for(let a = 0;a<this.inv.legs.length;a+=1){
+        //             if(this.inv.legs[a].equipped == true){
+        //                 foundEquip = this.inv.legs[a]
+        //             }
+        //         }
+        //     break;
+        //     case 'feet':
+        //         for(let b = 0;b<this.inv.feet.length;b+=1){
+        //             if(this.inv.feet[b].equipped == true){
+        //                 foundEquip = this.inv.feet[b]
+        //             }
+        //         }
+        //     break;
+        // }
         if(stat){
             switch(stat){
                 case 'dmg':
