@@ -24,20 +24,6 @@ class Entity{
             'feet':[new Equippable(true, 'none', 'feet', 'none', 0, 0, 0, 0)],
         }
         if(complexStats){
-            
-            // if(complexStats.lifedrain){
-            //     this.lifedrain=complexStats.lifedrain;
-            // }
-            // if(complexStats.thorn){
-            //     this.thorn = complexStats.thorn;
-            // }
-            // if(complexStats.antiheal){
-            //     this.antiheal = complexStats.antiheal;
-            // }
-            // if(complexStats.dodge){
-            //     this.dodge = complexStats.dodge;
-            // }
-
             // This does the same thing, and allows for more complex stats to be added without having to add them
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];
@@ -53,6 +39,14 @@ class Entity{
     calcRegen(){
         return (this.regen+this.getByType('weapon').regen+this.getByType('head').regen+this.getByType('chest').regen+this.getByType('legs').regen+this.getByType('feet').regen);
     }
+    // SUGGESTION: This does the same thing as the commented out code below, but is easier to read 
+    // calcAs() { // Attack Speed
+    //     const rawAS = this.aSLvl + this.getByType('weapon').aSChange + this.getByType('head').aSChange + this.getByType('chest').aSChange + this.getByType('legs').aSChange + this.getByType('feet').aSChange;
+    //     const fibonacci = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987];
+    //     const index = Math.min(fibonacci.length - 1, Math.floor((rawAS - 85) / 2));
+    //     this.aS = index < 0 ? 100 - rawAS : fibonacci[index];
+    //     return this.aS;
+    // }
     calcAs() { // Attack Speed
         let rawAS = (this.aSLvl+this.getByType('weapon').aSChange+this.getByType('head').aSChange+this.getByType('chest').aSChange+this.getByType('legs').aSChange+this.getByType('feet').aSChange);
 
@@ -94,6 +88,8 @@ class Entity{
         }
         return this.aS;
     }
+
+
     getByType(type){
         let foundEquip;
         // This will do the same thing without all of the cases
@@ -102,51 +98,13 @@ class Entity{
                 foundEquip = this.inv[type][x]
             }
         }
-          // This also does the same thing and is easier to read than the for loop, it's slower but the performance difference is negligible
+          // SUGGESTION: This also does the same thing and is easier to read than the for loop, it's slower but the performance difference is negligible
         // this.inv[type].forEach((item)=>{
         //     if(item.equipped == true){
         //         foundEquip = item;
         //     }
         // })
 
-        // switch(type){
-        //     case 'weapon':
-        //         for(let x = 0;x<this.inv.weapon.length;x+=1){
-        //             if(this.inv.weapon[x].equipped == true){
-        //                 foundEquip = this.inv.weapon[x]
-        //             }
-        //         }
-        //     break;
-        //     case 'head':
-        //         for(let y = 0;y<this.inv.head.length;y+=1){
-        //             if(this.inv.head[y].equipped == true){
-        //                 foundEquip = this.inv.head[y]
-        //             }
-        //         }
-        //     break;
-        //     case 'chest':
-        //         for(let z = 0;z<this.inv.chest.length;z+=1){
-        //             if(this.inv.chest[z].equipped == true){
-        //                 foundEquip = this.inv.chest[z]
-        //             }
-        //         }
-        //     break;
-        //     case 'legs':
-        //         for(let a = 0;a<this.inv.legs.length;a+=1){
-        //             if(this.inv.legs[a].equipped == true){
-        //                 foundEquip = this.inv.legs[a]
-        //             }
-        //         }
-        //     break;
-        //     case 'feet':
-        //         for(let b = 0;b<this.inv.feet.length;b+=1){
-        //             if(this.inv.feet[b].equipped == true){
-        //                 foundEquip = this.inv.feet[b]
-        //             }
-        //         }
-        //     break;
-        // }
-        
         return foundEquip;
     }
     gainHp(healAmount){
@@ -155,4 +113,8 @@ class Entity{
             this.hp = this.maxhp;
         }
     }
+       // SUGGESTION: This does the same thing but never overloads HP
+    // gainHp(healAmount) {
+    //     this.hp = Math.min(this.maxhp, this.hp + healAmount);
+    // }
 }
