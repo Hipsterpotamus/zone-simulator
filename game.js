@@ -19,7 +19,6 @@ function startGame(){
 }
 
 
-<<<<<<< HEAD
 class Equippable{
     constructor(startEquipped, name, metatype, type, dmg, armor, regen, attackSpeedChange, complexStats){
         this.equipped = startEquipped;
@@ -79,8 +78,6 @@ class Equippable{
     }
 }
 
-=======
->>>>>>> 2e73fa70a3ce82028e3617f0df7f1d03910d86a4
 class lvlUpAbil{
     constructor(name, startUpAction,){
         this.name = name;
