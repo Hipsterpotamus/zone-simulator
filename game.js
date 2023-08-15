@@ -7,7 +7,7 @@ function startGame(){
         'zone':'farm',
         'zoneNum':1,
         'stage':1,
-        'p':new player(),
+        'p':new Player('ben', 'human'),
         'path':[],
         'inCombat': false,
         'level': 1,
@@ -19,7 +19,7 @@ function startGame(){
 }
 
 
-class equipable{
+class Equippable{
     constructor(startEquipped, name, metatype, type, dmg, armor, regen, attackSpeedChange, complexStats){
         this.equipped = startEquipped;
         this.name = name;
@@ -29,10 +29,8 @@ class equipable{
         this.arm = armor;
         this.regen = regen;
         this.aSChange = attackSpeedChange;
-        this.complexity = complexity;
         this.income = 0;
         this.element;
-        this.initElement = initElement;
         
         this.appendElement();
         

@@ -9,12 +9,12 @@ function combatTick(){
 
     }
     if(g.cTick%g.p.calcAs()==0){
-        if(Math.random()>(cEnemy.dodge*0.01)){
+        if(Math.random()>(g.cEnemy.dodge*0.01)){
             let playerDMG = g.p.calcDmg();
             playerDMG -= g.cEnemy.calcArm();
             if (playerDMG<0) {playerDMG=0;}
             g.cEnemy.hp-=playerDMG;
-            g.p.hp-=cEnemy.thorn;
+            g.p.hp-=g.cEnemy.thorn;
         }
     }
 
@@ -25,11 +25,11 @@ function combatTick(){
         g.cEnemy.gainHp(g.cEnemy.calcRegen())
     }
 
-    if(player.hp<=0){
+    if(g.p.hp<=0){
         playerDeath();
         return;
     }
-    if(enemy.hp<=0){
+    if(g.cEnemy.hp<=0){
         combatWin();
         return;
     }
@@ -38,10 +38,14 @@ function combatTick(){
 
 
 function playerDeath(){
+    g.inCombat = false;
+    g.cTick = 0;
     elementUp();
 }
 
 function combatWin(){
+    g.inCombat = false;
+    g.cTick = 0;
     elementUp();
 }
 // function combatRun(){

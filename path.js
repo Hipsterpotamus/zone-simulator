@@ -85,6 +85,9 @@ function advancePath(){
 
 function genEnemy(){
     $('#large-tab-title').text('Enemy Encounter');
+    g.inCombat = true;
+    g.cEnemy = new Enemy('lady bug', 'bug', 8, 62, 1, 0, 10, 0);
+    timeoutCombatLoop = setInterval(function () {combatTick()}, 20);
 }
 function genEvent(eventPath){
     if(eventPath){

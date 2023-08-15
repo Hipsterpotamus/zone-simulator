@@ -11,7 +11,7 @@ class Player extends Entity{
         this.income = 0;
         this.aS = 100;
         this.aSLvl = 0;
-        switch(character){
+        switch(name){
             case 'ben':
                 
             break;

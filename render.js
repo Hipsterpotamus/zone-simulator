@@ -1,7 +1,7 @@
 function elementUp(){
     $('#player-stats').html(entityHtmlOutput(g.p,true));
     $('#enemy-stats').html(entityHtmlOutput(g.cEnemy,false));
-    $('#combat-timer').text(Math.floor((c.cTick/(50*60))+':'+Math.floor((c.cTick%(50*60))/50)));
+    $('#combatTimer').text(Math.floor(g.cTick/(3000))+":"+Math.floor((g.cTick%(3000)/50)));
 }
 function entityHtmlOutput(entity, playerQ){
     let htmlOutput = '';
@@ -20,4 +20,5 @@ function entityHtmlOutput(entity, playerQ){
         htmlOutput+='arm : '+entity.calcArm()+'<br>';
         htmlOutput+='regen : '+entity.calcRegen()+'<br>';
     }
+    return htmlOutput;
 }

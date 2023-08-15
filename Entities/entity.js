@@ -17,11 +17,11 @@ class Entity{
         this.regenRate = 50;
         this.inv = {
             'item':[],
-            'weapon':[],
-            'head':[],
-            'chest':[],
-            'legs':[],
-            'feet':[],
+            'weapon':[new Equippable(true, 'none', 'weapon', 'none', 0, 0, 0, 0)],
+            'head':[new Equippable(true, 'none', 'head', 'none', 0, 0, 0, 0)],
+            'chest':[new Equippable(true, 'none', 'chest', 'none', 0, 0, 0, 0)],
+            'legs':[new Equippable(true, 'none', 'legs', 'none', 0, 0, 0, 0)],
+            'feet':[new Equippable(true, 'none', 'feet', 'none', 0, 0, 0, 0)],
         }
         if(complexStats){
             if(complexStats.lifedrain){
@@ -39,13 +39,13 @@ class Entity{
         }
     }
     calcDmg(){
-       return (this.getByType('weapon','dmg')+this.getByType('head','dmg')+this.getByType('chest','dmg')+this.getByType('legs','dmg')+this.getByType('feet','dmg'));
+       return (this.dmg+this.getByType('weapon','dmg')+this.getByType('head','dmg')+this.getByType('chest','dmg')+this.getByType('legs','dmg')+this.getByType('feet','dmg'));
     }
     calcArm(){
-        return (this.getByType('weapon','armor')+this.getByType('head','armor')+this.getByType('chest','armor')+this.getByType('legs','armor')+this.getByType('feet','armor'));
+        return (this.arm+this.getByType('weapon','armor')+this.getByType('head','armor')+this.getByType('chest','armor')+this.getByType('legs','armor')+this.getByType('feet','armor'));
     }
     calcRegen(){
-        return (this.getByType('weapon','regen')+this.getByType('head','regen')+this.getByType('chest','regen')+this.getByType('legs','regen')+this.getByType('feet','regen'));
+        return (this.regen+this.getByType('weapon','regen')+this.getByType('head','regen')+this.getByType('chest','regen')+this.getByType('legs','regen')+this.getByType('feet','regen'));
     }
     calcAs() { // Attack Speed
         let rawAS = (this.aSLvl+this.getByType('weapon','attack speed')+this.getByType('head','attack speed')+this.getByType('chest','attack speed')+this.getByType('legs','attack speed')+this.getByType('feet','attack speed'));
@@ -84,8 +84,9 @@ class Entity{
                 this.aS = 1;
             }
         } else{
-            this.aS = 100-cpas;
+            this.aS = 100-rawAS;
         }
+        return this.aS;
     }
     getByType(type,stat){
         let foundEquip;
@@ -93,35 +94,35 @@ class Entity{
             case 'weapon':
                 for(let x = 0;x<this.inv.weapon.length;x+=1){
                     if(this.inv.weapon[x].equipped == true){
-                        foundEquip = this.inv.weapon[x]
+                        foundEquip = this.inv.weapon[x];
                     }
                 }
             break;
             case 'head':
                 for(let y = 0;y<this.inv.head.length;y+=1){
                     if(this.inv.head[y].equipped == true){
-                        foundEquip = this.inv.head[y]
+                        foundEquip = this.inv.head[y];
                     }
                 }
             break;
             case 'chest':
                 for(let z = 0;z<this.inv.chest.length;z+=1){
                     if(this.inv.chest[z].equipped == true){
-                        foundEquip = this.inv.chest[z]
+                        foundEquip = this.inv.chest[z];
                     }
                 }
             break;
             case 'legs':
                 for(let a = 0;a<this.inv.legs.length;a+=1){
                     if(this.inv.legs[a].equipped == true){
-                        foundEquip = this.inv.legs[a]
+                        foundEquip = this.inv.legs[a];
                     }
                 }
             break;
             case 'feet':
                 for(let b = 0;b<this.inv.feet.length;b+=1){
                     if(this.inv.feet[b].equipped == true){
-                        foundEquip = this.inv.feet[b]
+                        foundEquip = this.inv.feet[b];
                     }
                 }
             break;
