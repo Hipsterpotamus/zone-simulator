@@ -94,7 +94,7 @@ class Entity{
         }
         return this.aS;
     }
-    getByType(type,stat){
+    getByType(type){
         let foundEquip;
         // This will do the same thing without all of the cases
         for(let x = 0;x<this.inv[type].length;x+=1){
@@ -146,20 +146,8 @@ class Entity{
         //         }
         //     break;
         // }
-        if(stat){
-            switch(stat){
-                case 'dmg':
-                    return foundEquip.dmg;
-                case 'armor':
-                    return foundEquip.arm;
-                case 'regen':
-                    return foundEquip.regen;
-                case 'attack speed':
-                    return foundEquip.aSChange;
-            }
-        }else{
-            return foundEquip;
-        }
+        
+        return foundEquip;
     }
     gainHp(healAmount){
         this.hp += healAmount;
