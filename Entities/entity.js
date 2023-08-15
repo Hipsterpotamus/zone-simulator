@@ -1,5 +1,5 @@
 class Entity{
-    constructor(name, type, health, attackspeed, damage, armor, gold, regen, complexStats) {
+    constructor(name, type, health, attackspeed, damage, armor, gold, regen, complexStats) { 
         this.name = name;
         this.type = type;
         this.hp = health;
