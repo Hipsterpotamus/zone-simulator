@@ -24,17 +24,24 @@ class Entity{
             'feet':[],
         }
         if(complexStats){
-            if(complexStats.lifedrain){
-                this.lifedrain=complexStats.lifedrain;
-            }
-            if(complexStats.thorn){
-                this.thorn = complexStats.thorn;
-            }
-            if(complexStats.antiheal){
-                this.antiheal = complexStats.antiheal;
-            }
-            if(complexStats.dodge){
-                this.dodge = complexStats.dodge;
+            
+            // if(complexStats.lifedrain){
+            //     this.lifedrain=complexStats.lifedrain;
+            // }
+            // if(complexStats.thorn){
+            //     this.thorn = complexStats.thorn;
+            // }
+            // if(complexStats.antiheal){
+            //     this.antiheal = complexStats.antiheal;
+            // }
+            // if(complexStats.dodge){
+            //     this.dodge = complexStats.dodge;
+            // }
+
+            // This does the same thing, and allows for more complex stats to be added without having to add them
+            Object.keys(complexStats).forEach((stat)=>{
+                this[stat] = complexStats[stat];
+            })
             }
         }
     }
