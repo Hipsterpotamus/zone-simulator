@@ -38,11 +38,10 @@ class Entity{
             //     this.dodge = complexStats.dodge;
             // }
 
-            // This does the same thing, and allows for more complex stats to be added without having to add them
+            // This does the same thing, and allows for more complex stats to be added without having to add t
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];
             })
-            }
         }
     }
     // QUESTION: Why aren't you just doing `this.getByType('weapon').dmg' since the Equippable will already have the stat? Seems like the `stat` parameter is unnecessary in getByType
