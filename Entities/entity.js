@@ -38,7 +38,7 @@ class Entity{
             //     this.dodge = complexStats.dodge;
             // }
 
-            // This does the same thing, and allows for more complex stats to be added without having to add t
+            // This does the same thing, and allows for more complex stats to be added without having to add them
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];
             })
