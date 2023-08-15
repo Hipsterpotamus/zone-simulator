@@ -9,8 +9,8 @@ function entityHtmlOutput(entity, playerQ){
         htmlOutput = entity.name+'<br>';
         htmlOutput+='hp : '+entity.hp+'/'+entity.maxhp+'<br>';
         htmlOutput+='dmg : '+entity.calcDmg()+' ('+entity.dmg+' + '+(entity.calcDmg()-entity.dmg)+')<br>';
-        htmlOutput+='time: '+(g.cTick%entity.calcAs())+'<br>';
-        htmlOutput+='arm : '+entity.calcArm()+' ('+entity.arm+' + '+(entity.calcArm()-entity.armor)+')<br>';
+        htmlOutput+='time: '+(entity.calcAs()-(g.cTick%entity.calcAs()))+'<br>';
+        htmlOutput+='arm : '+entity.calcArm()+' ('+entity.arm+' + '+(entity.calcArm()-entity.arm)+')<br>';
         htmlOutput+='regen : '+entity.calcRegen()+' ('+entity.regen+' + '+(entity.calcRegen()-entity.regen)+')<br>';
     }else{
         htmlOutput = entity.name+'<br>';

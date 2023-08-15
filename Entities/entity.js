@@ -44,19 +44,17 @@ class Entity{
             })
         }
     }
-    // QUESTION: Why aren't you just doing `this.getByType('weapon').dmg' since the Equippable will already have the stat? Seems like the `stat` parameter is unnecessary in getByType
-    // And with that, you could make it simplier with calcStat(statName) and replace these first 3 with just `this.getByType(type).statName + ...`
     calcDmg(){ 
-       return (this.getByType('weapon','dmg')+this.getByType('head','dmg')+this.getByType('chest','dmg')+this.getByType('legs','dmg')+this.getByType('feet','dmg'));
+       return (this.dmg+this.getByType('weapon').dmg+this.getByType('head').dmg+this.getByType('chest').dmg+this.getByType('legs').dmg+this.getByType('feet').dmg);
     }
     calcArm(){
-        return (this.arm+this.getByType('weapon','armor')+this.getByType('head','armor')+this.getByType('chest','armor')+this.getByType('legs','armor')+this.getByType('feet','armor'));
+        return (this.arm+this.getByType('weapon').arm+this.getByType('head').arm+this.getByType('chest').arm+this.getByType('legs').arm+this.getByType('feet').arm);
     }
     calcRegen(){
-        return (this.regen+this.getByType('weapon','regen')+this.getByType('head','regen')+this.getByType('chest','regen')+this.getByType('legs','regen')+this.getByType('feet','regen'));
+        return (this.regen+this.getByType('weapon').regen+this.getByType('head').regen+this.getByType('chest').regen+this.getByType('legs').regen+this.getByType('feet').regen);
     }
     calcAs() { // Attack Speed
-        let rawAS = (this.aSLvl+this.getByType('weapon','attack speed')+this.getByType('head','attack speed')+this.getByType('chest','attack speed')+this.getByType('legs','attack speed')+this.getByType('feet','attack speed'));
+        let rawAS = (this.aSLvl+this.getByType('weapon').aSChange+this.getByType('head').aSChange+this.getByType('chest').aSChange+this.getByType('legs').aSChange+this.getByType('feet').aSChange);
 
         if (rawAS >= 85){
             rawAS -= 85;

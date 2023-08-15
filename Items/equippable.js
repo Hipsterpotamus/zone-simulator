@@ -8,22 +8,18 @@ class Equippable {
         this.arm = armor;
         this.regen = regen;
         this.aSChange = attackSpeedChange;
-        this.complexity = complexity;
         this.income = 0;
         this.element;
-        this.initElement = initElement;
-
+                
         this.appendElement();
 
-        // if (complexStats) {
-        //     if (complexStats.income) {
-        //         this.income = complexStats.income;
-        //     }
-        // }
         // This does the same thing, and allows for more complex stats to be added without having to add them
-        Object.keys(complexStats).forEach((stat)=>{
-            this[stat] = complexStats[stat];
-        })
+        if(complexStats){
+            Object.keys(complexStats).forEach((stat)=>{
+                this[stat] = complexStats[stat];
+            })
+        }
+        
     }
     appendElement() {
         this.element = $('<option>', {
