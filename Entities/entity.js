@@ -89,43 +89,56 @@ class Entity{
     }
     getByType(type,stat){
         let foundEquip;
-        switch(type){
-            case 'weapon':
-                for(let x = 0;x<this.inv.weapon.length;x+=1){
-                    if(this.inv.weapon[x].equipped == true){
-                        foundEquip = this.inv.weapon[x]
-                    }
-                }
-            break;
-            case 'head':
-                for(let y = 0;y<this.inv.head.length;y+=1){
-                    if(this.inv.head[y].equipped == true){
-                        foundEquip = this.inv.head[y]
-                    }
-                }
-            break;
-            case 'chest':
-                for(let z = 0;z<this.inv.chest.length;z+=1){
-                    if(this.inv.chest[z].equipped == true){
-                        foundEquip = this.inv.chest[z]
-                    }
-                }
-            break;
-            case 'legs':
-                for(let a = 0;a<this.inv.legs.length;a+=1){
-                    if(this.inv.legs[a].equipped == true){
-                        foundEquip = this.inv.legs[a]
-                    }
-                }
-            break;
-            case 'feet':
-                for(let b = 0;b<this.inv.feet.length;b+=1){
-                    if(this.inv.feet[b].equipped == true){
-                        foundEquip = this.inv.feet[b]
-                    }
-                }
-            break;
+        // This will do the same thing without all of the cases
+        for(let x = 0;x<this.inv[type].length;x+=1){
+            if(this.inv[type][x].equipped == true){
+                foundEquip = this.inv[type][x]
+            }
         }
+          // This also does the same thing and is easier to read than the for loop, it's slower but the performance difference is negligible
+        // this.inv[type].forEach((item)=>{
+        //     if(item.equipped == true){
+        //         foundEquip = item;
+        //     }
+        // })
+
+        // switch(type){
+        //     case 'weapon':
+        //         for(let x = 0;x<this.inv.weapon.length;x+=1){
+        //             if(this.inv.weapon[x].equipped == true){
+        //                 foundEquip = this.inv.weapon[x]
+        //             }
+        //         }
+        //     break;
+        //     case 'head':
+        //         for(let y = 0;y<this.inv.head.length;y+=1){
+        //             if(this.inv.head[y].equipped == true){
+        //                 foundEquip = this.inv.head[y]
+        //             }
+        //         }
+        //     break;
+        //     case 'chest':
+        //         for(let z = 0;z<this.inv.chest.length;z+=1){
+        //             if(this.inv.chest[z].equipped == true){
+        //                 foundEquip = this.inv.chest[z]
+        //             }
+        //         }
+        //     break;
+        //     case 'legs':
+        //         for(let a = 0;a<this.inv.legs.length;a+=1){
+        //             if(this.inv.legs[a].equipped == true){
+        //                 foundEquip = this.inv.legs[a]
+        //             }
+        //         }
+        //     break;
+        //     case 'feet':
+        //         for(let b = 0;b<this.inv.feet.length;b+=1){
+        //             if(this.inv.feet[b].equipped == true){
+        //                 foundEquip = this.inv.feet[b]
+        //             }
+        //         }
+        //     break;
+        // }
         if(stat){
             switch(stat){
                 case 'dmg':
