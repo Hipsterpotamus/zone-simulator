@@ -1,10 +1,11 @@
 let el;
 $(document).ready(function(){
     el = {
+        // world one, easy, as;ldfkja;lskdfj
         'ladybug': new Enemy('lady bug', 'bug', 8, 110, 1, 0, 5, 0, 0),
-        'cricket': new Enemy('cricket', 'bug', 7, 90, 1, 0, 5, 0, 0)
+        'cricket': new Enemy('cricket', 'bug', 7,   90, 1, 0, 5, 0, 0)
     }
-})
+});
 
 
 
@@ -23,11 +24,11 @@ function pullEnemy(){
                 break;
                 case 2:
                     if(x<0.30){ // easy
-                        exE = pullEFromSix([el.ladybug,el.ladybug,el.ladybug,el.ladybug,el.ladybug,el.ladybug],true);
+                        exE = pullEFromSix([el.cricket,el.cricket,el.cricket,el.cricket,el.cricket,el.cricket],true);
                     }else if(x<0.75){ // medium
-                        exE = pullEFromSix([el.ladybug,el.ladybug,el.ladybug,el.ladybug,el.ladybug,el.ladybug],true);
+                        exE = pullEFromSix([el.cricket,el.cricket,el.cricket,el.cricket,el.cricket,el.cricket],true);
                     }else{ // hard
-                        exE = pullEFromSix([el.ladybug,el.ladybug,el.ladybug,el.ladybug,el.ladybug,el.ladybug],true);
+                        exE = pullEFromSix([el.cricket,el.cricket,el.cricket,el.cricket,el.cricket,el.cricket],true);
                     }
                 break;
                 case 3:
@@ -119,11 +120,7 @@ function pullEnemy(){
 function pullEFromSix(enemyArray,even,pO,pT,pTh,pF,pFi,pS){
     let pull = Math.random();
     let ea = JSON.parse(JSON.stringify(enemyArray));
-    console.log('into fun');
-
-    console.log(ea);
     if(even){
-        console.log('into even');
         let index = Math.floor(pull/0.166667);
         console.log(ea[index]);
         return ea[index];
