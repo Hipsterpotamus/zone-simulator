@@ -17,7 +17,7 @@ class Equippable {
         if(complexStats){
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];
-            })
+            });
         }
         
     }

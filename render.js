@@ -24,16 +24,16 @@ function entityHtmlOutput(entity, playerQ){
 }
 function updateEquippableStats(eq){
     console.log(eq);
-    let outPut = ''; 
+    let statOutput = ''; 
     if(eq.metatype == 'weapon'){
-        outPut+='dmg : '+eq.dmg+'<br>';
-        outPut+='arm : '+eq.arm+'<br>';
-        outPut+='regen : '+eq.regen+'<br>';
+        statOutput+='dmg : '+eq.dmg+'<br>';
+        statOutput+='arm : '+eq.arm+'<br>';
+        statOutput+='regen : '+eq.regen+'<br>';
     }else{
-        outPut+='arm : '+eq.arm+'<br>';
-        outPut+='dmg : '+eq.dmg+'<br>';
-        outPut+='regen : '+eq.regen+'<br>';
+        statOutput+='arm : '+eq.arm+'<br>';
+        statOutput+='dmg : '+eq.dmg+'<br>';
+        statOutput+='regen : '+eq.regen+'<br>';
     }
-    if(eq.name=='none'){outPut = '';}
-    $('#'+eq.metatype+'-stats').html(outPut);
+    if(eq.name=='none'){statOutput = '';}
+    $('#'+eq.metatype+'-stats').html(statOutput);
 }
