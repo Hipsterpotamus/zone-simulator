@@ -4,9 +4,10 @@ let g; //game
 function startGame(){
     g = {
         'g':0,
-        'zone':'farm',
+        'zone':'grassland',
         'zoneNum':1,
         'stage':1,
+        'difficulty':1,
         'p':new Player('ben', 'human'),
         'path':[],
         'inCombat': false,

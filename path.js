@@ -64,6 +64,7 @@ function generatePath(){
 
 function advancePath(){
     g.stage+=1;
+    if(g.stage%3==0){g.difficult+=1;}
     switch (g.path[g.stage]){
         case 'enemy':
             genEnemy();
@@ -86,7 +87,7 @@ function advancePath(){
 function genEnemy(){
     $('#large-tab-title').text('Enemy Encounter');
     g.inCombat = true;
-    g.cEnemy = new Enemy('lady bug', 'bug', 8, 62, 1, 0, 10, 0);
+    g.cEnemy = pullEnemy();
     timeoutCombatLoop = setInterval(function () {combatTick()}, 20);
 }
 function genEvent(eventPath){
