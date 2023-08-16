@@ -65,7 +65,7 @@ function generatePath(){
 function advancePath(){
     g.space+=1;
     $('#content-central-box').empty();
-    if(g.space%3==0){g.difficult+=1;}
+    if(g.space%3==0){g.difficulty+=1;}
     switch (g.path[(g.space-1)]){
         case 'enemy':
             genEnemy();
@@ -92,7 +92,7 @@ function genEnemy(){
     $('#large-tab-title').text('Enemy Encounter');
     g.inCombat = true;
     const copy = pullEnemy();
-    g.cEnemy = new Enemy(copy.name, copy.type, copy.hp, copy.aSLvl, copy.dmg, copy.arm, copy.gold, copy.regen, copy.complexStats) 
+    g.cEnemy = new Enemy(copy.name, copy.type, copy.hp, copy.aSLvl, copy.dmg, copy.arm, copy.gold, copy.regen, copy.diffC, copy.complexStats) 
     //A sloppy way to bypass having to create a true deep copy which would maintain methods. Necessary because of the intermingling of DOM elements and data elements makes a traditional deep copy difficult without libraries. 
     timeoutCombatLoop = setInterval(function () {combatTick()}, 20);
 }

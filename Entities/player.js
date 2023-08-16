@@ -11,7 +11,7 @@ class Player extends Entity{
         this.income = 0;
         this.aS = 100;
         this.aSLvl = 0;
-        this.gold = 0;
+        this.gold = 25;
         switch(name){
             case 'ben':
                 

@@ -7,4 +7,12 @@ class Enemy extends Entity{
          this.complexStats = complexStats;
          this.diffC = difficultyCh;
     }
+    lowDi(){
+        this.diffC-=1;
+        return this;
+    }
+    incDi(){
+        this.diffC+=1;
+        return this;
+    }
 }
