@@ -27,7 +27,7 @@ class Entity{
             // This does the same thing, and allows for more complex stats to be added without having to add them
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];
-            })
+            });
         }
     }
     calcDmg(){ 

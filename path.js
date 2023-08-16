@@ -98,6 +98,8 @@ function genEvent(eventPath){
 }
 function genShop(){
     $('#large-tab-title').text('Shop');
+    shopIs.greenapple.appendShopItem();
+    shopIs.redapple.appendShopItem();
 }
 function genRest(){
     $('#large-tab-title').text('A Rest Place');

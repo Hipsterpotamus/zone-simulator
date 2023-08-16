@@ -24,9 +24,9 @@ class Equippable {
     appendElement() {
         this.element = $('<option>', {
             'value': this.name,
-            'id': '#' + this.name + '-select'
+            'id': '#' + this.name + '-'+this.metatype+'-select'
         });
-        this.element.appendTo('#' + this.type + '-select');
+        this.element.appendTo('#' + this.metatype + '-select');
         let textToShow = this.name + ':';
         if (this.metatype == 'weapon') {
             if (this.dmg != 0) {
@@ -58,3 +58,18 @@ class Equippable {
         this.element.text(textToShow);
     }
 }
+
+
+$(document).ready(function(){
+    let equipT = ['weapon','head','chest','legs','feet'];
+    for(a in equipT){
+        $('#'+equipT[a]+'-select').on('change',function(){
+            let newEquip = $(this).val();
+            let idPull = $(this).attr('id');
+            let thing = idPull.replace(/-select$/i, '');
+            g.p.inv[thing].forEach(i => {
+                if(i.name==newEquip){i.equipped = true;updateEquippableStats(i);}else{i.equipped = false;}
+            });
+        });
+    }
+});
