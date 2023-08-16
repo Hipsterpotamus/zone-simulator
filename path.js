@@ -63,9 +63,10 @@ function generatePath(){
 }
 
 function advancePath(){
-    g.stage+=1;
-    if(g.stage%3==0){g.difficult+=1;}
-    switch (g.path[g.stage]){
+    g.space+=1;
+    $('#content-central-box').empty();
+    if(g.space%3==0){g.difficult+=1;}
+    switch (g.path[g.space]){
         case 'enemy':
             genEnemy();
         break;
@@ -84,6 +85,9 @@ function advancePath(){
     }
 }
 
+$(function() {
+    $('#go-next').on('click',advancePath);
+});
 function genEnemy(){
     $('#large-tab-title').text('Enemy Encounter');
     g.inCombat = true;
@@ -97,7 +101,9 @@ function genEvent(eventPath){
         $('#large-tab-title').text('A Forkroad');
     }else{
         $('#large-tab-title').text('Event');
+        eventInfo = eventPull();
     }
+    eventInfo.createElements();
 }
 function genShop(){
     $('#large-tab-title').text('Shop');

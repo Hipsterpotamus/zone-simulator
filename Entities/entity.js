@@ -1,5 +1,5 @@
 class Entity{
-    constructor(name, type, health, attackspeed, damage, armor, gold, regen, complexStats) { 
+    constructor(player, name, type, health, attackspeed, damage, armor, gold, regen, complexStats) { 
         this.name = name;
         this.type = type;
         this.hp = health;
@@ -17,11 +17,11 @@ class Entity{
         this.regenRate = 50;
         this.inv = {
             'item':[],
-            'weapon':[new Equippable(true, 'none', 'weapon', 'none', 0, 0, 0, 0)],
-            'head':[new Equippable(true, 'none', 'head', 'none', 0, 0, 0, 0)],
-            'chest':[new Equippable(true, 'none', 'chest', 'none', 0, 0, 0, 0)],
-            'legs':[new Equippable(true, 'none', 'legs', 'none', 0, 0, 0, 0)],
-            'feet':[new Equippable(true, 'none', 'feet', 'none', 0, 0, 0, 0)],
+            'weapon':[new Equippable(true, player, 'none', 'weapon', 'none', 0, 0, 0, 0)],
+            'head':[new Equippable(true, player, 'none', 'head', 'none', 0, 0, 0, 0)],
+            'chest':[new Equippable(true, player, 'none', 'chest', 'none', 0, 0, 0, 0)],
+            'legs':[new Equippable(true, player, 'none', 'legs', 'none', 0, 0, 0, 0)],
+            'feet':[new Equippable(true, player, 'none', 'feet', 'none', 0, 0, 0, 0)],
         }
         if(complexStats){
             // This does the same thing, and allows for more complex stats to be added without having to add them

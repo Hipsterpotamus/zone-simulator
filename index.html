@@ -15,6 +15,7 @@
         <script src="combat.js"></script>
         <script src="render.js"></script>
         <script src="store.js"></script>
+        <script src="event.js"></script>
         <script src="Entities/entity.js"></script>
         <script src="Entities/player.js"></script>
         <script src="Entities/enemy.js"></script>
@@ -68,10 +69,10 @@
     
             <div class="center-content">
                 <h1 class="large-title">Zone Simulator</h1>
-                <button class="large-button">Begin the Zone</button>
+                <button class="large-button" id = 'start-game'>Enter</button>
             </div>
         </div>
-        <div id = 'game-screen'>
+        <div id = 'game-screen' class = 'hidden'>
             <div class="game-header">
                 <p class = "header-p" id = "zone-text">zone: 1–1</p><p class = 'header-p' id = 'place-text'>shop</p><p class = "header-p" id = "gold-text">gold: 0</p>
             </div>

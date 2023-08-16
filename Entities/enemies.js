@@ -1,5 +1,5 @@
 let el;
-$(document).ready(function(){
+$(function(){
     el = {
         // world one, easy, as;ldfkja;lskdfj
         'ladybug': new Enemy('lady bug', 'bug', 8, -10, 1, 0, 5, 0, 0),

@@ -1,6 +1,7 @@
 class Equippable {
-    constructor(startEquipped, name, metatype, type, dmg, armor, regen, attackSpeedChange, complexStats) {
+    constructor(startEquipped, initEle, name, metatype, type, dmg, armor, regen, attackSpeedChange, complexStats) {
         this.equipped = startEquipped;
+        this.initEle = initEle;
         this.name = name;
         this.metatype = metatype;
         this.type = type;
@@ -11,7 +12,9 @@ class Equippable {
         this.income = 0;
         this.element;
                 
-        this.appendElement();
+        if(initEle){
+            this.appendElement();
+        }
 
         // This does the same thing, and allows for more complex stats to be added without having to add them
         if(complexStats){
@@ -60,7 +63,7 @@ class Equippable {
 }
 
 
-$(document).ready(function(){
+$(function(){
     let equipT = ['weapon','head','chest','legs','feet'];
     for(a in equipT){
         $('#'+equipT[a]+'-select').on('change',function(){

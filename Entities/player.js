@@ -1,7 +1,7 @@
 
 class Player extends Entity{
-    constructor(name, type) {
-        super(name, type);
+    constructor(player, name, type) {
+        super(player, name, type);
         this.hp = 25;
         this.maxhp = 25;
         this.dmg = 1;

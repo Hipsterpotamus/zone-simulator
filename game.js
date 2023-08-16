@@ -1,12 +1,11 @@
 let g; //game
 
-
 function startGame(){
     g = {
         'g':0,
         'zone':'grassland',
         'zoneNum':1,
-        'stage':1,
+        'space':0,
         'difficulty':1,
         'p':new Player('ben', 'human'),
         'path':[],
@@ -14,11 +13,19 @@ function startGame(){
         'level': 1,
         'xp': 0,
         'cEnemy':0,
-        'cTick':0
+        'cTick':0,
+        'areaCompletion':false
     }
     g.path = generatePath();
 }
 
+$(function() {
+    $('#start-game').on('click',function(){
+        startGame();
+        $('#game-screen').removeClass('hidden');
+        $('#start-screen').addClass('hidden');
+    });
+});
 
 
 class lvlUpAbil{
@@ -36,3 +43,5 @@ function displayWithSign(number){
         return "+"+number;
     }
 }
+
+
