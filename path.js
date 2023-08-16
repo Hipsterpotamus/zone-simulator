@@ -65,7 +65,7 @@ function generatePath(){
 function advancePath(){
     g.space+=1;
     $('#content-central-box').empty();
-    if(g.space%3==0){g.difficulty+=1;}
+    if(g.space%4==0){g.difficulty+=1;}
     switch (g.path[(g.space-1)]){
         case 'enemy':
             genEnemy();
