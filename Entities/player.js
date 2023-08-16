@@ -1,7 +1,7 @@
 
 class Player extends Entity{
-    constructor(player, name, type) {
-        super(player, name, type);
+    constructor(name, type) {
+        super(true, name, type);
         this.hp = 25;
         this.maxhp = 25;
         this.dmg = 1;
@@ -11,6 +11,7 @@ class Player extends Entity{
         this.income = 0;
         this.aS = 100;
         this.aSLvl = 0;
+        this.gold = 0;
         switch(name){
             case 'ben':
                 

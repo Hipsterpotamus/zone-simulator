@@ -46,47 +46,74 @@ function eventPull(){
                     e = new EventTwoC('A Tree','A handful of precarious branches extend from the top of an immaculate fruit tree. Will you make the climb?','Climb: gain 2 max hp, lose 3 hp','Walk past: heal 1 hp',function(){
                         g.p.maxhp+=2;
                         g.p.hp-=3;
-                        if(g.p.hp<=0){playerDeath();}$('#content-central-box').empty();
+                        if(g.p.hp<=0){playerDeath();}eventFunctionSuffix();
                     },function(){
-                        g.p.gainHp(1);$('#content-central-box').empty();
+                        g.p.gainHp(1);eventFunctionSuffix();
                     });
                     return e;
                 case 2:
                     e = new EventTwoC('A Tree','A handful of precarious branches extend from the top of an immaculate fruit tree. Will you make the climb?','Climb: gain 2 max hp, lose 3 hp','Walk past: heal 1 hp',function(){
                         g.p.maxhp+=2;
                         g.p.hp-=3;
-                        if(g.p.hp<=0){playerDeath();}$('#content-central-box').empty();
+                        if(g.p.hp<=0){playerDeath();}eventFunctionSuffix();
                     },function(){
-                        g.p.gainHp(1);$('#content-central-box').empty();
+                        g.p.gainHp(1);eventFunctionSuffix();
                     });
                     return e;
                 case 3:
                     e = new EventTwoC('A Tree','A handful of precarious branches extend from the top of an immaculate fruit tree. Will you make the climb?','Climb: gain 2 max hp, lose 3 hp','Walk past: heal 1 hp',function(){
                         g.p.maxhp+=2;
                         g.p.hp-=3;
-                        if(g.p.hp<=0){playerDeath();}$('#content-central-box').empty();
+                        if(g.p.hp<=0){playerDeath();}eventFunctionSuffix();
                     },function(){
-                        g.p.gainHp(1);$('#content-central-box').empty();
+                        g.p.gainHp(1);eventFunctionSuffix();
                     });
                     return e;
                 case 4:
                     e = new EventTwoC('A Tree','A handful of precarious branches extend from the top of an immaculate fruit tree. Will you make the climb?','Climb: gain 2 max hp, lose 3 hp','Walk past: heal 1 hp',function(){
                         g.p.maxhp+=2;
                         g.p.hp-=3;
-                        if(g.p.hp<=0){playerDeath();}$('#content-central-box').empty();
+                        if(g.p.hp<=0){playerDeath();}eventFunctionSuffix();
                     },function(){
-                        g.p.gainHp(1);$('#content-central-box').empty();
+                        g.p.gainHp(1);eventFunctionSuffix();
                     });
                     return e;
                 case 5:
                     e = new EventTwoC('A Tree','A handful of precarious branches extend from the top of an immaculate fruit tree. Will you make the climb?','Climb: gain 2 max hp, lose 3 hp','Walk past: heal 1 hp',function(){
                         g.p.maxhp+=2;
                         g.p.hp-=3;
-                        if(g.p.hp<=0){playerDeath();}$('#content-central-box').empty();
+                        if(g.p.hp<=0){playerDeath();}eventFunctionSuffix();
                     },function(){
-                        g.p.gainHp(1);$('#content-central-box').empty();
+                        g.p.gainHp(1);eventFunctionSuffix();
                     });
                     return e;
         }
     }
+}
+
+
+function pathEventPull(){
+    let ep;
+    switch(g.zone){
+        case 'grassland':
+            ep = new EventTwoC('A Fork In The Road','There are two paths ahead, which will you take?','The Gauntlet: Howls indicate extensive monsters–and gold–ahead','The Encampment: Bright lights signal opportunities for rest ahead', function(){
+                let pathAhead = ['enemy', 'enemy', 'enemy','shop','boss'];
+                for(a in pathAhead){
+                    g.path.push(pathAhead[a])
+                }
+                eventFunctionSuffix();
+            }, function(){
+                let pathAhead = ['rest', 'enemy', 'shop', 'rest', 'boss'];
+                for(a in pathAhead){
+                    g.path.push(pathAhead[a])
+                }
+                eventFunctionSuffix();
+            });    
+            return ep;
+    }
+}
+
+function eventFunctionSuffix(){
+    $('#content-central-box').empty();
+    elementUp();
 }

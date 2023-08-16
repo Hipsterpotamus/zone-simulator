@@ -40,12 +40,16 @@ function combatTick(){
 function playerDeath(){
     g.inCombat = false;
     g.cTick = 0;
+    clearInterval(timeoutCombatLoop);
     elementUp();
 }
 
 function combatWin(){
     g.inCombat = false;
+    g.p.gold += g.cEnemy.gold;
     g.cTick = 0;
+    g.p.gainHp(g.p.levelheal);
+    clearInterval(timeoutCombatLoop);
     elementUp();
 }
 // function combatRun(){

@@ -66,7 +66,7 @@ function advancePath(){
     g.space+=1;
     $('#content-central-box').empty();
     if(g.space%3==0){g.difficult+=1;}
-    switch (g.path[g.space]){
+    switch (g.path[(g.space-1)]){
         case 'enemy':
             genEnemy();
         break;
@@ -96,9 +96,11 @@ function genEnemy(){
     //A sloppy way to bypass having to create a true deep copy which would maintain methods. Necessary because of the intermingling of DOM elements and data elements makes a traditional deep copy difficult without libraries. 
     timeoutCombatLoop = setInterval(function () {combatTick()}, 20);
 }
+let eventInfo;
 function genEvent(eventPath){
     if(eventPath){
         $('#large-tab-title').text('A Forkroad');
+        eventInfo = pathEventPull();
     }else{
         $('#large-tab-title').text('Event');
         eventInfo = eventPull();
@@ -111,5 +113,10 @@ function genShop(){
     shopIs.redapple.appendShopItem();
 }
 function genRest(){
-    $('#large-tab-title').text('A Rest Place');
+    eventInfo =  new EventTwoC('A Cozy Village','You come to a cozy village','Rest: heal 15 hp','Work: gain 8 gold',function(){
+        g.p.gainHp(15);eventFunctionSuffix();
+    },function(){
+        g.p.gold+=8;eventFunctionSuffix();
+    });
+    eventInfo.createElements();
 }
