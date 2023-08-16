@@ -2,8 +2,8 @@ let el;
 $(document).ready(function(){
     el = {
         // world one, easy, as;ldfkja;lskdfj
-        'ladybug': new Enemy('lady bug', 'bug', 8, 110, 1, 0, 5, 0, 0),
-        'cricket': new Enemy('cricket', 'bug', 7,   90, 1, 0, 5, 0, 0)
+        'ladybug': new Enemy('lady bug', 'bug', 8, -10, 1, 0, 5, 0, 0),
+        'cricket': new Enemy('cricket', 'bug', 7, 10, 1, 0, 5, 0, 0)
     }
 });
 
@@ -113,13 +113,11 @@ function pullEnemy(){
             }
         break;
     }
-    console.log(exE);
-    return exE;
+    return exE
 }
 
-function pullEFromSix(enemyArray,even,pO,pT,pTh,pF,pFi,pS){
+function pullEFromSix(ea,even,pO,pT,pTh,pF,pFi,pS){
     let pull = Math.random();
-    let ea = JSON.parse(JSON.stringify(enemyArray));
     if(even){
         let index = Math.floor(pull/0.166667);
         console.log(ea[index]);
@@ -140,3 +138,4 @@ function pullEFromSix(enemyArray,even,pO,pT,pTh,pF,pFi,pS){
         }
     }
 }
+

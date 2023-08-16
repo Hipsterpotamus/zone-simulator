@@ -4,6 +4,7 @@ class Enemy extends Entity{
     // Only use it if you're going to add aditional parameters on top of the entity defaults
     constructor(name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
          super(name, type, health, attackspeed, damage, armor, gold, regen, complexStats);
+         this.complexStats = complexStats;
          this.diffC = difficultyCh;
     }
 }

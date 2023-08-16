@@ -16,7 +16,7 @@ function entityHtmlOutput(entity, playerQ){
         htmlOutput = entity.name+'<br>';
         htmlOutput+='hp : '+entity.hp+'/'+entity.maxhp+'<br>';
         htmlOutput+='dmg : '+entity.calcDmg()+'<br>';
-        htmlOutput+='time: '+(g.cTick%entity.calcAs())+'<br>';
+        htmlOutput+='time: '+(entity.calcAs()-(g.cTick%entity.calcAs()))+'<br>';
         htmlOutput+='arm : '+entity.calcArm()+'<br>';
         htmlOutput+='regen : '+entity.calcRegen()+'<br>';
     }

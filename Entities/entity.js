@@ -43,8 +43,16 @@ class Entity{
     calcAs() { // Attack Speed
         const rawAS = this.aSLvl + this.getByType('weapon').aSChange + this.getByType('head').aSChange + this.getByType('chest').aSChange + this.getByType('legs').aSChange + this.getByType('feet').aSChange;
         const fibonacci = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987];
-        const index = Math.min(fibonacci.length - 1, Math.floor((rawAS - 85) / 2));
-        this.aS = index < 0 ? 100 - rawAS : fibonacci[index];
+        if(rawAS > 85){
+            for(let x = (fibonacci.length-1);x>=0;x-=1){
+                if((rawAS-85) > fibonacci[x]){
+                    this.aS = fibonacci.length-x;
+                    x=-1;
+                }
+            }
+        }else{
+            this.aS = 100 - rawAS;
+        }
         return this.aS;
     }
 
