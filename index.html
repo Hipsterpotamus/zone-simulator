@@ -6,11 +6,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <title>
             Title
         </title>
-        <link rel="stylesheet" href="style.css">
+        <!-- Old Styling -->
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <!-- Caden's Styling -->
+        <link rel="stylesheet" href="Style/theme.css">
+
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <script src="game.js"></script>
         <script src="path.js"></script>
         <script src="combat.js"></script>
@@ -29,49 +34,49 @@
     </head>
 
     <body>
-        <div id = 'start-screen'>
-            <div id = 'character-select-scroll'>
-                <button class="char-button selected-char" id = "char-button-ben">
-                    <h3>Ben</h3>
-                    <p class = 'char-subtitle'>The Benefactor</p>
-                    <p class = 'char-desc'>Receives a gift upon entering a new zone</p>
+        <div id = 'start-screen' class='background'>
+            <div id = 'character-select-scroll' class="secondary-container shadow">
+                <button class="char-button selected-char shadow hover" id = "char-button-ben">
+                    <h3 class='headline-large'>Ben</h3>
+                    <p class = 'char-subtitle title-large'>The Benefactor</p>
+                    <p class = 'char-desc body-large'>Receives a gift upon entering a new zone</p>
                   </button>
-                <button class="char-button" id = "char-button-colette">
-                    <h3>Colette</h3>
-                    <p class = 'char-subtitle'>The Collector</p>
-                    <p class = 'char-desc'>Gains Double the amount of items, but can't gain more level heal</p>
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Colette</h3>
+                    <p class = 'char-subtitle title-large'>The Collector</p>
+                    <p class = 'char-desc body-large'>Gains Double the amount of items, but can't gain more level heal</p>
                 </button>
-                <button class="char-button" id = "char-button-colette">
-                    <h3>Nina</h3>
-                    <p class = 'char-subtitle'>The Ninja</p>
-                    <p class = 'char-desc'>Starts with 33% Dodge Change and +20% Damage, but receives only 50% of the effect of armor</p>
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Nina</h3>
+                    <p class = 'char-subtitle title-large'>The Ninja</p>
+                    <p class = 'char-desc body-large'>Starts with 33% Dodge Change and +20% Damage, but receives only 50% of the effect of armor</p>
                 </button>
-                <button class="char-button" id = "char-button-colette">
-                    <h3>Robert</h3>
-                    <p class = 'char-subtitle'>The Robot</p>
-                    <p class = 'char-desc'>Fully heals after every fight, but can't gain ANY health during battle.</p>
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Robert</h3>
+                    <p class = 'char-subtitle title-large'>The Robot</p>
+                    <p class = 'char-desc body-large'>Fully heals after every fight, but can't gain ANY health during battle.</p>
                 </button>
-                <button class="char-button" id = "char-button-colette">
-                    <h3>Tanner</h3>
-                    <p class = 'char-subtitle'>The Tank</p>
-                    <p class = 'char-desc'>Obtains two times the protection from armor, but gains half the benefit from speed and mana gain boosts</p>
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Tanner</h3>
+                    <p class = 'char-subtitle title-large'>The Tank</p>
+                    <p class = 'char-desc body-large'>Obtains two times the protection from armor, but gains half the benefit from speed and mana gain boosts</p>
                 </button>
-                <button class="char-button" id = "char-button-colette">
-                    <h3>Florence</h3>
-                    <p class = 'char-subtitle'>The Flourisher</p>
-                    <p class = 'char-desc'>Obtains 50% more gold from enemy encounters, but cannot use items against bosses</p>
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Florence</h3>
+                    <p class = 'char-subtitle title-large'>The Flourisher</p>
+                    <p class = 'char-desc body-large'>Obtains 50% more gold from enemy encounters, but cannot use items against bosses</p>
                 </button>
-                <button class="char-button" id = "char-button-colette">
-                    <h3>Phillip</h3>
-                    <p class = 'char-subtitle'>The Physician</p>
-                    <p class = 'char-desc'>Receives a 30% bonus to all healing, but cannot apply bleed</p>
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Phillip</h3>
+                    <p class = 'char-subtitle title-large'>The Physician</p>
+                    <p class = 'char-desc body-large'>Receives a 30% bonus to all healing, but cannot apply bleed</p>
                 </button>
     
             </div>
     
             <div class="center-content">
-                <h1 class="large-title">Zone Simulator</h1>
-                <button class="large-button" id = 'start-game'>Enter</button>
+                <h1 class="large-title on-background-text headline-large">Zone Simulator</h1>
+                <button class="large-button round-button bold shadow hover primary on-primary-text label-large" id = 'start-game'>BEGIN</button>
             </div>
         </div>
         <div id = 'game-screen' class = 'hidden'>
@@ -187,10 +192,8 @@
                                 <p id = 'combatTimer'>0:00</p>-->
                             </div>
                         </div>
-                        <div class = 'button-container'>
-                            <button id = 'go-next'>Go to Next Level</button>
-                        </div>
-                        <div class="floating-next show">
+
+                        <div class="floating-next primary show">
                             <i class="material-icons">arrow_forward</i>
                         </div>
                     </div>
