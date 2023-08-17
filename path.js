@@ -63,6 +63,10 @@ function generatePath(){
 }
 
 function advancePath(){
+
+    $('.floating-next').removeClass('show');
+    $('.floating-next').addClass('hide');
+
     g.space+=1;
     $('#content-central-box').empty();
     if(g.space%3==0){g.difficulty+=1;console.log('diff up')}
@@ -87,6 +91,8 @@ function advancePath(){
 
 $(function() {
     $('#go-next').on('click',advancePath);
+    $('.floating-next').on('click',advancePath);
+    
 });
 function genEnemy(){
     $('#large-tab-title').text('Enemy Encounter');
