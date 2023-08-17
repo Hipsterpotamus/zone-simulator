@@ -3,7 +3,7 @@ $(function(){
     el = {
         // grassland zone, d-0
         'ladybug': new Enemy('lady bug', 'bug', 6, -10, 1, 0, 5, 0, 0),
-        'ant': new Enemy('ant', 'bug', 4, 20, 1, 0, 6, 0),
+        'ant': new Enemy('ant', 'bug', 4, 20, 1, 0, 6, 0, 0),
         'cricket': new Enemy('cricket', 'bug', 4, 10, 1, 0, 5, 0, 0),
         'grasshopper': new Enemy('grasshopper', 'bug', 5, 0, 1, 0, 5, 0, 0),
         'fly': new Enemy('fly', 'bug', 3, 35, 1, 0, 5, 0, 0),

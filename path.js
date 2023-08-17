@@ -109,8 +109,7 @@ function genEvent(eventPath){
 }
 function genShop(){
     $('#large-tab-title').text('Shop');
-    shopIs.greenapple.appendShopItem();
-    shopIs.redapple.appendShopItem();
+    fillShop(getShopType());
 }
 function genRest(){
     eventInfo =  new EventTwoC('A Cozy Village','You come to a cozy village','Rest: heal 15 hp','Work: gain 8 gold',function(){

@@ -36,11 +36,11 @@ class Equippable {
                 textToShow += ' ' + displayWithSign(this.dmg) + ' dmg';
             }
             if (this.arm != 0) {
-                textToShow += ' ' + displayWithSign(this.armor) + ' armor';
+                textToShow += ' ' + displayWithSign(this.arm) + ' armor';
             }
         } else {
             if (this.arm != 0) {
-                textToShow += ' ' + displayWithSign(this.armor) + ' armor';
+                textToShow += ' ' + displayWithSign(this.arm) + ' armor';
             }
             if (this.dmg != 0) {
                 textToShow += ' ' + displayWithSign(this.dmg) + ' dmg';

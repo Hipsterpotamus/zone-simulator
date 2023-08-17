@@ -7,7 +7,7 @@ class Player extends Entity{
         this.dmg = 1;
         this.arm = 0;
         this.regen = 0;
-        this.levelheal = 10;
+        this.levelheal = 5;
         this.income = 0;
         this.aS = 100;
         this.aSLvl = 0;
