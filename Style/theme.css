@@ -7,6 +7,7 @@
 @import url(Modules/theme.dark.css) ;
 @import url(main_menu.css);
 @import url(components.css);
+@import url(Game\ Menu/header.css);
 
 
 body, html {
@@ -39,6 +40,7 @@ body, html {
   align-items: center;
 }
 
+
 .shop-bar button {
   flex: 1;
   height: 100%;
@@ -54,13 +56,6 @@ body, html {
   height: 100%;
 }
 
-.game-header{
-  width:100%;
-  height:1%;
-  /* background-color:#000; */
-  /* color:#fff; */
-  padding:0.9%;
-}
 
 
 
@@ -80,10 +75,31 @@ body, html {
   height:100%;
   border-right: 1px solid #353535;
   float:left;
+
+  z-index: 2;
 }
 .fifth-tab#large-tab{
   width:calc(40% - 1px);
 }
+
+#player-stat-tab {
+  
+  -webkit-transform: skewX(-3deg);
+  -moz-transform: skewX(-3deg);
+  -ms-transform: skewX(-3deg);
+  -o-transform: skewX(-3deg);
+  transform: skewX(-3deg);
+  padding-top: 3rem;
+}
+
+#player-stat-tab * {
+  -webkit-transform: skewX(3deg);
+  -moz-transform: skewX(3deg);
+  -ms-transform: skewX(3deg);
+  -o-transform: skewX(3deg);
+  transform: skewX(3deg);
+}
+
 
 .large-tab-row {
   width: 100%;
@@ -208,9 +224,12 @@ body, html {
 #equip-tab{
   display: flex;
   flex-direction: column;
+  z-index: 2;
 }
 #weapon-container{
   order:1;
+
+  z-index: 2;
 }
 #head-container{
   order:2;
