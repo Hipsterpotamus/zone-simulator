@@ -6,6 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <title>
             Title
         </title>
@@ -192,12 +193,20 @@
                                 <p id = 'combatTimer'>0:00</p>-->
                             </div>
                         </div>
-
-                        <div class="floating-next primary show">
+                        <div class = 'button-container'>
+                            <button id = 'go-next'>Go to Next Level</button>
+                        </div>
+                        <div class="floating-next show">
                             <i class="material-icons">arrow_forward</i>
                         </div>
                     </div>
-                    <div class = 'large-tab-row' id = 'magic-tab-row'></div>
+                    <div class="large-tab-row" id="magic-tab-row" >
+                    <div class = 'fifth-magic-row'><p>mana: 0</p></div>
+                    <div class = 'four-fifth-magic-row'>
+                        spells:<br>
+                        <button>Heal<br>+4 hp<br>8 mana</button><button>Fireball<br>-6 dmg<br>5 mana</button>
+                    </div>
+                    </div>
                 </div>
             </div>  
         </div>

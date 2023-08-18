@@ -13,6 +13,7 @@ class Player extends Entity{
         this.aSLvl = 0;
         this.dodge = 0;
         this.gold = 25;
+        
         switch(name){
             case 'ben':
                 

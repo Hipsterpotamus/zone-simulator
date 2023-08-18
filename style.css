@@ -186,8 +186,19 @@ body, html {
 }
 #magic-tab-row {
   order: 3; /* Placing at the bottom */
+  display: flex;
+  flex-direction: column;
 }
-
+.fifth-magic-row{
+  width: 100%;
+  height: 20%;
+  order: 1;
+}
+.four-fifth-magic-row{
+  width: 100%;
+  height:80%;
+  order:2;
+}
 .major-title-container{
   order:1;
   width:100%;

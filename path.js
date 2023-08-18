@@ -118,7 +118,7 @@ function genShop(){
     fillShop(getShopType());
 }
 function genRest(){
-    eventInfo =  new EventTwoC('A Cozy Village','You come to a cozy village','Rest: heal 15 hp','Work: gain 8 gold',function(){
+    eventInfo =  new EventOB('A Cozy Village','You come to a cozy village','Rest: heal 15 hp','Work: gain 8 gold',function(){
         g.p.gainHp(15);eventFunctionSuffix();
     },function(){
         g.p.gold+=8;eventFunctionSuffix();
