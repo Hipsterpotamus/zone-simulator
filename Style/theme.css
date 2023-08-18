@@ -10,6 +10,7 @@
 @import url(Game\ Menu/header.css);
 
 
+
 body, html {
   height: 100%;
   margin: 0;
@@ -98,6 +99,15 @@ body, html {
   -ms-transform: skewX(3deg);
   -o-transform: skewX(3deg);
   transform: skewX(3deg);
+}
+
+.equipment-div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
 }
 
 
