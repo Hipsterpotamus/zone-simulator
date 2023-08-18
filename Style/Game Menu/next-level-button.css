@@ -1,0 +1,63 @@
+/* Next Button */
+.floating-next {
+  position: fixed;
+  bottom: -5rem;
+  right: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6rem;
+  height: 6rem;
+  /* background-color: var(--); */
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  /* animation: pop-up 0.3s ease-in-out forwards; */
+}
+
+.floating-next:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.floating-next:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.floating-next.show {
+  bottom: 3rem; /* pop up */
+  animation: pop-up 0.3s ease-in-out forwards;
+}
+.floating-next.hide {
+  bottom: -5rem; /* pop down */
+  animation: pop-down 0.3s ease-in-out forwards;
+}
+
+@keyframes pop-down {
+  from {
+    bottom: 3rem;
+    opacity: 1;
+  }
+  to {
+    bottom: -5rem;
+    opacity: 0;
+  }
+}
+
+@keyframes pop-up {
+  from {
+    bottom: -5rem;
+    opacity: 0;
+  }
+  to {
+    bottom: 3rem;
+    opacity: 1;
+  }
+}
+
+.material-icons {
+  font-size: 3rem;
+  /* color: var(--text-color); */
+}
+/* Next Button End */

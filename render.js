@@ -30,9 +30,9 @@ function updateEquippableStats(eq){
     console.log(eq);
     let statOutput = ''; 
     if(eq.metatype == 'weapon'){
-        statOutput+='dmg : '+eq.dmg+'<br>';
-        statOutput+='arm : '+eq.arm+'<br>';
-        statOutput+='regen : '+eq.regen+'<br>';
+        statOutput+='DMG : '+eq.dmg+'<br>';
+        statOutput+='ARM : '+eq.arm+'<br>';
+        statOutput+='REGEN : '+eq.regen+'<br>';
     }else{
         statOutput+='arm : '+eq.arm+'<br>';
         statOutput+='dmg : '+eq.dmg+'<br>';
