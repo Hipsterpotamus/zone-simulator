@@ -91,45 +91,45 @@ function pullEnemy(){
                     }
                 break;
                 case 2:
-                    if(x<0.30){ // easy
+                    if(x<0.35){ // easy
                         exE = pullEFromSix([el.caterpillar.incDi(),el.centipede.incDi(),el.flea.incDi(),el.mantis.incDi(),el.dragonfly.incDi(),el.moth.incDi()],true);
-                    }else if(x<0.75){ // medium
+                    }else if(x<0.80){ // medium
                         exE = pullEFromSix([el.blackbeetle,el.bluebeetle,el.redbeetle,el.greenbeetle,el.yellowbeetle,el.brownbeetle],true);
                     }else{ // hard
                         exE = pullEFromSix([el.rabbit.lowDi(),el.bunny.lowDi(),el.hare.lowDi(),el.bunnyrabbit.lowDi(),el.guineapig.lowDi(),el.pika.lowDi()],true);
                     }
                 break;
                 case 3:
-                    if(x<0.30){ // easy
+                    if(x<0.35){ // easy
                         exE = pullEFromSix([el.blackbeetle.incDi(),el.bluebeetle.incDi(),el.redbeetle.incDi(),el.greenbeetle.incDi(),el.yellowbeetle.incDi(),el.brownbeetle.incDi()],true);
-                    }else if(x<0.75){ // medium
+                    }else if(x<0.80){ // medium
                         exE = pullEFromSix([el.rabbit,el.bunny,el.hare,el.bunnyrabbit,el.guineapig,el.pika],true);
                     }else{ // hard
                         exE = pullEFromSix([el.mole.lowDi(),el.vole.lowDi(),el.gopher.lowDi(),el.groundsquirrel.lowDi(),el.molerat.lowDi(),el.meerkat],true);                    
                     }
                 break;
                 case 4:
-                    if(x<0.30){ // easy
+                    if(x<0.35){ // easy
                         exE = pullEFromSix([el.rabbit.incDi(),el.bunny.incDi(),el.hare.incDi(),el.bunnyrabbit.incDi(),el.guineapig.incDi(),el.pika.incDi()],true);
-                    }else if(x<0.75){ // medium
+                    }else if(x<0.80){ // medium
                         exE = pullEFromSix([el.mole,el.vole,el.gopher,el.groundsquirrel,el.molerat,el.meerkat],true);                    
                     }else{ // hard
                         exE = pullEFromSix([el.sparrow.lowDi(),el.swallow.lowDi(),el.lark.lowDi(),el.dove.lowDi(),el.burrowowl.lowDi(),el.quail.lowDi()],true);
                     }
                 break;
                 case 5:
-                    if(x<0.30){ // easy
+                    if(x<0.35){ // easy
                         exE = pullEFromSix([el.mole.incDi(),el.vole.incDi(),el.gopher.incDi(),el.groundsquirrel.incDi(),el.molerat.incDi(),el.meerkat.incDi()],true);                    
-                    }else if(x<0.75){ // medium
+                    }else if(x<0.85){ // medium
                         exE = pullEFromSix([el.sparrow,el.swallow,el.lark,el.dove,el.burrowowl,el.quail],true);
                     }else{ // hard
                         exE = pullEFromSix([el.prairiedog.lowDi(),el.badger.lowDi(),el.ferret.lowDi(),el.jackrabbit.lowDi(),el.skunk.lowDi(),el.weasel.lowDi()],true);
                     }
                 break;
                 case 6:
-                    if(x<0.30){ // easy
+                    if(x<0.35){ // easy
                         exE = pullEFromSix([el.sparrow.incDi(),el.swallow.incDi(),el.lark.incDi(),el.dove.incDi(),el.burrowowl.incDi(),el.quail.incDi()],true);
-                    }else if(x<0.75){ // medium
+                    }else if(x<0.80){ // medium
                         exE = pullEFromSix([el.prairiedog,el.badger,el.ferret,el.jackrabbit,el.skunk,el.weasel],true);
                     }else{ // hard
                         exE = pullEFromSix([el.deer.lowDi(),el.antelope.lowDi(),el.impala.lowDi(),el.wildebeast.lowDi(),el.pronghorn.lowDi(),el.gazelle.lowDi()],true);

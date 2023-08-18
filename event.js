@@ -53,21 +53,21 @@ class EventOB{
             this.tHREEBE = $('<button>', {
                 'class': '.event-tHREE-button-two'
             });
-            this.tHREEBE.text(''+this.tHREEBText);
+            this.tHREEBE.text(''+this.tHREEText);
             this.tHREEBE.on('click',this.tHREEEffect);
             this.tHREEBE.appendTo('#content-central-box');
             if(this.choiceCount>3){
                 this.fOURBE = $('<button>', {
                     'class': '.event-fOUR-button-two'
                 });
-                this.fOURBE.text(''+this.fOURBText);
+                this.fOURBE.text(''+this.fOURText);
                 this.fOURBE.on('click',this.fOUREffect);
                 this.fOURBE.appendTo('#content-central-box');
                 if(this.choiceCount>4){
                     this.fIVEBE = $('<button>', {
                         'class': '.event-fIVE-button-two'
                     });
-                    this.fIVEBE.text(''+this.fIVEBText);
+                    this.fIVEBE.text(''+this.fIVEText);
                     this.fIVEBE.on('click',this.fIVEEffect);
                     this.fIVEBE.appendTo('#content-central-box');
                 }
@@ -139,16 +139,16 @@ function eventPull(){
                     });
                     return e;
                 case 8:
-                    e = new EventOB(2, 'A Gemstone?', 'Lying in the middle of the road is a peculiar looking rock. You try to pry it open to see if anything valuable is inside. Attempt to break ', 'Attempt to Open: -2 gold, 40% chance to gain 20 gold', function(){
-                        if(g.p.gold<2){eventFunctionSuffix('not enough gold!');return;}g.p.gold-=2;
+                    e = new EventOB(2, 'A Gemstone?', 'Lying in the middle of the road is a peculiar looking rock. You try to pry it open to see if anything valuable is inside. Attempt to break ', 'Attempt to Open: -6 gold, 40% chance to gain 20 gold', function(){
+                        if(g.p.gold<6){eventFunctionSuffix('not enough gold!');return;}g.p.gold-=6;
                         if(Math.random()<0.4){g.p.gold+=20}eventFunctionSuffix('Success! +20 gold');
                     },'Ignore: gain nothing',function(){
                         eventFunctionSuffix();
                     });
                     return e;
                 case 9:
-                    e = new EventOB(2, 'A Gemstone?', 'Lying in the middle of the road is a peculiar looking rock. You try to pry it open to see if anything valuable is inside. Attempt to break ', 'Attempt to Open: -2 gold, 40% chance to gain 20 gold', function(){
-                        if(g.p.gold<2){eventFunctionSuffix('not enough gold!');return;}g.p.gold-=2;
+                    e = new EventOB(2, 'A Gemstone?', 'Lying in the middle of the road is a peculiar looking rock. You try to pry it open to see if anything valuable is inside. Attempt to break ', 'Attempt to Open: -6 gold, 40% chance to gain 20 gold', function(){
+                        if(g.p.gold<6){eventFunctionSuffix('not enough gold!');return;}g.p.gold-=6;
                         if(Math.random()<0.4){g.p.gold+=20}eventFunctionSuffix('Success! +20 gold');
                     },'Ignore: gain nothing',function(){
                         eventFunctionSuffix();
@@ -171,7 +171,7 @@ function eventPull(){
                         g.p.inv.head.push(new Equippable(true, true, 'horn helmet', 'head', 'helmet', 2, 0, 0, 0));eventFunctionSuffix('horn helmet acquired');
                     },'Blow and wield: alert enemies, gain horn sling',function(){
                         g.difficulty += 2;
-                        g.p.inv.head.push(new Equippable(true, true, 'horn sling', 'weapon', 'sling', 4, 0, 0, 25));eventFunctionSuffix('horn sling acquired');
+                        g.p.inv.weapon.push(new Equippable(true, true, 'horn sling', 'weapon', 'sling', 4, 0, 0, 25));eventFunctionSuffix('horn sling acquired');
                     },'Drop it: gain nothing',function(){
                         eventFunctionSuffix();
                     });
@@ -190,7 +190,6 @@ function eventPull(){
                 case 13:
                     e = new EventOB(2, 'Wild Fire', 'A rapidly growing fire has broken out behind you. Stay behind to heat and increase the lethality of your weapons', 'Stay behind: +4 damage on current equipped weapon, lose 22 hp', function(){
                         g.p.getByType('weapon').dmg+=4;
-                        g.p.getByType('weapon').name = 'hot '+g.p.getByType('weapon').name;
                         g.p.hp-=22;
                         if(g.p.hp<=0){playerDeath();}eventFunctionSuffix(''+g.p.getByType('weapon').name+' gained 4 dmg');
                     },'Run: lose 3 hp',function(){
