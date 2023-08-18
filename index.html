@@ -11,9 +11,9 @@
             Title
         </title>
         <!-- Old Styling -->
-        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="style.css">
         <!-- Caden's Styling -->
-        <link rel="stylesheet" href="Style/theme.css">
+        <!-- <link rel="stylesheet" href="Style/theme.css"> -->
 
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -82,13 +82,34 @@
         </div>
         <div id = 'game-screen' class = 'hidden'>
             <div class="game-header primary">
-                <p class = "header-p on-primary-text id = "zone-text">zone: 1–1</p>
-                <p class = 'header-p' id = 'place-text'>shop</p>
-                <p class = "header-p" id = "gold-text">gold: 0</p>
+                <p class = "header-p on-primary-text" id = "zone-text">zone: 1–1</p>
+                <p class = 'header-p on-primary-text' id = 'place-text'>shop</p>
+                <p class = "header-p on-primary-text" id = "gold-text">gold: 0</p>
             </div>
+            <svg viewbox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style type="text/css">
+                    .wave {
+                        animation: wave 8s linear infinite;
+                    }
+
+                    @keyframes wave {
+                        0% {
+                        transform: scaleY(0.8) translateX(0%);
+                        }
+
+                        100% {
+                        transform: scaleY(0.8) translateX(100%);
+                        }
+                    }
+                    </style>
+                    <path id='sineWave' d="M0,80 C200,0,482,160,720,80 C960,0,1200,160,1440,80 C1680,0,1920,160,2160,80 C2400,0,2640,160,2880,80 V0 H0" />                </defs>
+                <use class="wave" href="#sineWave" />
+                <use class="wave" x="-100%" href="#sineWave" />
+                </svg>
             <div class='non-game-header'>
                 
-                <div class='fifth-tab' id = 'player-stat-tab'>
+                <div class='fifth-tab secondary-container shadow' id = 'player-stat-tab'>
                     <p class = "stat-display" id = "player-stats">
                         You<br>
                         hp : 42/67<br>
