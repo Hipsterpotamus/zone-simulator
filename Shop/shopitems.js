@@ -191,8 +191,9 @@ let shopItemsMasterList = {
         g.p.regen+=1;
     },'common'),
     'strawberry':new ShopItem('strawberry','strawberry','statUp','(+2 max hp +1 regen)', 18, 0, function(){
-        g.p.maxhp+=5;
-        g.p.hp+=5;
+        g.p.maxhp+=2;
+        g.p.hp+=2;
+        g.p.regen += 1;
     },'common'),
     'icecube':new ShopItem('ice cube','icecube','statUp','(heal 10 on purchase)',4,0,function(){
         g.p.gainHp(10);

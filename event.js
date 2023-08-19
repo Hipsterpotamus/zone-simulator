@@ -179,7 +179,6 @@ function eventPull(){
                 case 12:
                     e = new EventOB(2, 'Wild Fire', 'A rapidly growing fire has broken out behind you. Stay behind to heat and increase the lethality of your weapons', 'Stay behind: +4 damage on current equipped weapon, lose 22 hp', function(){
                         g.p.getByType('weapon').dmg+=4;
-                        g.p.getByType('weapon').name = 'hot '+g.p.getByType('weapon').name;
                         g.p.hp-=22;
                         if(g.p.hp<=0){playerDeath();}eventFunctionSuffix(''+g.p.getByType('weapon').name+' gained 4 dmg');
                     },'Run: lose 3 hp',function(){

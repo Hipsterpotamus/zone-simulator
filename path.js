@@ -137,7 +137,7 @@ function genRest(){
         eventInfo =  new EventOB(2,'A Pond','You come to a refreshing, secluded pond','Dive in: heal 15 hp',function(){
             g.p.gainHp(15);eventFunctionSuffix();
         },'Sharpen Weapon: +25% dmg on current weapon',function(){
-            g.p.getByType('weapon').dmg = Math.floor(g.p.getByType('weapon').dmg*1.25);eventFunctionSuffix();
+            g.p.getByType('weapon').dmg = (1+Math.floor(g.p.getByType('weapon').dmg*1.25));eventFunctionSuffix();
         });
     }else {
         eventInfo =  new EventOB(2,'A Hut','You come to an abandoned hut perched on a small hill','Sleep: heal 15 hp',function(){
