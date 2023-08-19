@@ -13,7 +13,7 @@ body, html {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: monospace;
+  font-family: 'Martian Mono', monospace;
   background-color: var(--md-sys-color-background);
   color: var(--md-sys-color-on-background)
 }
@@ -111,7 +111,7 @@ body, html {
   margin-bottom: 2rem;
   width: 72rem;
   height: 10rem;
-  border-radius: 8px;
+  border-radius: 32px;
   /* center contents */
   display: flex;
   justify-content: flex-end;
