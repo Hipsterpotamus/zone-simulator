@@ -30,7 +30,7 @@ class Equippable {
             'id': '#' + this.name + '-'+this.metatype+'-select'
         });
         this.element.appendTo('#' + this.metatype + '-select');
-        let textToShow = this.name + '–' + this.type;
+        let textToShow = this.name;
         if(this.name == 'none'){textToShow = 'none';}
         this.element.text(textToShow);
     }
