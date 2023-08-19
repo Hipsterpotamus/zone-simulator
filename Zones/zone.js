@@ -26,7 +26,8 @@ class zone {
         let levelAdjustment = 0;
         let selectedEnemyList;
     
-        const [easyThreshold, medThreshold] = [self.levelDifficultyDist[self.zoneLevel][0], self.levelDifficultyDist[self.zoneLevel][0]];
+        const easyThreshold = self.levelDifficultyDist[self.zoneLevel][0];
+        const medThreshold = self.levelDifficultyDist[self.zoneLevel][1];
         const isMaxZoneLevelMinusOne = self.zoneLevel === self.maxZoneLevel - 1;
         const isMaxZoneLevel = self.zoneLevel === self.maxZoneLevel;
     
@@ -50,5 +51,25 @@ class zone {
         enemyAttributes[8] += levelAdjustment;
     
         return new Enemy(...enemyAttributes);
+    }
+
+    pushZoneItems() {
+        for (const item of self.zoneItems) { // Using for...of loop to iterate through the array
+            const category = item[0]; // Accessing the first element of item
+            const itemName = item[1]; // Accessing the second element of item
+            if (category === 'weapon') {
+                zoneIs.equippable.weapon.push(shopItemsMasterList[itemName]);
+            } else if (category === 'head') {
+                zoneIs.equippable.head.push(shopItemsMasterList[itemName]);
+            } else if (category === 'chest') {
+                zoneIs.equippable.chest.push(shopItemsMasterList[itemName]);
+            } else if (category === 'legs') {
+                zoneIs.equippable.legs.push(shopItemsMasterList[itemName]);
+            } else if (category === 'feet') {
+                zoneIs.equippable.feet.push(shopItemsMasterList[itemName]);
+            } else if (category === 'stat') {
+                zoneIs.stat.push(shopItemsMasterList[itemName]);
+            }
+        }
     }
 }
