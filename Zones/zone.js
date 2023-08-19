@@ -4,39 +4,45 @@ class zone {
         self.minZoneLevel = 1;
     }
 
-    increaseZoneLevel() {
-        if (self.zoneLevel < self.maxZoneLevel) {
-            self.zoneLevel += 1;
+    increaseZoneLevel(increaseNum) {
+        if (self.zoneLevel + increaseNum < self.maxZoneLevel) {
+            self.zoneLevel += increaseNum;
+        } else {
+            self.zoneLevel = self.maxZoneLevel;
         }
     }
 
-    decreaseZoneLevel() {
-        if (self.zoneLevel > self.minZoneLevel) {
-            self.zoneLevel -= 1;
+    decreaseZoneLevel(decreaseNum) {
+        if (self.zoneLevel - increaseNum > self.minZoneLevel) {
+            self.zoneLevel -= decreaseNum;
+        } else {
+            self.zoneLevel = self.minZoneLevel;
         }
     }
 
     getRandomEnemy() {
         let tempRand = Math.random();
-        let enemyList;
+        let enemyStats = {
+            ...self.enemyStats
+        };
         if (tempRand < self.levelDifficultyDist[self.zoneLevel][0]) {
-            enemyList = self.enemyStats[self.zoneLevel-1];
+            enemyList = enemyStats[self.zoneLevel-1];
             enemyList[8] += 1;
         } else if (tempRand < self.levelDifficultyDist[self.zoneLevel][1]) {
             if (self.zoneLevel == self.maxZoneLevel - 1) {
-                enemyList = self.enemyStats[self.zoneLevel - 1];
+                enemyList = enemyStats[self.zoneLevel - 1];
                 enemyList[8] += 1;
             } else {
-                enemyList = self.enemyStats[self.zoneLevel];
+                enemyList = enemyStats[self.zoneLevel];
             }
         } else {
             if (self.zoneLevel == self.maxZoneLevel - 1) {
-                enemyList = self.enemyStats[self.zoneLevel];
+                enemyList = enemyStats[self.zoneLevel];
             } else if (self.zoneLevel == self.maxZoneLevel) {
-                enemyList = self.enemyStats[self.zoneLevel-1];
+                enemyList = enemyStats[self.zoneLevel-1];
                 enemyList[8] += 1;
             } else {
-                enemyList = self.enemyStats[self.zoneLevel+1];
+                enemyList = enemyStats[self.zoneLevel+1];
                 enemyList[8] -= 1;
             }
         }
