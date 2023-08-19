@@ -262,5 +262,9 @@ function pathEventPull(){
 function eventFunctionSuffix(){
     $('#content-central-box').empty();
     $('#go-next').removeClass('hidden');
+
+    $('.floating-next').removeClass('hide');
+    $('.floating-next').addClass('show');
+
     elementUp();
 }

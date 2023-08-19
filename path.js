@@ -64,10 +64,6 @@ function generatePath(){
 
 function advancePath(){
 
-    $('.floating-next').removeClass('show');
-    $('.floating-next').addClass('hide');
-    
-
     g.space+=1;
     $('#content-central-box').empty();
     if(g.space%3==0){g.zone.increaseZoneLevel(1);console.log('diff up')}
@@ -97,6 +93,9 @@ $(function() {
 });
 function genEnemy(){
     $('#go-next').addClass('hidden');
+    $('.floating-next').addClass('hide');
+    $('.floating-next').removeClass('show');
+
     $('#large-tab-title').text('Enemy Encounter');
     g.inCombat = true;
     const copy = g.zone.getRandomEnemy();
@@ -107,6 +106,9 @@ function genEnemy(){
 let eventInfo;
 function genEvent(eventPath){
     $('#go-next').addClass('hidden');
+    $('.floating-next').addClass('hide');
+    $('.floating-next').removeClass('show');
+
     if(eventPath){
         $('#large-tab-title').text('A Forkroad');
         eventInfo = pathEventPull();
@@ -122,6 +124,9 @@ function genShop(){
 }
 function genRest(){
     $('#go-next').addClass('hidden');
+    $('.floating-next').removeClass('show');
+    $('.floating-next').addClass('hide');
+
     eventInfo =  new EventOB(2,'A Cozy Village','You come to a cozy village','Rest: heal 15 hp',function(){
         g.p.gainHp(15);eventFunctionSuffix();
     },'Work: gain 8 gold',function(){
