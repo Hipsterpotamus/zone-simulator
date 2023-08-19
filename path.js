@@ -66,6 +66,7 @@ function advancePath(){
 
     $('.floating-next').removeClass('show');
     $('.floating-next').addClass('hide');
+    
 
     g.space+=1;
     $('#content-central-box').empty();
@@ -95,6 +96,7 @@ $(function() {
     
 });
 function genEnemy(){
+    $('#go-next').addClass('hidden');
     $('#large-tab-title').text('Enemy Encounter');
     g.inCombat = true;
     const copy = g.zone.getRandomEnemy();
@@ -104,6 +106,7 @@ function genEnemy(){
 }
 let eventInfo;
 function genEvent(eventPath){
+    $('#go-next').addClass('hidden');
     if(eventPath){
         $('#large-tab-title').text('A Forkroad');
         eventInfo = pathEventPull();
@@ -118,6 +121,7 @@ function genShop(){
     fillShop(g.zone.getShopType());
 }
 function genRest(){
+    $('#go-next').addClass('hidden');
     eventInfo =  new EventOB(2,'A Cozy Village','You come to a cozy village','Rest: heal 15 hp',function(){
         g.p.gainHp(15);eventFunctionSuffix();
     },'Work: gain 8 gold',function(){

@@ -261,5 +261,6 @@ function pathEventPull(){
 
 function eventFunctionSuffix(){
     $('#content-central-box').empty();
+    $('#go-next').removeClass('hidden');
     elementUp();
 }

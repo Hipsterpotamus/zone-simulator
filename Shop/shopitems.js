@@ -78,7 +78,19 @@ let shopItemsMasterList = {
     'boxinggloves':new ShopItem('boxing gloves','boxinggloves','weapon','(2 dmg +2 armor +2 speed gloves)',19, 0,function(){
         g.p.inv.weapon.push(new Equippable(true, true, 'boxing gloves', 'weapon', 'gloves', 2, 2, 0, 2));
     },'common'),
-
+    'shortsword':new ShopItem('shortsword','shortsword','weapon','(4 dmg +12 speed sword)',15, 0,function(){
+        g.p.inv.weapon.push(new Equippable(true, true, 'boxing gloves', 'weapon', 'sword', 4, 0, 0, 12));
+    },'common'),
+    'longsword':new ShopItem('longsword','longsword','weapon','(8 dmg +1 armor -12 speed sword)',22, 0,function(){
+        g.p.inv.weapon.push(new Equippable(true, true, 'longsword', 'weapon', 'sword', 8, 1, 0, -12));
+    },'common'),
+    'grassknuckles':new ShopItem('grass knuckles','grassknuckles','weapon','(5 dmg +2 armor -1 regen +15 speed gloves)',21, 0,function(){
+        g.p.inv.weapon.push(new Equippable(true, true, 'grass knuckles', 'weapon', 'gloves', 5, 2, -1, 15));
+    },'common'),
+    'glassbar':new ShopItem('glass bar','glassbar','weapon','(4 dmg -1 armor +42 speed club)',30, 0,function(){
+        g.p.inv.weapon.push(new Equippable(true, true, 'glass bar', 'weapon', 'club', 4, -1, 0, 42));
+    },'common'),
+    
 
     //grassland hat
     'grasshat':new ShopItem('grass hat','grasshat','head','(1 armor hat)', 7, 0, function(){

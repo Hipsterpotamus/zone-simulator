@@ -368,3 +368,8 @@ body, html {
   font-weight: bold;
   margin: 4.5vh 0 0 0;
 }
+
+.magic-spell{
+  height: 74%;
+  font-weight:bold;
+}
