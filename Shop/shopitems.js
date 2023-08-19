@@ -53,8 +53,8 @@ let shopItemsMasterList = {
     'broom':new ShopItem('broom','broom','weapon','(4 dmg -10 speed club)', 5, 0, function(){
         g.p.inv.weapon.push(new Equippable(true, true, 'broom', 'weapon', 'club', 4, 0, 0 ,-10));
     },'common'),
-    'grasswhip':new ShopItem('grass whip','grasswhip','weapon','(2 dmg +30 speed whip)', 15, 0, function(){
-        g.p.inv.weapon.push(new Equippable(true, true, 'grass whip', 'weapon', 'whip', 2, 0, 0 , 30));
+    'grasswhip':new ShopItem('grass whip','grasswhip','weapon','(2 dmg +40 speed whip)', 15, 0, function(){
+        g.p.inv.weapon.push(new Equippable(true, true, 'grass whip', 'weapon', 'whip', 2, 0, 0 , 40));
     },'common'),
     'woodensword':new ShopItem('wooden sword','woodensword','weapon','(6 dmg -15 speed sword)', 12, 0, function(){
         g.p.inv.weapon.push(new Equippable(true, true, 'wooden sword', 'weapon', 'sword', 6, 0, 0 , -15));
@@ -67,6 +67,15 @@ let shopItemsMasterList = {
     },'common'),
     'thickrod':new ShopItem('thick rod','thickrod','weapon','(8 dmg club)',18, 0,function(){
         g.p.inv.weapon.push(new Equippable(true, true, 'thick rod', 'weapon', 'club', 8, 0, 0, 0));
+    },'common'),
+    'cobblestonesword':new ShopItem('cobblestone sword','cobblestonesword','weapon','(11 dmg sword)',24, 0,function(){
+        g.p.inv.weapon.push(new Equippable(true, true, 'cobblestone sword', 'weapon', 'sword', 11, 0, 0, 0));
+    },'common'),
+    'rockonstick':new ShopItem('rock on stick','rockonstick','weapon','(7 dmg +1 armor club)',19, 0,function(){
+        g.p.inv.weapon.push(new Equippable(true, true, 'rock on stick', 'weapon', 'club', 7, 1, 0, 0));
+    },'common'),
+    'boxinggloves':new ShopItem('boxing gloves','boxinggloves','weapon','(2 dmg +2 armor +2 speed gloves)',19, 0,function(){
+        g.p.inv.weapon.push(new Equippable(true, true, 'boxing gloves', 'weapon', 'gloves', 2, 2, 0, 2));
     },'common'),
 
 
@@ -83,6 +92,9 @@ let shopItemsMasterList = {
     'propellerhat':new ShopItem('propeller hat','propellerhat','head','(1 armor +14 speed helmet)', 16, 0, function(){
         g.p.inv.head.push(new Equippable(true, true, 'propeller hat', 'head', 'helmet', 0, 1, 0, 14));
     },'common'),
+    'headband': new ShopItem('headband','headband','head','(+1 regen headband)', 18, 0, function(){
+        g.p.inv.head.push(new Equippable(true, true, 'propeller hat', 'head', 'helmet', 0, 0, 1, 0));
+    },'common'),
     //grassland chest
     'cottonshirt':new ShopItem('cotton shirt','cottonshirt','chest','(1 armor shirt)', 5, 0, function(){
         g.p.inv.chest.push(new Equippable(true, true, 'cotton shirt', 'chest', 'shirt', 0, 1, 0, 0));
@@ -93,6 +105,12 @@ let shopItemsMasterList = {
     'leathertunic':new ShopItem('leather tunic','leathertunic','chest','(+3 armor shirt)', 14, 0, function(){
         g.p.inv.chest.push(new Equippable(true, true, 'leather tunic', 'chest', 'shirt', 0, 3, 0, 0));
     },'common'),
+    'woodenchestplate': new ShopItem('wooden chestplate','woodenchestplate','chest','(+5 armor -25 speed chestplate)', 28, 0, function(){
+        g.p.inv.chest.push(new Equippable(true, true, 'wooden chestplate', 'chest', 'chestplate', 0, 5, 0, -25));
+    }),
+    'animalpelt': new ShopItem('animal pelt','animalpelt','chest','(+1 regen +8 speed)', 14, 0, function(){
+        g.p.inv.chest.push(new Equippable(true, true, 'animal pelt', 'chest', 'misc', 0, 0, 1, 8));
+    }),
     //grassland legs
     'overalls':new ShopItem('overalls','overalls','legs','(1 armor pants)', 6, 0, function(){
         g.p.inv.legs.push(new Equippable(true, true, 'overalls', 'legs', 'pants', 0, 1, 0, 0));
@@ -102,6 +120,15 @@ let shopItemsMasterList = {
     },'common'),
     'hikingpants':new ShopItem('hiking pants','hikingpants','legs','(2 armor +2 speed pants)', 18, 0, function(){
         g.p.inv.legs.push(new Equippable(true, true, 'hiking pants', 'legs', 'pants', 0, 2, 0, 2));
+    },'common'),
+    'basicshorts':new ShopItem('basic shorts','basicshorts','legs','(1 armor +5 speed shorts)', 17, 0, function(){
+        g.p.inv.legs.push(new Equippable(true, true, 'basic shorts', 'legs', 'shorts', 0, 1, 0, 5));
+    },'common'),
+    'hoolahoop':new ShopItem('hoola hoop','hoolahoop','legs','(+2 regen -22 speed legs)', 27, 0, function(){
+        g.p.inv.legs.push(new Equippable(true, true, 'hoolahoop', 'legs', 'misc', 0, 0, 2, -22));
+    },'common'),
+    'jorts':new ShopItem('jorts','jorts','legs','(1 regen +5 speed shorts)', 12, 0, function(){
+        g.p.inv.legs.push(new Equippable(true, true, 'jorts', 'legs', 'shorts', 0, 0, 1, 5));
     },'common'),
     //grassland feet
     'strawshoes':new ShopItem('straw shoes','strawshoes','feet','(1 armor shoes)', 6, 0, function(){
@@ -116,6 +143,12 @@ let shopItemsMasterList = {
     'soccercleats':new ShopItem('soccer cleats','soccercleats','feet','(+3 dmg +10 speed shoes)', 45, 0, function(){
         g.p.inv.feet.push(new Equippable(true, true, 'soccer cleats', 'feet', 'shoes', 3, 0, 0, 10));
     },'common'),
+    'hikingshoes':new ShopItem('hiking shoes', 'hikingshoes','feet','(+3 armor shoes)', 32, 0, function(){
+        g.p.inv.feet.push(new Equippable(true, true, 'hiking shoes', 'feet', 'shoes', 0, 3, 0, 0));
+    },'common'),
+    'workboots':new ShopItem('work boots', 'workboots','feet','(+4 armor -10 speed boots)', 29, 0, function(){
+        g.p.inv.feet.push(new Equippable(true, true, 'work boots', 'feet', 'boots', 0, 4, 0, -10));
+    },'common'),    
     //stat
     'greenapple':new ShopItem('green apple','greenapple','statUp','(+5 max hp)', 5, 0, function(){
         g.p.maxhp+=5;
@@ -153,6 +186,24 @@ let shopItemsMasterList = {
     'honeycomb':new ShopItem("honey comb",'honeycomb','statUp','(+12 max hp)',21, 0, function(){
         g.p.maxhp+=12;
         g.p.hp+=12;
+    },'common'),
+    'beefstew':new ShopItem("beef stew",'beefstew','statUp','(+8 max hp + full heal)',26, 0, function(){
+        g.p.maxhp+=8;
+        g.p.gainHp('max');
+    },'common'),
+    'artichoke':new ShopItem("artichoke",'artichoke','statUp','(+1 armor)',20, 0, function(){
+        g.p.arm+=1;
+    },'common'),
+    'dragonfruit':new ShopItem("dragonfruit",'dragonfruit','statUp','(+1 armor +1 regen)',38, 0, function(){
+        g.p.arm+=1;
+        g.p.regen+=1;
+    },'common'),
+    'cheeseburger':new ShopItem("cheese burger",'cheeseburger','statUp','(+5 max hp +1 dmg +1 regen +3 speed)',38, 0, function(){
+        g.p.maxhp+=5;
+        g.p.hp+=5;
+        g.p.dmg+=1;
+        g.p.regen+=1;
+        g.p.asLvl+=3;
     },'common')
 };
 let zoneIs = {
@@ -180,24 +231,36 @@ function pushItemsFromZone(zone){
             zoneIs.equippable.weapon.push(shopItemsMasterList.bristlytwig);
             zoneIs.equippable.weapon.push(shopItemsMasterList.woodenaxe);
             zoneIs.equippable.weapon.push(shopItemsMasterList.thickrod);
+            zoneIs.equippable.weapon.push(shopItemsMasterList.cobblestonesword);
+            zoneIs.equippable.weapon.push(shopItemsMasterList.rockonstick);
+            zoneIs.equippable.weapon.push(shopItemsMasterList.boxinggloves);
             //armor
                 //head
                 zoneIs.equippable.head.push(shopItemsMasterList.grasshat);
                 zoneIs.equippable.head.push(shopItemsMasterList.ballcap);
                 zoneIs.equippable.head.push(shopItemsMasterList.mudhelmet);
+                zoneIs.equippable.head.push(shopItemsMasterList.propellerhat);
+                zoneIs.equippable.head.push(shopItemsMasterList.headband);
                 //chest
                 zoneIs.equippable.chest.push(shopItemsMasterList.cottonshirt);
                 zoneIs.equippable.chest.push(shopItemsMasterList.grassrobe);
                 zoneIs.equippable.chest.push(shopItemsMasterList.leathertunic);
+                zoneIs.equippable.chest.push(shopItemsMasterList.woodenchestplate);
+                zoneIs.equippable.chest.push(shopItemsMasterList.animalpelt);
                 //legs
                 zoneIs.equippable.legs.push(shopItemsMasterList.overalls);
                 zoneIs.equippable.legs.push(shopItemsMasterList.grassskirt);
                 zoneIs.equippable.legs.push(shopItemsMasterList.hikingpants);
+                zoneIs.equippable.legs.push(shopItemsMasterList.basicshorts);
+                zoneIs.equippable.legs.push(shopItemsMasterList.hoolahoop);
+                zoneIs.equippable.legs.push(shopItemsMasterList.jorts);
                 //feet
                 zoneIs.equippable.feet.push(shopItemsMasterList.strawshoes);
                 zoneIs.equippable.feet.push(shopItemsMasterList.runningshoes);
                 zoneIs.equippable.feet.push(shopItemsMasterList.walkingbeets);
                 zoneIs.equippable.feet.push(shopItemsMasterList.soccercleats);
+                zoneIs.equippable.feet.push(shopItemsMasterList.hikingshoes);
+                zoneIs.equippable.feet.push(shopItemsMasterList.workboots);
             //stat
             zoneIs.stat.push(shopItemsMasterList.greenapple);
             zoneIs.stat.push(shopItemsMasterList.redapple);
@@ -209,6 +272,10 @@ function pushItemsFromZone(zone){
             zoneIs.stat.push(shopItemsMasterList.waterbottle);
             zoneIs.stat.push(shopItemsMasterList.morselofmeat);
             zoneIs.stat.push(shopItemsMasterList.honeycomb);
+            zoneIs.stat.push(shopItemsMasterList.beefstew);
+            zoneIs.stat.push(shopItemsMasterList.artichoke);
+            zoneIs.stat.push(shopItemsMasterList.dragonfruit);
+            zoneIs.stat.push(shopItemsMasterList.cheeseburger);
         break;
     }
 }

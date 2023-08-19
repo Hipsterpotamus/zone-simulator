@@ -82,6 +82,7 @@ function pullEnemy(){
     let exE;
     switch(g.zone){
         case 'grassland':
+            if(g.difficulty>9){g.difficulty = 9;}
             switch(g.difficulty){
                 case 1:
                     if(x<0.50){ // easy

@@ -30,34 +30,8 @@ class Equippable {
             'id': '#' + this.name + '-'+this.metatype+'-select'
         });
         this.element.appendTo('#' + this.metatype + '-select');
-        let textToShow = this.name + ':';
-        if (this.metatype == 'weapon') {
-            if (this.dmg != 0) {
-                textToShow += ' ' + displayWithSign(this.dmg) + ' dmg';
-            }
-            if (this.arm != 0) {
-                textToShow += ' ' + displayWithSign(this.arm) + ' armor';
-            }
-        } else {
-            if (this.arm != 0) {
-                textToShow += ' ' + displayWithSign(this.arm) + ' armor';
-            }
-            if (this.dmg != 0) {
-                textToShow += ' ' + displayWithSign(this.dmg) + ' dmg';
-            }
-        }
-        if (this.regen != 0) {
-            textToShow += ' ' + displayWithSign(this.regen) + ' regen';
-        }
-        if (this.aSChange != 0) {
-            textToShow += ' ' + displayWithSign(this.aSChange) + ' speed';
-        }
-        if (this.income != 0) {
-            textToShow += ' ' + displayWithSign(this.income) + ' income';
-        }
-        if (this.name == 'none') {
-            textToShow = 'none';
-        }
+        let textToShow = this.name + '–' + this.type;
+        if(this.name == 'none'){textToShow = 'none';}
         this.element.text(textToShow);
     }
 }

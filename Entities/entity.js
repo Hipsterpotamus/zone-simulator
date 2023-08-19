@@ -74,10 +74,15 @@ class Entity{
         return foundEquip;
     }
     gainHp(healAmount){
-        this.hp += healAmount;
-        if(this.maxhp<this.hp){
+        if(healAmount == 'max'){
             this.hp = this.maxhp;
+        }else{
+            this.hp += healAmount;
+            if(this.maxhp<this.hp){
+                this.hp = this.maxhp;
+            }
         }
+        
     }
        // SUGGESTION: This does the same thing but never overloads HP
     // gainHp(healAmount) {

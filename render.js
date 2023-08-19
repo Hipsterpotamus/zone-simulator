@@ -30,16 +30,26 @@ function updateEquippableStats(eq){
     console.log(eq);
     let statOutput = ''; 
     if(eq.metatype == 'weapon'){
-        statOutput+='DMG : '+eq.dmg+'<br>';
-        statOutput+='ARM : '+eq.arm+'<br>';
-        statOutput+='REGEN : '+eq.regen+'<br>';
+        statOutput+='DMG : '+displayWithSign(eq.dmg)+'<br>';
+        statOutput+='ARM : '+displayWithSign(eq.arm)+'<br>';
+        statOutput+='REGEN : '+displayWithSign(eq.regen)+'<br>';
+        statOutput+='SPEED : '+displayWithSign(eq.aSChange)+'<br>'
     }else{
-        statOutput+='arm : '+eq.arm+'<br>';
-        statOutput+='dmg : '+eq.dmg+'<br>';
-        statOutput+='regen : '+eq.regen+'<br>';
+        statOutput+='ARM : '+displayWithSign(eq.arm)+'<br>';
+        statOutput+='REGEN : '+displayWithSign(eq.regen)+'<br>';
+        statOutput+='DMG : '+displayWithSign(eq.dmg)+'<br>';
+        statOutput+='SPEED : '+displayWithSign(eq.aSChange)+'<br>'
     }
     if(eq.name=='none'){statOutput = '';}
     $('#'+eq.metatype+'-stats').html(statOutput);
+}
+
+function displayWithSign(number){
+    if (number<0){
+        return "-"+(-number);
+    }else{
+        return "+"+number;
+    }
 }
 
 $( function() {
