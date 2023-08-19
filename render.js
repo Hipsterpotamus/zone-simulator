@@ -41,3 +41,7 @@ function updateEquippableStats(eq){
     if(eq.name=='none'){statOutput = '';}
     $('#'+eq.metatype+'-stats').html(statOutput);
 }
+
+$( function() {
+    $( ".draggable" ).draggable();
+} );

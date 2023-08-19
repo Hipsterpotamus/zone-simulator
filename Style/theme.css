@@ -122,13 +122,14 @@ body, html {
 
 .equipment-box svg {
   fill: var(--md-sys-color-on-secondary);
-  padding: 2.3rem;
+  padding: 2.5rem;
   padding-top: 3.3rem;
   height: 3rem;
+  cursor: grab;
 }
 
 .equipment-box .equipment-item {
-  width: fit-content;
+  /* width: fit-content; */
   height: 10rem;
   border-radius: 8px;
   padding: 1rem;
@@ -146,15 +147,14 @@ body, html {
   cursor: pointer;
   border-radius: 16px;
   padding: 0.5rem;
-  /* set word names to start with capital letter */
   text-transform: capitalize;
-  /* change the arrow dropdown to a dot */
-  -webkit-appearance: none;
+  /* -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
+  appearance: none; */
   background-repeat: no-repeat;
   background-position: right 0.5rem top 50%;
   background-size: 1.5rem;
+
 }
 
 #weapon-select {
