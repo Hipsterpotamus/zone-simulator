@@ -92,7 +92,7 @@ $(function() {
     
 });
 function genEnemy(){
-    $('#go-next').addClass('hidden');
+    // $('#go-next').addClass('hidden');
     $('.floating-next').addClass('hide');
     $('.floating-next').removeClass('show');
 
@@ -105,7 +105,7 @@ function genEnemy(){
 }
 let eventInfo;
 function genEvent(eventPath){
-    $('#go-next').addClass('hidden');
+    // $('#go-next').addClass('hidden');
     $('.floating-next').addClass('hide');
     $('.floating-next').removeClass('show');
 
@@ -123,7 +123,7 @@ function genShop(){
     fillShop(g.zone.getShopType());
 }
 function genRest(){
-    $('#go-next').addClass('hidden');
+    // $('#go-next').addClass('hidden');
     $('.floating-next').removeClass('show');
     $('.floating-next').addClass('hide');
 
