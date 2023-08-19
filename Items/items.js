@@ -10,7 +10,7 @@ class Item{
         this.equipped = false;
         if(g.p.inv.item.length == 0){
             this.equipped = true;
-            $('#item-select-description').html(this.description+'<br>count : '+i.count);
+            $('#item-select-description').html(this.description+'<br>count : '+this.count);
         }
         
         if(complex){

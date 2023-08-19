@@ -114,7 +114,7 @@ let shopItemsMasterList = {
         g.p.inv.head.push(new Equippable(true, true, 'propeller hat', 'head', 'helmet', 0, 1, 0, 14));
     },'common'),
     'headband': new ShopItem('headband','headband','head','(+1 regen headband)', 18, 0, function(){
-        g.p.inv.head.push(new Equippable(true, true, 'propeller hat', 'head', 'helmet', 0, 0, 1, 0));
+        g.p.inv.head.push(new Equippable(true, true, 'headband', 'head', 'helmet', 0, 0, 1, 0));
     },'common'),
     //grassland chest
     'cottonshirt':new ShopItem('cotton shirt','cottonshirt','chest','(1 armor shirt)', 5, 0, function(){
