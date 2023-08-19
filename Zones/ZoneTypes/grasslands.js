@@ -1,7 +1,9 @@
 class grasslands extends zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
-        self.maxZoneLevel = 9
+        self.maxZoneLevel = 9;
+        self.shopType = '3w,2a,3s,2i';
+        self.zoneLable = 'grassland';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
         self.enemyStats = {
             //zoneLevel : [

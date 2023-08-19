@@ -13,7 +13,7 @@ class zone {
     }
 
     decreaseZoneLevel(decreaseNum) {
-        if (self.zoneLevel - increaseNum > self.minZoneLevel) {
+        if (self.zoneLevel - decreaseNum > self.minZoneLevel) {
             self.zoneLevel -= decreaseNum;
         } else {
             self.zoneLevel = self.minZoneLevel;
@@ -53,10 +53,18 @@ class zone {
         return new Enemy(...enemyAttributes);
     }
 
+    getShopType() {
+        return self.shopType;
+    }
+
+    getZoneLable() {
+        return self.zoneLable;
+    }
+
     pushZoneItems() {
-        for (const item of self.zoneItems) { // Using for...of loop to iterate through the array
-            const category = item[0]; // Accessing the first element of item
-            const itemName = item[1]; // Accessing the second element of item
+        for (const item of self.zoneItems) {
+            const category = item[0];
+            const itemName = item[1];
             if (category === 'weapon') {
                 zoneIs.equippable.weapon.push(shopItemsMasterList[itemName]);
             } else if (category === 'head') {

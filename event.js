@@ -83,7 +83,7 @@ class EventFourC{
 function eventPull(){
     console.log(g.space)
     let e;
-    switch(g.zone){
+    switch(g.zone.getZoneLable()){
         case 'grassland':
             switch(g.space){
                 case 2:
@@ -156,10 +156,10 @@ function eventPull(){
                     return e;
                 case 10:
                     e = new EventOB(3, 'The Horn', "You look down to see a strange cone at your feet. It's a horn of some kind–useful in combat, but it's clogged with mud. Blowing the horn will alert danger, but with the mud it's useless", 'Blow and Wear: alert enemies, gain horn helmet', function(){
-                        g.zoneOO.increaseZoneLevel(2);
+                        g.zone.increaseZoneLevel(2);
                         g.p.inv.head.push(new Equippable(true, true, 'horn helmet', 'head', 'helmet', 2, 0, 0, 0));eventFunctionSuffix('horn helmet acquired');
                     },'Blow and wield: alert enemies, gain horn sling',function(){
-                        g.zoneOO.increaseZoneLevel(2);
+                        g.zone.increaseZoneLevel(2);
                         g.p.inv.head.push(new Equippable(true, true, 'horn sling', 'weapon', 'sling', 4, 0, 0, 25));eventFunctionSuffix('horn sling acquired');
                     },'Drop it: gain nothing',function(){
                         eventFunctionSuffix();
@@ -167,10 +167,10 @@ function eventPull(){
                     return e;
                 case 11:
                     e = new EventOB(3, 'The Horn', "You look down to see a strange cone at your feet. It's a horn of some kind–useful in combat, but it's clogged with mud. Blowing the horn will alert danger, but with the mud it's useless", 'Blow and Wear: alert enemies, gain horn helmet', function(){
-                        g.zoneOO.increaseZoneLevel(2);
+                        g.zone.increaseZoneLevel(2);
                         g.p.inv.head.push(new Equippable(true, true, 'horn helmet', 'head', 'helmet', 2, 0, 0, 0));eventFunctionSuffix('horn helmet acquired');
                     },'Blow and wield: alert enemies, gain horn sling',function(){
-                        g.zoneOO.increaseZoneLevel(2);
+                        g.zone.increaseZoneLevel(2);
                         g.p.inv.weapon.push(new Equippable(true, true, 'horn sling', 'weapon', 'sling', 4, 0, 0, 25));eventFunctionSuffix('horn sling acquired');
                     },'Drop it: gain nothing',function(){
                         eventFunctionSuffix();
@@ -240,7 +240,7 @@ function eventPull(){
 
 function pathEventPull(){
     let ep;
-    switch(g.zone){
+    switch(g.zone.getZoneLable()){
         case 'grassland':
             ep = new EventOB(2, 'A Fork In The Road','There are two paths ahead, which will you take?','The Gauntlet: Howls indicate extensive monsters–and gold–ahead', function(){
                 let pathAhead = ['enemy', 'enemy', 'enemy','shop','boss'];

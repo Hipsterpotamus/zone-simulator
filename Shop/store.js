@@ -85,9 +85,3 @@ function fillShop(shopType){
         itemToPush[itm].appendShopItem();
     }
 }
-function getShopType(){
-    switch(g.zone){
-        case 'grassland':
-            return '3w,2a,3s,2i';
-    }
-}

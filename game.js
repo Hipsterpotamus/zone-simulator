@@ -3,8 +3,7 @@ let g; //game
 function startGame(){
     g = {
         'g':0,
-        'zone':'grassland',
-        'zoneOO': new grasslands(),
+        'zone': new grasslands(),
         'zoneNum':1,
         'space':0,
         'difficulty':1,
@@ -17,7 +16,7 @@ function startGame(){
         'cTick':0,
         'areaCompletion':false
     }
-    g.zoneOO.pushZoneItems();
+    g.zone.pushZoneItems();
     g.path = generatePath();
 }
 

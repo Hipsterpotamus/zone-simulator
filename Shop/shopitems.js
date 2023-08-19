@@ -19,6 +19,7 @@ class ShopItem{
             g.p.gold-=this.goldPrice;
             this.onBuy();
             this.element.remove();
+            elementUp();
         }
     }
     appendShopItem(){

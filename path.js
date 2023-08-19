@@ -69,7 +69,7 @@ function advancePath(){
 
     g.space+=1;
     $('#content-central-box').empty();
-    if(g.space%3==0){g.zoneOO.increaseZoneLevel(1);console.log('diff up')}
+    if(g.space%3==0){g.zone.increaseZoneLevel(1);console.log('diff up')}
     switch (g.path[(g.space-1)]){
         case 'enemy':
             genEnemy();
@@ -97,7 +97,7 @@ $(function() {
 function genEnemy(){
     $('#large-tab-title').text('Enemy Encounter');
     g.inCombat = true;
-    const copy = g.zoneOO.getRandomEnemy();
+    const copy = g.zone.getRandomEnemy();
     g.cEnemy = new Enemy(copy.name, copy.type, copy.hp, copy.aSLvl, copy.dmg, copy.arm, copy.gold, copy.regen, copy.diffC, copy.complexStats) 
     //A sloppy way to bypass having to create a true deep copy which would maintain methods. Necessary because of the intermingling of DOM elements and data elements makes a traditional deep copy difficult without libraries. 
     timeoutCombatLoop = setInterval(function () {combatTick()}, 20);
@@ -115,7 +115,7 @@ function genEvent(eventPath){
 }
 function genShop(){
     $('#large-tab-title').text('Shop');
-    fillShop(getShopType());
+    fillShop(g.zone.getShopType());
 }
 function genRest(){
     eventInfo =  new EventOB(2,'A Cozy Village','You come to a cozy village','Rest: heal 15 hp',function(){
