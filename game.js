@@ -29,6 +29,7 @@ $(function() {
 });
 
 
+
 class lvlUpAbil{
     constructor(name, startUpAction,){
         this.name = name;

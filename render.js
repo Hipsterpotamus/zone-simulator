@@ -52,6 +52,50 @@ function displayWithSign(number){
     }
 }
 
-$( function() {
+$(function() {
     $( ".draggable" ).draggable();
-} );
+});
+
+
+// Theme Buttons
+const link = document.querySelector('link[href="Style/Themes/theme-dark-hazel.css"]');
+$(function() {
+    $('#ocea-button-dark').on('click',function(){
+        link.href = 'Style/Themes/theme-dark-ocea.css';
+    });
+    $('#ocea-button-light').on('click',function(){
+        link.href = 'Style/Themes/theme-light-ocea.css';
+    });
+});
+$(function() {
+    $('#earth-button-dark').on('click',function(){
+        link.href = 'Style/Themes/theme-dark-earth.css';
+    });
+    $('#earth-button-light').on('click',function(){
+        link.href = 'Style/Themes/theme-light-earth.css';
+    });
+});
+$(function() {
+    $('#hazel-button-dark').on('click',function(){
+        link.href = 'Style/Themes/theme-dark-hazel.css';
+    });
+    $('#hazel-button-light').on('click',function(){
+        link.href = 'Style/Themes/theme-light-hazel.css';
+    });
+});
+$(function() {
+    $('#rose-button-dark').on('click',function(){
+        link.href = 'Style/Themes/theme-dark-rose.css';
+    });
+    $('#rose-button-light').on('click',function(){
+        link.href = 'Style/Themes/theme-light-rose.css';
+    });
+});
+$(function() {
+    $('#grey-button-dark').on('click',function(){
+        link.href = 'Style/Themes/theme-dark-grey.css';
+    });
+    $('#grey-button-light').on('click',function(){
+        link.href = 'Style/Themes/theme-light-grey.css';
+    });
+});

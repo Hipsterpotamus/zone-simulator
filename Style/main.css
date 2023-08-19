@@ -1,15 +1,9 @@
-@import url(Modules/tokens.css);
-@import url(Modules/colors.module.css);
-@import url(Modules/typography.module.css);
-/* Uncomment these if wanting dynamic mode support */
-/* @import url(Modules/theme.light.css) (prefers-color-scheme: light); */
-/* @import url(Modules/theme.dark.css) (prefers-color-scheme: dark); */
-@import url(Modules/theme.dark.css) ;
+
 @import url(main_menu.css);
 @import url(components.css);
 @import url(Game\ Menu/header.css);
 @import url(Game\ Menu/next-level-button.css);
-
+@import url(theme_selection.css);
 
 
 body, html {
@@ -29,6 +23,10 @@ body, html {
 .bold {
   font-weight: bold;
 }
+
+
+
+
 
 .shop-bar {
   position: fixed;
@@ -109,7 +107,7 @@ body, html {
   z-index: 3;
   margin-left: 2rem;
   margin-bottom: 2rem;
-  width: 50%;
+  width: 72rem;
   height: 10rem;
   border-radius: 8px;
   /* center contents */
@@ -117,12 +115,12 @@ body, html {
   justify-content: flex-end;
   align-items: center;
   /* big shadow */
-  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0.5rem 0.6rem 2rem rgba(0, 0, 0, 0.3);
 }
 
 .equipment-box svg {
-  fill: var(--md-sys-color-on-secondary);
-  padding: 2.5rem;
+  fill: var(--md-sys-color-on-surface);
+  padding: 2rem;
   padding-top: 3.3rem;
   height: 3rem;
   cursor: grab;
@@ -140,6 +138,10 @@ body, html {
   align-items: center;
 }
 
+.equipment-box .equipment-item:last-child {
+  margin-right: 1.5rem;
+}
+
 .equipment-box .equip-select {
   width: 10rem;
   height: 100%;
@@ -148,9 +150,9 @@ body, html {
   border-radius: 16px;
   padding: 0.5rem;
   text-transform: capitalize;
-  /* -webkit-appearance: none;
+  -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none; */
+  appearance: none;
   background-repeat: no-repeat;
   background-position: right 0.5rem top 50%;
   background-size: 1.5rem;
@@ -158,8 +160,7 @@ body, html {
 }
 
 #weapon-select {
-  background-image: url(Style\Icons\Sword.png);
-  
+  background-image: url(Icons\Sword.png);
 }
 
 .title-container{
@@ -184,8 +185,10 @@ body, html {
   /* align right */
   text-align: right;
   padding: 1rem;
+  margin-top:0.5rem;
   padding-top: 0;
 }
+
 
 
 
