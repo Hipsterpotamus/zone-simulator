@@ -1,7 +1,7 @@
 function fillShop(shopType){
     let itemToPush = [];
     let searchInd;
-    if (shopType == '3w,2a,3s,2i'){
+    if (shopType == '3w,2a,3s,1i'){
         let attempts = 0;
         let w = 3;
         while (w>0 && attempts<100){
@@ -67,19 +67,24 @@ function fillShop(shopType){
             attempts+=1;
             searchInd = Math.floor(Math.random()*zoneIs.stat.length);
             if(true){
-                itemToPush.push(zoneIs.stat[searchInd]);
-                zoneIs.stat.splice(searchInd,1);
-                s -= 1;
+                if(zoneIs.stat[searchInd]){
+                    itemToPush.push(zoneIs.stat[searchInd]);
+                    zoneIs.stat.splice(searchInd,1);
+                    s -= 1;
+                }
             }
         }
-        // let i = 2;
-        // while (i>4){
-        //     searchInd = Math.floor(Math.random()*zoneIs.item.length);
-        //     if(true){
-        //         itemToPush.push(zoneIs.item[searchInd]);
-        //         i -= 1;
-        //     }
-        // }
+        let i = 1;
+        while (i>0 && attempts < 100){
+            attempts+=1;
+             searchInd = Math.floor(Math.random()*zoneIs.item.length);
+             if(true){
+                if(zoneIs.item[searchInd]){
+                    itemToPush.push(zoneIs.item[searchInd]);
+                    i -= 1;
+                }
+            }
+        }
     }
     for(itm in itemToPush){
         itemToPush[itm].appendShopItem();

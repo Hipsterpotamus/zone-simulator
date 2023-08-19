@@ -7,6 +7,11 @@ class Item{
         this.onUse = onUse;
         this.count = startingCount;
         this.useCount = useCount;
+        this.equipped = false;
+        if(g.p.inv.item.length == 0){
+            this.equipped = true;
+            $('#item-select-description').html(this.description+'<br>count : '+i.count);
+        }
         
         if(complex){
 
@@ -28,10 +33,13 @@ class Item{
             if(this.type == 'combat-enemy'){
                 if(g.inCombat){
                     this.count-=this.useCount;
-                    this.onUse;
+                    this.onUse();
                 }else{
                     // for future: communicate to player that item must be used in combat
                 }
+            }else if(this.type == 'all-self'){
+                this.count-=this.useCount;
+                this.onUse();
             }
             
         }else{
@@ -43,19 +51,14 @@ class Item{
 
 
 $(function() {
+    $('item-select').on('change',function(){
+        let newEquip = $(this).val();
+        g.p.inv['item'].forEach(i => {
+            if(i.rawname==newEquip){i.equipped = true;$('#item-select-description').html(i.description+'<br>count : '+i.count);}else{i.equipped = false;}
+        });
+    });
     $('#use-item').on('click',function(){
-        let itemSelected = $('#item-select').val();
-
+        g.p.getByType('item').attemptUse();
     });
 });
 
-
-let itemMasterList = {
-    'firecracker': new Item('firecracker', 'firecracker', 'combat-enemy', 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 1, 1, function(){
-        g.cEnemy.hp-=20;
-        g.p.hp-=2;
-    }),
-    'throwingegg': new Item('throwing egg', 'throwingegg', 'combat-enemy', "During combat, lower the current enemy's armor by 3",3, 1, function(){
-        g.cEnemy.arm-=3;
-    })
-}
