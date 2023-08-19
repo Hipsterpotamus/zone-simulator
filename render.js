@@ -54,6 +54,7 @@ function displayWithSign(number){
 
 $(function() {
     $( ".draggable" ).draggable();
+    $( ".draggable-x" ).draggable({ axis: "x" });
 });
 
 
