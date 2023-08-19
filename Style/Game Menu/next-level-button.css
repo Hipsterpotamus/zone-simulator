@@ -1,8 +1,8 @@
 /* Next Button */
 .floating-next {
-  position: fixed;
-  bottom: -5rem;
-  right: 3rem;
+  position: absolute;
+  bottom: 11.5rem;
+  right: -3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,38 +26,38 @@
 }
 
 .floating-next.show {
-  bottom: 3rem; /* pop up */
+  right: -2rem; /* pop up */
   animation: pop-up 0.3s ease-in-out forwards;
 }
 .floating-next.hide {
-  bottom: -5rem; /* pop down */
+  right: -5rem; /* pop down */
   animation: pop-down 0.3s ease-in-out forwards;
 }
 
 @keyframes pop-down {
   from {
-    bottom: 3rem;
+    right: -2rem;
     opacity: 1;
   }
   to {
-    bottom: -5rem;
+    right: -5rem;
     opacity: 0;
   }
 }
 
 @keyframes pop-up {
   from {
-    bottom: -5rem;
+    right: -5rem;
     opacity: 0;
   }
   to {
-    bottom: 3rem;
+    right: -2rem;
     opacity: 1;
   }
 }
 
 .material-icons {
-  font-size: 3rem;
+  font-size: -2rem;
   color: var(--md-sys-color-on-tertiary);
 }
 /* Next Button End */

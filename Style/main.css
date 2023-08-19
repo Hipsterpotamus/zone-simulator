@@ -6,7 +6,7 @@
 @import url(theme_selection.css);
 @import url(Modules/Tokens/tokens-font.css);
 @import url(equipment-menu.css);
-
+@import url(entity-panels.css);
 
 
 body, html {
@@ -27,33 +27,6 @@ body, html {
   font-weight: bold;
 }
 
-
-
-
-
-.shop-bar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 16%;
-  /* background-color: #f0f0f0; */
-  border-top: 1px solid #ccc;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-}
-
-
-.shop-bar button {
-  flex: 1;
-  height: 100%;
-  /* background-color: #007bff; */
-  /* color: #fff; */
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
 #game-screen{
   width: 100%;
   height: 100%;
@@ -69,51 +42,16 @@ body, html {
   font-size:10pt;
   margin:-1px 2.5% 0px 0px;
 }
+
 .non-game-header{
   height:100%;
 }
-.fifth-tab{
-  width: calc(20% - 1px);
-  height:100%;
-  float:left;
-  z-index: 2;
-}
 
-.entity-panel {
-  margin-left: 2rem;
-  -webkit-transform: skewX(-3deg);
-  -moz-transform: skewX(-3deg);
-  -ms-transform: skewX(-3deg);
-  -o-transform: skewX(-3deg);
-  transform: skewX(-3deg);
-  padding-top: 3rem;
-  outline-offset: 0.3rem;
-  outline-style: dashed;
-}
 
-.entity-panel * {
-  -webkit-transform: skewX(3deg);
-  -moz-transform: skewX(3deg);
-  -ms-transform: skewX(3deg);
-  -o-transform: skewX(3deg);
-  transform: skewX(3deg);
-}
-
-#enemy-tab {
-  outline-style: dotted;
-}
 
 .fifth-tab#large-tab{
   width:calc(40% - 1px);
 }
-
-/* #player-stat-tab {
-  
-} */
-
-
-
-
 
 
 
@@ -122,8 +60,6 @@ body, html {
 .large-tab-row {
   width: 100%;
   height: 20%;
-  /* background-color: #e0e0e0; */
-  border-top: 1px solid #999;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -134,14 +70,47 @@ body, html {
 #items-tab-row {
   order: 1; /* Placing at the top */
 }
-#center-tab-row{
-  order:2;
-  height:56.7%;
+#encounter-container {
+  width: 50vw;
+  height: 30rem;
+  position: fixed;
+  top: 8rem;
+  right: 4rem;
+  border-radius: 32px;
   /* background-color: #f5f5f5; */
   display: flex;
   flex-direction: column;
-
+  outline: 0;
+  /* blur the background and make transparent */
+  background-color: var(--md-sys-color-surface-variant);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  
 }
+#encounter-container::before,
+#encounter-container::after {
+  content: '';
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-surface-variant);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#encounter-container::before {
+  width: 6rem;
+  height: 6rem;
+  right: 2rem;
+  top: 30rem;
+}
+
+#encounter-container::after {
+  top: 34rem;
+  right: -2rem;
+}
+
 #magic-tab-row {
   order: 3; /* Placing at the bottom */
 }
