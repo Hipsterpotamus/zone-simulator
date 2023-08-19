@@ -47,7 +47,7 @@ function playerDeath(){
 function combatWin(){
     g.inCombat = false;
     g.p.gold += g.cEnemy.gold;
-    g.difficulty += g.cEnemy.diffC;
+    g.zoneOO.increaseZoneLevel(g.cEnemy.diffC);
     g.cTick = 0;
     g.p.gainHp(g.p.levelheal);
     clearInterval(timeoutCombatLoop);

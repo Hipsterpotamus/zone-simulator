@@ -4,6 +4,7 @@ function startGame(){
     g = {
         'g':0,
         'zone':'grassland',
+        'zoneOO': new grasslands(),
         'zoneNum':1,
         'space':0,
         'difficulty':1,

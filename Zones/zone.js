@@ -21,31 +21,34 @@ class zone {
     }
 
     getRandomEnemy() {
-        let tempRand = Math.random();
-        let enemyStats = {
-            ...self.enemyStats
-        };
-        if (tempRand < self.levelDifficultyDist[self.zoneLevel][0]) {
-            enemyList = enemyStats[self.zoneLevel-1];
-            enemyList[8] += 1;
-        } else if (tempRand < self.levelDifficultyDist[self.zoneLevel][1]) {
-            if (self.zoneLevel == self.maxZoneLevel - 1) {
-                enemyList = enemyStats[self.zoneLevel - 1];
-                enemyList[8] += 1;
-            } else {
-                enemyList = enemyStats[self.zoneLevel];
-            }
+        const randomValue = Math.random();
+        const enemyStats = { ...self.enemyStats };
+        let levelAdjustment = 0;
+        let selectedEnemyList;
+    
+        const [easyThreshold, medThreshold] = [self.levelDifficultyDist[self.zoneLevel][0], self.levelDifficultyDist[self.zoneLevel][0]];
+        const isMaxZoneLevelMinusOne = self.zoneLevel === self.maxZoneLevel - 1;
+        const isMaxZoneLevel = self.zoneLevel === self.maxZoneLevel;
+    
+        if (randomValue < easyThreshold) {
+            selectedEnemyList = enemyStats[self.zoneLevel - 1];
+            levelAdjustment += 1;
+        } else if (randomValue < medThreshold) {
+            selectedEnemyList = enemyStats[isMaxZoneLevelMinusOne ? self.zoneLevel - 1 : self.zoneLevel];
+            if (isMaxZoneLevelMinusOne) levelAdjustment += 1;
         } else {
-            if (self.zoneLevel == self.maxZoneLevel - 1) {
-                enemyList = enemyStats[self.zoneLevel];
-            } else if (self.zoneLevel == self.maxZoneLevel) {
-                enemyList = enemyStats[self.zoneLevel-1];
-                enemyList[8] += 1;
+            if (isMaxZoneLevelMinusOne || isMaxZoneLevel) {
+                selectedEnemyList = enemyStats[self.zoneLevel - (isMaxZoneLevel ? 1 : 0)];
+                if (isMaxZoneLevel) levelAdjustment += 1;
             } else {
-                enemyList = enemyStats[self.zoneLevel+1];
-                enemyList[8] -= 1;
+                selectedEnemyList = enemyStats[self.zoneLevel + 1];
+                levelAdjustment -= 1;
             }
         }
-        return enemyList[Math.floor(Math.random() * enemyList.length)];
+    
+        const enemyAttributes = selectedEnemyList[Math.floor(Math.random() * selectedEnemyList.length)];
+        enemyAttributes[8] += levelAdjustment;
+    
+        return new Enemy(...enemyAttributes);
     }
 }
