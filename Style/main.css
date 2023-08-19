@@ -68,7 +68,6 @@ body, html {
   float:left;
   font-size:10pt;
   margin:-1px 2.5% 0px 0px;
-  /* color:#fff; */
 }
 .non-game-header{
   height:100%;
@@ -76,32 +75,43 @@ body, html {
 .fifth-tab{
   width: calc(20% - 1px);
   height:100%;
-  border-right: 1px solid #353535;
   float:left;
-
   z-index: 2;
 }
-.fifth-tab#large-tab{
-  width:calc(40% - 1px);
-}
 
-#player-stat-tab {
-  
+.entity-panel {
+  margin-left: 2rem;
   -webkit-transform: skewX(-3deg);
   -moz-transform: skewX(-3deg);
   -ms-transform: skewX(-3deg);
   -o-transform: skewX(-3deg);
   transform: skewX(-3deg);
   padding-top: 3rem;
+  outline-offset: 0.3rem;
+  outline-style: dashed;
 }
 
-#player-stat-tab * {
+.entity-panel * {
   -webkit-transform: skewX(3deg);
   -moz-transform: skewX(3deg);
   -ms-transform: skewX(3deg);
   -o-transform: skewX(3deg);
   transform: skewX(3deg);
 }
+
+#enemy-tab {
+  outline-style: dotted;
+}
+
+.fifth-tab#large-tab{
+  width:calc(40% - 1px);
+}
+
+/* #player-stat-tab {
+  
+} */
+
+
 
 
 

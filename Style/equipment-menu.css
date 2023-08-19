@@ -14,7 +14,12 @@
   align-items: center;
   /* big shadow */
   box-shadow: 0.5rem 0.6rem 2rem rgba(0, 0, 0, 0.3);
+  /* make translucent and add blur */
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(6px);
 }
+
 
 .equipment-box svg {
   fill: var(--md-sys-color-on-surface-variant);
@@ -28,7 +33,7 @@
   /* width: fit-content; */
   height: 10rem;
   width: 10rem;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 1rem;
   margin: 0.5rem;
   display: flex;
