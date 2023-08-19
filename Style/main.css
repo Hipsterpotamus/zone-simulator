@@ -5,6 +5,7 @@
 @import url(Game\ Menu/next-level-button.css);
 @import url(theme_selection.css);
 @import url(Modules/Tokens/tokens-font.css);
+@import url(equipment-menu.css);
 
 
 
@@ -102,94 +103,6 @@ body, html {
   transform: skewX(3deg);
 }
 
-.equipment-box {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 3;
-  margin-left: 2rem;
-  margin-bottom: 2rem;
-  width: 72rem;
-  height: 10rem;
-  border-radius: 32px;
-  /* center contents */
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  /* big shadow */
-  box-shadow: 0.5rem 0.6rem 2rem rgba(0, 0, 0, 0.3);
-}
-
-.equipment-box svg {
-  fill: var(--md-sys-color-on-surface);
-  padding: 2rem;
-  padding-top: 3.3rem;
-  height: 3rem;
-  cursor: grab;
-}
-
-.equipment-box .equipment-item {
-  /* width: fit-content; */
-  height: 10rem;
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.equipment-box .equipment-item:last-child {
-  margin-right: 1.5rem;
-}
-
-.equipment-box .equip-select {
-  width: 10rem;
-  height: 100%;
-  border: none;
-  cursor: pointer;
-  border-radius: 16px;
-  padding: 0.5rem;
-  text-transform: capitalize;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-repeat: no-repeat;
-  background-position: right 0.5rem top 50%;
-  background-size: 1.5rem;
-
-}
-
-#weapon-select {
-  background-image: url(Icons\Sword.png);
-}
-
-.title-container{
-  width:100%;
-  height:3vh;
-  float:left;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-
-.equip-title{
-  margin:0;
-  height:100%;
-  font-size: 2.2vh;
-  margin: 0.5vh 0.2vh;
-}
-
-.equip-stats {
-  font-weight: bolder;
-  font-size: 1.4rem;
-  /* align right */
-  text-align: right;
-  padding: 1rem;
-  margin-top:0.5rem;
-  padding-top: 0;
-}
 
 
 
