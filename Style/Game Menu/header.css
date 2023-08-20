@@ -30,3 +30,10 @@
     fill-opacity: 1;
     pointer-events: none;
 }
+
+#go-next {
+    z-index: 10;
+    position: fixed;
+    bottom: 1px;
+    left:1px
+}
