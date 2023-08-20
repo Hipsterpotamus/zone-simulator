@@ -1,92 +1,39 @@
-function fillShop(shopType){
+const CATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'item'];
+const EQUIPSPLIT = 5;
+
+function fillShop(shopCode) {
     let itemToPush = [];
-    let searchInd;
-    if (shopType == '3w,2a,3s,1i'){
-        let attempts = 0;
-        let w = 3;
-        while (w>0 && attempts<100){
-            attempts+=1;
-            searchInd = Math.floor(Math.random()*zoneIs.equippable.weapon.length);
-            if(true){
-                if(zoneIs.equippable.weapon[searchInd]){
-                    itemToPush.push(zoneIs.equippable.weapon[searchInd]);
-                    zoneIs.equippable.weapon.splice(searchInd,1);
-                    w -= 1;
-                }
-            }
-        }
-        let a = 2;
-        while (a>0 && attempts<100){
-            attempts+=1;
-            let armorPiece = (Math.floor(Math.random()*4)+1);
-            switch(armorPiece){
-                case 1:
-                    searchInd = Math.floor(Math.random()*zoneIs.equippable.head.length);
-                    if(true){
-                        if(zoneIs.equippable.head[searchInd]){
-                            itemToPush.push(zoneIs.equippable.head[searchInd]);
-                            zoneIs.equippable.head.splice(searchInd,1);
-                            a -= 1;
-                        }
-                    }
-                break;
-                case 2:
-                    searchInd = Math.floor(Math.random()*zoneIs.equippable.chest.length);
-                    if(true){
-                        if(zoneIs.equippable.chest[searchInd]){
-                            itemToPush.push(zoneIs.equippable.chest[searchInd]);
-                            zoneIs.equippable.chest.splice(searchInd,1);
-                            a -= 1;
-                        }
-                    }
-                break;
-                case 3:
-                    searchInd = Math.floor(Math.random()*zoneIs.equippable.legs.length);
-                    if(true){
-                        if(zoneIs.equippable.legs[searchInd]){
-                            itemToPush.push(zoneIs.equippable.legs[searchInd]);
-                            zoneIs.equippable.legs.splice(searchInd,1);
-                            a -= 1;
-                        }
-                    }
-                break;
-                case 4:
-                    searchInd = Math.floor(Math.random()*zoneIs.equippable.feet.length);
-                    if(true){
-                        if(zoneIs.equippable.feet[searchInd]){
-                            itemToPush.push(zoneIs.equippable.feet[searchInd]);
-                            zoneIs.equippable.feet.splice(searchInd,1);
-                            a -= 1;
-                        }
-                    }
-                break;
-            }
-        } 
-        let s = 3;
-        while (s>0 && attempts < 100){
-            attempts+=1;
-            searchInd = Math.floor(Math.random()*zoneIs.stat.length);
-            if(true){
-                if(zoneIs.stat[searchInd]){
-                    itemToPush.push(zoneIs.stat[searchInd]);
-                    zoneIs.stat.splice(searchInd,1);
-                    s -= 1;
-                }
-            }
-        }
-        let i = 1;
-        while (i>0 && attempts < 100){
-            attempts+=1;
-             searchInd = Math.floor(Math.random()*zoneIs.item.length);
-             if(true){
-                if(zoneIs.item[searchInd]){
-                    itemToPush.push(zoneIs.item[searchInd]);
-                    i -= 1;
-                }
-            }
-        }
+    let shopCodeExpand = [shopCode[0], 0, 0, 0, 0, shopCode[2], shopCode[3]];
+    for (let i = 0; i < shopCode[1]; i++) {
+        let randNum = Math.floor(Math.random() * 4) + 1;
+        shopCodeExpand[randNum] += 1;
     }
-    for(itm in itemToPush){
-        itemToPush[itm].appendShopItem();
+
+    CATEGORIES.forEach((category, index) => {
+        let count = shopCodeExpand[index] || 0;
+        let availableItems;
+        if (index < EQUIPSPLIT) {
+            availableItems = zoneIs.equippable[category];
+        } else {
+            availableItems = zoneIs[category];
+        }
+        console.log(availableItems);
+
+        if (availableItems.length === 0) {
+            return;
+        }
+
+        for (let i = 0; i < count; i++) {
+            let searchInd = Math.floor(Math.random() * availableItems.length);
+            itemToPush.push(availableItems[searchInd]);
+            availableItems.splice(searchInd, 1);
+            if (availableItems.length === 0) {
+                break;
+            }
+        }
+    });
+
+    for (let itm of itemToPush) {
+        itm.appendShopItem();
     }
 }
