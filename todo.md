@@ -5,10 +5,12 @@
 * [] Selectable player classes
 * [] Header changing color per-zone
 * [] Make sure 8 stats fit into armor
+* [] Disable Next Button after clicking to prevent double click during animation
 
 idk what else, I'm sure you have a list
 
 ## Backend
+* [] Change "Enemy Encounter" to "Defeated Enemy" or "Success" or something after winning a battle
 * [] Make player classes work with frontend
 * [] Refactor shopitem.js/shopitemlist.js
 * [] Refactor Items
@@ -16,6 +18,7 @@ idk what else, I'm sure you have a list
 * [] Refactor path.js
 * [] Get rid of of global variables
 * [] Refactor game.js? (will likely require a full transition to an object oriented framework to significantly improve)
+
 
 
 # Ideas
