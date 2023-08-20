@@ -15,6 +15,7 @@ class Entity{
         this.antiheal = 0;
         this.dodge = 0;        
         this.regenRate = 50;
+        this.tear = 0;
         if(complexStats){
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];

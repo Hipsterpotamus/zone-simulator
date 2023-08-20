@@ -3,10 +3,10 @@ let g; //game
 function startGame(){
     g = {
         'g':0,
-        'zone': new grasslands(),
+        'zone': new Grasslands(),
         'zoneNum':1,
         'space':0,
-        'player':new Ninja('human'), //change this class to change character
+        'player':new Benefactor('human'), //change this class to change character
         'path':[],
         'inCombat': false,
         'level': 1,

@@ -151,7 +151,12 @@ const eventList = {
         theGauntlet: {
             text: 'The Gauntlet: Howls indicate extensive monsters–and gold–ahead',
             effect: function () {
-                let pathAhead = ['enemy', 'enemy', 'enemy', 'shop', 'boss'];
+                let pathAhead = [];
+                if(Math.random()<0.5){
+                    pathAhead = ['enemy', 'enemy', 'enemy', 'rest', 'shop', 'boss'];
+                }else{
+                    pathAhead = ['enemy', 'enemy', 'enemy', 'shop', 'event', 'boss'];
+                }
                 for (let a in pathAhead) {
                     g.path.push(pathAhead[a]);
                 }
@@ -161,7 +166,12 @@ const eventList = {
         theEncampment: {
             text: 'The Encampment: Bright lights signal opportunities for rest ahead',
             effect: function () {
-                let pathAhead = ['rest', 'enemy', 'shop', 'rest', 'boss'];
+                let pathAhead = [];
+                if(Math.random()<0.5){
+                    pathAhead = ['rest', 'enemy', 'shop', 'event', 'rest', 'boss'];
+                }else{
+                    pathAhead = ['rest', 'enemy', 'shop', 'enemy', 'rest', 'boss'];
+                }
                 for (let a in pathAhead) {
                     g.path.push(pathAhead[a]);
                 }

@@ -4,6 +4,7 @@ class Enemy extends Entity{
          super(name, type, health, attackspeed, damage, armor, gold, regen, complexStats);
          this.complexStats = complexStats;
          this.diffC = difficultyCh;
+         this.boss = false;
     }
     calcDmg() {
         return this.dmg;

@@ -63,7 +63,7 @@ function generatePath(){
 }
 
 function advancePath(){
-
+    elementUp();
     g.space+=1;
     $('#content-central-box').empty();
     if(g.space%3==0){g.zone.changeZoneLevel(1);console.log('diff up')}
@@ -83,6 +83,9 @@ function advancePath(){
         case 'rest':
             genRest();
         break;
+        case 'boss':
+            genBoss();
+        break;
     }
 }
 
@@ -95,6 +98,8 @@ function genEnemy(){
     // $('#go-next').addClass('hidden');
     $('.floating-next').addClass('hide');
     $('.floating-next').removeClass('show');
+
+    $('#combatTimer').removeClass('hidden');
 
     $('#large-tab-title').text('Enemy Encounter');
     g.inCombat = true;
@@ -135,4 +140,18 @@ function genRest(){
         eventInfo = eventList['A Hut'];
     }
     eventInfo.createElements();
+}
+function genBoss(){
+    $('.floating-next').addClass('hide');
+    $('.floating-next').removeClass('show');
+
+    $('#large-tab-title').text('Boss Battle!');
+
+    $('#combatTimer').removeClass('hidden');
+
+    g.inCombat = true;
+    const copy = g.zone.getBoss();
+    g.cEnemy = new Enemy(copy.name, copy.type, copy.hp, copy.aSLvl, copy.dmg, copy.arm, copy.gold, copy.regen, copy.diffC, copy.complexStats) 
+    //A sloppy way to bypass having to create a true deep copy which would maintain methods. Necessary because of the intermingling of DOM elements and data elements makes a traditional deep copy difficult without libraries. 
+    timeoutCombatLoop = setInterval(function () {combatTick()}, 20);
 }

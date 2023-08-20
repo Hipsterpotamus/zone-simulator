@@ -1,4 +1,4 @@
-class zone {
+class Zone {
     constructor(zoneLevel) {
         this.zoneLevel = zoneLevel;
         this.minZoneLevel = 1;
@@ -49,7 +49,11 @@ class zone {
     
         return new Enemy(...enemyAttributes);
     }
-
+    getBoss(){
+        const bossAttributes = this.bossStats[Math.floor(Math.random() * this.bossStats.length)];
+    
+        return new Boss(...bossAttributes);
+    }
     getRandomEvent(space) {
         let eventPool = [];
         this.zoneEvents.forEach(element => {

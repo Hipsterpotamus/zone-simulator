@@ -2,7 +2,7 @@ class Ninja extends Player {
     constructor(type) {
         super(type);
         this.name = 'nina'; //fully implemented
-        this.dodge = 1 / 3;
+        this.dodge = 33;
     }
 
     calcArm(){
