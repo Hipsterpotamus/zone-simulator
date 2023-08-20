@@ -101,3 +101,19 @@ $(function() {
         link.href = 'Style/Themes/theme-light-grey.css';
     });
 });
+$(function() {
+    $('#forest-button-dark').on('click',function(){
+        link.href = 'Style/Themes/theme-dark-forest.css';
+    });
+    $('#forest-button-light').on('click',function(){
+        link.href = 'Style/Themes/theme-light-forest.css';
+    });
+});
+$(function() {
+    $('#bloodorange-button-dark').on('click',function(){
+        link.href = 'Style/Themes/theme-dark-bloodorange.css';
+    });
+    $('#bloodorange-button-light').on('click',function(){
+        link.href = 'Style/Themes/theme-light-bloodorange.css';
+    });
+});

@@ -9,6 +9,12 @@
 @import url(entity-panels.css);
 @import url(GameMenu/encounter-box.css);
 
+:root {
+  /* override default token shadows */
+  --md-sys-color-shadow-light: rgba(0, 0, 0, 0.2);
+  --md-sys-color-shadow-dark: rgba(0, 0, 0, 0.2);
+}
+
 body, html {
   height: 100%;
   margin: 0;
