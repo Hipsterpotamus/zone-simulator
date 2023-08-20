@@ -1,12 +1,12 @@
 .fifth-tab{
   width: calc(20% - 1px);
   height:100%;
-  float:left;
+  float:right;
   z-index: 2;
 }
 
 .entity-panel {
-  margin-left: 2rem;
+  margin-right: 2rem;
   -webkit-transform: skewX(-3deg);
   -moz-transform: skewX(-3deg);
   -ms-transform: skewX(-3deg);
@@ -15,6 +15,9 @@
   padding-top: 3rem;
   outline-offset: 0.3rem;
   outline-style: dashed;
+
+  position: relative;
+  right: 0.5rem;
 }
 
 .entity-panel * {
