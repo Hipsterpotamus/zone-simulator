@@ -45,16 +45,3 @@ function clickToPur(name){
     shopItemsMasterList[name].purchase();
     elementUp();
 }
-
-let zoneIs = {
-    'equippable' : {
-        'weapon' : [],
-        'head' : [],
-        'chest' : [],
-        'legs' : [],
-        'feet' : []
-    },
-    'stat' : [],
-    'item' : [],
-    'magic' : []
-}

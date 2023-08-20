@@ -1,5 +1,4 @@
 const CATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'item'];
-const EQUIPSPLIT = 5;
 
 function fillShop(shopCode) {
     let itemToPush = [];
@@ -11,25 +10,15 @@ function fillShop(shopCode) {
 
     CATEGORIES.forEach((category, index) => {
         let count = shopCodeExpand[index] || 0;
-        let availableItems;
-        if (index < EQUIPSPLIT) {
-            availableItems = zoneIs.equippable[category];
-        } else {
-            availableItems = zoneIs[category];
-        }
-        console.log(availableItems);
-
-        if (availableItems.length === 0) {
-            return;
-        }
+        let availableItems = g.zone.zoneItemList[category];
 
         for (let i = 0; i < count; i++) {
-            let searchInd = Math.floor(Math.random() * availableItems.length);
-            itemToPush.push(availableItems[searchInd]);
-            availableItems.splice(searchInd, 1);
             if (availableItems.length === 0) {
                 break;
             }
+            let searchInd = Math.floor(Math.random() * availableItems.length);
+            itemToPush.push(availableItems[searchInd]);
+            availableItems.splice(searchInd, 1); 
         }
     });
 

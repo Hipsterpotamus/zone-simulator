@@ -156,6 +156,7 @@ class grasslands extends zone {
             ['item', 'firstaidkit'],
             ['item', 'sharpeningstone']
         ];
+        this.pushZoneItems();
 
         this.zoneEvents = [
             //[first possible space, last possible space, event id]

@@ -2,6 +2,16 @@ class zone {
     constructor(zoneLevel) {
         this.zoneLevel = zoneLevel;
         this.minZoneLevel = 1;
+        this.zoneItemList = {
+            'weapon' : [],
+            'head' : [],
+            'chest' : [],
+            'legs' : [],
+            'feet' : [],
+            'stat' : [],
+            'item' : [],
+            'magic' : []
+        }
     }
 
     changeZoneLevel(num) {
@@ -67,21 +77,7 @@ class zone {
         for (const item of this.zoneItems) {
             const category = item[0];
             const itemName = item[1];
-            if (category === 'weapon') {
-                zoneIs.equippable.weapon.push(shopItemsMasterList[itemName]);
-            } else if (category === 'head') {
-                zoneIs.equippable.head.push(shopItemsMasterList[itemName]);
-            } else if (category === 'chest') {
-                zoneIs.equippable.chest.push(shopItemsMasterList[itemName]);
-            } else if (category === 'legs') {
-                zoneIs.equippable.legs.push(shopItemsMasterList[itemName]);
-            } else if (category === 'feet') {
-                zoneIs.equippable.feet.push(shopItemsMasterList[itemName]);
-            } else if (category === 'stat') {
-                zoneIs.stat.push(shopItemsMasterList[itemName]);
-            } else if (category === 'item') {
-                zoneIs.item.push(shopItemsMasterList[itemName]);
-            }
+            this.zoneItemList[category].push(shopItemsMasterList[itemName]);
         }
     }
 }
