@@ -48,7 +48,7 @@ const eventList = {
             effect: function () {
                 if (g.player.gold < 3) { eventFunctionSuffix('not enough gold!'); return; }
                 g.player.gold -= 3;
-                g.player.inv.weapons.push(new Equippable(true, true, 'garden hoe', 'weapon', 'none', 3, 0, 0, 0));
+                g.player.inv.weapon.push(new Equippable(true, true, 'garden hoe', 'weapon', 'none', 3, 0, 0, 0));
                 eventFunctionSuffix('garden hoe obtained');
             }
         },
@@ -181,7 +181,7 @@ const eventList = {
         work: {
             text: 'Work: gain 8 gold',
             effect: function () {
-                g.player.gainGold(8);
+                g.player.gainGold(false, 8);
                 eventFunctionSuffix();
             }
         }
