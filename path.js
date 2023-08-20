@@ -129,21 +129,21 @@ function genRest(){
     let rnd = Math.random();
     if(rnd<0.4){
         eventInfo =  new EventOB(2,'A Cozy Village','You come to a cozy village','Rest: heal 15 hp',function(){
-            g.p.gainHp(15);eventFunctionSuffix();
+             g.player.gainHp(15);eventFunctionSuffix();
         },'Work: gain 8 gold',function(){
-            g.p.gold+=8;eventFunctionSuffix();
+             g.player.gold+=8;eventFunctionSuffix();
         });
     }else if(rnd < 0.8){
         eventInfo =  new EventOB(2,'A Pond','You come to a refreshing, secluded pond','Dive in: heal 15 hp',function(){
-            g.p.gainHp(15);eventFunctionSuffix();
+             g.player.gainHp(15);eventFunctionSuffix();
         },'Sharpen Weapon: +25% dmg on current weapon',function(){
-            g.p.getByType('weapon').dmg = (1+Math.floor(g.p.getByType('weapon').dmg*1.25));eventFunctionSuffix();
+             g.player.getByType('weapon').dmg = (1+Math.floor( g.player.getByType('weapon').dmg*1.25));eventFunctionSuffix();
         });
     }else {
         eventInfo =  new EventOB(2,'A Hut','You come to an abandoned hut perched on a small hill','Sleep: heal 15 hp',function(){
-            g.p.gainHp(15);eventFunctionSuffix();
+             g.player.gainHp(15);eventFunctionSuffix();
         },'Train: +1 dmg',function(){
-            g.p.dmg+=1;eventFunctionSuffix();
+             g.player.dmg+=1;eventFunctionSuffix();
         });
     }
     eventInfo.createElements();

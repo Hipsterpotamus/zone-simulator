@@ -8,7 +8,7 @@ class Item{
         this.count = startingCount;
         this.useCount = useCount;
         this.equipped = false;
-        if(g.p.inv.item.length == 0){
+        if( g.player.inv.item.length == 0){
             this.equipped = true;
             $('#item-select-description').html(this.description+'<br>count : '+this.count);
         }
@@ -53,12 +53,12 @@ class Item{
 $(function() {
     $('#item-select').on('change',function(){
         let newEquip = $(this).val();
-        g.p.inv['item'].forEach(i => {
+         g.player.inv['item'].forEach(i => {
             if(i.rawname==newEquip){i.equipped = true;$('#item-select-description').html(i.description+'<br>count : '+i.count);}else{i.equipped = false;}
         });
     });
     $('#use-item').on('click',function(){
-        g.p.getByType('item').attemptUse();
+         g.player.getByType('item').attemptUse();
     });
 });
 

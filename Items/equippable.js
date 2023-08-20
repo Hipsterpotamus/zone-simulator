@@ -44,7 +44,7 @@ $(function(){
             let newEquip = $(this).val();
             let idPull = $(this).attr('id');
             let thing = idPull.replace(/-select$/i, '');
-            g.p.inv[thing].forEach(i => {
+             g.player.inv[thing].forEach(i => {
                 if(i.name==newEquip){i.equipped = true;updateEquippableStats(i);}else{i.equipped = false;}
             });
         });

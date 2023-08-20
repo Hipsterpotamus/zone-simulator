@@ -1,28 +1,29 @@
 function elementUp(){
-    $('#player-stats').html(entityHtmlOutput(g.p,true));
-    $('#enemy-stats').html(entityHtmlOutput(g.cEnemy,false));
+    $('#player-stats').html(playerHtmlOutput(g.player));
+    $('#enemy-stats').html(enemyHtmlOutput(g.cEnemy));
     $('#combatTimer').text(Math.floor(g.cTick/(3000))+":"+Math.floor((g.cTick%(3000)/50)));
     $('#zone-text').text('zone: '+g.zoneNum+'–'+g.space);
-    $('#gold-text').text('gold: '+g.p.gold);
+    $('#gold-text').text('gold: '+ g.player.gold);
 }
-function entityHtmlOutput(entity, playerQ){
+function playerHtmlOutput(player){
     let htmlOutput = '';
-    if(playerQ){
-        htmlOutput = entity.name+'<br>';
-        htmlOutput+='hp : '+entity.hp+'/'+entity.maxhp+'<br>';
-        htmlOutput+='dmg : '+entity.calcDmg()+' ('+entity.dmg+' + '+(entity.calcDmg()-entity.dmg)+')<br>';
-        htmlOutput+='time: '+(entity.calcAs()-(g.cTick%entity.calcAs()))+'<br>';
-        htmlOutput+='arm : '+entity.calcArm()+' ('+entity.arm+' + '+(entity.calcArm()-entity.arm)+')<br>';
-        htmlOutput+='regen : '+entity.calcRegen()+' ('+entity.regen+' + '+(entity.calcRegen()-entity.regen)+')<br>';
-    }else{
-        if(g.inCombat){
-            htmlOutput = entity.name+'<br>';
-            htmlOutput+='hp : '+entity.hp+'/'+entity.maxhp+'<br>';
-            htmlOutput+='dmg : '+entity.calcDmg()+'<br>';
-            htmlOutput+='time: '+(entity.calcAs()-(g.cTick%entity.calcAs()))+'<br>';
-            htmlOutput+='arm : '+entity.calcArm()+'<br>';
-            htmlOutput+='regen : '+entity.calcRegen()+'<br>';
-        }
+    htmlOutput = player.name+'<br>';
+    htmlOutput+='hp : '+player.hp+'/'+player.maxhp+'<br>';
+    htmlOutput+='dmg : '+player.calcDmg()+' ('+player.dmg+' + '+(player.calcDmg()-player.dmg)+')<br>';
+    htmlOutput+='time: '+(player.calcAs()-(g.cTick%player.calcAs()))+'<br>';
+    htmlOutput+='arm : '+player.calcArm()+' ('+player.arm+' + '+(player.calcArm()-player.arm)+')<br>';
+    htmlOutput+='regen : '+player.calcRegen()+' ('+player.regen+' + '+(player.calcRegen()-player.regen)+')<br>';
+    return htmlOutput;
+}
+function enemyHtmlOutput(enemy) {
+    let htmlOutput = '';
+    if(g.inCombat){
+        htmlOutput = enemy.name+'<br>';
+        htmlOutput+='hp : '+enemy.hp+'/'+enemy.maxhp+'<br>';
+        htmlOutput+='dmg : '+enemy.calcDmg()+'<br>';
+        htmlOutput+='time: '+(enemy.calcAs()-(g.cTick%enemy.calcAs()))+'<br>';
+        htmlOutput+='arm : '+enemy.calcArm()+'<br>';
+        htmlOutput+='regen : '+enemy.calcRegen()+'<br>';
     }
     return htmlOutput;
 }
