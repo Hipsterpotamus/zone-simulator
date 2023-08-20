@@ -11,7 +11,7 @@ function generatePath(){
     
     let eventStartP = 0.15; // will be parameters in a future more sophisticated version of this function
     let eventGrowP = 0.09;
-    let eventResetP = 0.08;
+    let eventResetP = 0.00;
    
 
     let restStartP = 0.05; // will be parameters in a future more sophisticated version of this function
