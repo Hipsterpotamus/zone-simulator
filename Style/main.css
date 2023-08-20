@@ -89,6 +89,9 @@ body, html {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border-radius: 32px;
+
+  display: flex;
+
 }
 
 #items-tab-row {
