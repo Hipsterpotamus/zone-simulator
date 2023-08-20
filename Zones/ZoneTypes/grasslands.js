@@ -1,11 +1,11 @@
 class grasslands extends zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
-        self.maxZoneLevel = 9;
-        self.shopType = '3w,2a,3s,1i';
-        self.zoneLable = 'grassland';
+        this.maxZoneLevel = 9;
+        this.shopType = '3w,2a,3s,1i';
+        this.zoneLable = 'grassland';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
-        self.enemyStats = {
+        this.enemyStats = {
             //zoneLevel : [
             //  [name, type, health, attackspeed, damage, armor, gold, regen, difficultyChange, complexStats]
             //  ...
@@ -84,7 +84,7 @@ class grasslands extends zone {
             ]
         };
         //could assign this in the parent class if this distribution holds across zones
-        self.levelDifficultyDist = {
+        this.levelDifficultyDist = {
             //zoneLevel : [easyPercent, mediumPercent] (hard is excluded because it is defaulted to)
             1: [0.50, 1.00],
             2: [0.35, 0.80],
@@ -97,7 +97,7 @@ class grasslands extends zone {
             9: [0, 0]
         }
 
-        self.zoneItems = [
+        this.zoneItems = [
             //[class, item]
             ['weapon', 'branch'],
             ['weapon', 'thistleknife'],
@@ -157,7 +157,7 @@ class grasslands extends zone {
             ['item', 'sharpeningstone']
         ];
 
-        self.zoneEvents = [
+        this.zoneEvents = [
             //[first possible space, last possible space, event id]
             [2, 3, 'A Tall Tree'],
             [4, 5, 'Clothes Cast Aside'],
@@ -168,6 +168,6 @@ class grasslands extends zone {
             [14, 18, 'Oil Fissure']
         ];
 
-        self.pathEvent = 'A Fork In The Road';
+        this.pathEvent = 'A Fork In The Road';
     }
 }

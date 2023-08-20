@@ -1,28 +1,28 @@
 class zone {
     constructor(zoneLevel) {
-        self.zoneLevel = zoneLevel;
-        self.minZoneLevel = 1;
+        this.zoneLevel = zoneLevel;
+        this.minZoneLevel = 1;
     }
 
     changeZoneLevel(num) {
-        if (self.zoneLevel + num > self.maxZoneLevel) {
-            self.zoneLevel = self.maxZoneLevel;
-        } else if (self.zoneLevel + num < self.minZoneLevel) {
-            self.zoneLevel = self.minZoneLevel;
+        if (this.zoneLevel + num > this.maxZoneLevel) {
+            this.zoneLevel = this.maxZoneLevel;
+        } else if (this.zoneLevel + num < this.minZoneLevel) {
+            this.zoneLevel = this.minZoneLevel;
         } else {
-            self.zoneLevel += num;
+            this.zoneLevel += num;
         }
     }
 
     getRandomEnemy() {
         const randomValue = Math.random();
-        const enemyStats = { ...self.enemyStats };
+        const enemyStats = { ...this.enemyStats };
         let levelAdjustment = 0;
         let selectedEnemyList;
     
-        const easyThreshold = self.levelDifficultyDist[self.zoneLevel][0];
-        const medThreshold = self.levelDifficultyDist[self.zoneLevel][1];
-        const adjZoneLevel = Math.min(self.zoneLevel, self.maxZoneLevel - 2);
+        const easyThreshold = this.levelDifficultyDist[this.zoneLevel][0];
+        const medThreshold = this.levelDifficultyDist[this.zoneLevel][1];
+        const adjZoneLevel = Math.min(this.zoneLevel, this.maxZoneLevel - 2);
     
         if (randomValue < easyThreshold) {
             selectedEnemyList = enemyStats[adjZoneLevel - 1];
@@ -42,7 +42,7 @@ class zone {
 
     getRandomEvent(space) {
         let eventPool = [];
-        self.zoneEvents.forEach(element => {
+        this.zoneEvents.forEach(element => {
             if (space >= element[0] && space <= element[1]) {
                 eventPool.push(element[2]);
             }
@@ -52,19 +52,19 @@ class zone {
     }
 
     getZoneEvent() {
-        return eventList[self.pathEvent];
+        return eventList[this.pathEvent];
     }
 
     getShopType() {
-        return self.shopType;
+        return this.shopType;
     }
 
     getZoneLable() {
-        return self.zoneLable;
+        return this.zoneLable;
     }
 
     pushZoneItems() {
-        for (const item of self.zoneItems) {
+        for (const item of this.zoneItems) {
             const category = item[0];
             const itemName = item[1];
             if (category === 'weapon') {

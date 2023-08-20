@@ -6,7 +6,7 @@ function startGame(){
         'zone': new grasslands(),
         'zoneNum':1,
         'space':0,
-        'player':new Benefactor('human'),
+        'player':new Ninja('human'), //change this class to change character
         'path':[],
         'inCombat': false,
         'level': 1,
@@ -26,23 +26,3 @@ $(function() {
         $('#start-screen').addClass('hidden');
     });
 });
-
-
-
-class lvlUpAbil{
-    constructor(name, startUpAction,){
-        this.name = name;
-        this.startUp = startUpAction;
-        this.startUp();
-    }
-}
-
-function displayWithSign(number){
-    if (number<0){
-        return "-"+(-number);
-    }else{
-        return "+"+number;
-    }
-}
-
-

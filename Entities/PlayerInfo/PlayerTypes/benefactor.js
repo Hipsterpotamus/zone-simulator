@@ -1,7 +1,7 @@
 class Benefactor extends Player {
     constructor(type) {
         super(type);
-        this.name = 'ben';
+        this.name = 'ben'; //gonna wait till more zones to implement
         this.hp = 100;
         this.maxhp = 100;
         this.dmg = 1;

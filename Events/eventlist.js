@@ -29,7 +29,7 @@ const eventList = {
             effect: function () {
                 g.player.inv.chest.push(new Equippable(true, true, 'dirty shirt', 'chest', 'shirt', 0, 1, 0, 0));
                 g.player.inv.legs.push(new Equippable(true, true, 'dirty pants', 'legs', 'pants', 0, 1, 0, 0));
-                g.player.levelheal -= 1;
+                g.player.changeLvlHeal(-1);
                 eventFunctionSuffix('dirty shirt & pants gained');
             }
         },
@@ -66,7 +66,7 @@ const eventList = {
             effect: function () {
                 if (g.player.gold < 6) { eventFunctionSuffix('not enough gold!'); return; }
                 g.player.gold -= 6;
-                if (Math.random() < 0.4) { g.player.gold += 20; }
+                if (Math.random() < 0.4) { g.player.gainGold(false, 20); }
                 eventFunctionSuffix('Success! +20 gold');
             }
         },
@@ -141,7 +141,7 @@ const eventList = {
         sell: {
             text: 'Sell: gain 10 gold',
             effect: function () {
-                g.player.gold += 10;
+                g.player.gainGold(false, 10);
                 eventFunctionSuffix('+10 gold');
             }
         }
@@ -181,7 +181,7 @@ const eventList = {
         work: {
             text: 'Work: gain 8 gold',
             effect: function () {
-                g.player.gold += 8;
+                g.player.gainGold(8);
                 eventFunctionSuffix();
             }
         }

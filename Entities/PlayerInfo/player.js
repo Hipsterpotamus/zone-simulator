@@ -1,6 +1,18 @@
 class Player extends Entity{
     constructor(type) {
         super(type);
+        //default stats- can be specified further in char classes
+        this.hp = 100;
+        this.maxhp = 100;
+        this.dmg = 1;
+        this.arm = 0;
+        this.regen = 0;
+        this.levelheal = 5;
+        this.income = 0;
+        this.aS = 100; //i'm not sure what the point of setting this stat is
+        this.aSLvl = 0;
+        this.dodge = 0;
+        this.gold = 25;
         this.inv = {
             'item':[],
             'weapon':[new Equippable(true, true, 'none', 'weapon', 'none', 0, 0, 0, 0)],
@@ -43,5 +55,13 @@ class Player extends Entity{
              }
         })
         return foundEquip;
+    }
+
+    gainGold(inBattle, amount) {
+        this.gold += amount;
+    }
+
+    changeLvlHeal(amount) {
+        this.levelheal += amount;
     }
 }

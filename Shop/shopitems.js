@@ -199,7 +199,7 @@ let shopItemsMasterList = {
          g.player.gainHp(10);
     },'common'),
     'waterbottle':new ShopItem('water bottle','waterbottle','statUp','(+3 level heal)',10, 0, function(){
-         g.player.levelheal+=3;
+         g.player.changeLvlHeal(3);
     },'common'),
     'morselofmeat':new ShopItem("morsel o' meat",'morselofmeat','statUp','(+1 dmg +1 armor)',24, 0, function(){
          g.player.dmg+=1;
