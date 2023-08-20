@@ -18,6 +18,13 @@ class ShopItem{
         if(g.p.gold>=this.goldPrice){
             g.p.gold-=this.goldPrice;
             this.onBuy();
+            if(this.item == 'item'){
+                for(a in g.p.inv.item){
+                    if(g.p.inv.item[a].rawname == this.rawname){
+                        g.p.inv.item[a].appendElement();
+                    }
+                }
+            }
             this.element.remove();
             elementUp();
         }
@@ -36,6 +43,7 @@ class ShopItem{
 }
 function clickToPur(name){
     shopItemsMasterList[name].purchase();
+    elementUp();
 }
 $(function() {
 
@@ -106,7 +114,7 @@ let shopItemsMasterList = {
         g.p.inv.head.push(new Equippable(true, true, 'propeller hat', 'head', 'helmet', 0, 1, 0, 14));
     },'common'),
     'headband': new ShopItem('headband','headband','head','(+1 regen headband)', 18, 0, function(){
-        g.p.inv.head.push(new Equippable(true, true, 'propeller hat', 'head', 'helmet', 0, 0, 1, 0));
+        g.p.inv.head.push(new Equippable(true, true, 'headband', 'head', 'helmet', 0, 0, 1, 0));
     },'common'),
     //grassland chest
     'cottonshirt':new ShopItem('cotton shirt','cottonshirt','chest','(1 armor shirt)', 5, 0, function(){
@@ -183,8 +191,9 @@ let shopItemsMasterList = {
         g.p.regen+=1;
     },'common'),
     'strawberry':new ShopItem('strawberry','strawberry','statUp','(+2 max hp +1 regen)', 18, 0, function(){
-        g.p.maxhp+=5;
-        g.p.hp+=5;
+        g.p.maxhp+=2;
+        g.p.hp+=2;
+        g.p.regen += 1;
     },'common'),
     'icecube':new ShopItem('ice cube','icecube','statUp','(heal 10 on purchase)',4,0,function(){
         g.p.gainHp(10);
@@ -217,7 +226,39 @@ let shopItemsMasterList = {
         g.p.dmg+=1;
         g.p.regen+=1;
         g.p.asLvl+=3;
+    },'common'),
+
+    // grasslands shop consumables
+    'firecracker':new ShopItem('firecracker','firecracker','item','(item: deal 20 dmg, lose 2 hp)', 5, 0, function(){
+        g.p.inv.item.push(new Item('firecracker', 'firecracker', 'combat-enemy', 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 1, 1, function(){
+            g.cEnemy.hp-=20;
+            g.p.hp-=2;
+        }));
+    },'common'),
+    'throwingegg':new ShopItem('throwing eggs','throwingegg','item','(3x item: current enemy loses 3 armor)', 7, 0, function(){
+        g.p.inv.item.push(new Item('throwing eggs', 'throwingegg', 'combat-enemy', "During combat, lower the current enemy's armor by 3", 3, 1, function(){
+            g.cEnemy.arm-=3;
+        }));
+    },'common'),
+    'bandages':new ShopItem('bandages','bandages','item','(4x item: heal 5 hp)', 9, 0, function(){
+        g.p.inv.item.push(new Item('bandage', 'bandage', 'all-self', "Heal 5", 4, 1, function(){
+            g.p.gainHp(5);
+        }));
+    },'common'),
+    'firstaidkit':new ShopItem('first aid kit','firstaidkit','item','(item: heal 20)', 8, 0, function(){
+        g.p.inv.item.push(new Item('first aid kit', 'firstaidkit', 'all-self', "Heal 20", 1, 1, function(){
+            g.p.gainHp(20);
+        }));
+    },'common'),
+   'sharpeningstone':new ShopItem('sharpening stone','sharpeningstone','item','(3x item: +2 dmg on weapon)', 26, 0, function(){
+        g.p.inv.item.push(new Item('sharpening stone', 'sharpeningstone', 'all-self', "Your currently equipped weapon gains +2 dmg", 3, 1, function(){
+            g.p.getByType('weapon').dmg+=2;
+            updateEquippableStats(g.p.getByType('weapon'));
+        }));
     },'common')
+
+
+    
 };
 let zoneIs = {
     'equippable' : {

@@ -77,6 +77,8 @@ class zone {
                 zoneIs.equippable.feet.push(shopItemsMasterList[itemName]);
             } else if (category === 'stat') {
                 zoneIs.stat.push(shopItemsMasterList[itemName]);
+            } else if (category === 'item') {
+                zoneIs.item.push(shopItemsMasterList[itemName]);
             }
         }
     }
