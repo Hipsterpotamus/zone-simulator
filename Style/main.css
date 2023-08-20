@@ -8,7 +8,6 @@
 @import url(equipment-menu.css);
 @import url(entity-panels.css);
 
-
 body, html {
   height: 100%;
   margin: 0;
@@ -128,10 +127,43 @@ body, html {
   height:50%;
 }
 .content-container #content-central-box{
-  width:75%;
-  height:100%;  
-  margin: 0% 12.5% 0% 12.5%;
+  padding:2rem;
+  height:100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
 }
+
+#content-central-box button {
+  padding: 1rem;
+  text-transform: capitalize;
+  border: none;
+  border-radius: 0.5rem;
+  z-index: 2;
+  font-family: 'Martian Mono', monospace;
+
+  
+  background-color: var(--md-sys-color-tertiary-variant);
+  color: var(--md-sys-color-tertiary);
+  cursor: pointer;
+  outline: 4px solid var(--md-sys-color-tertiary);
+  outline-offset: -2px;
+  
+  transition: all 0.2s ease-in-out;
+}
+/* make these buttons all have the hover class */
+#content-central-box button:hover {
+  background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-on-tertiary);
+  border-radius: 16px;
+  transform: scale(1.05);
+}
+
+
+
 
 
 #large-tab-title{
