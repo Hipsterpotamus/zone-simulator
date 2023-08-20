@@ -156,5 +156,18 @@ class grasslands extends zone {
             ['item', 'firstaidkit'],
             ['item', 'sharpeningstone']
         ];
+
+        self.zoneEvents = [
+            //[first possible space, last possible space, event id]
+            [2, 3, 'A Tall Tree'],
+            [4, 5, 'Clothes Cast Aside'],
+            [6, 7, 'The Traveler'],
+            [8, 9, 'A Gemstone?'],
+            [10, 11, 'The Horn'],
+            [12, 13, 'Wild Fire'],
+            [14, 18, 'Oil Fissure']
+        ];
+
+        self.pathEvent = 'A Fork In The Road';
     }
 }

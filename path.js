@@ -111,10 +111,10 @@ function genEvent(eventPath){
 
     if(eventPath){
         $('#large-tab-title').text('A Forkroad');
-        eventInfo = pathEventPull();
+        eventInfo = g.zone.getZoneEvent();
     }else{
         $('#large-tab-title').text('Event');
-        eventInfo = eventPull();
+        eventInfo = g.zone.getRandomEvent(g.space);
     }
     eventInfo.createElements();
 }
@@ -127,24 +127,12 @@ function genRest(){
     $('.floating-next').removeClass('show');
     $('.floating-next').addClass('hide');
     let rnd = Math.random();
-    if(rnd<0.4){
-        eventInfo =  new EventOB(2,'A Cozy Village','You come to a cozy village','Rest: heal 15 hp',function(){
-             g.player.gainHp(15);eventFunctionSuffix();
-        },'Work: gain 8 gold',function(){
-             g.player.gold+=8;eventFunctionSuffix();
-        });
-    }else if(rnd < 0.8){
-        eventInfo =  new EventOB(2,'A Pond','You come to a refreshing, secluded pond','Dive in: heal 15 hp',function(){
-             g.player.gainHp(15);eventFunctionSuffix();
-        },'Sharpen Weapon: +25% dmg on current weapon',function(){
-             g.player.getByType('weapon').dmg = (1+Math.floor( g.player.getByType('weapon').dmg*1.25));eventFunctionSuffix();
-        });
-    }else {
-        eventInfo =  new EventOB(2,'A Hut','You come to an abandoned hut perched on a small hill','Sleep: heal 15 hp',function(){
-             g.player.gainHp(15);eventFunctionSuffix();
-        },'Train: +1 dmg',function(){
-             g.player.dmg+=1;eventFunctionSuffix();
-        });
+    if (rnd < 0.4) {
+        eventInfo = eventList['A Cozy Village'];
+    } else if (rnd < 0.8) {
+        eventInfo = eventList['A Pond'];
+    } else {
+        eventInfo = eventList['A Hut'];
     }
     eventInfo.createElements();
 }

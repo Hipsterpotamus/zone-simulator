@@ -40,6 +40,21 @@ class zone {
         return new Enemy(...enemyAttributes);
     }
 
+    getRandomEvent(space) {
+        let eventPool = [];
+        self.zoneEvents.forEach(element => {
+            if (space >= element[0] && space <= element[1]) {
+                eventPool.push(element[2]);
+            }
+        });
+        const selectedEvent = eventPool[Math.floor(Math.random() * eventPool.length)];
+        return eventList[selectedEvent];
+    }
+
+    getZoneEvent() {
+        return eventList[self.pathEvent];
+    }
+
     getShopType() {
         return self.shopType;
     }
