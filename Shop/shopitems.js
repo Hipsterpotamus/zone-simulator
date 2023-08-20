@@ -87,7 +87,7 @@ let shopItemsMasterList = {
         g.p.inv.weapon.push(new Equippable(false, true, 'boxing gloves', 'weapon', 'gloves', 2, 2, 0, 2));
     },'common'),
     'shortsword':new ShopItem('shortsword','shortsword','weapon','(4 dmg +12 speed sword)',15, 0,function(){
-        g.p.inv.weapon.push(new Equippable(false, true, 'boxing gloves', 'weapon', 'sword', 4, 0, 0, 12));
+        g.p.inv.weapon.push(new Equippable(false, true, 'short sword', 'weapon', 'sword', 4, 0, 0, 12));
     },'common'),
     'longsword':new ShopItem('longsword','longsword','weapon','(8 dmg +1 armor -12 speed sword)',22, 0,function(){
         g.p.inv.weapon.push(new Equippable(false, true, 'longsword', 'weapon', 'sword', 8, 1, 0, -12));
