@@ -7,8 +7,21 @@
   border-radius: 100px;
 }
 
+.theme-buttons button:hover::after {
+  display: block;
+  position: absolute;
+  bottom: 120%;
+  left: -10%;
+  background-color: #fff;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 #theme-buttons-dark {
   background-color: rgb(0, 0, 0);
+  z-index: 2;
 }
 
 #theme-buttons-light {
@@ -31,6 +44,9 @@
   width: 3rem;
   height: 3rem;
 }
+.ocea-button:hover::after {
+  content: 'Ocea';
+}
 
 .hazel-button {
   background-color: #b75f2d;
@@ -38,6 +54,9 @@
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
+}
+.hazel-button:hover::after {
+  content: 'Hazel';
 }
 
 .earth-button {
@@ -47,6 +66,9 @@
   width: 3rem;
   height: 3rem;
 }
+.earth-button:hover::after {
+  content: 'Earth';
+}
 
 .rose-button {
   background-color: #7f525d;
@@ -54,6 +76,9 @@
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
+}
+.rose-button:hover::after {
+  content: 'Lavender Rose';
 }
 
 .grey-button {
@@ -63,6 +88,9 @@
   width: 3rem;
   height: 3rem;
 }
+.grey-button:hover::after {
+  content: 'Greyscale';
+}
 
 .forest-button {
   background-color: #618126;
@@ -71,6 +99,9 @@
   width: 3rem;
   height: 3rem;
 }
+.forest-button:hover::after {
+  content: 'Forest';
+}
 
 .bloodorange-button {
   background-color: #9c413d;
@@ -78,4 +109,7 @@
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
+}
+.bloodorange-button:hover::after {
+  content: 'Blood Orange';
 }
