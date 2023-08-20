@@ -41,7 +41,7 @@ class Item{
                 this.count-=this.useCount;
                 this.onUse();
             }
-            
+            $('#item-select-description').html(this.description+'<br>count : '+this.count);
         }else{
             // for future: communicate to player that count = 0 and item use failed
         }
@@ -51,7 +51,7 @@ class Item{
 
 
 $(function() {
-    $('item-select').on('change',function(){
+    $('#item-select').on('change',function(){
         let newEquip = $(this).val();
         g.p.inv['item'].forEach(i => {
             if(i.rawname==newEquip){i.equipped = true;$('#item-select-description').html(i.description+'<br>count : '+i.count);}else{i.equipped = false;}
