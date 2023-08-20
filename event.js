@@ -156,10 +156,10 @@ function eventPull(){
                     return e;
                 case 10:
                     e = new EventOB(3, 'The Horn', "You look down to see a strange cone at your feet. It's a horn of some kind–useful in combat, but it's clogged with mud. Blowing the horn will alert danger, but with the mud it's useless", 'Blow and Wear: alert enemies, gain horn helmet', function(){
-                        g.zone.increaseZoneLevel(2);
+                        g.zone.changeZoneLevel(2);
                         g.p.inv.head.push(new Equippable(true, true, 'horn helmet', 'head', 'helmet', 2, 0, 0, 0));eventFunctionSuffix('horn helmet acquired');
                     },'Blow and wield: alert enemies, gain horn sling',function(){
-                        g.zone.increaseZoneLevel(2);
+                        g.zone.changeZoneLevel(2);
                         g.p.inv.head.push(new Equippable(true, true, 'horn sling', 'weapon', 'sling', 4, 0, 0, 25));eventFunctionSuffix('horn sling acquired');
                     },'Drop it: gain nothing',function(){
                         eventFunctionSuffix();
@@ -167,10 +167,10 @@ function eventPull(){
                     return e;
                 case 11:
                     e = new EventOB(3, 'The Horn', "You look down to see a strange cone at your feet. It's a horn of some kind–useful in combat, but it's clogged with mud. Blowing the horn will alert danger, but with the mud it's useless", 'Blow and Wear: alert enemies, gain horn helmet', function(){
-                        g.zone.increaseZoneLevel(2);
+                        g.zone.changeZoneLevel(2);
                         g.p.inv.head.push(new Equippable(true, true, 'horn helmet', 'head', 'helmet', 2, 0, 0, 0));eventFunctionSuffix('horn helmet acquired');
                     },'Blow and wield: alert enemies, gain horn sling',function(){
-                        g.zone.increaseZoneLevel(2);
+                        g.zone.changeZoneLevel(2);
                         g.p.inv.weapon.push(new Equippable(true, true, 'horn sling', 'weapon', 'sling', 4, 0, 0, 25));eventFunctionSuffix('horn sling acquired');
                     },'Drop it: gain nothing',function(){
                         eventFunctionSuffix();

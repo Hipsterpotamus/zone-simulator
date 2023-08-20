@@ -66,7 +66,7 @@ function advancePath(){
 
     g.space+=1;
     $('#content-central-box').empty();
-    if(g.space%3==0){g.zone.increaseZoneLevel(1);console.log('diff up')}
+    if(g.space%3==0){g.zone.changeZoneLevel(1);console.log('diff up')}
     switch (g.path[(g.space-1)]){
         case 'enemy':
             genEnemy();
