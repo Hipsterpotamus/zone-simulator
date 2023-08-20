@@ -16,15 +16,11 @@ class Enemy extends Entity{
     }
     calcAs() {
         const rawAS = this.aSLvl;
-        const fibonacci = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987];
-        if(rawAS > 85){
-            for(let x = (fibonacci.length-1);x>=0;x-=1){
-                if((rawAS-85) > fibonacci[x]){
-                    this.aS = fibonacci.length-x;
-                    x=-1;
-                }
-            }
-        }else{
+        const adjRoot = 3; //functionally similar to fibonacci with cleaner code
+        const adjScalingMult = 4;
+        if (rawAS > 85) {
+            this.aS = Math.max(Math.floor(Math.pow((rawAS - 85) * adjScalingMult, 1/adjRoot)), 1);
+        } else {
             this.aS = 100 - rawAS;
         }
         return this.aS;
