@@ -64,6 +64,35 @@ function displayWithSign(number){
     }
 }
 
+// Change Encounter/Shop/Event Title Text
+ // centered=true to center the title in the floating enounter box
+function setBroadcastTitleText(text, centered){
+    // reset description text on Title change - clear any elements in #description-container
+    $('#description-container').empty();
+
+    $('#broadcast-title').text(text);
+    if(centered){
+        // apply the centered class
+        $('#broadcast-title').addClass('centered');
+    }else{
+        // remove the centered class
+        $('#broadcast-title').removeClass('centered');
+    }  
+}
+
+function setNextButtonVisible(visible) {
+    if(visible){
+        $('.floating-next').addClass('show');
+        $('.floating-next').removeClass('hide');
+        $('.floating-next').prop('disabled', false)
+    }else{
+        $('.floating-next').addClass('hide');
+        $('.floating-next').removeClass('show');
+        $('.floating-next').prop('disabled', true);
+    }
+}
+
+// Draggable Classes
 $(function() {
     $( ".draggable" ).draggable();
     $( ".draggable-x" ).draggable({ axis: "x" });

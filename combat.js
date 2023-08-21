@@ -94,8 +94,7 @@ function combatWin(){
      g.player.gainHp( g.player.levelheal);
     clearInterval(timeoutCombatLoop);
     $('#go-next').removeClass('hidden');
-    $('.floating-next').removeClass('hide');
-    $('.floating-next').addClass('show');
+    setNextButtonVisible(true);
 
     $('#combatTimer').addClass('hidden');
 
