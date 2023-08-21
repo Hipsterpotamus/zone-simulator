@@ -86,6 +86,7 @@ function playerDeath(){
 }
 
 function combatWin(){
+    setBroadcastTitleText('Victory!', true)
     g.inCombat = false;
     g.player.gainGold(true, g.cEnemy.gold);
     g.zone.changeZoneLevel(g.cEnemy.diffC);
