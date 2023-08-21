@@ -47,41 +47,41 @@ class Forest extends Zone {
                 ['elven scout', 'elf', 90, 33, 16, 0, 38, 4, 0, {'dodge':25}],
                 ['elven gatherer', 'elf', 115, 22, 23, 1, 44, 7, 0],
                 ['elven rancher', 'elf', 130, -100, 30, 1, 46, 7, 0, {'dodge':15}],
-                ['little goblin', 'goblin', 115, 66, 14, 2, 42, 5, 0, {'dodge':16}],
+                ['goblin', 'goblin', 115, 66, 14, 2, 42, 5, 0, {'dodge':16}],
                 ['forest snuffler', 'critter', 200, -300, 26, 2, 8, 4, 0, {'tear':3,'shatter':50}],
                 ['living sap-ooze', 'slime', 120, 70, 3, 0, 33, 4, 0,{'shatter':8}]
             ],
             5: [
-                ['sparrow', 'bird', 24, 0, 4, 1, 8, 0, 0, {'dodge':25}],
-                ['swallow', 'bird', 27, 20, 4, 1, 9, 0, 0, {'dodge':25}],
-                ['lark', 'bird', 22, 25, 3, 2, 11, 0, 0, {'dodge':33}],
-                ['dove', 'bird', 18, -15, 3, 1, 12, 0, 0, {'dodge':51}],
-                ['burrow owl', 'bird', 21, -120, 5, 1, 9, 1, 0, {'dodge':33}],
-                ['quail', 'bird', 30, -20, 5, 2, 12, 1, 0]
+                ['pixie', 'fairy', 7, 0, 28, 1, 65, 1, 0, {'dodge':85}],
+                ['sentry bird', 'bird', 140, 50, 21, 1, 42, 3, 0, {'dodge':25}],
+                ['goblin clawer', 'goblin', 125, 25, 27, 5, 47, 1, 0, {'tear':1}],
+                ['elven charger', 'elf', 170, -200, 36, 1, 46, 4, 0, {'dodge':11,'shatter':50}],
+                ['mint slime', 'slime', 130, 0, 32, 1, 49, 9, 0, {'lifedrain':10}],
+                ['forest-green slime', 'slime', 130, 0, 32, 9, 48, 1, 0, {'lifedrain':10}]
             ],
             6: [
-                ['prairie dog', 'critter', 30, -80, 6, 1, 8, 1, 0],
-                ['badger', 'critter', 32, 20, 4, 2, 11, 0, 0],
-                ['ferret', 'critter', 38, -30, 5, 2, 10, 0, 0],
-                ['jackrabbit', 'critter', 28, 25, 4, 1, 10, 1, 0, {'dodge':10}],
-                ['skunk', 'critter', 29, -700, 20, 2, 12, 1, 0],
-                ['weasel', 'critter', 26, 40, 5, 2, 10, 1, 0]
+                ['leaf wisp', 'wisp', 88, -22, 44, -2, 51, 14, 0, {'dodge':12}],
+                ['tree wisp', 'wisp', 88, 22, 44, -2, 53, 14, 0, {'dodge':12}],
+                ['mist wisp', 'wisp', 88, -22, 44, -2, 52, 14, 0, {'dodge':12}],
+                ['spirit snake', 'snake', 65, 30, 27, 2, 53, 2, 0, {'lifedrain':45}],
+                ['goblin ranger', 'goblin', 180, -50, 39, 5, 51, 4, {'dodge':25}],
+                ['walking weed', 'plant', 200, -33, 25, 4, 53, 1, 0,{'lifedrain':25,'shatter':33}]
             ],
             7: [
-                ['deer', 'hoofed', 48, 10, 4, 2, 13, 1, 0, {"dodge":20}],
-                ['antelope', 'hoofed', 52, -10, 5, 1, 13, 1, 0],
-                ['impala', 'hoofed', 54, 25, 3, 1, 10, 1, 0],
-                ['wildebeast', 'hoofed', 65, -60, 7, 2, 18, 1, 0],
-                ['pronghorn', 'hoofed', 50, 20, 4, 1, 10, 2, 0],
-                ['gazelle', 'hoofed', 42, 20, 3, 2, 13, 1, 0, {"dodge":40}]
+                ['tribal dryad', 'dryad', 156, 33, 36, 8, 59, 5, 0, {'tear':3}],
+                ['hunter dryad', 'dryad', 156, -33, 41, 12, 58, 3, 0, {'shatter':40}],
+                ['harvesting dryad', 'dryad', 156, -220, 69, 3, 65, 9, 0, {'lifedrain':8}],
+                ['healer dryad', 'dryad', 156, -60, 50, 2, 58, 7, 0,{'lifedrain':28}],
+                ['sprinter dryad', 'dryad', 156, 43, 33, 4, 57, 4, 0, {'dodge':30}],
+                ['knight dryad', 'dryad', 156, -33, 38, 13, 60, 2, 0, {"shatter":80}]
             ],
             8: [
-                ['fox', 'critter', 56, 25, 5, 2, 15, 1, 0],
-                ['coyote', 'critter', 62, -33, 7, 0, 16, 3, 0],
-                ['mongoose', 'critter', 40, 15, 6, 0, 12, 2, 0],
-                ['bobcat', 'critter', 80, 10, 10, 2, 24, 1, -1],
-                ['jackal', 'critter', 50, 10, 7, 1, 12, 1, 0, {'dodge':20}],
-                ['hyena', 'critter', 70, 0, 9, 1, 20, 2, 0]
+                ['goblin chieftan', 'goblin', 180, 25, 5, 2, 15, 1, 0],
+                ['elf ', 'critter', 62, -33, 7, 0, 16, 3, 0],
+                ['', 'critter', 40, 15, 6, 0, 12, 2, 0],
+                ['', 'critter', 80, 10, 10, 2, 24, 1, -1],
+                ['', 'critter', 50, 10, 7, 1, 12, 1, 0, {'dodge':20}],
+                ['', 'critter', 70, 0, 9, 1, 20, 2, 0]
             ]
         };
         this.bossStats = [

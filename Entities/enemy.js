@@ -35,4 +35,7 @@ class Enemy extends Entity{
     calcShatter() {
         return this.shatter;
     }
+    calcLifeDrain() {
+        return this.lifedrain;
+    }
 }

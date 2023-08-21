@@ -33,6 +33,7 @@ function combatTick(){
             }
             if (enemyDMG < 0){enemyDMG = 0;}
             g.player.hp-=enemyDMG;
+            g.cEnemy.gainHp(Math.floor(enemyDMG*(g.cEnemy.calcLifeDrain()/100)))
             let cleanShatter = Math.floor(g.cEnemy.calcShatter()/10); // shatter application
             if(Math.random()<((g.cEnemy.calcShatter()%10)/10)){cleanShatter+=1;}
             g.player.status.shatterApplied+=cleanShatter;
@@ -50,6 +51,7 @@ function combatTick(){
             }
             if (playerDMG < 0) {playerDMG = 0;}
             g.cEnemy.hp-=playerDMG;
+            g.player.gainHp(Math.floor(playerDMG*(g.player.calcLifeDrain()/100)))
             let cleanShatter = Math.floor(g.player.calcShatter()/10); // shatter application
             if(Math.random()<((g.player.calcShatter()%10)/10)){cleanShatter+=1;}
             g.cEnemy.status.shatterApplied+=cleanShatter;

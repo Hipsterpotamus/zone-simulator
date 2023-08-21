@@ -10,6 +10,7 @@ class Equippable {
         this.regen = regen;
         this.aSChange = attackSpeedChange;
         this.income = 0;
+        this.lifedrain = 0;
         this.thorn = 0;
         this.dodge = 0;
         this.tear = 0;
