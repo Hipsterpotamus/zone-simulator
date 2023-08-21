@@ -38,18 +38,18 @@ class Forest extends Zone {
             3: [
                 ['brown bear', 'critter', 100, -90, 24, 6, 25, 1, 0, {'tear':2}],
                 ['black bear', 'critter', 100, -70, 20, 6, 25, 1, 0, {'tear':2}],
-                ['moose', 'critter', 140, 33, 16, 3, 29, 3, 0],
-                ['gorilla', 'critter', 90, -25, 19, 7, 26, 1, 0],
+                ['moose', 'critter', 140, 33, 16, 3, 29, 3, 0, {'shatter':2}],
+                ['gorilla', 'critter', 95, -25, 17, 7, 26, 1, 0, {'shatter':8}],
                 ['chimpanzee', 'critter', 85, 28, 17, 5, 33, 3, 0, {'dodge':40}],
-                ['anaconda', 'snake', 188, -350, 35, 9, 28, 1, 0]
+                ['anaconda', 'snake', 188, -350, 30, 9, 28, 1, 0, {'shatter':80}]
             ],
             4: [
-                ['mole', 'critter', 20, -100, 5, 0, 8, 0, 0],
-                ['prairie dog', 'critter', 20, 45, 3, 0, 8, 0, 0],
-                ['gopher', 'critter', 20, -100, 3, 1, 8, 0, 0],
-                ['ground squirrel', 'critter', 20, -120, 4, 1, 8, 0, 0],
-                ['mole-rat', 'critter', 20, -160, 5, 1, 8, 0, 0],
-                ['meerkat', 'critter', 20, -70, 2, 0, 8, 1, 0]
+                ['elven scout', 'elf', 90, 33, 16, 0, 38, 4, 0, {'dodge':25}],
+                ['elven gatherer', 'elf', 115, 22, 23, 1, 44, 7, 0],
+                ['elven rancher', 'elf', 130, -100, 30, 1, 46, 7, 0, {'dodge':15}],
+                ['little goblin', 'goblin', 115, 66, 14, 2, 42, 5, 0, {'dodge':16}],
+                ['forest snuffler', 'critter', 200, -300, 26, 2, 8, 4, 0, {'tear':3,'shatter':50}],
+                ['living sap-ooze', 'slime', 120, 70, 3, 0, 33, 4, 0,{'shatter':8}]
             ],
             5: [
                 ['sparrow', 'bird', 24, 0, 4, 1, 8, 0, 0, {'dodge':25}],
