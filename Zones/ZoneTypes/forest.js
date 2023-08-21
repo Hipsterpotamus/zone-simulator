@@ -2,8 +2,8 @@ class Forest extends Zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
         this.maxZoneLevel = 9;
-        this.shopType = [3,2,3,1];
-
+        this.shopType = [3,2,3,1]; //shop gen [weaponNumber, armorNumber, statNumber, itemNumber]
+        this.pathGen = [14, 0.50, 0.15, 0, 0.15, 0.09, 0, 0.05, 0.05, 0.05]; //path gen, shop start, shop grow, shop reset, event start, event grow, event reset, rest start, rest grow, rest reset
         this.zoneLable = 'forest';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
         this.enemyStats = {
@@ -35,31 +35,8 @@ class Forest extends Zone {
                 ['reindeer', 'hoofed', 90, -65, 13, 1, 21, 3, 0],
                 ['massic termite', 'bug', 80, -33, 11, 3, 22, 0, 0]
             ],
-            0: [
-                ['large worm', 'bug', 45, 0, 7, 1, 11, 2, 0],
-                ['bark beetle', 'bug', 25, 5, 8, 5, 13, 1, 0],
-                ['shieldbug', 'bug', 36, -24, 6, 5, 12, 1, 0],
-                ['hawk', 'bird', 42, 5, 5, 1, 15, 2, 0, {'dodge':18}],
-                ['owl', 'bird', 60, -15, 5, 2, 14, 1, 0, {'dodge':10}],
-                ['bat', 'bird', 28, -90, 15, 1, 12, 1, 0, {'dodge':25}]
-            ],
-            1: [
-                ['boar', 'critter', 60, 35, 7, 1, 14, 2, 0, {'tear':1}],
-                ['elk', 'hoofed', 72, -30, 7, 3, 17, 0, 0],
-                ['wolf', 'critter', 68, 65, 6, 0, 16, 0, 0],
-                ['falcon', 'bird', 48, -75, 9, 2, 15, 1, 0, {'dodge':25}],
-                ['red fox', 'critter', 46, -20, 8, 1, 14, 3, 0],
-                ['koala', 'critter', 52, -95, 12, 0, 6, 4, 0]
-            ],
-            2: [
-                ['green slime', 'slime', 70, 0, 10, 1, 18, 4, 0],
-                ['lime slime', 'slime', 70, 0, 10, 4, 20, 1, 0],
-                ['shrunk elf', 'elf', 50, 40, 7, 0, 19, 5, 0],
-                ['little goblin', 'goblin', 65, 66, 6, 1, 18, 3, 0],
-                ['reindeer', 'hoofed', 90, -65, 13, 1, 21, 3, 0],
-                ['massic termite', 'bug', 80, -33, 11, 3, 22, 0, 0]
             3: [
-                ['rabbit', 'critter', 18, 20, 2, 0, 8, 0, 0],
+                ['rabbit', 'critter', 18, 20, 2, 0, 8, 0, 0], //not finished up until this point
                 ['bunny', 'critter', 14, 45, 2, 0, 6, 0, 0],
                 ['hare', 'critter', 21, 0, 2, 0, 8, 0, 0],
                 ['bunny-rabbit', 'critter', 16, 32, 2, 0, 7, 0, 0],
