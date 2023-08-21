@@ -40,7 +40,7 @@ class Player extends Entity{
         const adjRoot = 3; //functionally similar to fibonacci with cleaner code
         const adjScalingMult = 4;
         if (rawAS > 85) {
-            this.aS = Math.max(Math.floor(Math.pow((rawAS - 85) * adjScalingMult, 1/adjRoot)), 1);
+            this.aS = Math.max(15 - Math.floor(Math.pow((rawAS - 85) * adjScalingMult, 1/adjRoot)), 1) ;
         } else {
             this.aS = 100 - rawAS;
         }

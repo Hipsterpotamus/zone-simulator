@@ -16,7 +16,7 @@ function fillShop(shopCode) {
             if (availableItems.length === 0) {
                 break;
             }
-            let searchInd = Math.floor(Math.random() * availableItems[category].length);
+            let searchInd = Math.floor(Math.random() * availableItems.length);
             let item = availableItems[searchInd];
             availableItems.splice(searchInd, 1);
             item.appendShopItem();
