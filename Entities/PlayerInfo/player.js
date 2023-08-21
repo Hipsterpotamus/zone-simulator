@@ -52,6 +52,9 @@ class Player extends Entity{
     calcThorn() {
         return (this.thorn+this.getByType('weapon').thorn+this.getByType('head').thorn+this.getByType('chest').thorn+this.getByType('legs').thorn+this.getByType('feet').thorn);
     }
+    calcShatter() {
+        return (this.shatter+this.getByType('weapon').shatter+this.getByType('head').shatter+this.getByType('chest').shatter+this.getByType('legs').shatter+this.getByType('feet').shatter);
+    }
     calcIncome() {
         return (this.income+this.getByType('weapon').income+this.getByType('head').income+this.getByType('chest').income+this.getByType('legs').income+this.getByType('feet').thorn);
     }

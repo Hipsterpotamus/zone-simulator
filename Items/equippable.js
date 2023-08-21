@@ -12,6 +12,8 @@ class Equippable {
         this.income = 0;
         this.thorn = 0;
         this.dodge = 0;
+        this.tear = 0;
+        this.shatter = 0;
         this.element;
                 
         if(initEle){

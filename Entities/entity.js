@@ -16,6 +16,8 @@ class Entity{
         this.dodge = 0;        
         this.regenRate = 50;
         this.tear = 0;
+        this.shatter = 0;
+        this.status = new CleanStatus();
         if(complexStats){
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];

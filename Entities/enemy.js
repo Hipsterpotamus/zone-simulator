@@ -32,4 +32,7 @@ class Enemy extends Entity{
     calcThorn() {
         return this.thorn;
     }
+    calcShatter() {
+        return this.shatter;
+    }
 }

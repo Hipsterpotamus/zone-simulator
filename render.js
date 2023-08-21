@@ -11,10 +11,16 @@ function playerHtmlOutput(player){
     htmlOutput+='hp : '+player.hp+'/'+player.maxhp+'<br>';
     htmlOutput+='dmg : '+player.calcDmg()+' ('+player.dmg+' + '+(player.calcDmg()-player.dmg)+')<br>';
     htmlOutput+='time: '+(player.calcAs()-(g.cTick%player.calcAs()))+'<br>';
-    htmlOutput+='arm : '+player.calcArm()+' ('+player.arm+' + '+(player.calcArm()-player.arm)+')<br>';
+    if(player.status.shatterApplied!=0){
+        htmlOutput+='arm : '+Math.max(0,(player.calcArm()-player.status.shatterApplied))+' ('+player.arm+' + '+(player.calcArm()-player.arm)+' - '+Math.min(player.calcArm(), player.status.shatterApplied)+')<br>';
+    }else{
+        htmlOutput+='arm : '+player.calcArm()+' ('+player.arm+' + '+(player.calcArm()-player.arm)+')<br>';
+    }
+    
     htmlOutput+='regen : '+player.calcRegen()+' ('+player.regen+' + '+(player.calcRegen()-player.regen)+')<br>';
     if(player.calcDodge()!=0){htmlOutput+='dodge : '+player.calcDodge()+' ('+player.dodge+' + '+(player.calcDodge()-player.dodge)+')<br>';}
     if(player.calcThorn()!=0){htmlOutput+='thorn : '+player.calcThorn()+' ('+player.thorn+' + '+(player.calcThorn()-player.thorn)+')<br>';}
+    if(player.calcShatter()!=0){htmlOutput+='shatter : '+player.calcShatter()+' ('+player.shatter+' + '+(player.calcShatter()-player.shatter)+')<br>';}
     return htmlOutput;
 }
 function enemyHtmlOutput(enemy) {
@@ -24,10 +30,11 @@ function enemyHtmlOutput(enemy) {
         htmlOutput+='hp : '+enemy.hp+'/'+enemy.maxhp+'<br>';
         htmlOutput+='dmg : '+enemy.calcDmg()+'<br>';
         htmlOutput+='time: '+(enemy.calcAs()-(g.cTick%enemy.calcAs()))+'<br>';
-        htmlOutput+='arm : '+enemy.calcArm()+'<br>';
+        htmlOutput+='arm : '+(enemy.calcArm()-enemy.status.shatterApplied)+'<br>';
         htmlOutput+='regen : '+enemy.calcRegen()+'<br>';
-        if(enemy.calcDodge()!=0){htmlOutput+='dodge : '+enemy.calcDodge()+' ('+enemy.dodge+' + '+(enemy.calcDodge()-enemy.dodge)+')<br>';}
-        if(enemy.calcThorn()!=0){htmlOutput+='thorn : '+enemy.calcThorn()+' ('+enemy.thorn+' + '+(enemy.calcThorn()-enemy.thorn)+')<br>';}
+        if(enemy.calcDodge()!=0){htmlOutput+='dodge : '+enemy.calcDodge()+'<br>';}
+        if(enemy.calcThorn()!=0){htmlOutput+='thorn : '+enemy.calcThorn()+'<br>';}
+        if(enemy.calcShatter()!=0){htmlOutput+='shatter : '+enemy.calcShatter()+'<br>';}
     }
     return htmlOutput;
 }

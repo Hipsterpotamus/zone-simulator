@@ -27,9 +27,15 @@ function combatTick(){
     g.cTick += 1;
     if(g.cTick%g.cEnemy.calcAs()==0){
         if(Math.random()>( g.player.dodge*0.01)){
-            let enemyDMG = (g.cEnemy.calcDmg()- g.player.calcArm());
+            let enemyDMG = g.cEnemy.calcDmg();
+            if(g.player.status.shatterApplied<g.player.calcArm()){
+                enemyDMG -= (g.player.calcArm()-g.player.status.shatterApplied);
+            }
             if (enemyDMG < 0){enemyDMG = 0;}
             g.player.hp-=enemyDMG;
+            let cleanShatter = Math.floor(g.cEnemy.calcShatter()/10); // shatter application
+            if(Math.random()<((g.cEnemy.calcShatter()%10)/10)){cleanShatter+=1;}
+            g.player.status.shatterApplied+=cleanShatter;
             g.player.maxhp -= g.cEnemy.tear;
             if(g.player.hp>g.player.maxhp){g.player.hp=g.player.maxhp}
             g.cEnemy.hp-=g.cEnemy.calcThorn();
@@ -39,9 +45,14 @@ function combatTick(){
     if(g.cTick% g.player.calcAs()==0){
         if(Math.random()>(g.cEnemy.dodge*0.01)){
             let playerDMG =  g.player.calcDmg();
-            playerDMG -= g.cEnemy.calcArm();
-            if (playerDMG<0) {playerDMG=0;}
+            if(g.cEnemy.status.shatterApplied<g.cEnemy.calcArm()){
+                playerDMG -= (g.cEnemy.calcArm()-g.cEnemy.status.shatterApplied);
+            }
+            if (playerDMG < 0) {playerDMG = 0;}
             g.cEnemy.hp-=playerDMG;
+            let cleanShatter = Math.floor(g.player.calcShatter()/10); // shatter application
+            if(Math.random()<((g.player.calcShatter()%10)/10)){cleanShatter+=1;}
+            g.cEnemy.status.shatterApplied+=cleanShatter;
             g.cEnemy.maxhp -= g.player.tear;
             if(g.cEnemy.hp>g.cEnemy.maxhp){g.cEnemy.hp=g.cEnemy.maxhp}
             g.player.hp-=g.cEnemy.calcThorn();
@@ -76,8 +87,9 @@ function playerDeath(){
 
 function combatWin(){
     g.inCombat = false;
-     g.player.gainGold(true, g.cEnemy.gold);
+    g.player.gainGold(true, g.cEnemy.gold);
     g.zone.changeZoneLevel(g.cEnemy.diffC);
+    g.player.status = new CleanStatus();
     g.cTick = 0;
      g.player.gainHp( g.player.levelheal);
     clearInterval(timeoutCombatLoop);
@@ -89,3 +101,11 @@ function combatWin(){
 
     elementUp();
 }
+
+class CleanStatus {
+    constructor(){
+        this.shatterApplied = 0;
+        this.bleedApplied = 0;
+    }
+}
+

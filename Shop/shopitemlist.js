@@ -177,7 +177,7 @@ let shopItemsMasterList = {
          g.player.regen+=1;
          g.player.aSLvl+=3;
     },'common'),
-    'leafletscarf':new ShopItem("leaflet scarf",'cheeseburger','statUp','(+4% dodge)',15, 0, function(){
+    'leafletscarf':new ShopItem("leaflet scarf",'leafletscarf','statUp','(+4% dodge)',15, 0, function(){
           g.player.dodge+=4;
      },'common'),
      'banana':new ShopItem("banana",'banana','statUp','(+14 max hp +2 speed)',18, 0, function(){
