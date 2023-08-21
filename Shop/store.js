@@ -16,13 +16,10 @@ function fillShop(shopCode) {
             if (availableItems.length === 0) {
                 break;
             }
-            let searchInd = Math.floor(Math.random() * availableItems.length);
-            itemToPush.push(availableItems[searchInd]);
-            availableItems.splice(searchInd, 1); 
-        }
+            let searchInd = Math.floor(Math.random() * availableItems[category].length);
+            let item = availableItems[searchInd];
+            availableItems.splice(searchInd, 1);
+            item.appendShopItem();
+            }
     });
-
-    for (let itm of itemToPush) {
-        itm.appendShopItem();
-    }
 }

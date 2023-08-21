@@ -6,6 +6,7 @@
 * [] Header changing color per-zone
 * [] Make sure 8 stats fit into armor
 * [] Disable Next Button after clicking to prevent double click during animation
+* [] Update event display- change event.js to not all send into one div
 
 idk what else, I'm sure you have a list
 

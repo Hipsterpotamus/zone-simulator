@@ -13,21 +13,20 @@ class Event {
             'class': 'event-title'
         });
         this.titleE.text(this.title);
-        this.titleE.appendTo('#content-central-box');
+        this.titleE.appendTo('#content-central-box'); //title sent to dom
         this.descriptionE = $('<p>', {
             'class': 'event-description'
         });
         this.descriptionE.text(this.description);
-        this.descriptionE.appendTo('#content-central-box');
+        this.descriptionE.appendTo('#content-central-box'); //description sent to dom
 
-        for (let choiceKey in this.choices) {
-            let choice = this.choices[choiceKey];
+        for (let choice of this.choices) {
             let button = $('<button>', {
-                'class': 'event-' + choiceKey + '-button-two'
+                'class': 'event-button'
             });
             button.text('' + choice.text);
             button.on('click', choice.effect);
-            button.appendTo('#content-central-box');
+            button.appendTo('#content-central-box'); //choices sent to dom
         }
     }
 }

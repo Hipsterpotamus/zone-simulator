@@ -41,6 +41,7 @@ class ShopItem{
         });
     }
 }
+
 function clickToPur(name){
     shopItemsMasterList[name].purchase();
     elementUp();
