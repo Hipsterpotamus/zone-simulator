@@ -31,7 +31,7 @@ function combatTick(){
             g.player.hp-=enemyDMG;
             g.player.maxhp -= g.cEnemy.tear;
             if(g.player.hp>g.player.maxhp){g.player.hp=g.player.maxhp}
-            g.cEnemy.hp-=g.cEnemy.thorn;
+            g.cEnemy.hp-=g.cEnemy.calcThorn();
         }
 
     }
@@ -43,7 +43,7 @@ function combatTick(){
             g.cEnemy.hp-=playerDMG;
             g.cEnemy.maxhp -= g.player.tear;
             if(g.cEnemy.hp>g.cEnemy.maxhp){g.cEnemy.hp=g.cEnemy.maxhp}
-            g.player.hp-=g.cEnemy.thorn;
+            g.player.hp-=g.cEnemy.calcThorn();
         }
     }
 
