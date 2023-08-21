@@ -98,12 +98,12 @@ $(function() {
 });
 function genEnemy(){
     // $('#go-next').addClass('hidden');
-    $('.floating-next').addClass('hide');
-    $('.floating-next').removeClass('show');
+    setNextButtonVisible(false);
 
     $('#combatTimer').removeClass('hidden');
 
     $('#large-tab-title').text('Enemy Encounter');
+    setBroadcastTitleText('Enemy Encounter', true);
     g.inCombat = true;
     const copy = g.zone.getRandomEnemy();
     g.cEnemy = new Enemy(copy.name, copy.type, copy.hp, copy.aSLvl, copy.dmg, copy.arm, copy.gold, copy.regen, copy.diffC, copy.complexStats) 
@@ -113,26 +113,27 @@ function genEnemy(){
 let eventInfo;
 function genEvent(eventPath){
     // $('#go-next').addClass('hidden');
-    $('.floating-next').addClass('hide');
-    $('.floating-next').removeClass('show');
+    setNextButtonVisible(false);
 
     if(eventPath){
-        $('#large-tab-title').text('A Forkroad');
+        // $('#large-tab-title').text('A Forkroad');
+        setBroadcastTitleText('A Forkroad');
         eventInfo = g.zone.getZoneEvent();
     }else{
-        $('#large-tab-title').text('Event');
+        // $('#large-tab-title').text('Event');
+        setBroadcastTitleText('Event');
         eventInfo = g.zone.getRandomEvent(g.space);
     }
     eventInfo.createElements();
 }
 function genShop(){
-    $('#large-tab-title').text('Shop');
+    // $('#large-tab-title').text('Shop');
+    setBroadcastTitleText('Shop');
     fillShop(g.zone.getShopType());
 }
 function genRest(){
     // $('#go-next').addClass('hidden');
-    $('.floating-next').removeClass('show');
-    $('.floating-next').addClass('hide');
+    setNextButtonVisible(false);
     let rnd = Math.random();
     if (rnd < 0.4) {
         eventInfo = eventList['A Cozy Village'];
@@ -144,10 +145,10 @@ function genRest(){
     eventInfo.createElements();
 }
 function genBoss(){
-    $('.floating-next').addClass('hide');
-    $('.floating-next').removeClass('show');
-
-    $('#large-tab-title').text('Boss Battle!');
+    setNextButtonVisible(false);
+    
+    // $('#large-tab-title').text('Boss Battle!');
+    setBroadcastTitleText('Boss Battle!', true);
 
     $('#combatTimer').removeClass('hidden');
 

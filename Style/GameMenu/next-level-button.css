@@ -32,6 +32,9 @@
 .floating-next.hide {
   right: -5rem; /* pop down */
   animation: pop-down 0.3s ease-in-out forwards;
+  /* prevent it from being clickable */
+  pointer-events: none;
+
 }
 
 @keyframes pop-down {

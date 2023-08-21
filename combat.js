@@ -86,6 +86,7 @@ function playerDeath(){
 }
 
 function combatWin(){
+    setBroadcastTitleText('Victory!', true)
     g.inCombat = false;
     g.player.gainGold(true, g.cEnemy.gold);
     g.zone.changeZoneLevel(g.cEnemy.diffC);
@@ -94,8 +95,7 @@ function combatWin(){
      g.player.gainHp( g.player.levelheal);
     clearInterval(timeoutCombatLoop);
     $('#go-next').removeClass('hidden');
-    $('.floating-next').removeClass('hide');
-    $('.floating-next').addClass('show');
+    setNextButtonVisible(true);
 
     $('#combatTimer').addClass('hidden');
 

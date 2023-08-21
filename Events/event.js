@@ -9,16 +9,20 @@ class Event {
     }
 
     createElements() {
-        this.titleE = $('<p>', {
-            'class': 'event-title'
-        });
-        this.titleE.text(this.title);
-        this.titleE.appendTo('#content-central-box'); //title sent to dom
+        // this.titleE = $('<p>', {
+        //     'class': 'event-title'
+        // });
+        // this.titleE.text(this.title);
+        // this.titleE.appendTo('#content-central-box'); //title sent to dom
+        // change text in .large-tab-title to this.title
+        // $('.large-tab-title').text(this.title);
+        setBroadcastTitleText(this.title);
+
         this.descriptionE = $('<p>', {
             'class': 'event-description'
         });
         this.descriptionE.text(this.description);
-        this.descriptionE.appendTo('#content-central-box'); //description sent to dom
+        this.descriptionE.appendTo('#description-container'); //description sent to dom
 
         for (let choice of this.choices) {
             let button = $('<button>', {
@@ -35,8 +39,7 @@ function eventFunctionSuffix(){
     $('#content-central-box').empty();
     $('#go-next').removeClass('hidden');
 
-    $('.floating-next').removeClass('hide');
-    $('.floating-next').addClass('show');
+    setNextButtonVisible(true);
 
     elementUp();
 }
