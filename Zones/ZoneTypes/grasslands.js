@@ -170,12 +170,12 @@ class Grasslands extends Zone {
         this.zoneEvents = [
             //[first possible space, last possible space, event id]
             [2, 3, 'A Tall Tree'],
-            [4, 5, 'Clothes Cast Aside'],
-            [6, 7, 'The Traveler'],
-            [8, 9, 'A Gemstone?'],
-            [10, 11, 'The Horn'],
-            [12, 13, 'Wild Fire'],
-            [14, 18, 'Oil Fissure']
+            [3, 6, 'Clothes Cast Aside'],
+            [2, 5, 'The Traveler'],
+            [4, 9, 'A Gemstone?'],
+            [8, 12, 'The Horn'],
+            [11, 17, 'Wild Fire'],
+            [14, 19, 'Oil Fissure']
         ];
 
         this.pathEvent = 'A Fork In The Road';
