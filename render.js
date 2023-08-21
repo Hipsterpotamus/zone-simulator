@@ -13,6 +13,8 @@ function playerHtmlOutput(player){
     htmlOutput+='time: '+(player.calcAs()-(g.cTick%player.calcAs()))+'<br>';
     htmlOutput+='arm : '+player.calcArm()+' ('+player.arm+' + '+(player.calcArm()-player.arm)+')<br>';
     htmlOutput+='regen : '+player.calcRegen()+' ('+player.regen+' + '+(player.calcRegen()-player.regen)+')<br>';
+    if(player.calcDodge()!=0){htmlOutput+='dodge : '+player.calcDodge()+' ('+player.dodge+' + '+(player.calcDodge()-player.dodge)+')<br>';}
+    if(player.calcThorn()!=0){htmlOutput+='thorn : '+player.calcThorn()+' ('+player.thorn+' + '+(player.calcThorn()-player.thorn)+')<br>';}
     return htmlOutput;
 }
 function enemyHtmlOutput(enemy) {
@@ -24,6 +26,8 @@ function enemyHtmlOutput(enemy) {
         htmlOutput+='time: '+(enemy.calcAs()-(g.cTick%enemy.calcAs()))+'<br>';
         htmlOutput+='arm : '+enemy.calcArm()+'<br>';
         htmlOutput+='regen : '+enemy.calcRegen()+'<br>';
+        if(enemy.calcDodge()!=0){htmlOutput+='dodge : '+enemy.calcDodge()+' ('+enemy.dodge+' + '+(enemy.calcDodge()-enemy.dodge)+')<br>';}
+        if(enemy.calcThorn()!=0){htmlOutput+='thorn : '+enemy.calcThorn()+' ('+enemy.thorn+' + '+(enemy.calcThorn()-enemy.thorn)+')<br>';}
     }
     return htmlOutput;
 }

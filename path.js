@@ -1,22 +1,22 @@
-function generatePath(){
+function generatePath(zoneArray){
     let path = [];
-    let numE = 15;
+    let numE = zoneArray[0];
     
     let appendFront = ['enemy'];
 
-    let shopStartP = 0.85; // will be parameters in a future more sophisticated version of this function
-    let shopGrowP = 0.15;
-    let shopResetP = 0.0;
+    let shopStartP = zoneArray[1]; // will be parameters in a future more sophisticated version of this function
+    let shopGrowP = zoneArray[2];
+    let shopResetP = zoneArray[3];
     
     
-    let eventStartP = 0.15; // will be parameters in a future more sophisticated version of this function
-    let eventGrowP = 0.09;
-    let eventResetP = 0.00;
+    let eventStartP = zoneArray[4]; // will be parameters in a future more sophisticated version of this function
+    let eventGrowP = zoneArray[5];
+    let eventResetP = zoneArray[6];
    
 
-    let restStartP = 0.05; // will be parameters in a future more sophisticated version of this function
-    let restGrowP = 0.05;
-    let restResetP = 0.15;
+    let restStartP = zoneArray[7]; // will be parameters in a future more sophisticated version of this function
+    let restGrowP = zoneArray[8];
+    let restResetP = zoneArray[9];
     
     let currentP = shopStartP;
     for (let i = 0; i<(numE-2); i++){
@@ -63,8 +63,9 @@ function generatePath(){
 }
 
 function advancePath(){
-    elementUp();
     g.space+=1;
+    g.player.gold += g.player.calcIncome();
+    
     $('#content-central-box').empty();
     if(g.space%3==0){g.zone.changeZoneLevel(1);console.log('diff up')}
     switch (g.path[(g.space-1)]){
@@ -87,6 +88,7 @@ function advancePath(){
             genBoss();
         break;
     }
+    elementUp();
 }
 
 $(function() {

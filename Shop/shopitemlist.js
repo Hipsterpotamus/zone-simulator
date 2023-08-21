@@ -132,7 +132,7 @@ let shopItemsMasterList = {
     'chocolatebar':new ShopItem('chocolate bar','chocolatebar','statUp','(-2 max hp +5 speed)', 10, 0, function(){
          g.player.maxhp-=2;
          g.player.hp-=2; if( g.player.hp<0){playerDeath();}
-         g.player.asLvl+=5;
+         g.player.aSLvl+=5;
     },'common'),
     'proteinshake':new ShopItem('protein shake','proteinshake','statUp','(+1 dmg)', 10, 0, function(){
          g.player.dmg+=1;
@@ -175,8 +175,28 @@ let shopItemsMasterList = {
          g.player.hp+=5;
          g.player.dmg+=1;
          g.player.regen+=1;
-         g.player.asLvl+=3;
+         g.player.aSLvl+=3;
     },'common'),
+    'leafletscarf':new ShopItem("leaflet scarf",'cheeseburger','statUp','(+4% dodge)',15, 0, function(){
+          g.player.dodge+=4;
+     },'common'),
+     'banana':new ShopItem("banana",'banana','statUp','(+14 max hp +2 speed)',18, 0, function(){
+          g.player.maxhp+=14;
+          g.player.hp+=14;
+          g.player.aSLvl+=2;
+     },'common'),
+     'apricot':new ShopItem("apricot",'apricot','statUp','(+16 max hp -2 speed)',18, 0, function(){
+          g.player.maxhp+=16;
+          g.player.hp+=16;
+          g.player.aSLvl-=2;
+     },'common'),
+     'bond':new ShopItem("bond",'bond','statUp','(+1 income)',10, 0, function(){
+          g.player.income+=1;
+     },'common'),
+     'pamphlet':new ShopItem("pamphlet",'pamphlet','statUp','(+1 income +1 regen)',20, 0, function(){
+          g.player.income+=1;
+          g.player.regen+=1;
+     },'common'),
 
     // grasslands shop consumables
     'firecracker':new ShopItem('firecracker','firecracker','item','(item: deal 20 dmg, lose 2 hp)', 5, 0, function(){

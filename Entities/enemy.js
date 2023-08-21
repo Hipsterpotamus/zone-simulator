@@ -26,4 +26,10 @@ class Enemy extends Entity{
         }
         return this.aS;
     }
+    calcDodge() {
+        return this.dodge;
+    }
+    calcThorn() {
+        return this.thorn;
+    }
 }

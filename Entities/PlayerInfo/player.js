@@ -46,7 +46,16 @@ class Player extends Entity{
         }
         return this.aS;
     }
-
+    calcDodge() {
+        return (this.dodge+this.getByType('weapon').dodge+this.getByType('head').dodge+this.getByType('chest').dodge+this.getByType('legs').dodge+this.getByType('feet').dodge);
+    }
+    calcThorn() {
+        return (this.thorn+this.getByType('weapon').thorn+this.getByType('head').thorn+this.getByType('chest').thorn+this.getByType('legs').thorn+this.getByType('feet').thorn);
+    }
+    calcIncome() {
+        return (this.income+this.getByType('weapon').income+this.getByType('head').income+this.getByType('chest').income+this.getByType('legs').income+this.getByType('feet').thorn);
+    }
+        
     getByType(type){
         let foundEquip;
         this.inv[type].forEach((item)=>{
