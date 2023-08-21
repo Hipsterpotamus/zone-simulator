@@ -2,7 +2,7 @@ class Grasslands extends Zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
         this.maxZoneLevel = 9;
-        this.shopType = [3,2,3,1];
+        this.shopType = [3,2,3,1]; //shop gen [weaponNumber, armorNumber, statNumber, itemNumber]
         this.pathGen = [14, 0.50, 0.15, 0, 0.15, 0.09, 0, 0.05, 0.05, 0.05]; //path gen, shop start, shop grow, shop reset, event start, event grow, event reset, rest start, rest grow, rest reset
         this.zoneLable = 'grassland';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
@@ -36,7 +36,7 @@ class Grasslands extends Zone {
                 ['brown beetle', 'bug', 17, -15, 1, 1, 8, 0, 0]
             ],
             3: [
-                ['rabbit', 'critter', 18, 20, 2, 0, 8, 0, 0],//not finished up until this point
+                ['rabbit', 'critter', 18, 20, 2, 0, 8, 0, 0],
                 ['bunny', 'critter', 14, 45, 2, 0, 6, 0, 0],
                 ['hare', 'critter', 21, 0, 2, 0, 8, 0, 0],
                 ['bunny-rabbit', 'critter', 16, 32, 2, 0, 7, 0, 0],
