@@ -6,7 +6,7 @@ function startGame(){
         'zone': new Grasslands(),
         'zoneNum':1,
         'space':0,
-        'player':new Benefactor('human'), //change this class to change character
+        'player':new Beneficiary('human'), //change this class to change character
         'path':[],
         'inCombat': false,
         'level': 1,
