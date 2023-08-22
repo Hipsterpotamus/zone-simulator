@@ -45,7 +45,9 @@ class Usable extends Item {
     }
 }
 
-$('#use-usable').on('click',function(){
-    console.log(g.player.getByType('usable'));
-    g.player.getByType('usable').attemptUse();
-})
+$(function(){
+    $('#use-usable').on('click',function(){
+        console.log(g.player.getByType('usable'));
+        g.player.getByType('usable').attemptUse();
+    })
+});
