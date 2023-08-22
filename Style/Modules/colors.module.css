@@ -158,23 +158,6 @@
   color: var(--md-sys-color-inverse-primary);
 }
 
-
-/* .floating-next {
-  position: fixed;
-  bottom: -5rem;
-  right: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 6rem;
-  height: 6rem;
-   background-color: var(--); 
-  border-radius: 50%;
-  
-  cursor: pointer;
-  animation: pop-up 0.3s ease-in-out forwards;
-} */
-
 .shadow {
   box-shadow: 0 4px 6px var(--md-sys-color-shadow);
   /* background-color: var(--md-sys-color-shadow); */

@@ -8,7 +8,7 @@
   align-items: center;
   width: 6rem;
   height: 6rem;
-  background-color: var(--md-sys-color-tertiary);
+  background-color: var(--md-sys-color-tertiary-container);
   border-radius: 50%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -61,6 +61,8 @@
 
 .material-icons {
   font-size: -2rem;
-  color: var(--md-sys-color-on-tertiary);
+  color: var(--md-sys-color-on-tertiary-container);
+  /* make larger */
+  transform: scale(2);
 }
 /* Next Button End */
