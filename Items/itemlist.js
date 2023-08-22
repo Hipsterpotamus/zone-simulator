@@ -47,65 +47,65 @@ const itemList = {
         g.player.maxhp += 5;
         g.player.hp += 5;
     }]],
-  'red apple': [6, '(+6 max hp)', 'stat', [
+    'red apple': [6, '(+6 max hp)', 'stat', [
     function(){
         g.player.maxhp += 6;
         g.player.hp += 6;
     }]],
-  'chocolate bar': [10, '(-2 max hp +5 speed)', 'stat', [
+    'chocolate bar': [10, '(-2 max hp +5 speed)', 'stat', [
     function(){
         g.player.maxhp -= 2;
         g.player.hp -= 2;
         if(g.player.hp < 0){ playerDeath(); }
         g.player.aSLvl += 5;
     }]],
-  'protein shake': [10, '(+1 dmg)', 'stat', [
+    'protein shake': [10, '(+1 dmg)', 'stat', [
     function(){
         g.player.dmg += 1;
     }]],
-  'grapefruit': [14, '(+1 regen)', 'stat', [
+    'grapefruit': [14, '(+1 regen)', 'stat', [
     function(){
         g.player.regen += 1;
     }]],
-  'strawberry': [18, '(+2 max hp +1 regen)', 'stat', [
+    'strawberry': [18, '(+2 max hp +1 regen)', 'stat', [
     function(){
         g.player.maxhp += 2;
         g.player.hp += 2;
         g.player.regen += 1;
     }]],
-  'ice cube': [4, '(heal 10 on purchase)', 'stat', [
+    'ice cube': [4, '(heal 10 on purchase)', 'stat', [
     function(){
         g.player.gainHp(10);
     }]],
-  'water bottle': [10, '(+3 level heal)', 'stat', [
+    'water bottle': [10, '(+3 level heal)', 'stat', [
     function(){
         g.player.changeLvlHeal(3);
     }]],
-  "morsel o' meat": [24, '(+1 dmg +1 armor)', 'stat', [
+    "morsel o' meat": [24, '(+1 dmg +1 armor)', 'stat', [
     function(){
         g.player.dmg += 1;
         g.player.arm += 1;
     }]],
-  'honey comb': [21, '(+12 max hp)', 'stat', [
+    'honey comb': [21, '(+12 max hp)', 'stat', [
     function(){
         g.player.maxhp += 12;
         g.player.hp += 12;
     }]],
-  'beef stew': [26, '(+8 max hp + full heal)', 'stat', [
+    'beef stew': [26, '(+8 max hp + full heal)', 'stat', [
     function(){
         g.player.maxhp += 8;
         g.player.gainHp('max');
     }]],
-  'artichoke': [20, '(+1 armor)', 'stat', [
+    'artichoke': [20, '(+1 armor)', 'stat', [
     function(){
         g.player.arm += 1;
     }]],
-  'dragonfruit': [38, '(+1 armor +1 regen)', 'stat', [
+    'dragonfruit': [38, '(+1 armor +1 regen)', 'stat', [
     function(){
         g.player.arm += 1;
         g.player.regen += 1;
     }]],
-  'cheese burger': [38, '(+5 max hp +1 dmg +1 regen +3 speed)', 'stat', [
+    'cheese burger': [38, '(+5 max hp +1 dmg +1 regen +3 speed)', 'stat', [
     function(){
         g.player.maxhp += 5;
         g.player.hp += 5;
@@ -113,27 +113,27 @@ const itemList = {
         g.player.regen += 1;
         g.player.aSLvl += 3;
     }]],
-  'leaflet scarf': [15, '(+4% dodge)', 'stat', [
+    'leaflet scarf': [15, '(+4% dodge)', 'stat', [
     function(){
         g.player.dodge += 4;
     }]],
-  'banana': [18, '(+14 max hp +2 speed)', 'stat', [
+    'banana': [18, '(+14 max hp +2 speed)', 'stat', [
     function(){
         g.player.maxhp += 14;
         g.player.hp += 14;
         g.player.aSLvl += 2;
     }]],
-  'apricot': [18, '(+16 max hp -2 speed)', 'stat', [
+    'apricot': [18, '(+16 max hp -2 speed)', 'stat', [
     function(){
         g.player.maxhp += 16;
         g.player.hp += 16;
         g.player.aSLvl -= 2;
     }]],
-  'bond': [10, '(+1 income)', 'stat', [
+    'bond': [10, '(+1 income)', 'stat', [
     function(){
-      g.player.income += 1;
+        g.player.income += 1;
     }]],
-  'pamphlet': [20, '(+1 income +1 regen)', 'stat', [
+    'pamphlet': [20, '(+1 income +1 regen)', 'stat', [
     function(){
         g.player.income += 1;
         g.player.regen += 1;

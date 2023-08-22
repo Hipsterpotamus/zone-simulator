@@ -1,8 +1,7 @@
-class Stat extends Item {
-    constructor(name, metatype, onUse, complexStats) {
+class Magic extends Item {
+    constructor(name, metatype, complexStats) {
         super(name, metatype);
-        this.onUse = onUse;
-
+        
         if(complexStats){
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];

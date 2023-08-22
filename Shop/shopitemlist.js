@@ -1,9 +1,7 @@
 let shopItemsMasterList = {
     //grassland weapon
     'branch':new ShopItem('branch','branch','weapon','(2 dmg -12 speed sword)', 5, 0, function(){
-          console.log(g.player.inv);
           g.player.inv.weapon.push(new Equippable('branch', 'weapon', 'sword', 2, 0, 0 ,-12));
-          console.log(g.player.inv);
     },'common'),
     'thistleknife': new ShopItem('thistle knife','thistleknife','weapon','(1 dmg +30 speed dagger)', 6, 0, function(){
          g.player.inv.weapon.push(new Equippable('thistleknife', 'weapon', 'knife', 1, 0, 0 ,30));
