@@ -23,12 +23,12 @@ class Item {
 }
 //could maybe change this to use player.getByType
 $(function() {
-    let equipT = ['weapon','head','chest','legs','feet', 'usable'];
-    for (let type of equipT) {
-        $('#' + type + '-select').on('change', function() {
-            let newEquip = $(this).val();
-            g.player.inv[type].forEach(item => {
-                if (item.name == newEquip) {
+    let metatypes = ['weapon','head','chest','legs','feet', 'usable'];
+    for (let metatype of metatypes) {
+        $('#' + metatype + '-select').on('change', function() {
+            let newItem = $(this).val();
+            g.player.inv[metatype].forEach(item => {
+                if (item.name == newItem) {
                     item.equipped = true;
                     item.updateItemInfo();
                 } else {
