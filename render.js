@@ -142,3 +142,12 @@ $(function() {
         link.href = 'Style/Themes/theme-light-bloodorange.css';
     });
 });
+// add wave
+$(function() {
+    $('#wave-button-dark').on('click',function(){
+        link.href = 'Style/Themes/theme-dark-wave.css';
+    });
+    $('#wave-button-light').on('click',function(){
+        link.href = 'Style/Themes/theme-light-wave.css';
+    });
+});
