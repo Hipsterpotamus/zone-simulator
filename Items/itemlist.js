@@ -1,4 +1,4 @@
-const itemList = {
+const ITEMLIST = {
     //equippable 
     //name : [price, shopDesc, metatype, [type, damage, armor, regen, attackSpeedChange, complexStats]]
     'branch': [5, '(2 dmg -12 speed sword)', 'weapon', ['sword', 2, 0, 0, -12]],

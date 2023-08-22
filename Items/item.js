@@ -2,13 +2,15 @@ class Item {
     constructor(name, metatype) {
         this.name = name;
         this.metatype = metatype;
-
-        this.appendElement()
-        if(g.player.inv[metatype] == 0){
-            this.equipped = true;
-            $('#'+this.metatype+'-select').val(this.name);
-        } else {
-            this.equipped = false;
+        const UNSELECTABLE = ['stat'];
+        if (!UNSELECTABLE.includes(metatype)) {
+            this.appendElement()
+            if(g.player.inv[metatype] == 0){
+                this.equipped = true;
+                $('#'+this.metatype+'-select').val(this.name);
+            } else {
+                this.equipped = false;
+            }
         }
     }
 

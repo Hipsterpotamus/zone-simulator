@@ -13,14 +13,15 @@
 idk what else, I'm sure you have a list
 
 ## Backend
+* [] Add feedback when useable can't be used/item can't be purchased
 * [x] Change "Enemy Encounter" to "Defeated Enemy" or "Success" or something after winning a battle
 * [] Allow player to move to a new zone after completing their current one
 * [] Implement magic system and add corresponding shop items into pool
 * [] Start working on player level up system
 * [] Create shop items for forest zone
 * [] Make player classes work with frontend
-* [] Refactor shopitem.js/shopitemlist.js
-* [] Refactor Items
+* [x] Refactor shopitem.js/shopitemlist.js
+* [x] Refactor Items
 * [] Refactor combat.js
 * [] Refactor path.js
 * [] Get rid of of global variables

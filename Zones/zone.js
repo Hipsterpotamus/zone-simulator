@@ -14,6 +14,10 @@ class Zone {
         }
     }
 
+    zoneInit() { //used for initialization that depends on zone object
+        this.pushZoneItems();
+    }
+
     changeZoneLevel(num) {
         if (this.zoneLevel + num > this.maxZoneLevel) {
             this.zoneLevel = this.maxZoneLevel;
@@ -79,9 +83,9 @@ class Zone {
 
     pushZoneItems() {
         for (const item of this.zoneItems) {
-            const category = item[0];
-            const itemName = item[1];
-            this.zoneItemList[category].push(shopItemsMasterList[itemName]);
+            let itemName = item[1];
+            let metatype = item[0];
+            this.zoneItemList[metatype].push(new ShopItem(itemName, ...ITEMLIST[itemName]));
         }
     }
 }

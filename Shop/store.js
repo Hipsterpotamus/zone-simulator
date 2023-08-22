@@ -9,7 +9,7 @@ function fillShop(shopCode) {
 
     CATEGORIES.forEach((category, index) => {
         let count = shopCodeExpand[index] || 0;
-        let availableItems = g.zone.zoneItemList[category];
+        let availableItems = [...g.zone.zoneItemList[category]];
 
         for (let i = 0; i < count; i++) {
             if (availableItems.length === 0) {
