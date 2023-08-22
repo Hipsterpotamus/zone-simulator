@@ -1,12 +1,12 @@
 let g; //game
 
-function startGame(){
+function startGame(characterClass){
     g = {
         'g':0,
         'zone': new Grasslands(),
         'zoneNum':1,
         'space':0,
-        'player':new Beneficiary('human'), //change this class to change character
+        'player':new characterClass('human'), //change this class to change character
         'path':[],
         'inCombat': false,
         'level': 1,
@@ -19,11 +19,3 @@ function startGame(){
     g.zone.zoneInit();
     g.path = generatePath(g.zone.pathGen);
 }
-
-$(function() {
-    $('#start-game').on('click',function(){
-        startGame();
-        $('#game-screen').removeClass('hidden');
-        $('#start-screen').addClass('hidden');
-    });
-});
