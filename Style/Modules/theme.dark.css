@@ -29,4 +29,5 @@
  --md-sys-color-surface-tint: var(--md-sys-color-surface-tint-dark);
  --md-sys-color-outline-variant: var(--md-sys-color-outline-variant-dark);
  --md-sys-color-scrim: var(--md-sys-color-scrim-dark);
+ --translucent-background-color: rgba(56, 56, 56, 0.5);
 }

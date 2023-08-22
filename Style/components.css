@@ -7,3 +7,12 @@
   font-size: 24pt;
   border-radius: 3rem;
 }
+
+.translucent {
+  background:var(--translucent-background-color);
+  border:1px solid rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter:saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(21px);
+
+  box-shadow: 0.5rem 0.6rem 2rem rgba(0, 0, 0, 0.3);
+}
