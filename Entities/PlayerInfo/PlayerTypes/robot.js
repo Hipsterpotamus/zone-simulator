@@ -2,7 +2,7 @@ class Robot extends Player {
     constructor(type) {
         super(type);
         this.name = 'Robert'; //fully implemented
-        self.levelheal = 'max';
+        this.levelheal = 'max';
     }
 
     gainHp(healAmount){

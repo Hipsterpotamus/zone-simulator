@@ -1,17 +1,13 @@
+const ITEMCATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'usable'];
+
 class Zone {
     constructor(zoneLevel) {
         this.zoneLevel = zoneLevel;
         this.minZoneLevel = 1;
-        this.zoneItemList = {
-            'weapon' : [],
-            'head' : [],
-            'chest' : [],
-            'legs' : [],
-            'feet' : [],
-            'stat' : [],
-            'usable' : [],
-            'magic' : []
-        }
+        this.zoneItemList = {}
+        ITEMCATEGORIES.forEach(element => {
+            this.zoneItemList[element] = [];
+        });
     }
 
     zoneInit() { //used for initialization that depends on zone object
@@ -87,5 +83,30 @@ class Zone {
             let metatype = item[0];
             this.zoneItemList[metatype].push(new ShopItem(itemName, ...ITEMLIST[itemName]));
         }
+    }
+
+    fillShop() { //considering moving this to a future Game class
+        let shopCode = this.shopCode;
+        let shopCodeExpand = [shopCode[0], 0, 0, 0, 0, shopCode[2], shopCode[3]];
+
+        for (let i = 0; i < shopCode[1]; i++) {
+            let randNum = Math.floor(Math.random() * 4) + 1;
+            shopCodeExpand[randNum] += 1;
+        }
+    
+        ITEMCATEGORIES.forEach((category, index) => {
+            let count = shopCodeExpand[index] || 0;
+            let availableItems = this.zoneItemList[category];
+    
+            for (let i = 0; i < count; i++) {
+                if (availableItems.length === 0) {
+                    break;
+                }
+                let searchInd = Math.floor(Math.random() * availableItems.length);
+                let item = availableItems[searchInd];
+                availableItems.splice(searchInd, 1);
+                item.appendShopItem();
+                }
+        });
     }
 }

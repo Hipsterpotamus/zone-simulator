@@ -67,7 +67,7 @@ function advancePath(){
     g.player.gold += g.player.calcIncome();
     
     $('#content-central-box').empty();
-    if(g.space%3==0){g.zone.changeZoneLevel(1);console.log('diff up')}
+    if(g.space%3==0){g.zone.changeZoneLevel(1)}
     switch (g.path[(g.space-1)]){
         case 'enemy':
             genEnemy();
@@ -129,7 +129,7 @@ function genEvent(eventPath){
 function genShop(){
     // $('#large-tab-title').text('Shop');
     setBroadcastTitleText('Shop');
-    fillShop(g.zone.getShopType());
+    g.zone.fillShop()
 }
 function genRest(){
     // $('#go-next').addClass('hidden');

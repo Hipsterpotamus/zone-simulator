@@ -2,7 +2,7 @@ class Forest extends Zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
         this.maxZoneLevel = 9;
-        this.shopType = [3,2,3,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
+        this.shopCode = [3,2,3,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
         this.pathGen = [14, 0.50, 0.15, 0, 0.15, 0.09, 0, 0.05, 0.05, 0.05]; //path gen, shop start, shop grow, shop reset, event start, event grow, event reset, rest start, rest grow, rest reset
         this.zoneLable = 'forest';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
@@ -84,9 +84,11 @@ class Forest extends Zone {
                 ['forest slime', 'slime', 150, 72, 8, 0, 66, 6, 0,{'shatter':8,'lifedrain':25}]
             ]
         };
+
         this.bossStats = [
             ['hairy g.o.a.t.', 'critter', 115, -25, 13, 2, 75, 1, 0, {'tear':2}]
         ];
+
         //could assign this in the parent class if this distribution holds across zones
         this.levelDifficultyDist = {
             //zoneLevel : [easyPercent, mediumPercent] (hard is excluded because it is defaulted to)

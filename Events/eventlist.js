@@ -105,6 +105,7 @@ const eventList = {
                 g.player.hp -= 22;
                 if (g.player.hp <= 0) { playerDeath(); }
                 eventFunctionSuffix(g.player.getByType('weapon').name + ' gained 4 dmg');
+                g.player.getByType('weapon').updateItemInfo();
             }
         },
         {
@@ -199,6 +200,7 @@ const eventList = {
             text: 'Sharpen Weapon: +25% dmg on current weapon',
             effect: function () {
                 g.player.getByType('weapon').dmg = (1 + Math.floor(g.player.getByType('weapon').dmg * 1.25));
+                g.player.getByType('weapon').updateItemInfo();
                 eventFunctionSuffix();
             }
         }
