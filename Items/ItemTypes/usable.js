@@ -17,20 +17,15 @@ class Usable extends Item {
     }
 
     attemptUse(){
-        console.log(1);
         if(this.uses > 0){
-            console.log(2);
             if(this.type == 'combat'){
-                console.log(3);
                 if(g.inCombat){
-                    console.log(4);
                     this.uses -= 1;
                     this.onUse();
                 }else{
                     // for future: communicate to player that item must be used in combat
                 }
             }else if(this.type == 'all'){
-                console.log(5);
                 this.uses -= 1;
                 this.onUse();
             }
@@ -44,9 +39,3 @@ class Usable extends Item {
         $('#usable-select-description').html(this.description+'<br>count : '+this.uses);
     }
 }
-
-$(function(){
-    $('#use-usable').on('click',function(){
-        g.player.getByType('usable').attemptUse();
-    })
-});

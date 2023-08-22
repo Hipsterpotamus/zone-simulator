@@ -23,20 +23,3 @@ class Item {
         this.element.text(this.name);
     }
 }
-//could maybe change this to use player.getByType
-$(function() {
-    let metatypes = ['weapon','head','chest','legs','feet', 'usable'];
-    for (let metatype of metatypes) {
-        $('#' + metatype + '-select').on('change', function() {
-            let newItem = $(this).val();
-            g.player.inv[metatype].forEach(item => {
-                if (item.name == newItem) {
-                    item.equipped = true;
-                    item.updateItemInfo();
-                } else {
-                    item.equipped = false;
-                }
-            });
-        });
-    }
-});
