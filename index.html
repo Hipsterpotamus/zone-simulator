@@ -197,6 +197,11 @@
                         armor : 6 (4 + 2)<br>
                         regen : 2 (1 + 1)<br>
                         bleed : 2 (0 + 2)<br>
+                        <div id="player-health-bar-container" data-total="1000" data-value="1000">
+                            <div id="player-health-bar">
+                                  <div id="player-health-hit-bar"></div>
+                            </div>
+                        </div>
 
                     </p>
                 </div>
@@ -219,7 +224,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="on-secondary-text" height="4rem" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C394 378 431.1 230.1 432 141.4L256 66.8l0 0z"/></svg>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text' id ='weapon-select' title="Weapon">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='weapon-select' title="Weapon">
                             <option value="" disabled selected>Weapon</option>
                         </select>
                     </div>
@@ -229,7 +234,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text' id ='head-select' title="Head">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='head-select' title="Head">
                             <option value="" disabled selected>Head</option>
                         </select>
                     </div>
@@ -239,7 +244,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text' id ='chest-select' title="Chest">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='chest-select' title="Chest">
                             <option value="" disabled selected>Chest</option>
                         </select>
                     </div>
@@ -249,7 +254,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text' id ='legs-select' title="Legs">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='legs-select' title="Legs">
                             <option value="" disabled selected>Legs</option>
                         </select>
                     </div>
@@ -259,7 +264,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text' id ='feet-select' title="Feet">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='feet-select' title="Feet">
                             <option value="" disabled selected>Feet</option>
                         </select>
                     </div>
@@ -304,10 +309,7 @@
                 <div class = 'large-tab-row secondary-container on-seconary-container-text' id = 'items-tab-row'>
                     <div class = 'items-tab-left-container'>
                         <div>
-                            <p>
-                                items:
-                            </p>
-                            <select id = "usable-select">
+                            <select id = "usable-select" class="select shadow primary">
                             </select>
                         </div>
                     </div>
@@ -322,6 +324,11 @@
                 <!-- Spell Box -->
                 <div class="large-tab-row primary-container on-tertiary-container-text" id="magic-tab-row" >
                     <div class = 'fifth-magic-row'><p>mana: 0</p></div>
+                    <div id="mana-bar-container" data-total="1000" data-value="1000">
+                        <div id="mana-bar">
+                              <div id="mana-hit-bar"></div>
+                        </div>
+                    </div>
                     <div class = 'four-fifth-magic-row'>
                         spells:<br>
                         <button>Heal<br>+4 hp<br>8 mana</button><button>Fireball<br>-6 dmg<br>5 mana</button>

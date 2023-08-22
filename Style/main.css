@@ -99,12 +99,10 @@ body, html {
 }
 
 
-
-
-#toolbox div {
+#toolbox > div {
   border-radius: 16px;
   margin: 1rem;
-  
+  padding: 1rem;
 }
 
 #items-tab-row {
@@ -130,34 +128,73 @@ body, html {
   height: 110%;
   width: 100%;
 
+  /* align-items: center;
+  justify-content: center; */
 }
 
 #magic-tab-row button {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   text-transform: capitalize;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   z-index: 2;
   font-family: 'Martian Mono', monospace;
-
-  
   background-color: var(--md-sys-color-tertiary-variant);
   color: var(--md-sys-color-tertiary);
   cursor: pointer;
   outline: 4px solid var(--md-sys-color-tertiary);
   outline-offset: -2px;
+
+  margin: 0.5rem;
   
   transition: all 0.2s ease-in-out;
 }
 
 #magic-tab-row button:hover {
   background-color: var(--md-sys-color-tertiary);
-  color: var(--md-sys-color-on-tertiary);
-  border-radius: 16px;
-  transform: scale(1.02);
+  color: var(--md-sys-color-primary-container);
+  /* border-radius: 16px; */
+  transform: scale(1.3);
+  /* add a big shadow with color */
+  box-shadow: 0 0 1.5rem var(--md-sys-color-tertiary);
 }
 
 
+
+#mana-bar-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 200px;
+  height: 20px;
+  padding: 5px;
+  background: var(--md-sys-color-on-primary);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 8px;
+  position: relative;
+}
+#mana-bar {
+  background: var(--md-sys-color-tertiary);
+  border-radius: 8px;
+  width: 100%;
+  height: 10px;
+  position: relative;
+  
+  transition: width .5s linear;
+}
+
+#mana-hit-bar {
+  background: rgba(255, 255, 255, 0.334);
+  position: absolute;
+  border-radius: 8px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 0px;
+  
+  transition: width .5s linear;
+}
 
 
 

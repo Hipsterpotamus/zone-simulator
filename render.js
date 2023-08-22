@@ -142,7 +142,6 @@ $(function() {
         link.href = 'Style/Themes/theme-light-bloodorange.css';
     });
 });
-// add wave
 $(function() {
     $('#wave-button-dark').on('click',function(){
         link.href = 'Style/Themes/theme-dark-wave.css';
@@ -151,3 +150,35 @@ $(function() {
         link.href = 'Style/Themes/theme-light-wave.css';
     });
 });
+
+
+// Health/Mana Bars
+
+function updatePlayerHealthBar(damage, newValue, maxHealth) { // damage taken, new health value, max health value
+    var healthBar = $('#player-health-bar-container'),
+        bar = healthBar.find('#player-health-bar'),
+        hit = healthBar.find('#player-health-hit-bar');
+    updateBar(damage, newValue, maxHealth, healthBar, bar, hit);
+}
+
+function updateManaBar(cost, newValue, maxMana) { // cost of spell, new Mana value, max Mana value
+    var manaBar = $('#mana-bar-container'),
+        bar = manaBar.find('#mana-bar'),
+        hit = manaBar.find('#mana-hit-bar');
+    updateBar(cost, newValue, maxMana, manaBar, bar, hit);
+}
+
+function updateBar(depleted, newValue, maxValue, barContainer, bar, hit) {
+    var barWidth = (newValue / maxValue * 100) + "%";
+    bar.css('width', barWidth);
+    var hitWidth = (depleted / maxValue) * 100 + "%";
+
+    // show hit bar and animate
+    hit.css('width', hitWidth);
+    barContainer.data('value', newValue);
+    setTimeout(function(){ // Show hit bar for 0.5s
+        hit.css({'width': '0'});
+        bar.css('width', barWidth + "%");
+    }, 500);
+    return "done"
+}

@@ -90,4 +90,10 @@ class Player extends Entity{
     changeLvlHeal(amount) {
         this.levelheal += amount;
     }
+
+    // Not totally sure where you'll want this, depending on if all entities have mana
+    depleteMana(amount) { // For when mana is used is by spells
+        this.mana = min(0, this.mana - amount);
+        updateManaBar(amount, this.mana, this.maxMana);
+    }
 }

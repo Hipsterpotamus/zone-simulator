@@ -33,6 +33,7 @@ function combatTick(){
             }
             if (enemyDMG < 0){enemyDMG = 0;}
             g.player.hp-=enemyDMG;
+            updatePlayerHealthBar(enemyDMG, g.player.hp, g.player.maxhp); // this will need to be moved into new function for taking damage
             g.cEnemy.gainHp(Math.floor(enemyDMG*(g.cEnemy.calcLifeDrain()/100)))
             let cleanShatter = Math.floor(g.cEnemy.calcShatter()/10); // shatter application
             if(Math.random()<((g.cEnemy.calcShatter()%10)/10)){cleanShatter+=1;}
