@@ -1,3 +1,4 @@
+/* Shape */
 
 #encounter-container {
   width: 50vw;
@@ -12,9 +13,9 @@
   outline: 0;
   /* blur the background and make transparent */
   background-color: var(--md-sys-color-surface-variant);
-  /* backdrop-filter: blur(5px); */
-  /* -webkit-backdrop-filter: blur(5px); */
   
+  font-family: 'Martian Mono', monospace;
+  font-size: 1.5vh;
 }
 #encounter-container::before,
 #encounter-container::after {
@@ -38,4 +39,65 @@
 #encounter-container::after {
   top: 34rem;
   right: -2rem;
+}
+
+/* Contents */
+
+.major-title-container{
+  order:1;
+  width:100%;
+  height: 25%;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+.content-container{
+  order:2;
+  width:100%;
+  height:50%;
+}
+.content-container #content-central-box{
+  padding:2rem;
+  height:120%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+
+  
+  overflow-y: scroll;
+  box-sizing: border-box;
+}
+
+.content-container #content-central-box::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* shop/encounter buttons */
+#content-central-box button {
+  padding: 1rem;
+  text-transform: capitalize;
+  border: none;
+  border-radius: 0.5rem;
+  z-index: 2;
+  font-family: 'Martian Mono', monospace;
+
+  
+  background-color: var(--md-sys-color-tertiary-variant);
+  color: var(--md-sys-color-tertiary);
+  cursor: pointer;
+  outline: 4px solid var(--md-sys-color-tertiary);
+  outline-offset: -2px;
+  
+  transition: all 0.2s ease-in-out;
+}
+/* make these buttons all have the hover class */
+#content-central-box button:hover {
+  background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-on-tertiary);
+  border-radius: 16px;
+  transform: scale(1.02);
 }

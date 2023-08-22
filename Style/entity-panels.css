@@ -18,6 +18,7 @@
 
   position: relative;
   right: 0.5rem;
+
 }
 
 .entity-panel * {
@@ -30,4 +31,10 @@
 
 #enemy-tab {
   outline-style: dotted;
+}
+
+.stat-display{
+  text-align:center;
+  line-height:5vh;
+  font-size: 1.9vh;
 }

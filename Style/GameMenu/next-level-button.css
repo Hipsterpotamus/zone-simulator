@@ -63,6 +63,6 @@
   font-size: -2rem;
   color: var(--md-sys-color-on-tertiary-container);
   /* make larger */
-  transform: scale(2);
+  transform: scale(1.7);
 }
 /* Next Button End */

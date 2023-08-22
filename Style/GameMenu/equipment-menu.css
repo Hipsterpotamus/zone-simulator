@@ -4,7 +4,7 @@
   left: 0;
   z-index: 3;
   margin-left: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   width: 57%;
   height: 10rem;
   border-radius: 32px;
@@ -26,7 +26,7 @@
 
 .equipment-box .equipment-item {
   /* width: fit-content; */
-  height: 10rem;
+  height: 11rem;
   width: 13.5%;
   border-radius: 20px;
   padding: 1rem;
@@ -45,7 +45,7 @@
 .equipment-box .equip-select {
   
   font-family: 'Martian Mono', monospace;
-  font-size: 10px;
+  font-size: auto;
   font-weight: bold;
   font-style: italic;
   width: 100%;
@@ -53,7 +53,7 @@
   border: none;
   cursor: pointer;
   border-radius: 16px;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   text-transform: capitalize;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -61,6 +61,9 @@
   background-repeat: no-repeat;
   background-position: right 0.5rem top 50%;
   background-size: 1.5rem;
+  /* center the text inside the select */
+  text-align: start;
+  padding-left: 1rem;
 
 }
 
