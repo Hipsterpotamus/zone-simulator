@@ -10,7 +10,7 @@ class Benefactor extends Player {
         this.levelheal = 5;
         this.income = 0;
         this.aS = 100;
-        this.aSLvl = 0;
+        this.aSLvl = 1000;
         this.dodge = 0;
         this.gold = 25;
     }

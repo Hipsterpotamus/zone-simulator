@@ -9,7 +9,7 @@ class Zone {
             'legs' : [],
             'feet' : [],
             'stat' : [],
-            'item' : [],
+            'usable' : [],
             'magic' : []
         }
     }

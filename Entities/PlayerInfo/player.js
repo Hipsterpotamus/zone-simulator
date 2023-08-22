@@ -1,6 +1,6 @@
 class Player extends Entity{
     constructor(type) {
-        super(type);
+        super('', type, 0, 0, 0, 0, 0, 0, '');
         //default stats- can be specified further in char classes
         this.hp = 100;
         this.maxhp = 100;
@@ -14,12 +14,23 @@ class Player extends Entity{
         this.dodge = 0;
         this.gold = 25;
         this.inv = {
-            'item':[],
-            'weapon':[new Equippable(true, true, 'none', 'weapon', 'none', 0, 0, 0, 0)],
-            'head':[new Equippable(true, true, 'none', 'head', 'none', 0, 0, 0, 0)],
-            'chest':[new Equippable(true, true, 'none', 'chest', 'none', 0, 0, 0, 0)],
-            'legs':[new Equippable(true, true, 'none', 'legs', 'none', 0, 0, 0, 0)],
-            'feet':[new Equippable(true, true, 'none', 'feet', 'none', 0, 0, 0, 0)],
+            'usable':[],
+            'weapon':[],
+            'head':[],
+            'chest':[],
+            'legs':[],
+            'feet':[],
+        }
+    }
+
+    playerInit() { //used for initialization that depends on player object
+        this.inv = {
+            'usable':[new Usable('none', 'usable', 'never', '', 0, '')],
+            'weapon':[new Equippable('none', 'weapon', 'none', 0, 0, 0, 0)],
+            'head':[new Equippable('none', 'head', 'none', 0, 0, 0, 0)],
+            'chest':[new Equippable('none', 'chest', 'none', 0, 0, 0, 0)],
+            'legs':[new Equippable('none', 'legs', 'none', 0, 0, 0, 0)],
+            'feet':[new Equippable('none', 'feet', 'none', 0, 0, 0, 0)],
         }
     }
 

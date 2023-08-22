@@ -18,13 +18,6 @@ class ShopItem{
         if( g.player.gold>=this.goldPrice){
              g.player.gold-=this.goldPrice;
             this.onBuy();
-            if(this.item == 'item'){
-                for(a in  g.player.inv.item){
-                    if( g.player.inv.item[a].rawname == this.rawname){
-                         g.player.inv.item[a].appendElement();
-                    }
-                }
-            }
             this.element.remove();
             elementUp();
         }

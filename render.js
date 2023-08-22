@@ -40,23 +40,6 @@ function enemyHtmlOutput(enemy) {
     }
     return htmlOutput;
 }
-function updateEquippableStats(eq){
-    console.log(eq);
-    let statOutput = ''; 
-    if(eq.metatype == 'weapon'){
-        statOutput+='DMG : '+displayWithSign(eq.dmg)+'<br>';
-        statOutput+='ARM : '+displayWithSign(eq.arm)+'<br>';
-        statOutput+='REGEN : '+displayWithSign(eq.regen)+'<br>';
-        statOutput+='SPEED : '+displayWithSign(eq.aSChange)+'<br>'
-    }else{
-        statOutput+='ARM : '+displayWithSign(eq.arm)+'<br>';
-        statOutput+='REGEN : '+displayWithSign(eq.regen)+'<br>';
-        statOutput+='DMG : '+displayWithSign(eq.dmg)+'<br>';
-        statOutput+='SPEED : '+displayWithSign(eq.aSChange)+'<br>'
-    }
-    if(eq.name=='none'){statOutput = '';}
-    $('#'+eq.metatype+'-stats').html(statOutput);
-}
 
 function displayWithSign(number){
     if (number<0){

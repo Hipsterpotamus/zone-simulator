@@ -15,6 +15,7 @@ function startGame(){
         'cTick':0,
         'areaCompletion':false
     }
+    g.player.playerInit();
     g.path = generatePath(g.zone.pathGen);
 }
 

@@ -1,7 +1,6 @@
-const CATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'item'];
+const CATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'usable'];
 
 function fillShop(shopCode) {
-    let itemToPush = [];
     let shopCodeExpand = [shopCode[0], 0, 0, 0, 0, shopCode[2], shopCode[3]];
     for (let i = 0; i < shopCode[1]; i++) {
         let randNum = Math.floor(Math.random() * 4) + 1;

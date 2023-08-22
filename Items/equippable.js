@@ -1,57 +1,46 @@
-class Equippable {
-    constructor(startEquipped, initEle, name, metatype, type, dmg, armor, regen, attackSpeedChange, complexStats) {
-        this.equipped = startEquipped;
-        this.initEle = initEle;
-        this.name = name;
-        this.metatype = metatype;
+class Equippable extends Item {
+    constructor(name, metatype, type, dmg, armor, regen, attackSpeedChange, complexStats) {
+        super(name, metatype);
         this.type = type;
         this.dmg = dmg;
         this.arm = armor;
         this.regen = regen;
         this.aSChange = attackSpeedChange;
         this.income = 0;
+        this.thorn = 0;
+        this.dodge = 0;
         this.lifedrain = 0;
         this.thorn = 0;
+        this.antiheal = 0;
         this.dodge = 0;
         this.tear = 0;
         this.shatter = 0;
-        this.element;
-                
-        if(initEle){
-            this.appendElement();
-        }
 
-        // This does the same thing, and allows for more complex stats to be added without having to add them
         if(complexStats){
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];
             });
         }
-        
+
+        if (this.equipped) {
+            this.updateItemInfo();
+        }
     }
-    appendElement() {
-        this.element = $('<option>', {
-            'value': this.name,
-            'id': '#' + this.name + '-'+this.metatype+'-select'
-        });
-        this.element.appendTo('#' + this.metatype + '-select');
-        let textToShow = this.name;
-        if(this.name == 'none'){textToShow = 'none';}
-        this.element.text(textToShow);
+
+    updateItemInfo() {
+        let statOutput = ''; 
+        if(this.metatype == 'weapon'){
+            statOutput+='DMG : '+displayWithSign(this.dmg)+'<br>';
+            statOutput+='ARM : '+displayWithSign(this.arm)+'<br>';
+            statOutput+='REGEN : '+displayWithSign(this.regen)+'<br>';
+            statOutput+='SPEED : '+displayWithSign(this.aSChange)+'<br>'
+        }else{
+            statOutput+='ARM : '+displayWithSign(this.arm)+'<br>';
+            statOutput+='REGEN : '+displayWithSign(this.regen)+'<br>';
+            statOutput+='DMG : '+displayWithSign(this.dmg)+'<br>';
+            statOutput+='SPEED : '+displayWithSign(this.aSChange)+'<br>'
+        }
+        if(this.name=='none'){statOutput = '';}
+        $('#'+this.metatype+'-stats').html(statOutput);
     }
 }
-
-
-$(function(){
-    let equipT = ['weapon','head','chest','legs','feet'];
-    for(a in equipT){
-        $('#'+equipT[a]+'-select').on('change',function(){
-            let newEquip = $(this).val();
-            let idPull = $(this).attr('id');
-            let thing = idPull.replace(/-select$/i, '');
-             g.player.inv[thing].forEach(i => {
-                if(i.name==newEquip){i.equipped = true;updateEquippableStats(i);}else{i.equipped = false;}
-            });
-        });
-    }
-});

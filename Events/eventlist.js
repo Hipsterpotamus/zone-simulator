@@ -25,8 +25,8 @@ const eventList = {
         {
             text: 'Gain Clothing: gain two armor pieces, lose 1 level heal',
             effect: function () {
-                g.player.inv.chest.push(new Equippable(true, true, 'dirty shirt', 'chest', 'shirt', 0, 1, 0, 0));
-                g.player.inv.legs.push(new Equippable(true, true, 'dirty pants', 'legs', 'pants', 0, 1, 0, 0));
+                g.player.inv.chest.push(new Equippable('dirty shirt', 'chest', 'shirt', 0, 1, 0, 0));
+                g.player.inv.legs.push(new Equippable('dirty pants', 'legs', 'pants', 0, 1, 0, 0));
                 g.player.changeLvlHeal(-1);
                 eventFunctionSuffix('dirty shirt & pants gained');
             }
@@ -45,7 +45,7 @@ const eventList = {
             effect: function () {
                 if (g.player.gold < 3) { eventFunctionSuffix('not enough gold!'); return; }
                 g.player.gold -= 3;
-                g.player.inv.weapon.push(new Equippable(true, true, 'garden hoe', 'weapon', 'none', 3, 0, 0, 0));
+                g.player.inv.weapon.push(new Equippable('garden hoe', 'weapon', 'none', 3, 0, 0, 0));
                 eventFunctionSuffix('garden hoe obtained');
             }
         },
@@ -78,7 +78,7 @@ const eventList = {
             text: 'Blow and Wear: alert enemies, gain horn helmet',
             effect: function () {
                 g.zone.changeZoneLevel(2);
-                g.player.inv.head.push(new Equippable(true, true, 'horn helmet', 'head', 'helmet', 2, 0, 0, 0));
+                g.player.inv.head.push(new Equippable('horn helmet', 'head', 'helmet', 2, 0, 0, 0));
                 eventFunctionSuffix('horn helmet acquired');
             }
         },
@@ -86,7 +86,7 @@ const eventList = {
             text: 'Blow and wield: alert enemies, gain horn sling',
             effect: function () {
                 g.zone.changeZoneLevel(2);
-                g.player.inv.weapon.push(new Equippable(true, true, 'horn sling', 'weapon', 'sling', 4, 0, 0, 25));
+                g.player.inv.weapon.push(new Equippable('horn sling', 'weapon', 'sling', 4, 0, 0, 25));
                 eventFunctionSuffix('horn sling acquired');
             }
         },
