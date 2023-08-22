@@ -35,7 +35,7 @@
         <script src="Events/eventlist.js"></script>
         <script src="Entities/entity.js"></script>
         <script src="Entities/PlayerInfo/player.js"></script>
-        <script src="Entities/PlayerInfo/PlayerTypes/benefactor.js"></script>
+        <script src="Entities/PlayerInfo/PlayerTypes/beneficiary.js"></script>
         <script src="Entities/PlayerInfo/PlayerTypes/collector.js"></script>
         <script src="Entities/PlayerInfo/PlayerTypes/ninja.js"></script>
         <script src="Entities/PlayerInfo/PlayerTypes/robot.js"></script>
@@ -62,18 +62,38 @@
             <div id = 'character-select-scroll' class="secondary-container shadow">
                 <button class="char-button selected-char shadow hover" id = "char-button-ben">
                     <h3 class='headline-large'>Ben</h3>
-                    <p class = 'char-subtitle title-large'>The Benefactor</p>
+                    <p class = 'char-subtitle title-large'>The Beneficiary</p>
                     <p class = 'char-desc body-large'>Receives a gift upon entering a new zone</p>
-                  </button>
-                <button class="char-button shadow hover">
-                    <h3 class='headline-large'>Colette</h3>
-                    <p class = 'char-subtitle title-large'>The Collector</p>
-                    <p class = 'char-desc body-large'>Gains Double the amount of items, but can't gain more level heal</p>
                 </button>
                 <button class="char-button shadow hover">
                     <h3 class='headline-large'>Nina</h3>
                     <p class = 'char-subtitle title-large'>The Ninja</p>
                     <p class = 'char-desc body-large'>Starts with 33% Dodge Change and +20% Damage, but receives only 50% of the effect of armor</p>
+                </button>
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Willow</h3>
+                    <p class = 'char-subtitle title-large'>The Wisp</p>
+                    <p class = 'char-desc body-large'>All armor counts as super-armor, your max hp is capped at 1</p>
+                </button>
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Ava</h3>
+                    <p class = 'char-subtitle title-large'>The Avatar</p>
+                    <p class = 'char-desc body-large'>All equipment (weapons and armor) combines on purchase.</p>
+                </button>
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Garry</h3>
+                    <p class = 'char-subtitle title-large'>The Gambler</p>
+                    <p class = 'char-desc body-large'>Has a 50% chance to start battle with a +100% damage status. If this status is not received, start battle with a -50% damage status.</p>
+                </button>
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Bob</h3>
+                    <p class = 'char-subtitle title-large'>The Blob</p>
+                    <p class = 'char-desc body-large'>Your gold count doubles as your hp and vice versa. Cannot gain max hp through purchasing stat items</p>
+                </button>
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Colette</h3>
+                    <p class = 'char-subtitle title-large'>The Collector</p>
+                    <p class = 'char-desc body-large'>Gains Double the amount of items, but can't gain more level heal</p>
                 </button>
                 <button class="char-button shadow hover">
                     <h3 class='headline-large'>Robert</h3>
@@ -95,6 +115,13 @@
                     <p class = 'char-subtitle title-large'>The Physician</p>
                     <p class = 'char-desc body-large'>Receives a 30% bonus to all healing, but cannot apply bleed</p>
                 </button>
+                
+                <button class="char-button shadow hover">
+                    <h3 class='headline-large'>Bob</h3>
+                    <p class = 'char-subtitle title-large'>The Blob</p>
+                    <p class = 'char-desc body-large'>Your gold count doubles as your hp and vice versa. Cannot gain max hp through purchasing stat items</p>
+                </button>
+                
     
             </div>
     

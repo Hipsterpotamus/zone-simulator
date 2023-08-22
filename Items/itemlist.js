@@ -139,32 +139,32 @@ const itemList = {
         g.player.regen += 1;
     }]],
 
-    //usable
-    //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
-    'firecracker': [5, '(item: deal 20 dmg, lose 2 hp)', 'usable', ['combat', 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 
+  //usable
+  //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
+  'firecracker': [5, '(item: deal 20 dmg, lose 2 hp)', 'usable', ['combat', 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 
     function(){
         g.cEnemy.hp -= 20;
         g.player.hp -= 2;
-    }]],
-    
-    'throwing eggs': [7, '(3x item: current enemy loses 3 armor)', 'usable', ['combat', "During combat, lower the current enemy's armor by 3", 
+  }]],
+  
+  'throwing eggs': [7, '(3x item: current enemy loses 3 armor)', 'usable', ['combat', "During combat, lower the current enemy's armor by 3", 
     function(){
         g.cEnemy.arm -= 3;
-    }]],
-    
-    'bandages': [9, '(4x item: heal 5 hp)', 'usable', ['all', "Heal 5", 
+  }]],
+  
+  'bandages': [9, '(4x item: heal 5 hp)', 'usable', ['all', "Heal 5", 
     function(){
         g.player.gainHp(5);
-    }]],
-    
-    'first aid kit': [8, '(item: heal 20)', 'usable', ['all', "Heal 20", 
+  }]],
+  
+  'first aid kit': [8, '(item: heal 20)', 'usable', ['all', "Heal 20", 
     function(){
         g.player.gainHp(20);
-    }]],
-    
-    'sharpening stone': [26, '(3x item: +2 dmg on weapon)', 'usable', ['all', "Your currently equipped weapon gains +2 dmg", 
+  }]],
+  
+  'sharpening stone': [26, '(3x item: +2 dmg on weapon)', 'usable', ['all', "Your currently equipped weapon gains +2 dmg", 
     function(){
         g.player.getByType('weapon').dmg += 2;
         g.player.getByType('weapon').updateItemInfo();
-    }]]
+  }]]
 }
