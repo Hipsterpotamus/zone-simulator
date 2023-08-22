@@ -1,4 +1,4 @@
-class Benefactor extends Player {
+class Beneficiary extends Player {
     constructor(type) {
         super(type);
         this.name = 'ben'; //gonna wait till more zones to implement
