@@ -11,13 +11,18 @@
 
 
 ## Backend
-* [] Add feedback when useable can't be used/item can't be purchased
+
+### New stuff
 * [] Implement magic system and add corresponding shop items into pool
 * [] Start working on player level up system
 * [] Create shop items for forest zone
 
-* [] Update README.md with info on all backend systems
+### Fixes
 * [] Add 'you died' indicator in g.player.death()
+* [] Add feedback when useable can't be used/item can't be purchased
+
+### Refactoring
+* [] Update README.md with info on all backend systems
 * [x] Refactor combat.js
 * [] Refactor path.js
 * [] Get rid of of global variables

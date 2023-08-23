@@ -44,6 +44,7 @@ class Equippable extends Item {
             statOutput+='SPEED : '+displayWithSign(this.aSChange)+'<br>'
         }
         if(this.name=='none'){statOutput = '';}
+        g.player.updateEntityDisplay();
         $('#'+this.metatype+'-stats').html(statOutput);
     }
 }

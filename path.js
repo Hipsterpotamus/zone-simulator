@@ -64,7 +64,7 @@ function generatePath(zoneArray){
 
 function advancePath(){
     g.space+=1;
-    g.player.gold += g.player.calcIncome();
+    g.player.gainGold(false, g.player.calcIncome());
     
     $('#content-central-box').empty();
     if(g.space%3==0){g.zone.changeZoneLevel(1)}
@@ -112,8 +112,8 @@ function genEnemy(){
 
     $('#large-tab-title').text('Enemy Encounter');
     setBroadcastTitleText('Enemy Encounter', true);
-    g.cEnemy = g.zone.getRandomEnemy();
-    g.combat.startCombat(g.player, g.cEnemy);
+    enemy = g.zone.getRandomEnemy();
+    g.combat.startCombat(g.player, enemy);
 }
 let eventInfo;
 function genEvent(eventPath){
@@ -157,6 +157,6 @@ function genBoss(){
 
     $('#combatTimer').removeClass('hidden');
 
-    g.cEnemy = g.zone.getBoss();
-    g.combat.startCombat(g.player, g.cEnemy);
+    enemy = g.zone.getBoss();
+    g.combat.startCombat(g.player, enemy);
 }

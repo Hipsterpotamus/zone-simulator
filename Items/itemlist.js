@@ -149,13 +149,13 @@ const ITEMLIST = {
   //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
   'firecracker': [5, '(item: deal 20 dmg, lose 2 hp)', 'usable', ['combat', 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 1, 
     function(){
-        g.cEnemy.changeHp(-20);
-        g.player.changeHp(-2);
+        g.combat.enemy.changeHp(-20);
+        g.combat.player.changeHp(-2);
   }]],
   
   'throwing eggs': [7, '(3x item: current enemy loses 3 armor)', 'usable', ['combat', "During combat, lower the current enemy's armor by 3", 3, 
     function(){
-        g.cEnemy.arm -= 3;
+        g.combat.enemy.arm -= 3;
   }]],
   
   'bandages': [9, '(4x item: heal 5 hp)', 'usable', ['all', "Heal 5", 4, 
