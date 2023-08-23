@@ -8,7 +8,7 @@ function startGame(characterClass){
         'space':0,
         'player':new characterClass('human'), //change this class to change character
         'path':[],
-        'combat': '',
+        'combat': new Combat(20),
         'level': 1,
         'xp': 0,
         'cEnemy':0,

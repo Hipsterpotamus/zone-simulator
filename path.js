@@ -113,7 +113,7 @@ function genEnemy(){
     $('#large-tab-title').text('Enemy Encounter');
     setBroadcastTitleText('Enemy Encounter', true);
     g.cEnemy = g.zone.getRandomEnemy();
-    g.combat = new Combat(g.player, g.cEnemy, 20);
+    g.combat.startCombat(g.player, g.cEnemy);
 }
 let eventInfo;
 function genEvent(eventPath){
@@ -158,5 +158,5 @@ function genBoss(){
     $('#combatTimer').removeClass('hidden');
 
     g.cEnemy = g.zone.getBoss();
-    g.combat = new Combat(g.player, g.cEnemy, 20);
+    g.combat.startCombat(g.player, g.cEnemy);
 }

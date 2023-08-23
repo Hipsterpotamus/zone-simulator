@@ -17,12 +17,19 @@
 // more to come:
 
 class Combat {
-    constructor(player, enemy, msDelay) {
+    constructor(msDelay) {
         this.tick = 0;
+        this.player;
+        this.enemy;
+        this.delay = msDelay; //change this to change how long between ticks
+        this.inCombat = false;
+    }
+
+    startCombat(player, enemy) {
+        this.tick = 0;
+        this.inCombat = true;
         this.player = player;
         this.enemy = enemy;
-        this.delay = msDelay;
-        this.inCombat = true;
         this.combatTick();
     }
 
