@@ -46,21 +46,22 @@ function combatTick(){
 
     }
     if(g.cTick% g.player.calcAs()==0){
-        if(Math.random()>(g.cEnemy.dodge*0.01)){
-            let playerDMG =  g.player.calcDmg();
-            if(g.cEnemy.status.shatterApplied<g.cEnemy.calcArm()){
-                playerDMG -= (g.cEnemy.calcArm()-g.cEnemy.status.shatterApplied);
-            }
-            if (playerDMG < 0) {playerDMG = 0;}
-            g.cEnemy.hp-=playerDMG;
-            g.player.gainHp(Math.floor(playerDMG*(g.player.calcLifeDrain()/100)))
-            let cleanShatter = Math.floor(g.player.calcShatter()/10); // shatter application
-            if(Math.random()<((g.player.calcShatter()%10)/10)){cleanShatter+=1;}
-            g.cEnemy.status.shatterApplied+=cleanShatter;
-            g.cEnemy.maxhp -= g.player.tear;
-            if(g.cEnemy.hp>g.cEnemy.maxhp){g.cEnemy.hp=g.cEnemy.maxhp}
-            g.player.hp-=g.cEnemy.calcThorn();
-        }
+        g.cEnemy.receiveHit(g.player)
+        // if(Math.random()>(g.cEnemy.dodge*0.01)){
+        //     let playerDMG =  g.player.calcDmg();
+        //     if(g.cEnemy.status.shatterApplied<g.cEnemy.calcArm()){
+        //         playerDMG -= (g.cEnemy.calcArm()-g.cEnemy.status.shatterApplied);
+        //     }
+        //     if (playerDMG < 0) {playerDMG = 0;}
+        //     g.cEnemy.hp-=playerDMG;
+        //     g.player.gainHp(Math.floor(playerDMG*(g.player.calcLifeDrain()/100)))
+        //     let cleanShatter = Math.floor(g.player.calcShatter()/10); // shatter application
+        //     if(Math.random()<((g.player.calcShatter()%10)/10)){cleanShatter+=1;}
+        //     g.cEnemy.status.shatterApplied+=cleanShatter;
+        //     g.cEnemy.maxhp -= g.player.tear;
+        //     if(g.cEnemy.hp>g.cEnemy.maxhp){g.cEnemy.hp=g.cEnemy.maxhp}
+        //     g.player.hp-=g.cEnemy.calcThorn();
+        // }
     }
 
     if(g.cTick% g.player.regenRate==0){

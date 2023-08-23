@@ -38,4 +38,21 @@ class Enemy extends Entity{
     calcLifeDrain() {
         return this.lifedrain;
     }
+    receiveHit(player) {
+        if(Math.random()>(this.dodge*0.01)){
+            let playerDMG =  player.calcDmg();
+            if(this.status.shatterApplied<this.calcArm()){
+                playerDMG -= (this.calcArm()-this.status.shatterApplied);
+            }
+            if (playerDMG < 0) {playerDMG = 0;}
+            this.hp-=playerDMG;
+            player.gainHp(Math.floor(playerDMG*(player.calcLifeDrain()/100)))
+            let cleanShatter = Math.floor(player.calcShatter()/10); // shatter application
+            if(Math.random()<((player.calcShatter()%10)/10)){cleanShatter+=1;}
+            this.status.shatterApplied+=cleanShatter;
+            this.maxhp -= player.tear;
+            if(this.hp>this.maxhp){this.hp=this.maxhp}
+            player.hp-=this.calcThorn();
+        }
+    }
 }
