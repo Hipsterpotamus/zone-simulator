@@ -13,7 +13,7 @@ class Physician extends Player {
             this.hp = Math.min(this.maxhp, this.hp + amount);
         }
 
-        if (this.hp <= 0) {
+        if (this.hp <= 0 && amount != 0) {
             this.hp = 0;
             this.death;
         }

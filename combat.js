@@ -16,13 +16,6 @@
 // super armor: additional armor which blocks thorn and tear
 // more to come:
 
-
-
-
-
-
-
-
 function combatTick(){
     g.cTick += 1;
     if(g.cTick%g.cEnemy.calcAs()==0){
@@ -48,4 +41,3 @@ function combatTick(){
     }
     elementUp();
 }
-

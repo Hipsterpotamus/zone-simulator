@@ -2,14 +2,14 @@
 # Todo
 
 ## Urgent
-* [] Make it so that any time entities takes damage or gain health, it is done in a function like `entity.decreaseHP()` or `entity.gainHP()`. So no more `g.player.hp-=g.cEnemy.calcThorn();`. It should be `g.player.decreaseHP(g.cEnemy.calcThorn());` or something like that. This will make it easier to animate attacks and heals, and add things like armor and magic resistance.
+* [x] Make it so that any time entities takes damage or gain health, it is done in a function like `entity.decreaseHP()` or `entity.gainHP()`. So no more `g.player.hp-=g.cEnemy.calcThorn();`. It should be `g.player.decreaseHP(g.cEnemy.calcThorn());` or something like that. This will make it easier to animate attacks and heals, and add things like armor and magic resistance.
 
 ## Frontend
 * [] Header changing color per-zone
 * [] Make sure 8 stats fit into armor
 * [] Implement "combat timer" element which appears during combat (either in the dead space in the "enemy encounter" tab or rolling on the header)
 * [] Create combat stats elements and content to display over dead enemy at the end of combat
-* [] Add spots to send usable can't be used/not enough gold to puchase info
+* [] Add spots to send usable can't be used/not enough gold to purchase info
 
 
 ## Backend

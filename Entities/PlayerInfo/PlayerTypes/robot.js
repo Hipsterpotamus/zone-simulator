@@ -12,7 +12,7 @@ class Robot extends Player {
             this.hp = Math.min(this.hp, this.hp + amount);
         }
 
-        if (this.hp <= 0) {
+        if (this.hp <= 0 && amount != 0) {
             this.hp = 0;
             this.death;
         }
