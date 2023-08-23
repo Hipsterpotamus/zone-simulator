@@ -55,6 +55,13 @@ class Entity{
         if (this.hp > this.maxhp) {this.changeHp(this.hp - this.maxhp)};
     }
 
+    runRegen() {
+        let regen = this.calcRegen();
+        if (regen != 0) {
+            this.changeHp(regen);
+        }
+    }
+
     
     cleanStatus() {
         this.shatterApplied = 0;
@@ -62,7 +69,7 @@ class Entity{
         this.antihealApplied = 0;
     }
 
-    receiveHit(opp) {
+    receiveHitFrom(opp) {
         if(this.testDodge(opp.accuracy)) {
             let oppDMG =  opp.testDmg(this.testArm(), this.superarmor);
             this.changeHp(-oppDMG);

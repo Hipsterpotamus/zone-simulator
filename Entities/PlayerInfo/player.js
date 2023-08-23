@@ -110,6 +110,7 @@ class Player extends Entity{
 
     gainGold(inBattle, amount) {
         this.gold += amount;
+        this.updateGoldDisplay();
     }
 
     changeLvlHeal(amount) {
@@ -117,10 +118,7 @@ class Player extends Entity{
     }
 
     death() {
-        g.inCombat = false;
-        g.cTick = 0;
-        clearInterval(timeoutCombatLoop);
-        elementUp();
+        //add you died screen or something
     }
 
     // Not totally sure where you'll want this, depending on if all entities have mana
@@ -129,10 +127,35 @@ class Player extends Entity{
         updateManaBar(amount, this.mana, this.maxMana);
     }
 
-    updateHealthBar(damage) { // damage taken
+    updateHealthBar(damage) { // damage healed
         var healthBar = $('#player-health-bar-container'),
         bar = healthBar.find('#player-health-bar'),
         hit = healthBar.find('#player-health-hit-bar');
         updateBar(-damage, this.hp, this.maxhp, healthBar, bar, hit);
+    }
+
+    updateEntityDisplay(tick = -1) {
+        let htmlOutput = '';
+        htmlOutput = this.name+'<br>';
+        htmlOutput+='hp : '+this.hp+'/'+this.maxhp+'<br>';
+        htmlOutput+='dmg : '+this.calcDmg()+' ('+this.dmg+' + '+(this.calcDmg()-this.dmg)+')<br>';
+        if (tick != -1) {htmlOutput+='time: '+(this.calcAs()-(tick % this.calcAs()))+'<br>';}
+        if(this.shatterApplied!=0){
+            htmlOutput+='arm : '+Math.max(0,(this.calcArm()-this.shatterApplied))+' ('+this.arm+' + '+(this.calcArm()-this.arm)+' - '+Math.min(this.calcArm(), this.shatterApplied)+')<br>';
+        }else{
+            htmlOutput+='arm : '+this.calcArm()+' ('+this.arm+' + '+(this.calcArm()-this.arm)+')<br>';
+        }
+        
+        htmlOutput+='regen : '+this.calcRegen()+' ('+this.regen+' + '+(this.calcRegen()-this.regen)+')<br>';
+        if(this.calcDodge()!=0){htmlOutput+='dodge : '+this.calcDodge()+' ('+this.dodge+' + '+(this.calcDodge()-this.dodge)+')<br>';}
+        if(this.calcThorn()!=0){htmlOutput+='thorn : '+this.calcThorn()+' ('+this.thorn+' + '+(this.calcThorn()-this.thorn)+')<br>';}
+        if(this.calcShatter()!=0){htmlOutput+='shatter : '+this.calcShatter()+' ('+this.shatter+' + '+(this.calcShatter()-this.shatter)+')<br>';}
+        if(this.calcLifeDrain()!=0){htmlOutput+='lifedrain : '+this.calcLifeDrain()+' ('+this.lifedrain+' + '+(this.calcLifeDrain()-this.lifedrain)+')<br>';}
+
+        $('#player-stats').html(htmlOutput);
+    }
+
+    updateGoldDisplay() {
+        $('#gold-text').text('gold: '+ this.gold);
     }
 }

@@ -16,21 +16,43 @@
 // super armor: additional armor which blocks thorn and tear
 // more to come:
 
-function combatTick(){
-    g.cTick += 1;
-    if(g.cTick%g.cEnemy.calcAs()==0){
-        g.player.receiveHit(g.cEnemy);
+class Combat {
+    constructor(player, enemy, msDelay) {
+        this.tick = 0;
+        this.player = player;
+        this.enemy = enemy;
+        this.delay = msDelay;
+        this.inCombat = true;
+        this.combatTick();
+    }
 
-    }
-    if(g.cTick% g.player.calcAs()==0){
-        g.cEnemy.receiveHit(g.player);
+    combatTick() {
+        this.tick += 1;
+        if (this.tick % this.player.calcAs() == 0) {
+            this.enemy.receiveHitFrom(this.player);
+        }
+        if (this.tick % this.enemy.calcAs() == 0) {
+            this.player.receiveHitFrom(this.enemy);
+        }
+        if (this.tick % this.player.regenRate == 0) {
+            this.player.runRegen();
+        }
+        if (this.tick % this.enemy.regenRate == 0) {
+            this.enemy.runRegen();
+        }
+
+        this.displayCombatInfo();
+
+        if (this.enemy.alive && this. player.alive) {
+            setTimeout(() => this.combatTick(), this.delay);
+        } else {
+            this.inCombat = false;
+        }
     }
 
-    if(g.cTick% g.player.regenRate==0){
-         g.player.changeHp( g.player.calcRegen())
+    displayCombatInfo() {
+        $('#combatTimer').text(Math.floor(this.tick / (3000))+":"+Math.floor((this.tick%(3000)/50)));
+        this.player.updateEntityDisplay(this.tick);
+        this.enemy.updateEntityDisplay(this.tick);
     }
-    if(g.cTick%g.cEnemy.regenRate==0){
-        g.cEnemy.changeHp(g.cEnemy.calcRegen())
-    }
-    elementUp();
 }

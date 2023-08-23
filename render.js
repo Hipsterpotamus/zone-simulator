@@ -1,44 +1,6 @@
 function elementUp(){
-    $('#player-stats').html(playerHtmlOutput(g.player));
-    $('#enemy-stats').html(enemyHtmlOutput(g.cEnemy));
-    $('#combatTimer').text(Math.floor(g.cTick/(3000))+":"+Math.floor((g.cTick%(3000)/50)));
+    g.player.updateEntityDisplay();
     $('#zone-text').text('zone: '+g.zoneNum+'–'+g.space);
-    $('#gold-text').text('gold: '+ g.player.gold);
-}
-function playerHtmlOutput(player){
-    let htmlOutput = '';
-    htmlOutput = player.name+'<br>';
-    htmlOutput+='hp : '+player.hp+'/'+player.maxhp+'<br>';
-    htmlOutput+='dmg : '+player.calcDmg()+' ('+player.dmg+' + '+(player.calcDmg()-player.dmg)+')<br>';
-    htmlOutput+='time: '+(player.calcAs()-(g.cTick%player.calcAs()))+'<br>';
-    if(player.shatterApplied!=0){
-        htmlOutput+='arm : '+Math.max(0,(player.calcArm()-player.shatterApplied))+' ('+player.arm+' + '+(player.calcArm()-player.arm)+' - '+Math.min(player.calcArm(), player.shatterApplied)+')<br>';
-    }else{
-        htmlOutput+='arm : '+player.calcArm()+' ('+player.arm+' + '+(player.calcArm()-player.arm)+')<br>';
-    }
-    
-    htmlOutput+='regen : '+player.calcRegen()+' ('+player.regen+' + '+(player.calcRegen()-player.regen)+')<br>';
-    if(player.calcDodge()!=0){htmlOutput+='dodge : '+player.calcDodge()+' ('+player.dodge+' + '+(player.calcDodge()-player.dodge)+')<br>';}
-    if(player.calcThorn()!=0){htmlOutput+='thorn : '+player.calcThorn()+' ('+player.thorn+' + '+(player.calcThorn()-player.thorn)+')<br>';}
-    if(player.calcShatter()!=0){htmlOutput+='shatter : '+player.calcShatter()+' ('+player.shatter+' + '+(player.calcShatter()-player.shatter)+')<br>';}
-    if(player.calcLifeDrain()!=0){htmlOutput+='lifedrain : '+player.calcLifeDrain()+' ('+player.lifedrain+' + '+(player.calcLifeDrain()-player.lifedrain)+')<br>';}
-    return htmlOutput;
-}
-function enemyHtmlOutput(enemy) {
-    let htmlOutput = '';
-    if(g.inCombat){
-        htmlOutput = enemy.name+'<br>';
-        htmlOutput+='hp : '+enemy.hp+'/'+enemy.maxhp+'<br>';
-        htmlOutput+='dmg : '+enemy.calcDmg()+'<br>';
-        htmlOutput+='time: '+(enemy.calcAs()-(g.cTick%enemy.calcAs()))+'<br>';
-        htmlOutput+='arm : '+(enemy.calcArm()-enemy.shatterApplied)+'<br>';
-        htmlOutput+='regen : '+enemy.calcRegen()+'<br>';
-        if(enemy.calcDodge()!=0){htmlOutput+='dodge : '+enemy.calcDodge()+'<br>';}
-        if(enemy.calcThorn()!=0){htmlOutput+='thorn : '+enemy.calcThorn()+'<br>';}
-        if(enemy.calcShatter()!=0){htmlOutput+='shatter : '+enemy.calcShatter()+'<br>';}
-        if(enemy.calcLifeDrain()!=0){htmlOutput+='lifedrain : '+enemy.calcLifeDrain()+'<br>';}
-    }
-    return htmlOutput;
 }
 
 function displayWithSign(number){

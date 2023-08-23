@@ -69,20 +69,15 @@ class Enemy extends Entity{
 
     death() {
         setBroadcastTitleText('Victory!', true)
-        g.inCombat = false;
-        g.player.gainGold(true, g.cEnemy.gold);
-        g.zone.changeZoneLevel(g.cEnemy.diffC);
-        g.player.cleanStatus()
-        g.cTick = 0;
-        
+        g.player.gainGold(true, this.gold);
+        g.zone.changeZoneLevel(this.diffC);
+        g.player.cleanStatus();
         g.player.changeHp(g.player.levelheal*this.getLvlHealMult());
-        clearInterval(timeoutCombatLoop);
+
         $('#go-next').removeClass('hidden');
         setNextButtonVisible(true);
     
         $('#combatTimer').addClass('hidden');
-    
-        elementUp();
     }
 
     updateHealthBar(damage) { // damage taken
@@ -92,5 +87,21 @@ class Enemy extends Entity{
         //bar = healthBar.find('#player-health-bar'),
         //hit = healthBar.find('#player-health-hit-bar');
         //updateBar(-damage, this.hp, this.maxhp, healthBar, bar, hit);
+    }
+
+    updateEntityDisplay(tick = -1) {
+        let htmlOutput = '';
+        htmlOutput = this.name+'<br>';
+        htmlOutput+='hp : '+this.hp+'/'+this.maxhp+'<br>';
+        htmlOutput+='dmg : '+this.calcDmg()+'<br>';
+        if (tick != -1) {htmlOutput+='time: '+(this.calcAs()-(tick % this.calcAs()))+'<br>';}
+        htmlOutput+='arm : '+(this.calcArm()-this.shatterApplied)+'<br>';
+        htmlOutput+='regen : '+this.calcRegen()+'<br>';
+        if(this.calcDodge()!=0){htmlOutput+='dodge : '+this.calcDodge()+'<br>';}
+        if(this.calcThorn()!=0){htmlOutput+='thorn : '+this.calcThorn()+'<br>';}
+        if(this.calcShatter()!=0){htmlOutput+='shatter : '+this.calcShatter()+'<br>';}
+        if(this.calcLifeDrain()!=0){htmlOutput+='lifedrain : '+this.calcLifeDrain()+'<br>';}
+
+        $('#enemy-stats').html(htmlOutput);
     }
 }

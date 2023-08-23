@@ -17,12 +17,12 @@
 * [] Create shop items for forest zone
 
 * [] Update README.md with info on all backend systems
-* [] Refactor combat.js
+* [] Add 'you died' indicator in g.player.death()
+* [x] Refactor combat.js
 * [] Refactor path.js
-* [] Allow player to move to a new zone after completing their current one
 * [] Get rid of of global variables
 * [] Refactor game.js? (will likely require a full transition to an object oriented framework to significantly improve)
-* [x] Make it so that any time entities takes damage or gain health, it is done in a function like `entity.decreaseHP()` or `entity.gainHP()`. So no more `g.player.hp-=g.cEnemy.calcThorn();`. It should be `g.player.decreaseHP(g.cEnemy.calcThorn());` or something like that. This will make it easier to animate attacks and heals, and add things like armor and magic resistance.
+
 
 
 # Ideas

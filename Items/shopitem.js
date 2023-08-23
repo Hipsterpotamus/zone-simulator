@@ -37,7 +37,6 @@ class ShopItem{
              g.player.gold-=this.goldPrice;
             this.onBuy();
             this.element.remove();
-            elementUp();
         } else {
             //communicate to player not enough gold
         }
