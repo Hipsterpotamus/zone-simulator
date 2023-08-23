@@ -12,6 +12,7 @@
 * [] Add spots to send usable can't be used/not enough gold to purchase info
 
 
+
 ## Backend
 * [] Add feedback when useable can't be used/item can't be purchased
 * [] Implement magic system and add corresponding shop items into pool
@@ -28,6 +29,8 @@
 
 
 # Ideas
+* I think it would be interesting to have a blurred image per-zone in the background with the color mixed it it. Could see it going either way, but I think it might look nice and add a nice effect.
+
 * Flash a color on the enemy/player when they take damage
 * Visual indicator for when player or enemy dodges
 * 
