@@ -26,22 +26,23 @@
 function combatTick(){
     g.cTick += 1;
     if(g.cTick%g.cEnemy.calcAs()==0){
-        if(Math.random()>( g.player.dodge*0.01)){
-            let enemyDMG = g.cEnemy.calcDmg();
-            if(g.player.status.shatterApplied<g.player.calcArm()){
-                enemyDMG -= (g.player.calcArm()-g.player.status.shatterApplied);
-            }
-            if (enemyDMG < 0){enemyDMG = 0;}
-            g.player.hp-=enemyDMG;
-            updatePlayerHealthBar(enemyDMG, g.player.hp, g.player.maxhp); // this will need to be moved into new function for taking damage
-            g.cEnemy.gainHp(Math.floor(enemyDMG*(g.cEnemy.calcLifeDrain()/100)))
-            let cleanShatter = Math.floor(g.cEnemy.calcShatter()/10); // shatter application
-            if(Math.random()<((g.cEnemy.calcShatter()%10)/10)){cleanShatter+=1;}
-            g.player.status.shatterApplied+=cleanShatter;
-            g.player.maxhp -= g.cEnemy.tear;
-            if(g.player.hp>g.player.maxhp){g.player.hp=g.player.maxhp}
-            g.cEnemy.hp-=g.cEnemy.calcThorn();
-        }
+        g.player.receiveHit(g.cEnemy);
+        // if(Math.random()>( g.player.dodge*0.01)){
+        //     let enemyDMG = g.cEnemy.calcDmg();
+        //     if(g.player.status.shatterApplied<g.player.calcArm()){
+        //         enemyDMG -= (g.player.calcArm()-g.player.status.shatterApplied);
+        //     }
+        //     if (enemyDMG < 0){enemyDMG = 0;}
+        //     g.player.hp-=enemyDMG;
+        //     updatePlayerHealthBar(enemyDMG, g.player.hp, g.player.maxhp); // this will need to be moved into new function for taking damage
+        //     g.cEnemy.gainHp(Math.floor(enemyDMG*(g.cEnemy.calcLifeDrain()/100)))
+        //     let cleanShatter = Math.floor(g.cEnemy.calcShatter()/10); // shatter application
+        //     if(Math.random()<((g.cEnemy.calcShatter()%10)/10)){cleanShatter+=1;}
+        //     g.player.status.shatterApplied+=cleanShatter;
+        //     g.player.maxhp -= g.cEnemy.tear;
+        //     if(g.player.hp>g.player.maxhp){g.player.hp=g.player.maxhp}
+        //     g.cEnemy.hp-=g.cEnemy.calcThorn();
+        // }
 
     }
     if(g.cTick% g.player.calcAs()==0){
