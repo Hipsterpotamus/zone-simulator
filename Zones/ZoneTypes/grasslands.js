@@ -161,7 +161,7 @@ class Grasslands extends Zone {
             ['stat', 'leaflet scarf'],
             ['stat', 'banana'],
             ['stat', 'apricot'],
-            ['stat', 'bond'],
+            ['stat', 'small bond'],
             ['stat', 'pamphlet'],
             ['usable', 'firecracker'],
             ['usable', 'throwing eggs'],

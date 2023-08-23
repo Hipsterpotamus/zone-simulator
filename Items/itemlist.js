@@ -135,7 +135,7 @@ const ITEMLIST = {
         g.player.changeMaxHp(16);
         g.player.aSLvl -= 2;
     }]],
-    'bond': [10, '(+1 income)', 'stat', [
+    'small bond': [10, '(+1 income)', 'stat', [
     function(){
         g.player.income += 1;
     }]],
@@ -248,4 +248,110 @@ const ITEMLIST = {
   'locust wrap feet': [32, '(3 armor +2 regem +5 speed feet)', 'feet', ['misc', 0, 3, 2, 5]],
   'maple leef sandals': [27, '(4 armor +2 lifedrain sandals)', 'feet', ['sandals', 0, 4, 0, 0, {'lifedrain':2}]],
   'hardened sap shoes': [53, '(9 armor -30 speed shoes)', 'feet', ['shoes', 0, 9, 0, -30]],
+
+  //stat 
+  //name : [price, shopDesc, metatype, [onUse, complexStats]]
+  'shiny apple': [27, '(+30 max hp)', 'stat', [
+  function(){
+      g.player.changeMaxHp(30);
+  }]],
+  'dark red apple': [25, '(+25 max hp, heal 3 on purchase)', 'stat', [
+  function(){
+      g.player.changeMaxHp(25);
+      g.player.changeHp(3);
+  }]],
+  'white chocolate bar': [18, '(-6 max hp +9 speed)', 'stat', [
+  function(){
+      g.player.changeMaxHp(-6);
+      g.player.aSLvl += 9;
+  }]],
+  'milk': [15, '(+2 dmg)', 'stat', [
+  function(){
+        g.player.dmg += 2;
+  }]],
+  'water canteen': [22, '(+8 level heal)', 'stat', [
+  function(){
+      g.player.changeLvlHeal(8);
+  }]],
+  'bass fish': [16, '(+4 max hp +2 dmg)', 'stat', [
+  function(){
+      g.player.changeMaxHp(4);
+      g.player.dmg += 2;
+  }]],
+  'cat fish': [16, '(+4 max hp +5 speed)', 'stat', [
+  function(){
+      g.player.changeMaxHp(4);
+      g.player.aSLvl += 5;
+  }]],
+  'perch fish': [16, '(+4 max hp +2 armor)', 'stat', [
+  function(){
+      g.player.changeMaxHp(4);
+      g.player.arm += 2;
+  }]],
+  'trout': [16, '(+4 max hp +1 regen)', 'stat', [
+  function(){
+      g.player.changeMaxHp(4);
+      g.player.regen += 1;
+  }]],
+  'salmon': [16, '(+4 max hp +3 level heal)', 'stat', [
+  function(){
+      g.player.changeMaxHp(4);
+      g.player.changeLvlHeal(3);
+  }]],
+  'blood acorn': [29, '(+3 lifedrain +2 level heal)', 'stat', [
+  function(){
+      g.player.lifedrain += 3;
+      g.player.changeLvlHeal(2);
+  }]],
+  'elven trinket': [21, '(+3 dodge)', 'stat', [
+  function(){
+      g.player.dodge += 3;
+  }]],
+  'sluggish mushrooms': [31, '(+40 max hp -10 speed)', 'stat', [
+  function(){
+      g.player.changeMaxHp(40);
+      g.player.aSLvl -= 10;
+  }]],
+  'pinecone pudding': [31, '(+25 max hp +8 level heal)', 'stat', [
+  function(){
+      g.player.changeMaxHp(25);
+      g.player.changeLvlHeal(8);
+  }]],
+  'heal ointment': [34, '(+12 level heal)', 'stat', [
+  function(){
+      g.player.changeLvlHeal(12);
+  }]],
+  'cooked chicken': [25, '(+8 max hp +4 shatter)', 'stat', [
+  function(){
+      g.player.changeMaxHp(8);
+      g.player.shatter += 4;
+  }]],
+  'battle blood': [45, '(+5 dmg +10 shatter)', 'stat', [
+  function(){
+      g.player.dmg += 5;
+      g.player.shatter += 10;
+  }]],
+  'bucket of ice': [22, '(heal 30 on purchase)', 'stat', [
+  function(){
+      g.player.changeHp(30);
+  }]],
+  'carrot': [36, '(+3 regen +3 speed)', 'stat', [
+  function(){
+      g.player.regen += 3;
+      g.player.aSLvl += 3;
+  }]],
+  'medium bond': [25, '(+2 income)', 'stat', [
+  function(){
+      g.player.income += 2;
+  }]],
+  'golden fish': [45, '(+25 max hp +1 income)', 'stat', [
+  function(){
+      g.player.changeMaxHp(25);
+      g.player.income += 1;
+  }]],
+  'bark pamphlette': [40, '(+2 regen +2 income)', 'stat', [
+  function(){
+      g.player.regen += 2;
+      g.player.income += 2;
+  }]],
 }
