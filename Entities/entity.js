@@ -40,7 +40,7 @@ class Entity{
                 this.hp = Math.min(this.maxhp, this.hp + amount);
         }
 
-        this.updateHealthBar(-amount);
+        this.updateHealthBar(amount);
 
         if (this.hp <= 0 && this.alive) {
             this.hp = 0;
@@ -108,10 +108,10 @@ class Entity{
     }
 
     testThorn(superarmor) {
-        return Math.max(this.calcThorn - superarmor, 0);
+        return Math.max(this.calcThorn() - superarmor, 0);
     }
 
     testTear(superarmor) {
-        return Math.max(this.tear - superarmor, 0);
+        return Math.max(this.calcTear() - superarmor, 0);
     }
 }

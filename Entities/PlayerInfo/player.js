@@ -93,6 +93,10 @@ class Player extends Entity{
     calcSuperArmor() {
         return (this.superarmor+this.getByType('weapon').superarmor+this.getByType('head').superarmor+this.getByType('chest').superarmor+this.getByType('legs').superarmor+this.getByType('feet').superarmor);
     }
+
+    calcTear() {
+        return (this.tear+this.getByType('weapon').tear+this.getByType('head').tear+this.getByType('chest').tear+this.getByType('legs').tear+this.getByType('feet').tear);
+    }
         
     getByType(type){
         let foundEquip;
@@ -129,6 +133,6 @@ class Player extends Entity{
         var healthBar = $('#player-health-bar-container'),
         bar = healthBar.find('#player-health-bar'),
         hit = healthBar.find('#player-health-hit-bar');
-        updateBar(damage, this.hp, this.maxhp, healthBar, bar, hit);
+        updateBar(-damage, this.hp, this.maxhp, healthBar, bar, hit);
     }
 }

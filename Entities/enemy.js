@@ -59,6 +59,10 @@ class Enemy extends Entity{
         return this.bleed;
     }
 
+    calcTear() {
+        return this.tear;
+    }
+
     getLvlHealMult() {
         return 1;
     }
@@ -87,6 +91,6 @@ class Enemy extends Entity{
         //var healthBar = $('#player-health-bar-container'),
         //bar = healthBar.find('#player-health-bar'),
         //hit = healthBar.find('#player-health-hit-bar');
-        //updateBar(damage, this.hp, this.maxhp, healthBar, bar, hit);
+        //updateBar(-damage, this.hp, this.maxhp, healthBar, bar, hit);
     }
 }
