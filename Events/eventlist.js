@@ -7,16 +7,15 @@ const eventList = {
         {
             text: 'Climb: gain 5 max hp, lose 10 hp',
             effect: function () {
-                g.player.maxhp += 5;
-                g.player.hp -= 10;
-                if (g.player.hp <= 0) { playerDeath(); }
+                g.player.changeMaxHp(5);
+                g.player.changeHp(-10);
                 eventFunctionSuffix('+5 max hp. -10 hp');
             }
         },
         {
             text: 'Walk past: heal 4 hp',
             effect: function () {
-                g.player.gainHp(4);
+                g.player.changeHp(4);
                 eventFunctionSuffix('4 hp healed');
             }
         }
@@ -34,7 +33,7 @@ const eventList = {
         {
             text: 'Walk past: heal 1 hp',
             effect: function () {
-                g.player.gainHp(1);
+                g.player.changeHp(1);
                 eventFunctionSuffix('1 hp healed');
             }
         }
@@ -102,8 +101,7 @@ const eventList = {
             text: 'Stay behind: +4 damage on current equipped weapon, lose 22 hp',
             effect: function () {
                 g.player.getByType('weapon').dmg += 4;
-                g.player.hp -= 22;
-                if (g.player.hp <= 0) { playerDeath(); }
+                g.player.changeHp(-22);
                 eventFunctionSuffix(g.player.getByType('weapon').name + ' gained 4 dmg');
                 g.player.getByType('weapon').updateItemInfo();
             }
@@ -111,8 +109,7 @@ const eventList = {
         {
             text: 'Run: lose 3 hp',
             effect: function () {
-                g.player.hp -= 3;
-                if (g.player.hp <= 0) { playerDeath(); }
+                g.player.changeHp(-3);
                 eventFunctionSuffix();
             }
         }
@@ -128,7 +125,7 @@ const eventList = {
         {
             text: 'Treat Injuries: heal 16 hp',
             effect: function () {
-                g.player.gainHp(16);
+                g.player.changeHp(16);
                 eventFunctionSuffix('16 healed');
             }
         },
@@ -176,7 +173,7 @@ const eventList = {
         {
             text: 'Rest: heal 15 hp',
             effect: function () {
-                g.player.gainHp(15);
+                g.player.changeHp(15);
                 eventFunctionSuffix();
             }
         },
@@ -192,7 +189,7 @@ const eventList = {
         {
             text: 'Dive in: heal 15 hp',
             effect: function () {
-                g.player.gainHp(15);
+                g.player.changeHp(15);
                 eventFunctionSuffix();
             }
         },
@@ -209,7 +206,7 @@ const eventList = {
         {
             text: 'Sleep: heal 15 hp',
             effect: function () {
-                g.player.gainHp(15);
+                g.player.changeHp(15);
                 eventFunctionSuffix();
             }
         },

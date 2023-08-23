@@ -27,91 +27,25 @@ function combatTick(){
     g.cTick += 1;
     if(g.cTick%g.cEnemy.calcAs()==0){
         g.player.receiveHit(g.cEnemy);
-        // if(Math.random()>( g.player.dodge*0.01)){
-        //     let enemyDMG = g.cEnemy.calcDmg();
-        //     if(g.player.status.shatterApplied<g.player.calcArm()){
-        //         enemyDMG -= (g.player.calcArm()-g.player.status.shatterApplied);
-        //     }
-        //     if (enemyDMG < 0){enemyDMG = 0;}
-        //     g.player.hp-=enemyDMG;
-        //     updatePlayerHealthBar(enemyDMG, g.player.hp, g.player.maxhp); // this will need to be moved into new function for taking damage
-        //     g.cEnemy.gainHp(Math.floor(enemyDMG*(g.cEnemy.calcLifeDrain()/100)))
-        //     let cleanShatter = Math.floor(g.cEnemy.calcShatter()/10); // shatter application
-        //     if(Math.random()<((g.cEnemy.calcShatter()%10)/10)){cleanShatter+=1;}
-        //     g.player.status.shatterApplied+=cleanShatter;
-        //     g.player.maxhp -= g.cEnemy.tear;
-        //     if(g.player.hp>g.player.maxhp){g.player.hp=g.player.maxhp}
-        //     g.cEnemy.hp-=g.cEnemy.calcThorn();
-        // }
 
     }
     if(g.cTick% g.player.calcAs()==0){
-        g.cEnemy.receiveHit(g.player)
-        // if(Math.random()>(g.cEnemy.dodge*0.01)){
-        //     let playerDMG =  g.player.calcDmg();
-        //     if(g.cEnemy.status.shatterApplied<g.cEnemy.calcArm()){
-        //         playerDMG -= (g.cEnemy.calcArm()-g.cEnemy.status.shatterApplied);
-        //     }
-        //     if (playerDMG < 0) {playerDMG = 0;}
-        //     g.cEnemy.hp-=playerDMG;
-        //     g.player.gainHp(Math.floor(playerDMG*(g.player.calcLifeDrain()/100)))
-        //     let cleanShatter = Math.floor(g.player.calcShatter()/10); // shatter application
-        //     if(Math.random()<((g.player.calcShatter()%10)/10)){cleanShatter+=1;}
-        //     g.cEnemy.status.shatterApplied+=cleanShatter;
-        //     g.cEnemy.maxhp -= g.player.tear;
-        //     if(g.cEnemy.hp>g.cEnemy.maxhp){g.cEnemy.hp=g.cEnemy.maxhp}
-        //     g.player.hp-=g.cEnemy.calcThorn();
-        // }
+        g.cEnemy.receiveHit(g.player);
     }
 
     if(g.cTick% g.player.regenRate==0){
-         g.player.gainHp( g.player.calcRegen())
+         g.player.changeHp( g.player.calcRegen())
     }
     if(g.cTick%g.cEnemy.regenRate==0){
-        g.cEnemy.gainHp(g.cEnemy.calcRegen())
+        g.cEnemy.changeHp(g.cEnemy.calcRegen())
     }
 
-    if( g.player.hp<=0){
-        playerDeath();
+    if( g.player.hp<=0) {
         return;
     }
-    if(g.cEnemy.hp<=0){
-        combatWin();
+    if (g.cEnemy.hp<=0) {
         return;
     }
     elementUp();
-}  
-
-
-function playerDeath(){
-    g.inCombat = false;
-    g.cTick = 0;
-    clearInterval(timeoutCombatLoop);
-    elementUp();
-}
-
-function combatWin(){
-    setBroadcastTitleText('Victory!', true)
-    g.inCombat = false;
-    g.player.gainGold(true, g.cEnemy.gold);
-    g.zone.changeZoneLevel(g.cEnemy.diffC);
-    g.player.status = new CleanStatus();
-    g.cTick = 0;
-    
-    if(g.cEnemy.boss){g.player.gainHp((g.player.levelheal*4));}else{g.player.gainHp(g.player.levelheal);}//Gains 4 times the level heal after defeating a boss.
-    clearInterval(timeoutCombatLoop);
-    $('#go-next').removeClass('hidden');
-    setNextButtonVisible(true);
-
-    $('#combatTimer').addClass('hidden');
-
-    elementUp();
-}
-
-class CleanStatus {
-    constructor(){
-        this.shatterApplied = 0;
-        this.bleedApplied = 0;
-    }
 }
 

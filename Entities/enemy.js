@@ -38,21 +38,35 @@ class Enemy extends Entity{
     calcLifeDrain() {
         return this.lifedrain;
     }
-    receiveHit(player) {
-        if(Math.random()>(this.calcDodge()*0.01)){
-            let playerDMG =  player.calcDmg();
-            if(this.status.shatterApplied<this.calcArm()){
-                playerDMG -= (this.calcArm()-this.status.shatterApplied);
-            }
-            if (playerDMG < 0) {playerDMG = 0;}
-            this.hp-=playerDMG;
-            player.gainHp(Math.floor(playerDMG*(player.calcLifeDrain()/100)))
-            let cleanShatter = Math.floor(player.calcShatter()/10); // shatter application
-            if(Math.random()<((player.calcShatter()%10)/10)){cleanShatter+=1;}
-            this.status.shatterApplied+=cleanShatter;
-            this.maxhp -= player.tear;
-            if(this.hp>this.maxhp){this.hp=this.maxhp}
-            player.hp-=this.calcThorn();
-        }
+
+    getLvlHealMult() {
+        return 1;
+    }
+
+    death() {
+        setBroadcastTitleText('Victory!', true)
+        g.inCombat = false;
+        g.player.gainGold(true, g.cEnemy.gold);
+        g.zone.changeZoneLevel(g.cEnemy.diffC);
+        g.player.cleanStatus()
+        g.cTick = 0;
+        
+        g.player.changeHp(g.player.levelheal*this.getLvlHealMult());
+        clearInterval(timeoutCombatLoop);
+        $('#go-next').removeClass('hidden');
+        setNextButtonVisible(true);
+    
+        $('#combatTimer').addClass('hidden');
+    
+        elementUp();
+    }
+
+    updateHealthBar(damage) { // damage taken
+        //eventual enemy health bar
+
+        //var healthBar = $('#player-health-bar-container'),
+        //bar = healthBar.find('#player-health-bar'),
+        //hit = healthBar.find('#player-health-hit-bar');
+        //updateBar(damage, this.hp, this.maxhp, healthBar, bar, hit);
     }
 }

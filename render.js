@@ -11,8 +11,8 @@ function playerHtmlOutput(player){
     htmlOutput+='hp : '+player.hp+'/'+player.maxhp+'<br>';
     htmlOutput+='dmg : '+player.calcDmg()+' ('+player.dmg+' + '+(player.calcDmg()-player.dmg)+')<br>';
     htmlOutput+='time: '+(player.calcAs()-(g.cTick%player.calcAs()))+'<br>';
-    if(player.status.shatterApplied!=0){
-        htmlOutput+='arm : '+Math.max(0,(player.calcArm()-player.status.shatterApplied))+' ('+player.arm+' + '+(player.calcArm()-player.arm)+' - '+Math.min(player.calcArm(), player.status.shatterApplied)+')<br>';
+    if(player.shatterApplied!=0){
+        htmlOutput+='arm : '+Math.max(0,(player.calcArm()-player.shatterApplied))+' ('+player.arm+' + '+(player.calcArm()-player.arm)+' - '+Math.min(player.calcArm(), player.shatterApplied)+')<br>';
     }else{
         htmlOutput+='arm : '+player.calcArm()+' ('+player.arm+' + '+(player.calcArm()-player.arm)+')<br>';
     }
@@ -31,7 +31,7 @@ function enemyHtmlOutput(enemy) {
         htmlOutput+='hp : '+enemy.hp+'/'+enemy.maxhp+'<br>';
         htmlOutput+='dmg : '+enemy.calcDmg()+'<br>';
         htmlOutput+='time: '+(enemy.calcAs()-(g.cTick%enemy.calcAs()))+'<br>';
-        htmlOutput+='arm : '+(enemy.calcArm()-enemy.status.shatterApplied)+'<br>';
+        htmlOutput+='arm : '+(enemy.calcArm()-enemy.shatterApplied)+'<br>';
         htmlOutput+='regen : '+enemy.calcRegen()+'<br>';
         if(enemy.calcDodge()!=0){htmlOutput+='dodge : '+enemy.calcDodge()+'<br>';}
         if(enemy.calcThorn()!=0){htmlOutput+='thorn : '+enemy.calcThorn()+'<br>';}
@@ -153,13 +153,6 @@ $(function() {
 
 
 // Health/Mana Bars
-
-function updatePlayerHealthBar(damage, newValue, maxHealth) { // damage taken, new health value, max health value
-    var healthBar = $('#player-health-bar-container'),
-        bar = healthBar.find('#player-health-bar'),
-        hit = healthBar.find('#player-health-hit-bar');
-    updateBar(damage, newValue, maxHealth, healthBar, bar, hit);
-}
 
 function updateManaBar(cost, newValue, maxMana) { // cost of spell, new Mana value, max Mana value
     var manaBar = $('#mana-bar-container'),

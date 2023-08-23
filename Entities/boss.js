@@ -3,4 +3,8 @@ class Boss extends Enemy{
         super(name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats);
         this.boss = true;
     }
+
+    getLvlHealMult() {
+        return 4;
+    }
 }

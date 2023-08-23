@@ -51,19 +51,15 @@ const ITEMLIST = {
     //name : [price, shopDesc, metatype, [onUse, complexStats]]
     'green apple': [5, '(+5 max hp)', 'stat', [
     function(){
-        g.player.maxhp += 5;
-        g.player.hp += 5;
+        g.player.changeMaxHp(5);
     }]],
     'red apple': [6, '(+6 max hp)', 'stat', [
     function(){
-        g.player.maxhp += 6;
-        g.player.hp += 6;
+        g.player.changeMaxHp(6);
     }]],
     'chocolate bar': [10, '(-2 max hp +5 speed)', 'stat', [
     function(){
-        g.player.maxhp -= 2;
-        g.player.hp -= 2;
-        if(g.player.hp < 0){ playerDeath(); }
+        g.player.changeMaxHp(-2);
         g.player.aSLvl += 5;
     }]],
     'protein shake': [10, '(+1 dmg)', 'stat', [
@@ -76,13 +72,12 @@ const ITEMLIST = {
     }]],
     'strawberry': [18, '(+2 max hp +1 regen)', 'stat', [
     function(){
-        g.player.maxhp += 2;
-        g.player.hp += 2;
+        g.player.changeMaxHp(2);
         g.player.regen += 1;
     }]],
     'ice cube': [4, '(heal 10 on purchase)', 'stat', [
     function(){
-        g.player.gainHp(10);
+        g.player.changeHp(10);
     }]],
     'water bottle': [10, '(+3 level heal)', 'stat', [
     function(){
@@ -95,13 +90,12 @@ const ITEMLIST = {
     }]],
     'honey comb': [21, '(+12 max hp)', 'stat', [
     function(){
-        g.player.maxhp += 12;
-        g.player.hp += 12;
+        g.player.changeMaxHp(12);
     }]],
     'beef stew': [26, '(+8 max hp + full heal)', 'stat', [
     function(){
-        g.player.maxhp += 8;
-        g.player.gainHp('max');
+        g.player.changeMaxHp(8);
+        g.player.changeHp('max');
     }]],
     'artichoke': [20, '(+1 armor)', 'stat', [
     function(){
@@ -114,8 +108,7 @@ const ITEMLIST = {
     }]],
     'cheese burger': [38, '(+5 max hp +1 dmg +1 regen +3 speed)', 'stat', [
     function(){
-        g.player.maxhp += 5;
-        g.player.hp += 5;
+        g.player.changeMaxHp(5);
         g.player.dmg += 1;
         g.player.regen += 1;
         g.player.aSLvl += 3;
@@ -126,14 +119,12 @@ const ITEMLIST = {
     }]],
     'banana': [18, '(+14 max hp +2 speed)', 'stat', [
     function(){
-        g.player.maxhp += 14;
-        g.player.hp += 14;
+        g.player.changeMaxHp(14);
         g.player.aSLvl += 2;
     }]],
     'apricot': [18, '(+16 max hp -2 speed)', 'stat', [
     function(){
-        g.player.maxhp += 16;
-        g.player.hp += 16;
+        g.player.changeMaxHp(16);
         g.player.aSLvl -= 2;
     }]],
     'bond': [10, '(+1 income)', 'stat', [
@@ -150,8 +141,8 @@ const ITEMLIST = {
   //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
   'firecracker': [5, '(item: deal 20 dmg, lose 2 hp)', 'usable', ['combat', 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 1, 
     function(){
-        g.cEnemy.hp -= 20;
-        g.player.hp -= 2;
+        g.cEnemy.changeHp(-20);
+        g.player.changeHp(-2);
   }]],
   
   'throwing eggs': [7, '(3x item: current enemy loses 3 armor)', 'usable', ['combat', "During combat, lower the current enemy's armor by 3", 3, 
@@ -161,12 +152,12 @@ const ITEMLIST = {
   
   'bandages': [9, '(4x item: heal 5 hp)', 'usable', ['all', "Heal 5", 4, 
     function(){
-        g.player.gainHp(5);
+        g.player.changeHp(5);
   }]],
   
   'first aid kit': [8, '(item: heal 20)', 'usable', ['all', "Heal 20", 1, 
     function(){
-        g.player.gainHp(20);
+        g.player.changeHp(20);
   }]],
   
   'sharpening stone': [26, '(3x item: +2 dmg on weapon)', 'usable', ['all', "Your currently equipped weapon gains +2 dmg", 3, 

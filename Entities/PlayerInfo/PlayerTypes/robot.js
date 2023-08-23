@@ -5,9 +5,16 @@ class Robot extends Player {
         this.levelheal = 'max';
     }
 
-    gainHp(healAmount){
+    changeHp(healAmount){
         if(healAmount == 'max') {
             this.hp = this.maxhp;
+        } else {
+            this.hp = Math.min(this.hp, this.hp + amount);
+        }
+
+        if (this.hp <= 0) {
+            this.hp = 0;
+            this.death;
         }
     }
 }

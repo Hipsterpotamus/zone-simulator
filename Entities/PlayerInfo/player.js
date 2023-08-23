@@ -91,27 +91,23 @@ class Player extends Entity{
         this.levelheal += amount;
     }
 
+    death() {
+        g.inCombat = false;
+        g.cTick = 0;
+        clearInterval(timeoutCombatLoop);
+        elementUp();
+    }
+
     // Not totally sure where you'll want this, depending on if all entities have mana
     depleteMana(amount) { // For when mana is used is by spells
         this.mana = min(0, this.mana - amount);
         updateManaBar(amount, this.mana, this.maxMana);
     }
-    receiveHit(enemy){
-        if(Math.random()>((this.calcDodge()*0.01))){
-            let enemyDMG = enemy.calcDmg();
-            if(this.status.shatterApplied<this.calcArm()){
-                enemyDMG -= (this.calcArm()-this.status.shatterApplied);
-            }
-            if (enemyDMG < 0){enemyDMG = 0;}
-            this.hp-=enemyDMG;
-            updatePlayerHealthBar(enemyDMG, this.hp, this.maxhp); // this will need to be moved into new function for taking damage
-            enemy.gainHp(Math.floor(enemyDMG*(enemy.calcLifeDrain()/100)))
-            let cleanShatter = Math.floor(enemy.calcShatter()/10); // shatter application
-            if(Math.random()<((enemy.calcShatter()%10)/10)){cleanShatter+=1;}
-            this.status.shatterApplied+=cleanShatter;
-            this.maxhp -= enemy.tear;
-            if(this.hp>this.maxhp){this.hp=this.maxhp}
-            enemy.hp-=enemy.calcThorn();
-        }
+
+    updateHealthBar(damage) { // damage taken
+        var healthBar = $('#player-health-bar-container'),
+        bar = healthBar.find('#player-health-bar'),
+        hit = healthBar.find('#player-health-hit-bar');
+        updateBar(damage, this.hp, this.maxhp, healthBar, bar, hit);
     }
 }
