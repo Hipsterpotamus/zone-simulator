@@ -87,6 +87,14 @@ function advancePath(){
         case 'boss':
             genBoss();
         break;
+        default: //none of the above are filled so the path is finished, advances to next zone
+            g.zone.advanceToNextZone();
+            g.space = 0;
+            g.zoneNum+=1;
+            g.zone.zoneInit();
+            g.path = generatePath(g.zone.pathGen);
+        break;
+
     }
     elementUp();
 }

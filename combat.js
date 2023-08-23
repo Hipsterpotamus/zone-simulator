@@ -97,7 +97,8 @@ function combatWin(){
     g.zone.changeZoneLevel(g.cEnemy.diffC);
     g.player.status = new CleanStatus();
     g.cTick = 0;
-     g.player.gainHp( g.player.levelheal);
+    
+    if(g.cEnemy.boss){g.player.gainHp((g.player.levelheal*4));}else{g.player.gainHp(g.player.levelheal);}//Gains 4 times the level heal after defeating a boss.
     clearInterval(timeoutCombatLoop);
     $('#go-next').removeClass('hidden');
     setNextButtonVisible(true);

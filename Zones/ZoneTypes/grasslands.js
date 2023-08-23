@@ -183,4 +183,7 @@ class Grasslands extends Zone {
 
         this.pathEvent = 'A Fork In The Road';
     }
+    advanceToNextZone(){
+        g.zone = new Forest();
+    }
 }
