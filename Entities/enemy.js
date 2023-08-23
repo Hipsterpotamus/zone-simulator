@@ -12,9 +12,17 @@ class Enemy extends Entity{
     calcArm() {
         return this.arm;
     }
-    calcRegen() {
-        return this.regen;
+
+    calcRegen() { //regen where bleed goes negative
+        let antihealRegen = Math.max(this.regen - this.antihealApplied, 0);
+        return antihealRegen - this.bleedApplied;
     }
+
+    //regen where never goes negative
+    //calcRegen() {
+    //    return Math.max(this.regen - this.antihealApplied - this.bleedApplied, 0);
+    //}
+
     calcAs() {
         const rawAS = this.aSLvl;
         const adjRoot = 3; //functionally similar to fibonacci with cleaner code
@@ -37,6 +45,18 @@ class Enemy extends Entity{
     }
     calcLifeDrain() {
         return this.lifedrain;
+    }
+
+    calcSuperArmor() {
+        return this.superarmor;
+    }
+
+    calcAccuracy() {
+        return this.accuracy;
+    }
+
+    calcBleed() {
+        return this.bleed;
     }
 
     getLvlHealMult() {

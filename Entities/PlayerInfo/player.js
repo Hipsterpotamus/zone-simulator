@@ -40,11 +40,20 @@ class Player extends Entity{
 
     calcArm(){
         return (this.arm+this.getByType('weapon').arm+this.getByType('head').arm+this.getByType('chest').arm+this.getByType('legs').arm+this.getByType('feet').arm);
+        
     }
 
-    calcRegen(){
-        return (this.regen+this.getByType('weapon').regen+this.getByType('head').regen+this.getByType('chest').regen+this.getByType('legs').regen+this.getByType('feet').regen);
+    calcRegen(){ //regen where bleed goes negative
+        let baseRegen = (this.regen+this.getByType('weapon').regen+this.getByType('head').regen+this.getByType('chest').regen+this.getByType('legs').regen+this.getByType('feet').regen);
+        let antihealRegen = Math.max(baseRegen - this.antihealApplied, 0);
+        return antihealRegen - this.bleedApplied;
     }
+
+    //regen where never goes negative
+    //calcRegen(){
+    //    let baseRegen = (this.regen+this.getByType('weapon').regen+this.getByType('head').regen+this.getByType('chest').regen+this.getByType('legs').regen+this.getByType('feet').regen);
+    //    return Math.max(baseRegen - this.antihealApplied - this.bleedApplied, 0);
+    //}
 
     calcAs() { // Attack Speed
         const rawAS = this.aSLvl + this.getByType('weapon').aSChange + this.getByType('head').aSChange + this.getByType('chest').aSChange + this.getByType('legs').aSChange + this.getByType('feet').aSChange;
@@ -71,6 +80,18 @@ class Player extends Entity{
     }
     calcLifeDrain() {
         return (this.lifedrain+this.getByType('weapon').lifedrain+this.getByType('head').lifedrain+this.getByType('chest').lifedrain+this.getByType('legs').lifedrain+this.getByType('feet').lifedrain);
+    }
+
+    calcBleed() {
+        return (this.bleed+this.getByType('weapon').bleed+this.getByType('head').bleed+this.getByType('chest').bleed+this.getByType('legs').bleed+this.getByType('feet').bleed);
+    }
+
+    calcAccuracy() {
+        return (this.accuracy+this.getByType('weapon').accuracy+this.getByType('head').accuracy+this.getByType('chest').accuracy+this.getByType('legs').accuracy+this.getByType('feet').accuracy);
+    }
+
+    calcSuperArmor() {
+        return (this.superarmor+this.getByType('weapon').superarmor+this.getByType('head').superarmor+this.getByType('chest').superarmor+this.getByType('legs').superarmor+this.getByType('feet').superarmor);
     }
         
     getByType(type){

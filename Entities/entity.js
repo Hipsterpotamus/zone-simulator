@@ -18,8 +18,13 @@ class Entity{
         this.tear = 0;
         this.shatter = 0;
         this.accuracy = 100;
+        this.bleed = 0;
+        this.superarmor = 0;
         this.shatterApplied = 0;
         this.bleedApplied = 0;
+        this.antihealApplied = 0;
+
+        this.alive = true;
 
         if(complexStats){
             Object.keys(complexStats).forEach((stat)=>{
@@ -35,8 +40,11 @@ class Entity{
                 this.hp = Math.min(this.maxhp, this.hp + amount);
         }
 
-        if (this.hp <= 0 && amount != 0) {
+        this.updateHealthBar(-amount);
+
+        if (this.hp <= 0 && this.alive) {
             this.hp = 0;
+            this.alive = false;
             this.death();
         }
     }
@@ -51,31 +59,36 @@ class Entity{
     cleanStatus() {
         this.shatterApplied = 0;
         this.bleedApplied = 0;
+        this.antihealApplied = 0;
     }
 
     receiveHit(opp) {
-        if(this.testDodge()) {
-            let oppDMG =  opp.testDmg(this.testArm());
+        if(this.testDodge(opp.accuracy)) {
+            let oppDMG =  opp.testDmg(this.testArm(), this.superarmor);
             this.changeHp(-oppDMG);
-            let oppHpChange = opp.testLifeDrain(oppDMG);
-            this.updateHealthBar(oppDMG);
+
             this.shatterApplied += opp.testShatter();
-            this.changeMaxHp(-opp.tear);
-            oppHpChange -= this.calcThorn();
-            opp.changeHp(oppHpChange)
+            this.bleedApplied += opp.testBleed();
+            this.antihealApplied = opp.antiheal;
+
+            this.changeMaxHp(opp.testTear(this.superarmor));
+
+            let oppHpChange = opp.testLifeDrain(oppDMG);
+            oppHpChange -= this.testThorn(opp.calcSuperArmor());
+            opp.changeHp(oppHpChange);
         }
     }
 
-    testDodge() {
-        return Math.random() > (this.calcDodge() / 100);
+    testDodge(accuracy) {
+        return Math.random() > (this.calcDodge() / accuracy);
     }
 
     testArm() {
         return Math.min(Math.max(this.calcArm()-this.shatterApplied, 0), this.calcArm());
     }
 
-    testDmg(armor) {
-        return Math.max(this.calcDmg() - armor, 0);
+    testDmg(armor, superarmor) {
+        return Math.max(this.calcDmg() - armor - superarmor, 0);
     }
 
     testLifeDrain(damage) {
@@ -83,8 +96,22 @@ class Entity{
     }
 
     testShatter() {
-        let cleanShatter = Math.floor(this.calcShatter()/10);
-        if(Math.random()<((this.calcShatter()%10)/10)){cleanShatter+=1;}
-        return cleanShatter;
+        let shatter = Math.floor(this.calcShatter()/10);
+        if(Math.random()<((this.calcShatter()%10)/10)){shatter+=1;}
+        return shatter;
+    }
+
+    testBleed() {
+        let bleed = Math.floor(this.calcBleed()/10);
+        if(Math.random()<((this.calcBleed()%10)/10)){bleed+=1;}
+        return bleed;
+    }
+
+    testThorn(superarmor) {
+        return Math.max(this.calcThorn - superarmor, 0);
+    }
+
+    testTear(superarmor) {
+        return Math.max(this.tear - superarmor, 0);
     }
 }
