@@ -2,7 +2,7 @@ class Forest extends Zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
         this.maxZoneLevel = 9;
-        this.shopCode = [3,2,3,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
+        this.shopCode = [3,3,4,2]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
         this.pathGen = [14, 0.50, 0.15, 0, 0.15, 0.09, 0, 0.05, 0.05, 0.05]; //path gen, shop start, shop grow, shop reset, event start, event grow, event reset, rest start, rest grow, rest reset
         this.zoneLable = 'forest';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
@@ -154,12 +154,18 @@ class Forest extends Zone {
             ['legs', 'goblin skin-leggings'],
             ['legs', 'camouflage pants'],
             ['legs', 'pineneedle pants'],
-            ['feet', 'straw shoes'],
-            ['feet', 'running shoes'],
-            ['feet', 'walking beets'],
-            ['feet', 'soccer cleats'],
-            ['feet', 'hiking shoes'],
-            ['feet', 'work boots'],
+            ['feet', 'forest sandals'],
+            ['feet', 'leather boots'],
+            ['feet', 'steel-toed boots'],
+            ['feet', 'bark clogs'],
+            ['feet', 'bronze boots'],
+            ['feet', 'goblin loafers'],
+            ['feet', 'elven shoes'],
+            ['feet', 'dryad boots'],
+            ['feet', 'hollowed out fish'],
+            ['feet', 'locust wrap feet'],
+            ['feet', 'maple leef sandals'],
+            ['feet', 'hardened sap shoes'],
             ['stat', 'green apple'],
             ['stat', 'red apple'],
             ['stat', 'chocolate bar'],

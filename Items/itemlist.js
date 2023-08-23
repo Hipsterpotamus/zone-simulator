@@ -25,11 +25,13 @@ const ITEMLIST = {
     'grass knuckles': [21, '(5 dmg +2 armor -1 regen +15 speed gloves)', 'weapon', ['gloves', 5, 2, -1, 15]],
     'glass bar': [30, '(4 dmg -1 armor +42 speed club)', 'weapon', ['club', 4, -1, 0, 42]],
 
+
     'grass hat': [7, '(1 armor hat)', 'head', ['hat', 0, 1, 0, 0]],
     'ballcap': [9, '(+7 speed hat)', 'head', ['hat', 0, 0, 0, 7]],
     'mud helmet': [21, '(2 armor helmet)', 'head', ['helmet', 0, 2, 0, 0]],
     'propeller hat': [16, '(1 armor +14 speed helmet)', 'head', ['hat', 0, 1, 0, 14]],
     'headband': [18, '(+1 regen headband)', 'head', ['helmet', 0, 0, 1, 0]],
+
 
     'cotton shirt': [5, '(1 armor shirt)', 'chest', ['shirt', 0, 1, 0, 0]],
     'grass robe': [9, '(+12 speed robe)', 'chest', ['robe', 0, 0, 0, 12]],
@@ -37,12 +39,14 @@ const ITEMLIST = {
     'wooden chestplate': [28, '(+5 armor -25 speed chestplate)', 'chest', ['chestplate', 0, 5, 0, -25]],
 
     'animal pelt': [14, '(+1 regen +8 speed)', 'legs', ['misc', 0, 0, 1, 8]],
+
     'overalls': [6, '(1 armor pants)', 'legs', ['pants', 0, 1, 0, 0]],
     'grass skirt': [14, '(1 armor +6 speed skirt)', 'legs', ['skirt', 0, 1, 0, 6]],
     'hiking pants': [18, '(2 armor +2 speed pants)', 'legs', ['pants', 0, 2, 0, 2]],
     'basic shorts': [17, '(1 armor +5 speed shorts)', 'legs', ['shorts', 0, 1, 0, 5]],
     'hoola hoop': [27, '(+2 regen -22 speed legs)', 'legs', ['misc', 0, 0, 2, -22]],
     'jorts': [12, '(1 regen +5 speed shorts)', 'legs', ['shorts', 0, 0, 1, 5]],
+
 
     'straw shoes': [6, '(1 armor shoes)', 'feet', ['shoes', 0, 1, 0, 0]],
     'running shoes': [14, '(+15 speed shoes)', 'feet', ['shoes', 0, 0, 0, 15]],
@@ -198,6 +202,7 @@ const ITEMLIST = {
   'elf whip': [65, '(24 dmg +2 regen +30 speed +16 dodge whip),', 'weapon',['whip', 24, 0, 2, 30, {'dodge':16}]],
   'dryad sleeve': [70, '(20 dmg +4 regen +15 speed +16 dodge +15 lifedrain gloves),', 'weapon',['gloves', 20, 0, 4, 15, {'dodge':16,'lifedrain':15}]],
 
+
   'leather cap': [36, '(3 armor hat)', 'head', ['hat', 0, 1, 0, 0]],
   'leaf beret': [22, '(1 armor +16 speed hat)', 'head', ['hat', 0, 0, 0, 7]],
   'bark helmet': [42, '(4 armor helmet)', 'head', ['helmet', 0, 4, 0, 0]],
@@ -209,6 +214,7 @@ const ITEMLIST = {
   'pinecone helmet': [43, '(+4 armor +1 regen -5 speed helmet)', 'head', ['helmet',0, 4, 0, -5]],
   'wrapped snake': [62, '(+5 dmg +15 lifedrain turban)', 'head', ['turban',5, 0, 0, 0,{'lifedrain':15}]],
 
+
   'copper chestplate': [51, '(8 armor -12 speed chestplate)', 'chest', ['chestplate', 0, 8, 0, -12]],
   'bronze chestplate': [63, '(10 armor -8 speed chestplate)', 'chest', ['chestplate', 0, 10, 0, -8]],
   'bark chestplate': [43, '(12 armor -40 speed chestplate)', 'chest', ['chain mail', 0, 12, 0, -40]],
@@ -219,7 +225,7 @@ const ITEMLIST = {
   'goblin garment': [46, '(2 armor +5 dmg +10 speed shirt)', 'chest', ['shirt', 5, 2, 0, 10]],
   'sewed leaf shirt': [35, '(5 armor +8 speed shirt)', 'chest', ['shirt', 0, 5, 0, 8]],
   'pinecone chain mail': [50, '(8 armor +1 regen -16 speed chain mail)', 'chest', ['chain mail', 0, 8, 1, -12]],
-
+  
   'copper leggings': [47, '(6 armor -10 speed leggings)', 'legs', ['leggings', 0, 6, 0, -10]],
   'bronze leggings': [59, '(8 armor -7 speed leggings)', 'legs', ['leggings', 0, 8, 0, -7]],
   'leafy pants': [36, '(5 armor pants)', 'legs', ['pants', 0, 5, 0, 0]],
@@ -229,4 +235,17 @@ const ITEMLIST = {
   'goblin skin-leggings': [50, '(2 armor +4 dmg +12 speed legs)', 'legs', ['misc', 4, 2, 0, 12]],
   'camouflage pants': [38, '(3 armor +1 dmg +1 regen +5 dodge pants)', 'legs', ['pants', 1, 3, 1, 0,{'dodge':5}]],
   'pineneedle pants': [42, '(8 armor +2 regen -12 speed pants)', 'legs', ['pants', 0, 8, 2, -12]],
+
+  'forest sandals': [32, '(4 armor -5 speed sandals)', 'feet', ['sandals', 0, 4, 0, -5]],
+  'leather boots': [44, '(5 armor +2 speed boots)', 'feet', ['boots', 0, 5, 0, 2]],
+  'steel-toed boots': [42, '(4 armor +2 dmg boots)', 'feet', ['boots', 2, 4, 0, 0]],
+  'bark clogs': [48, '(7 armor +1 regen -20 speed shoes)', 'feet', ['shoes', 0, 7, 1, -20]],
+  'bronze boots': [50, '(6 armor +5 speed boots)', 'feet', ['boots', 0, 6, 0, 5]],
+  'goblin loafers': [50, '(3 armor +3 dmg +10 speed boots)', 'feet', ['shoes', 3, 3, 0, 10]],
+  'elven shoes': [41, '(4 armor +10 speed +8 dodge boots)', 'feet', ['shoes', 0, 4, 0, 10, {'dodge':8}]],
+  'dryad boots': [58, '(6 armor +2 regen +5 speed +8 lifesteal boots)', 'feet', ['boots', 0, 6, 2, 5, {'lifedrain':8}]],
+  'hollowed out fish': [41, '(5 armor +4 regen -12 speed feet)', 'feet', ['misc', 0, 5, 4, -12]],
+  'locust wrap feet': [32, '(3 armor +2 regem +5 speed feet)', 'feet', ['misc', 0, 3, 2, 5]],
+  'maple leef sandals': [27, '(4 armor +2 lifedrain sandals)', 'feet', ['sandals', 0, 4, 0, 0, {'lifedrain':2}]],
+  'hardened sap shoes': [53, '(9 armor -30 speed shoes)', 'feet', ['shoes', 0, 9, 0, -30]],
 }
