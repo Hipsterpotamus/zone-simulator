@@ -39,7 +39,7 @@ class Enemy extends Entity{
         return this.lifedrain;
     }
     receiveHit(player) {
-        if(Math.random()>(this.dodge*0.01)){
+        if(Math.random()>(this.calcDodge()*0.01)){
             let playerDMG =  player.calcDmg();
             if(this.status.shatterApplied<this.calcArm()){
                 playerDMG -= (this.calcArm()-this.status.shatterApplied);

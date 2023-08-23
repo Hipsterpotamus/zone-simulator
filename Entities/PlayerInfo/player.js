@@ -97,7 +97,7 @@ class Player extends Entity{
         updateManaBar(amount, this.mana, this.maxMana);
     }
     receiveHit(enemy){
-        if(Math.random()>(this.calcDodge()*0.01)){
+        if(Math.random()>((this.calcDodge()*0.01))){
             let enemyDMG = enemy.calcDmg();
             if(this.status.shatterApplied<this.calcArm()){
                 enemyDMG -= (this.calcArm()-this.status.shatterApplied);
