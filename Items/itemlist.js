@@ -222,4 +222,13 @@ const ITEMLIST = {
   'goblin garment': [46, '(2 armor +5 dmg +10 speed shirt)', 'legs', ['shirt', 5, 2, 0, 10]],
   'sewed leaf shirt': [35, '(5 armor +8 speed shirt)', 'legs', ['shirt', 0, 5, 0, 8]],
   'pinecone chain mail': [50, '(8 armor +1 regen -16 speed chain mail)', 'legs', ['chain mail', 0, 8, 1, -12]],
+  'copper leggings': [47, '(6 armor -10 speed leggings)', 'legs', ['leggings', 0, 6, 0, -10]],
+  'bronze leggings': [59, '(8 armor -7 speed leggings)', 'legs', ['leggings', 0, 8, 0, -7]],
+  'leafy pants': [36, '(5 armor pants)', 'legs', ['pants', 0, 5, 0, 0]],
+  'bark shinguards': [42, '(7 armor -20 speed leggings)', 'legs', ['leggings', 0, 7, 0, -20]],
+  'elven skirt': [39, '(4 armor +1 regen +12 speed leggings)', 'legs', ['skirt', 0, 4, 1, 12]],
+  'dryad stockings': [45, '(3 armor +3 regen +6 lifedrain legs)', 'legs', ['misc', 0, 3, 3, 0,{'lifedrain':6}]],
+  'goblin skin-leggings': [50, '(2 armor +4 dmg +12 speed legs)', 'legs', ['misc', 4, 2, 0, 12]],
+  'camoflauge pants': [38, '(3 armor +1 dmg +1 regen +5 dodge pants)', 'legs', ['pants', 1, 3, 1, 0,{'dodge':5}]],
+  'pineneedle pants': [42, '(8 armor +2 regen -12 speed pants)', 'legs', ['pants', 0, 8, 2, -12]],
 }
