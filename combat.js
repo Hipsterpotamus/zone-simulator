@@ -32,12 +32,5 @@ function combatTick(){
     if(g.cTick%g.cEnemy.regenRate==0){
         g.cEnemy.changeHp(g.cEnemy.calcRegen())
     }
-
-    if( g.player.hp<=0) {
-        return;
-    }
-    if (g.cEnemy.hp<=0) {
-        return;
-    }
     elementUp();
 }

@@ -144,7 +144,7 @@ class Forest extends Zone {
             ['chest', 'razor leaf coat'],
             ['chest', 'goblin garment'],
             ['chest', 'sewed leaf shirt'],
-            ['chest', 'pinecone chain mail']
+            ['chest', 'pinecone chain mail'],
             ['legs', 'copper leggings'],
             ['legs', 'bronze leggings'],
             ['legs', 'leafy pants'],
@@ -153,7 +153,7 @@ class Forest extends Zone {
             ['legs', 'dryad stockings'],
             ['legs', 'goblin skin-leggings'],
             ['legs', 'camouflage pants'],
-            ['legs', 'pineneedle pants']
+            ['legs', 'pineneedle pants'],
             ['feet', 'straw shoes'],
             ['feet', 'running shoes'],
             ['feet', 'walking beets'],

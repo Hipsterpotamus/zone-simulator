@@ -24,15 +24,18 @@ const ITEMLIST = {
     'stone long sword': [22, '(8 dmg +1 armor -12 speed sword)', 'weapon', ['sword', 8, 1, 0, -12]],
     'grass knuckles': [21, '(5 dmg +2 armor -1 regen +15 speed gloves)', 'weapon', ['gloves', 5, 2, -1, 15]],
     'glass bar': [30, '(4 dmg -1 armor +42 speed club)', 'weapon', ['club', 4, -1, 0, 42]],
+
     'grass hat': [7, '(1 armor hat)', 'head', ['hat', 0, 1, 0, 0]],
     'ballcap': [9, '(+7 speed hat)', 'head', ['hat', 0, 0, 0, 7]],
     'mud helmet': [21, '(2 armor helmet)', 'head', ['helmet', 0, 2, 0, 0]],
     'propeller hat': [16, '(1 armor +14 speed helmet)', 'head', ['hat', 0, 1, 0, 14]],
     'headband': [18, '(+1 regen headband)', 'head', ['helmet', 0, 0, 1, 0]],
+
     'cotton shirt': [5, '(1 armor shirt)', 'chest', ['shirt', 0, 1, 0, 0]],
     'grass robe': [9, '(+12 speed robe)', 'chest', ['robe', 0, 0, 0, 12]],
     'leather tunic': [14, '(+3 armor shirt)', 'chest', ['shirt', 0, 3, 0, 0]],
     'wooden chestplate': [28, '(+5 armor -25 speed chestplate)', 'chest', ['chestplate', 0, 5, 0, -25]],
+
     'animal pelt': [14, '(+1 regen +8 speed)', 'legs', ['misc', 0, 0, 1, 8]],
     'overalls': [6, '(1 armor pants)', 'legs', ['pants', 0, 1, 0, 0]],
     'grass skirt': [14, '(1 armor +6 speed skirt)', 'legs', ['skirt', 0, 1, 0, 6]],
@@ -40,6 +43,7 @@ const ITEMLIST = {
     'basic shorts': [17, '(1 armor +5 speed shorts)', 'legs', ['shorts', 0, 1, 0, 5]],
     'hoola hoop': [27, '(+2 regen -22 speed legs)', 'legs', ['misc', 0, 0, 2, -22]],
     'jorts': [12, '(1 regen +5 speed shorts)', 'legs', ['shorts', 0, 0, 1, 5]],
+
     'straw shoes': [6, '(1 armor shoes)', 'feet', ['shoes', 0, 1, 0, 0]],
     'running shoes': [14, '(+15 speed shoes)', 'feet', ['shoes', 0, 0, 0, 15]],
     'walking beets': [38, '(+2 armor +2 dmg feet)', 'feet', ['misc', 2, 2, 0, 0]],
@@ -193,6 +197,7 @@ const ITEMLIST = {
   'leaf-rope whip': [31, '(12 dmg +1 armor +35 speed whip),', 'weapon',['whip', 12, 1, 0, 35, {'lifedrain':15}]],
   'elf whip': [65, '(24 dmg +2 regen +30 speed +16 dodge whip),', 'weapon',['whip', 24, 0, 2, 30, {'dodge':16}]],
   'dryad sleeve': [70, '(20 dmg +4 regen +15 speed +16 dodge +15 lifedrain gloves),', 'weapon',['gloves', 20, 0, 4, 15, {'dodge':16,'lifedrain':15}]],
+
   'leather cap': [36, '(3 armor hat)', 'head', ['hat', 0, 1, 0, 0]],
   'leaf beret': [22, '(1 armor +16 speed hat)', 'head', ['hat', 0, 0, 0, 7]],
   'bark helmet': [42, '(4 armor helmet)', 'head', ['helmet', 0, 4, 0, 0]],
@@ -203,16 +208,18 @@ const ITEMLIST = {
   'dryad bonnet': [52, '(+2 armor +8 dodge hat)', 'head', ['hat',2, 0, 0, 0, {'dodge':8}]],
   'pinecone helmet': [43, '(+4 armor +1 regen -5 speed helmet)', 'head', ['helmet',0, 4, 0, -5]],
   'wrapped snake': [62, '(+5 dmg +15 lifedrain turban)', 'head', ['turban',5, 0, 0, 0,{'lifedrain':15}]],
+
   'copper chestplate': [51, '(8 armor -12 speed chestplate)', 'chest', ['chestplate', 0, 8, 0, -12]],
   'bronze chestplate': [63, '(10 armor -8 speed chestplate)', 'chest', ['chestplate', 0, 10, 0, -8]],
-  'bark chestplate': [43, '(12 armor -40 speed chestplate)', 'legs', ['chain mail', 0, 12, 0, -40]],
+  'bark chestplate': [43, '(12 armor -40 speed chestplate)', 'chest', ['chain mail', 0, 12, 0, -40]],
   'elven robes': [49, '(2 armor +2 regen +22 speed +5 dodge robe)', 'chest', ['robe', 0, 2, 2, 22, {'dodge':5}]],
   'wolf pelt': [68, '(+25 speed chest)', 'chest', ['misc', 0, 0, 0, 25]],
-  'dryad coat': [57, '(6 armor +8 lifedrain coat)', 'legs', ['coat', 0, 6, 0, 0,{'lifedrain':8}]],
-  'razor leaf coat': [60, '(+5 armor +5 dmg -5 speed coat)', 'legs', ['coat', 5, 5, 0, -5]],
-  'goblin garment': [46, '(2 armor +5 dmg +10 speed shirt)', 'legs', ['shirt', 5, 2, 0, 10]],
-  'sewed leaf shirt': [35, '(5 armor +8 speed shirt)', 'legs', ['shirt', 0, 5, 0, 8]],
-  'pinecone chain mail': [50, '(8 armor +1 regen -16 speed chain mail)', 'legs', ['chain mail', 0, 8, 1, -12]],
+  'dryad coat': [57, '(6 armor +8 lifedrain coat)', 'chest', ['coat', 0, 6, 0, 0,{'lifedrain':8}]],
+  'razor leaf coat': [60, '(+5 armor +5 dmg -5 speed coat)', 'chest', ['coat', 5, 5, 0, -5]],
+  'goblin garment': [46, '(2 armor +5 dmg +10 speed shirt)', 'chest', ['shirt', 5, 2, 0, 10]],
+  'sewed leaf shirt': [35, '(5 armor +8 speed shirt)', 'chest', ['shirt', 0, 5, 0, 8]],
+  'pinecone chain mail': [50, '(8 armor +1 regen -16 speed chain mail)', 'chest', ['chain mail', 0, 8, 1, -12]],
+
   'copper leggings': [47, '(6 armor -10 speed leggings)', 'legs', ['leggings', 0, 6, 0, -10]],
   'bronze leggings': [59, '(8 armor -7 speed leggings)', 'legs', ['leggings', 0, 8, 0, -7]],
   'leafy pants': [36, '(5 armor pants)', 'legs', ['pants', 0, 5, 0, 0]],
@@ -220,6 +227,6 @@ const ITEMLIST = {
   'elven skirt': [39, '(4 armor +1 regen +12 speed leggings)', 'legs', ['skirt', 0, 4, 1, 12]],
   'dryad stockings': [45, '(3 armor +3 regen +6 lifedrain legs)', 'legs', ['misc', 0, 3, 3, 0,{'lifedrain':6}]],
   'goblin skin-leggings': [50, '(2 armor +4 dmg +12 speed legs)', 'legs', ['misc', 4, 2, 0, 12]],
-  'camoflauge pants': [38, '(3 armor +1 dmg +1 regen +5 dodge pants)', 'legs', ['pants', 1, 3, 1, 0,{'dodge':5}]],
+  'camouflage pants': [38, '(3 armor +1 dmg +1 regen +5 dodge pants)', 'legs', ['pants', 1, 3, 1, 0,{'dodge':5}]],
   'pineneedle pants': [42, '(8 armor +2 regen -12 speed pants)', 'legs', ['pants', 0, 8, 2, -12]],
 }
