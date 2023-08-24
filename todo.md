@@ -8,6 +8,7 @@
 * [] Create combat stats elements and content to display over dead enemy at the end of combat
 * [] Add spots to send usable can't be used/not enough gold to purchase info
 
+*[] function to add translucent floating info boxes by hover
 
 
 ## Backend
