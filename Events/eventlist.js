@@ -292,5 +292,117 @@ const eventList = {
                 eventFunctionSuffix();
             }
         }
+    ]),
+    "Friendly Elves": new Event("Friendly Elves", "An encampment of numerous friendly elves sits around a fire. Surprisingly, they notice you and beckon you towards them rather than take up arms. They notice your gold sack and offer to sell some elven trinkets, but cultural practice forbids you from buying more than one.", [
+        {
+            text: 'Buy a Red Trinket: Lose 6 gold, gain +6 dmg',
+            effect: function() {
+                if(g.player.gold<6){
+                    eventFunctionSuffix('Sorry you cannot afford that trinket.');
+                }else{
+                    g.player.changeGold(-6);
+                    g.player.changeStat('dmg',6);
+                    eventFunctionSuffix();
+                }
+            }
+        },
+        {
+            text: 'Buy a Green Trinket: Lose 3 gold, gain +3 regen',
+            effect: function() {
+                if(g.player.gold<3){
+                    eventFunctionSuffix('Sorry you cannot afford that trinket');
+                }else{
+                    g.player.changeGold(-3);
+                    g.player.changeStat('regen',3);
+                    eventFunctionSuffix();
+                }
+            }
+        },
+        {
+            text: 'Buy an Orange Trinket: Lose 4 gold, gain +4 arm',
+            effect: function() {
+                if(g.player.gold<4){
+                    eventFunctionSuffix('Sorry you cannot afford that trinket');
+                }else{
+                    g.player.changeGold(-4);
+                    g.player.changeStat('arm',4);
+                    eventFunctionSuffix();
+                }
+            }
+        },
+        {
+            text: 'Buy a Black Trinket: Lose 3 gold, gain 3 dodge',
+            effect: function() {
+                if(g.player.gold<3){
+                    eventFunctionSuffix('Sorry you cannot afford that trinket');
+                }else{
+                    g.player.changeGold(-3);
+                    g.player.changeStat('dodge',3);
+                    eventFunctionSuffix();
+                }
+            }
+        },
+        {
+            text: 'Politely Decline: gain nothing',
+            effect: function() {
+                eventFunctionSuffix();
+            }
+        }
+    ]),
+    "A Deep Fog": new Event("A Deep Fog", "A thick mist of fog grows over you, blocking your entire vision. You want to keep moving forward, but you can't see more than a foot in front of you. You decide to stay put for the time being. How do you kill the time?", [
+        {
+            text: 'Meditate: +4 dodge +5 level heal',
+            effect: function() {
+                g.player.changeStat('dodge', 4);
+                g.player.changeStat('levelheal', 5);
+            }
+        },
+        {
+            text: 'Train: +8 armor +5 level heal',
+            effect: function() {
+                g.player.changeStat('armor',8);
+                g.player.changeStat('levelheal',5);
+            }
+        }
+    ]),
+    "The Cave Shrine": new Event("The Cave Shrine", "You explore an old cave and trip on a strange rock formation. You look back and notice the the rock you tripped on has begun to glow, you approach and realize it's actually an ancient shrine. It begins to speak and offers you a dramatic choice", [
+        {
+            text: 'Embrace the Violence: +15 dmg, -10 speed, -10 level heal',
+            effect: function() {
+                g.player.changeStat('dmg',15);
+                g.player.changeStat('as',-10);
+                g.player.changeStat('levelheal',-10);
+            }
+        },
+        {
+            text: 'Reject the Violence: -10 dmg, +8 regen, +10 level heal',
+            effect: function() {
+                g.player.changeStat('dmg',-10);
+                g.player.changeStat('regen',8);
+                g.player.changeStat('levelheal',10);
+            }
+        }
+    ]),
+    "The Goblin Village": new Event("The Goblin Village", "You notice a large goblin village in the distance. The goblins are all gathered around a massive bonfire, burning alive their captured prisoners of war. You notice two bags lying unguarded outside the town square, but you only have the time and strength to carry one. What do you do?", [
+        {
+            text: 'The Bag of Gold: +45 gold',
+            effect: function() {
+                g.player.changeGold(45);
+            }
+        },
+        {
+            text: 'The Bag of Flesh: +3 dmg +30 max hp',
+            effect: function() {
+                g.player.changeStat('dmg',3);
+                g.player.changeMaxHp(30);
+            }
+        },
+        {
+            text: '[UNIMPLEMENTED] Intervene in the Bonfire: Start a difficult combat with multiple goblins, but gain both bags and more',   
+            effect: function(){
+                //starts a combat with three goblins simultaneously
+                //the reward for combat is both bags contents *1.5 and a helmet called, (The Goblin Vanquisher) which endows a large damage increase. 
+            } 
+        }
     ])
 };
