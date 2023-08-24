@@ -83,7 +83,7 @@
 }
 
 .event-description {
-  padding: 2.5rem;
+  padding: 4rem;
   padding-top: 3rem;
   padding-bottom: 0rem;
   font-size: 1.25rem;
@@ -121,6 +121,7 @@
 #content-central-box button {
   padding: 1rem;
   margin: 1rem;
+  margin-bottom: 0;
   text-transform: capitalize;
   border: none;
   border-radius: 0.5rem;
