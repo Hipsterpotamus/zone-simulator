@@ -34,7 +34,7 @@ class ShopItem{
 
     purchase(){
         if( g.player.gold>=this.goldPrice){
-             g.player.gold-=this.goldPrice;
+            g.player.gainGold(-this.goldPrice);
             this.onBuy();
             this.element.remove();
         } else {

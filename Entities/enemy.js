@@ -48,6 +48,7 @@ class Enemy extends Entity{
         setNextButtonVisible(true);
     
         $('#combatTimer').addClass('hidden');
+        this.updateEntityDisplay();
     }
 
     updateHealthBar(damage) { // damage taken
@@ -71,7 +72,7 @@ class Enemy extends Entity{
         if(this.calcStat('thorn')!=0){htmlOutput+='thorn : '+this.calcStat('thorn')+'<br>';}
         if(this.calcStat('shatter')!=0){htmlOutput+='shatter : '+this.calcStat('shatter')+'<br>';}
         if(this.calcStat('lifedrain')!=0){htmlOutput+='lifedrain : '+this.calcStat('lifedrain')+'<br>';}
-
+        if(!this.alive){htmlOutput = '';}
         $('#enemy-stats').html(htmlOutput);
     }
 }
