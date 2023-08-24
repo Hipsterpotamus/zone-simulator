@@ -225,5 +225,33 @@ const eventList = {
 
 
 
-    'The Raging River': new Event('The Raging River', 'Ahead of you is a river')
+    'A Long River': new Event('A Long River', 'Ahead of you is a river cool to the touch. Jumping in looks refreshing, and will wisk you away to a new part of a forest. You notice a scenic bridge in the distance too.', [
+        {
+            text: 'Jump in: enemies randomized, +5 speed',
+            effect: function() {
+                g.zone.changeZoneLevel(Math.floor(1.5-(Math.random()*4)));
+            }
+        },
+        {
+            text: 'Take the bridge: +8 max hp',
+            effect: function() {
+                g.player.changeMaxHp(8);
+            }
+        }
+    ]),
+    "The Wanderer's Trailmix": new Event("The Wanderer's Trailmix", 'A wandering hiker spots you on a trail. He offers you two bright bags filled with mythical goodies.', [
+        {
+            text: 'Magic Nuts: +25 max hp',
+            effect: function() {
+                g.player.changeMaxHp(25);
+            }
+        },
+        {
+            text: 'Magic Sweets: +3 dmg +3 armor',
+            effect: function() {
+                g.player.dmg += 3;
+                g.player.arm += 3;
+            }
+        }
+    ])
 };
