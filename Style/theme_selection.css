@@ -38,8 +38,8 @@
 
 
 .ocea-button {
-  background-color: #00867d;
   color: #00867d;
+  background-image: linear-gradient(45deg, #3a8cb2 0%, #00867d 60%);
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
@@ -49,8 +49,8 @@
 }
 
 .hazel-button {
-  background-color: #b75f2d;
   color: #b75f2d;
+  background-image: linear-gradient(45deg, #c4b82d 0%, #a44e1d 60%);
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
@@ -60,8 +60,8 @@
 }
 
 .earth-button {
-  background-color: #af650e;
   color: #af650e;
+  background-image: linear-gradient(45deg, #4a8b1f 0%, #af650e 60%);
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
@@ -71,8 +71,9 @@
 }
 
 .rose-button {
-  background-color: #7f525d;
   color: #7f525d;
+  background-image: linear-gradient(45deg, #7f525d 0%, #4e13a5 100%);
+  
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
@@ -82,8 +83,8 @@
 }
 
 .grey-button {
-  background-color: #737373;
   color: #737373;
+  background-image: linear-gradient(45deg, #2c2c2c 0%, #737373 100%);
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
@@ -94,7 +95,7 @@
 
 .forest-button {
   color: #618126;
-  background-image: linear-gradient(45deg, #618126, 0%, #59832e 100%);
+  background-image: linear-gradient(45deg, #074a0d 0%, #618126 100%);
 
   border-radius: 50%;
   width: 3rem;
@@ -106,7 +107,7 @@
 
 .bloodorange-button {
   color: #9c413d;
-  background-color: #9c413d;
+  background-image: linear-gradient(45deg, #e46849 0%, #9c413d 100%);
 
   border-radius: 50%;
   width: 3rem;
@@ -117,8 +118,8 @@
 }
 
 .wave-button {
-  color: #bc5954;
-  background-image: linear-gradient(45deg, #4c6dea 0%, #cd00e2 100%);
+  color: #cd00e2;
+  background-image: linear-gradient(45deg, #4c6dea 30%, #fde234 50%, #cd00e2 70%);
   
   border-radius: 50%;
   width: 3rem;
