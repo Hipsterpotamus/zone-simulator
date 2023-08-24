@@ -3,7 +3,7 @@ class Grasslands extends Zone {
         super(zoneLevel);
         this.maxZoneLevel = 9;
         this.shopCode = [3,2,3,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
-        this.pathGen = [14, 0.50, 0.15, 0, 0.15, 0.09, 0, 0.05, 0.05, 0.05]; //path gen, shop start, shop grow, shop reset, event start, event grow, event reset, rest start, rest grow, rest reset
+        this.pathGen = [14, 0.85, 0.15, 0, 0.15, 0.09, 0, 0.05, 0.05, 0.05]; //path gen, shop start, shop grow, shop reset, event start, event grow, event reset, rest start, rest grow, rest reset
         this.zoneLable = 'grassland';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
         this.enemyStats = {
