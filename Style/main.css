@@ -23,22 +23,40 @@ body, html {
   overflow: hidden;
   font-family: 'Martian Mono', monospace;
   background-color: var(--md-sys-color-background);
+  /* background-color: rgba(122, 22, 52, 0.295); */
+  /* I need to add a new color for each theme that has low opacity for background overlay */
   color: var(--md-sys-color-on-background);
 }
 
-/* body::before {
+/* Backgrounds */
+body.zone-1::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
+  left: -3%;
   width: 100%;
   height: 100%;
   background: url(../Zones/Images/grassland.png) no-repeat center center fixed;
   background-size: cover;
-  filter: blur(30px);
+  filter: blur(15px);
   z-index: -1;
-  opacity: 0.5;
-} */
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+body.zone-2::before {
+  content: "";
+  position: fixed;
+  left: -3%;
+  width: 100%;
+  height: 100%;
+  background: url(../Zones/Images/forest.png) no-repeat top center fixed;
+  background-size: cover;
+  filter: blur(15px);
+  z-index: -1;
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
 
 .hidden{
   display:none;
