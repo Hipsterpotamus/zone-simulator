@@ -44,7 +44,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 100%;
+  width: 90%;
   height: 20px;
   padding: 5px;
   background: var(--md-sys-color-on-secondary);
@@ -52,6 +52,8 @@
   -moz-border-radius: 5px;
   border-radius: 8px;
   position: relative;
+
+  margin: 1rem;
 }
 #player-health-bar {
   background: var(--md-sys-color-secondary);
@@ -63,6 +65,41 @@
   transition: width .5s linear;
 }
 #player-health-hit-bar {
+  background: rgba(255, 255, 255, 0.334);
+  position: absolute;
+  border-radius: 8px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 0px;
+  
+  transition: width .5s linear;
+}
+
+#enemy-health-bar-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 90%;
+  height: 20px;
+  padding: 5px;
+  background: var(--md-sys-color-on-primary);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 8px;
+  position: relative;
+  margin: 1rem;
+}
+#enemy-health-bar {
+  background: var(--md-sys-color-primary);
+  border-radius: 8px;
+  width: 100%;
+  height: 10px;
+  position: relative;
+  
+  transition: width .5s linear;
+}
+#enemy-health-hit-bar {
   background: rgba(255, 255, 255, 0.334);
   position: absolute;
   border-radius: 8px;
