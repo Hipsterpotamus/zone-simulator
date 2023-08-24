@@ -17,6 +17,7 @@
 * [] Implement magic system and add corresponding shop items into pool
 * [] Start working on player level up system
 * [] Create shop items for forest zone
+* [] Add rarity to shop items
 
 ### Fixes
 * [] Add 'you died' indicator in g.player.death()

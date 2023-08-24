@@ -61,4 +61,9 @@ $(function() {
             g.combat.delay = 20;
         }
     })
+
+    //debug infinite money
+    $('#infinite-money-debug').on('click',function(){
+        g.player.changeGold(10000000);
+    })
 });
