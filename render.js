@@ -223,3 +223,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// add a double click listener for .tail-remain elements to remove the .tail-remain class
+document.addEventListener('dblclick', (event) => {
+    if (event.target.classList.contains('tail-remain')) {
+        event.target.classList.remove('tail-remain');
+        event.target.style.display = 'none';
+    }
+}
+);
