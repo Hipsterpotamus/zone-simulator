@@ -56,8 +56,9 @@ class Player extends Entity{
         );
     }
 
-    changeStat (stat, amount) {  //TBI
+    changeStat (stat, amount) {
         this[stat] += amount;
+        this.updateEntityDisplay();
     }
         
     getByType(type){
@@ -73,10 +74,6 @@ class Player extends Entity{
     changeGold(amount, inCombat = false) {
         this.gold += amount;
         this.updateGoldDisplay();
-    }
-
-    changeLvlHeal(amount) {
-        this.levelheal += amount;
     }
 
     death() {

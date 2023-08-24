@@ -26,7 +26,7 @@ const eventList = {
             effect: function () {
                 g.player.inv.chest.push(new Equippable('dirty shirt', 'chest', 'shirt', 0, 1, 0, 0));
                 g.player.inv.legs.push(new Equippable('dirty pants', 'legs', 'pants', 0, 1, 0, 0));
-                g.player.changeLvlHeal(-1);
+                g.player.changeStat('levelheal', -1);
                 eventFunctionSuffix('dirty shirt & pants gained');
             }
         },
@@ -213,7 +213,7 @@ const eventList = {
         {
             text: 'Train: +2 dmg',
             effect: function () {
-                g.player.dmg += 2;
+                g.player.changeStat('dmg', 2);
                 eventFunctionSuffix();
             }
         }
