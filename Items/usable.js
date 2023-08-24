@@ -19,7 +19,7 @@ class Usable extends Item {
     attemptUse(){
         if(this.uses > 0){
             if(this.type == 'combat'){
-                if(g.inCombat){
+                if(g.combat.inCombat){
                     this.uses -= 1;
                     this.onUse();
                 }else{

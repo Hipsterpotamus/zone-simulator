@@ -12,6 +12,7 @@ class Player extends Entity{
         this.as = 0;
         this.dodge = 0;
         this.gold = 25;
+        this.mana = 1000;
         this.inv = {
             'usable':[],
             'weapon':[],
@@ -19,6 +20,7 @@ class Player extends Entity{
             'chest':[],
             'legs':[],
             'feet':[],
+            'magic':[]
         }
     }
 
@@ -30,6 +32,7 @@ class Player extends Entity{
             'chest':[new Equippable('none', 'chest', 'none', 0, 0, 0, 0)],
             'legs':[new Equippable('none', 'legs', 'none', 0, 0, 0, 0)],
             'feet':[new Equippable('none', 'feet', 'none', 0, 0, 0, 0)],
+            'magic':[]
         }
     }
 

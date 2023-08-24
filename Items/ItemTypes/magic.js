@@ -8,13 +8,66 @@
 
 
 class Magic extends Item {
-    constructor(name, metatype, complexStats) {
+    constructor(name, metatype, type, shortDescription, longDescription, manaCost, spell, coolDown, usesFinite, complexStats){
         super(name, metatype);
+        this.type = type;
+        this.shortDescription = shortDescription;
+        this.longDescription = longDescription;
+        this.manaCost = manaCost;
+        this.coolDown = coolDown;
+        this.usesFinite = usesFinite;
+        this.spell = spell;
         
         if(complexStats){
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];
             });
         }
+
+        this.appendElement();
+    }
+
+    attemptUse(){
+        if(g.combat.inCombat){
+            if(g.player.mana>=this.manaCost){
+                g.player.mana-=this.manaCost;
+                this.spell();
+            }else{
+                notify('Not enough mana!');
+            }
+        }else{
+            notify('magic spells can only be used during combat')
+        }
+        
+    }
+    appendElement() {
+        this.element = $('<button>', {
+            'val': this.name,
+            'id': this.name + '–spell–use',
+            'class': 'magic-spell'
+        });
+        this.element.appendTo('#spell-container');
+        let magicHtml = '';
+        console.log(this.name);
+        console.log(this.manaCost);
+        console.log(this.shortDescription);
+        magicHtml += this.name + '<br>';
+        magicHtml += this.manaCost + ' mana <br>';
+        magicHtml += this.shortDescription;
+        this.element.html(magicHtml);
+        this.element.on('click',spellClick);
     }
 }
+
+
+function spellClick(){
+    console.log('epic');
+    let value = $(this).val();
+    for(x in g.player.inv.magic){
+        console.log(value);
+        if(g.player.inv.magic[x].name == value){
+            g.player.inv.magic[x].attemptUse();
+        }
+    }
+}
+//
