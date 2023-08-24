@@ -8,6 +8,7 @@
 @import url(GameMenu/equipment-menu.css);
 @import url(entity-panels.css);
 @import url(GameMenu/encounter-box.css);
+@import url(tail.css);
 
 :root {
   /* override default token shadows */

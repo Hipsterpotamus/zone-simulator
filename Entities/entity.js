@@ -90,14 +90,14 @@ class Entity{
 
     receiveHitFrom(opp) {
         if(this.testDodge(opp.accuracy)) {
-            let oppDMG =  opp.testDmg(this.testArm(), this.superarmor);
+            let oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'));
             this.changeHp(-oppDMG);
 
             this.shatterApplied += opp.testShatter();
             this.bleedApplied += opp.testBleed();
             this.antihealApplied = opp.antiheal;
 
-            this.changeMaxHp(-opp.testTear(this.superarmor));
+            this.changeMaxHp(-opp.testTear(this.calcStat('superarmor')));
 
             let oppHpChange = opp.testLifeDrain(oppDMG);
             oppHpChange -= this.testThorn(opp.calcStat('superarmor'));

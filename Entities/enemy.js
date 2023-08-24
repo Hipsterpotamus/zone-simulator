@@ -30,13 +30,11 @@ class Enemy extends Entity{
 
     //display
 
-    updateHealthBar(damage) { // damage taken
-        //eventual enemy health bar
-
-        //var healthBar = $('#player-health-bar-container'),
-        //bar = healthBar.find('#player-health-bar'),
-        //hit = healthBar.find('#player-health-hit-bar');
-        //updateBar(-damage, this.hp, this.maxhp, healthBar, bar, hit);
+    updateHealthBar(damage) {
+        var healthBar = $('#enemy-health-bar-container'),
+        bar = healthBar.find('#enemy-health-bar'),
+        hit = healthBar.find('#enemy-health-hit-bar');
+        updateBar(-damage, this.hp, this.maxhp, healthBar, bar, hit);
     }
 
     updateEntityDisplay(tick = -1) {

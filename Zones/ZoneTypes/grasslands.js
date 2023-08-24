@@ -97,7 +97,7 @@ class Grasslands extends Zone {
 
         this.bossStats = [
             ['hairy g.o.a.t.', 'critter', 115, -25, 13, 2, 55, 1, 0, {'tear':2}],
-            ['big fat bison', 'hoofed', 140, -125, 17, 4, 60, 1, 0]
+            ['big fat bison', 'hoofed', 140, -125, 15, 3, 60, 1, 0]
         ];
 
         //could assign this in the parent class if this distribution holds across zones

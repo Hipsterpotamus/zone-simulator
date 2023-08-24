@@ -1,0 +1,23 @@
+.tail {
+    position: fixed;
+    z-index: 999;
+    background:var(--translucent-background-color);
+    border:1px solid rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter:saturate(180%) blur(15px);
+    backdrop-filter: saturate(180%) blur(15px);
+    box-shadow: 0.5rem 0.6rem 2rem rgba(0, 0, 0, 0.3);
+  
+    border-radius: 16px;
+    padding: 1rem;
+    max-width: 40%;
+    max-height: 90%;
+    cursor: grab;
+    transition: opacity 0.3s ease-in-out;
+
+    /* make scrollable if content overflows */
+    overflow-y: auto;
+  
+
+  }
+  
+  

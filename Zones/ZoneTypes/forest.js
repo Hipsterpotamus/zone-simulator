@@ -58,7 +58,7 @@ class Forest extends Zone {
                 ['elven rancher', 'elf', 130, -100, 30, 1, 46, 7, 0, {'dodge':15}],
                 ['goblin', 'goblin', 115, 66, 14, 2, 42, 5, 0, {'dodge':16}],
                 ['forest snuffler', 'critter', 180, -300, 26, 2, 8, 4, 0, {'tear':3,'shatter':50}],
-                ['living sap-ooze', 'slime', 120, 70, 6, 0, 33, 4, 0,{'shatter':8}]
+                ['living sap-ooze', 'slime', 120, 70, 6, 0, 33, 4, 0, {'shatter':8}]
             ],
             5: [
                 ['pixie', 'fairy', 7, 0, 28, 1, 65, 1, 0, {'dodge':85}],
@@ -73,7 +73,7 @@ class Forest extends Zone {
                 ['tree wisp', 'wisp', 88, 22, 44, -4, 53, 14, 0, {'dodge':12}],
                 ['mist wisp', 'wisp', 88, -22, 44, -2, 52, 14, 0, {'dodge':12}],
                 ['spirit snake', 'snake', 65, 30, 27, 2, 53, 2, 0, {'lifedrain':45}],
-                ['goblin ranger', 'goblin', 180, -50, 39, 5, 51, 4, {'dodge':25}],
+                ['goblin ranger', 'goblin', 180, -50, 39, 5, 51, 4, 0, {'dodge':25}],
                 ['walking weed', 'plant', 190, -33, 25, 4, 53, 1, 0,{'lifedrain':25,'shatter':33}]
             ],
             7: [
@@ -85,10 +85,10 @@ class Forest extends Zone {
                 ['knight dryad', 'dryad', 156, -33, 38, 13, 60, 2, 0, {"shatter":80}]
             ],
             8: [
-                ['goblin commander', 'goblin', 180, 50, 44, 4, 15, 2, 0],
-                ['elf chieftain', 'elf', 170, -120, 60, 4, 16, 4, 0, {'dodge':25}],
-                ['forest wisp', 'wisp', 160, 33, 55, -8, 61, 14, 0, {'dodge':12}],
-                ['dryad prince', 'dryad', 190, -25, 50, 3, 24, 11, 0, {'lifedrain':16}],
+                ['goblin commander', 'goblin', 170, 50, 44, 2, 62, 2, 0],
+                ['elf chieftain', 'elf', 170, -120, 60, 4, 63, 4, 0, {'dodge':25}],
+                ['forest wisp', 'wisp', 160, 33, 44, -8, 61, 7, 0, {'dodge':12}],
+                ['dryad prince', 'dryad', 190, -25, 50, 3, 63, 11, 0, {'lifedrain':16}],
                 ['possessed grizzly', 'critter', 200, -280, 96, 6, 64, -4, 0, {'tear':4}],
                 ['forest slime', 'slime', 150, 72, 12, 0, 66, 6, 0,{'shatter':8,'lifedrain':25}]
             ]
@@ -107,7 +107,7 @@ class Forest extends Zone {
             4: [0.28, 0.90],
             5: [0.28, 0.90],
             6: [0.28, 0.85],
-            7: [0.25, 0.75],
+            7: [0.35, 0.75],
             8: [0, 0.25],
             9: [0, 0]
         }
@@ -214,11 +214,13 @@ class Forest extends Zone {
             //[first possible space, last possible space, event id]
             [2, 5, 'A Long River'],
             [3, 6, "The Wanderer's Trailmix"],
-            [6, 7, "A Bird's Nest"],
-            [8, 9, 'The Trapped Totem'],
-            [10, 11, 'The Horn'],
-            [12, 13, 'Wild Fire'],
-            [14, 19, 'Oil Fissure']
+            [5, 8, "A Bird's Nest"],
+            [6, 10, 'The Trapped Totem'],
+            [9, 12, 'Friendly Elves'],
+            [11, 14, 'A Deep Fog'],
+            [12, 19, 'The Cave Shrine'],
+            [16, 19, 'The Goblin Village']
+            
         ];
 
         this.pathEvent = 'A Fork In The Road';

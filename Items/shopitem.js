@@ -37,17 +37,19 @@ class ShopItem{
             g.player.changeGold(-this.goldPrice);
             this.onBuy();
             this.element.remove();
+            updatePurchaseHistory(this);
             g.player.inv[this.metatype].forEach(element => {
                 if (element.equipped) {element.updateItemInfo()};
             });
         } else {
-            //communicate to player not enough gold
+            notify('Not enough Gold!');
         }
     }
 
     appendShopItem() {
         this.element = $('<button>', {
-            'id': '#' + this.name + '-purchase'
+            'id': '#' + this.name.replace(/\s/g, '') + '-purchase',
+            'class': this.metatype + '-shop-item',
         });
         this.element.appendTo('#content-central-box');
         this.element.html('buy ' + this.name + ': ' + this.goldPrice + ' gold<br>' + this.shopDesc);

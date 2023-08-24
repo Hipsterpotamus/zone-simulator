@@ -55,6 +55,7 @@
         <script src="Zones/zone.js"></script>
         <script src="Zones/ZoneTypes/grasslands.js"></script>
         <script src="Zones/ZoneTypes/forest.js"></script>
+        <script src="Style/tail.js"></script>
         <script src="listeners.js"></script>
 
 
@@ -159,7 +160,7 @@
             <div class="game-header primary">
                 <p class = "header-p on-primary-text" id = "zone-text">zone: 1–1</p>
                 <p class = 'header-p on-primary-text' id = 'place-text'>shop</p>
-                <p class = "header-p on-primary-text" id = "gold-text">gold: 0</p>
+                <p class = "header-p on-primary-text has-tail" id = "gold-text">gold: 0</p>
                 <div class="debug">
                     <button id = 'go-next-debug'>Force Next Level</button>
                     <button id = 'instant-battle-debug'>Instant Battle</button>
@@ -218,6 +219,11 @@
                         armor : 8<br>
                         regen : 1<br>
                         bleed : 3<br>
+                        <div id="enemy-health-bar-container" data-total="1000" data-value="1000">
+                            <div id="enemy-health-bar">
+                                  <div id="enemy-health-hit-bar"></div>
+                            </div>
+                        </div>
                     </p>
                 </div>
 
@@ -345,12 +351,20 @@
             
         </div>
 
+
+        <div id="toast-container">
+            <div id="toast" class="translucent">[Default Toast]</div>
+        </div>
+
         <!-- Tails -->
-        <div id='broadcast-title-tail' class="hidden draggable tail">
+        <div id='broadcast-title-tail' class="hidden draggable tail"> <!-- Info on event/shop title box -->
             <p>Press (->) on the right when you are ready to go next.</p>
             <p><em>Shop:</em> Purchase useful equipment and items.</p>
             <p><em>Events:</em> Make decisions that will shape your adventure.</p>
             <p><em>Combat:</em> Use your items, equipment, and spells to fend off fearsome creatures.</p>
+        </div>
+        <div id='gold-text-tail' class="hidden draggable tail"> <!-- Info on event/shop title box -->
+            <p></p><b>Purchases</b> - Total: <span id="purchase-total">0</span></p>
         </div>
       
     </body>
