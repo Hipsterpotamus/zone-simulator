@@ -47,7 +47,7 @@ $(function() {
 
 
 // Theme Buttons
-const link = document.querySelector('link[href="Style/Themes/theme-dark-hazel.css"]');
+const link = document.querySelector('link[href="Style/Themes/theme-dark-bloodorange.css"]');
 $(function() {
     $('#ocea-button-dark').on('click',function(){
         link.href = 'Style/Themes/theme-dark-ocea.css';

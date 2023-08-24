@@ -1,7 +1,7 @@
 /* Next Button */
 .floating-next {
   position: absolute;
-  bottom: 20rem;
+  top: -0.5rem;
   right: -3rem;
   display: flex;
   justify-content: center;
@@ -13,6 +13,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   /* animation: pop-up 0.3s ease-in-out forwards; */
+  z-index: 5;
 }
 
 .floating-next:hover {

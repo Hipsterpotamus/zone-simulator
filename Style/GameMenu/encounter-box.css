@@ -41,21 +41,33 @@
   right: -2rem;
 }
 
+
 /* Title */
 .major-title-container{
   border-radius: 32px;
-  width:auto;
+  padding: 0.5rem 1rem;
+  width: auto;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   position: absolute;
   left: 1rem;
   top: -1rem;
+
+  font-size: 1.75rem;
+  /* center align contents */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .major-title-container.centered {
-  left: 50%;
-  top: 50%;
+  left: calc(50% - 17rem); 
+  top: 40%;
+
+  font-size: 2rem;
+  width: 34rem;
 }
 
 
