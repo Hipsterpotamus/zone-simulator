@@ -56,6 +56,11 @@ class Entity{
         if (this.hp > this.maxhp) {this.changeHp(this.hp - this.maxhp)};
     }
 
+    calcRegen(){
+        let antihealRegen = Math.max(this.calcStat('regen') - this.antihealApplied, 0);
+        return antihealRegen - this.bleedApplied;
+    }
+
     runRegen() {
         let regen = this.calcRegen();
         if (regen != 0) {
