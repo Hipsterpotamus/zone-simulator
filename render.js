@@ -145,3 +145,10 @@ function updateBar(depleted, newValue, maxValue, barContainer, bar, hit) {
     return "done"
 }
 
+// Toast Bar
+function notify(notification) {
+    var x = document.getElementById("toast");
+    x.className = "show";
+    $('#toast').text(notification);
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }

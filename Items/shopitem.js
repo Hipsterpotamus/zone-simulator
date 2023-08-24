@@ -47,7 +47,8 @@ class ShopItem{
 
     appendShopItem() {
         this.element = $('<button>', {
-            'id': '#' + this.name + '-purchase'
+            'id': '#' + this.name + '-purchase',
+            'class': this.metatype + '-shop-item',
         });
         this.element.appendTo('#content-central-box');
         this.element.html('buy ' + this.name + ': ' + this.goldPrice + ' gold<br>' + this.shopDesc);
