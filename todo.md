@@ -19,6 +19,7 @@
 * [] Add 'you died' indicator in g.player.death()
 * [] Add feedback when useable can't be used/item can't be purchased
 * [] Add delay before battle
+* [] Fix event clothing stats not appearing bug
 * [x] Fix error when purchasing stat
 
 ### Refactoring

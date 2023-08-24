@@ -7,7 +7,7 @@ class Grasslands extends Zone {
             [['shop', 85, 15, 0], //[shop start, shop grow, shop reset],
             ['event', 15, 9, 0], //[event start, event grow, event reset],
             ['rest', 5, 5, 5], //[rest start, rest grow, rest reset],
-            ['enemy', 50, 5, 50]], //[enemy start, enemy grow, enemy reset],
+            ['enemy', 50, 5, 20]], //[enemy start, enemy grow, enemy reset],
             { // set consistent levels here
                 1 : 'enemy',
                 2 : 'shop',
@@ -182,7 +182,7 @@ class Grasslands extends Zone {
 
         this.zoneEvents = [
             //[first possible space, last possible space, event id]
-            [2, 3, 'A Tall Tree'],
+            [1, 3, 'A Tall Tree'],
             [3, 6, 'Clothes Cast Aside'],
             [2, 5, 'The Traveler'],
             [4, 9, 'A Gemstone?'],

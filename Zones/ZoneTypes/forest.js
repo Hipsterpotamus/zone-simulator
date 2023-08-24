@@ -7,7 +7,7 @@ class Forest extends Zone {
             [['shop', 50, 15, 0], //[shop start, shop grow, shop reset],
             ['event', 30, 20, 0], //[event start, event grow, event reset],
             ['rest', 5, 5, 5], //[rest start, rest grow, rest reset],
-            ['enemy', 50, 5, 50]], //[enemy start, enemy grow, enemy reset],
+            ['enemy', 50, 5, 20]], //[enemy start, enemy grow, enemy reset],
             { // set consistent levels here
                 0 : 'empty',
                 14 : 'pathEvent',
@@ -212,7 +212,7 @@ class Forest extends Zone {
 
         this.zoneEvents = [
             //[first possible space, last possible space, event id]
-            [2, 5, 'A Long River'],
+            [1, 5, 'A Long River'],
             [3, 6, "The Wanderer's Trailmix"],
             [5, 8, "A Bird's Nest"],
             [6, 10, 'The Trapped Totem'],
