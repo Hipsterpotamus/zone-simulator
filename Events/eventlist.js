@@ -230,12 +230,14 @@ const eventList = {
             text: 'Jump in: enemies randomized, +5 speed',
             effect: function() {
                 g.zone.changeZoneLevel(Math.floor(1.5-(Math.random()*4)));
+                eventFunctionSuffix();
             }
         },
         {
             text: 'Take the bridge: +8 max hp',
             effect: function() {
                 g.player.changeMaxHp(8);
+                eventFunctionSuffix();
             }
         }
     ]),
@@ -244,6 +246,7 @@ const eventList = {
             text: 'Magic Nuts: +25 max hp',
             effect: function() {
                 g.player.changeMaxHp(25);
+                eventFunctionSuffix();
             }
         },
         {
@@ -251,6 +254,42 @@ const eventList = {
             effect: function() {
                 g.player.changeStat('dmg', 3);
                 g.player.changeStat('arm', 3);
+                eventFunctionSuffix();
+            }
+        }
+    ]),
+    "A Bird's Nest": new Event("A Bird's Nest", 'Atop a tree you see an innocent looking bird nest about to fall. Saving the birds will improve moral, but is it worth the climb?', [
+        {
+            text: 'Save the Nest: -25 hp +10 speed',
+            effect: function() {
+                g.player.changeHp(-25);
+                g.player.changeStat('speed',10);
+                eventFunctionSuffix();
+            }
+        },
+        {
+            text: 'Walk past: Heal 15',
+            effect: function() {
+                g.player.changeHp(15);
+                eventFunctionSuffix();
+            }
+        }
+    ]),
+    "The Trapped Totem": new Event("The Trapped Totem", "You notice a small golden figure atop an noticably trapped stone mantel. The totem is worth a pretty penny, but it looks certain that you'll take some damage grabbing it.", [
+        {
+            text: 'Grab it: Gain 40 gold, lose anywhere from 10-30 hp.',
+            effect: function() {
+                let damageTakenR = (Math.floor(Math.random()*21)+10);
+                g.player.changeHp(-damageTakenR);
+                g.player.changeGold(40);
+                eventFunctionSuffix('Ouch! You lost '+damageTakenR+' hp!');
+            }
+        },
+        {
+            text: 'Grab a small nugget instead: Gain 5 gold',
+            effect: function() {
+                g.player.changeGold(5);
+                eventFunctionSuffix();
             }
         }
     ])

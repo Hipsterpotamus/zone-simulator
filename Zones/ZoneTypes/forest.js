@@ -205,8 +205,8 @@ class Forest extends Zone {
             //[first possible space, last possible space, event id]
             [2, 5, 'A Long River'],
             [3, 6, "The Wanderer's Trailmix"],
-            [6, 7, 'The Traveler'],
-            [8, 9, 'A Gemstone?'],
+            [6, 7, "A Bird's Nest"],
+            [8, 9, 'The Trapped Totem'],
             [10, 11, 'The Horn'],
             [12, 13, 'Wild Fire'],
             [14, 19, 'Oil Fissure']
