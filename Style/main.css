@@ -22,7 +22,7 @@ body, html {
   padding: 0;
   overflow: hidden;
   font-family: 'Martian Mono', monospace;
-  background-color: var(--md-sys-color-background);
+  background-color: var(--transparent-background);
   /* background-color: rgba(122, 22, 52, 0.295); */
   /* I need to add a new color for each theme that has low opacity for background overlay */
   color: var(--md-sys-color-on-background);
