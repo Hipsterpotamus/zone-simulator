@@ -43,7 +43,7 @@ const eventList = {
             text: 'Accept: Gain a garden hoe, lose 3 gold',
             effect: function () {
                 if (g.player.gold < 3) { eventFunctionSuffix('not enough gold!'); return; }
-                g.player.gold -= 3;
+                g.player.changeGold(-3);
                 g.player.inv.weapon.push(new Equippable('garden hoe', 'weapon', 'none', 3, 0, 0, 0));
                 eventFunctionSuffix('garden hoe obtained');
             }
@@ -60,7 +60,7 @@ const eventList = {
             text: 'Attempt to Open: -6 gold, 40% chance to gain 20 gold',
             effect: function () {
                 if (g.player.gold < 6) { eventFunctionSuffix('not enough gold!'); return; }
-                g.player.gold -= 6;
+                g.player.changeGold(-6);
                 if (Math.random() < 0.4) { g.player.changeGold(20); }
                 eventFunctionSuffix('Success! +20 gold');
             }
