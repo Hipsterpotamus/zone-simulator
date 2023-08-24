@@ -56,7 +56,7 @@ class Forest extends Zone {
                 ['sentry bird', 'bird', 140, 50, 21, 1, 42, 3, 0, {'dodge':25}],
                 ['goblin clawer', 'goblin', 125, 25, 27, 5, 47, 1, 0, {'tear':1}],
                 ['elven charger', 'elf', 170, -200, 36, 1, 46, 4, 0, {'dodge':11,'shatter':50}],
-                ['mint slime', 'slime', 130, 0, 32, 1, 49, 9, 0, {'lifedrain':10}],
+                ['mint slime', 'slime', 130, 0, 28, 1, 49, 7, 0, {'lifedrain':10}],
                 ['forest-green slime', 'slime', 130, 0, 32, 9, 48, 1, 0, {'lifedrain':10}]
             ],
             6: [
@@ -78,10 +78,10 @@ class Forest extends Zone {
             8: [
                 ['goblin commander', 'goblin', 180, 50, 44, 4, 15, 2, 0],
                 ['elf chieftain', 'elf', 170, -120, 60, 4, 16, 4, 0, {'dodge':25}],
-                ['forest wisp', 'wisp', 166, 33, 55, -4, 61, 14, 0, {'dodge':12}],
-                ['dryad prince', 'dryad', 190, 0, 50, 5, 24, 11, 0, {'lifedrain':33}],
+                ['forest wisp', 'wisp', 160, 33, 55, -8, 61, 14, 0, {'dodge':12}],
+                ['dryad prince', 'dryad', 190, -25, 50, 3, 24, 11, 0, {'lifedrain':16}],
                 ['possessed grizzly', 'critter', 200, -280, 96, 6, 64, -4, 0, {'tear':4}],
-                ['forest slime', 'slime', 150, 72, 8, 0, 66, 6, 0,{'shatter':8,'lifedrain':25}]
+                ['forest slime', 'slime', 150, 72, 12, 0, 66, 6, 0,{'shatter':8,'lifedrain':25}]
             ]
         };
 
@@ -93,12 +93,12 @@ class Forest extends Zone {
         this.levelDifficultyDist = {
             //zoneLevel : [easyPercent, mediumPercent] (hard is excluded because it is defaulted to)
             1: [0.50, 1.00],
-            2: [0.35, 0.80],
-            3: [0.35, 0.80],
-            4: [0.35, 0.80],
-            5: [0.35, 0.85],
-            6: [0.35, 0.80],
-            7: [0.30, 0.75],
+            2: [0.28, 0.85],
+            3: [0.28, 0.85],
+            4: [0.28, 0.90],
+            5: [0.28, 0.90],
+            6: [0.28, 0.85],
+            7: [0.25, 0.75],
             8: [0, 0.25],
             9: [0, 0]
         }
