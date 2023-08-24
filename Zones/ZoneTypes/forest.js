@@ -205,11 +205,13 @@ class Forest extends Zone {
             //[first possible space, last possible space, event id]
             [2, 5, 'A Long River'],
             [3, 6, "The Wanderer's Trailmix"],
-            [6, 7, "A Bird's Nest"],
-            [8, 9, 'The Trapped Totem'],
-            [10, 11, 'The Horn'],
-            [12, 13, 'Wild Fire'],
-            [14, 19, 'Oil Fissure']
+            [5, 8, "A Bird's Nest"],
+            [6, 10, 'The Trapped Totem'],
+            [9, 12, 'Friendly Elves'],
+            [11, 14, 'A Deep Fog']
+            [12, 19, 'The Cave Shrine'],
+            [16, 19, 'The Goblin Village'],
+            
         ];
 
         this.pathEvent = 'A Fork In The Road';
