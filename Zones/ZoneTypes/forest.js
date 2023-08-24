@@ -49,7 +49,7 @@ class Forest extends Zone {
                 ['elven rancher', 'elf', 130, -100, 30, 1, 46, 7, 0, {'dodge':15}],
                 ['goblin', 'goblin', 115, 66, 14, 2, 42, 5, 0, {'dodge':16}],
                 ['forest snuffler', 'critter', 180, -300, 26, 2, 8, 4, 0, {'tear':3,'shatter':50}],
-                ['living sap-ooze', 'slime', 120, 70, 3, 0, 33, 4, 0,{'shatter':8}]
+                ['living sap-ooze', 'slime', 120, 70, 6, 0, 33, 4, 0,{'shatter':8}]
             ],
             5: [
                 ['pixie', 'fairy', 7, 0, 28, 1, 65, 1, 0, {'dodge':85}],
