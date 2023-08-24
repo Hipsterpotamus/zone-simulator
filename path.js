@@ -64,7 +64,7 @@ function generatePath(zoneArray){
 
 function advancePath(){
     g.space+=1;
-    g.player.gainGold(false, g.player.calcIncome());
+    g.player.gainGold(false, g.player.calcStat('income'));
     
     $('#content-central-box').empty();
     if(g.space%3==0){g.zone.changeZoneLevel(1)}

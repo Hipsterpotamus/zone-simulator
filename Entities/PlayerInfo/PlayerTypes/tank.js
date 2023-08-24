@@ -4,8 +4,24 @@ class Tank extends Player {
         this.name = 'tanner'; //fully implemented
     }
 
-    calcArm() {
-        return (this.dmg+this.getByType('weapon').dmg+this.getByType('head').dmg+this.getByType('chest').dmg+this.getByType('legs').dmg+this.getByType('feet').dmg) * 2;
+    calcStat(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
+        let statBase = Math.floor(calcStatBase(stat));
+        if (stat == 'arm') {
+            return statBase * 2;
+        } else {
+            return statBase;
+        }
+    }
+
+    calcStatBase(stat) {
+        return (
+            this[stat] +
+            this.getByType('weapon')[stat] +
+            this.getByType('head')[stat] +
+            this.getByType('chest')[stat] +
+            this.getByType('legs')[stat] +
+            this.getByType('feet')[stat]
+        );
     }
 
     calcAs() { // Attack Speed

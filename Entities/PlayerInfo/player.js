@@ -34,15 +34,6 @@ class Player extends Entity{
         }
     }
 
-    calcDmg(){ 
-        return (this.dmg+this.getByType('weapon').dmg+this.getByType('head').dmg+this.getByType('chest').dmg+this.getByType('legs').dmg+this.getByType('feet').dmg);
-    }
-
-    calcArm(){
-        return (this.arm+this.getByType('weapon').arm+this.getByType('head').arm+this.getByType('chest').arm+this.getByType('legs').arm+this.getByType('feet').arm);
-        
-    }
-
     calcRegen(){ //regen where bleed goes negative
         let baseRegen = (this.regen+this.getByType('weapon').regen+this.getByType('head').regen+this.getByType('chest').regen+this.getByType('legs').regen+this.getByType('feet').regen);
         let antihealRegen = Math.max(baseRegen - this.antihealApplied, 0);
@@ -66,36 +57,20 @@ class Player extends Entity{
         }
         return this.aS;
     }
-    calcDodge() {
-        return (this.dodge+this.getByType('weapon').dodge+this.getByType('head').dodge+this.getByType('chest').dodge+this.getByType('legs').dodge+this.getByType('feet').dodge);
-    }
-    calcThorn() {
-        return (this.thorn+this.getByType('weapon').thorn+this.getByType('head').thorn+this.getByType('chest').thorn+this.getByType('legs').thorn+this.getByType('feet').thorn);
-    }
-    calcShatter() {
-        return (this.shatter+this.getByType('weapon').shatter+this.getByType('head').shatter+this.getByType('chest').shatter+this.getByType('legs').shatter+this.getByType('feet').shatter);
-    }
-    calcIncome() {
-        return (this.income+this.getByType('weapon').income+this.getByType('head').income+this.getByType('chest').income+this.getByType('legs').income+this.getByType('feet').income);
-    }
-    calcLifeDrain() {
-        return (this.lifedrain+this.getByType('weapon').lifedrain+this.getByType('head').lifedrain+this.getByType('chest').lifedrain+this.getByType('legs').lifedrain+this.getByType('feet').lifedrain);
+
+    calcStat(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
+        return (
+            this[stat] +
+            this.getByType('weapon')[stat] +
+            this.getByType('head')[stat] +
+            this.getByType('chest')[stat] +
+            this.getByType('legs')[stat] +
+            this.getByType('feet')[stat]
+        );
     }
 
-    calcBleed() {
-        return (this.bleed+this.getByType('weapon').bleed+this.getByType('head').bleed+this.getByType('chest').bleed+this.getByType('legs').bleed+this.getByType('feet').bleed);
-    }
-
-    calcAccuracy() {
-        return (this.accuracy+this.getByType('weapon').accuracy+this.getByType('head').accuracy+this.getByType('chest').accuracy+this.getByType('legs').accuracy+this.getByType('feet').accuracy);
-    }
-
-    calcSuperArmor() {
-        return (this.superarmor+this.getByType('weapon').superarmor+this.getByType('head').superarmor+this.getByType('chest').superarmor+this.getByType('legs').superarmor+this.getByType('feet').superarmor);
-    }
-
-    calcTear() {
-        return (this.tear+this.getByType('weapon').tear+this.getByType('head').tear+this.getByType('chest').tear+this.getByType('legs').tear+this.getByType('feet').tear);
+    changeStat (stat, amount) {  //TBI
+        this[stat] += amount;
     }
         
     getByType(type){
@@ -138,19 +113,19 @@ class Player extends Entity{
         let htmlOutput = '';
         htmlOutput = this.name+'<br>';
         htmlOutput+='hp : '+this.hp+'/'+this.maxhp+'<br>';
-        htmlOutput+='dmg : '+this.calcDmg()+' ('+this.dmg+' + '+(this.calcDmg()-this.dmg)+')<br>';
+        htmlOutput+='dmg : '+this.calcStat('dmg')+' ('+this.dmg+' + '+(this.calcStat('dmg')-this.dmg)+')<br>';
         if (tick != -1) {htmlOutput+='time: '+(this.calcAs()-(tick % this.calcAs()))+'<br>';}
         if(this.shatterApplied!=0){
-            htmlOutput+='arm : '+Math.max(0,(this.calcArm()-this.shatterApplied))+' ('+this.arm+' + '+(this.calcArm()-this.arm)+' - '+Math.min(this.calcArm(), this.shatterApplied)+')<br>';
+            htmlOutput+='arm : '+Math.max(0,(this.calcStat('arm')-this.shatterApplied))+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+' - '+Math.min(this.calcStat('arm'), this.shatterApplied)+')<br>';
         }else{
-            htmlOutput+='arm : '+this.calcArm()+' ('+this.arm+' + '+(this.calcArm()-this.arm)+')<br>';
+            htmlOutput+='arm : '+this.calcStat('arm')+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+')<br>';
         }
         
         htmlOutput+='regen : '+this.calcRegen()+' ('+this.regen+' + '+(this.calcRegen()-this.regen)+')<br>';
-        if(this.calcDodge()!=0){htmlOutput+='dodge : '+this.calcDodge()+' ('+this.dodge+' + '+(this.calcDodge()-this.dodge)+')<br>';}
-        if(this.calcThorn()!=0){htmlOutput+='thorn : '+this.calcThorn()+' ('+this.thorn+' + '+(this.calcThorn()-this.thorn)+')<br>';}
-        if(this.calcShatter()!=0){htmlOutput+='shatter : '+this.calcShatter()+' ('+this.shatter+' + '+(this.calcShatter()-this.shatter)+')<br>';}
-        if(this.calcLifeDrain()!=0){htmlOutput+='lifedrain : '+this.calcLifeDrain()+' ('+this.lifedrain+' + '+(this.calcLifeDrain()-this.lifedrain)+')<br>';}
+        if(this.calcStat('dodge')!=0){htmlOutput+='dodge : '+this.calcStat('dodge')+' ('+this.dodge+' + '+(this.calcStat('dodge')-this.dodge)+')<br>';}
+        if(this.calcStat('thorn')!=0){htmlOutput+='thorn : '+this.calcStat('thorn')+' ('+this.thorn+' + '+(this.calcStat('thorn')-this.thorn)+')<br>';}
+        if(this.calcStat('shatter')!=0){htmlOutput+='shatter : '+this.calcStat('shatter')+' ('+this.shatter+' + '+(this.calcStat('shatter')-this.shatter)+')<br>';}
+        if(this.calcStat('lifedrain')!=0){htmlOutput+='lifedrain : '+this.calcStat('lifedrain')+' ('+this.lifedrain+' + '+(this.calcStat('lifedrain')-this.lifedrain)+')<br>';}
 
         $('#player-stats').html(htmlOutput);
     }

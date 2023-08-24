@@ -6,12 +6,6 @@ class Enemy extends Entity{
          this.diffC = difficultyCh;
          this.boss = false;
     }
-    calcDmg() {
-        return this.dmg;
-    }
-    calcArm() {
-        return this.arm;
-    }
 
     calcRegen() { //regen where bleed goes negative
         let antihealRegen = Math.max(this.regen - this.antihealApplied, 0);
@@ -34,33 +28,9 @@ class Enemy extends Entity{
         }
         return this.aS;
     }
-    calcDodge() {
-        return this.dodge;
-    }
-    calcThorn() {
-        return this.thorn;
-    }
-    calcShatter() {
-        return this.shatter;
-    }
-    calcLifeDrain() {
-        return this.lifedrain;
-    }
 
-    calcSuperArmor() {
-        return this.superarmor;
-    }
-
-    calcAccuracy() {
-        return this.accuracy;
-    }
-
-    calcBleed() {
-        return this.bleed;
-    }
-
-    calcTear() {
-        return this.tear;
+    calcStat(stat) {//should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
+        return (this[stat]);
     }
 
     getLvlHealMult() {
@@ -93,14 +63,14 @@ class Enemy extends Entity{
         let htmlOutput = '';
         htmlOutput = this.name+'<br>';
         htmlOutput+='hp : '+this.hp+'/'+this.maxhp+'<br>';
-        htmlOutput+='dmg : '+this.calcDmg()+'<br>';
+        htmlOutput+='dmg : '+this.calcStat('dmg')+'<br>';
         if (tick != -1) {htmlOutput+='time: '+(this.calcAs()-(tick % this.calcAs()))+'<br>';}
-        htmlOutput+='arm : '+(this.calcArm()-this.shatterApplied)+'<br>';
+        htmlOutput+='arm : '+(this.calcStat('arm')-this.shatterApplied)+'<br>';
         htmlOutput+='regen : '+this.calcRegen()+'<br>';
-        if(this.calcDodge()!=0){htmlOutput+='dodge : '+this.calcDodge()+'<br>';}
-        if(this.calcThorn()!=0){htmlOutput+='thorn : '+this.calcThorn()+'<br>';}
-        if(this.calcShatter()!=0){htmlOutput+='shatter : '+this.calcShatter()+'<br>';}
-        if(this.calcLifeDrain()!=0){htmlOutput+='lifedrain : '+this.calcLifeDrain()+'<br>';}
+        if(this.calcStat('dodge')!=0){htmlOutput+='dodge : '+this.calcStat('dodge')+'<br>';}
+        if(this.calcStat('thorn')!=0){htmlOutput+='thorn : '+this.calcStat('thorn')+'<br>';}
+        if(this.calcStat('shatter')!=0){htmlOutput+='shatter : '+this.calcStat('shatter')+'<br>';}
+        if(this.calcStat('lifedrain')!=0){htmlOutput+='lifedrain : '+this.calcStat('lifedrain')+'<br>';}
 
         $('#enemy-stats').html(htmlOutput);
     }

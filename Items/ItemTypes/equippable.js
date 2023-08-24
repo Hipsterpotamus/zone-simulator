@@ -43,8 +43,12 @@ class Equippable extends Item {
             statOutput+='DMG : '+displayWithSign(this.dmg)+'<br>';
             statOutput+='SPEED : '+displayWithSign(this.aSChange)+'<br>'
         }
-        if(this.name=='none'){statOutput = '';}
-        g.player.updateEntityDisplay();
+        if(this.name=='none'){
+            statOutput = '';
+        } else {
+            g.player.updateEntityDisplay();
+        }
+        
         $('#'+this.metatype+'-stats').html(statOutput);
     }
 }
