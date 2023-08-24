@@ -117,27 +117,22 @@ function genEnemy(){
 }
 let eventInfo;
 function genEvent(eventPath){
-    // $('#go-next').addClass('hidden');
     setNextButtonVisible(false);
 
     if(eventPath){
-        // $('#large-tab-title').text('A Forkroad');
         setBroadcastTitleText('A Forkroad');
         eventInfo = g.zone.getZoneEvent();
     }else{
-        // $('#large-tab-title').text('Event');
         setBroadcastTitleText('Event');
         eventInfo = g.zone.getRandomEvent(g.space);
     }
     eventInfo.createElements();
 }
 function genShop(){
-    // $('#large-tab-title').text('Shop');
     setBroadcastTitleText('Shop');
     g.zone.fillShop()
 }
 function genRest(){
-    // $('#go-next').addClass('hidden');
     setNextButtonVisible(false);
     let rnd = Math.random();
     if (rnd < 0.4) {
@@ -152,7 +147,6 @@ function genRest(){
 function genBoss(){
     setNextButtonVisible(false);
     
-    // $('#large-tab-title').text('Boss Battle!');
     setBroadcastTitleText('Boss Battle!', true);
 
     $('#combatTimer').removeClass('hidden');

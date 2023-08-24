@@ -237,14 +237,7 @@ body, html {
 
 
 
-#large-tab-title{
-  font-size:7vh;
-  margin:5vh 0vh 0vh 0vh;
-  text-align:center;
-  vertical-align: center;
-  height:100%;
-  font-family: 'Martian Mono', monospace;
-}
+
 
 /* #equip-tab{
   display: flex;
