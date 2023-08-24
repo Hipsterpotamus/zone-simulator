@@ -188,11 +188,17 @@ class Forest extends Zone {
             ['stat', 'medium bond'],
             ['stat', 'golden fish'],
             ['stat', 'bark pamphlette'],
-            ['usable', 'firecracker'],
-            ['usable', 'throwing eggs'],
-            ['usable', 'bandages'],
-            ['usable', 'first aid kit'],
-            ['usable', 'sharpening stone']
+            ['usable', 'goblin bomb'],
+            ['usable', 'dryad throwing leaves'],
+            ['usable', 'elf bandages'],
+            ['usable', 'elven battle book'],
+            ['usable', 'dryad battle book'],
+            ['usable', 'goblin sacks'],
+            ['usable', 'dryad berries'],
+            ['usable', 'pine needle attachments'],
+            ['usable', 'pine cone attachments'],
+            ['usable', 'elven nectar'],
+            ['usable', 'dryad root potion']
         ];
 
         this.zoneEvents = [
