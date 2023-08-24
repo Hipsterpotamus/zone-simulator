@@ -6,7 +6,7 @@ class Ninja extends Player {
     }
 
     calcStat(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
-        let statBase = calcStatBase(stat);
+        let statBase = this.calcStatBase(stat);
         if (stat == 'dmg') {
             return Math.floor(statBase * 1.2);
         } else if (stat == 'arm') {
