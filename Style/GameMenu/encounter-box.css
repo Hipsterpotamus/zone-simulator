@@ -2,16 +2,16 @@
 
 #encounter-container {
   width: 50vw;
-  height: 30rem;
+  height: 55vh;
   position: fixed;
-  top: 8.5rem;
+  top: 15vh;
   left: 4rem;
   border-radius: 32px;
-
+  /* background-color: #f5f5f5; */
   display: flex;
   flex-direction: column;
-
   outline: 0;
+  /* blur the background and make transparent */
   background-color: var(--md-sys-color-surface-variant);
   
   font-family: 'Martian Mono', monospace;
@@ -25,7 +25,6 @@
   height: 4rem;
   border-radius: 50%;
   background-color: var(--md-sys-color-surface-variant);
-  top: 50%;
   transform: translateY(-50%);
 }
 
@@ -33,11 +32,11 @@
   width: 6rem;
   height: 6rem;
   right: 2rem;
-  top: 30rem;
+  bottom: -6rem;
 }
 
 #encounter-container::after {
-  top: 34rem;
+  bottom: -8rem;
   right: -2rem;
 }
 

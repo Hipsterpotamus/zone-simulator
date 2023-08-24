@@ -2,12 +2,10 @@
 
 .game-header{
     width:100%;
-    height:2rem;
     padding:0.9%;
   
     position: relative;
     z-index: 8;
-    /* margin-bottom: 5rem; */
 }
 
 .game-header p {
@@ -23,12 +21,20 @@
     top: 0;
     left: 0;
     z-index: 4;
-}
-
-#sineWave {
     fill: var(--md-sys-color-primary);
-    fill-opacity: 1;
     pointer-events: none;
+/*     
+    border:1px solid rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter:saturate(180%) blur(15px);
+    backdrop-filter: saturate(180%) blur(15px); */
 }
 
+#sineWave-2 {
+    fill: var(--md-sys-color-primary);
+}
+
+#sineWave-1 {
+    fill: var(--md-sys-color-primary-container);
+
+}
 
