@@ -48,10 +48,10 @@ class Player extends Entity{
 
     calcAs() { // Attack Speed
         const rawAS = this.aSLvl + this.getByType('weapon').aSChange + this.getByType('head').aSChange + this.getByType('chest').aSChange + this.getByType('legs').aSChange + this.getByType('feet').aSChange;
-        const adjRoot = 3; //functionally similar to fibonacci with cleaner code
+        const adjRoot = 2; //functionally similar to fibonacci with cleaner code
         const adjScalingMult = 4;
-        if (rawAS > 85) {
-            this.aS = Math.max(15 - Math.floor(Math.pow((rawAS - 85) * adjScalingMult, 1/adjRoot)), 1) ;
+        if (rawAS > 50) {
+            this.aS = Math.max(50 - Math.floor(Math.pow((rawAS - 50) * adjScalingMult, 1/adjRoot)), 1) ;
         } else {
             this.aS = 100 - rawAS;
         }

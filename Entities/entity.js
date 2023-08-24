@@ -14,7 +14,7 @@ class Entity{
         this.thorn = 0;
         this.antiheal = 0;
         this.dodge = 0;        
-        this.regenRate = 50;
+        this.regenRate = 100;
         this.tear = 0;
         this.shatter = 0;
         this.accuracy = 100;
