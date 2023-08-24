@@ -359,62 +359,62 @@ const ITEMLIST = {
   //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
   'goblin bomb': [20, '(item: deal 50 dmg to non-goblin. gain 5 gold)', 'usable', ['combat', 'During combat, use to deal 50 dmg (bypasses armor) to the current enemy. If the current enemy is of the goblin type, instead deal 0 dmg. Gain 5 gold', 1, 
     function(){
-        if(g.cEnemy.type != 'goblin'){
-          g.cEnemy.changeHp(-50);
+        if(g.combat.enemy.type != 'goblin'){
+          g.combat.enemy.changeHp(-50);
         }
-        g.player.gold+=5;
+        g.combat.player.gainGold(false, 5);
   }]],
   'dryad throwing leaves': [28, '(4x item: deal 10 dmg, heal 10)', 'usable', ['combat', "During combat, deal 10 dmg to an enemy (bypasses armor), and heal 10", 4,
   function(){
-    g.cEnemy.changeHp(-10);
-    g.player.changeHp(10);
+    g.combat.enemy.changeHp(-10);
+    g.combat.player.changeHp(10);
   }]],
   'elf bandages': [35, '(15x item: heal 10 hp)', 'usable', ['all', "Heal 10", 15, 
   function(){
-      g.player.changeHp(10);
+      g.combat.player.changeHp(10);
   }]],
   'elven battle book': [18, '(item: if enemy has lower attackspeed, gain 3% dodge permanetly)', 'usable', ['combat', "During combat, if enemy has a lower total attackspeed than you, gain 3% permanent dodge", 1, 
   function(){
-      if(g.cEnemy.calcAs()<g.player.calcAs()){
-        g.player.dodge+=3;
+      if(g.combat.enemy.calcAs()<g.player.calcAs()){
+        g.combat.player.dodge+=3;
       }
   }]],
   'dryad battle book': [22, '(item: if enemy has a higher attackspeed, gain 3% lifedrain permanetly)', 'usable', ['combat', "During combat, if enemy has a higher total attackspeed than you, gain 3% permanent lifedrain", 1, 
     function(){
-        if(g.cEnemy.calcAs()<g.player.calcAs()){
-          g.player.lifedrain+=3;
+        if(g.combat.enemy.calcAs()<g.combat.player.calcAs()){
+          g.combat.player.lifedrain+=3;
         }
   }]],
-  'goblin sacks': [30, '(4x item: gain 20% of enemy gold payout)', 'usable', ['combat', "During combat, gain 10% of the current enemy's gold pay out", 4, 
+  'goblin sacks': [30, '(4x item: gain 20% of enemy gold payout)', 'usable', ['combat', "During combat, gain 20% of the current enemy's gold pay out", 4, 
     function(){
-        g.player.gold+Math.floor(g.cEnemy.gold*0.2);
+        g.combat.player.gainGold(Math.floor(g.cEnemy.gold*0.2));
   }]],
   'dryad berries': [26, '(6x item: heal 12 hp and gain 1 regen permantely)', 'usable', ['all', "Heal 12 hp and gain 1 regen permanetly", 6, 
     function(){
-        g.player.changeHp(12);
-        g.player.regen+=1;
+        g.combat.player.changeHp(12);
+        g.combat.player.regen+=1;
   }]],
   'pine needle attachments': [58, '(4x item: +5 dmg on weapon)', 'usable', ['all', "Your currently equipped weapon gains +5 dmg", 4, 
   function(){
-      g.player.getByType('weapon').dmg += 5;
-      g.player.getByType('weapon').updateItemInfo();
+      g.combat.player.getByType('weapon').dmg += 5;
+      g.combat.player.getByType('weapon').updateItemInfo();
   }]],
   'pine cone attachments': [62, '(5x item: +3 shatter on weapon)', 'usable', ['all', "Your currently equipped weapon gains +3 shatter", 5, 
   function(){
-      g.player.getByType('weapon').shatter += 3;
-      g.player.getByType('weapon').updateItemInfo();
+      g.combat.player.getByType('weapon').shatter += 3;
+      g.combat.player.getByType('weapon').updateItemInfo();
   }]],
   'elven nectar': [45, '(2x item: remove all shatter applied by opponent)', 'usable', ['combat', "During combat, all armor you have lost due to your opponent's shatter this combat is removed. However, more shatter can still be gained", 2, 
   function(){
-      g.player.getByType('weapon').dmg += 5;
-      g.player.getByType('weapon').updateItemInfo();
+      g.combat.player.getByType('weapon').dmg += 5;
+      g.combat.player.getByType('weapon').updateItemInfo();
   }]],
   'dryad root potion': [70, '(item: current enemy armor doubles, but their attack speed halves)', 'usable', ['combat', "During combat, the enemy's base armor grows by the amount of effective armor they currently have (armor - shatter applied). Their attackspeed is set to half.", 1, 
   function(){
-      if(g.cEnemy.calcArm()<0){
-        g.cEnemy.arm+=g.cEnemy.calcArm()
+      if(g.combat.enemy.calcStat('arm')<0){
+        g.combat.enemy.arm+=g.combat.enemy.calcStat('arm')
       }else{
-        g.cEnemy.arm += Math.max(g.cEnemy.calcArm()-g.cEnemy.shatterApplied, 0)
+        g.combat.enemy.arm += Math.max(g.combat.enemy.calcStat('arm')-g.cEnemy.shatterApplied, 0)
       }
   }]],
 }
