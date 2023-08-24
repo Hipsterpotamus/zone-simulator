@@ -60,16 +60,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 3;
+
+  transition: all 0.3s ease-in-out; /* Add transition property */
+
 }
 
 .major-title-container.centered {
   left: calc(50% - 17rem); 
   top: 40%;
 
-  font-size: 2rem;
+  font-size: 2.5rem;
   width: 34rem;
 }
-
 
 
 /* Contents */
@@ -77,6 +80,13 @@
   order:2;
   width:100%;
   height:100%;
+}
+
+.event-description {
+  padding: 2.5rem;
+  padding-top: 3rem;
+  font-size: 1.25rem;
+  font-style: italic;
 }
 
 .content-container #content-central-box{
@@ -93,6 +103,13 @@
   overflow-y: scroll;
   box-sizing: border-box;
 }
+
+#content-central-box.event-active{
+  justify-content: flex-start;
+  align-items: start;
+  height: auto;
+}
+
 
 .content-container #content-central-box::-webkit-scrollbar {
   width: 0;
