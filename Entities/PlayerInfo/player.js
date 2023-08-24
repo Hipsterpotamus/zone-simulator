@@ -9,7 +9,7 @@ class Player extends Entity{
         this.regen = 0;
         this.levelheal = 5;
         this.income = 0;
-        this.aSLvl = 0;
+        this.as = 0;
         this.dodge = 0;
         this.gold = 25;
         this.inv = {
@@ -70,7 +70,7 @@ class Player extends Entity{
         return foundEquip;
     }
 
-    gainGold(inBattle, amount) {
+    changeGold(amount, inCombat = false) {
         this.gold += amount;
         this.updateGoldDisplay();
     }

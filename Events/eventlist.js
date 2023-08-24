@@ -61,7 +61,7 @@ const eventList = {
             effect: function () {
                 if (g.player.gold < 6) { eventFunctionSuffix('not enough gold!'); return; }
                 g.player.gold -= 6;
-                if (Math.random() < 0.4) { g.player.gainGold(false, 20); }
+                if (Math.random() < 0.4) { g.player.changeGold(20); }
                 eventFunctionSuffix('Success! +20 gold');
             }
         },
@@ -118,7 +118,7 @@ const eventList = {
         {
             text: 'Oil your Gear: +10 speed',
             effect: function () {
-                g.player.aSLvl += 10;
+                g.player.as += 10;
                 eventFunctionSuffix('+10 speed');
             }
         },
@@ -132,7 +132,7 @@ const eventList = {
         {
             text: 'Sell: gain 10 gold',
             effect: function () {
-                g.player.gainGold(false, 10);
+                g.player.changeGold(10);
                 eventFunctionSuffix('+10 gold');
             }
         }
@@ -180,7 +180,7 @@ const eventList = {
         {
             text: 'Work: gain 8 gold',
             effect: function () {
-                g.player.gainGold(false, 8);
+                g.player.changeGold(8);
                 eventFunctionSuffix();
             }
         }

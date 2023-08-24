@@ -34,9 +34,12 @@ class ShopItem{
 
     purchase(){
         if( g.player.gold>=this.goldPrice){
-            g.player.gainGold(false, (-this.goldPrice));
+            g.player.changeGold(-this.goldPrice);
             this.onBuy();
             this.element.remove();
+            g.player.inv[this.metatype].forEach(element => {
+                if (element.equipped) {element.updateItemInfo()};
+            });
         } else {
             //communicate to player not enough gold
         }

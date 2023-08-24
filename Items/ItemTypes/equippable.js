@@ -5,7 +5,7 @@ class Equippable extends Item {
         this.dmg = dmg;
         this.arm = armor;
         this.regen = regen;
-        this.aSLvl = attackSpeedChange;
+        this.as = attackSpeedChange;
         this.income = 0;
         this.thorn = 0;
         this.dodge = 0;
@@ -24,10 +24,6 @@ class Equippable extends Item {
                 this[stat] = complexStats[stat];
             });
         }
-
-        if (this.equipped) {
-            this.updateItemInfo();
-        }
     }
 
     updateItemInfo() {
@@ -36,12 +32,12 @@ class Equippable extends Item {
             statOutput+='DMG : '+displayWithSign(this.dmg)+'<br>';
             statOutput+='ARM : '+displayWithSign(this.arm)+'<br>';
             statOutput+='REGEN : '+displayWithSign(this.regen)+'<br>';
-            statOutput+='SPEED : '+displayWithSign(this.aSLvl)+'<br>'
+            statOutput+='SPEED : '+displayWithSign(this.as)+'<br>'
         }else{
             statOutput+='ARM : '+displayWithSign(this.arm)+'<br>';
             statOutput+='REGEN : '+displayWithSign(this.regen)+'<br>';
             statOutput+='DMG : '+displayWithSign(this.dmg)+'<br>';
-            statOutput+='SPEED : '+displayWithSign(this.aSLvl)+'<br>'
+            statOutput+='SPEED : '+displayWithSign(this.as)+'<br>'
         }
         if(this.name=='none'){
             statOutput = '';

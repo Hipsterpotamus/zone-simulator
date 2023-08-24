@@ -9,7 +9,7 @@ class Beneficiary extends Player {
         this.regen = 0;
         this.levelheal = 5;
         this.income = 0;
-        this.aSLvl = 0;
+        this.as = 0;
         this.dodge = 0;
         this.gold = 25;
     }

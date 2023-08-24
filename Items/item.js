@@ -5,12 +5,11 @@ class Item {
         const UNSELECTABLE = ['stat'];
         if (!UNSELECTABLE.includes(metatype)) {
             this.appendElement()
-            if(g.player.inv[metatype] == 0){
-                this.equipped = true;
-                $('#'+this.metatype+'-select').val(this.name);
-            } else {
-                this.equipped = false;
-            }
+            g.player.inv[metatype].forEach(element => {
+                element.equipped = false;
+            });
+            this.equipped = true;
+            $('#'+this.metatype+'-select').val(this.name);
         }
     }
 

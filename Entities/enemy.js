@@ -27,7 +27,7 @@ class Enemy extends Entity{
 
     death() {
         setBroadcastTitleText('Victory!', true)
-        g.player.gainGold(true, this.gold);
+        g.player.changeGold(this.gold, true);
         g.zone.changeZoneLevel(this.diffC);
         g.player.cleanStatus();
         g.player.changeHp(g.player.levelheal*this.getLvlHealMult());

@@ -68,7 +68,7 @@ const ITEMLIST = {
     'chocolate bar': [10, '(-2 max hp +5 speed)', 'stat', [
     function(){
         g.player.changeMaxHp(-2);
-        g.player.aSLvl += 5;
+        g.player.as += 5;
     }]],
     'protein shake': [10, '(+1 dmg)', 'stat', [
     function(){
@@ -119,7 +119,7 @@ const ITEMLIST = {
         g.player.changeMaxHp(5);
         g.player.dmg += 1;
         g.player.regen += 1;
-        g.player.aSLvl += 3;
+        g.player.as += 3;
     }]],
     'leaflet scarf': [15, '(+4% dodge)', 'stat', [
     function(){
@@ -128,12 +128,12 @@ const ITEMLIST = {
     'banana': [18, '(+14 max hp +2 speed)', 'stat', [
     function(){
         g.player.changeMaxHp(14);
-        g.player.aSLvl += 2;
+        g.player.as += 2;
     }]],
     'apricot': [18, '(+16 max hp -2 speed)', 'stat', [
     function(){
         g.player.changeMaxHp(16);
-        g.player.aSLvl -= 2;
+        g.player.as -= 2;
     }]],
     'small bond': [10, '(+1 income)', 'stat', [
     function(){
@@ -263,7 +263,7 @@ const ITEMLIST = {
   'white chocolate bar': [18, '(-6 max hp +9 speed)', 'stat', [
   function(){
       g.player.changeMaxHp(-6);
-      g.player.aSLvl += 9;
+      g.player.as += 9;
   }]],
   'milk': [15, '(+2 dmg)', 'stat', [
   function(){
@@ -281,7 +281,7 @@ const ITEMLIST = {
   'cat fish': [16, '(+4 max hp +5 speed)', 'stat', [
   function(){
       g.player.changeMaxHp(4);
-      g.player.aSLvl += 5;
+      g.player.as += 5;
   }]],
   'perch fish': [16, '(+4 max hp +2 armor)', 'stat', [
   function(){
@@ -310,7 +310,7 @@ const ITEMLIST = {
   'sluggish mushrooms': [31, '(+40 max hp -10 speed)', 'stat', [
   function(){
       g.player.changeMaxHp(40);
-      g.player.aSLvl -= 10;
+      g.player.as -= 10;
   }]],
   'pinecone pudding': [31, '(+25 max hp +8 level heal)', 'stat', [
   function(){
@@ -338,7 +338,7 @@ const ITEMLIST = {
   'carrot': [36, '(+3 regen +3 speed)', 'stat', [
   function(){
       g.player.regen += 3;
-      g.player.aSLvl += 3;
+      g.player.as += 3;
   }]],
   'medium bond': [25, '(+2 income)', 'stat', [
   function(){
@@ -362,7 +362,7 @@ const ITEMLIST = {
         if(g.combat.enemy.type != 'goblin'){
           g.combat.enemy.changeHp(-50);
         }
-        g.combat.player.gainGold(false, 5);
+        g.combat.player.changeGold(5);
   }]],
   'dryad throwing leaves': [28, '(4x item: deal 10 dmg, heal 10)', 'usable', ['combat', "During combat, deal 10 dmg to an enemy (bypasses armor), and heal 10", 4,
   function(){
@@ -387,7 +387,7 @@ const ITEMLIST = {
   }]],
   'goblin sacks': [30, '(4x item: gain 20% of enemy gold payout)', 'usable', ['combat', "During combat, gain 20% of the current enemy's gold pay out", 4, 
     function(){
-        g.combat.player.gainGold(Math.floor(g.cEnemy.gold*0.2));
+        g.combat.player.changeGold(Math.floor(g.cEnemy.gold*0.2));
   }]],
   'dryad berries': [26, '(6x item: heal 12 hp and gain 1 regen permantely)', 'usable', ['all', "Heal 12 hp and gain 1 regen permanetly", 6, 
     function(){

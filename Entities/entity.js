@@ -4,7 +4,7 @@ class Entity{
         this.type = type;
         this.hp = health;
         this.maxhp = health;
-        this.aSLvl = attackspeed;
+        this.as = attackspeed;
         this.asScalingPoint = 50;
         this.dmg = damage;
         this.arm = armor;
@@ -63,7 +63,7 @@ class Entity{
     }
 
     calcAs() {
-        const rawAS = this.calcStat('aSLvl');
+        const rawAS = this.calcStat('as');
         let as;
         let asScale = this.asScalingPoint;
         const adjRoot = 3;
