@@ -337,12 +337,12 @@ const ITEMLIST = {
   }]],
   'carrot': [36, '(+3 regen +3 speed)', 'stat', [
   function(){
-      g.player.change('regen', 3);
-      g.player.change('as', 3);
+      g.player.changeStat('regen', 3);
+      g.player.changeStat('as', 3);
   }]],
   'medium bond': [25, '(+2 income)', 'stat', [
   function(){
-      g.player.change('income', 2);
+      g.player.changeStat('income', 2);
   }]],
   'golden fish': [45, '(+25 max hp +1 income)', 'stat', [
   function(){
@@ -351,7 +351,7 @@ const ITEMLIST = {
   }]],
   'bark pamphlette': [40, '(+2 regen +2 income)', 'stat', [
   function(){
-      g.player.change('regen', 2);
+      g.player.changeStat('regen', 2);
       g.player.changeStat('income', 2);
   }]],
 
