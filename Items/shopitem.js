@@ -42,6 +42,7 @@ class ShopItem{
             });
         } else {
             //communicate to player not enough gold
+            notify('Not enough Gold!');
         }
     }
 

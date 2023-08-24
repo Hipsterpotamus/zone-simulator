@@ -146,9 +146,9 @@ function updateBar(depleted, newValue, maxValue, barContainer, bar, hit) {
 }
 
 // Toast Bar
-function notify(notification) {
+function notify(notification, length=3) {
     var x = document.getElementById("toast");
     x.className = "show";
     $('#toast').text(notification);
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, length * 1000);
   }
