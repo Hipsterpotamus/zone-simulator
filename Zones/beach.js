@@ -1,4 +1,4 @@
-class Forest extends Zone {
+class Beach extends Zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
         this.maxZoneLevel = 9;
@@ -234,7 +234,7 @@ class Forest extends Zone {
     }
     
     advanceToNextZone(){
-        g.zone = new Beach();
+        g.zone = new Forest();
         g.path.generatePath(...g.zone.pathGen);
     }
 }
