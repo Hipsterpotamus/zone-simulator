@@ -1,7 +1,6 @@
 class Path {
     constructor(zoneNum) {
         this.zoneNum = zoneNum + 1;
-        console.log('zone num')
         this.maxSpaces;
         this.typeInfo;
         this.setSpaces;
@@ -28,7 +27,6 @@ class Path {
         for (let i = 0; i < this.typeInfo.length; i++) {
             const element = this.typeInfo[i];
             runningTotal += element[1] / total;
-            console.log(element[0]);
             if (runningTotal > rand) {
                 this.nextSpace = element[0];
                 break;

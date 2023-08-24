@@ -38,9 +38,12 @@ class ShopItem{
             this.onBuy();
             this.element.remove();
             updatePurchaseHistory(this);
-            g.player.inv[this.metatype].forEach(element => {
-                if (element.equipped) {element.updateItemInfo()};
-            });
+            const UNSELECTABLE = ['stat'];
+            if (!UNSELECTABLE.includes(this.metatype)) {
+                g.player.inv[this.metatype].forEach(element => {
+                    if (element.equipped) {element.updateItemInfo()};
+                });
+            }
         } else {
             notify('Not enough Gold!');
         }

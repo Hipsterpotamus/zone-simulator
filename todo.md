@@ -19,12 +19,12 @@
 * [] Add 'you died' indicator in g.player.death()
 * [] Add feedback when useable can't be used/item can't be purchased
 * [] Add delay before battle
-* [] Fix error when purchasing stat
+* [x] Fix error when purchasing stat
 
 ### Refactoring
 * [] Update README.md with info on all backend systems
 * [x] Refactor combat.js
-* [] Refactor path.js
+* [x] Refactor path.js
 * [] Get rid of of global variables
 * [] Refactor game.js? (will likely require a full transition to an object oriented framework to significantly improve)
 

@@ -273,11 +273,9 @@ const eventList = {
             text: 'Buy a Red Trinket: Lose 6 gold, gain +6 dmg',
             effect: function() {
                 if(g.player.gold<6){
-                    eventFunctionSuffix('Sorry you cannot afford that trinket.');
                 }else{
                     g.player.changeGold(-6);
                     g.player.changeStat('dmg',6);
-                    eventFunctionSuffix();
                 }
             }
         },
@@ -285,11 +283,9 @@ const eventList = {
             text: 'Buy a Green Trinket: Lose 3 gold, gain +3 regen',
             effect: function() {
                 if(g.player.gold<3){
-                    eventFunctionSuffix('Sorry you cannot afford that trinket');
                 }else{
                     g.player.changeGold(-3);
                     g.player.changeStat('regen',3);
-                    eventFunctionSuffix();
                 }
             }
         },
@@ -297,11 +293,9 @@ const eventList = {
             text: 'Buy an Orange Trinket: Lose 4 gold, gain +4 arm',
             effect: function() {
                 if(g.player.gold<4){
-                    eventFunctionSuffix('Sorry you cannot afford that trinket');
                 }else{
                     g.player.changeGold(-4);
                     g.player.changeStat('arm',4);
-                    eventFunctionSuffix();
                 }
             }
         },
@@ -309,18 +303,15 @@ const eventList = {
             text: 'Buy a Black Trinket: Lose 3 gold, gain 3 dodge',
             effect: function() {
                 if(g.player.gold<3){
-                    eventFunctionSuffix('Sorry you cannot afford that trinket');
                 }else{
                     g.player.changeGold(-3);
                     g.player.changeStat('dodge',3);
-                    eventFunctionSuffix();
                 }
             }
         },
         {
             text: 'Politely Decline: gain nothing',
             effect: function() {
-                eventFunctionSuffix();
             }
         }
     ]),
@@ -330,7 +321,6 @@ const eventList = {
             effect: function() {
                 g.player.changeStat('dodge', 4);
                 g.player.changeStat('levelheal', 5);
-                eventFunctionSuffix();
             }
         },
         {
@@ -338,7 +328,6 @@ const eventList = {
             effect: function() {
                 g.player.changeStat('armor',8);
                 g.player.changeStat('levelheal',5);
-                eventFunctionSuffix();
             }
         }
     ]),
@@ -349,7 +338,6 @@ const eventList = {
                 g.player.changeStat('dmg',15);
                 g.player.changeStat('as',-10);
                 g.player.changeStat('levelheal',-10);
-                eventFunctionSuffix();
             }
         },
         {
@@ -358,7 +346,6 @@ const eventList = {
                 g.player.changeStat('dmg',-10);
                 g.player.changeStat('regen',8);
                 g.player.changeStat('levelheal',10);
-                eventFunctionSuffix();
             }
         }
     ]),
@@ -367,7 +354,6 @@ const eventList = {
             text: 'The Bag of Gold: +45 gold',
             effect: function() {
                 g.player.changeGold(45);
-                eventFunctionSuffix();
             }
         },
         {
@@ -375,13 +361,11 @@ const eventList = {
             effect: function() {
                 g.player.changeStat('dmg',3);
                 g.player.changeMaxHp(30);
-                eventFunctionSuffix();
             }
         },
         {
             text: '[UNIMPLEMENTED] Intervene in the Bonfire: Start a difficult combat with multiple goblins, but gain both bags and more',   
             effect: function(){
-                eventFunctionSuffix();
                 //starts a combat with three goblins simultaneously
                 //the reward for combat is both bags contents *1.5 and a helmet called, (The Goblin Vanquisher) which endows a large damage increase. 
             } 
@@ -396,7 +380,6 @@ const eventList = {
             text: 'Rest: Heal 35 hp',
             effect: function() {
                 g.player.changeHp(35);
-                eventFunctionSuffix();
             }
         },
         {
@@ -404,7 +387,6 @@ const eventList = {
             effect: function() {
                 g.player.changeMaxHp(20);
                 g.player.changeHp(-20);
-                eventFunctionSuffix();
             }
         }
     ]),
@@ -414,7 +396,6 @@ const eventList = {
             effect: function() {
                 g.player.changeMaxHp(15);
                 g.player.changeHp(10);
-                eventFunctionSuffix();
             }
         },
         {
@@ -422,7 +403,6 @@ const eventList = {
             effect: function() {
                 g.player.changeHp(-5);
                 g.player.getByType('weapon').dmg = (Math.ceil(g.player.getByType('weapon').dmg * 1.25));
-                eventFunctionSuffix();
             }
         },
         {
@@ -431,7 +411,6 @@ const eventList = {
                 g.player.changeMaxHp(-5);
                 g.player.getByType('chest').arm = (Math.ceil(g.player.getByType('chest').arm * 1.25));
                 g.player.getByType('legs').arm = (Math.ceil(g.player.getByType('legs').arm * 1.25));
-                eventFunctionSuffix();
             }
         }
     ]),
@@ -440,14 +419,12 @@ const eventList = {
             text: 'Wade in Water: Gain +20 max hp',
             effect: function() {
                 g.player.changeMaxHp(35);
-                eventFunctionSuffix();
             }
         },
         {
             text: "Study Dam: Gain +5 armor",
             effect: function() {
                 g.player.changeStat('armor',5);
-                eventFunctionSuffix();
             }
         }
     ]),
@@ -456,11 +433,9 @@ const eventList = {
             text: 'Buy a Red Trinket: Lose 6 gold, gain +6 dmg',
             effect: function() {
                 if(g.player.gold<6){
-                    eventFunctionSuffix('Sorry you cannot afford that trinket.');
                 }else{
                     g.player.changeGold(-6);
                     g.player.changeStat('dmg',6);
-                    eventFunctionSuffix();
                 }
             }
         },
@@ -468,11 +443,9 @@ const eventList = {
             text: 'Buy a Green Trinket: Lose 3 gold, gain +3 regen',
             effect: function() {
                 if(g.player.gold<3){
-                    eventFunctionSuffix('Sorry you cannot afford that trinket');
                 }else{
                     g.player.changeGold(-3);
                     g.player.changeStat('regen',3);
-                    eventFunctionSuffix();
                 }
             }
         },
@@ -480,11 +453,9 @@ const eventList = {
             text: 'Buy an Orange Trinket: Lose 4 gold, gain +4 arm',
             effect: function() {
                 if(g.player.gold<4){
-                    eventFunctionSuffix('Sorry you cannot afford that trinket');
                 }else{
                     g.player.changeGold(-4);
                     g.player.changeStat('arm',4);
-                    eventFunctionSuffix();
                 }
             }
         },
@@ -492,18 +463,15 @@ const eventList = {
             text: 'Buy a Black Trinket: Lose 3 gold, gain 3 dodge',
             effect: function() {
                 if(g.player.gold<3){
-                    eventFunctionSuffix('Sorry you cannot afford that trinket');
                 }else{
                     g.player.changeGold(-3);
                     g.player.changeStat('dodge',3);
-                    eventFunctionSuffix();
                 }
             }
         },
         {
             text: 'Politely Decline: gain nothing',
             effect: function() {
-                eventFunctionSuffix();
             }
         }
     ]),
@@ -513,7 +481,6 @@ const eventList = {
             effect: function() {
                 g.player.changeStat('dodge', 4);
                 g.player.changeStat('levelheal', 5);
-                eventFunctionSuffix();
             }
         },
         {
@@ -521,7 +488,6 @@ const eventList = {
             effect: function() {
                 g.player.changeStat('armor',8);
                 g.player.changeStat('levelheal',5);
-                eventFunctionSuffix();
             }
         }
     ]),
@@ -532,7 +498,6 @@ const eventList = {
                 g.player.changeStat('dmg',15);
                 g.player.changeStat('as',-10);
                 g.player.changeStat('levelheal',-10);
-                eventFunctionSuffix();
             }
         },
         {
@@ -541,7 +506,6 @@ const eventList = {
                 g.player.changeStat('dmg',-10);
                 g.player.changeStat('regen',8);
                 g.player.changeStat('levelheal',10);
-                eventFunctionSuffix();
             }
         }
     ]),
@@ -550,7 +514,6 @@ const eventList = {
             text: 'The Bag of Gold: +45 gold',
             effect: function() {
                 g.player.changeGold(45);
-                eventFunctionSuffix();
             }
         },
         {
@@ -558,13 +521,11 @@ const eventList = {
             effect: function() {
                 g.player.changeStat('dmg',3);
                 g.player.changeMaxHp(30);
-                eventFunctionSuffix();
             }
         },
         {
             text: '[UNIMPLEMENTED] Intervene in the Bonfire: Start a difficult combat with multiple goblins, but gain both bags and more',   
             effect: function(){
-                eventFunctionSuffix();
                 //starts a combat with three goblins simultaneously
                 //the reward for combat is both bags contents *1.5 and a helmet called, (The Goblin Vanquisher) which endows a large damage increase. 
             } 
@@ -579,7 +540,6 @@ const eventList = {
             text: 'Rest: Heal 35 hp',
             effect: function() {
                 g.player.changeHp(35);
-                eventFunctionSuffix();
             }
         },
         {
@@ -587,7 +547,6 @@ const eventList = {
             effect: function() {
                 g.player.changeMaxHp(20);
                 g.player.changeHp(-20);
-                eventFunctionSuffix();
             }
         }
     ]),
@@ -597,7 +556,6 @@ const eventList = {
             effect: function() {
                 g.player.changeMaxHp(15);
                 g.player.changeHp(10);
-                eventFunctionSuffix();
             }
         },
         {
@@ -605,7 +563,6 @@ const eventList = {
             effect: function() {
                 g.player.changeHp(-5);
                 g.player.getByType('weapon').dmg = (Math.ceil(g.player.getByType('weapon').dmg * 1.25));
-                eventFunctionSuffix();
             }
         },
         {
@@ -614,7 +571,6 @@ const eventList = {
                 g.player.changeMaxHp(-5);
                 g.player.getByType('chest').arm = (Math.ceil(g.player.getByType('chest').arm * 1.25));
                 g.player.getByType('legs').arm = (Math.ceil(g.player.getByType('legs').arm * 1.25));
-                eventFunctionSuffix();
             }
         }
     ]),
@@ -623,14 +579,12 @@ const eventList = {
             text: 'Wade in Water: Gain +20 max hp',
             effect: function() {
                 g.player.changeMaxHp(35);
-                eventFunctionSuffix();
             }
         },
         {
             text: "Study Dam: Gain +5 armor",
             effect: function() {
                 g.player.changeStat('armor',5);
-                eventFunctionSuffix();
             }
         }
     ])

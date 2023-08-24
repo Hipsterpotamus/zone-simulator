@@ -223,8 +223,18 @@ class Forest extends Zone {
             
         ];
 
+        this.zoneRests = [
+            [1, 19, 'A Tree House', 0.33],
+            [1, 19, 'A Dryad Temple', 0.66],
+            [1, 19, 'A Dam', 1]
+        ];
+
         this.pathEvent = 'A Fork In The Road';
         
     }
     
+    advanceToNextZone(){
+        g.zone = new Forest();
+        g.path.generatePath(...g.zone.pathGen);
+    }
 }

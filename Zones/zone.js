@@ -77,7 +77,6 @@ class Zone {
         const rand = Math.random();
         for (let i = 0; i < this.zoneRests.length; i++) {
             const element = this.zoneRests[i];
-            console.log(rand);
             if (space >= element[0] && space <= element[1] && rand < element[3]) {
                 zoneRest = element[2];
                 break;
