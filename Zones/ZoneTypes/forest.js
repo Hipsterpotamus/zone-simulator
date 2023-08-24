@@ -56,7 +56,7 @@ class Forest extends Zone {
                 ['sentry bird', 'bird', 140, 50, 21, 1, 42, 3, 0, {'dodge':25}],
                 ['goblin clawer', 'goblin', 125, 25, 27, 5, 47, 1, 0, {'tear':1}],
                 ['elven charger', 'elf', 170, -200, 36, 1, 46, 4, 0, {'dodge':11,'shatter':50}],
-                ['mint slime', 'slime', 130, 0, 32, 1, 49, 9, 0, {'lifedrain':10}],
+                ['mint slime', 'slime', 130, 0, 28, 1, 49, 7, 0, {'lifedrain':10}],
                 ['forest-green slime', 'slime', 130, 0, 32, 9, 48, 1, 0, {'lifedrain':10}]
             ],
             6: [
@@ -93,11 +93,11 @@ class Forest extends Zone {
         this.levelDifficultyDist = {
             //zoneLevel : [easyPercent, mediumPercent] (hard is excluded because it is defaulted to)
             1: [0.50, 1.00],
-            2: [0.35, 0.80],
-            3: [0.35, 0.80],
-            4: [0.35, 0.80],
-            5: [0.35, 0.85],
-            6: [0.35, 0.80],
+            2: [0.35, 0.85],
+            3: [0.35, 0.85],
+            4: [0.35, 0.90],
+            5: [0.35, 0.90],
+            6: [0.35, 0.85],
             7: [0.30, 0.75],
             8: [0, 0.25],
             9: [0, 0]
