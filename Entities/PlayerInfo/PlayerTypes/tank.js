@@ -23,16 +23,4 @@ class Tank extends Player {
             this.getByType('feet')[stat]
         );
     }
-
-    calcAs() { // Attack Speed
-        const rawAS = (this.aSLvl + this.getByType('weapon').aSChange + this.getByType('head').aSChange + this.getByType('chest').aSChange + this.getByType('legs').aSChange + this.getByType('feet').aSChange) / 2;
-        const adjRoot = 3; //functionally similar to fibonacci with cleaner code
-        const adjScalingMult = 4;
-        if (rawAS > 85) {
-            this.aS = Math.max(15 - Math.floor(Math.pow((rawAS - 85) * adjScalingMult, 1/adjRoot)), 1);
-        } else {
-            this.aS = 100 - rawAS;
-        }
-        return this.aS;
-    }
 }

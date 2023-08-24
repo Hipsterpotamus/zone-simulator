@@ -4,8 +4,8 @@ class Entity{
         this.type = type;
         this.hp = health;
         this.maxhp = health;
-        this.aS = 0; 
         this.aSLvl = attackspeed;
+        this.asScalingPoint = 50;
         this.dmg = damage;
         this.arm = armor;
         this.gold = gold;
@@ -62,6 +62,19 @@ class Entity{
         }
     }
 
+    calcAs() {
+        const rawAS = this.calcStat('aSLvl');
+        let as;
+        let asScale = this.asScalingPoint;
+        const adjRoot = 3;
+        const adjScalingMult = 4;
+        if (rawAS > asScale) {
+            as = Math.max((100 - asScale) - Math.floor(Math.pow((rawAS - asScale) * adjScalingMult, 1/adjRoot)), 1);
+        } else {
+            as = 100 - rawAS;
+        }
+        return as;
+    }
     
     cleanStatus() {
         this.shatterApplied = 0;

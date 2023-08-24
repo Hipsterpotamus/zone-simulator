@@ -17,18 +17,6 @@ class Enemy extends Entity{
     //    return Math.max(this.regen - this.antihealApplied - this.bleedApplied, 0);
     //}
 
-    calcAs() {
-        const rawAS = this.aSLvl;
-        const adjRoot = 3; //functionally similar to fibonacci with cleaner code
-        const adjScalingMult = 4;
-        if (rawAS > 85) {
-            this.aS = Math.max(15 - Math.floor(Math.pow((rawAS - 85) * adjScalingMult, 1/adjRoot)), 1);
-        } else {
-            this.aS = 100 - rawAS;
-        }
-        return this.aS;
-    }
-
     calcStat(stat) {//should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
         return (this[stat]);
     }

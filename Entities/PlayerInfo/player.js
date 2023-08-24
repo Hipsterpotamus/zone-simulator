@@ -9,7 +9,6 @@ class Player extends Entity{
         this.regen = 0;
         this.levelheal = 5;
         this.income = 0;
-        this.aS = 100; //i'm not sure what the point of setting this stat is
         this.aSLvl = 0;
         this.dodge = 0;
         this.gold = 25;
@@ -45,18 +44,6 @@ class Player extends Entity{
     //    let baseRegen = (this.regen+this.getByType('weapon').regen+this.getByType('head').regen+this.getByType('chest').regen+this.getByType('legs').regen+this.getByType('feet').regen);
     //    return Math.max(baseRegen - this.antihealApplied - this.bleedApplied, 0);
     //}
-
-    calcAs() { // Attack Speed
-        const rawAS = this.aSLvl + this.getByType('weapon').aSChange + this.getByType('head').aSChange + this.getByType('chest').aSChange + this.getByType('legs').aSChange + this.getByType('feet').aSChange;
-        const adjRoot = 2; //functionally similar to fibonacci with cleaner code
-        const adjScalingMult = 4;
-        if (rawAS > 50) {
-            this.aS = Math.max(50 - Math.floor(Math.pow((rawAS - 50) * adjScalingMult, 1/adjRoot)), 1) ;
-        } else {
-            this.aS = 100 - rawAS;
-        }
-        return this.aS;
-    }
 
     calcStat(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
         return (
