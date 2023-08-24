@@ -11,7 +11,8 @@ function startGame(characterClass){
         'combat': new Combat(20), //change this value to change combat/tick speed
         'level': 1,
         'xp': 0,
-        'areaCompletion':false
+        'areaCompletion':false,
+        'purchaseHistory':[]
     }
     g.player.playerInit();
     g.zone.zoneInit();

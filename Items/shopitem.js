@@ -40,8 +40,8 @@ class ShopItem{
             g.player.inv[this.metatype].forEach(element => {
                 if (element.equipped) {element.updateItemInfo()};
             });
+            updatePurchaseHistory(this);
         } else {
-            //communicate to player not enough gold
             notify('Not enough Gold!');
         }
     }

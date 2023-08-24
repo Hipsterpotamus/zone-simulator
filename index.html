@@ -160,7 +160,7 @@
             <div class="game-header primary">
                 <p class = "header-p on-primary-text" id = "zone-text">zone: 1–1</p>
                 <p class = 'header-p on-primary-text' id = 'place-text'>shop</p>
-                <p class = "header-p on-primary-text" id = "gold-text">gold: 0</p>
+                <p class = "header-p on-primary-text has-tail" id = "gold-text">gold: 0</p>
                 <div class="debug">
                     <button id = 'go-next-debug'>Force Next Level</button>
                     <button id = 'instant-battle-debug'>Instant Battle</button>
@@ -362,6 +362,9 @@
             <p><em>Shop:</em> Purchase useful equipment and items.</p>
             <p><em>Events:</em> Make decisions that will shape your adventure.</p>
             <p><em>Combat:</em> Use your items, equipment, and spells to fend off fearsome creatures.</p>
+        </div>
+        <div id='gold-text-tail' class="hidden draggable tail"> <!-- Info on event/shop title box -->
+            <p><b>Purchases</b></p>
         </div>
       
     </body>
