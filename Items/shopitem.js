@@ -48,7 +48,7 @@ class ShopItem{
 
     appendShopItem() {
         this.element = $('<button>', {
-            'id': '#' + this.name + '-purchase',
+            'id': '#' + this.name.replace(/\s/g, '') + '-purchase',
             'class': this.metatype + '-shop-item',
         });
         this.element.appendTo('#content-central-box');

@@ -11,9 +11,8 @@
     padding: 1rem;
     max-width: 40%;
     cursor: grab;
+    transition: opacity 0.3s ease-in-out;
+
   }
   
   
-  .hidden-tail {
-    display: none;
-  }
