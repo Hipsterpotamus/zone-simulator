@@ -144,3 +144,82 @@ function updateBar(depleted, newValue, maxValue, barContainer, bar, hit) {
     }, 500);
     return "done"
 }
+
+
+// FLoating Info Box
+// function createFloatingInfoDiv(contents) {
+//   const div = document.createElement('div');
+//   div.id = 'floating-info';
+//   div.classList.add('translucent');
+//   div.style.position = 'fixed';
+//   div.style.left = `${event.clientX}px`;
+//   div.style.top = `${event.clientY}px`;
+//   div.innerHTML = contents;
+
+//   const removeDiv = () => {
+//     document.removeEventListener('mousemove', updatePosition);
+//     div.remove();
+//   };
+
+//   const updatePosition = (event) => {
+//     div.style.left = `${event.clientX}px`;
+//     div.style.top = `${event.clientY}px`;
+//   };
+
+//   document.addEventListener('mousemove', updatePosition);
+//   div.addEventListener('mouseleave', removeDiv);
+
+//   document.body.appendChild(div);
+
+//   return div;
+// }
+
+// // Make all elemlents with .hover-info class show a floating info box with the contents of the data-hover attribute
+// $(function() {
+//   $('.hover-info').hover(function() {
+//     const hoverText = $(this).data('hover');
+//     createFloatingInfoDiv(hoverText);
+//   }, function() {
+//     const floatingDiv = document.querySelector('#floating-info');
+//     if (floatingDiv) {
+//       floatingDiv.remove();
+//     }
+//   });
+// });
+
+window.addEventListener("mousemove", function(e){
+    // only select .tail that doesn't have .tail-remain
+    $('.tail:not(.tail-remain)').css({
+        left:  e.pageX - 60,
+        top:   e.pageY + 15
+    });
+});
+  
+document.addEventListener('DOMContentLoaded', () => {
+  // Get all elements with the '.has-tail' class
+  const elementsWithTail = document.querySelectorAll('.has-tail');
+
+  // Loop through each element and add a mouseover and mouseout event listener
+  elementsWithTail.forEach(element => {
+    element.addEventListener('mouseover', () => {
+      // Get the corresponding tail element and set its display to 'block'
+      const tailElement = document.querySelector(`#${element.id}-tail`);
+      tailElement.style.display = 'block';
+    });
+    
+    element.addEventListener('mouseout', () => {
+      // Get the corresponding tail element and set its display to 'none'
+    //   if doesn't have .tail-remain class
+        const tailElement = document.querySelector(`#${element.id}-tail`);
+        if (!tailElement.classList.contains('tail-remain')) {
+            tailElement.style.display = 'none';
+        }
+    });
+
+    element.addEventListener('click', () => {
+      // Get the corresponding tail element and toggle the '.tail-remain' class
+      const tailElement = document.querySelector(`#${element.id}-tail`);
+      tailElement.classList.toggle('tail-remain');
+    });
+  });
+});
