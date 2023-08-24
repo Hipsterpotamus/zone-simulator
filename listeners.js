@@ -55,7 +55,7 @@ $(function() {
 
     //debug instant button
     $('#instant-battle-debug').on('click',function(){
-        if (delay > 0) {
+        if (g.combat.delay > 0) {
             g.combat.delay = 0;
         } else {
             g.combat.delay = 20;
