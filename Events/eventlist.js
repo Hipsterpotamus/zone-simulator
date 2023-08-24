@@ -125,26 +125,6 @@ const eventList = {
             }
         }
     ]),
-    'A Fork In The Road': new Event('A Fork In The Road', 'There are two paths ahead, which will you take?', [
-        {
-            text: 'The Gauntlet: Howls indicate extensive monsters–and gold–ahead',
-            effect: function () {
-                g.path.nextSpace = 'enemy';
-                g.path.typeInfo[3][1] = 100;
-                g.path.typeInfo[3][2] = 20;
-                g.path.typeInfo[3][3] = 60;
-            }
-        },
-        {
-            text: 'The Encampment: Bright lights signal opportunities for rest ahead',
-            effect: function () {
-                g.path.nextSpace = 'rest';
-                g.path.typeInfo[2][1] = 100;
-                g.path.typeInfo[2][2] = 20;
-                g.path.typeInfo[2][3] = 20;
-            }
-        }
-    ]),
     'A Cozy Village': new Event('A Cozy Village', 'You come to a cozy village', [
         {
             text: 'Rest: heal 15 hp',
@@ -195,7 +175,28 @@ const eventList = {
         }
     ]),
 
+    // Grasslands PATH EVENT
 
+    'A Fork In The Road': new Event('A Fork In The Road', "The road you've been following for a while breaks into two separate dirt paths, which will you take?", [
+        {
+            text: 'The Gauntlet: Howls indicate extensive monsters–and gold–ahead',
+            effect: function () {
+                g.path.nextSpace = 'enemy';
+                g.path.typeInfo[3][1] = 100;
+                g.path.typeInfo[3][2] = 20;
+                g.path.typeInfo[3][3] = 60;
+            }
+        },
+        {
+            text: 'The Encampment: Bright lights signal opportunities for rest ahead',
+            effect: function () {
+                g.path.nextSpace = 'rest';
+                g.path.typeInfo[2][1] = 100;
+                g.path.typeInfo[2][2] = 20;
+                g.path.typeInfo[2][3] = 20;
+            }
+        }
+    ]),
     // FOREST EVENTS
 
 
@@ -587,5 +588,32 @@ const eventList = {
                 g.player.changeStat('armor',5);
             }
         }
-    ])
+    ]),
+    // Grasslands PATH EVENT
+
+
+    'The End of the Forest': new Event('The End of the Forest', "By this point in the forest the cover of the trees has become so dense that only meager scraps of light break through from the sky above. With the direction of dirt trails long gone, you are now guided by your ears. Ahead are two distinct clumps of sound, which will you take?", [
+        {
+            text: 'The Sounds of Violence: The gnarls of gnashing teeth and drooling mouths indicates a flurry of powerful monsters ahead.',
+            effect: function () {
+                g.path.nextSpace = 'enemy';
+                g.path.typeInfo[3][1] = 100;
+                g.path.typeInfo[3][2] = 20;
+                g.path.typeInfo[3][3] = 60;
+            }
+        },
+        {
+            text: 'The Sounds of Serenity: A lack of noise points ahead to a more scenic route with oppportunities for shops and rest.',
+            effect: function () {
+                g.path.nextSpace = 'rest';
+                g.path.typeInfo[2][1] = 100;
+                g.path.typeInfo[2][2] = 20;
+                g.path.typeInfo[2][3] = 20;
+
+                g.path.typeInfo[1][1] += 20;
+                g.path.typeInfo[1][2] = 20;
+                g.path.typeInfo[1][3] = 20;
+            }
+        }
+    ]),
 };
