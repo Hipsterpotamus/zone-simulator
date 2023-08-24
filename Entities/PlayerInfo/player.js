@@ -33,17 +33,8 @@ class Player extends Entity{
         }
     }
 
-    calcRegen(){ //regen where bleed goes negative
-        let baseRegen = (this.regen+this.getByType('weapon').regen+this.getByType('head').regen+this.getByType('chest').regen+this.getByType('legs').regen+this.getByType('feet').regen);
-        let antihealRegen = Math.max(baseRegen - this.antihealApplied, 0);
-        return antihealRegen - this.bleedApplied;
-    }
 
-    //regen where never goes negative
-    //calcRegen(){
-    //    let baseRegen = (this.regen+this.getByType('weapon').regen+this.getByType('head').regen+this.getByType('chest').regen+this.getByType('legs').regen+this.getByType('feet').regen);
-    //    return Math.max(baseRegen - this.antihealApplied - this.bleedApplied, 0);
-    //}
+    //generic functions
 
     calcStat(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
         return (
@@ -56,9 +47,12 @@ class Player extends Entity{
         );
     }
 
-    changeStat (stat, amount) {  //TBI
+    changeStat (stat, amount) {
         this[stat] += amount;
+        this.updateEntityDisplay();
     }
+
+    //other
         
     getByType(type){
         let foundEquip;
@@ -75,10 +69,6 @@ class Player extends Entity{
         this.updateGoldDisplay();
     }
 
-    changeLvlHeal(amount) {
-        this.levelheal += amount;
-    }
-
     death() {
         //add you died screen or something
     }
@@ -88,6 +78,9 @@ class Player extends Entity{
         this.mana = min(0, this.mana - amount);
         updateManaBar(amount, this.mana, this.maxMana);
     }
+
+
+    //display
 
     updateHealthBar(damage) { // damage healed
         var healthBar = $('#player-health-bar-container'),

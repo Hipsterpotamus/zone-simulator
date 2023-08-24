@@ -1,5 +1,4 @@
 function elementUp(){
-    g.player.updateEntityDisplay();
     $('#zone-text').text('zone: '+g.zoneNum+'–'+g.space);
 }
 

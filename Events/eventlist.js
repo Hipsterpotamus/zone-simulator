@@ -26,7 +26,7 @@ const eventList = {
             effect: function () {
                 g.player.inv.chest.push(new Equippable('dirty shirt', 'chest', 'shirt', 0, 1, 0, 0));
                 g.player.inv.legs.push(new Equippable('dirty pants', 'legs', 'pants', 0, 1, 0, 0));
-                g.player.changeLvlHeal(-1);
+                g.player.changeStat('levelheal', -1);
                 eventFunctionSuffix('dirty shirt & pants gained');
             }
         },
@@ -213,7 +213,7 @@ const eventList = {
         {
             text: 'Train: +2 dmg',
             effect: function () {
-                g.player.dmg += 2;
+                g.player.changeStat('dmg', 2);
                 eventFunctionSuffix();
             }
         }
@@ -225,5 +225,72 @@ const eventList = {
 
 
 
-    'The Raging River': new Event('The Raging River', 'Ahead of you is a river')
+    'A Long River': new Event('A Long River', 'Ahead of you is a river cool to the touch. Jumping in looks refreshing, and will wisk you away to a new part of a forest. You notice a scenic bridge in the distance too.', [
+        {
+            text: 'Jump in: enemies randomized, +5 speed',
+            effect: function() {
+                g.zone.changeZoneLevel(Math.floor(1.5-(Math.random()*4)));
+                eventFunctionSuffix();
+            }
+        },
+        {
+            text: 'Take the bridge: +8 max hp',
+            effect: function() {
+                g.player.changeMaxHp(8);
+                eventFunctionSuffix();
+            }
+        }
+    ]),
+    "The Wanderer's Trailmix": new Event("The Wanderer's Trailmix", 'A wandering hiker spots you on a trail. He offers you two bright bags filled with mythical goodies.', [
+        {
+            text: 'Magic Nuts: +25 max hp',
+            effect: function() {
+                g.player.changeMaxHp(25);
+                eventFunctionSuffix();
+            }
+        },
+        {
+            text: 'Magic Sweets: +3 dmg +3 armor',
+            effect: function() {
+                g.player.changeStat('dmg', 3);
+                g.player.changeStat('arm', 3);
+                eventFunctionSuffix();
+            }
+        }
+    ]),
+    "A Bird's Nest": new Event("A Bird's Nest", 'Atop a tree you see an innocent looking bird nest about to fall. Saving the birds will improve moral, but is it worth the climb?', [
+        {
+            text: 'Save the Nest: -25 hp +10 speed',
+            effect: function() {
+                g.player.changeHp(-25);
+                g.player.changeStat('speed',10);
+                eventFunctionSuffix();
+            }
+        },
+        {
+            text: 'Walk past: Heal 15',
+            effect: function() {
+                g.player.changeHp(15);
+                eventFunctionSuffix();
+            }
+        }
+    ]),
+    "The Trapped Totem": new Event("The Trapped Totem", "You notice a small golden figure atop an noticably trapped stone mantel. The totem is worth a pretty penny, but it looks certain that you'll take some damage grabbing it.", [
+        {
+            text: 'Grab it: Gain 40 gold, lose anywhere from 10-30 hp.',
+            effect: function() {
+                let damageTakenR = (Math.floor(Math.random()*21)+10);
+                g.player.changeHp(-damageTakenR);
+                g.player.changeGold(40);
+                eventFunctionSuffix('Ouch! You lost '+damageTakenR+' hp!');
+            }
+        },
+        {
+            text: 'Grab a small nugget instead: Gain 5 gold',
+            effect: function() {
+                g.player.changeGold(5);
+                eventFunctionSuffix();
+            }
+        }
+    ])
 };

@@ -7,16 +7,6 @@ class Enemy extends Entity{
          this.boss = false;
     }
 
-    calcRegen() { //regen where bleed goes negative
-        let antihealRegen = Math.max(this.regen - this.antihealApplied, 0);
-        return antihealRegen - this.bleedApplied;
-    }
-
-    //regen where never goes negative
-    //calcRegen() {
-    //    return Math.max(this.regen - this.antihealApplied - this.bleedApplied, 0);
-    //}
-
     calcStat(stat) {//should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
         return (this[stat]);
     }
@@ -37,6 +27,8 @@ class Enemy extends Entity{
         $('#combatTimer').addClass('hidden');
         this.updateEntityDisplay();
     }
+
+    //display
 
     updateHealthBar(damage) { // damage taken
         //eventual enemy health bar

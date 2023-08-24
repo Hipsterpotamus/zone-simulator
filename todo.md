@@ -8,6 +8,7 @@
 * [] Create combat stats elements and content to display over dead enemy at the end of combat
 * [] Add spots to send usable can't be used/not enough gold to purchase info
 
+*[] function to add translucent floating info boxes by hover
 
 
 ## Backend
@@ -16,6 +17,7 @@
 * [] Implement magic system and add corresponding shop items into pool
 * [] Start working on player level up system
 * [] Create shop items for forest zone
+* [] Add rarity to shop items
 
 ### Fixes
 * [] Add 'you died' indicator in g.player.death()

@@ -41,6 +41,7 @@ class Entity{
         }
 
         this.updateHealthBar(amount);
+        if (g.combat.inCombat) {this.updateEntityDisplay()};
 
         if (this.hp <= 0 && this.alive) {
             this.hp = 0;
@@ -53,6 +54,11 @@ class Entity{
         this.maxhp += amount;
         this.changeHp(Math.max(amount, 0));
         if (this.hp > this.maxhp) {this.changeHp(this.hp - this.maxhp)};
+    }
+
+    calcRegen(){
+        let antihealRegen = Math.max(this.calcStat('regen') - this.antihealApplied, 0);
+        return antihealRegen - this.bleedApplied;
     }
 
     runRegen() {
@@ -91,7 +97,7 @@ class Entity{
             this.bleedApplied += opp.testBleed();
             this.antihealApplied = opp.antiheal;
 
-            this.changeMaxHp(opp.testTear(this.superarmor));
+            this.changeMaxHp(-opp.testTear(this.superarmor));
 
             let oppHpChange = opp.testLifeDrain(oppDMG);
             oppHpChange -= this.testThorn(opp.calcStat('superarmor'));
