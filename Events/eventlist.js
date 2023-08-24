@@ -211,11 +211,19 @@ const eventList = {
             }
         },
         {
-            text: 'Train: +1 dmg',
+            text: 'Train: +2 dmg',
             effect: function () {
-                g.player.dmg += 1;
+                g.player.dmg += 2;
                 eventFunctionSuffix();
             }
         }
-    ])
+    ]),
+
+
+    // FOREST EVENTS
+
+
+
+
+    'The Raging River': new Event('The Raging River', 'Ahead of you is a river')
 };
