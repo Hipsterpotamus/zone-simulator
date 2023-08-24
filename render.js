@@ -27,6 +27,14 @@ function setBroadcastTitleText(text, centered){
     }  
 }
 
+function setEventFormat(active) {
+    if(active){
+        $('#content-central-box').addClass('event-active');
+    }else{
+        $('#content-central-box').removeClass('event-active');
+    }
+}
+
 function setNextButtonVisible(visible) {
     if(visible){
         $('.floating-next').addClass('show');

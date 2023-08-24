@@ -22,6 +22,7 @@ class Zone {
         } else {
             this.zoneLevel += num;
         }
+        setEventFormat(false); // remove event formatting 
     }
 
     getRandomEnemy() {

@@ -23,6 +23,8 @@ class Event {
         });
         this.descriptionE.text(this.description);
         this.descriptionE.appendTo('#description-container'); //description sent to dom
+        setEventFormat(true);
+
 
         for (let choice of this.choices) {
             let button = $('<button>', {
