@@ -37,10 +37,10 @@ class ShopItem{
             g.player.changeGold(-this.goldPrice);
             this.onBuy();
             this.element.remove();
+            updatePurchaseHistory(this);
             g.player.inv[this.metatype].forEach(element => {
                 if (element.equipped) {element.updateItemInfo()};
             });
-            updatePurchaseHistory(this);
         } else {
             notify('Not enough Gold!');
         }
