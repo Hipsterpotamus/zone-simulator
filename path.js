@@ -135,13 +135,24 @@ function genShop(){
 function genRest(){
     setNextButtonVisible(false);
     let rnd = Math.random();
-    if (rnd < 0.4) {
-        eventInfo = eventList['A Cozy Village'];
-    } else if (rnd < 0.8) {
-        eventInfo = eventList['A Pond'];
-    } else {
-        eventInfo = eventList['A Hut'];
+    if(g.zoneNum == 1){
+        if (rnd < 0.4) {
+            eventInfo = eventList['A Cozy Village'];
+        } else if (rnd < 0.8) {
+            eventInfo = eventList['A Pond'];
+        } else {
+            eventInfo = eventList['A Hut'];
+        }
+    }else{
+        if (rnd < 0.33) {
+            eventInfo = eventList['A Tree House'];
+        } else if (rnd < 0.66) {
+            eventInfo = eventList['A Dryad Temple'];
+        } else {
+            eventInfo = eventList['A Dam'];
+        }
     }
+    
     eventInfo.createElements();
 }
 function genBoss(){

@@ -196,7 +196,7 @@ const eventList = {
         {
             text: 'Sharpen Weapon: +25% dmg on current weapon',
             effect: function () {
-                g.player.getByType('weapon').dmg = (1 + Math.floor(g.player.getByType('weapon').dmg * 1.25));
+                g.player.getByType('weapon').dmg = (Math.ceil(g.player.getByType('weapon').dmg * 1.25));
                 g.player.getByType('weapon').updateItemInfo();
                 eventFunctionSuffix();
             }
@@ -229,7 +229,8 @@ const eventList = {
         {
             text: 'Jump in: enemies randomized, +5 speed',
             effect: function() {
-                g.zone.changeZoneLevel(Math.floor(1.5-(Math.random()*4)));
+                let enemyRand = Math.floor(1.5-(Math.random()*4))
+                g.zone.changeZoneLevel(enemyRand);
                 eventFunctionSuffix();
             }
         },
@@ -355,6 +356,7 @@ const eventList = {
             effect: function() {
                 g.player.changeStat('dodge', 4);
                 g.player.changeStat('levelheal', 5);
+                eventFunctionSuffix();
             }
         },
         {
@@ -362,6 +364,7 @@ const eventList = {
             effect: function() {
                 g.player.changeStat('armor',8);
                 g.player.changeStat('levelheal',5);
+                eventFunctionSuffix();
             }
         }
     ]),
@@ -372,6 +375,7 @@ const eventList = {
                 g.player.changeStat('dmg',15);
                 g.player.changeStat('as',-10);
                 g.player.changeStat('levelheal',-10);
+                eventFunctionSuffix();
             }
         },
         {
@@ -380,6 +384,7 @@ const eventList = {
                 g.player.changeStat('dmg',-10);
                 g.player.changeStat('regen',8);
                 g.player.changeStat('levelheal',10);
+                eventFunctionSuffix();
             }
         }
     ]),
@@ -388,6 +393,7 @@ const eventList = {
             text: 'The Bag of Gold: +45 gold',
             effect: function() {
                 g.player.changeGold(45);
+                eventFunctionSuffix();
             }
         },
         {
@@ -395,14 +401,80 @@ const eventList = {
             effect: function() {
                 g.player.changeStat('dmg',3);
                 g.player.changeMaxHp(30);
+                eventFunctionSuffix();
             }
         },
         {
             text: '[UNIMPLEMENTED] Intervene in the Bonfire: Start a difficult combat with multiple goblins, but gain both bags and more',   
             effect: function(){
+                eventFunctionSuffix();
                 //starts a combat with three goblins simultaneously
                 //the reward for combat is both bags contents *1.5 and a helmet called, (The Goblin Vanquisher) which endows a large damage increase. 
             } 
+        }
+    ]),
+
+
+    // FOREST REST
+
+    'A Tree House': new Event("A Tree House", "You come to an abandoned tree house which stretches high into the air with multiple levels of buildings. You come to a cozy bedroom, but notice an expansive jungle gym above.", [
+        {
+            text: 'Rest: Heal 35 hp',
+            effect: function() {
+                g.player.changeHp(35);
+                eventFunctionSuffix();
+            }
+        },
+        {
+            text: "Play: Gain +20 max hp, but without gaining 20 hp.",
+            effect: function() {
+                g.player.changeMaxHp(20);
+                g.player.changeHp(-20);
+                eventFunctionSuffix();
+            }
+        }
+    ]),
+    'A Dryad Temple': new Event("Dryad Temple", "You notice an empty dryad temple nestled discreetly between a bundle of trees.", [
+        {
+            text: 'Pray: Gain +15 max hp and heal 10',
+            effect: function() {
+                g.player.changeMaxHp(15);
+                g.player.changeHp(10);
+                eventFunctionSuffix();
+            }
+        },
+        {
+            text: "Blood Sacrifice: lose 5 hp, +25% dmg on current weapon",
+            effect: function() {
+                g.player.changeHp(-5);
+                g.player.getByType('weapon').dmg = (Math.ceil(g.player.getByType('weapon').dmg * 1.25));
+                eventFunctionSuffix();
+            }
+        },
+        {
+            text: "Flesh Sacrifice: lose 5 max hp, +25% armor on chest and legs equipment",
+            effect: function() {
+                g.player.changeMaxHp(-5);
+                g.player.getByType('chest').arm = (Math.ceil(g.player.getByType('chest').arm * 1.25));
+                g.player.getByType('legs').arm = (Math.ceil(g.player.getByType('legs').arm * 1.25));
+                eventFunctionSuffix();
+            }
+        }
+    ]),
+    'A Dam': new Event("A Dam", "In the distance, a beaver dam built up at least 30 feet tall.", [
+        {
+            text: 'Wade in Water: Gain +20 max hp',
+            effect: function() {
+                g.player.changeMaxHp(35);
+                eventFunctionSuffix();
+            }
+        },
+        {
+            text: "Study Dam: Gain +5 armor",
+            effect: function() {
+                g.player.changeStat('armor',5);
+                eventFunctionSuffix();
+            }
         }
     ])
 };
