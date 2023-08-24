@@ -155,7 +155,13 @@ function notify(notification, length=3) {
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, length * 1000);
 }
 
+var totalPurchased = 0;
 function updatePurchaseHistory(item) {
+    totalPurchased += item.goldPrice;
+    // update the #purchase-total value
+    $('#purchase-total').text(totalPurchased); 
+
+
     console.log('updating purchase history', item);
     g.purchaseHistory.push(this);
     // add new <p> to #gold-text-tail

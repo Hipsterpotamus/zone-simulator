@@ -10,8 +10,13 @@
     border-radius: 16px;
     padding: 1rem;
     max-width: 40%;
+    max-height: 90%;
     cursor: grab;
     transition: opacity 0.3s ease-in-out;
+
+    /* make scrollable if content overflows */
+    overflow-y: auto;
+  
 
   }
   
