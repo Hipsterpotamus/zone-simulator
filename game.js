@@ -4,10 +4,8 @@ function startGame(characterClass){
     g = {
         'g':0,
         'zone': new Grasslands(),
-        'zoneNum':1,
-        'space':0,
-        'player':new characterClass('human'),
-        'path':[],
+        'player': new characterClass('human'),
+        'path': new Path(0),
         'combat': new Combat(20), //change this value to change combat/tick speed
         'level': 1,
         'xp': 0,
@@ -15,5 +13,5 @@ function startGame(characterClass){
     }
     g.player.playerInit();
     g.zone.zoneInit();
-    g.path = generatePath(g.zone.pathGen);
+    g.path.generatePath(...g.zone.pathGen);
 }

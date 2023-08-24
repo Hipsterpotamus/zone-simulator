@@ -1,7 +1,3 @@
-function elementUp(){
-    $('#zone-text').text('zone: '+g.zoneNum+'–'+g.space);
-}
-
 function displayWithSign(number){
     if (number<0){
         return "-"+(-number);

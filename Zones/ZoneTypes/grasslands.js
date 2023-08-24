@@ -3,7 +3,17 @@ class Grasslands extends Zone {
         super(zoneLevel);
         this.maxZoneLevel = 9;
         this.shopCode = [3,2,3,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
-        this.pathGen = [14, 0.85, 0.15, 0, 0.15, 0.09, 0, 0.05, 0.05, 0.05]; //path gen, shop start, shop grow, shop reset, event start, event grow, event reset, rest start, rest grow, rest reset
+        this.pathGen = [20, //max spaces,
+            [['shop', 85, 15, 0], //[shop start, shop grow, shop reset],
+            ['event', 15, 9, 0], //[event start, event grow, event reset],
+            ['rest', 5, 5, 5], //[rest start, rest grow, rest reset],
+            ['enemy', 50, 5, 50]], //[enemy start, enemy grow, enemy reset],
+            { // set consistent levels here
+                1 : 'enemy',
+                2 : 'shop',
+                14 : 'pathEvent',
+                20 : 'boss'
+            }];
         this.zoneLable = 'grassland';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
         this.enemyStats = {
@@ -181,9 +191,16 @@ class Grasslands extends Zone {
             [14, 19, 'Oil Fissure']
         ];
 
+        this.zoneRests = [
+            [1, 19, 'A Cozy Village', 0.4],
+            [1, 19, 'A Pond', 0.8],
+            [1, 19, 'A Hut', 1]
+        ];
+
         this.pathEvent = 'A Fork In The Road';
     }
     advanceToNextZone(){
         g.zone = new Forest();
+        g.path.generatePath(...g.zone.pathGen);
     }
 }

@@ -31,16 +31,12 @@ class Event {
                 'class': 'event-button'
             });
             button.text('' + choice.text);
-            button.on('click', choice.effect);
+            button.on('click', function() {
+                choice.effect();
+                $('#content-central-box').empty();
+                setNextButtonVisible(true);
+            });
             button.appendTo('#content-central-box'); //choices sent to dom
         }
     }
-}
-
-function eventFunctionSuffix(){
-    $('#content-central-box').empty();
-
-    setNextButtonVisible(true);
-
-    elementUp();
 }

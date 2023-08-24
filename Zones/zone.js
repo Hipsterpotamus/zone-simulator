@@ -50,11 +50,13 @@ class Zone {
     
         return new Enemy(...enemyAttributes);
     }
+
     getBoss(){
         const bossAttributes = this.bossStats[Math.floor(Math.random() * this.bossStats.length)];
     
         return new Boss(...bossAttributes);
     }
+
     getRandomEvent(space) {
         let eventPool = [];
         this.zoneEvents.forEach(element => {
@@ -68,6 +70,20 @@ class Zone {
 
     getZoneEvent() {
         return eventList[this.pathEvent];
+    }
+
+    getRandomRest(space) {
+        let zoneRest;
+        const rand = Math.random();
+        for (let i = 0; i < this.zoneRests.length; i++) {
+            const element = this.zoneRests[i];
+            console.log(rand);
+            if (space >= element[0] && space <= element[1] && rand < element[3]) {
+                zoneRest = element[2];
+                break;
+            }
+        }
+        return eventList[zoneRest];
     }
 
     getShopType() {
@@ -91,7 +107,7 @@ class Zone {
         let shopCodeExpand = [shopCode[0], 0, 0, 0, 0, shopCode[2], shopCode[3]];
 
         for (let i = 0; i < shopCode[1]; i++) {
-            let randNum = Math.floor(Math.random() * 4) + 1;
+            const randNum = Math.floor(Math.random() * 4) + 1;
             shopCodeExpand[randNum] += 1;
         }
     
@@ -103,7 +119,7 @@ class Zone {
                 if (availableItems.length === 0) {
                     break;
                 }
-                let searchInd = Math.floor(Math.random() * availableItems.length);
+                const searchInd = Math.floor(Math.random() * availableItems.length);
                 let item = availableItems[searchInd];
                 availableItems.splice(searchInd, 1);
                 item.appendShopItem();

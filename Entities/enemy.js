@@ -45,7 +45,7 @@ class Enemy extends Entity{
         htmlOutput+='hp : '+this.hp+'/'+this.maxhp+'<br>';
         htmlOutput+='dmg : '+this.calcStat('dmg')+'<br>';
         if (tick != -1) {htmlOutput+='time: '+(this.calcAs()-(tick % this.calcAs()))+'<br>';}
-        htmlOutput+='arm : '+(this.calcStat('arm')-this.shatterApplied)+'<br>';
+        htmlOutput+='arm : '+(this.testArm())+'<br>';
         htmlOutput+='regen : '+this.calcRegen()+'<br>';
         if(this.calcStat('dodge')!=0){htmlOutput+='dodge : '+this.calcStat('dodge')+'<br>';}
         if(this.calcStat('thorn')!=0){htmlOutput+='thorn : '+this.calcStat('thorn')+'<br>';}

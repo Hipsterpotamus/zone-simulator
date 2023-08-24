@@ -9,14 +9,12 @@ const eventList = {
             effect: function () {
                 g.player.changeMaxHp(5);
                 g.player.changeHp(-10);
-                eventFunctionSuffix('+5 max hp. -10 hp');
             }
         },
         {
             text: 'Walk past: heal 4 hp',
             effect: function () {
                 g.player.changeHp(4);
-                eventFunctionSuffix('4 hp healed');
             }
         }
     ]),
@@ -27,14 +25,12 @@ const eventList = {
                 g.player.inv.chest.push(new Equippable('dirty shirt', 'chest', 'shirt', 0, 1, 0, 0));
                 g.player.inv.legs.push(new Equippable('dirty pants', 'legs', 'pants', 0, 1, 0, 0));
                 g.player.changeStat('levelheal', -1);
-                eventFunctionSuffix('dirty shirt & pants gained');
             }
         },
         {
             text: 'Walk past: heal 1 hp',
             effect: function () {
                 g.player.changeHp(1);
-                eventFunctionSuffix('1 hp healed');
             }
         }
     ]),
@@ -42,16 +38,15 @@ const eventList = {
         {
             text: 'Accept: Gain a garden hoe, lose 3 gold',
             effect: function () {
-                if (g.player.gold < 3) { eventFunctionSuffix('not enough gold!'); return; }
+                if (g.player.gold < 3) { return;}
                 g.player.changeGold(-3);
                 g.player.inv.weapon.push(new Equippable('garden hoe', 'weapon', 'none', 3, 0, 0, 0));
-                eventFunctionSuffix('garden hoe obtained');
             }
         },
         {
             text: 'Reject: gain nothing',
             effect: function () {
-                eventFunctionSuffix();
+                
             }
         }
     ]),
@@ -59,16 +54,15 @@ const eventList = {
         {
             text: 'Attempt to Open: -6 gold, 40% chance to gain 20 gold',
             effect: function () {
-                if (g.player.gold < 6) { eventFunctionSuffix('not enough gold!'); return; }
+                if (g.player.gold < 6) { return; }
                 g.player.changeGold(-6);
                 if (Math.random() < 0.4) { g.player.changeGold(20); }
-                eventFunctionSuffix('Success! +20 gold');
             }
         },
         {
             text: 'Ignore: gain nothing',
             effect: function () {
-                eventFunctionSuffix();
+                
             }
         }
     ]),
@@ -78,7 +72,6 @@ const eventList = {
             effect: function () {
                 g.zone.changeZoneLevel(2);
                 g.player.inv.head.push(new Equippable('horn helmet', 'head', 'helmet', 2, 0, 0, 0));
-                eventFunctionSuffix('horn helmet acquired');
             }
         },
         {
@@ -86,13 +79,12 @@ const eventList = {
             effect: function () {
                 g.zone.changeZoneLevel(2);
                 g.player.inv.weapon.push(new Equippable('horn sling', 'weapon', 'sling', 4, 0, 0, 25));
-                eventFunctionSuffix('horn sling acquired');
             }
         },
         {
             text: 'Drop it: gain nothing',
             effect: function () {
-                eventFunctionSuffix();
+                
             }
         }
     ]),
@@ -102,7 +94,6 @@ const eventList = {
             effect: function () {
                 g.player.getByType('weapon').dmg += 4;
                 g.player.changeHp(-22);
-                eventFunctionSuffix(g.player.getByType('weapon').name + ' gained 4 dmg');
                 g.player.getByType('weapon').updateItemInfo();
             }
         },
@@ -110,7 +101,7 @@ const eventList = {
             text: 'Run: lose 3 hp',
             effect: function () {
                 g.player.changeHp(-3);
-                eventFunctionSuffix();
+                
             }
         }
     ]),
@@ -119,21 +110,18 @@ const eventList = {
             text: 'Oil your Gear: +10 speed',
             effect: function () {
                 g.player.as += 10;
-                eventFunctionSuffix('+10 speed');
             }
         },
         {
             text: 'Treat Injuries: heal 16 hp',
             effect: function () {
                 g.player.changeHp(16);
-                eventFunctionSuffix('16 healed');
             }
         },
         {
             text: 'Sell: gain 10 gold',
             effect: function () {
                 g.player.changeGold(10);
-                eventFunctionSuffix('+10 gold');
             }
         }
     ]),
@@ -141,31 +129,19 @@ const eventList = {
         {
             text: 'The Gauntlet: Howls indicate extensive monsters–and gold–ahead',
             effect: function () {
-                let pathAhead = [];
-                if(Math.random()<0.5){
-                    pathAhead = ['enemy', 'enemy', 'enemy', 'rest', 'shop', 'boss'];
-                }else{
-                    pathAhead = ['enemy', 'enemy', 'enemy', 'shop', 'event', 'boss'];
-                }
-                for (let a in pathAhead) {
-                    g.path.push(pathAhead[a]);
-                }
-                eventFunctionSuffix();
+                g.path.nextSpace = 'enemy';
+                g.path.typeInfo[3][1] = 100;
+                g.path.typeInfo[3][2] = 20;
+                g.path.typeInfo[3][3] = 60;
             }
         },
         {
             text: 'The Encampment: Bright lights signal opportunities for rest ahead',
             effect: function () {
-                let pathAhead = [];
-                if(Math.random()<0.5){
-                    pathAhead = ['rest', 'enemy', 'shop', 'event', 'rest', 'boss'];
-                }else{
-                    pathAhead = ['rest', 'enemy', 'shop', 'enemy', 'rest', 'boss'];
-                }
-                for (let a in pathAhead) {
-                    g.path.push(pathAhead[a]);
-                }
-                eventFunctionSuffix();
+                g.path.nextSpace = 'rest';
+                g.path.typeInfo[2][1] = 100;
+                g.path.typeInfo[2][2] = 20;
+                g.path.typeInfo[2][3] = 20;
             }
         }
     ]),
@@ -174,14 +150,14 @@ const eventList = {
             text: 'Rest: heal 15 hp',
             effect: function () {
                 g.player.changeHp(15);
-                eventFunctionSuffix();
+                
             }
         },
         {
             text: 'Work: gain 8 gold',
             effect: function () {
                 g.player.changeGold(8);
-                eventFunctionSuffix();
+                
             }
         }
     ]),
@@ -190,7 +166,7 @@ const eventList = {
             text: 'Dive in: heal 15 hp',
             effect: function () {
                 g.player.changeHp(15);
-                eventFunctionSuffix();
+                
             }
         },
         {
@@ -198,7 +174,7 @@ const eventList = {
             effect: function () {
                 g.player.getByType('weapon').dmg = (1 + Math.floor(g.player.getByType('weapon').dmg * 1.25));
                 g.player.getByType('weapon').updateItemInfo();
-                eventFunctionSuffix();
+                
             }
         }
     ]),
@@ -207,14 +183,14 @@ const eventList = {
             text: 'Sleep: heal 15 hp',
             effect: function () {
                 g.player.changeHp(15);
-                eventFunctionSuffix();
+                
             }
         },
         {
             text: 'Train: +2 dmg',
             effect: function () {
                 g.player.changeStat('dmg', 2);
-                eventFunctionSuffix();
+                
             }
         }
     ]),
@@ -230,14 +206,14 @@ const eventList = {
             text: 'Jump in: enemies randomized, +5 speed',
             effect: function() {
                 g.zone.changeZoneLevel(Math.floor(1.5-(Math.random()*4)));
-                eventFunctionSuffix();
+                
             }
         },
         {
             text: 'Take the bridge: +8 max hp',
             effect: function() {
                 g.player.changeMaxHp(8);
-                eventFunctionSuffix();
+                
             }
         }
     ]),
@@ -246,7 +222,7 @@ const eventList = {
             text: 'Magic Nuts: +25 max hp',
             effect: function() {
                 g.player.changeMaxHp(25);
-                eventFunctionSuffix();
+                
             }
         },
         {
@@ -254,7 +230,7 @@ const eventList = {
             effect: function() {
                 g.player.changeStat('dmg', 3);
                 g.player.changeStat('arm', 3);
-                eventFunctionSuffix();
+                
             }
         }
     ]),
@@ -264,14 +240,14 @@ const eventList = {
             effect: function() {
                 g.player.changeHp(-25);
                 g.player.changeStat('speed',10);
-                eventFunctionSuffix();
+                
             }
         },
         {
             text: 'Walk past: Heal 15',
             effect: function() {
                 g.player.changeHp(15);
-                eventFunctionSuffix();
+                
             }
         }
     ]),
@@ -282,14 +258,13 @@ const eventList = {
                 let damageTakenR = (Math.floor(Math.random()*21)+10);
                 g.player.changeHp(-damageTakenR);
                 g.player.changeGold(40);
-                eventFunctionSuffix('Ouch! You lost '+damageTakenR+' hp!');
             }
         },
         {
             text: 'Grab a small nugget instead: Gain 5 gold',
             effect: function() {
                 g.player.changeGold(5);
-                eventFunctionSuffix();
+                
             }
         }
     ])

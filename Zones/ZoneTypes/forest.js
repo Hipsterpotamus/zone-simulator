@@ -3,7 +3,16 @@ class Forest extends Zone {
         super(zoneLevel);
         this.maxZoneLevel = 9;
         this.shopCode = [3,3,4,2]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
-        this.pathGen = [14, 0.50, 0.15, 0, 0.30, 0.20, 0, 0.05, 0.05, 0.05]; //path gen, shop start, shop grow, shop reset, event start, event grow, event reset, rest start, rest grow, rest reset
+        this.pathGen = [20, //max spaces,
+            [['shop', 50, 15, 0], //[shop start, shop grow, shop reset],
+            ['event', 30, 20, 0], //[event start, event grow, event reset],
+            ['rest', 5, 5, 5], //[rest start, rest grow, rest reset],
+            ['enemy', 50, 5, 50]], //[enemy start, enemy grow, enemy reset],
+            { // set consistent levels here
+                0 : 'empty',
+                14 : 'pathEvent',
+                20 : 'boss'
+            }];
         this.zoneLable = 'forest';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
         this.enemyStats = {
