@@ -39,7 +39,6 @@ class Event {
 
 function eventFunctionSuffix(){
     $('#content-central-box').empty();
-    $('#go-next').removeClass('hidden');
 
     setNextButtonVisible(true);
 

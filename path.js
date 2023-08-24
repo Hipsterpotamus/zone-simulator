@@ -100,12 +100,12 @@ function advancePath(){
 }
 
 $(function() {
-    $('#go-next').on('click',advancePath);
+    $('#go-next-debug').on('click',advancePath);
     $('.floating-next').on('click',advancePath);
     
 });
 function genEnemy(){
-    // $('#go-next').addClass('hidden');
+    // $('#go-next-debug').addClass('hidden');
     setNextButtonVisible(false);
 
     $('#combatTimer').removeClass('hidden');

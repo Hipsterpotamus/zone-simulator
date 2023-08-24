@@ -32,7 +32,6 @@ class Enemy extends Entity{
         g.player.cleanStatus();
         g.player.changeHp(g.player.levelheal*this.getLvlHealMult());
 
-        $('#go-next').removeClass('hidden');
         setNextButtonVisible(true);
     
         $('#combatTimer').addClass('hidden');
