@@ -37,8 +37,7 @@ const ITEMLIST = {
     'grass robe': [9, '(+12 speed robe)', 'chest', ['robe', 0, 0, 0, 12]],
     'leather tunic': [14, '(+3 armor shirt)', 'chest', ['shirt', 0, 3, 0, 0]],
     'wooden chestplate': [28, '(+5 armor -25 speed chestplate)', 'chest', ['chestplate', 0, 5, 0, -25]],
-
-    'animal pelt': [14, '(+1 regen +8 speed)', 'legs', ['misc', 0, 0, 1, 8]],
+    'animal pelt': [14, '(+1 regen +8 speed)', 'chest', ['misc', 0, 0, 1, 8]],
 
     'overalls': [6, '(1 armor pants)', 'legs', ['pants', 0, 1, 0, 0]],
     'grass skirt': [14, '(1 armor +6 speed skirt)', 'legs', ['skirt', 0, 1, 0, 6]],

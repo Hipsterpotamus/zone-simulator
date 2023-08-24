@@ -5,9 +5,9 @@ class Forest extends Zone {
         this.shopCode = [3,3,4,2]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
         this.pathGen = [20, //max spaces,
             [['shop', 50, 15, 0], //[shop start, shop grow, shop reset],
-            ['event', 30, 20, 0], //[event start, event grow, event reset],
+            ['event', 30, 15, 0], //[event start, event grow, event reset],
             ['rest', 5, 5, 5], //[rest start, rest grow, rest reset],
-            ['enemy', 50, 5, 20]], //[enemy start, enemy grow, enemy reset],
+            ['enemy', 50, 15, 10]], //[enemy start, enemy grow, enemy reset],
             { // set consistent levels here
                 0 : 'empty',
                 16 : 'pathEvent',

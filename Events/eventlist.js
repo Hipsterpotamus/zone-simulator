@@ -22,8 +22,8 @@ const eventList = {
         {
             text: 'Gain Clothing: gain two armor pieces, lose 1 level heal',
             effect: function () {
-                g.player.inv.chest.push(new Equippable('dirty shirt', 'chest', 'shirt', 0, 1, 0, 0));
-                g.player.inv.legs.push(new Equippable('dirty pants', 'legs', 'pants', 0, 1, 0, 0));
+                g.player.addSelectableItem(new Equippable('dirty shirt', 'chest', 'shirt', 0, 1, 0, 0));
+                g.player.addSelectableItem(new Equippable('dirty pants', 'legs', 'pants', 0, 1, 0, 0));
                 g.player.changeStat('levelheal', -1);
             }
         },
@@ -40,7 +40,7 @@ const eventList = {
             effect: function () {
                 if (g.player.gold < 3) { return;}
                 g.player.changeGold(-3);
-                g.player.inv.weapon.push(new Equippable('garden hoe', 'weapon', 'none', 3, 0, 0, 0));
+                g.player.addSelectableItem(new Equippable('garden hoe', 'weapon', 'none', 3, 0, 0, 0));
             }
         },
         {
@@ -71,14 +71,14 @@ const eventList = {
             text: 'Blow and Wear: alert enemies, gain horn helmet',
             effect: function () {
                 g.zone.changeZoneLevel(2);
-                g.player.inv.head.push(new Equippable('horn helmet', 'head', 'helmet', 2, 0, 0, 0));
+                g.player.addSelectableItem(new Equippable('horn helmet', 'head', 'helmet', 2, 0, 0, 0));
             }
         },
         {
             text: 'Blow and wield: alert enemies, gain horn sling',
             effect: function () {
                 g.zone.changeZoneLevel(2);
-                g.player.inv.weapon.push(new Equippable('horn sling', 'weapon', 'sling', 4, 0, 0, 25));
+                g.player.addSelectableItem(new Equippable('horn sling', 'weapon', 'sling', 4, 0, 0, 25));
             }
         },
         {

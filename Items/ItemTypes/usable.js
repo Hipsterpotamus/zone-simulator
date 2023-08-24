@@ -11,9 +11,6 @@ class Usable extends Item {
                 this[stat] = complexStats[stat];
             });
         }
-        if (this.equipped) {
-            this.updateItemInfo();
-        }
     }
 
     attemptUse(){

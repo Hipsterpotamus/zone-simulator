@@ -13,12 +13,12 @@ class ShopItem{
     generateItem() {
         const EQUIPPABLELIST = ['weapon', 'head', 'chest', 'legs', 'feet'];
         if (EQUIPPABLELIST.includes(this.metatype)) {
-            this.onBuy = () => g.player.inv[this.metatype].push(new Equippable(this.name, this.metatype, ...this.itemInfo));
+            this.onBuy = () => g.player.addSelectableItem(new Equippable(this.name, this.metatype, ...this.itemInfo));
         }
     
         const USABLELIST = ['usable'];
         if (USABLELIST.includes(this.metatype)) {
-            this.onBuy = () => g.player.inv[this.metatype].push(new Usable(this.name, this.metatype, ...this.itemInfo));
+            this.onBuy = () => g.player.addSelectableItem(new Usable(this.name, this.metatype, ...this.itemInfo));
         }
     
         const STATLIST = ['stat'];
@@ -28,7 +28,7 @@ class ShopItem{
     
         const MAGICLIST = ['magic'];
         if (MAGICLIST.includes(this.metatype)) {
-            this.onBuy = () => g.player.inv[this.metatype].push(new Magic(this.name, this.metatype, ...this.itemInfo));
+            this.onBuy = () => g.player.addSelectableItem(new Magic(this.name, this.metatype, ...this.itemInfo));
         }
     }
 
@@ -38,12 +38,6 @@ class ShopItem{
             this.onBuy();
             this.element.remove();
             updatePurchaseHistory(this);
-            const UNSELECTABLE = ['stat'];
-            if (!UNSELECTABLE.includes(this.metatype)) {
-                g.player.inv[this.metatype].forEach(element => {
-                    if (element.equipped) {element.updateItemInfo()};
-                });
-            }
         } else {
             notify('Not enough Gold!');
         }

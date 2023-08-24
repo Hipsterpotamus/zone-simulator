@@ -5,7 +5,7 @@ class Grasslands extends Zone {
         this.shopCode = [3,2,3,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
         this.pathGen = [20, //max spaces,
             [['shop', 85, 15, 0], //[shop start, shop grow, shop reset],
-            ['event', 15, 9, 0], //[event start, event grow, event reset],
+            ['event', 15, 10, 0], //[event start, event grow, event reset],
             ['rest', 5, 5, 5], //[rest start, rest grow, rest reset],
             ['enemy', 50, 5, 20]], //[enemy start, enemy grow, enemy reset],
             { // set consistent levels here

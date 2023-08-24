@@ -14,28 +14,36 @@ class Player extends Entity{
         this.gold = 25;
         this.mana = 1000;
         this.inv = {
-            'usable':[],
-            'weapon':[],
-            'head':[],
-            'chest':[],
-            'legs':[],
-            'feet':[],
-            'magic':[]
+            'usable':['', []],
+            'weapon':['', []],
+            'head':['', []],
+            'chest':['', []],
+            'legs':['', []],
+            'feet':['', []],
+            'magic':['', []],
         }
     }
 
     playerInit() { //used for initialization that depends on player object
-        this.inv = {
-            'usable':[new Usable('none', 'usable', 'never', '', 0, '')],
-            'weapon':[new Equippable('none', 'weapon', 'none', 0, 0, 0, 0)],
-            'head':[new Equippable('none', 'head', 'none', 0, 0, 0, 0)],
-            'chest':[new Equippable('none', 'chest', 'none', 0, 0, 0, 0)],
-            'legs':[new Equippable('none', 'legs', 'none', 0, 0, 0, 0)],
-            'feet':[new Equippable('none', 'feet', 'none', 0, 0, 0, 0)],
-            'magic':[]
-        }
+        this.addSelectableItem(new Usable('none', 'usable', 'never', '', 0, ''));
+        this.addSelectableItem(new Equippable('none', 'weapon', 'none', 0, 0, 0, 0));
+        this.addSelectableItem(new Equippable('none', 'head', 'none', 0, 0, 0, 0));
+        this.addSelectableItem(new Equippable('none', 'chest', 'none', 0, 0, 0, 0));
+        this.addSelectableItem(new Equippable('none', 'legs', 'none', 0, 0, 0, 0));
+        this.addSelectableItem(new Equippable('none', 'feet', 'none', 0, 0, 0, 0));
     }
 
+    addSelectableItem(item) {
+        this.inv[item.metatype][1].push(item);
+        item.appendElement()
+        this.changeSelectedItem(item);
+    }
+
+    changeSelectedItem(item) {
+        this.inv[item.metatype][0] = item;
+        item.updateItemInfo();
+        $('#'+item.metatype+'-select').val(item.name);
+    }
 
     //generic functions
 
@@ -57,14 +65,8 @@ class Player extends Entity{
 
     //other
         
-    getByType(type){
-        let foundEquip;
-        this.inv[type].forEach((item)=>{
-             if(item.equipped == true){
-                 foundEquip = item;
-             }
-        })
-        return foundEquip;
+    getByType(metatype){
+        return this.inv[metatype][0];
     }
 
     changeGold(amount, inCombat = false) {

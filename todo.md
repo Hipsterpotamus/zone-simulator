@@ -20,12 +20,10 @@
 * [] Add feedback when useable can't be used/item can't be purchased
 * [] Add delay before battle
 * [] Fix event clothing stats not appearing bug
-* [x] Fix error when purchasing stat
+* [] Get enemy health bar to appear/disappear with enemy
 
 ### Refactoring
 * [] Update README.md with info on all backend systems
-* [x] Refactor combat.js
-* [x] Refactor path.js
 * [] Get rid of of global variables
 * [] Refactor game.js? (will likely require a full transition to an object oriented framework to significantly improve)
 

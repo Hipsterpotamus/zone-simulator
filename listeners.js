@@ -33,16 +33,13 @@ $(function() {
     });
 
     //item dropdowns
-    let metatypes = ['weapon','head','chest','legs','feet', 'usable'];
-    for (let metatype of metatypes) {
+    const METATYPES = ['weapon','head','chest','legs','feet', 'usable'];
+    for (let metatype of METATYPES) {
         $('#' + metatype + '-select').on('change', function() {
             let newItem = $(this).val();
-            g.player.inv[metatype].forEach(item => { //could maybe change this to use player.getByType
+            g.player.inv[metatype][1].forEach(item => {
                 if (item.name == newItem) {
-                    item.equipped = true;
-                    item.updateItemInfo();
-                } else {
-                    item.equipped = false;
+                    g.player.changeSelectedItem(item);
                 }
             });
         });
