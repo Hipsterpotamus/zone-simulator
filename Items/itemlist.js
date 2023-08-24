@@ -173,7 +173,31 @@ const ITEMLIST = {
         g.player.getByType('weapon').dmg += 2;
         g.player.getByType('weapon').updateItemInfo();
   }]],
+  
+  
+  // magic : [price, shopDesc, metatype, [type, shortDescription, longDescription, manaCost, spell, coolDown, usesFinite, complexStats]]
 
+
+  'shock': [25, '(spell: 12 mana -> deal 10 dmg)', 'magic', ['electric','hit','deal 10 dmg','Deal 10 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 12, function(){
+        g.combat.enemy.receiveNonHitDmg(10,g.combat.player);
+  }, 0, 0]],
+  'growth spurt': [30, '(spell: 15 mana -> gain 1 max hp)', 'magic', ['plant','buff','gain 1 max hp','Gain 1 max hp, includes gain of 1 hp. Infinite uses', 15, function(){
+        g.combat.player.changeMaxHp(1);
+  }, 0, 0]],
+  'blood splash': [18, '(spell: 8 mana -> heal 4)', 'magic', ['blood','heal','heal 4','Gain 4 hp, does not go over max hp. Infinite uses', 8, function(){
+        g.combat.player.changeHp(4);
+  }, 0, 0]],
+  'grass disarm': [18, '(spell: 5 mana -> remove 1 enemy armor)', 'magic', ['plant','debuff','enemy loses one armor','Enemy receives -1 armor, can go negative. Does not interact with shatter. Infinite uses', 5, function(){
+        g.combat.enemy.changeStat('arm',-1);
+  }, 0, 0]],
+  'blood let': [30, '(spell: 15 mana -> lose 8 hp, +1 dmg, +1 armor)', 'magic', ['blood','buff','lose 8 hp, +1 dmg, +1 armor','Lose 8 hp, gain a permanent stat buff of +1 dmg and +1 armor. Infinite uses', 15, function(){
+        g.combat.player.changeHp(-8);
+        g.combat.player.changeStat('dmg', 1);
+        g.combat.player.changeStat('arm', 1);
+  }, 0, 0]],
+  'chill': [26, '(spell: 10 mana -> enemy loses 5 attack speed)', 'magic', ['ice','debuff','enemy loses 5 attack speed','Enemy receives -5 attack speed. Infinite uses', 10, function(){
+        g.combat.enemy.changeStat('as',-5);
+  }, 0, 0]],
 
 
 

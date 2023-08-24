@@ -1,4 +1,4 @@
-const ITEMCATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'usable'];
+const ITEMCATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'usable', 'magic'];
 
 class Zone {
     constructor(zoneLevel) {
@@ -103,7 +103,7 @@ class Zone {
 
     fillShop() { //considering moving this to a future Game class
         let shopCode = this.shopCode;
-        let shopCodeExpand = [shopCode[0], 0, 0, 0, 0, shopCode[2], shopCode[3]];
+        let shopCodeExpand = [shopCode[0], 0, 0, 0, 0, shopCode[2], shopCode[3], shopCode[4]];
 
         for (let i = 0; i < shopCode[1]; i++) {
             const randNum = Math.floor(Math.random() * 4) + 1;
