@@ -41,6 +41,7 @@ class Entity{
         }
 
         this.updateHealthBar(amount);
+        if (g.combat.inCombat) {this.updateEntityDisplay()};
 
         if (this.hp <= 0 && this.alive) {
             this.hp = 0;
@@ -91,7 +92,7 @@ class Entity{
             this.bleedApplied += opp.testBleed();
             this.antihealApplied = opp.antiheal;
 
-            this.changeMaxHp(opp.testTear(this.superarmor));
+            this.changeMaxHp(-opp.testTear(this.superarmor));
 
             let oppHpChange = opp.testLifeDrain(oppDMG);
             oppHpChange -= this.testThorn(opp.calcStat('superarmor'));

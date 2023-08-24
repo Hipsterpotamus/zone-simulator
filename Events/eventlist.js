@@ -249,8 +249,8 @@ const eventList = {
         {
             text: 'Magic Sweets: +3 dmg +3 armor',
             effect: function() {
-                g.player.dmg += 3;
-                g.player.arm += 3;
+                g.player.changeStat('dmg', 3);
+                g.player.changeStat('arm', 3);
             }
         }
     ])
