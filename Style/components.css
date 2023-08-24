@@ -1,3 +1,9 @@
+.debug {
+  z-index: 10;
+  position: fixed;
+  bottom: 1px;
+  left:1px
+}
 
 .round-button {
   margin-top: 20px;
