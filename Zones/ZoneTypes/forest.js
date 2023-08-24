@@ -93,12 +93,12 @@ class Forest extends Zone {
         this.levelDifficultyDist = {
             //zoneLevel : [easyPercent, mediumPercent] (hard is excluded because it is defaulted to)
             1: [0.50, 1.00],
-            2: [0.35, 0.85],
-            3: [0.35, 0.85],
-            4: [0.35, 0.90],
-            5: [0.35, 0.90],
-            6: [0.35, 0.85],
-            7: [0.30, 0.75],
+            2: [0.28, 0.85],
+            3: [0.28, 0.85],
+            4: [0.28, 0.90],
+            5: [0.28, 0.90],
+            6: [0.28, 0.85],
+            7: [0.25, 0.75],
             8: [0, 0.25],
             9: [0, 0]
         }
