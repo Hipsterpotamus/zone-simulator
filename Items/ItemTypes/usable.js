@@ -22,8 +22,7 @@ class Usable extends Item {
                 if(g.combat && g.combat.inCombat){
                     this.uses -= 1;
                     this.onUse();
-                }else{
-                    // for future: communicate to player that item must be used in combat
+                }else{notify('You must be in combat to use ' + this.name + '.')
                 }
             }else if(this.type == 'all'){
                 this.uses -= 1;
@@ -31,7 +30,7 @@ class Usable extends Item {
             }
             this.updateItemInfo();
         }else{
-            // for future: communicate to player that uses = 0 and item use failed
+            notify('You are out of uses of ' + this.name + '.')
         }
     }
 
