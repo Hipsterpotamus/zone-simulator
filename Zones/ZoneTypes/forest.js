@@ -78,10 +78,10 @@ class Forest extends Zone {
             8: [
                 ['goblin commander', 'goblin', 180, 50, 44, 4, 15, 2, 0],
                 ['elf chieftain', 'elf', 170, -120, 60, 4, 16, 4, 0, {'dodge':25}],
-                ['forest wisp', 'wisp', 166, 33, 55, -4, 61, 14, 0, {'dodge':12}],
-                ['dryad prince', 'dryad', 190, 0, 50, 5, 24, 11, 0, {'lifedrain':33}],
+                ['forest wisp', 'wisp', 160, 33, 55, -8, 61, 14, 0, {'dodge':12}],
+                ['dryad prince', 'dryad', 190, -25, 50, 3, 24, 11, 0, {'lifedrain':16}],
                 ['possessed grizzly', 'critter', 200, -280, 96, 6, 64, -4, 0, {'tear':4}],
-                ['forest slime', 'slime', 150, 72, 8, 0, 66, 6, 0,{'shatter':8,'lifedrain':25}]
+                ['forest slime', 'slime', 150, 72, 12, 0, 66, 6, 0,{'shatter':8,'lifedrain':25}]
             ]
         };
 
