@@ -182,8 +182,7 @@ const ITEMLIST = {
   
   'sharpening stone': [26, '(3x item: +2 dmg on weapon)', 'usable', ['all', "Your currently equipped weapon gains +2 dmg", 3, 
     function(){
-        g.player.getByType('weapon').dmg += 2;
-        g.player.getByType('weapon').updateItemInfo();
+        g.player.getByType('weapon').changeStat('dmg', 2);
   }]],
   
   
@@ -452,18 +451,15 @@ const ITEMLIST = {
   }]],
   'pine needle attachments': [58, '(4x item: +5 dmg on weapon)', 'usable', ['all', "Your currently equipped weapon gains +5 dmg", 4, 
   function(){
-      g.combat.player.getByType('weapon').dmg += 5;
-      g.combat.player.getByType('weapon').updateItemInfo();
+      g.combat.player.getByType('weapon').changeStat('dmg', 5);
   }]],
   'pine cone attachments': [62, '(5x item: +3 shatter on weapon)', 'usable', ['all', "Your currently equipped weapon gains +3 shatter", 5, 
   function(){
-      g.combat.player.getByType('weapon').shatter += 3;
-      g.combat.player.getByType('weapon').updateItemInfo();
+      g.combat.player.getByType('weapon').changeStat('shatter', 3);
   }]],
   'elven nectar': [45, '(2x item: remove all shatter applied by opponent)', 'usable', ['combat', "During combat, all armor you have lost due to your opponent's shatter this combat is removed. However, more shatter can still be gained", 2, 
   function(){
-      g.combat.player.getByType('weapon').dmg += 5;
-      g.combat.player.getByType('weapon').updateItemInfo();
+      g.combat.player.changeStat('shatterApplied', -g.zone.player.shatterApplied)
   }]],
   'dryad root potion': [70, '(item: current enemy armor doubles, but their attack speed halves)', 'usable', ['combat', "During combat, the enemy's base armor grows by the amount of effective armor they currently have (armor - shatter applied). Their attackspeed is set to half.", 1, 
   function(){

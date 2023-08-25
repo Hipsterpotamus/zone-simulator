@@ -27,6 +27,11 @@ class Equippable extends Item {
         }
     }
 
+    changeStat (stat, amount) {
+        this[stat] += amount;
+        this.updateItemDisplay();
+    }
+
     updateItemInfo() {
         let statOutput = ''; 
         if(this.metatype == 'weapon'){

@@ -92,9 +92,8 @@ const eventList = {
         {
             text: 'Stay behind: +4 damage on current equipped weapon, lose 22 hp',
             effect: function () {
-                g.player.getByType('weapon').dmg += 4;
+                g.player.getByType('weapon').changeStat('dmg', 4);
                 g.player.changeHp(-22);
-                g.player.getByType('weapon').updateItemInfo();
             }
         },
         {
@@ -152,8 +151,7 @@ const eventList = {
         {
             text: 'Sharpen Weapon: +25% dmg on current weapon',
             effect: function () {
-                g.player.getByType('weapon').dmg = (Math.ceil(g.player.getByType('weapon').dmg * 1.25));
-                g.player.getByType('weapon').updateItemInfo();
+                g.player.getByType('weapon').changeStat('dmg',Math.ceil(g.player.getByType('weapon').dmg * 0.25));
                 
             }
         }
@@ -373,48 +371,6 @@ const eventList = {
         }
     ]),
 
-
-    // FOREST REST
-
-    'A Tree House': new Event("A Tree House", "You come to an abandoned tree house which stretches high into the air with multiple levels of buildings. You come to a cozy bedroom, but notice an expansive jungle gym above.", [
-        {
-            text: 'Rest: Heal 35 hp',
-            effect: function() {
-                g.player.changeHp(35);
-            }
-        },
-        {
-            text: "Play: Gain +20 max hp, but without gaining 20 hp.",
-            effect: function() {
-                g.player.changeMaxHp(20);
-                g.player.changeHp(-20);
-            }
-        }
-    ]),
-    'A Dryad Temple': new Event("Dryad Temple", "You notice an empty dryad temple nestled discreetly between a bundle of trees.", [
-        {
-            text: 'Pray: Gain +15 max hp and heal 10',
-            effect: function() {
-                g.player.changeMaxHp(15);
-                g.player.changeHp(10);
-            }
-        },
-        {
-            text: "Blood Sacrifice: lose 5 hp, +25% dmg on current weapon",
-            effect: function() {
-                g.player.changeHp(-5);
-                g.player.getByType('weapon').dmg = (Math.ceil(g.player.getByType('weapon').dmg * 1.25));
-            }
-        },
-        {
-            text: "Flesh Sacrifice: lose 5 max hp, +25% armor on chest and legs equipment",
-            effect: function() {
-                g.player.changeMaxHp(-5);
-                g.player.getByType('chest').arm = (Math.ceil(g.player.getByType('chest').arm * 1.25));
-                g.player.getByType('legs').arm = (Math.ceil(g.player.getByType('legs').arm * 1.25));
-            }
-        }
-    ]),
     'A Dam': new Event("A Dam", "In the distance, a beaver dam built up at least 30 feet tall.", [
         {
             text: 'Wade in Water: Gain +20 max hp',
@@ -563,15 +519,15 @@ const eventList = {
             text: "Blood Sacrifice: lose 5 hp, +25% dmg on current weapon",
             effect: function() {
                 g.player.changeHp(-5);
-                g.player.getByType('weapon').dmg = (Math.ceil(g.player.getByType('weapon').dmg * 1.25));
+                g.player.getByType('weapon').changeStat('dmg', Math.ceil(g.player.getByType('weapon').dmg * 0.25));
             }
         },
         {
             text: "Flesh Sacrifice: lose 5 max hp, +25% armor on chest and legs equipment",
             effect: function() {
                 g.player.changeMaxHp(-5);
-                g.player.getByType('chest').arm = (Math.ceil(g.player.getByType('chest').arm * 1.25));
-                g.player.getByType('legs').arm = (Math.ceil(g.player.getByType('legs').arm * 1.25));
+                g.player.getByType('chest').changeStat('arm', Math.ceil(g.player.getByType('chest').arm * 0.25));
+                g.player.getByType('legs').changeStat('arm', Math.ceil(g.player.getByType('legs').arm * 0.25));
             }
         }
     ]),
