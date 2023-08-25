@@ -5,8 +5,13 @@ window.addEventListener("mousemove", function(e){
         top:   e.pageY + 15
     });
 });
+
   
 document.addEventListener('DOMContentLoaded', () => {
+  updateTailReferences();
+});
+
+function updateTailReferences() {
   // Get all elements with the '.has-tail' class
   const elementsWithTail = document.querySelectorAll('.has-tail');
 
@@ -33,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tailElement.classList.toggle('tail-remain');
     });
   });
-});
+}
 
 // Double click on Tails to remove them
 document.addEventListener('dblclick', (event) => {

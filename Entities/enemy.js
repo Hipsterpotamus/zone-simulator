@@ -80,7 +80,7 @@ class Enemy extends Entity{
                 if ($('#enemy-stat-' + stat).length == 0) {
                     $('#enemy-stats').append(
                         $('<div>', {
-                            'class': 'enemy-stat',
+                            'class': 'enemy-stat has-tail',
                             'id': 'enemy-stat-' + stat
                         }).append(
                             $('<p>', {
@@ -99,6 +99,8 @@ class Enemy extends Entity{
                 $('#enemy-stat-' + stat).remove();
             }
         });
+
+        updateTailReferences();
 
         if (!this.alive) {
             $('#enemy-stats').html('');
