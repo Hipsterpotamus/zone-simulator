@@ -96,7 +96,7 @@ class Beach extends Zone {
         };
 
         this.bossStats = [
-            ['hairy g.o.a.t.', 'critter', 115, -25, 13, 2, 75, 1, 0, {'tear':2}]
+            ['hairy game.o.a.t.', 'critter', 115, -25, 13, 2, 75, 1, 0, {'tear':2}]
         ];
 
         //could assign this in the parent class if this distribution holds across zones
@@ -240,11 +240,12 @@ class Beach extends Zone {
 
         this.pathEvent = 'The End of the Forest';
         
+        this.pushZoneItems();
     }
     
     advanceToNextZone(){
         setBackgroundZone(4); 
-        g.zone = new Forest();
-        g.path.generatePath(...g.zone.pathGen);
+        game.zone = new Forest();
+        game.path.generatePath(...game.zone.pathGen);
     }
 }

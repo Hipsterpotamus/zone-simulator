@@ -18,7 +18,7 @@
 // more to come:
 
 class Combat {
-    constructor(msDelay) {
+    constructor(msDelay = 20) {
         this.tick = 0;
         this.player;
         this.enemy;
@@ -31,6 +31,7 @@ class Combat {
         this.inCombat = true;
         this.player = player;
         this.enemy = enemy;
+        $('#combatTimer').removeClass('hidden');
         this.combatTick();
     }
 

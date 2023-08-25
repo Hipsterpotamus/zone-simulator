@@ -27,9 +27,9 @@ class Magic extends Item {
     }
 
     attemptUse(){
-        if(g.combat.inCombat){
-            if(g.player.mana>=this.manaCost){
-                g.player.changeMana(-this.manaCost);
+        if(game.combat.inCombat){
+            if(game.player.mana>=this.manaCost){
+                game.player.changeMana(-this.manaCost);
                 this.onUse();
             }else{
                 notify('not enough mana!');

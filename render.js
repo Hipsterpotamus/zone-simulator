@@ -160,7 +160,7 @@ function updatePurchaseHistory(item) {
 
 
     console.log('updating purchase history', item);
-    g.purchaseHistory.push(this);
+    game.purchaseHistory.push(this);
     // add new <p> to #gold-text-tail
     let newPurchase = $('<p>', {
         'class': 'gold-text-tail-item'

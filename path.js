@@ -1,6 +1,6 @@
 class Path {
-    constructor(zoneNum) {
-        this.zoneNum = zoneNum + 1;
+    constructor() {
+        this.zoneNum = 1;
         this.maxSpaces;
         this.typeInfo;
         this.setSpaces;
@@ -49,9 +49,9 @@ class Path {
 
     advancePath() {
         this.displayZoneInfo();
-        if(this.spaceNumber%3==0 && this.spaceNumber != 0){g.zone.changeZoneLevel(1)};
+        if(this.spaceNumber%3==0 && this.spaceNumber != 0){game.zone.changeZoneLevel(1)};
         $('#content-central-box').empty();
-        g.player.changeGold(g.player.calcStat('income'));
+        game.player.changeGold(game.player.calcStat('income'));
         const SPACEKEYS = {'shop' : 'shopEvent', 
         'event' : 'eventEvent', 
         'rest' : 'restEvent', 
@@ -72,8 +72,7 @@ class Path {
     }
 
     advanceZone() {
-        g.zone.advanceToNextZone();
-        g.zone.zoneInit();
+        game.zone.advanceToNextZone();
     }
 
     shopEvent() {
@@ -81,7 +80,7 @@ class Path {
 
         const ITEMCATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'usable', 'magic'];
 
-        let shopCode = g.zone.shopCode;
+        let shopCode = game.zone.shopCode;
         let shopCodeExpand = [shopCode[0], 0, 0, 0, 0, shopCode[2], shopCode[3], shopCode[4]];
 
         for (let i = 0; i < shopCode[1]; i++) {
@@ -91,7 +90,7 @@ class Path {
     
         ITEMCATEGORIES.forEach((category, index) => {
             let count = shopCodeExpand[index] || 0;
-            let availableItems = g.zone.zoneItemList[category];
+            let availableItems = game.zone.zoneItemList[category];
     
             for (let i = 0; i < count; i++) {
                 if (availableItems.length === 0) {
@@ -107,13 +106,13 @@ class Path {
 
     eventEvent() {
         setBroadcastTitleText('Event');
-        let eventInfo = g.zone.getRandomEvent(this.spaceNumber);
+        let eventInfo = game.zone.getRandomEvent(this.spaceNumber);
         eventInfo.createElements();
     }
 
     restEvent() {
         setBroadcastTitleText('A Rest');
-        let restInfo = g.zone.getRandomRest(this.spaceNumber);
+        let restInfo = game.zone.getRandomRest(this.spaceNumber);
         restInfo.createElements();
     }
 
@@ -122,17 +121,17 @@ class Path {
         $('#combatTimer').removeClass('hidden');
         $('#large-tab-title').text('Enemy Encounter');
         setBroadcastTitleText('Enemy Encounter', true);
-        let enemy = g.zone.getRandomEnemy();
-        g.combat.startCombat(g.player, enemy);
+        let enemy = game.zone.getRandomEnemy();
+        game.combat.startCombat(game.player, enemy);
     }
 
     emptyEvent() {
-        setBroadcastTitleText(g.zone.zoneMessage, true);
+        setBroadcastTitleText(game.zone.zoneMessage, true);
     }
 
     pathEventEvent() {
         setBroadcastTitleText('A Forkroad');
-        let eventInfo = g.zone.getZoneEvent();
+        let eventInfo = game.zone.getZoneEvent();
         eventInfo.createElements();
     }
 
@@ -143,8 +142,8 @@ class Path {
     
         $('#combatTimer').removeClass('hidden');
     
-        let boss = g.zone.getBoss();
-        g.combat.startCombat(g.player, boss);       
+        let boss = game.zone.getBoss();
+        game.combat.startCombat(game.player, boss);       
     }
 
     displayZoneInfo() {
@@ -153,8 +152,8 @@ class Path {
 }
 
 $(function() {
-    $('#go-next-debug').on('click', function() { g.path.advancePath(); });
-    $('.floating-next').on('click', function() { g.path.advancePath(); });
+    $('#go-next-debug').on('click', function() { game.path.advancePath(); });
+    $('.floating-next').on('click', function() { game.path.advancePath(); });
 });
 
 //if (rnd < 0.33) {

@@ -26,9 +26,6 @@ class Player extends Entity{
             'feet':['', []],
             'magic':['', []],
         }
-    }
-
-    playerInit() { //used for initialization that depends on player object
         this.addSelectableItem(new Usable('none', 'usable', 'never', '', 0, ''));
         this.addSelectableItem(new Equippable('none', 'weapon', 'none', 0, 0, 0, 0));
         this.addSelectableItem(new Equippable('none', 'head', 'none', 0, 0, 0, 0));
