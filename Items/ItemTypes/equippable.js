@@ -1,6 +1,7 @@
 class Equippable extends Item {
-    constructor(name, metatype, type, dmg, armor, regen, attackSpeedChange, complexStats) {
+    constructor(game, name, metatype, type, dmg, armor, regen, attackSpeedChange, complexStats) {
         super(name, metatype);
+        this.game = game;
         this.type = type;
         this.dmg = dmg;
         this.arm = armor;
@@ -18,6 +19,7 @@ class Equippable extends Item {
         this.bleed = 0;
         this.superarmor = 0;
         this.accuracy = 0;
+        this.manaGen = 0;
 
         if(complexStats){
             Object.keys(complexStats).forEach((stat)=>{
@@ -26,23 +28,38 @@ class Equippable extends Item {
         }
     }
 
+    changeStat (stat, amount) {
+        this[stat] += amount;
+        this.updateItemInfo();
+    }
+
     updateItemInfo() {
         let statOutput = ''; 
         if(this.metatype == 'weapon'){
-            statOutput+='DMG : '+displayWithSign(this.dmg)+'<br>';
-            statOutput+='ARM : '+displayWithSign(this.arm)+'<br>';
-            statOutput+='REGEN : '+displayWithSign(this.regen)+'<br>';
-            statOutput+='SPEED : '+displayWithSign(this.as)+'<br>'
+            statOutput+='DMG: '+displayWithSign(this.dmg)+'<br>';
+            statOutput+='SPEED: '+displayWithSign(this.as)+'<br>'
+            statOutput+='ARMOR: '+displayWithSign(this.arm)+'<br>';
+            statOutput+='REGEN: '+displayWithSign(this.regen)+'<br>';
+            
+            if(this.dodge){statOutput+='DODGE: '+displayWithSign(this.dodge)+'<br>';}
+            if(this.shatter){statOutput+='SHATTER: '+displayWithSign(this.shatter)+'<br>';}
+            if(this.lifedrain){statOutput+='LIFEDRAIN: '+displayWithSign(this.lifedrain)+'<br>';}
+            if(this.manaGen){statOutput+='MANA GEN: '+displayWithSign(this.manaGen)+'<br>';}
         }else{
-            statOutput+='ARM : '+displayWithSign(this.arm)+'<br>';
-            statOutput+='REGEN : '+displayWithSign(this.regen)+'<br>';
-            statOutput+='DMG : '+displayWithSign(this.dmg)+'<br>';
-            statOutput+='SPEED : '+displayWithSign(this.as)+'<br>'
+            statOutput+='ARMOR: '+displayWithSign(this.arm)+'<br>';
+            statOutput+='REGEN: '+displayWithSign(this.regen)+'<br>';
+            statOutput+='SPEED: '+displayWithSign(this.as)+'<br>'
+            statOutput+='DMG: '+displayWithSign(this.dmg)+'<br>';
+            
+            if(this.dodge){statOutput+='DODGE: '+displayWithSign(this.dodge)+'<br>';}
+            if(this.shatter){statOutput+='SHATTER: '+displayWithSign(this.shatter)+'<br>';}
+            if(this.lifedrain){statOutput+='LIFEDRAIN: '+displayWithSign(this.lifedrain)+'<br>';}
+            if(this.manaGen){statOutput+='MANA GEN: '+displayWithSign(this.manaGen)+'<br>';}
         }
         if(this.name=='none'){
             statOutput = '';
         } else {
-            g.player.updateEntityDisplay();
+            this.game.player.updateEntityDisplay();
         }
         
         $('#'+this.metatype+'-stats').html(statOutput);

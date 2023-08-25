@@ -7,35 +7,39 @@ class Player extends Entity{
         this.dmg = 1;
         this.arm = 0;
         this.regen = 0;
-        this.levelheal = 5;
+        this.levelheal = 10;
         this.income = 0;
         this.as = 0;
         this.dodge = 0;
         this.gold = 25;
-        this.mana = 1000;
+        this.mana = 15;
+        this.maxMana = 15;
+        this.manaRate = 50;
+        this.manaGen = 1;
+        this.totalPurchased = 0;
+
         this.inv = {
-            'usable':[],
-            'weapon':[],
-            'head':[],
-            'chest':[],
-            'legs':[],
-            'feet':[],
-            'magic':[]
+            'usable':['', []],
+            'weapon':['', []],
+            'head':['', []],
+            'chest':['', []],
+            'legs':['', []],
+            'feet':['', []],
+            'magic':['', []],
         }
     }
 
-    playerInit() { //used for initialization that depends on player object
-        this.inv = {
-            'usable':[new Usable('none', 'usable', 'never', '', 0, '')],
-            'weapon':[new Equippable('none', 'weapon', 'none', 0, 0, 0, 0)],
-            'head':[new Equippable('none', 'head', 'none', 0, 0, 0, 0)],
-            'chest':[new Equippable('none', 'chest', 'none', 0, 0, 0, 0)],
-            'legs':[new Equippable('none', 'legs', 'none', 0, 0, 0, 0)],
-            'feet':[new Equippable('none', 'feet', 'none', 0, 0, 0, 0)],
-            'magic':[]
-        }
+    addSelectableItem(item) {
+        this.inv[item.metatype][1].push(item);
+        item.appendElement()
+        this.changeSelectedItem(item);
     }
 
+    changeSelectedItem(item) {
+        this.inv[item.metatype][0] = item;
+        item.updateItemInfo();
+        $('#'+item.metatype+'-select').val(item.name);
+    }
 
     //generic functions
 
@@ -50,21 +54,10 @@ class Player extends Entity{
         );
     }
 
-    changeStat (stat, amount) {
-        this[stat] += amount;
-        this.updateEntityDisplay();
-    }
-
     //other
         
-    getByType(type){
-        let foundEquip;
-        this.inv[type].forEach((item)=>{
-             if(item.equipped == true){
-                 foundEquip = item;
-             }
-        })
-        return foundEquip;
+    getByType(metatype){
+        return this.inv[metatype][0];
     }
 
     changeGold(amount, inCombat = false) {
@@ -73,12 +66,18 @@ class Player extends Entity{
     }
 
     death() {
-        //add you died screen or something
+        $('#player-death').removeClass('hidden');
+        $('#player-death').addClass('fullViewport');
+        let video = $('#player-death')[0];
+        video.play();
+        video.addEventListener('ended', function() {$('#player-death').addClass('hidden')});
     }
 
     // Not totally sure where you'll want this, depending on if all entities have mana
-    depleteMana(amount) { // For when mana is used is by spells
-        this.mana = min(0, this.mana - amount);
+    changeMana(amount) { // For when mana is used is by spells
+        this.mana = this.mana + amount;
+        this.mana = (this.mana >= this.maxMana) ? this.maxMana : this.mana;
+        if(this.mana>this.maxMana){}
         updateManaBar(amount, this.mana, this.maxMana);
     }
 

@@ -6,28 +6,22 @@
 * [] Make sure 8 stats fit into armor
 * [] Implement "combat timer" element which appears during combat (either in the dead space in the "enemy encounter" tab or rolling on the header)
 * [] Create combat stats elements and content to display over dead enemy at the end of combat
+* [] Make next area button follow event box rather than being draggable itself (i keep accidentally microdragging it when i try to click and it doesn't activate)
 
 ## Backend
 
 ### New stuff
-* [] Implement magic system and add corresponding shop items into pool
 * [] Start working on player level up system
-* [] Create shop items for forest zone
+* [] Add support for multiple enemies
 * [] Add rarity to shop items
+* [] Get all the characters functioning
 
 ### Fixes
-* [] Add 'you died' indicator in g.player.death()
-* [] Add feedback when useable can't be used/item can't be purchased
 * [] Add delay before battle
-* [] Fix event clothing stats not appearing bug
-* [x] Fix error when purchasing stat
+* [] Update combat systems so they don't use modulo
 
 ### Refactoring
 * [] Update README.md with info on all backend systems
-* [x] Refactor combat.js
-* [x] Refactor path.js
-* [] Get rid of of global variables
-* [] Refactor game.js? (will likely require a full transition to an object oriented framework to significantly improve)
 
 
 
