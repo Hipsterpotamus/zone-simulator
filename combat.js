@@ -49,7 +49,7 @@ class Combat {
             this.enemy.runRegen();
         }
         if (this.tick % this.player.manaRate == 0){
-            this.player.changeMana(this.player.manaGen);
+            this.player.changeMana(this.player.calcStat('manaGen'));
         }
         this.displayCombatInfo();
 
