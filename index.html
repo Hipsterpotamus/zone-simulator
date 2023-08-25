@@ -159,7 +159,8 @@
         </div>
         <div id = 'game-screen' class = 'hidden'>
             <div class="game-header">
-                <p class = "header-p on-primary-container-text" id = "zone-text">zone: 0–0</p>
+                <p class = "header-p on-primary-container-text" id = "zone-text">zone: 1–1</p>
+                <p class = 'header-p on-primary-container-text' id = 'place-text'>shop</p>
                 <p class = "header-p on-primary-container-text has-tail" id = "gold-text">gold: 0</p>
                 <div class="debug">
                     <button id = 'go-next-debug'>Force Next Level</button>
@@ -193,8 +194,56 @@
                 <use class="wave1" x="-100%" href="#sineWave-1" />
             </svg>
             <div class='non-game-header'>
+
+                <div id="player-box" class="primary-container">
+                    <div id="player-health-bar-container" data-total="1000" data-value="1000">
+                        <div id="player-health-bar">
+                              <div id="player-health-hit-bar"></div>
+                        </div>
+                    </div>
+                    <p class = "stat-display" id = "player-stats">
+                        <!-- You<br>
+                        hp : 42/67<br>
+                        dmg : 10 (2 + 8)<br>
+                        time: 25<br>
+                        armor : 6 (4 + 2)<br>
+                        regen : 2 (1 + 1)<br>
+                        bleed : 2 (0 + 2)<br> -->
+                        
+
+                    </p>
+                </div>
+
+                <div id="enemy-box" class="draggable-x translucent">
+                    <div id="zone-image" class=""></div>
+                    <div class = "stat-display translucent on-surface-text" id = "enemy">
+                        <div id="enemy-health">
+                            <div id="enemy-health-bar-container" data-total="1000" data-value="1000">
+                                <div id="enemy-health-bar">
+                                    <div id="enemy-health-hit-bar"></div>
+                                </div>
+                            </div>
+                            <p id="enemy-hp">00/00</p>
+                        </div>
+                        <div id="enemy-name-box" class="secondary on-secondary-text">
+                            <h2 id="enemy-name"></h2>
+                            <p id="enemy-time"></p>
+                        </div>
+                        <div id="enemy-stats" >
+                            <!-- <div class="enemy-stat">
+                                <p class="enemy-stat-name">dmg</p>
+                                <p class="enemy-stat-value">7</p>
+                            </div> -->
+
+                        </div>
+
+                    </div>
+                    
+                    
+                </div>
+                    
                 
-                <div class='fifth-tab draggable-x entity-panel secondary-container on-secondary-container-text outline-variant' id = 'player-stat-tab'>
+                <!-- <div class='fifth-tab draggable-x entity-panel secondary-container on-secondary-container-text outline-variant' id = 'player-stat-tab'>
                     <p class = "stat-display" id = "player-stats">
                         You<br>
                         hp : 42/67<br>
@@ -210,34 +259,21 @@
                         </div>
 
                     </p>
-                </div>
-                <div class='fifth-tab draggable-x entity-panel secondary on-secondary-text outline' id = 'enemy-tab'>
-                    <p class = "stat-display" id = "enemy-stats">
-                        Lady bug<br>
-                        hp : 36/51<br>
-                        dmg : 7<br>
-                        time: 25<br>
-                        armor : 8<br>
-                        regen : 1<br>
-                        bleed : 3<br>
-                        <div id="enemy-health-bar-container" data-total="1000" data-value="1000">
-                            <div id="enemy-health-bar">
-                                  <div id="enemy-health-hit-bar"></div>
-                            </div>
-                        </div>
-                    </p>
-                </div>
+                </div> -->
+                <!-- <div class='fifth-tab draggable-x entity-panel secondary on-secondary-text outline' id = 'enemy-tab'>
+                    
+                </div> -->
 
                 
             </div>  
             <!-- Equipment Floating Box -->
-            <div class="equipment-box surface-variant rounded draggable translucent">
+            <div class="equipment-box rounded draggable translucent">
                 
                 <div class="spacing"><svg xmlns="http://www.w3.org/2000/svg" class="on-secondary-text" height="4rem" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C394 378 431.1 230.1 432 141.4L256 66.8l0 0z"/></svg></div>
 
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='weapon-select' title="weapon">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='weapon-select' title="Weapon">
                             <option value="" disabled selected>Weapon</option>
                         </select>
                     </div>
@@ -247,7 +283,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='head-select' title="head">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='head-select' title="Head">
                             <option value="" disabled selected>Head</option>
                         </select>
                     </div>
@@ -257,7 +293,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='chest-select' title="chest">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='chest-select' title="Chest">
                             <option value="" disabled selected>Chest</option>
                         </select>
                     </div>
@@ -267,7 +303,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='legs-select' title="legs">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='legs-select' title="Legs">
                             <option value="" disabled selected>Legs</option>
                         </select>
                     </div>
@@ -277,7 +313,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='feet-select' title="feet">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='feet-select' title="Feet">
                             <option value="" disabled selected>Feet</option>
                         </select>
                     </div>
@@ -311,7 +347,7 @@
                         <p id = 'combatTimer' class = 'hidden'>0:00</p>
                     </div>
                 </div>
-                <div class="floating-next show draggable">
+                <div class="floating-next show">
                     <i class="material-icons">arrow_forward</i>
                 </div>
             </div>
@@ -322,7 +358,7 @@
                 <div class = 'large-tab-row secondary-container on-seconary-container-text' id = 'items-tab-row'>
                     <div class = 'items-tab-left-container'>
                         <div>
-                            <select id = "usable-select" class="select shadow primary on-primary-text" title="usable">
+                            <select id = "usable-select" class="select shadow primary on-primary-text">
                             </select>
                         </div>
                     </div>
@@ -337,7 +373,7 @@
 
                 <!-- Spell Box -->
                 <div class="large-tab-row primary-container on-primary-container-text" id="magic-tab-row" >
-                    <div class = 'fifth-magic-row'><p id = 'mana-count-title'>mana: 0</p></div>
+                    <div class = 'fifth-magic-row'><p>mana: 0</p></div>
                     <div id="mana-bar-container" data-total="1000" data-value="1000">
                         <div id="mana-bar">
                               <div id="mana-hit-bar"></div>
@@ -369,10 +405,10 @@
         <div id='gold-text-tail' class="hidden draggable tail"> <!-- Info on event/shop title box -->
             <p></p><b>Purchases</b> - Total: <span id="purchase-total">0</span></p>
         </div>
-        <video class="hidden" id="player-death" width="640" height="360">
-            <source src="Zones/Images/playerdeath.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+
+        <div id='enemy-stat-speed-tail' class="hidden draggable tail"> 
+            <p>Determines how quickly the character can attack.</p>
+        </div>
       
     </body>
 </html>
