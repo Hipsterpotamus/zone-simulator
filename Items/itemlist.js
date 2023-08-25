@@ -190,7 +190,7 @@ const ITEMLIST = {
 
 
   'shock': [25, '(spell: 12 mana -> deal 10 dmg)', 'magic', ['electric','hit','deal 10 dmg','Deal 10 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 12, function(){
-        g.combat.enemy.receiveHitFrom(g.combat.player, 10);
+        g.combat.enemy.receiveNonHitDmg(g.combat.player, 10);
   }, 0, 0]],
   'growth spurt': [30, '(spell: 15 mana -> gain 1 max hp)', 'magic', ['plant','buff','gain 1 max hp','Gain 1 max hp, includes gain of 1 hp. Infinite uses', 15, function(){
         g.combat.player.changeMaxHp(1);
@@ -444,9 +444,9 @@ const ITEMLIST = {
     function(){
         g.combat.player.changeGold(Math.floor(g.cEnemy.gold*0.2));
   }]],
-  'dryad berries': [26, '(6x item: heal 12 hp and gain 1 regen permantely)', 'usable', ['all', "Heal 12 hp and gain 1 regen permanetly", 6, 
+  'dryad berries': [41, '(4x item: heal 15 hp and gain 1 regen permantely)', 'usable', ['all', "Heal 15 hp and gain 1 regen permanetly",4, 
     function(){
-        g.combat.player.changeHp(12);
+        g.combat.player.changeHp(15);
         g.combat.player.changeStat('regen', 1);
   }]],
   'pine needle attachments': [58, '(4x item: +5 dmg on weapon)', 'usable', ['all', "Your currently equipped weapon gains +5 dmg", 4, 

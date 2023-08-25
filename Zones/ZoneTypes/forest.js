@@ -70,9 +70,9 @@ class Forest extends Zone {
                 ['forest-green slime', 'slime', 130, 0, 32, 9, 48, 1, 0, {'lifedrain':10}]
             ],
             6: [
-                ['leaf wisp', 'wisp', 88, -22, 44, -2, 51, 14, 0, {'dodge':12}],
-                ['tree wisp', 'wisp', 88, 22, 44, -4, 53, 14, 0, {'dodge':12}],
-                ['mist wisp', 'wisp', 88, -22, 44, -2, 52, 14, 0, {'dodge':12}],
+                ['leaf wisp', 'wisp', 88, -22, 44, -12, 51, 14, 0, {'dodge':12}],
+                ['tree wisp', 'wisp', 88, 22, 44, -14, 53, 14, 0, {'dodge':12}],
+                ['mist wisp', 'wisp', 88, -22, 44, -12, 52, 14, 0, {'dodge':12}],
                 ['spirit snake', 'snake', 65, 30, 27, 2, 53, 2, 0, {'lifedrain':45}],
                 ['goblin ranger', 'goblin', 180, -50, 39, 5, 51, 4, 0, {'dodge':25}],
                 ['walking weed', 'plant', 190, -33, 25, 4, 53, 1, 0,{'lifedrain':25,'shatter':33}]
