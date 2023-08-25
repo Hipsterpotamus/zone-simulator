@@ -46,10 +46,11 @@
   margin-right: 1.5rem;
 }
 
-
+/*
 #weapon-select {
-  background-image: url(Icons\Sword.png);
-}
+  /*background-image: url(Icons\Sword.png);  removed to get rid of error message
+}*/
+
 
 .title-container{
   width:100%;

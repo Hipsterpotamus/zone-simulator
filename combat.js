@@ -31,6 +31,7 @@ class Combat {
         this.inCombat = true;
         this.player = player;
         this.enemy = enemy;
+        $('#combatTimer').removeClass('hidden');
         this.combatTick();
     }
 

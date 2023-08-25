@@ -249,7 +249,8 @@ class Forest extends Zone {
         ];
 
         this.pathEvent = 'The End of the Forest';
-        
+
+        this.pushZoneItems();
     }
     
     advanceToNextZone(){

@@ -1,6 +1,6 @@
 class Path {
-    constructor(zoneNum) {
-        this.zoneNum = zoneNum + 1;
+    constructor() {
+        this.zoneNum = 1;
         this.maxSpaces;
         this.typeInfo;
         this.setSpaces;
@@ -73,7 +73,6 @@ class Path {
 
     advanceZone() {
         g.zone.advanceToNextZone();
-        g.zone.zoneInit();
     }
 
     shopEvent() {

@@ -10,10 +10,6 @@ class Zone {
         });
     }
 
-    zoneInit() { //used for initialization that depends on zone object
-        this.pushZoneItems();
-    }
-
     changeZoneLevel(num) {
         if (this.zoneLevel + num > this.maxZoneLevel) {
             this.zoneLevel = this.maxZoneLevel;
