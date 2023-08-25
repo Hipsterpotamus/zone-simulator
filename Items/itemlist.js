@@ -238,7 +238,7 @@ const ITEMLIST = {
   'dryad sleeve': [70, '(20 dmg +4 regen +15 speed +16 dodge +15 lifedrain gloves),', 'weapon',['gloves', 20, 0, 4, 15, {'dodge':16,'lifedrain':15}]],
 
 
-  'leather cap': [36, '(3 armor hat)', 'head', ['hat', 0, 1, 0, 0]],
+  'leather cap': [36, '(3 armor hat)', 'head', ['hat', 0, 3, 0, 0]],
   'leaf beret': [22, '(1 armor +16 speed hat)', 'head', ['hat', 0, 0, 0, 7]],
   'bark helmet': [42, '(4 armor helmet)', 'head', ['helmet', 0, 4, 0, 0]],
   'forest turban': [33, '(3 armor -6 speed +8 lifedrain turban)', 'head', ['turban', 0, 3, 0, -6, {'lifedrain':8}]],
