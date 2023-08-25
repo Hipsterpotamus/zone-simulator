@@ -8,7 +8,6 @@
 @import url(GameMenu/equipment-menu.css);
 @import url(entity-panels.css);
 @import url(GameMenu/encounter-box.css);
-@import url(GameMenu/toolbox.css);
 @import url(tail.css);
 
 :root {
@@ -23,8 +22,7 @@ body, html {
   padding: 0;
   overflow: hidden;
   font-family: 'Martian Mono', monospace;
-  /* background-color: var(--transparent-background); */
-  background-color: var(--md-sys-color-background);
+  background-color: var(--transparent-background);
   /* background-color: rgba(122, 22, 52, 0.295); */
   /* I need to add a new color for each theme that has low opacity for background overlay */
   color: var(--md-sys-color-on-background);
@@ -88,6 +86,10 @@ body.zone-3::before {
 
 
 
+
+
+
+
 .header-p{
   float:left;
   font-size:10pt;
@@ -103,170 +105,208 @@ body.zone-3::before {
 }
 
 
+
 .fifth-tab#large-tab{
   width:calc(40% - 1px);
 }
+
+
+
+
+
+/* .large-tab-row {
+  width: 100%;
+  height: 20%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+} */
+
+
+
+
+#toolbox {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 35%;
+  height: 17rem;
+  z-index: 2;
+  margin: 2rem;
+  
+  border-radius: 32px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+#toolbox > div {
+  border-radius: 16px;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+#items-tab-row {
+  width: 100%;
+  height: 105%;
+}
+
+
+#use-usable { /* use item button */
+  padding: 1rem;
+  text-transform: capitalize;
+  border: none;
+  border-radius: 0.5rem;
+  z-index: 2;
+  font-family: 'Martian Mono', monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  /* transition: all 0.2s ease-in-out; */
+  cursor: pointer;
+}
+
+#magic-tab-row {
+  height: 110%;
+  width: 100%;
+
+  /* align-items: center;
+  justify-content: center; */
+}
+
+#magic-tab-row button {
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  border: none;
+  border-radius: 8px;
+  z-index: 2;
+  font-family: 'Martian Mono', monospace;
+  background-color: var(--md-sys-color-tertiary-variant);
+  color: var(--md-sys-color-tertiary);
+  cursor: pointer;
+  outline: 4px solid var(--md-sys-color-tertiary);
+  outline-offset: -2px;
+
+  margin: 0.5rem;
+  
+  transition: all 0.2s ease-in-out;
+  transition: outline 0.2s ease-in;
+
+}
+
+#magic-tab-row button:hover {
+  background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-primary-container);
+  /* border-radius: 16px; */
+  transform: scale(1.3);
+  box-shadow: 0 0 1.5rem var(--md-sys-color-tertiary);
+
+
+  background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-primary-container);
+  transform: scale(1.3);
+  box-shadow: 0 0 1.5rem var(--md-sys-color-tertiary);
+  /* animation: outline 0.6s ease-in-out infinite; */
+
+  transition: all 0.1s ease-in-out;
+}
+
+/* @keyframes outline {
+  0% {
+    outline: 2px solid var(--md-sys-color-tertiary);
+  }
+  50% {
+    outline: 8px solid var(--md-sys-color-tertiary);
+  }
+  100% {
+    outline: 2px solid var(--md-sys-color-tertiary);
+  }
+} */
+
+
+
+#mana-bar-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 20px;
+  padding: 5px;
+  background: var(--md-sys-color-on-primary);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 8px;
+  position: relative;
+}
+#mana-bar {
+  background: var(--md-sys-color-tertiary);
+  border-radius: 8px;
+  width: 100%;
+  height: 10px;
+  position: relative;
+  
+  transition: width .5s linear;
+}
+
+#mana-hit-bar {
+  background: rgba(255, 255, 255, 0.334);
+  position: absolute;
+  border-radius: 8px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 0px;
+  
+  transition: width .5s linear;
+}
+
+
+
+
+
+
+
+
+/* #equip-tab{
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+} */
+
+/* #weapon-container{
+  order:1;
+
+  z-index: 2;
+}
+#head-container{
+  order:2;
+}
+#chest-container{
+  order:3;
+}
+#legs-container{
+  order:4;
+}
+#feet-container{
+  order:5;
+} */
+
+/* .equip-container{
+  width:100%;
+  height:calc(20% - 2px);
+  border-bottom:2px solid black;
+  float:left;
+} */
+
+
 
 #combatTimer{
   text-align: center;
   font-size: 13vh;
   font-weight: bold;
   margin: 4.5vh 0 0 0;
-}
-
-
-
-#player-box {
-  /* set floating on top right */
-  z-index: 4;
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  width: 40%;
-  height: 12%;
-
-  border-radius: 32px;
-  /* set bottom right corner to not be rounded */
-  border-bottom-right-radius: 0px;
-
-}
-
-
-
-#enemy-box {
-  position: absolute;
-  top: 0;
-  right: 3%;
-  width: 40%;
-  height: 100vh;
-  
-  -webkit-transform: skewX(-3deg);
-  -moz-transform: skewX(-3deg);
-  -ms-transform: skewX(-3deg);
-  -o-transform: skewX(-3deg);
-  transform: skewX(-3deg);
-  /* center contents */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
-#enemy-box #zone-image {
-  
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: url(../Zones/Images/grassland.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  object-fit: cover;
-/*   
-  padding-left: 30px;
-  margin-left: -30px; */
-  filter: blur(10px);
-  /* clip so that the outer #enemy-box div contains the backgroudn image */
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%, 0 0%);
-
-}
-
-#enemy {
-  -webkit-transform: skewX(3deg);
-  -moz-transform: skewX(3deg);
-  -ms-transform: skewX(3deg);
-  -o-transform: skewX(3deg);
-  transform: skewX(3deg);
-
-  width: 85%;
-  position: absolute;
-  top:15%;
-  border-radius: 32px;
-}
-
-#enemy-health {
-  display: flex;
-  width: 100%;
-  /*set flex to space between */
-  justify-content: space-between;
-  align-items: center;
-
-}
-
-#enemy-hp {
-  margin-left: 0;
-  padding: 0rem 1rem;
-  padding-right: 1.5rem;
-}
-
-#enemy-name-box {
-  margin-top: 0rem;
-  font-weight: bolder;
-  font-family: 'Martian Mono', monospace;
-  margin-bottom: 0rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#enemy-time {
-  position: absolute;
-  right: 1.5rem;
-  color: var(--md-sys-color-primary-container)
-}
-
-#enemy-name {
-  padding: 0.5rem;
-  margin: 0;
-  text-transform: capitalize;
-}
-
-#enemy-stats {
-  /* set to an evently spaced grid */
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  justify-items: center;
-  text-transform: capitalize;
-  padding: 1rem;
-}
-
-/* Individual Stat Displays */
-#enemy-stats .enemy-stat {
-  min-width: 75%;
-  /* height: 50%; */
-  padding: 0rem;
-  margin: 0rem;
-  border-radius: 0.5rem;
-  background-color: var(--md-sys-color-secondary);
-  color: var(--md-sys-color-on-secondary);
-  box-shadow: 0px 0px 10px 0px var(--md-sys-color-shadow);
-  display: flex;
-  align-items: center;
-  /* justify-content: center; */
-  margin: 0.75rem;
-  line-height: 1.5rem;
-}
-
-#enemy-stats .enemy-stat .enemy-stat-name {
-  background-color: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-on-primary-container);
-  height: 100%;
-  width: 50%;
-  border-radius: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0rem 1rem;
-  margin: -1px;
-}
-
-#enemy-stats .enemy-stat .enemy-stat-value {
-  width: 100%;
-  padding: 0rem 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
 }
