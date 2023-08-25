@@ -153,3 +153,20 @@
   align-items: center;
 
 }
+
+#enemy-stats svg {
+  position: inherit;
+  fill: var(--md-sys-color-on-primary-container);
+  stroke: var(--md-sys-color-on-primary-container);
+  
+  background-color: var(--md-sys-color-primary-container);
+  
+  height: 100%;
+  width: 4rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem 1rem;
+  margin: -1px;
+}
