@@ -6,7 +6,7 @@
 * [] Make sure 8 stats fit into armor
 * [] Implement "combat timer" element which appears during combat (either in the dead space in the "enemy encounter" tab or rolling on the header)
 * [] Create combat stats elements and content to display over dead enemy at the end of combat
-* [] Make arror follow event box rather than being draggable itself
+* [] Make next area button follow event box rather than being draggable itself (i keep accidentally microdragging it when i try to click and it doesn't activate)
 
 ## Backend
 
@@ -22,7 +22,6 @@
 
 ### Refactoring
 * [] Update README.md with info on all backend systems
-* [] Get rid of of global variables outside of game?
 
 
 

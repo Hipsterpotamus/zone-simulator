@@ -174,6 +174,3 @@ class Path {
         this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'feet', 'none', 0, 0, 0, 0));
     }
 }
-
-$(document).on('click', '#go-next-debug', function() { game.path.advancePath(); });
-$(document).on('click', '.floating-next', function() { game.path.advancePath(); });
