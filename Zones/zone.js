@@ -89,10 +89,6 @@ class Zone {
         return this.shopType;
     }
 
-    getZoneLable() {
-        return this.zoneLable;
-    }
-
     pushZoneItems() {
         this.zoneItems.forEach(itemName => {
             let metatype = ITEMLIST[itemName][2];

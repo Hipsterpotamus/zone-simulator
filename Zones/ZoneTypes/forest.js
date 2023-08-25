@@ -14,6 +14,7 @@ class Forest extends Zone {
                 20 : 'boss'
             }];
         this.zoneLable = 'forest';
+        this.zoneMessage = 'A narrow path, surrounded by trees...';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
         this.enemyStats = {
             //zoneLevel : [

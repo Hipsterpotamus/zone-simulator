@@ -19,6 +19,7 @@
 * [] Add 'you died' indicator in g.player.death()
 * [] Add delay before battle
 * [] Get enemy health bar to appear/disappear with enemy
+* [] Add new stats to player/enemy display
 
 ### Refactoring
 * [] Update README.md with info on all backend systems

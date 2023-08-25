@@ -5,7 +5,7 @@ class Path {
         this.typeInfo;
         this.setSpaces;
         this.nextSpace;
-        this.spaceNumber = 1;
+        this.spaceNumber = 0;
     }
 
     generatePath(maxSpaces, typeInfo, setSpaces) {
@@ -127,7 +127,8 @@ class Path {
     }
 
     emptyEvent() {
-        setBroadcastTitleText('A new zone...', true);
+        console.log(g);
+        setBroadcastTitleText(g.zone.zoneMessage, true);
     }
 
     pathEventEvent() {
