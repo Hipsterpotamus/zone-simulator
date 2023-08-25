@@ -35,15 +35,25 @@ class Equippable extends Item {
     updateItemInfo() {
         let statOutput = ''; 
         if(this.metatype == 'weapon'){
-            statOutput+='DMG : '+displayWithSign(this.dmg)+'<br>';
-            statOutput+='ARM : '+displayWithSign(this.arm)+'<br>';
-            statOutput+='REGEN : '+displayWithSign(this.regen)+'<br>';
-            statOutput+='SPEED : '+displayWithSign(this.as)+'<br>'
+            statOutput+='DMG: '+displayWithSign(this.dmg)+'<br>';
+            statOutput+='SPEED: '+displayWithSign(this.as)+'<br>'
+            statOutput+='ARMOR: '+displayWithSign(this.arm)+'<br>';
+            statOutput+='REGEN: '+displayWithSign(this.regen)+'<br>';
+            
+            if(this.dodge){statOutput+='DODGE: '+displayWithSign(this.dodge)+'<br>';}
+            if(this.shatter){statOutput+='SHATTER: '+displayWithSign(this.shatter)+'<br>';}
+            if(this.lifedrain){statOutput+='LIFEDRAIN: '+displayWithSign(this.lifedrain)+'<br>';}
+            if(this.manaGen){statOutput+='MANA GEN: '+displayWithSign(this.manaGen)+'<br>';}
         }else{
-            statOutput+='ARM : '+displayWithSign(this.arm)+'<br>';
-            statOutput+='REGEN : '+displayWithSign(this.regen)+'<br>';
-            statOutput+='DMG : '+displayWithSign(this.dmg)+'<br>';
-            statOutput+='SPEED : '+displayWithSign(this.as)+'<br>'
+            statOutput+='ARMOR: '+displayWithSign(this.arm)+'<br>';
+            statOutput+='REGEN: '+displayWithSign(this.regen)+'<br>';
+            statOutput+='SPEED: '+displayWithSign(this.as)+'<br>'
+            statOutput+='DMG: '+displayWithSign(this.dmg)+'<br>';
+            
+            if(this.dodge){statOutput+='DODGE: '+displayWithSign(this.dodge)+'<br>';}
+            if(this.shatter){statOutput+='SHATTER: '+displayWithSign(this.shatter)+'<br>';}
+            if(this.lifedrain){statOutput+='LIFEDRAIN: '+displayWithSign(this.lifedrain)+'<br>';}
+            if(this.manaGen){statOutput+='MANA GEN: '+displayWithSign(this.manaGen)+'<br>';}
         }
         if(this.name=='none'){
             statOutput = '';
