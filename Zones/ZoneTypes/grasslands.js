@@ -98,7 +98,7 @@ class Grasslands extends Zone {
         };
 
         this.bossStats = [
-            ['hairy game.o.a.t.', 'critter', 115, -25, 13, 2, 55, 1, 0, {'tear':2}],
+            ['hairy g.o.a.t.', 'critter', 115, -25, 13, 2, 55, 1, 0, {'tear':2}],
             ['big fat bison', 'hoofed', 140, -125, 15, 3, 60, 1, 0]
         ];
 

@@ -96,7 +96,7 @@ class Beach extends Zone {
         };
 
         this.bossStats = [
-            ['hairy game.o.a.t.', 'critter', 115, -25, 13, 2, 75, 1, 0, {'tear':2}]
+            ['hairy g.o.a.t.', 'critter', 115, -25, 13, 2, 75, 1, 0, {'tear':2}]
         ];
 
         //could assign this in the parent class if this distribution holds across zones

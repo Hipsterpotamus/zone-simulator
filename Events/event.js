@@ -4,18 +4,10 @@ class Event {
         this.description = description;
         this.choices = choices;
 
-        this.titleE;
         this.descriptionE;
     }
 
     createElements() {
-        // this.titleE = $('<p>', {
-        //     'class': 'event-title'
-        // });
-        // this.titleE.text(this.title);
-        // this.titleE.appendTo('#content-central-box'); //title sent to dom
-        // change text in .large-tab-title to this.title
-        // $('.large-tab-title').text(this.title);
         setBroadcastTitleText(this.title);
 
         this.descriptionE = $('<p>', {
