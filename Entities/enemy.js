@@ -13,6 +13,13 @@ class Enemy extends Entity{
     calcStat(stat) {//should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
         return (this[stat]);
     }
+    
+    calcStatDisplay(stat, tick) { // For displaying in html
+        if (stat=='arm') {return this.testArm()}
+        else if (stat=='speed') {return (this.calcAs())}
+        else if (stat=='regen') {return this.calcRegen()}
+        else {return this.calcStat(stat)}
+    }
 
     getLvlHealMult() {
         return 1;
@@ -56,7 +63,7 @@ class Enemy extends Entity{
         // if(!this.alive){htmlOutput = '';}
         // $('#enemy-stats').html(htmlOutput);
 
-        let statsList = ['dmg', 'regen', 'arm', 'dodge', 'as', 'thorn', 'shatter', 'income', 'lifedrain', 'bleed', 'accuracy', 'superarmor', 'tear'];
+        let statsList = ['dmg', 'regen', 'arm', 'dodge', 'speed', 'thorn', 'shatter', 'income', 'lifedrain', 'bleed', 'accuracy', 'superarmor', 'tear'];
         
         $('#enemy-name').text(this.name);
         $('#enemy-hp').text(this.hp + '/' + this.maxhp);
@@ -69,7 +76,7 @@ class Enemy extends Entity{
         //     <p class="enemy-stat-value">7</p>
         // </div>
         statsList.forEach((stat)=>{
-            if (this.calcStat(stat) > 0) {
+            if (this.calcStatDisplay(stat, tick) > 0) {
                 if ($('#enemy-stat-' + stat).length == 0) {
                     $('#enemy-stats').append(
                         $('<div>', {
@@ -82,11 +89,11 @@ class Enemy extends Entity{
                         ).append(
                             $('<p>', {
                                 'class': 'enemy-stat-value'
-                            }).text(this.calcStat(stat))
+                            }).text(this.calcStatDisplay(stat, tick))
                         )
                     )
                 } else {
-                    $('#enemy-stat-' + stat).find('.enemy-stat-value').text(this.calcStat(stat));
+                    $('#enemy-stat-' + stat).find('.enemy-stat-value').text(this.calcStatDisplay(stat, tick));
                 }
             } else {
                 $('#enemy-stat-' + stat).remove();
