@@ -18,6 +18,7 @@ class Equippable extends Item {
         this.bleed = 0;
         this.superarmor = 0;
         this.accuracy = 0;
+        this.manaGen = 0;
 
         if(complexStats){
             Object.keys(complexStats).forEach((stat)=>{
