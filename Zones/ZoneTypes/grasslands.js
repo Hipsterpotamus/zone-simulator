@@ -9,12 +9,14 @@ class Grasslands extends Zone {
             ['rest', 5, 5, 5], //[rest start, rest grow, rest reset],
             ['enemy', 50, 25, 30]], //[enemy start, enemy grow, enemy reset],
             { // set consistent levels here
+                0 : 'empty',
                 1 : 'enemy',
                 2 : 'shop',
                 14 : 'pathEvent',
                 20 : 'boss'
             }];
         this.zoneLable = 'grassland';
+        this.zoneMessage = 'Flowing grass, and a dusty trail...';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
         this.enemyStats = {
             //zoneLevel : [

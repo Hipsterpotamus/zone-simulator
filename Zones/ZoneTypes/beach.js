@@ -13,7 +13,8 @@ class Beach extends Zone {
                 16 : 'pathEvent',
                 20 : 'boss'
             }];
-        this.zoneLable = 'forest';
+        this.zoneLable = 'beach';
+        this.zoneMessage = 'A smell of sea, and a sandy beach...';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
         this.enemyStats = {
             //zoneLevel : [
