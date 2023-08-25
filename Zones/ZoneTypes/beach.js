@@ -234,6 +234,7 @@ class Beach extends Zone {
     }
     
     advanceToNextZone(){
+        setBackgroundZone(4); 
         g.zone = new Forest();
         g.path.generatePath(...g.zone.pathGen);
     }

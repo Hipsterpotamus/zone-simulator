@@ -14,6 +14,10 @@
   align-items: center;
 }
 
+.spacing {
+  width: 6rem;
+
+}
 
 .equipment-box svg {
   fill: var(--md-sys-color-on-surface-variant);

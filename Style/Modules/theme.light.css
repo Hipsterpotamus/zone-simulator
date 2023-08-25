@@ -30,4 +30,5 @@
  --md-sys-color-outline-variant: var(--md-sys-color-outline-variant-light);
  --md-sys-color-scrim: var(--md-sys-color-scrim-light);
  --translucent-background-color: rgba(206, 206, 206, 0.5);
+ --transparent-background: var(--md-sys-color-background-light-transparent);
 }

@@ -12,7 +12,11 @@ class Player extends Entity{
         this.as = 0;
         this.dodge = 0;
         this.gold = 25;
-        this.mana = 1000;
+        this.mana = 0;
+        this.maxMana = 15;
+        this.manaRate = 50;
+        this.manaGen = 1;
+
         this.inv = {
             'usable':['', []],
             'weapon':['', []],
@@ -79,8 +83,10 @@ class Player extends Entity{
     }
 
     // Not totally sure where you'll want this, depending on if all entities have mana
-    depleteMana(amount) { // For when mana is used is by spells
-        this.mana = min(0, this.mana - amount);
+    changeMana(amount) { // For when mana is used is by spells
+        this.mana = this.mana + amount;
+        this.mana = (this.mana >= this.maxMana) ? this.maxMana : this.mana;
+        if(this.mana>this.maxMana){}
         updateManaBar(amount, this.mana, this.maxMana);
     }
 

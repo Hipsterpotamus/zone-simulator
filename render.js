@@ -167,3 +167,10 @@ function updatePurchaseHistory(item) {
     newPurchase.text(item.name.charAt(0).toUpperCase() + item.name.substr(1) + ' - ' + item.goldPrice + ' Gold');
     newPurchase.appendTo('#gold-text-tail');
 }
+
+// Zone background theme
+function setBackgroundZone(zoneNumber) {
+    // change body's class from zone-1 to zone-2..
+    $('body').removeClass();
+    $('body').addClass('zone-'+zoneNumber);
+}

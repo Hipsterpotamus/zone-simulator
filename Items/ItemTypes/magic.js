@@ -8,8 +8,9 @@
 
 
 class Magic extends Item {
-    constructor(name, metatype, type, shortDescription, longDescription, manaCost, spell, coolDown, usesFinite, complexStats){
+    constructor(name, metatype, magicElement, type, shortDescription, longDescription, manaCost, spell, coolDown, usesFinite, complexStats){
         super(name, metatype);
+        this.magicElement = magicElement;
         this.type = type;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
@@ -30,13 +31,13 @@ class Magic extends Item {
     attemptUse(){
         if(g.combat.inCombat){
             if(g.player.mana>=this.manaCost){
-                g.player.mana-=this.manaCost;
+                g.player.changeMana(-this.manaCost);
                 this.spell();
             }else{
-                notify('Not enough mana!');
+                notify('not enough mana!');
             }
         }else{
-            notify('magic spells can only be used during combat')
+            notify('magic spells can only be used during combat!')
         }
         
     }
@@ -48,9 +49,6 @@ class Magic extends Item {
         });
         this.element.appendTo('#spell-container');
         let magicHtml = '';
-        console.log(this.name);
-        console.log(this.manaCost);
-        console.log(this.shortDescription);
         magicHtml += this.name + '<br>';
         magicHtml += this.manaCost + ' mana <br>';
         magicHtml += this.shortDescription;
