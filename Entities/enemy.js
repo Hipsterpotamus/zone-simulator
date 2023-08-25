@@ -65,6 +65,9 @@ class Enemy extends Entity{
 
         let statsList = ['dmg', 'regen', 'arm', 'dodge', 'speed', 'thorn', 'shatter', 'income', 'lifedrain', 'bleed', 'accuracy', 'superarmor', 'tear'];
         
+        // add visible class to .enemy
+        $('.enemy').addClass('visible');
+        
         $('#enemy-name').text(this.name);
         $('#enemy-hp').text(this.hp + '/' + this.maxhp);
         if (tick != -1) {$('#enemy-time').text((this.calcAs()-(tick % this.calcAs())));}

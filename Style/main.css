@@ -179,7 +179,7 @@ body.zone-3::before {
 
 }
 
-#enemy {
+.enemy {
   -webkit-transform: skewX(3deg);
   -moz-transform: skewX(3deg);
   -ms-transform: skewX(3deg);
@@ -194,6 +194,14 @@ body.zone-3::before {
   background-color: var(--transparent-background);
   /* blur back */
   /* backdrop-filter: blur(10px); */
+}
+
+.enemy {
+  display: none; /* hide the element */
+}
+
+.enemy.visible {
+  display: block; /* show the element */
 }
 
 #enemy-health {
