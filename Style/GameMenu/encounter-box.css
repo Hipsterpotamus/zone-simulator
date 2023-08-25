@@ -11,9 +11,6 @@
   display: flex;
   flex-direction: column;
   outline: 0;
-  /* blur the background and make transparent */
-  background-color: var(--md-sys-color-surface-variant);
-  
   font-family: 'Martian Mono', monospace;
   font-size: 1.5vh;
 }
