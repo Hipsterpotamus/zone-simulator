@@ -15,9 +15,9 @@ const ITEMLIST = {
     'grass whip': [15, '(2 dmg +40 speed whip)', 'weapon', ['whip', 2, 0, 0, 40]],
     'wooden sword': [12, '(6 dmg -15 speed sword)', 'weapon', ['sword', 6, 0, 0, -15]],
     'bristly twig': [13, '(5 dmg +20 speed -1 regen whip)', 'weapon', ['whip', 5, 0, -1, 20]],
-    'wooden axe': [23, '(18 dmg -100 speed axe)', 'weapon', ['axe', 18, 0, 0, -100]],
+    'wooden axe': [24, '(20 dmg -100 speed axe)', 'weapon', ['axe', 18, 0, 0, -100]],
     'thick rod': [18, '(8 dmg club)', 'weapon', ['club', 8, 0, 0, 0]],
-    'cobblestone sword': [24, '(11 dmg sword)', 'weapon', ['sword', 11, 0, 0, 0]],
+    'cobblestone sword': [28, '(11 dmg sword)', 'weapon', ['sword', 11, 0, 0, 0]],
     'rock on stick': [19, '(7 dmg +1 armor club)', 'weapon', ['club', 7, 1, 0, 0]],
     'boxing gloves': [19, '(2 dmg +2 armor +2 speed gloves)', 'weapon', ['gloves', 2, 2, 0, 2]],
     'stone short sword': [15, '(4 dmg +12 speed sword)', 'weapon', ['sword', 4, 0, 0, 12]],
@@ -190,7 +190,7 @@ const ITEMLIST = {
 
 
   'shock': [25, '(spell: 12 mana -> deal 10 dmg)', 'magic', ['electric','hit','deal 10 dmg','Deal 10 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 12, function(){
-        g.combat.enemy.receiveNonHitDmg(g.combat.player, 10);
+        g.combat.enemy.receiveNonHitDmg(10,g.combat.player);
   }, 0, 0]],
   'growth spurt': [30, '(spell: 15 mana -> gain 1 max hp)', 'magic', ['plant','buff','gain 1 max hp','Gain 1 max hp, includes gain of 1 hp. Infinite uses', 15, function(){
         g.combat.player.changeMaxHp(1);
@@ -201,8 +201,8 @@ const ITEMLIST = {
   'grass disarm': [18, '(spell: 5 mana -> remove 1 enemy armor)', 'magic', ['plant','debuff','enemy loses one armor','Enemy receives -1 armor, can go negative. Does not interact with shatter. Infinite uses', 5, function(){
         g.combat.enemy.changeStat('arm',-1);
   }, 0, 0]],
-  'blood let': [38, '(spell: 15 mana -> lose 15 hp, +1 dmg, +1 armor)', 'magic', ['blood','buff','lose 15 hp, +1 dmg, +1 armor','Lose 15 hp, gain a permanent stat buff of +1 dmg and +1 armor. Infinite uses', 15, function(){
-        g.combat.player.changeHp(-15);
+  'blood let': [38, '(spell: 15 mana -> lose 10 hp, +1 dmg, +1 armor)', 'magic', ['blood','buff','lose 10 hp, +1 dmg, +1 armor','Lose 10 hp, gain a permanent stat buff of +1 dmg and +1 armor. Infinite uses', 15, function(){
+        g.combat.player.changeHp(-10);
         g.combat.player.changeStat('dmg', 1);
         g.combat.player.changeStat('arm', 1);
   }, 0, 0]],
