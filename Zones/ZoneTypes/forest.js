@@ -96,7 +96,9 @@ class Forest extends Zone {
         };
 
         this.bossStats = [
-            ['hairy g.o.a.t.', 'critter', 115, -25, 13, 2, 75, 1, 0, {'tear':2}]
+            ['the goblin king', 'goblin', 240, -95, 65, 8, 120, 3, 0, {'shatter':55}]//Once we've established the systems for multiple enemies, this fight will primarily revolve around weak goblins high attack rate goblins being summoned by the king with a low attack rate
+            ['the elven mystic', 'elf', 186, 0, 36, 2, 120, 8, 0, {'dodge':30,'tear':1}]
+            ['the dryad oracle', 'dryad', 280, -80, 42, 20, 120, 3, 0, {'lifedrain':55,'shatter':30}]
         ];
 
         //could assign this in the parent class if this distribution holds across zones

@@ -2,7 +2,7 @@ class Beach extends Zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
         this.maxZoneLevel = 9;
-        this.shopCode = [3,3,4,2]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
+        this.shopCode = [3,3,3,2,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
         this.pathGen = [20, //max spaces,
             [['shop', 50, 15, 0], //[shop start, shop grow, shop reset],
             ['event', 30, 15, 0], //[event start, event grow, event reset],
@@ -114,28 +114,29 @@ class Beach extends Zone {
         }
 
         this.zoneItems = [
-            'iron cutlass',
+                        
+            'iron short sword',
+            'iron long sword',
+            'iron hand axe',
+            'iron battle axe',
+            'iron sabre',
             'iron trident',
-            'iron flail',
-            'iron harpoon',
-            'steel cutlass',
+            'steel short sword',
+            'steel long sword',
+            'steel hand axe',
+            'steel battle axe',
+            'steel sabre',
             'steel trident',
-            'steel flail',
-            'steel harpoon',
             'coral mace',
             'shark tooth dagger',
-            'whale bone axe',
-            'seashell shield',
-            'pirate saber',
-            'jellyfish whip',
-            'anchor club',
-            'crab claw gloves',
-            'surfboard sword',
-            'fishing rod whip',
-            'harpoon spear',
-            'dolphin fin knife',
-            'sunken cannon',
-            'sea serpent staff',
+            'pirate cutlass',
+            'seaweed whip',
+            'pirate cannon',
+            'mermaid gloves',
+            'crabwalker claws',
+            'turtle shell club',
+
+
         
             'sailor cap',
             'seashell beret',

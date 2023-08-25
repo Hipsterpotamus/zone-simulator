@@ -1,8 +1,8 @@
 //zone conventions:
 
-//grasslands -> wooden and stone, all basic stats +dodge
-//forest -> copper and bronze, +shatter +lifedrain 
-//beach -> iron and steel, +bleed +accuracy +thorn
+//grasslands -> wooden and stone, all basic stats +dodge, mostly animals
+//forest -> copper and bronze, +shatter +lifedrain, elf-dryad-goblin
+//beach -> iron and steel, +bleed +accuracy +thorn, pirate-mermaid-crabwalkers-turtlemen
 
 
 const ITEMLIST = {
@@ -511,31 +511,32 @@ const ITEMLIST = {
 
 
 
-    //gpt genned beach items
-  //equippables
+   //BEACH
 
-  'iron cutlass': [48, '(22 dmg +12 speed +5 bleed sword)', 'weapon', ['sword', 22, 0, 0, 12, {'bleed':5}]],
-  'iron trident': [52, '(30 dmg +1 armor -40 speed +10 accuracy spear)', 'weapon', ['spear', 30, 1, 0, -40, {'accuracy':10}]],
-  'iron flail': [36, '(18 dmg +10 speed +5 shatter mace)', 'weapon', ['mace', 18, 0, 0, 10, {'shatter':5}]],
-  'iron harpoon': [46, '(28 dmg +2 armor -30 speed +10 accuracy spear)', 'weapon', ['spear', 28, 2, 0, -30, {'accuracy':10}]],
-  'steel cutlass': [66, '(27 dmg +18 speed +8 bleed sword)', 'weapon', ['sword', 27, 0, 0, 18, {'bleed':8}]],
-  'steel trident': [80, '(38 dmg +2 armor -45 speed +15 accuracy spear)', 'weapon', ['spear', 38, 2, 0, -45, {'accuracy':15}]],
-  'steel flail': [54, '(24 dmg +15 speed +10 shatter mace)', 'weapon', ['mace', 24, 0, 0, 15, {'shatter':10}]],
-  'steel harpoon': [68, '(35 dmg +3 armor -35 speed +12 accuracy spear)', 'weapon', ['spear', 35, 3, 0, -35, {'accuracy':12}]],
-  'coral mace': [76, '(38 dmg -38 speed +14 shatter club)', 'weapon', ['club', 38, 0, 0, -38, {'shatter':14}]],
-  'shark tooth dagger': [68, '(27 dmg +48 speed +14 bleed knife)', 'weapon', ['knife', 27, 0, 0, 48, {'bleed':14}]],
-  'whale bone axe': [96, '(53 dmg +3 armor -58 speed +18 shatter axe)', 'weapon', ['axe', 53, 3, 0, -58, {'shatter':18}]],
-  'seashell shield': [82, '(9 dmg +18 armor -28 speed +9 thorn shield)', 'weapon', ['shield', 9, 18, 0, -28, {'thorn':9}]],
-  'pirate saber': [88, '(31 dmg +24 speed +4 dodge sword)', 'weapon', ['sword', 31, 0, 0, 24, {'dodge':4, 'income':2}]],
-  'jellyfish whip': [92, '(24 dmg +38 speed +9 lifedrain whip)', 'weapon', ['whip', 24, 0, 0, 38, {'lifedrain':9}]],
-  'anchor club': [106, '(58 dmg -78 speed +28 shatter club)', 'weapon', ['club', 58, 0, 0, -78, {'shatter':28}]],
-  'crab claw gloves': [78, '(29 dmg +4 armor +9 thorn gloves)', 'weapon', ['gloves', 29, 4, 0, 0, {'thorn':9}]],
-  'surfboard sword': [68, '(27 dmg +48 speed sword)', 'weapon', ['sword', 27, 0, 0, 48]],
-  'fishing rod whip': [64, '(17 dmg +53 speed +4 lifedrain whip)', 'weapon', ['whip', 17, 0, 0, 53, {'lifedrain':4, 'income':3}]],
-  'harpoon spear': [82, '(38 dmg +9 speed +14 accuracy spear)', 'weapon', ['spear', 38, 0, 0, 9, {'accuracy':14}]],
-  'dolphin fin knife': [73, '(31 dmg +38 speed +4 dodge knife)', 'weapon', ['knife', 31, 0, 0, 38, {'dodge':4}]],
-  'sunken cannon': [116, '(68 dmg -98 speed +38 shatter cannon)', 'weapon', ['cannon', 68, 0, 0, -98, {'shatter':38}]],
-  'sea serpent staff': [98, '(48 dmg +4 armor -58 speed +18 lifedrain staff)', 'weapon', ['staff', 48, 4, 0, -58, {'lifedrain':18}]],
+   //WEAPONS
+
+
+  'iron short sword': [62, '(28 dmg +22 speed sword)','weapon',['sword',28,0,0,22]],
+  'iron long sword': [85, '(51 dmg +9 armor -40 speed sword)','weapon',['sword',51,9,0,-40]],
+  'iron hand axe': [85, '(34 dmg +18 speed +15 shatter axe)','weapon',['axe',34,0,0,18,{'shatter':15}]],
+  'iron battle axe': [109, '(59 dmg +5 armor -50 speed +90 shatter axe)','weapon',['axe',59,5,0,-50,{'shatter':90}]],
+  'iron sabre': [78, '(25 dmg +35 speed +5 bleed sword)', 'weapon', ['sword', 25, 0, 0, 35, {'bleed':5}]],
+  'iron trident': [81, '(38 dmg +3 armor -35 speed 35 bleed spear)', 'weapon', ['spear', 38, 3, 0, -35, {'bleed':35}]],
+  'steel short sword': [93, '(38 dmg +20 speed sword)','weapon',['sword',38,0,0,20]],
+  'steel long sword': [126, '62 dmg +12 armor -30 speed sword)','weapon',['sword',62,12,0,-30]],
+  'steel hand axe': [129, '49 dmg +18 speed +25 shatter axe)','weapon',['axe',49,0,0,18,{'shatter':25}]],
+  'steel battle axe': [171, '(130 dmg +7 armor -60 speed +120 shatter axe)','weapon',['axe',130,7,0,-60,{'shatter':120}]],
+  'steel sabre': [120, '(37 dmg +35 speed +8 bleed sword)', 'weapon', ['sword', 37, 0, 0, 35, {'bleed':8}]],
+  'steel trident': [136, '(72 dmg +4 armor -45 speed 55 bleed spear)', 'weapon', ['spear', 72, 4, 0, -45, {'bleed':55}]],
+  'coral mace': [76, '(38 dmg -38 speed +2 regen +14 shatter club)', 'weapon', ['club', 38, 0, 2, -38, {'shatter':14}]],
+  'shark tooth dagger': [96, '(30 dmg +20 speed +15 bleed knife)', 'weapon', ['knife', 30, 0, 0, 20, {'bleed':15}]],
+  'pirate cutlass': [148, '(40 dmg +25 speed +10 bleed +4 income sword)', 'weapon', ['sword', 27, 0, 0, 25, {'bleed':10,'income':4}]],
+  'seaweed whip': [80, '(36 dmg +24 speed whip)', 'weapon', ['whip', 36, 0, 0, 24]],
+  'pirate cannon': [225, '(300 dmg -400 speed +100 shatter weapon)', 'weapon', ['misc', 300, 0, 0, -400, {'shatter':100}]],
+  'mermaid gloves': [130, '(60 dmg -20 speed +25 lifedrain gloves)', 'weapon', ['gloves', 60, 0, 0, -20, {'lifedrain':25}]],
+  'crabwalker claws': [150, '(40 dmg +20 speed -5 regen +20 shatter +80 bleed gloves)', 'weapon', ['gloves', 40, 0, -5, 20, {'shatter':20,'bleed':80}]],
+  'turtle shell club': [135, '(90 dmg -40 speed +10 shatter +20 lifedrain club)', 'weapon', ['club', 90, 0, 0, -40, {'lifedrain':20}]],
+
 
   'sailor cap': [60, '(5 armor hat)', 'head', ['hat', 0, 5, 0, 0]],
   'seashell beret': [40, '(2 armor +20 speed hat)', 'head', ['hat', 0, 2, 0, 20]],
