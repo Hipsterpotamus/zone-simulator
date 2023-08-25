@@ -1,21 +1,14 @@
-class Event {
-    constructor(title, description, choices) {
+class EventCreator {
+    constructor(game, title, description, choices) {
+        this.game = game;
         this.title = title;
         this.description = description;
         this.choices = choices;
 
-        this.titleE;
         this.descriptionE;
     }
 
     createElements() {
-        // this.titleE = $('<p>', {
-        //     'class': 'event-title'
-        // });
-        // this.titleE.text(this.title);
-        // this.titleE.appendTo('#content-central-box'); //title sent to dom
-        // change text in .large-tab-title to this.title
-        // $('.large-tab-title').text(this.title);
         setBroadcastTitleText(this.title);
 
         this.descriptionE = $('<p>', {
@@ -31,8 +24,8 @@ class Event {
                 'class': 'event-button'
             });
             button.text('' + choice.text);
-            button.on('click', function() {
-                choice.effect();
+            button.on('click', () => {
+                choice.effect(this.game);
                 $('#content-central-box').empty();
                 setNextButtonVisible(true);
             });

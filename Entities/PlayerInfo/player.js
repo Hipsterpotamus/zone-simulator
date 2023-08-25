@@ -7,35 +7,39 @@ class Player extends Entity{
         this.dmg = 1;
         this.arm = 0;
         this.regen = 0;
-        this.levelheal = 5;
+        this.levelheal = 10;
         this.income = 0;
         this.as = 0;
         this.dodge = 0;
         this.gold = 25;
-        this.mana = 1000;
+        this.mana = 15;
+        this.maxMana = 15;
+        this.manaRate = 50;
+        this.manaGen = 1;
+        this.totalPurchased = 0;
+
         this.inv = {
-            'usable':[],
-            'weapon':[],
-            'head':[],
-            'chest':[],
-            'legs':[],
-            'feet':[],
-            'magic':[]
+            'usable':['', []],
+            'weapon':['', []],
+            'head':['', []],
+            'chest':['', []],
+            'legs':['', []],
+            'feet':['', []],
+            'magic':['', []],
         }
     }
 
-    playerInit() { //used for initialization that depends on player object
-        this.inv = {
-            'usable':[new Usable('none', 'usable', 'never', '', 0, '')],
-            'weapon':[new Equippable('none', 'weapon', 'none', 0, 0, 0, 0)],
-            'head':[new Equippable('none', 'head', 'none', 0, 0, 0, 0)],
-            'chest':[new Equippable('none', 'chest', 'none', 0, 0, 0, 0)],
-            'legs':[new Equippable('none', 'legs', 'none', 0, 0, 0, 0)],
-            'feet':[new Equippable('none', 'feet', 'none', 0, 0, 0, 0)],
-            'magic':[]
-        }
+    addSelectableItem(item) {
+        this.inv[item.metatype][1].push(item);
+        item.appendElement()
+        this.changeSelectedItem(item);
     }
 
+    changeSelectedItem(item) {
+        this.inv[item.metatype][0] = item;
+        item.updateItemInfo();
+        $('#'+item.metatype+'-select').val(item.name);
+    }
 
     //generic functions
 
@@ -50,21 +54,10 @@ class Player extends Entity{
         );
     }
 
-    changeStat (stat, amount) {
-        this[stat] += amount;
-        this.updateEntityDisplay();
-    }
-
     //other
         
-    getByType(type){
-        let foundEquip;
-        this.inv[type].forEach((item)=>{
-             if(item.equipped == true){
-                 foundEquip = item;
-             }
-        })
-        return foundEquip;
+    getByType(metatype){
+        return this.inv[metatype][0];
     }
 
     changeGold(amount, inCombat = false) {
@@ -73,12 +66,18 @@ class Player extends Entity{
     }
 
     death() {
-        //add you died screen or something
+        $('#player-death').removeClass('hidden');
+        $('#player-death').addClass('fullViewport');
+        let video = $('#player-death')[0];
+        video.play();
+        video.addEventListener('ended', function() {$('#player-death').addClass('hidden')});
     }
 
     // Not totally sure where you'll want this, depending on if all entities have mana
-    depleteMana(amount) { // For when mana is used is by spells
-        this.mana = min(0, this.mana - amount);
+    changeMana(amount) { // For when mana is used is by spells
+        this.mana = this.mana + amount;
+        this.mana = (this.mana >= this.maxMana) ? this.maxMana : this.mana;
+        if(this.mana>this.maxMana){}
         updateManaBar(amount, this.mana, this.maxMana);
     }
 
@@ -94,21 +93,21 @@ class Player extends Entity{
 
     updateEntityDisplay(tick = -1) {
         let htmlOutput = '';
-        htmlOutput = this.name+' | ';
-        htmlOutput+='hp : '+this.hp+'/'+this.maxhp+' | ';
-        htmlOutput+='dmg : '+this.calcStat('dmg')+' ('+this.dmg+' + '+(this.calcStat('dmg')-this.dmg)+') | ';
-        if (tick != -1) {htmlOutput+='time: '+(this.calcAs()-(tick % this.calcAs()))+' | ';}
+        htmlOutput = this.name+'<br>';
+        htmlOutput+='hp : '+this.hp+'/'+this.maxhp+'<br>';
+        htmlOutput+='dmg : '+this.calcStat('dmg')+' ('+this.dmg+' + '+(this.calcStat('dmg')-this.dmg)+')<br>';
+        if (tick != -1) {htmlOutput+='time: '+(this.calcAs()-(tick % this.calcAs()))+'<br>';}
         if(this.shatterApplied!=0){
-            htmlOutput+='arm : '+Math.max(0,(this.calcStat('arm')-this.shatterApplied))+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+' - '+Math.min(this.calcStat('arm'), this.shatterApplied)+') | ';
+            htmlOutput+='arm : '+Math.max(0,(this.calcStat('arm')-this.shatterApplied))+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+' - '+Math.min(this.calcStat('arm'), this.shatterApplied)+')<br>';
         }else{
-            htmlOutput+='arm : '+this.calcStat('arm')+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+') | ';
+            htmlOutput+='arm : '+this.calcStat('arm')+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+')<br>';
         }
         
-        htmlOutput+='regen : '+this.calcRegen()+' ('+this.regen+' + '+(this.calcRegen()-this.regen)+') | ';
-        if(this.calcStat('dodge')!=0){htmlOutput+='dodge : '+this.calcStat('dodge')+' ('+this.dodge+' + '+(this.calcStat('dodge')-this.dodge)+') | ';}
-        if(this.calcStat('thorn')!=0){htmlOutput+='thorn : '+this.calcStat('thorn')+' ('+this.thorn+' + '+(this.calcStat('thorn')-this.thorn)+') | ';}
-        if(this.calcStat('shatter')!=0){htmlOutput+='shatter : '+this.calcStat('shatter')+' ('+this.shatter+' + '+(this.calcStat('shatter')-this.shatter)+') | ';}
-        if(this.calcStat('lifedrain')!=0){htmlOutput+='lifedrain : '+this.calcStat('lifedrain')+' ('+this.lifedrain+' + '+(this.calcStat('lifedrain')-this.lifedrain)+') | ';}
+        htmlOutput+='regen : '+this.calcRegen()+' ('+this.regen+' + '+(this.calcRegen()-this.regen)+')<br>';
+        if(this.calcStat('dodge')!=0){htmlOutput+='dodge : '+this.calcStat('dodge')+' ('+this.dodge+' + '+(this.calcStat('dodge')-this.dodge)+')<br>';}
+        if(this.calcStat('thorn')!=0){htmlOutput+='thorn : '+this.calcStat('thorn')+' ('+this.thorn+' + '+(this.calcStat('thorn')-this.thorn)+')<br>';}
+        if(this.calcStat('shatter')!=0){htmlOutput+='shatter : '+this.calcStat('shatter')+' ('+this.shatter+' + '+(this.calcStat('shatter')-this.shatter)+')<br>';}
+        if(this.calcStat('lifedrain')!=0){htmlOutput+='lifedrain : '+this.calcStat('lifedrain')+' ('+this.lifedrain+' + '+(this.calcStat('lifedrain')-this.lifedrain)+')<br>';}
 
         $('#player-stats').html(htmlOutput);
     }

@@ -1,18 +1,13 @@
-let g; //game
-
-function startGame(characterClass){
-    g = {
-        'g':0,
-        'zone': new Grasslands(),
-        'player': new characterClass('human'),
-        'path': new Path(0),
-        'combat': new Combat(20), //change this value to change combat/tick speed
-        'level': 1,
-        'xp': 0,
-        'areaCompletion':false,
-        'purchaseHistory':[]
+class Game {
+    constructor(characterClass) {
+        this.purchaseHistory = [];
+        this.player = new characterClass('human');
+        this.combat = new Combat();
+        this.zone = new Grasslands(this);
+        this.path = new Path(this);
     }
-    g.player.playerInit();
-    g.zone.zoneInit();
-    g.path.generatePath(...g.zone.pathGen);
+
+    startGame() {
+        this.path.generatePath(...this.zone.pathGen);
+    }
 }
