@@ -7,7 +7,7 @@ class Grasslands extends Zone {
             [['shop', 85, 15, 0], //[shop start, shop grow, shop reset],
             ['event', 15, 10, 0], //[event start, event grow, event reset],
             ['rest', 5, 5, 5], //[rest start, rest grow, rest reset],
-            ['enemy', 50, 10, 20]], //[enemy start, enemy grow, enemy reset],
+            ['enemy', 50, 25, 30]], //[enemy start, enemy grow, enemy reset],
             { // set consistent levels here
                 1 : 'enemy',
                 2 : 'shop',
