@@ -280,7 +280,7 @@ const ITEMLIST = {
   'elven shoes': [41, '(4 armor +10 speed +8 dodge boots)', 'feet', ['shoes', 0, 4, 0, 10, {'dodge':8}]],
   'dryad boots': [58, '(6 armor +2 regen +5 speed +8 lifesteal boots)', 'feet', ['boots', 0, 6, 2, 5, {'lifedrain':8}]],
   'hollowed out fish': [41, '(5 armor +4 regen -12 speed feet)', 'feet', ['misc', 0, 5, 4, -12]],
-  'locust wrap feet': [32, '(3 armor +2 regem +5 speed feet)', 'feet', ['misc', 0, 3, 2, 5]],
+  'locust wrap feet': [32, '(3 armor +2 regen +5 speed feet)', 'feet', ['misc', 0, 3, 2, 5]],
   'maple leef sandals': [27, '(4 armor +2 lifedrain sandals)', 'feet', ['sandals', 0, 4, 0, 0, {'lifedrain':2}]],
   'hardened sap shoes': [53, '(9 armor -30 speed shoes)', 'feet', ['shoes', 0, 9, 0, -30]],
 

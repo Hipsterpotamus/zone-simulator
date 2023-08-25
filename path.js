@@ -155,10 +155,3 @@ $(function() {
     $('#go-next-debug').on('click', function() { game.path.advancePath(); });
     $('.floating-next').on('click', function() { game.path.advancePath(); });
 });
-
-//if (rnd < 0.33) {
-//    eventInfo = eventList['A Tree House'];
-//} else if (rnd < 0.66) {
-//    eventInfo = eventList['A Dryad Temple'];
-//} else {
-//    eventInfo = eventList['A Dam'];

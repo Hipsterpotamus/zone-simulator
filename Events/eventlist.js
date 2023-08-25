@@ -325,8 +325,8 @@ const eventList = {
         {
             text: 'Train: +8 armor +5 level heal',
             effect: function() {
-                g.player.changeStat('arm',8);
-                g.player.changeStat('levelheal',5);
+                game.player.changeStat('arm',8);
+                game.player.changeStat('levelheal',5);
             }
         }
     ]),
@@ -428,8 +428,8 @@ const eventList = {
         {
             text: 'Train: +8 armor +5 level heal',
             effect: function() {
-                g.player.changeStat('arm',8);
-                g.player.changeStat('levelheal',5);
+                game.player.changeStat('arm',8);
+                game.player.changeStat('levelheal',5);
             }
         }
     ]),
@@ -520,13 +520,13 @@ const eventList = {
         {
             text: 'Wade in Water: Gain +25 max hp',
             effect: function() {
-                g.player.changeMaxHp(25);
+                game.player.changeMaxHp(25);
             }
         },
         {
             text: "Study Dam: Gain +5 armor",
             effect: function() {
-                g.player.changeStat('arm',5);
+                game.player.changeStat('arm',5);
             }
         }
     ]),
