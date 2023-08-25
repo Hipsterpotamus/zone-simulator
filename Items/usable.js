@@ -19,10 +19,11 @@ class Usable extends Item {
     attemptUse(){
         if(this.uses > 0){
             if(this.type == 'combat'){
-                if(g.combat && g.combat.inCombat){
+                if(g.combat.inCombat){
                     this.uses -= 1;
                     this.onUse();
-                }else{notify('You must be in combat to use ' + this.name + '.')
+                }else{
+                    // for future: communicate to player that item must be used in combat
                 }
             }else if(this.type == 'all'){
                 this.uses -= 1;
@@ -30,7 +31,7 @@ class Usable extends Item {
             }
             this.updateItemInfo();
         }else{
-            notify('You are out of uses of ' + this.name + '.')
+            // for future: communicate to player that uses = 0 and item use failed
         }
     }
 
@@ -38,3 +39,9 @@ class Usable extends Item {
         $('#usable-select-description').html(this.description+'<br>count : '+this.uses);
     }
 }
+
+$(function(){
+    $('#use-usable').on('click',function(){
+        g.player.getByType('usable').attemptUse();
+    })
+});

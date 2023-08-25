@@ -8,56 +8,66 @@
 
 
 class Magic extends Item {
-    constructor(game, name, metatype, magicElement, type, shortDescription, longDescription, manaCost, onUse, coolDown, usesFinite, complexStats){
+    constructor(name, metatype, type, shortDescription, longDescription, manaCost, spell, coolDown, usesFinite, complexStats){
         super(name, metatype);
-        this.game = game;
-        this.magicElement = magicElement;
         this.type = type;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.manaCost = manaCost;
         this.coolDown = coolDown;
         this.usesFinite = usesFinite;
-        this.onUse = onUse;
+        this.spell = spell;
         
         if(complexStats){
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];
             });
         }
+
+        this.appendElement();
     }
 
     attemptUse(){
-        if(this.game.combat.inCombat){
-            if(this.game.player.mana>=this.manaCost){
-                this.game.player.changeMana(-this.manaCost);
-                this.onUse(this.game);
+        if(g.combat.inCombat){
+            if(g.player.mana>=this.manaCost){
+                g.player.mana-=this.manaCost;
+                this.spell();
             }else{
-                notify('not enough mana!');
+                notify('Not enough mana!');
             }
         }else{
-            notify('magic spells can only be used during combat!')
+            notify('magic spells can only be used during combat')
         }
         
     }
     appendElement() {
         this.element = $('<button>', {
-            'value': this.name,
-            'id': this.name + '-spell-use',
+            'val': this.name,
+            'id': this.name + '–spell–use',
             'class': 'magic-spell'
         });
         this.element.appendTo('#spell-container');
         let magicHtml = '';
+        console.log(this.name);
+        console.log(this.manaCost);
+        console.log(this.shortDescription);
         magicHtml += this.name + '<br>';
         magicHtml += this.manaCost + ' mana <br>';
         magicHtml += this.shortDescription;
         this.element.html(magicHtml);
-        this.element.on('click', () => { 
-            this.attemptUse();
-        });
-    }
-
-    updateItemInfo() {
-        //add stuff here if you want any selectable/equippable behavior for magic items
+        this.element.on('click',spellClick);
     }
 }
+
+
+function spellClick(){
+    console.log('epic');
+    let value = $(this).val();
+    for(x in g.player.inv.magic){
+        console.log(value);
+        if(g.player.inv.magic[x].name == value){
+            g.player.inv.magic[x].attemptUse();
+        }
+    }
+}
+//

@@ -27,7 +27,7 @@
         <script src="path.js"></script>
         <script src="combat.js"></script>
         <script src="render.js"></script>
-        <script src="Events/eventcreator.js"></script>
+        <script src="Events/event.js"></script>
         <script src="Events/eventlist.js"></script>
         <script src="Entities/entity.js"></script>
         <script src="Entities/PlayerInfo/player.js"></script>
@@ -55,9 +55,8 @@
         <script src="Zones/zone.js"></script>
         <script src="Zones/ZoneTypes/grasslands.js"></script>
         <script src="Zones/ZoneTypes/forest.js"></script>
-        <script src="Zones/ZoneTypes/beach.js"></script>
         <script src="Style/tail.js"></script>
-        <script src="startGame.js"></script>
+        <script src="listeners.js"></script>
 
 
         
@@ -159,7 +158,8 @@
         </div>
         <div id = 'game-screen' class = 'hidden'>
             <div class="game-header">
-                <p class = "header-p on-primary-container-text" id = "zone-text">zone: 0–0</p>
+                <p class = "header-p on-primary-container-text" id = "zone-text">zone: 1–1</p>
+                <p class = 'header-p on-primary-container-text' id = 'place-text'>shop</p>
                 <p class = "header-p on-primary-container-text has-tail" id = "gold-text">gold: 0</p>
                 <div class="debug">
                     <button id = 'go-next-debug'>Force Next Level</button>
@@ -237,7 +237,7 @@
 
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='weapon-select' title="weapon">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='weapon-select' title="Weapon">
                             <option value="" disabled selected>Weapon</option>
                         </select>
                     </div>
@@ -247,7 +247,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='head-select' title="head">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='head-select' title="Head">
                             <option value="" disabled selected>Head</option>
                         </select>
                     </div>
@@ -257,7 +257,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='chest-select' title="chest">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='chest-select' title="Chest">
                             <option value="" disabled selected>Chest</option>
                         </select>
                     </div>
@@ -267,7 +267,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='legs-select' title="legs">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='legs-select' title="Legs">
                             <option value="" disabled selected>Legs</option>
                         </select>
                     </div>
@@ -277,7 +277,7 @@
                 </div>
                 <div class="equipment-item shadow hover secondary-container">
                     <div class = 'title-container'>
-                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='feet-select' title="feet">
+                        <select class = 'equip-select secondary shadow on-secondary-text select' id ='feet-select' title="Feet">
                             <option value="" disabled selected>Feet</option>
                         </select>
                     </div>
@@ -322,7 +322,7 @@
                 <div class = 'large-tab-row secondary-container on-seconary-container-text' id = 'items-tab-row'>
                     <div class = 'items-tab-left-container'>
                         <div>
-                            <select id = "usable-select" class="select shadow primary on-primary-text" title="usable">
+                            <select id = "usable-select" class="select shadow primary on-primary-text">
                             </select>
                         </div>
                     </div>
@@ -337,7 +337,7 @@
 
                 <!-- Spell Box -->
                 <div class="large-tab-row primary-container on-primary-container-text" id="magic-tab-row" >
-                    <div class = 'fifth-magic-row'><p id = 'mana-count-title'>mana: 0</p></div>
+                    <div class = 'fifth-magic-row'><p>mana: 0</p></div>
                     <div id="mana-bar-container" data-total="1000" data-value="1000">
                         <div id="mana-bar">
                               <div id="mana-hit-bar"></div>
@@ -369,10 +369,6 @@
         <div id='gold-text-tail' class="hidden draggable tail"> <!-- Info on event/shop title box -->
             <p></p><b>Purchases</b> - Total: <span id="purchase-total">0</span></p>
         </div>
-        <video class="hidden" id="player-death" width="640" height="360">
-            <source src="Zones/Images/playerdeath.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
       
     </body>
 </html>

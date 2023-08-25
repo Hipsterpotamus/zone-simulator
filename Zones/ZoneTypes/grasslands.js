@@ -2,21 +2,19 @@ class Grasslands extends Zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
         this.maxZoneLevel = 9;
-        this.shopCode = [3,2,2,1,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber, magicNumber]
+        this.shopCode = [3,2,3,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
         this.pathGen = [20, //max spaces,
             [['shop', 85, 15, 0], //[shop start, shop grow, shop reset],
-            ['event', 15, 10, 0], //[event start, event grow, event reset],
+            ['event', 15, 9, 0], //[event start, event grow, event reset],
             ['rest', 5, 5, 5], //[rest start, rest grow, rest reset],
-            ['enemy', 50, 25, 30]], //[enemy start, enemy grow, enemy reset],
+            ['enemy', 50, 5, 20]], //[enemy start, enemy grow, enemy reset],
             { // set consistent levels here
-                0 : 'empty',
                 1 : 'enemy',
                 2 : 'shop',
                 14 : 'pathEvent',
                 20 : 'boss'
             }];
         this.zoneLable = 'grassland';
-        this.zoneMessage = 'Flowing grass, and a dusty trail...';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
         this.enemyStats = {
             //zoneLevel : [
@@ -115,86 +113,71 @@ class Grasslands extends Zone {
             8: [0, 0.25],
             9: [0, 0]
         }
-        
+
         this.zoneItems = [
-            'branch',
-            'thistle knife',
-            'small dagger',
-            'broom',
-            'grass whip',
-            'wooden sword',
-            'bristly twig',
-            'wooden axe',
-            'thick rod',
-            'cobblestone sword',
-            'rock on stick',
-            'boxing gloves',
-            'stone short sword',
-            'stone long sword',
-            'grass knuckles',
-            'glass bar',
-
-            'grass hat',
-            'ballcap',
-            'mud helmet',
-            'propeller hat',
-            'headband',
-
-            'cotton shirt',
-            'grass robe',
-            'leather tunic',
-            'wooden chestplate',
-            'animal pelt',
-
-            'overalls',
-            'grass skirt',
-            'hiking pants',
-            'basic shorts',
-            'hoola hoop',
-            'jorts',
-
-            'straw shoes',
-            'running shoes',
-            'walking beets',
-            'soccer cleats',
-            'hiking shoes',
-            'work boots',
-
-            'green apple',
-            'red apple',
-            'chocolate bar',
-            'protein shake',
-            'grapefruit',
-            'strawberry',
-            'ice cube',
-            'water bottle',
-            "morsel o' meat",
-            'honey comb',
-            'beef stew',
-            'artichoke',
-            'dragonfruit',
-            'cheese burger',
-            'leaflet scarf',
-            'banana',
-            'apricot',
-            'small bond',
-            'pamphlet',
-            'blue rock',
-            'magic charm',
-            'tiny gold rune',
-
-            'firecracker',
-            'throwing eggs',
-            'bandages',
-            'first aid kit',
-            'sharpening stone',
-
-            'shock',
-            'growth spurt',
-            'blood splash',
-            'grass disarm',
-            'blood let',
-            'chill'
+            //[class, item]
+            ['weapon', 'branch'],
+            ['weapon', 'thistle knife'],
+            ['weapon', 'small dagger'],
+            ['weapon', 'broom'],
+            ['weapon', 'grass whip'],
+            ['weapon', 'wooden sword'],
+            ['weapon', 'bristly twig'],
+            ['weapon', 'wooden axe'],
+            ['weapon', 'thick rod'],
+            ['weapon', 'cobblestone sword'],
+            ['weapon', 'rock on stick'],
+            ['weapon', 'boxing gloves'],
+            ['weapon', 'stone short sword'],
+            ['weapon', 'stone long sword'],
+            ['weapon', 'grass knuckles'],
+            ['weapon', 'glass bar'],
+            ['head', 'grass hat'],
+            ['head', 'ballcap'],
+            ['head', 'mud helmet'],
+            ['head', 'propeller hat'],
+            ['head', 'headband'],
+            ['chest', 'cotton shirt'],
+            ['chest', 'grass robe'],
+            ['chest', 'leather tunic'],
+            ['chest', 'wooden chestplate'],
+            ['chest', 'animal pelt'],
+            ['legs', 'overalls'],
+            ['legs', 'grass skirt'],
+            ['legs', 'hiking pants'],
+            ['legs', 'basic shorts'],
+            ['legs', 'hoola hoop'],
+            ['legs', 'jorts'],
+            ['feet', 'straw shoes'],
+            ['feet', 'running shoes'],
+            ['feet', 'walking beets'],
+            ['feet', 'soccer cleats'],
+            ['feet', 'hiking shoes'],
+            ['feet', 'work boots'],
+            ['stat', 'green apple'],
+            ['stat', 'red apple'],
+            ['stat', 'chocolate bar'],
+            ['stat', 'protein shake'],
+            ['stat', 'grapefruit'],
+            ['stat', 'strawberry'],
+            ['stat', 'ice cube'],
+            ['stat', 'water bottle'],
+            ['stat', "morsel o' meat"],
+            ['stat', 'honey comb'],
+            ['stat', 'beef stew'],
+            ['stat', 'artichoke'],
+            ['stat', 'dragonfruit'],
+            ['stat', 'cheese burger'],
+            ['stat', 'leaflet scarf'],
+            ['stat', 'banana'],
+            ['stat', 'apricot'],
+            ['stat', 'small bond'],
+            ['stat', 'pamphlet'],
+            ['usable', 'firecracker'],
+            ['usable', 'throwing eggs'],
+            ['usable', 'bandages'],
+            ['usable', 'first aid kit'],
+            ['usable', 'sharpening stone']
         ];
 
         this.zoneEvents = [
@@ -217,6 +200,8 @@ class Grasslands extends Zone {
         this.pathEvent = 'A Fork In The Road';
     }
     advanceToNextZone(){
-        return new Forest(this.game);
+        setBackgroundZone(2); 
+        g.zone = new Forest();
+        g.path.generatePath(...g.zone.pathGen);
     }
 }

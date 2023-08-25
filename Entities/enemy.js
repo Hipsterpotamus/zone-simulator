@@ -1,13 +1,10 @@
 
 class Enemy extends Entity{
-    constructor(game, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
+    constructor(name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
          super(name, type, health, attackspeed, damage, armor, gold, regen, complexStats);
-         this.game = game;
          this.complexStats = complexStats;
          this.diffC = difficultyCh;
          this.boss = false;
-         this.updateHealthBar(0);
-         $('#enemy-health-bar-container').removeClass('hidden');
     }
 
     calcStat(stat) {//should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
@@ -20,22 +17,21 @@ class Enemy extends Entity{
 
     death() {
         setBroadcastTitleText('Victory!', true)
-        this.game.player.changeGold(this.gold, true);
-        this.game.zone.changeZoneLevel(this.diffC);
-        this.game.player.cleanStatus();
-        this.game.player.changeHp(this.game.player.levelheal*this.getLvlHealMult());
+        g.player.changeGold(this.gold, true);
+        g.zone.changeZoneLevel(this.diffC);
+        g.player.cleanStatus();
+        g.player.changeHp(g.player.levelheal*this.getLvlHealMult());
 
         setNextButtonVisible(true);
     
         $('#combatTimer').addClass('hidden');
-        $('#enemy-health-bar-container').addClass('hidden');
         this.updateEntityDisplay();
     }
 
     //display
 
     updateHealthBar(damage) {
-        let healthBar = $('#enemy-health-bar-container'),
+        var healthBar = $('#enemy-health-bar-container'),
         bar = healthBar.find('#enemy-health-bar'),
         hit = healthBar.find('#enemy-health-hit-bar');
         updateBar(-damage, this.hp, this.maxhp, healthBar, bar, hit);

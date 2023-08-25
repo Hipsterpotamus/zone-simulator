@@ -122,7 +122,6 @@ $(function() {
 // Health/Mana Bars
 
 function updateManaBar(cost, newValue, maxMana) { // cost of spell, new Mana value, max Mana value
-    $('#mana-count-title').text('mana: '+newValue+'/'+maxMana);
     var manaBar = $('#mana-bar-container'),
         bar = manaBar.find('#mana-bar'),
         hit = manaBar.find('#mana-hit-bar');
@@ -150,6 +149,23 @@ function notify(notification, length=3) {
     x.className = "show";
     $('#toast').text(notification);
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, length * 1000);
+}
+
+var totalPurchased = 0;
+function updatePurchaseHistory(item) {
+    totalPurchased += item.goldPrice;
+    // update the #purchase-total value
+    $('#purchase-total').text(totalPurchased); 
+
+
+    console.log('updating purchase history', item);
+    g.purchaseHistory.push(this);
+    // add new <p> to #gold-text-tail
+    let newPurchase = $('<p>', {
+        'class': 'gold-text-tail-item'
+    });
+    newPurchase.text(item.name.charAt(0).toUpperCase() + item.name.substr(1) + ' - ' + item.goldPrice + ' Gold');
+    newPurchase.appendTo('#gold-text-tail');
 }
 
 // Zone background theme

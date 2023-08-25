@@ -154,7 +154,7 @@
 }
 .weapon-shop-item::before {
   /* set content to sowrd icon Style/Icons/Sword.png*/
-  /*content: url(../Icons/Sword.png);*/ /* removed to get rid of error message*/
+  content: url(../Icons/Sword.png);
   outline-width: 2rem;
   outline-color: var(--md-sys-color-tertiary);
 
