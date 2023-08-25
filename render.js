@@ -173,4 +173,7 @@ function setBackgroundZone(zoneNumber) {
     // change body's class from zone-1 to zone-2..
     $('body').removeClass();
     $('body').addClass('zone-'+zoneNumber);
+
+    // change background-image of #zone-image
+    $('#zone-image').css('background-image', 'url(../Zones/Images/zone-'+zoneNumber+'.png)');
 }
