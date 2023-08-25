@@ -122,6 +122,7 @@ $(function() {
 // Health/Mana Bars
 
 function updateManaBar(cost, newValue, maxMana) { // cost of spell, new Mana value, max Mana value
+    $('#mana-count-title').text('mana: '+newValue);
     var manaBar = $('#mana-bar-container'),
         bar = manaBar.find('#mana-bar'),
         hit = manaBar.find('#mana-hit-bar');
