@@ -133,5 +133,10 @@ body.zone-3::before {
 
 }
 
-
+#go-next-button {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
 

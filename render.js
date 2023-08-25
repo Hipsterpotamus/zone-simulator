@@ -44,10 +44,14 @@ function setNextButtonVisible(visible) {
 
 // Draggable Classes
 $(function() {
-    $( ".draggable" ).draggable();
-    $( ".draggable-x" ).draggable({ axis: "x" });
+    $(".draggable").draggable({
+        cancel: "#go-next-button"  // Prevents dragging when this element is clicked
+    });
+    $(".draggable-x").draggable({ 
+        axis: "x",
+        cancel: "#go-next-button"  // Prevents dragging when this element is clicked
+    });
 });
-
 
 // Theme Buttons
 const link = document.querySelector('link[href="Style/Themes/theme-dark-bloodorange.css"]');
