@@ -78,7 +78,31 @@ class Path {
 
     shopEvent() {
         setBroadcastTitleText('Shop');
-        g.zone.fillShop();
+
+        const ITEMCATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'usable', 'magic'];
+
+        let shopCode = g.zone.shopCode;
+        let shopCodeExpand = [shopCode[0], 0, 0, 0, 0, shopCode[2], shopCode[3], shopCode[4]];
+
+        for (let i = 0; i < shopCode[1]; i++) {
+            const randNum = Math.floor(Math.random() * 4) + 1;
+            shopCodeExpand[randNum] += 1;
+        }
+    
+        ITEMCATEGORIES.forEach((category, index) => {
+            let count = shopCodeExpand[index] || 0;
+            let availableItems = g.zone.zoneItemList[category];
+    
+            for (let i = 0; i < count; i++) {
+                if (availableItems.length === 0) {
+                    break;
+                }
+                const searchInd = Math.floor(Math.random() * availableItems.length);
+                let item = availableItems[searchInd];
+                availableItems.splice(searchInd, 1);
+                item.appendShopItem();
+            }
+        });
     }
 
     eventEvent() {
