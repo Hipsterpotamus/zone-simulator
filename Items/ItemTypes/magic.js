@@ -8,7 +8,7 @@
 
 
 class Magic extends Item {
-    constructor(name, metatype, magicElement, type, shortDescription, longDescription, manaCost, spell, coolDown, usesFinite, complexStats){
+    constructor(name, metatype, magicElement, type, shortDescription, longDescription, manaCost, onUse, coolDown, usesFinite, complexStats){
         super(name, metatype);
         this.magicElement = magicElement;
         this.type = type;
@@ -17,22 +17,20 @@ class Magic extends Item {
         this.manaCost = manaCost;
         this.coolDown = coolDown;
         this.usesFinite = usesFinite;
-        this.spell = spell;
+        this.onUse = onUse;
         
         if(complexStats){
             Object.keys(complexStats).forEach((stat)=>{
                 this[stat] = complexStats[stat];
             });
         }
-
-        this.appendElement();
     }
 
     attemptUse(){
         if(g.combat.inCombat){
             if(g.player.mana>=this.manaCost){
                 g.player.changeMana(-this.manaCost);
-                this.spell();
+                this.onUse();
             }else{
                 notify('not enough mana!');
             }
@@ -43,8 +41,8 @@ class Magic extends Item {
     }
     appendElement() {
         this.element = $('<button>', {
-            'val': this.name,
-            'id': this.name + '–spell–use',
+            'value': this.name,
+            'id': this.name + '-spell-use',
             'class': 'magic-spell'
         });
         this.element.appendTo('#spell-container');
@@ -53,19 +51,12 @@ class Magic extends Item {
         magicHtml += this.manaCost + ' mana <br>';
         magicHtml += this.shortDescription;
         this.element.html(magicHtml);
-        this.element.on('click',spellClick);
+        this.element.on('click', () => { 
+            this.attemptUse();
+        });
+    }
+
+    updateItemInfo() {
+        //add stuff here if you want any selectable/equippable behavior for magic items
     }
 }
-
-
-function spellClick(){
-    console.log('epic');
-    let value = $(this).val();
-    for(x in g.player.inv.magic){
-        console.log(value);
-        if(g.player.inv.magic[x].name == value){
-            g.player.inv.magic[x].attemptUse();
-        }
-    }
-}
-//
