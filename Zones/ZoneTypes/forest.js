@@ -201,7 +201,11 @@ class Forest extends Zone {
             'medium bond',
             'golden fish',
             'bark pamphlette',
-            
+            'small gold rune',
+            'charcoal tonic',
+            'dryad scrap',
+            'transfixed sap',
+
             'goblin bomb',
             'dryad throwing leaves',
             'elf bandages',

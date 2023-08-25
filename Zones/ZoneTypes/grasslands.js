@@ -177,6 +177,9 @@ class Grasslands extends Zone {
             'apricot',
             'small bond',
             'pamphlet',
+            'blue rock',
+            'magic charm',
+            'tiny gold rune',
 
             'firecracker',
             'throwing eggs',

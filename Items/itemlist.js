@@ -143,6 +143,19 @@ const ITEMLIST = {
         g.player.changeStat('income', 1);
         g.player.changeStat('regen', 1);
     }]],
+    'blue rock': [12, '(+5 max mana)', 'stat', [
+    function(){
+        g.player.changeStat('maxMana', 5);
+    }]],
+    'magic charm': [18, '(+1 mana gen)', 'stat', [
+    function(){
+        g.player.changeStat('manaGen', 1);
+    }]],
+    'tiny gold rune': [27, '(+1 income +1 mana gen)', 'stat', [
+    function(){
+        g.player.changeStat('income', 1);
+        g.player.changeStat('manaGen', 1);
+    }]],
 
   //usable
   //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
@@ -376,6 +389,26 @@ const ITEMLIST = {
   function(){
       g.player.changeStat('regen', 2);
       g.player.changeStat('income', 2);
+  }]],
+  'small gold rune': [45, '(+2 income +1 mana gen)', 'stat', [
+  function(){
+      g.player.changeStat('income', 2);
+      g.player.changeStat('manaGen', 1);
+  }]],
+  'charcoal tonic': [36, '(+1 mana gen +2 armor)', 'stat', [
+  function(){
+      g.player.changeStat('manaGen', 1);
+      g.player.changeStat('arm', 2);
+  }]],
+  'dryad scrap': [20, '(+8 max mana -3 speed)', 'stat', [
+  function(){
+      g.player.changeStat('maxMana', 8);
+      g.player.changeStat('as', -3);
+  }]],
+  'transfixed sap': [33, '(+18 max hp +5 max mana)', 'stat', [
+  function(){
+      g.player.changeMaxHp(18);
+      g.player.changeStat('maxMana', 5);
   }]],
 
   //usable
