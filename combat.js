@@ -54,7 +54,12 @@ class Combat {
         this.displayCombatInfo();
 
         if (this.enemy.alive && this. player.alive) {
-            setTimeout(() => this.combatTick(), this.delay);
+            if (this.delay != 0) {
+                setTimeout(() => this.combatTick(), this.delay);
+            } else{
+                this.combatTick();
+            }
+            
         } else {
             this.inCombat = false;
         }

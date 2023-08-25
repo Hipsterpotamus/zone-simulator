@@ -127,7 +127,6 @@ class Path {
     }
 
     emptyEvent() {
-        console.log(g);
         setBroadcastTitleText(g.zone.zoneMessage, true);
     }
 
