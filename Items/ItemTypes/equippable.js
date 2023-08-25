@@ -29,7 +29,7 @@ class Equippable extends Item {
 
     changeStat (stat, amount) {
         this[stat] += amount;
-        this.updateItemDisplay();
+        this.updateItemInfo();
     }
 
     updateItemInfo() {

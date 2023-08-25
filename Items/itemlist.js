@@ -201,8 +201,8 @@ const ITEMLIST = {
   'grass disarm': [18, '(spell: 5 mana -> remove 1 enemy armor)', 'magic', ['plant','debuff','enemy loses one armor','Enemy receives -1 armor, can go negative. Does not interact with shatter. Infinite uses', 5, function(){
         g.combat.enemy.changeStat('arm',-1);
   }, 0, 0]],
-  'blood let': [30, '(spell: 15 mana -> lose 8 hp, +1 dmg, +1 armor)', 'magic', ['blood','buff','lose 8 hp, +1 dmg, +1 armor','Lose 8 hp, gain a permanent stat buff of +1 dmg and +1 armor. Infinite uses', 15, function(){
-        g.combat.player.changeHp(-8);
+  'blood let': [38, '(spell: 15 mana -> lose 15 hp, +1 dmg, +1 armor)', 'magic', ['blood','buff','lose 15 hp, +1 dmg, +1 armor','Lose 15 hp, gain a permanent stat buff of +1 dmg and +1 armor. Infinite uses', 15, function(){
+        g.combat.player.changeHp(-15);
         g.combat.player.changeStat('dmg', 1);
         g.combat.player.changeStat('arm', 1);
   }, 0, 0]],
