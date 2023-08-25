@@ -213,7 +213,7 @@ class Forest extends Zone {
             'pine cone attachments',
             'elven nectar',
             'dryad root potion',
-            
+
             'spirit invocation',
             'goblin fire dance',
             'grass overgrowth',
@@ -226,7 +226,7 @@ class Forest extends Zone {
 
         this.zoneEvents = [
             //[first possible space, last possible space, event id]
-            [1, 5, 'A Long River',
+            [1, 5, 'A Long River'],
             [3, 6, "The Wanderer's Trailmix"],
             [5, 8, "A Bird's Nest"],
             [6, 10, 'The Trapped Totem'],
