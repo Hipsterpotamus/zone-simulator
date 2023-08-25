@@ -11,6 +11,13 @@ class Enemy extends Entity{
         return (this[stat]);
     }
 
+    calcStatDisplay(stat) { // For displaying in html
+        if (stat='arm') {return this.testArm()}
+        if (stat='as') {return (this.calcAs()-(tick % this.calcAs()))}
+        if (stat='regen') {return this.calcRegen()}
+        else {return this.calcStat(stat)}
+    }
+
     getLvlHealMult() {
         return 1;
     }
@@ -52,7 +59,7 @@ class Enemy extends Entity{
         // if(!this.alive){htmlOutput = '';}
         // $('#enemy-stats').html(htmlOutput);
 
-        let statsList = ['dmg', 'arm', 'dodge', 'thorn', 'shatter', 'income', 'lifedrain', 'bleed', 'accuracy', 'superarmor', 'tear'];
+        let statsList = ['dmg', 'regen', 'arm', 'dodge', 'as', 'thorn', 'shatter', 'income', 'lifedrain', 'bleed', 'accuracy', 'superarmor', 'tear'];
         
         $('#enemy-name').text(this.name);
         $('#enemy-hp').text(this.hp + '/' + this.maxhp);
@@ -92,6 +99,8 @@ class Enemy extends Entity{
         if (!this.alive) {
             $('#enemy-stats').html('');
             $('#enemy-name').text('Defeated ' + this.name + '!');
+
+            //TODO: Display combat stats
         }
     
     }
