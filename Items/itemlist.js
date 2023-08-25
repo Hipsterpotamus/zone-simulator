@@ -58,131 +58,131 @@ const ITEMLIST = {
     //name : [price, shopDesc, metatype, [onUse, complexStats]]
     'green apple': [5, '(+5 max hp)', 'stat', [
     function(){
-        g.player.changeMaxHp(5);
+        game.player.changeMaxHp(5);
     }]],
     'red apple': [6, '(+6 max hp)', 'stat', [
     function(){
-        g.player.changeMaxHp(6);
+        game.player.changeMaxHp(6);
     }]],
     'chocolate bar': [10, '(-2 max hp +5 speed)', 'stat', [
     function(){
-        g.player.changeMaxHp(-2);
-        g.player.changeStat('as', 5);
+        game.player.changeMaxHp(-2);
+        game.player.changeStat('as', 5);
     }]],
     'protein shake': [10, '(+1 dmg)', 'stat', [
     function(){
-        g.player.changeStat('dmg', 1);
+        game.player.changeStat('dmg', 1);
     }]],
     'grapefruit': [14, '(+1 regen)', 'stat', [
     function(){
-        g.player.changeStat('regen', 1);
+        game.player.changeStat('regen', 1);
     }]],
     'strawberry': [18, '(+2 max hp +1 regen)', 'stat', [
     function(){
-        g.player.changeMaxHp(2);
-        g.player.changeStat('regen', 1);
+        game.player.changeMaxHp(2);
+        game.player.changeStat('regen', 1);
     }]],
     'ice cube': [4, '(heal 10 on purchase)', 'stat', [
     function(){
-        g.player.changeHp(10);
+        game.player.changeHp(10);
     }]],
     'water bottle': [10, '(+3 level heal)', 'stat', [
     function(){
-        g.player.changeStat('levelheal', 3);
+        game.player.changeStat('levelheal', 3);
     }]],
     "morsel o' meat": [24, '(+1 dmg +1 armor)', 'stat', [
     function(){
-        g.player.changeStat('dmg', 1);
-        g.player.changeStat('arm', 1);
+        game.player.changeStat('dmg', 1);
+        game.player.changeStat('arm', 1);
     }]],
     'honey comb': [21, '(+12 max hp)', 'stat', [
     function(){
-        g.player.changeMaxHp(12);
+        game.player.changeMaxHp(12);
     }]],
     'beef stew': [26, '(+8 max hp + full heal)', 'stat', [
     function(){
-        g.player.changeMaxHp(8);
-        g.player.changeHp('max');
+        game.player.changeMaxHp(8);
+        game.player.changeHp('max');
     }]],
     'artichoke': [20, '(+1 armor)', 'stat', [
     function(){
-        g.player.changeStat('arm', 1);
+        game.player.changeStat('arm', 1);
     }]],
     'dragonfruit': [38, '(+1 armor +1 regen)', 'stat', [
     function(){
-        g.player.changeStat('arm', 1);
-        g.player.changeStat('regen', 1);
+        game.player.changeStat('arm', 1);
+        game.player.changeStat('regen', 1);
     }]],
     'cheese burger': [38, '(+5 max hp +1 dmg +1 regen +3 speed)', 'stat', [
     function(){
-        g.player.changeMaxHp(5);
-        g.player.changeStat('dmg', 1);
-        g.player.changeStat('regen', 1);
-        g.player.changeStat('as', 3);
+        game.player.changeMaxHp(5);
+        game.player.changeStat('dmg', 1);
+        game.player.changeStat('regen', 1);
+        game.player.changeStat('as', 3);
     }]],
     'leaflet scarf': [15, '(+4% dodge)', 'stat', [
     function(){
-        g.player.changeStat('dodge', 4);
+        game.player.changeStat('dodge', 4);
     }]],
     'banana': [18, '(+14 max hp +2 speed)', 'stat', [
     function(){
-        g.player.changeMaxHp(14);
-        g.player.changeStat('as', 2);
+        game.player.changeMaxHp(14);
+        game.player.changeStat('as', 2);
     }]],
     'apricot': [18, '(+16 max hp -2 speed)', 'stat', [
     function(){
-        g.player.changeMaxHp(16);
-        g.player.changeStat('as', -2);
+        game.player.changeMaxHp(16);
+        game.player.changeStat('as', -2);
     }]],
     'small bond': [10, '(+1 income)', 'stat', [
     function(){
-        g.player.changeStat('income', 1);
+        game.player.changeStat('income', 1);
     }]],
     'pamphlet': [20, '(+1 income +1 regen)', 'stat', [
     function(){
-        g.player.changeStat('income', 1);
-        g.player.changeStat('regen', 1);
+        game.player.changeStat('income', 1);
+        game.player.changeStat('regen', 1);
     }]],
     'blue rock': [12, '(+5 max mana)', 'stat', [
     function(){
-        g.player.changeStat('maxMana', 5);
+        game.player.changeStat('maxMana', 5);
     }]],
     'magic charm': [18, '(+1 mana gen)', 'stat', [
     function(){
-        g.player.changeStat('manaGen', 1);
+        game.player.changeStat('manaGen', 1);
     }]],
     'tiny gold rune': [27, '(+1 income +1 mana gen)', 'stat', [
     function(){
-        g.player.changeStat('income', 1);
-        g.player.changeStat('manaGen', 1);
+        game.player.changeStat('income', 1);
+        game.player.changeStat('manaGen', 1);
     }]],
 
   //usable
   //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
   'firecracker': [5, '(item: deal 20 dmg, lose 2 hp)', 'usable', ['combat', 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 1, 
     function(){
-        g.combat.enemy.changeHp(-20);
-        g.combat.player.changeHp(-2);
+        game.combat.enemy.changeHp(-20);
+        game.combat.player.changeHp(-2);
   }]],
   
   'throwing eggs': [7, '(3x item: current enemy loses 3 armor)', 'usable', ['combat', "During combat, lower the current enemy's armor by 3", 3, 
     function(){
-        g.combat.enemy.arm -= 3;
+        game.combat.enemy.arm -= 3;
   }]],
   
   'bandages': [9, '(4x item: heal 5 hp)', 'usable', ['all', "Heal 5", 4, 
     function(){
-        g.player.changeHp(5);
+        game.player.changeHp(5);
   }]],
   
   'first aid kit': [8, '(item: heal 20)', 'usable', ['all', "Heal 20", 1, 
     function(){
-        g.player.changeHp(20);
+        game.player.changeHp(20);
   }]],
   
   'sharpening stone': [26, '(3x item: +2 dmg on weapon)', 'usable', ['all', "Your currently equipped weapon gains +2 dmg", 3, 
     function(){
-        g.player.getByType('weapon').changeStat('dmg', 2);
+        game.player.getByType('weapon').changeStat('dmg', 2);
   }]],
   
   
@@ -190,24 +190,24 @@ const ITEMLIST = {
 
 
   'shock': [25, '(spell: 12 mana -> deal 10 dmg)', 'magic', ['electric','hit','deal 10 dmg','Deal 10 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 12, function(){
-        g.combat.enemy.receiveNonHitDmg(10,g.combat.player);
+        game.combat.enemy.receiveNonHitDmg(10,game.combat.player);
   }, 0, 0]],
   'growth spurt': [30, '(spell: 15 mana -> gain 3 max hp)', 'magic', ['plant','buff','gain 3 max hp','Gain 3 max hp, includes gain of 3 hp. Infinite uses', 15, function(){
-        g.combat.player.changeMaxHp(3);
+        game.combat.player.changeMaxHp(3);
   }, 0, 0]],
   'blood splash': [18, '(spell: 8 mana -> heal 4)', 'magic', ['blood','heal','heal 4','Gain 4 hp, does not go over max hp. Infinite uses', 8, function(){
-        g.combat.player.changeHp(4);
+        game.combat.player.changeHp(4);
   }, 0, 0]],
   'grass disarm': [18, '(spell: 5 mana -> remove 1 enemy armor)', 'magic', ['plant','debuff','enemy loses one armor','Enemy receives -1 armor, can go negative. Does not interact with shatter. Infinite uses', 5, function(){
-        g.combat.enemy.changeStat('arm',-1);
+        game.combat.enemy.changeStat('arm',-1);
   }, 0, 0]],
   'blood let': [38, '(spell: 15 mana -> lose 10 hp, +1 dmg, +1 armor)', 'magic', ['blood','buff','lose 10 hp, +1 dmg, +1 armor','Lose 10 hp, gain a permanent stat buff of +1 dmg and +1 armor. Infinite uses', 15, function(){
-        g.combat.player.changeHp(-10);
-        g.combat.player.changeStat('dmg', 1);
-        g.combat.player.changeStat('arm', 1);
+        game.combat.player.changeHp(-10);
+        game.combat.player.changeStat('dmg', 1);
+        game.combat.player.changeStat('arm', 1);
   }, 0, 0]],
   'chill': [26, '(spell: 10 mana -> enemy loses 5 attack speed)', 'magic', ['ice','debuff','enemy loses 5 attack speed','Enemy receives -5 attack speed. Infinite uses', 10, function(){
-        g.combat.enemy.changeStat('as',-5);
+        game.combat.enemy.changeStat('as',-5);
   }, 0, 0]],
 
 
@@ -288,185 +288,185 @@ const ITEMLIST = {
   //name : [price, shopDesc, metatype, [onUse, complexStats]]
   'shiny apple': [27, '(+30 max hp)', 'stat', [
   function(){
-      g.player.changeMaxHp(30);
+      game.player.changeMaxHp(30);
   }]],
   'dark red apple': [25, '(+25 max hp, heal 3 on purchase)', 'stat', [
   function(){
-      g.player.changeMaxHp(25);
-      g.player.changeHp(3);
+      game.player.changeMaxHp(25);
+      game.player.changeHp(3);
   }]],
   'white chocolate bar': [18, '(-6 max hp +9 speed)', 'stat', [
   function(){
-      g.player.changeMaxHp(-6);
-      g.player.changeStat('as', 9);
+      game.player.changeMaxHp(-6);
+      game.player.changeStat('as', 9);
   }]],
   'milk': [15, '(+2 dmg)', 'stat', [
   function(){
-        g.player.changeStat('dmg', 2);
+        game.player.changeStat('dmg', 2);
   }]],
   'water canteen': [22, '(+8 level heal)', 'stat', [
   function(){
-      g.player.changeStat('levelheal', 8);
+      game.player.changeStat('levelheal', 8);
   }]],
   'bass fish': [16, '(+4 max hp +2 dmg)', 'stat', [
   function(){
-      g.player.changeMaxHp(4);
-      g.player.changeStat('dmg', 2);
+      game.player.changeMaxHp(4);
+      game.player.changeStat('dmg', 2);
   }]],
   'cat fish': [16, '(+4 max hp +5 speed)', 'stat', [
   function(){
-      g.player.changeMaxHp(4);
-      g.player.changeStat('stat', 5);
+      game.player.changeMaxHp(4);
+      game.player.changeStat('stat', 5);
   }]],
   'perch fish': [16, '(+4 max hp +2 armor)', 'stat', [
   function(){
-      g.player.changeMaxHp(4);
-      g.player.changeStat('arm', 2);
+      game.player.changeMaxHp(4);
+      game.player.changeStat('arm', 2);
   }]],
   'trout': [16, '(+4 max hp +1 regen)', 'stat', [
   function(){
-      g.player.changeMaxHp(4);
-      g.player.changeStat('regen', 1);
+      game.player.changeMaxHp(4);
+      game.player.changeStat('regen', 1);
   }]],
   'salmon': [16, '(+4 max hp +3 level heal)', 'stat', [
   function(){
-      g.player.changeMaxHp(4);
-      g.player.changeStat('levelheal', 3);
+      game.player.changeMaxHp(4);
+      game.player.changeStat('levelheal', 3);
   }]],
   'blood acorn': [29, '(+3 lifedrain +2 level heal)', 'stat', [
   function(){
-      g.player.changeStat('lifedrain', 3);
-      g.player.changeStat('levelheal', 2);
+      game.player.changeStat('lifedrain', 3);
+      game.player.changeStat('levelheal', 2);
   }]],
   'elven trinket': [21, '(+3 dodge)', 'stat', [
   function(){
-      g.player.changeStat('dodge, 3');
+      game.player.changeStat('dodge, 3');
   }]],
   'sluggish mushrooms': [31, '(+40 max hp -10 speed)', 'stat', [
   function(){
-      g.player.changeMaxHp(40);
-      g.player.changeStat('as', -10);
+      game.player.changeMaxHp(40);
+      game.player.changeStat('as', -10);
   }]],
   'pinecone pudding': [31, '(+25 max hp +8 level heal)', 'stat', [
   function(){
-      g.player.changeMaxHp(25);
-      g.player.changeStat('levelheal', 8);
+      game.player.changeMaxHp(25);
+      game.player.changeStat('levelheal', 8);
   }]],
   'heal ointment': [34, '(+12 level heal)', 'stat', [
   function(){
-      g.player.changeStat('levelheal', 12);
+      game.player.changeStat('levelheal', 12);
   }]],
   'cooked chicken': [25, '(+8 max hp +4 shatter)', 'stat', [
   function(){
-      g.player.changeMaxHp(8);
-      g.player.changeStat('shatter', 4);
+      game.player.changeMaxHp(8);
+      game.player.changeStat('shatter', 4);
   }]],
   'battle blood': [45, '(+5 dmg +10 shatter)', 'stat', [
   function(){
-      g.player.changeStat('dmg', 5);
-      g.player.changeStat('shatter', 10);
+      game.player.changeStat('dmg', 5);
+      game.player.changeStat('shatter', 10);
   }]],
   'bucket of ice': [22, '(heal 30 on purchase)', 'stat', [
   function(){
-      g.player.changeHp(30);
+      game.player.changeHp(30);
   }]],
   'carrot': [36, '(+3 regen +3 speed)', 'stat', [
   function(){
-      g.player.changeStat('regen', 3);
-      g.player.changeStat('as', 3);
+      game.player.changeStat('regen', 3);
+      game.player.changeStat('as', 3);
   }]],
   'medium bond': [25, '(+2 income)', 'stat', [
   function(){
-      g.player.changeStat('income', 2);
+      game.player.changeStat('income', 2);
   }]],
   'golden fish': [45, '(+25 max hp +1 income)', 'stat', [
   function(){
-      g.player.changeMaxHp(25);
-      g.player.changeStat('income', 1);
+      game.player.changeMaxHp(25);
+      game.player.changeStat('income', 1);
   }]],
   'bark pamphlette': [40, '(+2 regen +2 income)', 'stat', [
   function(){
-      g.player.changeStat('regen', 2);
-      g.player.changeStat('income', 2);
+      game.player.changeStat('regen', 2);
+      game.player.changeStat('income', 2);
   }]],
   'small gold rune': [45, '(+2 income +1 mana gen)', 'stat', [
   function(){
-      g.player.changeStat('income', 2);
-      g.player.changeStat('manaGen', 1);
+      game.player.changeStat('income', 2);
+      game.player.changeStat('manaGen', 1);
   }]],
   'charcoal tonic': [36, '(+1 mana gen +2 armor)', 'stat', [
   function(){
-      g.player.changeStat('manaGen', 1);
-      g.player.changeStat('arm', 2);
+      game.player.changeStat('manaGen', 1);
+      game.player.changeStat('arm', 2);
   }]],
   'dryad scrap': [20, '(+8 max mana -3 speed)', 'stat', [
   function(){
-      g.player.changeStat('maxMana', 8);
-      g.player.changeStat('as', -3);
+      game.player.changeStat('maxMana', 8);
+      game.player.changeStat('as', -3);
   }]],
   'transfixed sap': [33, '(+18 max hp +5 max mana)', 'stat', [
   function(){
-      g.player.changeMaxHp(18);
-      g.player.changeStat('maxMana', 5);
+      game.player.changeMaxHp(18);
+      game.player.changeStat('maxMana', 5);
   }]],
 
   //usable
   //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
-  'goblin bomb': [20, '(item: deal 50 dmg to non-goblin. gain 5 gold)', 'usable', ['combat', 'During combat, use to deal 50 dmg (bypasses armor) to the current enemy. If the current enemy is of the goblin type, instead deal 0 dmg. Gain 5 gold', 1, 
+  'goblin bomb': [20, '(item: deal 50 dmg to non-goblin. gain 5 gold)', 'usable', ['combat', 'During combat, use to deal 50 dmg (bypasses armor) to the current enemy. If the current enemy is of the goblin type, instead deal 0 dmgame. Gain 5 gold', 1, 
     function(){
-        if(g.combat.enemy.type != 'goblin'){
-          g.combat.enemy.changeHp(-50);
+        if(game.combat.enemy.type != 'goblin'){
+          game.combat.enemy.changeHp(-50);
         }
-        g.combat.player.changeGold(5);
+        game.combat.player.changeGold(5);
   }]],
   'dryad throwing leaves': [28, '(4x item: deal 10 dmg, heal 10)', 'usable', ['combat', "During combat, deal 10 dmg to an enemy (bypasses armor), and heal 10", 4,
   function(){
-    g.combat.enemy.changeHp(-10);
-    g.combat.player.changeHp(10);
+    game.combat.enemy.changeHp(-10);
+    game.combat.player.changeHp(10);
   }]],
   'elf bandages': [35, '(15x item: heal 10 hp)', 'usable', ['all', "Heal 10", 15, 
   function(){
-      g.combat.player.changeHp(10);
+      game.combat.player.changeHp(10);
   }]],
   'elven battle book': [18, '(item: if enemy has lower attackspeed, gain 3% dodge permanetly)', 'usable', ['combat', "During combat, if enemy has a lower total attackspeed than you, gain 3% permanent dodge", 1, 
   function(){
-      if(g.combat.enemy.calcAs()<g.player.calcAs()){
-        g.combat.player.changeStat('dodge', 3);
+      if(game.combat.enemy.calcAs()<game.player.calcAs()){
+        game.combat.player.changeStat('dodge', 3);
       }
   }]],
   'dryad battle book': [22, '(item: if enemy has a higher attackspeed, gain 3% lifedrain permanetly)', 'usable', ['combat', "During combat, if enemy has a higher total attackspeed than you, gain 3% permanent lifedrain", 1, 
     function(){
-        if(g.combat.enemy.calcAs()<g.combat.player.calcAs()){
-          g.combat.player.changeStat('lifedrain', 3);
+        if(game.combat.enemy.calcAs()<game.combat.player.calcAs()){
+          game.combat.player.changeStat('lifedrain', 3);
         }
   }]],
   'goblin sacks': [30, '(4x item: gain 20% of enemy gold payout)', 'usable', ['combat', "During combat, gain 20% of the current enemy's gold pay out", 4, 
     function(){
-        g.combat.player.changeGold(Math.floor(g.cEnemy.gold*0.2));
+        game.combat.player.changeGold(Math.floor(game.cEnemy.gold*0.2));
   }]],
   'dryad berries': [41, '(4x item: heal 15 hp and gain 1 regen permantely)', 'usable', ['all', "Heal 15 hp and gain 1 regen permanetly",4, 
     function(){
-        g.combat.player.changeHp(15);
-        g.combat.player.changeStat('regen', 1);
+        game.combat.player.changeHp(15);
+        game.combat.player.changeStat('regen', 1);
   }]],
   'pine needle attachments': [58, '(4x item: +5 dmg on weapon)', 'usable', ['all', "Your currently equipped weapon gains +5 dmg", 4, 
   function(){
-      g.combat.player.getByType('weapon').changeStat('dmg', 5);
+      game.combat.player.getByType('weapon').changeStat('dmg', 5);
   }]],
   'pine cone attachments': [62, '(5x item: +3 shatter on weapon)', 'usable', ['all', "Your currently equipped weapon gains +3 shatter", 5, 
   function(){
-      g.combat.player.getByType('weapon').changeStat('shatter', 3);
+      game.combat.player.getByType('weapon').changeStat('shatter', 3);
   }]],
   'elven nectar': [45, '(2x item: remove all shatter applied by opponent)', 'usable', ['combat', "During combat, all armor you have lost due to your opponent's shatter this combat is removed. However, more shatter can still be gained", 2, 
   function(){
-      g.combat.player.changeStat('shatterApplied', -g.zone.player.shatterApplied)
+      game.combat.player.changeStat('shatterApplied', -game.zone.player.shatterApplied)
   }]],
   'dryad root potion': [70, '(item: current enemy armor doubles, but their attack speed halves)', 'usable', ['combat', "During combat, the enemy's base armor grows by the amount of effective armor they currently have (armor - shatter applied). Their attackspeed is set to half.", 1, 
   function(){
-      if(g.combat.enemy.calcStat('arm')<0){
-        g.combat.enemy.arm+=g.combat.enemy.calcStat('arm')
+      if(game.combat.enemy.calcStat('arm')<0){
+        game.combat.enemy.arm+=game.combat.enemy.calcStat('arm')
       }else{
-        g.combat.enemy.arm += Math.max(g.combat.enemy.calcStat('arm')-g.cEnemy.shatterApplied, 0)
+        game.combat.enemy.arm += Math.max(game.combat.enemy.calcStat('arm')-game.cEnemy.shatterApplied, 0)
       }
   }]],
 
@@ -474,39 +474,39 @@ const ITEMLIST = {
   // magic : [price, shopDesc, metatype, [type, shortDescription, longDescription, manaCost, spell, coolDown, usesFinite, complexStats]]
 
   'spirit invocation': [25, '(spell: 15 mana -> gain 5 max mana)', 'magic', ['spirit','buff','gain 5 max mana','Gain 5 max mana permanently, does not come with 3 mana on use. Infinite uses', 15, function(){
-      g.combat.player.changeStat('maxMana', 5);
+      game.combat.player.changeStat('maxMana', 5);
   }, 0, 0]],
   'goblin fire dance': [36, '(spell: 15 mana -> you & enemy lose 10 hp. +2 dmg, enemy -2 dmg)', 'magic', ['fire','buff','you & enemy lose 10 hp. you gain +2 dmg, and enemy loses 2 dmg','Deal 10 dmg to the current enemy and yourself (bypasses armor and dodge). You gain a permanent +2 dmg increase as does the current enemy. Infinite uses', 15, function(){
-      g.combat.player.changeHp(-10);
-      g.combat.enemy.changeHp(-10);
-      g.combat.player.changeStat('dmg', 2);
-      g.combat.enemy.changeStat('dmg', -2);
+      game.combat.player.changeHp(-10);
+      game.combat.enemy.changeHp(-10);
+      game.combat.player.changeStat('dmg', 2);
+      game.combat.enemy.changeStat('dmg', -2);
   }, 0, 0]],
   'grass overgrowth': [26, '(spell: 20 mana -> +3 max hp +1 armor -1 speed)', 'magic', ['plant', 'buff','gain 3 max hp, 1 armor, and lose 1 attack speed','Permanently gain 3 max hp, 1 armor, and permanently lose 1 attack speed. Infinite uses', 20, function(){
-      g.combat.player.changeMaxHp(3);
-      g.combat.player.changeStat('arm', 1);
-      g.combat.player.changeStat('as', -1);
+      game.combat.player.changeMaxHp(3);
+      game.combat.player.changeStat('arm', 1);
+      game.combat.player.changeStat('as', -1);
   }, 0, 0]],
   'elf rumination': [31, '(spell: 10 mana -> +1 max hp heal 12)', 'magic', ['plant', 'heal', 'gain 1 max hp, heal 12','Permanently gain 1 max hp and gain this hp, heal 12. Infinite uses', 10, function(){
-      g.combat.player.changeMaxHp(1);
-      g.combat.player.changeHp(12);
+      game.combat.player.changeMaxHp(1);
+      game.combat.player.changeHp(12);
   }, 0, 0]],
   'dryad pose': [28, '(spell: 12 mana -> +1 armor +1 max mana)', 'magic', ['plant', 'buff', 'gain 1 armor and 1 max mana','Permanently gain 1 armor and 1 max mana. Infinite uses', 12, function(){
-      g.combat.player.changeStat('arm', 1);
-      g.combat.player.changeStat('maxMana', 1);
+      game.combat.player.changeStat('arm', 1);
+      game.combat.player.changeStat('maxMana', 1);
   }, 0, 0]],
   'armor recover': [38, '(spell: 6 mana -> regain 4 armor lost from shatter)', 'magic', ['plant', 'status', 'regain 4 armor lost from shatter','Remove the effects of shatter for up to four armor lost. Does not go positive. Infinite uses', 6, function(){
-      g.combat.player.shatterApplied -= 4;
-      if(g.combat.player.shatterApplied < 0){g.combat.player.shatterApplied = 0;}
+      game.combat.player.shatterApplied -= 4;
+      if(game.combat.player.shatterApplied < 0){game.combat.player.shatterApplied = 0;}
   }, 0, 0]],
   'daydream': [40, '(spell: 22 mana -> +1 to dmg, arm, regen, & speed)', 'magic', ['spirit', 'buff', '+1 to dmg, arm, regen, & speed','Permanently gain +1 dmg, +1 armor, +1 regen, and +1 attack speed. Infinite uses', 22, function(){
-      g.combat.player.changeStat('dmg', 1);  
-      g.combat.player.changeStat('arm', 1);
-      g.combat.player.changeStat('regen', 1);
-      g.combat.player.changeStat('as', 1);
+      game.combat.player.changeStat('dmg', 1);  
+      game.combat.player.changeStat('arm', 1);
+      game.combat.player.changeStat('regen', 1);
+      game.combat.player.changeStat('as', 1);
   }, 0, 0]],
   'rock drop': [38, '(spell: 15 mana -> deal 40 dmg)', 'magic', ['rock', 'status','deal 40 dmg','Deal 40 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 15, function(){
-      g.combat.enemy.receiveNonHitDmg(40, g.combat.player);
+      game.combat.enemy.receiveNonHitDmg(40, game.combat.player);
   }, 0, 0]],
 
 

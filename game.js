@@ -3,7 +3,7 @@ class Game {
         this.zone = new Grasslands;
         this.player = new characterClass('human');
         this.path = new Path();
-        this.combat = new Combat(20); //change this value to change combat/tick speed
+        this.combat = new Combat();
         this.purchaseHistory = [];
     }
 
@@ -13,17 +13,17 @@ class Game {
 }
 
 
-let g; //game
+let game; //game
 
 function startGame(characterClass){
-    g = {
+    game = {
         'zone': new Grasslands(),
         'player': new characterClass('human'),
-        'path': new Path(0),
+        'path': new Path(),
         'combat': new Combat(20), //change this value to change combat/tick speed
         'purchaseHistory':[]
     }
-    g.path.generatePath(...g.zone.pathGen);
+    game.path.generatePath(...game.zone.pathGen);
 }
 
 $(function() {

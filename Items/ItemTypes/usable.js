@@ -16,7 +16,7 @@ class Usable extends Item {
     attemptUse(){
         if(this.uses > 0){
             if(this.type == 'combat'){
-                if(g.combat.inCombat){
+                if(game.combat.inCombat){
                     this.uses -= 1;
                     this.onUse();
                 }else{notify('You must be in combat to use ' + this.name + '.')

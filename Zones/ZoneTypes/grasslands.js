@@ -98,7 +98,7 @@ class Grasslands extends Zone {
         };
 
         this.bossStats = [
-            ['hairy g.o.a.t.', 'critter', 115, -25, 13, 2, 55, 1, 0, {'tear':2}],
+            ['hairy game.o.a.t.', 'critter', 115, -25, 13, 2, 55, 1, 0, {'tear':2}],
             ['big fat bison', 'hoofed', 140, -125, 15, 3, 60, 1, 0]
         ];
 
@@ -219,7 +219,7 @@ class Grasslands extends Zone {
         this.pushZoneItems();
     }
     advanceToNextZone(){
-        g.zone = new Forest();
-        g.path.generatePath(...g.zone.pathGen);
+        game.zone = new Forest();
+        game.path.generatePath(...game.zone.pathGen);
     }
 }

@@ -18,7 +18,7 @@
 // more to come:
 
 class Combat {
-    constructor(msDelay) {
+    constructor(msDelay = 20) {
         this.tick = 0;
         this.player;
         this.enemy;

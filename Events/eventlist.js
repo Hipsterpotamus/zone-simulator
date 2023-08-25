@@ -7,14 +7,14 @@ const eventList = {
         {
             text: 'Climb: gain 5 max hp, lose 10 hp',
             effect: function () {
-                g.player.changeMaxHp(5);
-                g.player.changeHp(-10);
+                game.player.changeMaxHp(5);
+                game.player.changeHp(-10);
             }
         },
         {
             text: 'Walk past: heal 4 hp',
             effect: function () {
-                g.player.changeHp(4);
+                game.player.changeHp(4);
             }
         }
     ]),
@@ -22,15 +22,15 @@ const eventList = {
         {
             text: 'Gain Clothing: gain two armor pieces, lose 1 level heal',
             effect: function () {
-                g.player.addSelectableItem(new Equippable('dirty shirt', 'chest', 'shirt', 0, 1, 0, 0));
-                g.player.addSelectableItem(new Equippable('dirty pants', 'legs', 'pants', 0, 1, 0, 0));
-                g.player.changeStat('levelheal', -1);
+                game.player.addSelectableItem(new Equippable('dirty shirt', 'chest', 'shirt', 0, 1, 0, 0));
+                game.player.addSelectableItem(new Equippable('dirty pants', 'legs', 'pants', 0, 1, 0, 0));
+                game.player.changeStat('levelheal', -1);
             }
         },
         {
             text: 'Walk past: heal 1 hp',
             effect: function () {
-                g.player.changeHp(1);
+                game.player.changeHp(1);
             }
         }
     ]),
@@ -38,9 +38,9 @@ const eventList = {
         {
             text: 'Accept: Gain a garden hoe, lose 3 gold',
             effect: function () {
-                if (g.player.gold < 3) { return;}
-                g.player.changeGold(-3);
-                g.player.addSelectableItem(new Equippable('garden hoe', 'weapon', 'none', 3, 0, 0, 0));
+                if (game.player.gold < 3) { return;}
+                game.player.changeGold(-3);
+                game.player.addSelectableItem(new Equippable('garden hoe', 'weapon', 'none', 3, 0, 0, 0));
             }
         },
         {
@@ -54,9 +54,9 @@ const eventList = {
         {
             text: 'Attempt to Open: -6 gold, 40% chance to gain 20 gold',
             effect: function () {
-                if (g.player.gold < 6) { return; }
-                g.player.changeGold(-6);
-                if (Math.random() < 0.4) { g.player.changeGold(20); }
+                if (game.player.gold < 6) { return; }
+                game.player.changeGold(-6);
+                if (Math.random() < 0.4) { game.player.changeGold(20); }
             }
         },
         {
@@ -70,15 +70,15 @@ const eventList = {
         {
             text: 'Blow and Wear: alert enemies, gain horn helmet',
             effect: function () {
-                g.zone.changeZoneLevel(2);
-                g.player.addSelectableItem(new Equippable('horn helmet', 'head', 'helmet', 2, 0, 0, 0));
+                game.zone.changeZoneLevel(2);
+                game.player.addSelectableItem(new Equippable('horn helmet', 'head', 'helmet', 2, 0, 0, 0));
             }
         },
         {
             text: 'Blow and wield: alert enemies, gain horn sling',
             effect: function () {
-                g.zone.changeZoneLevel(2);
-                g.player.addSelectableItem(new Equippable('horn sling', 'weapon', 'sling', 4, 0, 0, 25));
+                game.zone.changeZoneLevel(2);
+                game.player.addSelectableItem(new Equippable('horn sling', 'weapon', 'sling', 4, 0, 0, 25));
             }
         },
         {
@@ -92,14 +92,14 @@ const eventList = {
         {
             text: 'Stay behind: +4 damage on current equipped weapon, lose 22 hp',
             effect: function () {
-                g.player.getByType('weapon').changeStat('dmg', 4);
-                g.player.changeHp(-22);
+                game.player.getByType('weapon').changeStat('dmg', 4);
+                game.player.changeHp(-22);
             }
         },
         {
             text: 'Run: lose 3 hp',
             effect: function () {
-                g.player.changeHp(-3);
+                game.player.changeHp(-3);
                 
             }
         }
@@ -108,19 +108,19 @@ const eventList = {
         {
             text: 'Oil your Gear: +10 speed',
             effect: function () {
-                g.player.as += 10;
+                game.player.as += 10;
             }
         },
         {
             text: 'Treat Injuries: heal 16 hp',
             effect: function () {
-                g.player.changeHp(16);
+                game.player.changeHp(16);
             }
         },
         {
             text: 'Sell: gain 10 gold',
             effect: function () {
-                g.player.changeGold(10);
+                game.player.changeGold(10);
             }
         }
     ]),
@@ -128,14 +128,14 @@ const eventList = {
         {
             text: 'Rest: heal 15 hp',
             effect: function () {
-                g.player.changeHp(15);
+                game.player.changeHp(15);
                 
             }
         },
         {
             text: 'Work: gain 8 gold',
             effect: function () {
-                g.player.changeGold(8);
+                game.player.changeGold(8);
                 
             }
         }
@@ -144,14 +144,14 @@ const eventList = {
         {
             text: 'Dive in: heal 15 hp',
             effect: function () {
-                g.player.changeHp(15);
+                game.player.changeHp(15);
                 
             }
         },
         {
             text: 'Sharpen Weapon: +25% dmg on current weapon',
             effect: function () {
-                g.player.getByType('weapon').changeStat('dmg',Math.ceil(g.player.getByType('weapon').dmg * 0.25));
+                game.player.getByType('weapon').changeStat('dmg',Math.ceil(game.player.getByType('weapon').dmg * 0.25));
                 
             }
         }
@@ -160,14 +160,14 @@ const eventList = {
         {
             text: 'Sleep: heal 15 hp',
             effect: function () {
-                g.player.changeHp(15);
+                game.player.changeHp(15);
                 
             }
         },
         {
             text: 'Train: +2 dmg',
             effect: function () {
-                g.player.changeStat('dmg', 2);
+                game.player.changeStat('dmg', 2);
                 
             }
         }
@@ -179,19 +179,19 @@ const eventList = {
         {
             text: 'The Gauntlet: Howls indicate extensive monsters–and gold–ahead',
             effect: function () {
-                g.path.nextSpace = 'enemy';
-                g.path.typeInfo[3][1] = 100;
-                g.path.typeInfo[3][2] = 20;
-                g.path.typeInfo[3][3] = 60;
+                game.path.nextSpace = 'enemy';
+                game.path.typeInfo[3][1] = 100;
+                game.path.typeInfo[3][2] = 20;
+                game.path.typeInfo[3][3] = 60;
             }
         },
         {
             text: 'The Encampment: Bright lights signal opportunities for rest ahead',
             effect: function () {
-                g.path.nextSpace = 'rest';
-                g.path.typeInfo[2][1] = 100;
-                g.path.typeInfo[2][2] = 20;
-                g.path.typeInfo[2][3] = 20;
+                game.path.nextSpace = 'rest';
+                game.path.typeInfo[2][1] = 100;
+                game.path.typeInfo[2][2] = 20;
+                game.path.typeInfo[2][3] = 20;
             }
         }
     ]),
@@ -205,13 +205,13 @@ const eventList = {
             text: 'Jump in: enemies randomized, +5 speed',
             effect: function() {
                 let enemyRand = Math.floor(1.5-(Math.random()*4))
-                g.zone.changeZoneLevel(enemyRand);
+                game.zone.changeZoneLevel(enemyRand);
             }
         },
         {
             text: 'Take the bridge: +8 max hp',
             effect: function() {
-                g.player.changeMaxHp(8);
+                game.player.changeMaxHp(8);
                 
             }
         }
@@ -220,15 +220,15 @@ const eventList = {
         {
             text: 'Magic Nuts: +25 max hp',
             effect: function() {
-                g.player.changeMaxHp(25);
+                game.player.changeMaxHp(25);
                 
             }
         },
         {
             text: 'Magic Sweets: +3 dmg +3 armor',
             effect: function() {
-                g.player.changeStat('dmg', 3);
-                g.player.changeStat('arm', 3);
+                game.player.changeStat('dmg', 3);
+                game.player.changeStat('arm', 3);
                 
             }
         }
@@ -237,15 +237,15 @@ const eventList = {
         {
             text: 'Save the Nest: -25 hp +10 speed',
             effect: function() {
-                g.player.changeHp(-25);
-                g.player.changeStat('speed',10);
+                game.player.changeHp(-25);
+                game.player.changeStat('speed',10);
                 
             }
         },
         {
             text: 'Walk past: Heal 15',
             effect: function() {
-                g.player.changeHp(15);
+                game.player.changeHp(15);
                 
             }
         }
@@ -255,14 +255,14 @@ const eventList = {
             text: 'Grab it: Gain 40 gold, lose anywhere from 10-30 hp.',
             effect: function() {
                 let damageTakenR = (Math.floor(Math.random()*21)+10);
-                g.player.changeHp(-damageTakenR);
-                g.player.changeGold(40);
+                game.player.changeHp(-damageTakenR);
+                game.player.changeGold(40);
             }
         },
         {
             text: 'Grab a small nugget instead: Gain 5 gold',
             effect: function() {
-                g.player.changeGold(5);
+                game.player.changeGold(5);
             
             }
         }
@@ -271,40 +271,40 @@ const eventList = {
         {
             text: 'Buy a Red Trinket: Lose 6 gold, gain +6 dmg',
             effect: function() {
-                if(g.player.gold<6){
+                if(game.player.gold<6){
                 }else{
-                    g.player.changeGold(-6);
-                    g.player.changeStat('dmg',6);
+                    game.player.changeGold(-6);
+                    game.player.changeStat('dmg',6);
                 }
             }
         },
         {
             text: 'Buy a Green Trinket: Lose 3 gold, gain +3 regen',
             effect: function() {
-                if(g.player.gold<3){
+                if(game.player.gold<3){
                 }else{
-                    g.player.changeGold(-3);
-                    g.player.changeStat('regen',3);
+                    game.player.changeGold(-3);
+                    game.player.changeStat('regen',3);
                 }
             }
         },
         {
             text: 'Buy an Orange Trinket: Lose 4 gold, gain +4 arm',
             effect: function() {
-                if(g.player.gold<4){
+                if(game.player.gold<4){
                 }else{
-                    g.player.changeGold(-4);
-                    g.player.changeStat('arm',4);
+                    game.player.changeGold(-4);
+                    game.player.changeStat('arm',4);
                 }
             }
         },
         {
             text: 'Buy a Black Trinket: Lose 3 gold, gain 3 dodge',
             effect: function() {
-                if(g.player.gold<3){
+                if(game.player.gold<3){
                 }else{
-                    g.player.changeGold(-3);
-                    g.player.changeStat('dodge',3);
+                    game.player.changeGold(-3);
+                    game.player.changeStat('dodge',3);
                 }
             }
         },
@@ -314,19 +314,19 @@ const eventList = {
             }
         }
     ]),
-    "A Deep Fog": new Event("A Deep Fog", "A thick mist of fog grows over you, blocking your entire vision. You want to keep moving forward, but you can't see more than a foot in front of you. You decide to stay put for the time being. How do you kill the time?", [
+    "A Deep Fog": new Event("A Deep Fog", "A thick mist of fog grows over you, blocking your entire vision. You want to keep moving forward, but you can't see more than a foot in front of you. You decide to stay put for the time beingame. How do you kill the time?", [
         {
             text: 'Meditate: +4 dodge +5 level heal',
             effect: function() {
-                g.player.changeStat('dodge', 4);
-                g.player.changeStat('levelheal', 5);
+                game.player.changeStat('dodge', 4);
+                game.player.changeStat('levelheal', 5);
             }
         },
         {
             text: 'Train: +8 armor +5 level heal',
             effect: function() {
-                g.player.changeStat('armor',8);
-                g.player.changeStat('levelheal',5);
+                game.player.changeStat('armor',8);
+                game.player.changeStat('levelheal',5);
             }
         }
     ]),
@@ -334,17 +334,17 @@ const eventList = {
         {
             text: 'Embrace the Violence: +15 dmg, -10 speed, -10 level heal',
             effect: function() {
-                g.player.changeStat('dmg',15);
-                g.player.changeStat('as',-10);
-                g.player.changeStat('levelheal',-10);
+                game.player.changeStat('dmg',15);
+                game.player.changeStat('as',-10);
+                game.player.changeStat('levelheal',-10);
             }
         },
         {
             text: 'Reject the Violence: -10 dmg, +8 regen, +10 level heal',
             effect: function() {
-                g.player.changeStat('dmg',-10);
-                g.player.changeStat('regen',8);
-                g.player.changeStat('levelheal',10);
+                game.player.changeStat('dmg',-10);
+                game.player.changeStat('regen',8);
+                game.player.changeStat('levelheal',10);
             }
         }
     ]),
@@ -352,14 +352,14 @@ const eventList = {
         {
             text: 'The Bag of Gold: +45 gold',
             effect: function() {
-                g.player.changeGold(45);
+                game.player.changeGold(45);
             }
         },
         {
             text: 'The Bag of Flesh: +3 dmg +30 max hp',
             effect: function() {
-                g.player.changeStat('dmg',3);
-                g.player.changeMaxHp(30);
+                game.player.changeStat('dmg',3);
+                game.player.changeMaxHp(30);
             }
         },
         {
@@ -375,13 +375,13 @@ const eventList = {
         {
             text: 'Wade in Water: Gain +20 max hp',
             effect: function() {
-                g.player.changeMaxHp(35);
+                game.player.changeMaxHp(35);
             }
         },
         {
             text: "Study Dam: Gain +5 armor",
             effect: function() {
-                g.player.changeStat('armor',5);
+                game.player.changeStat('armor',5);
             }
         }
     ]),
@@ -389,40 +389,40 @@ const eventList = {
         {
             text: 'Buy a Red Trinket: Lose 6 gold, gain +6 dmg',
             effect: function() {
-                if(g.player.gold<6){
+                if(game.player.gold<6){
                 }else{
-                    g.player.changeGold(-6);
-                    g.player.changeStat('dmg',6);
+                    game.player.changeGold(-6);
+                    game.player.changeStat('dmg',6);
                 }
             }
         },
         {
             text: 'Buy a Green Trinket: Lose 3 gold, gain +3 regen',
             effect: function() {
-                if(g.player.gold<3){
+                if(game.player.gold<3){
                 }else{
-                    g.player.changeGold(-3);
-                    g.player.changeStat('regen',3);
+                    game.player.changeGold(-3);
+                    game.player.changeStat('regen',3);
                 }
             }
         },
         {
             text: 'Buy an Orange Trinket: Lose 4 gold, gain +4 arm',
             effect: function() {
-                if(g.player.gold<4){
+                if(game.player.gold<4){
                 }else{
-                    g.player.changeGold(-4);
-                    g.player.changeStat('arm',4);
+                    game.player.changeGold(-4);
+                    game.player.changeStat('arm',4);
                 }
             }
         },
         {
             text: 'Buy a Black Trinket: Lose 3 gold, gain 3 dodge',
             effect: function() {
-                if(g.player.gold<3){
+                if(game.player.gold<3){
                 }else{
-                    g.player.changeGold(-3);
-                    g.player.changeStat('dodge',3);
+                    game.player.changeGold(-3);
+                    game.player.changeStat('dodge',3);
                 }
             }
         },
@@ -432,19 +432,19 @@ const eventList = {
             }
         }
     ]),
-    "A Deep Fog": new Event("A Deep Fog", "A thick mist of fog grows over you, blocking your entire vision. You want to keep moving forward, but you can't see more than a foot in front of you. You decide to stay put for the time being. How do you kill the time?", [
+    "A Deep Fog": new Event("A Deep Fog", "A thick mist of fog grows over you, blocking your entire vision. You want to keep moving forward, but you can't see more than a foot in front of you. You decide to stay put for the time beingame. How do you kill the time?", [
         {
             text: 'Meditate: +4 dodge +5 level heal',
             effect: function() {
-                g.player.changeStat('dodge', 4);
-                g.player.changeStat('levelheal', 5);
+                game.player.changeStat('dodge', 4);
+                game.player.changeStat('levelheal', 5);
             }
         },
         {
             text: 'Train: +8 armor +5 level heal',
             effect: function() {
-                g.player.changeStat('armor',8);
-                g.player.changeStat('levelheal',5);
+                game.player.changeStat('armor',8);
+                game.player.changeStat('levelheal',5);
             }
         }
     ]),
@@ -452,17 +452,17 @@ const eventList = {
         {
             text: 'Embrace the Violence: +15 dmg, -10 speed, -10 level heal',
             effect: function() {
-                g.player.changeStat('dmg',15);
-                g.player.changeStat('as',-10);
-                g.player.changeStat('levelheal',-10);
+                game.player.changeStat('dmg',15);
+                game.player.changeStat('as',-10);
+                game.player.changeStat('levelheal',-10);
             }
         },
         {
             text: 'Reject the Violence: -10 dmg, +8 regen, +10 level heal',
             effect: function() {
-                g.player.changeStat('dmg',-10);
-                g.player.changeStat('regen',8);
-                g.player.changeStat('levelheal',10);
+                game.player.changeStat('dmg',-10);
+                game.player.changeStat('regen',8);
+                game.player.changeStat('levelheal',10);
             }
         }
     ]),
@@ -470,14 +470,14 @@ const eventList = {
         {
             text: 'The Bag of Gold: +45 gold',
             effect: function() {
-                g.player.changeGold(45);
+                game.player.changeGold(45);
             }
         },
         {
             text: 'The Bag of Flesh: +3 dmg +30 max hp',
             effect: function() {
-                g.player.changeStat('dmg',3);
-                g.player.changeMaxHp(30);
+                game.player.changeStat('dmg',3);
+                game.player.changeMaxHp(30);
             }
         },
         {
@@ -496,14 +496,14 @@ const eventList = {
         {
             text: 'Rest: Heal 35 hp',
             effect: function() {
-                g.player.changeHp(35);
+                game.player.changeHp(35);
             }
         },
         {
             text: "Play: Gain +20 max hp, but without gaining 20 hp.",
             effect: function() {
-                g.player.changeMaxHp(20);
-                g.player.changeHp(-20);
+                game.player.changeMaxHp(20);
+                game.player.changeHp(-20);
             }
         }
     ]),
@@ -511,23 +511,23 @@ const eventList = {
         {
             text: 'Pray: Gain +15 max hp and heal 10',
             effect: function() {
-                g.player.changeMaxHp(15);
-                g.player.changeHp(10);
+                game.player.changeMaxHp(15);
+                game.player.changeHp(10);
             }
         },
         {
             text: "Blood Sacrifice: lose 5 hp, +25% dmg on current weapon",
             effect: function() {
-                g.player.changeHp(-5);
-                g.player.getByType('weapon').changeStat('dmg', Math.ceil(g.player.getByType('weapon').dmg * 0.25));
+                game.player.changeHp(-5);
+                game.player.getByType('weapon').changeStat('dmg', Math.ceil(game.player.getByType('weapon').dmg * 0.25));
             }
         },
         {
             text: "Flesh Sacrifice: lose 5 max hp, +25% armor on chest and legs equipment",
             effect: function() {
-                g.player.changeMaxHp(-5);
-                g.player.getByType('chest').changeStat('arm', Math.ceil(g.player.getByType('chest').arm * 0.25));
-                g.player.getByType('legs').changeStat('arm', Math.ceil(g.player.getByType('legs').arm * 0.25));
+                game.player.changeMaxHp(-5);
+                game.player.getByType('chest').changeStat('arm', Math.ceil(game.player.getByType('chest').arm * 0.25));
+                game.player.getByType('legs').changeStat('arm', Math.ceil(game.player.getByType('legs').arm * 0.25));
             }
         }
     ]),
@@ -535,13 +535,13 @@ const eventList = {
         {
             text: 'Wade in Water: Gain +20 max hp',
             effect: function() {
-                g.player.changeMaxHp(35);
+                game.player.changeMaxHp(35);
             }
         },
         {
             text: "Study Dam: Gain +5 armor",
             effect: function() {
-                g.player.changeStat('armor',5);
+                game.player.changeStat('armor',5);
             }
         }
     ]),
@@ -552,23 +552,23 @@ const eventList = {
         {
             text: 'The Sounds of Violence: The gnarls of gnashing teeth and drooling mouths indicates a flurry of powerful monsters ahead.',
             effect: function () {
-                g.path.nextSpace = 'enemy';
-                g.path.typeInfo[3][1] = 100;
-                g.path.typeInfo[3][2] = 20;
-                g.path.typeInfo[3][3] = 60;
+                game.path.nextSpace = 'enemy';
+                game.path.typeInfo[3][1] = 100;
+                game.path.typeInfo[3][2] = 20;
+                game.path.typeInfo[3][3] = 60;
             }
         },
         {
             text: 'The Sounds of Serenity: A lack of noise points ahead to a more scenic route with oppportunities for shops and rest.',
             effect: function () {
-                g.path.nextSpace = 'rest';
-                g.path.typeInfo[2][1] = 100;
-                g.path.typeInfo[2][2] = 20;
-                g.path.typeInfo[2][3] = 20;
+                game.path.nextSpace = 'rest';
+                game.path.typeInfo[2][1] = 100;
+                game.path.typeInfo[2][2] = 20;
+                game.path.typeInfo[2][3] = 20;
 
-                g.path.typeInfo[1][1] += 20;
-                g.path.typeInfo[1][2] = 20;
-                g.path.typeInfo[1][3] = 20;
+                game.path.typeInfo[1][1] += 20;
+                game.path.typeInfo[1][2] = 20;
+                game.path.typeInfo[1][3] = 20;
             }
         }
     ]),

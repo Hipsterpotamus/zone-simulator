@@ -58,7 +58,7 @@ class Equippable extends Item {
         if(this.name=='none'){
             statOutput = '';
         } else {
-            g.player.updateEntityDisplay();
+            game.player.updateEntityDisplay();
         }
         
         $('#'+this.metatype+'-stats').html(statOutput);
