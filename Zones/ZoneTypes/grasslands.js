@@ -2,7 +2,7 @@ class Grasslands extends Zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
         this.maxZoneLevel = 9;
-        this.shopCode = [3,2,2,1,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
+        this.shopCode = [3,2,2,1,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber, magicNumber]
         this.pathGen = [20, //max spaces,
             [['shop', 85, 15, 0], //[shop start, shop grow, shop reset],
             ['event', 15, 10, 0], //[event start, event grow, event reset],
@@ -177,6 +177,9 @@ class Grasslands extends Zone {
             'apricot',
             'small bond',
             'pamphlet',
+            'blue rock',
+            'magic charm',
+            'tiny gold rune',
 
             'firecracker',
             'throwing eggs',
@@ -212,7 +215,6 @@ class Grasslands extends Zone {
         this.pathEvent = 'A Fork In The Road';
     }
     advanceToNextZone(){
-        setBackgroundZone(2); 
         g.zone = new Forest();
         g.path.generatePath(...g.zone.pathGen);
     }

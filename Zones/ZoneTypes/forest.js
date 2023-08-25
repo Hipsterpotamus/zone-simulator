@@ -2,7 +2,7 @@ class Forest extends Zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
         this.maxZoneLevel = 9;
-        this.shopCode = [3,3,4,2]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
+        this.shopCode = [3,3,3,2,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
         this.pathGen = [20, //max spaces,
             [['shop', 50, 15, 0], //[shop start, shop grow, shop reset],
             ['event', 30, 15, 0], //[event start, event grow, event reset],
@@ -201,7 +201,11 @@ class Forest extends Zone {
             'medium bond',
             'golden fish',
             'bark pamphlette',
-            
+            'small gold rune',
+            'charcoal tonic',
+            'dryad scrap',
+            'transfixed sap',
+
             'goblin bomb',
             'dryad throwing leaves',
             'elf bandages',
@@ -212,7 +216,16 @@ class Forest extends Zone {
             'pine needle attachments',
             'pine cone attachments',
             'elven nectar',
-            'dryad root potion'
+            'dryad root potion',
+
+            'spirit invocation',
+            'goblin fire dance',
+            'grass overgrowth',
+            'elf rumination',
+            'dryad pose',
+            'armor recover',
+            'daydream',
+            'rock drop'
         ];
 
         this.zoneEvents = [

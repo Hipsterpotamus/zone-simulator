@@ -143,6 +143,19 @@ const ITEMLIST = {
         g.player.changeStat('income', 1);
         g.player.changeStat('regen', 1);
     }]],
+    'blue rock': [12, '(+5 max mana)', 'stat', [
+    function(){
+        g.player.changeStat('maxMana', 5);
+    }]],
+    'magic charm': [18, '(+1 mana gen)', 'stat', [
+    function(){
+        g.player.changeStat('manaGen', 1);
+    }]],
+    'tiny gold rune': [27, '(+1 income +1 mana gen)', 'stat', [
+    function(){
+        g.player.changeStat('income', 1);
+        g.player.changeStat('manaGen', 1);
+    }]],
 
   //usable
   //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
@@ -219,8 +232,8 @@ const ITEMLIST = {
   'ornate dagger': [32, '(11 dmg +45 speed knife),', 'weapon',['knife', 11, 0, 0, 45]],
   'elven dagger': [58, '(22 dmg +2 regen +33 speed knife),', 'weapon',['knife', 22, 0, 2, 33]],
   'bark cleaver': [37, '(21 dmg -33 speed knife),', 'weapon',['knife', 21, 0, 0, -33]],
-  'water oak staff': [50, '(31 dmg +2 armor +5 regen -120 speed staff),', 'weapon',['staff', 31, 2, 5, -120]],
-  'dryad staff': [75, '(29 dmg +6 armor -10 speed +15 lifedrain staff),', 'weapon',['staff', 29, 6, 0, -10, {'lifedrain':15}]],
+  'water oak staff': [50, '(31 dmg +2 armor +3 regen -120 speed staff),', 'weapon',['staff', 31, 2, 3, -120, {'manaGen':1}]],
+  'dryad staff': [75, '(29 dmg +6 armor -40 speed +15 lifedrain staff),', 'weapon',['staff', 29, 6, 0, -40, {'lifedrain':15,'manaGen':1}]],
   'leaf-rope whip': [31, '(12 dmg +1 armor +35 speed whip),', 'weapon',['whip', 12, 1, 0, 35, {'lifedrain':15}]],
   'elf whip': [65, '(24 dmg +2 regen +30 speed +16 dodge whip),', 'weapon',['whip', 24, 0, 2, 30, {'dodge':16}]],
   'dryad sleeve': [70, '(20 dmg +4 regen +15 speed +16 dodge +15 lifedrain gloves),', 'weapon',['gloves', 20, 0, 4, 15, {'dodge':16,'lifedrain':15}]],
@@ -377,6 +390,26 @@ const ITEMLIST = {
       g.player.changeStat('regen', 2);
       g.player.changeStat('income', 2);
   }]],
+  'small gold rune': [45, '(+2 income +1 mana gen)', 'stat', [
+  function(){
+      g.player.changeStat('income', 2);
+      g.player.changeStat('manaGen', 1);
+  }]],
+  'charcoal tonic': [36, '(+1 mana gen +2 armor)', 'stat', [
+  function(){
+      g.player.changeStat('manaGen', 1);
+      g.player.changeStat('arm', 2);
+  }]],
+  'dryad scrap': [20, '(+8 max mana -3 speed)', 'stat', [
+  function(){
+      g.player.changeStat('maxMana', 8);
+      g.player.changeStat('as', -3);
+  }]],
+  'transfixed sap': [33, '(+18 max hp +5 max mana)', 'stat', [
+  function(){
+      g.player.changeMaxHp(18);
+      g.player.changeStat('maxMana', 5);
+  }]],
 
   //usable
   //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
@@ -441,14 +474,48 @@ const ITEMLIST = {
       }
   }]],
 
+  //magic
+  // magic : [price, shopDesc, metatype, [type, shortDescription, longDescription, manaCost, spell, coolDown, usesFinite, complexStats]]
+
+  'spirit invocation': [25, '(spell: 15 mana -> gain 5 max mana)', 'magic', ['spirit','buff','gain 5 max mana','Gain 5 max mana permanently, does not come with 3 mana on use. Infinite uses', 15, function(){
+      g.combat.player.changeStat('maxMana', 5);
+  }, 0, 0]],
+  'goblin fire dance': [36, '(spell: 15 mana -> you & enemy lose 10 hp. +2 dmg, enemy -2 dmg)', 'magic', ['fire','buff','you & enemy lose 10 hp. you gain +2 dmg, and enemy loses 2 dmg','Deal 10 dmg to the current enemy and yourself (bypasses armor and dodge). You gain a permanent +2 dmg increase as does the current enemy. Infinite uses', 15, function(){
+      g.combat.player.changeHp(-10);
+      g.combat.enemy.changeHp(-10);
+      g.combat.player.changeStat('dmg', 2);
+      g.combat.enemy.changeStat('dmg', -2);
+  }, 0, 0]],
+  'grass overgrowth': [26, '(spell: 20 mana -> +3 max hp +1 armor -1 speed)', 'magic', ['plant', 'buff','gain 3 max hp, 1 armor, and lose 1 attack speed','Permanently gain 3 max hp, 1 armor, and permanently lose 1 attack speed. Infinite uses', 20, function(){
+      g.combat.player.changeMaxHp(3);
+      g.combat.player.changeStat('arm', 1);
+      g.combat.player.changeStat('as', -1);
+  }, 0, 0]],
+  'elf rumination': [31, '(spell: 10 mana -> +1 max hp heal 12)', 'magic', ['plant', 'heal', 'gain 1 max hp, heal 12','Permanently gain 1 max hp and gain this hp, heal 12. Infinite uses', 10, function(){
+      g.combat.player.changeMaxHp(1);
+      g.combat.player.changeHp(12);
+  }, 0, 0]],
+  'dryad pose': [28, '(spell: 12 mana -> +1 armor +1 max mana)', 'magic', ['plant', 'buff', 'gain 1 armor and 1 max mana','Permanently gain 1 armor and 1 max mana. Infinite uses', 12, function(){
+      g.combat.player.changeStat('arm', 1);
+      g.combat.player.changeStat('maxMana', 1);
+  }, 0, 0]],
+  'armor recover': [38, '(spell: 6 mana -> regain 4 armor lost from shatter)', 'magic', ['plant', 'status', 'regain 4 armor lost from shatter','Remove the effects of shatter for up to four armor lost. Does not go positive. Infinite uses', 6, function(){
+      g.combat.player.shatterApplied -= 4;
+      if(g.combat.player.shatterApplied < 0){g.combat.player.shatterApplied = 0;}
+  }, 0, 0]],
+  'daydream': [40, '(spell: 22 mana -> +1 to dmg, arm, regen, & speed)', 'magic', ['spirit', 'buff', '+1 to dmg, arm, regen, & speed','Permanently gain +1 dmg, +1 armor, +1 regen, and +1 attack speed. Infinite uses', 22, function(){
+      g.combat.player.changeStat('dmg', 1);  
+      g.combat.player.changeStat('arm', 1);
+      g.combat.player.changeStat('regen', 1);
+      g.combat.player.changeStat('as', 1);
+  }, 0, 0]],
+  'rock drop': [38, '(spell: 15 mana -> deal 40 dmg)', 'magic', ['rock', 'status','deal 40 dmg','Deal 40 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 15, function(){
+      g.combat.enemy.receiveNonHitDmg(40, g.combat.player);
+  }, 0, 0]],
 
 
 
-
-
-
-
-  //gpt genned beach items
+    //gpt genned beach items
   //equippables
 
   'iron cutlass': [48, '(22 dmg +12 speed +5 bleed sword)', 'weapon', ['sword', 22, 0, 0, 12, {'bleed':5}]],
