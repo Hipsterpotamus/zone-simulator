@@ -38,60 +38,60 @@ class Forest extends Zone {
                 ['koala', 'critter', 52, -95, 12, 0, 6, 4, 0]
             ],
             2: [
-                ['green slime', 'slime', 70, 0, 11, 1, 18, 4, 0],
-                ['lime slime', 'slime', 70, 0, 11, 4, 20, 1, 0],
-                ['shrunk elf', 'elf', 50, 40, 8, 0, 19, 5, 0],
-                ['little goblin', 'goblin', 65, 66, 7, 1, 18, 3, 0],
-                ['reindeer', 'hoofed', 90, -65, 18, 1, 21, 3, 0],
-                ['massic termite', 'bug', 80, -33, 13, 3, 22, 0, 0]
+                ['green slime', 'slime', 65, 0, 11, 1, 18, 4, 0],
+                ['lime slime', 'slime', 65, 0, 11, 4, 20, 1, 0],
+                ['shrunk elf', 'elf', 45, 40, 8, 0, 19, 5, 0],
+                ['little goblin', 'goblin', 60, 66, 7, 1, 18, 3, 0],
+                ['reindeer', 'hoofed', 85, -65, 18, 1, 21, 3, 0],
+                ['massic termite', 'bug', 75, -33, 13, 3, 22, 0, 0]
             ],
             3: [
-                ['brown bear', 'critter', 100, -90, 24, 6, 25, 1, 0, {'tear':2}],
-                ['black bear', 'critter', 100, -70, 20, 6, 25, 1, 0, {'tear':2}],
-                ['moose', 'critter', 140, 33, 16, 3, 29, 3, 0, {'shatter':2}],
+                ['brown bear', 'critter', 100, -90, 22, 6, 25, 1, 0, {'tear':2}],
+                ['black bear', 'critter', 100, -70, 18, 6, 25, 1, 0, {'tear':2}],
+                ['moose', 'critter', 120, 33, 16, 3, 29, 3, 0, {'shatter':2}],
                 ['gorilla', 'critter', 95, -25, 17, 7, 26, 1, 0, {'shatter':8}],
-                ['chimpanzee', 'critter', 85, 28, 17, 5, 33, 3, 0, {'dodge':40}],
-                ['anaconda', 'snake', 188, -350, 30, 9, 28, 1, 0, {'shatter':80}]
+                ['chimpanzee', 'critter', 75, 28, 17, 5, 33, 3, 0, {'dodge':40}],
+                ['anaconda', 'snake', 168, -350, 34, 9, 28, 1, 0, {'shatter':80}]
             ],
             4: [
-                ['elven scout', 'elf', 90, 33, 16, 0, 38, 4, 0, {'dodge':25}],
-                ['elven gatherer', 'elf', 115, 22, 23, 1, 44, 7, 0],
-                ['elven rancher', 'elf', 130, -100, 30, 1, 46, 7, 0, {'dodge':15}],
-                ['goblin', 'goblin', 115, 66, 14, 2, 42, 5, 0, {'dodge':16}],
-                ['forest snuffler', 'critter', 180, -300, 26, 2, 8, 4, 0, {'tear':3,'shatter':50}],
+                ['elven scout', 'elf', 80, 33, 16, 0, 38, 4, 0, {'dodge':25}],
+                ['elven gatherer', 'elf', 185, 22, 23, 1, 44, 7, 0],
+                ['elven rancher', 'elf', 120, -100, 30, 1, 46, 7, 0, {'dodge':15}],
+                ['goblin', 'goblin', 105, 66, 14, 2, 42, 5, 0, {'dodge':16}],
+                ['forest snuffler', 'critter', 170, -300, 26, 2, 8, 4, 0, {'tear':3,'shatter':50}],
                 ['living sap-ooze', 'slime', 120, 70, 6, 0, 33, 4, 0, {'shatter':8}]
             ],
             5: [
-                ['pixie', 'fairy', 7, 0, 28, 1, 65, 1, 0, {'dodge':85}],
-                ['sentry bird', 'bird', 140, 50, 21, 1, 42, 3, 0, {'dodge':25}],
-                ['goblin clawer', 'goblin', 125, 25, 27, 5, 47, 1, 0, {'tear':1}],
-                ['elven charger', 'elf', 170, -200, 36, 1, 46, 4, 0, {'dodge':11,'shatter':50}],
-                ['mint slime', 'slime', 130, 0, 28, 1, 49, 4, 0, {'lifedrain':10}],
-                ['forest-green slime', 'slime', 130, 0, 32, 9, 48, 1, 0, {'lifedrain':10}]
+                ['pixie', 'fairy', 5, 0, 28, 1, 65, 1, 0, {'dodge':85}],
+                ['sentry bird', 'bird', 115, 50, 21, 1, 42, 3, 0, {'dodge':25}],
+                ['goblin clawer', 'goblin', 105, 25, 27, 5, 47, 1, 0, {'tear':1}],
+                ['elven charger', 'elf', 140, -200, 36, 1, 46, 4, 0, {'dodge':11,'shatter':50}],
+                ['mint slime', 'slime', 110, 0, 28, 1, 49, 4, 0, {'lifedrain':10}],
+                ['forest-green slime', 'slime', 100, 0, 32, 7, 48, 1, 0, {'lifedrain':10}]
             ],
             6: [
-                ['leaf wisp', 'wisp', 88, -22, 44, -12, 51, 14, 0, {'dodge':12}],
-                ['tree wisp', 'wisp', 88, 22, 44, -14, 53, 14, 0, {'dodge':12}],
-                ['mist wisp', 'wisp', 88, -22, 44, -12, 52, 14, 0, {'dodge':12}],
+                ['leaf wisp', 'wisp', 88, -44, 44, -12, 51, 12, 0, {'dodge':12}],
+                ['tree wisp', 'wisp', 88, -22, 44, -14, 53, 9, 0, {'dodge':12}],
+                ['mist wisp', 'wisp', 88, -44, 44, -12, 52, 12, 0, {'dodge':12}],
                 ['spirit snake', 'snake', 65, 30, 27, 2, 53, 2, 0, {'lifedrain':45}],
-                ['goblin ranger', 'goblin', 180, -50, 39, 5, 51, 4, 0, {'dodge':25}],
-                ['walking weed', 'plant', 190, -33, 25, 4, 53, 1, 0,{'lifedrain':25,'shatter':33}]
+                ['goblin ranger', 'goblin', 160, -50, 39, 5, 51, 4, 0, {'dodge':25}],
+                ['walking weed', 'plant', 160, -33, 25, 4, 53, 1, 0,{'lifedrain':25,'shatter':33}]
             ],
             7: [
-                ['tribal dryad', 'dryad', 156, 33, 36, 8, 59, 5, 0, {'tear':3}],
-                ['hunter dryad', 'dryad', 156, -33, 41, 12, 58, 3, 0, {'shatter':40}],
-                ['harvesting dryad', 'dryad', 156, -220, 69, 3, 65, 9, 0, {'lifedrain':8}],
-                ['healer dryad', 'dryad', 156, -60, 50, 2, 58, 7, 0,{'lifedrain':28}],
-                ['sprinter dryad', 'dryad', 156, 43, 33, 4, 57, 4, 0, {'dodge':30}],
-                ['knight dryad', 'dryad', 156, -33, 38, 13, 60, 2, 0, {"shatter":80}]
+                ['tribal dryad', 'dryad', 136, 33, 36, 8, 59, 4, 0, {'tear':3}],
+                ['hunter dryad', 'dryad', 136, -33, 41, 12, 58, 2, 0, {'shatter':40}],
+                ['harvesting dryad', 'dryad', 136, -220, 65, 3, 65, 8, 0, {'lifedrain':8}],
+                ['healer dryad', 'dryad', 136, -60, 50, 2, 58, 6, 0,{'lifedrain':28}],
+                ['sprinter dryad', 'dryad', 136, 43, 29, 4, 57, 3, 0, {'dodge':30}],
+                ['knight dryad', 'dryad', 136, -33, 34, 13, 60, 1, 0, {"shatter":80}]
             ],
             8: [
-                ['goblin commander', 'goblin', 170, 50, 44, 2, 82, 2, 0],
-                ['elf chieftain', 'elf', 170, -120, 60, 4, 83, 4, 0, {'dodge':25}],
-                ['forest wisp', 'wisp', 160, 33, 44, -8, 81, 7, 0, {'dodge':12}],
-                ['dryad prince', 'dryad', 190, -25, 50, 3, 83, 11, 0, {'lifedrain':16}],
-                ['possessed grizzly', 'critter', 200, -280, 96, 6, 84, -4, 0, {'tear':4}],
-                ['forest slime', 'slime', 150, 72, 12, 0, 86, 6, 0,{'shatter':8,'lifedrain':25}]
+                ['goblin commander', 'goblin', 170, 33, 33, 1, 82, -2, 0],
+                ['elf chieftain', 'elf', 170, -120, 33, 4, 83, 2, 0, {'dodge':25}],
+                ['forest wisp', 'wisp', 160, 12, 44, -18, 81, 7, 0, {'dodge':12}],
+                ['dryad prince', 'dryad', 190, -45, 45, 3, 83, 9, 0, {'lifedrain':8}],
+                ['possessed grizzly', 'critter', 200, -320, 76, 6, 84, -4, 0, {'tear':4}],
+                ['forest slime', 'slime', 150, 49, 12, 0, 86, 6, 0,{'shatter':8,'lifedrain':25}]
             ]
         };
 
