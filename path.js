@@ -49,7 +49,7 @@ class Path {
 
     advancePath() {
         this.displayZoneInfo();
-        if(this.spaceNumber%3==0){g.zone.changeZoneLevel(1)};
+        if(this.spaceNumber%3==0 && this.spaceNumber != 0){g.zone.changeZoneLevel(1)};
         $('#content-central-box').empty();
         g.player.changeGold(g.player.calcStat('income'));
         const SPACEKEYS = {'shop' : 'shopEvent', 
