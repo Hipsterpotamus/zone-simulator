@@ -15,17 +15,6 @@ class Game {
 
 let game; //game
 
-function startGame(characterClass){
-    game = {
-        'zone': new Grasslands(),
-        'player': new characterClass('human'),
-        'path': new Path(),
-        'combat': new Combat(20), //change this value to change combat/tick speed
-        'purchaseHistory':[]
-    }
-    game.path.generatePath(...game.zone.pathGen);
-}
-
 $(function() {
     const CHARACTER_CLASSES = {
         "char-button-beneficiary": Beneficiary,
@@ -55,7 +44,8 @@ $(function() {
 
     //start game button
     $('#start-game').on('click',function(){
-        startGame(characterClass);
+        game = new Game(characterClass);
+        game.startGame()
         $('#game-screen').removeClass('hidden');
         $('#start-screen').addClass('hidden');
     });

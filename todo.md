@@ -22,7 +22,6 @@
 ### Refactoring
 * [] Update README.md with info on all backend systems
 * [] Get rid of of global variables outside of game?
-* [] Refactor game.js? (will likely require a full transition to an object oriented framework to significantly improve)
 
 
 
