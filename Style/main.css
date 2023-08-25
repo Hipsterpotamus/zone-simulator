@@ -133,7 +133,7 @@ body.zone-3::before {
 
 }
 
-#go-next-button {
+.unhighlightable {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
