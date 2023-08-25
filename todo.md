@@ -10,16 +10,12 @@
 ## Backend
 
 ### New stuff
-* [] Implement magic system and add corresponding shop items into pool
 * [] Start working on player level up system
-* [] Create shop items for forest zone
+* [] Add support for multiple enemies
 * [] Add rarity to shop items
 
 ### Fixes
-* [] Add 'you died' indicator in g.player.death()
 * [] Add delay before battle
-* [x] Get enemy health bar to appear/disappear with enemy
-* [] Add new stats to player/enemy display
 
 ### Refactoring
 * [] Update README.md with info on all backend systems

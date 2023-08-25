@@ -74,7 +74,11 @@ class Player extends Entity{
     }
 
     death() {
-        //add you died screen or something
+        $('#player-death').removeClass('hidden');
+        $('#player-death').addClass('fullViewport');
+        let video = $('#player-death')[0];
+        video.play();
+        video.addEventListener('ended', function() {$('#player-death').addClass('hidden')});
     }
 
     // Not totally sure where you'll want this, depending on if all entities have mana
