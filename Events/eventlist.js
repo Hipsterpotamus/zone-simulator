@@ -325,8 +325,8 @@ const eventList = {
         {
             text: 'Train: +8 armor +5 level heal',
             effect: function() {
-                game.player.changeStat('armor',8);
-                game.player.changeStat('levelheal',5);
+                g.player.changeStat('arm',8);
+                g.player.changeStat('levelheal',5);
             }
         }
     ]),
@@ -368,21 +368,6 @@ const eventList = {
                 //starts a combat with three goblins simultaneously
                 //the reward for combat is both bags contents *1.5 and a helmet called, (The Goblin Vanquisher) which endows a large damage increase. 
             } 
-        }
-    ]),
-
-    'A Dam': new Event("A Dam", "In the distance, a beaver dam built up at least 30 feet tall.", [
-        {
-            text: 'Wade in Water: Gain +20 max hp',
-            effect: function() {
-                game.player.changeMaxHp(35);
-            }
-        },
-        {
-            text: "Study Dam: Gain +5 armor",
-            effect: function() {
-                game.player.changeStat('armor',5);
-            }
         }
     ]),
     "Friendly Elves": new Event("Friendly Elves", "An encampment of numerous friendly elves sits around a fire. Surprisingly, they notice you and beckon you towards them rather than take up arms. They notice your gold sack and offer to sell some elven trinkets, but cultural practice forbids you from buying more than one.", [
@@ -443,8 +428,8 @@ const eventList = {
         {
             text: 'Train: +8 armor +5 level heal',
             effect: function() {
-                game.player.changeStat('armor',8);
-                game.player.changeStat('levelheal',5);
+                g.player.changeStat('arm',8);
+                g.player.changeStat('levelheal',5);
             }
         }
     ]),
@@ -533,15 +518,15 @@ const eventList = {
     ]),
     'A Dam': new Event("A Dam", "In the distance, a beaver dam built up at least 30 feet tall.", [
         {
-            text: 'Wade in Water: Gain +20 max hp',
+            text: 'Wade in Water: Gain +25 max hp',
             effect: function() {
-                game.player.changeMaxHp(35);
+                g.player.changeMaxHp(25);
             }
         },
         {
             text: "Study Dam: Gain +5 armor",
             effect: function() {
-                game.player.changeStat('armor',5);
+                g.player.changeStat('arm',5);
             }
         }
     ]),
