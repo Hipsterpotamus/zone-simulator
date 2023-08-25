@@ -178,7 +178,7 @@ const ITEMLIST = {
 
 
   'shock': [25, '(spell: 12 mana -> deal 10 dmg)', 'magic', ['electric','hit','deal 10 dmg','Deal 10 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 12, function(){
-        g.combat.enemy.receiveNonHitDmg(10,g.combat.player);
+        g.combat.enemy.receiveHitFrom(g.combat.player, 10);
   }, 0, 0]],
   'growth spurt': [30, '(spell: 15 mana -> gain 1 max hp)', 'magic', ['plant','buff','gain 1 max hp','Gain 1 max hp, includes gain of 1 hp. Infinite uses', 15, function(){
         g.combat.player.changeMaxHp(1);

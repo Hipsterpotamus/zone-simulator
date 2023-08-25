@@ -62,11 +62,6 @@ class Player extends Entity{
         );
     }
 
-    changeStat (stat, amount) {
-        this[stat] += amount;
-        this.updateEntityDisplay();
-    }
-
     //other
         
     getByType(metatype){

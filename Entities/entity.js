@@ -33,6 +33,11 @@ class Entity{
         }
     }
 
+    changeStat (stat, amount) {
+        this[stat] += amount;
+        this.updateEntityDisplay();
+    }
+
     changeHp(amount){
         if(amount == 'max') {
             this.hp = this.maxhp;
@@ -88,26 +93,14 @@ class Entity{
         this.antihealApplied = 0;
     }
 
-    receiveHitFrom(opp) {
+    receiveHitFrom(opp, damage) {
         if(this.testDodge(opp.accuracy)) {
-            let oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'));
-            this.changeHp(-oppDMG);
-
-            this.shatterApplied += opp.testShatter();
-            this.bleedApplied += opp.testBleed();
-            this.antihealApplied = opp.antiheal;
-
-            this.changeMaxHp(-opp.testTear(this.calcStat('superarmor')));
-
-            let oppHpChange = opp.testLifeDrain(oppDMG);
-            oppHpChange -= this.testThorn(opp.calcStat('superarmor'));
-            opp.changeHp(oppHpChange);
-        }
-    }
-
-    receiveNonHitDmg(hitDMG, opp) {
-        if(this.testDodge(opp.accuracy)) {
-            let oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'), hitDMG);
+            let oppDMG;
+            if (damage) {
+                oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'), damage);
+            } else {
+                oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'));
+            }
             this.changeHp(-oppDMG);
 
             this.shatterApplied += opp.testShatter();
