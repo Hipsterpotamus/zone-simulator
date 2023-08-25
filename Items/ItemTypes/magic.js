@@ -8,8 +8,9 @@
 
 
 class Magic extends Item {
-    constructor(name, metatype, magicElement, type, shortDescription, longDescription, manaCost, onUse, coolDown, usesFinite, complexStats){
+    constructor(game, name, metatype, magicElement, type, shortDescription, longDescription, manaCost, onUse, coolDown, usesFinite, complexStats){
         super(name, metatype);
+        this.game = game;
         this.magicElement = magicElement;
         this.type = type;
         this.shortDescription = shortDescription;
@@ -27,10 +28,10 @@ class Magic extends Item {
     }
 
     attemptUse(){
-        if(game.combat.inCombat){
-            if(game.player.mana>=this.manaCost){
-                game.player.changeMana(-this.manaCost);
-                this.onUse();
+        if(this.game.combat.inCombat){
+            if(this.game.player.mana>=this.manaCost){
+                this.game.player.changeMana(-this.manaCost);
+                this.onUse(this.game);
             }else{
                 notify('not enough mana!');
             }

@@ -6,6 +6,7 @@
 * [] Make sure 8 stats fit into armor
 * [] Implement "combat timer" element which appears during combat (either in the dead space in the "enemy encounter" tab or rolling on the header)
 * [] Create combat stats elements and content to display over dead enemy at the end of combat
+* [] Make arror follow event box rather than being draggable itself
 
 ## Backend
 

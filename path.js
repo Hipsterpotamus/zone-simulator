@@ -1,17 +1,22 @@
 class Path {
-    constructor() {
-        this.zoneNum = 1;
+    constructor(game) {
+        this.game = game;
+        this.game.zoneNum = 1;
         this.maxSpaces;
         this.typeInfo;
         this.setSpaces;
         this.nextSpace;
         this.spaceNumber = 0;
+
+        this.playerInit();
     }
 
     generatePath(maxSpaces, typeInfo, setSpaces) {
         this.maxSpaces = maxSpaces;
         this.typeInfo = typeInfo;
         this.setSpaces = setSpaces;
+
+        this.pushZoneItems();
 
         this.generateNextSpace();
     }
@@ -49,9 +54,9 @@ class Path {
 
     advancePath() {
         this.displayZoneInfo();
-        if(this.spaceNumber%3==0 && this.spaceNumber != 0){game.zone.changeZoneLevel(1)};
+        if(this.spaceNumber%3==0 && this.spaceNumber != 0){this.game.zone.changeZoneLevel(1)};
         $('#content-central-box').empty();
-        game.player.changeGold(game.player.calcStat('income'));
+        this.game.player.changeGold(this.game.player.calcStat('income'));
         const SPACEKEYS = {'shop' : 'shopEvent', 
         'event' : 'eventEvent', 
         'rest' : 'restEvent', 
@@ -64,7 +69,7 @@ class Path {
         if (this.spaceNumber >= this.maxSpaces) {
             this.spaceNumber = 0;
             this.advanceZone();
-            this.zoneNum += 1;
+            this.game.zoneNum += 1;
         } else {
             this.spaceNumber += 1;
             this.generateNextSpace();
@@ -72,7 +77,8 @@ class Path {
     }
 
     advanceZone() {
-        game.zone.advanceToNextZone();
+        this.game.zone = this.game.zone.advanceToNextZone();
+        this.generatePath(...this.game.zone.pathGen);
     }
 
     shopEvent() {
@@ -80,7 +86,7 @@ class Path {
 
         const ITEMCATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'usable', 'magic'];
 
-        let shopCode = game.zone.shopCode;
+        let shopCode = this.game.zone.shopCode;
         let shopCodeExpand = [shopCode[0], 0, 0, 0, 0, shopCode[2], shopCode[3], shopCode[4]];
 
         for (let i = 0; i < shopCode[1]; i++) {
@@ -90,7 +96,7 @@ class Path {
     
         ITEMCATEGORIES.forEach((category, index) => {
             let count = shopCodeExpand[index] || 0;
-            let availableItems = game.zone.zoneItemList[category];
+            let availableItems = this.game.zone.zoneItemList[category];
     
             for (let i = 0; i < count; i++) {
                 if (availableItems.length === 0) {
@@ -106,14 +112,16 @@ class Path {
 
     eventEvent() {
         setBroadcastTitleText('Event');
-        let eventInfo = game.zone.getRandomEvent(this.spaceNumber);
-        eventInfo.createElements();
+        let eventInfo = [...this.game.zone.getRandomEvent(this.spaceNumber)];
+        let newEvent = new EventCreator(this.game, eventInfo[0], ...eventInfo[1]);
+        newEvent.createElements();
     }
 
     restEvent() {
         setBroadcastTitleText('A Rest');
-        let restInfo = game.zone.getRandomRest(this.spaceNumber);
-        restInfo.createElements();
+        let restInfo = this.game.zone.getRandomRest(this.spaceNumber);
+        let newRest = new EventCreator(this.game, restInfo[0], ...restInfo[1]);
+        newRest.createElements();
     }
 
     enemyEvent() {
@@ -121,18 +129,18 @@ class Path {
         $('#combatTimer').removeClass('hidden');
         $('#large-tab-title').text('Enemy Encounter');
         setBroadcastTitleText('Enemy Encounter', true);
-        let enemy = game.zone.getRandomEnemy();
-        game.combat.startCombat(game.player, enemy);
+        let enemy = this.game.zone.getRandomEnemy();
+        this.game.combat.startCombat(this.game.player, enemy);
     }
 
     emptyEvent() {
-        setBroadcastTitleText(game.zone.zoneMessage, true);
+        setBroadcastTitleText(this.game.zone.zoneMessage, true);
     }
 
     pathEventEvent() {
-        setBroadcastTitleText('A Forkroad');
-        let eventInfo = game.zone.getZoneEvent();
-        eventInfo.createElements();
+        let eventInfo = this.game.zone.getZoneEvent();
+        let newEvent = new EventCreator(this.game, eventInfo[0], ...eventInfo[1]);
+        newEvent.createElements();
     }
 
     bossEvent() {
@@ -142,16 +150,30 @@ class Path {
     
         $('#combatTimer').removeClass('hidden');
     
-        let boss = game.zone.getBoss();
-        game.combat.startCombat(game.player, boss);       
+        let boss = this.game.zone.getBoss();
+        this.game.combat.startCombat(this.game.player, boss);       
     }
 
     displayZoneInfo() {
-        $('#zone-text').text('zone: '+this.zoneNum+'–'+this.spaceNumber);
+        $('#zone-text').text('zone: '+this.game.zoneNum+'–'+this.spaceNumber);
+    }
+
+    pushZoneItems() {
+        this.game.zone.zoneItems.forEach(itemName => {
+            let metatype = ITEMLIST[itemName][2];
+            this.game.zone.zoneItemList[metatype].push(new ShopItem(this.game, itemName, ...ITEMLIST[itemName]));
+        });
+    }
+
+    playerInit() {
+        this.game.player.addSelectableItem(new Usable(this.game, 'none', 'usable', 'never', '', 0, ''));
+        this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'weapon', 'none', 0, 0, 0, 0));
+        this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'head', 'none', 0, 0, 0, 0));
+        this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'chest', 'none', 0, 0, 0, 0));
+        this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'legs', 'none', 0, 0, 0, 0));
+        this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'feet', 'none', 0, 0, 0, 0));
     }
 }
 
-$(function() {
-    $('#go-next-debug').on('click', function() { game.path.advancePath(); });
-    $('.floating-next').on('click', function() { game.path.advancePath(); });
-});
+$(document).on('click', '#go-next-debug', function() { game.path.advancePath(); });
+$(document).on('click', '.floating-next', function() { game.path.advancePath(); });

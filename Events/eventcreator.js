@@ -1,5 +1,6 @@
-class Event {
-    constructor(title, description, choices) {
+class EventCreator {
+    constructor(game, title, description, choices) {
+        this.game = game;
         this.title = title;
         this.description = description;
         this.choices = choices;
@@ -23,8 +24,8 @@ class Event {
                 'class': 'event-button'
             });
             button.text('' + choice.text);
-            button.on('click', function() {
-                choice.effect();
+            button.on('click', () => {
+                choice.effect(this.game);
                 $('#content-central-box').empty();
                 setNextButtonVisible(true);
             });

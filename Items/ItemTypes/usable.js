@@ -1,6 +1,7 @@
 class Usable extends Item {
-    constructor(name, metatype, type, description, uses, onUse, complexStats){
+    constructor(game, name, metatype, type, description, uses, onUse, complexStats){
         super(name, metatype);
+        this.game = game;
         this.type = type;
         this.description = description;
         this.uses = uses;
@@ -16,14 +17,14 @@ class Usable extends Item {
     attemptUse(){
         if(this.uses > 0){
             if(this.type == 'combat'){
-                if(game.combat.inCombat){
+                if(this.game.combat.inCombat){
                     this.uses -= 1;
-                    this.onUse();
+                    this.onUse(game);
                 }else{notify('You must be in combat to use ' + this.name + '.')
                 }
             }else if(this.type == 'all'){
                 this.uses -= 1;
-                this.onUse();
+                this.onUse(game);
             }
             this.updateItemInfo();
         }else{

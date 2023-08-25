@@ -152,23 +152,6 @@ function notify(notification, length=3) {
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, length * 1000);
 }
 
-var totalPurchased = 0;
-function updatePurchaseHistory(item) {
-    totalPurchased += item.goldPrice;
-    // update the #purchase-total value
-    $('#purchase-total').text(totalPurchased); 
-
-
-    console.log('updating purchase history', item);
-    game.purchaseHistory.push(this);
-    // add new <p> to #gold-text-tail
-    let newPurchase = $('<p>', {
-        'class': 'gold-text-tail-item'
-    });
-    newPurchase.text(item.name.charAt(0).toUpperCase() + item.name.substr(1) + ' - ' + item.goldPrice + ' Gold');
-    newPurchase.appendTo('#gold-text-tail');
-}
-
 // Zone background theme
 function setBackgroundZone(zoneNumber) {
     // change body's class from zone-1 to zone-2..

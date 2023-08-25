@@ -46,7 +46,7 @@ class Entity{
         }
 
         this.updateHealthBar(amount);
-        if (!game.combat.inCombat) {this.updateEntityDisplay()};
+        this.updateEntityDisplay();
 
         if (this.hp <= 0 && this.alive) {
             this.hp = 0;

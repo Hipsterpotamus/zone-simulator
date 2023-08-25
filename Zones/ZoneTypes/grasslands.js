@@ -215,11 +215,8 @@ class Grasslands extends Zone {
         ];
 
         this.pathEvent = 'A Fork In The Road';
-
-        this.pushZoneItems();
     }
     advanceToNextZone(){
-        game.zone = new Forest();
-        game.path.generatePath(...game.zone.pathGen);
+        return new Forest(this.game);
     }
 }

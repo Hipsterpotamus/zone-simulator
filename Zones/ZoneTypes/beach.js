@@ -239,13 +239,10 @@ class Beach extends Zone {
         ];
 
         this.pathEvent = 'The End of the Forest';
-        
-        this.pushZoneItems();
     }
     
     advanceToNextZone(){
-        setBackgroundZone(4); 
-        game.zone = new Forest();
-        game.path.generatePath(...game.zone.pathGen);
+        setBackgroundZone(4);
+        return new Forest(this.game);
     }
 }

@@ -16,6 +16,7 @@ class Player extends Entity{
         this.maxMana = 15;
         this.manaRate = 50;
         this.manaGen = 1;
+        this.totalPurchased = 0;
 
         this.inv = {
             'usable':['', []],
@@ -26,12 +27,6 @@ class Player extends Entity{
             'feet':['', []],
             'magic':['', []],
         }
-        this.addSelectableItem(new Usable('none', 'usable', 'never', '', 0, ''));
-        this.addSelectableItem(new Equippable('none', 'weapon', 'none', 0, 0, 0, 0));
-        this.addSelectableItem(new Equippable('none', 'head', 'none', 0, 0, 0, 0));
-        this.addSelectableItem(new Equippable('none', 'chest', 'none', 0, 0, 0, 0));
-        this.addSelectableItem(new Equippable('none', 'legs', 'none', 0, 0, 0, 0));
-        this.addSelectableItem(new Equippable('none', 'feet', 'none', 0, 0, 0, 0));
     }
 
     addSelectableItem(item) {

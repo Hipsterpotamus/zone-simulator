@@ -1,6 +1,7 @@
 class Stat extends Item {
-    constructor(name, metatype, onUse, complexStats) {
+    constructor(game, name, metatype, onUse, complexStats) {
         super(name, metatype);
+        this.game = game;
         this.onUse = onUse;
         
         if(complexStats){

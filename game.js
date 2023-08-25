@@ -1,10 +1,10 @@
 class Game {
     constructor(characterClass) {
-        this.zone = new Grasslands;
-        this.player = new characterClass('human');
-        this.path = new Path();
-        this.combat = new Combat();
         this.purchaseHistory = [];
+        this.player = new characterClass('human');
+        this.combat = new Combat();
+        this.zone = new Grasslands(this);
+        this.path = new Path(this);
     }
 
     startGame() {

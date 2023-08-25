@@ -1,8 +1,9 @@
 const ITEMCATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'usable', 'magic'];
 
 class Zone {
-    constructor(zoneLevel) {
-        this.zoneLevel = zoneLevel;
+    constructor(game) {
+        this.game = game;
+        this.zoneLevel = 1;
         this.minZoneLevel = 1;
         this.zoneItemList = {}
         ITEMCATEGORIES.forEach(element => {
@@ -44,13 +45,13 @@ class Zone {
         const enemyAttributes = selectedEnemyList[Math.floor(Math.random() * selectedEnemyList.length)];
         enemyAttributes[8] += levelAdjustment;
     
-        return new Enemy(...enemyAttributes);
+        return new Enemy(this.game, ...enemyAttributes);
     }
 
     getBoss(){
         const bossAttributes = this.bossStats[Math.floor(Math.random() * this.bossStats.length)];
     
-        return new Boss(...bossAttributes);
+        return new Boss(this.game, ...bossAttributes);
     }
 
     getRandomEvent(space) {
@@ -61,11 +62,11 @@ class Zone {
             }
         });
         const selectedEvent = eventPool[Math.floor(Math.random() * eventPool.length)];
-        return eventList[selectedEvent];
+        return [selectedEvent, EVENTLIST[selectedEvent]];
     }
 
     getZoneEvent() {
-        return eventList[this.pathEvent];
+        return [this.pathEvent, EVENTLIST[this.pathEvent]];
     }
 
     getRandomRest(space) {
@@ -78,17 +79,10 @@ class Zone {
                 break;
             }
         }
-        return eventList[zoneRest];
+        return [zoneRest, EVENTLIST[zoneRest]];
     }
 
     getShopType() {
         return this.shopType;
-    }
-
-    pushZoneItems() {
-        this.zoneItems.forEach(itemName => {
-            let metatype = ITEMLIST[itemName][2];
-            this.zoneItemList[metatype].push(new ShopItem(itemName, ...ITEMLIST[itemName]));
-        });
     }
 }

@@ -1,6 +1,7 @@
 class Equippable extends Item {
-    constructor(name, metatype, type, dmg, armor, regen, attackSpeedChange, complexStats) {
+    constructor(game, name, metatype, type, dmg, armor, regen, attackSpeedChange, complexStats) {
         super(name, metatype);
+        this.game = game;
         this.type = type;
         this.dmg = dmg;
         this.arm = armor;
@@ -58,7 +59,7 @@ class Equippable extends Item {
         if(this.name=='none'){
             statOutput = '';
         } else {
-            game.player.updateEntityDisplay();
+            this.game.player.updateEntityDisplay();
         }
         
         $('#'+this.metatype+'-stats').html(statOutput);

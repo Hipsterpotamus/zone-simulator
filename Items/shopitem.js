@@ -1,5 +1,6 @@
 class ShopItem{
-    constructor(name, goldPrice, shopDesc, metatype, itemInfo){
+    constructor(game, name, goldPrice, shopDesc, metatype, itemInfo){
+        this.game = game;
         this.name = name;
         this.goldPrice = goldPrice;
         this.shopDesc = shopDesc;
@@ -13,31 +14,31 @@ class ShopItem{
     generateItem() {
         const EQUIPPABLELIST = ['weapon', 'head', 'chest', 'legs', 'feet'];
         if (EQUIPPABLELIST.includes(this.metatype)) {
-            this.onBuy = () => game.player.addSelectableItem(new Equippable(this.name, this.metatype, ...this.itemInfo));
+            this.onBuy = () => this.game.player.addSelectableItem(new Equippable(this.game, this.name, this.metatype, ...this.itemInfo));
         }
     
         const USABLELIST = ['usable'];
         if (USABLELIST.includes(this.metatype)) {
-            this.onBuy = () => game.player.addSelectableItem(new Usable(this.name, this.metatype, ...this.itemInfo));
+            this.onBuy = () => this.game.player.addSelectableItem(new Usable(this.game, this.name, this.metatype, ...this.itemInfo));
         }
     
         const STATLIST = ['stat'];
         if (STATLIST.includes(this.metatype)) {
-            this.onBuy = () => new Stat(this.name, this.metatype, ...this.itemInfo).onUse();
+            this.onBuy = () => new Stat(this.game, this.name, this.metatype, ...this.itemInfo).onUse(this.game);
         }
     
         const MAGICLIST = ['magic'];
         if (MAGICLIST.includes(this.metatype)) {
-            this.onBuy = () => game.player.addSelectableItem(new Magic(this.name, this.metatype, ...this.itemInfo));
+            this.onBuy = () => this.game.player.addSelectableItem(new Magic(this.game, this.name, this.metatype, ...this.itemInfo));
         }
     }
 
     purchase(){
-        if( game.player.gold>=this.goldPrice){
-            game.player.changeGold(-this.goldPrice);
+        if( this.game.player.gold>=this.goldPrice){
+            this.game.player.changeGold(-this.goldPrice);
             this.onBuy();
             this.element.remove();
-            updatePurchaseHistory(this);
+            this.updatePurchaseHistory();
         } else {
             notify('Not enough Gold!');
         }
@@ -53,5 +54,16 @@ class ShopItem{
         this.element.on('click', () => {
             this.purchase();
         });
+    }
+
+    updatePurchaseHistory() {
+        this.game.player.totalPurchased += this.goldPrice;
+        $('#purchase-total').text(this.game.player.totalPurchased);
+        this.game.purchaseHistory.push(this);
+        let newPurchase = $('<p>', {
+            'class': 'gold-text-tail-item'
+        });
+        newPurchase.text(this.name.charAt(0).toUpperCase() + this.name.substr(1) + ' - ' + this.goldPrice + ' Gold');
+        newPurchase.appendTo('#gold-text-tail');
     }
 }

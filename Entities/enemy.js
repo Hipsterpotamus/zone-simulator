@@ -1,7 +1,8 @@
 
 class Enemy extends Entity{
-    constructor(name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
+    constructor(game, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
          super(name, type, health, attackspeed, damage, armor, gold, regen, complexStats);
+         this.game = game;
          this.complexStats = complexStats;
          this.diffC = difficultyCh;
          this.boss = false;
@@ -19,10 +20,10 @@ class Enemy extends Entity{
 
     death() {
         setBroadcastTitleText('Victory!', true)
-        game.player.changeGold(this.gold, true);
-        game.zone.changeZoneLevel(this.diffC);
-        game.player.cleanStatus();
-        game.player.changeHp(game.player.levelheal*this.getLvlHealMult());
+        this.game.player.changeGold(this.gold, true);
+        this.game.zone.changeZoneLevel(this.diffC);
+        this.game.player.cleanStatus();
+        this.game.player.changeHp(this.game.player.levelheal*this.getLvlHealMult());
 
         setNextButtonVisible(true);
     
