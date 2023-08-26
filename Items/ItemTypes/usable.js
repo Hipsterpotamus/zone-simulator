@@ -19,7 +19,7 @@ class Usable extends Item {
             if(this.type == 'combat'){
                 if(this.game.combat.inCombat){
                     this.uses -= 1;
-                    this.onUse(game);
+                    this.onUse(this.game);
                 }else{notify('You must be in combat to use ' + this.name + '.')
                 }
             }else if(this.type == 'all'){
