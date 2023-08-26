@@ -4,7 +4,11 @@ class Usable extends Item {
         this.game = game;
         this.type = type;
         this.description = description;
-        this.uses = uses;
+        if (game.player.levelInfo.characteristics.mechanical) {
+            this.uses = uses * 2;
+        } else {
+            this.uses = uses;
+        }
         this.onUse = onUse;
         
         if(complexStats){

@@ -31,28 +31,34 @@ class Zone {
         const easyThreshold = this.levelDifficultyDist[this.zoneLevel][0];
         const medThreshold = this.levelDifficultyDist[this.zoneLevel][1];
         const adjZoneLevel = Math.min(this.zoneLevel, this.maxZoneLevel - 2);
+        let enemyLvl;
     
         if (randomValue < easyThreshold) {
             selectedEnemyList = enemyStats[adjZoneLevel - 1];
             levelAdjustment += 1;
+            enemyLvl = adjZoneLevel - 1;
         } else if (randomValue < medThreshold) {
             selectedEnemyList = enemyStats[adjZoneLevel];
+            enemyLvl = adjZoneLevel;
         } else {
             selectedEnemyList = enemyStats[adjZoneLevel + 1];
             levelAdjustment -= 1;
+            enemyLvl = adjZoneLevel + 1;
         }
     
         const enemyAttributes = selectedEnemyList[Math.floor(Math.random() * selectedEnemyList.length)];
         enemyAttributes[8] += levelAdjustment;
+        let enemyXp = this.xpDist[enemyLvl];
     
-        return [new Enemy(this.game, ...enemyAttributes)];
+        return [new Enemy(this.game, enemyXp, ...enemyAttributes)];
     }
 
     getBoss(){
         let bossAttributes = this.bossStats[Math.floor(Math.random() * this.bossStats.length)];
         let rewardItem = this.getBossReward();
+        let bossXp = this.bossXp;
     
-        return [new Boss(this.game, rewardItem, ...bossAttributes)];
+        return [new Boss(this.game, bossXp, rewardItem, ...bossAttributes)];
     }
 
     getBossReward() {

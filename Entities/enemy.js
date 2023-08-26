@@ -1,8 +1,9 @@
 
 class Enemy extends Entity{
-    constructor(game, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
+    constructor(game, xp, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
          super(name, type, health, attackspeed, damage, armor, gold, regen, complexStats);
          this.game = game;
+         this.xp = xp;
          this.complexStats = complexStats;
          this.diffC = difficultyCh;
          this.boss = false;

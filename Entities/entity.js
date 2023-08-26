@@ -1,6 +1,8 @@
 class Entity{
     constructor(name, type, health, attackspeed, damage, armor, gold, regen, complexStats) { 
         this.name = name;
+        this.levelInfo = new LevelInfo();
+
         this.type = type;
         this.hp = health;
         this.maxhp = health;
@@ -91,7 +93,12 @@ class Entity{
 
     receiveHitFrom(opp, damage) {
         if(this.testDodge(opp.accuracy)) {
-            let oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'));
+            let oppDMG;
+            if (opp.levelInfo.characteristics.vengeful && (this.hp / this.maxhp) < 0.3) {
+                oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'), opp.calcStat('dmg') * 2);
+            } else {
+                oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'));
+            }
             this.changeHp(-oppDMG);
 
             opp.combatStats.outgoingDmg += oppDMG;

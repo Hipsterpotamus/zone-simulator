@@ -50,7 +50,14 @@ class ShopItem{
             'class': this.metatype + '-shop-item',
         });
         this.element.appendTo('#content-central-box');
-        this.element.html('buy ' + this.name + ': ' + this.goldPrice + ' gold<br>' + this.shopDesc);
+        if (this.game.player.levelInfo.characteristics.persuasive) {
+            let newPrice = Math.ceil(this.goldPrice / 2);
+            this.element.html('buy ' + this.name + ': <del>' + this.goldPrice + '</del> ' + newPrice + ' gold<br>' + this.shopDesc);
+            this.goldPrice = newPrice
+        } else {
+            this.element.html('buy ' + this.name + ': ' + this.goldPrice + ' gold<br>' + this.shopDesc);
+        }
+
         this.element.on('click', () => {
             this.purchase();
         });

@@ -1,6 +1,6 @@
 class Boss extends Enemy{
-    constructor(game, rewardItem, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
-        super(game, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats);
+    constructor(game, xp, rewardItem, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
+        super(game, xp, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats);
         this.rewardItem = rewardItem;
         this.boss = true;
     }
@@ -24,7 +24,7 @@ class Boss extends Enemy{
 
     getRewardItem() {
         let item = ITEMLIST[this.rewardItem];
-        notify(item[0], 5);
+        notify(item[0], 10);
         item = item[1];
         return new ShopItem(this.game, this.rewardItem, 0, '', item[0], item[1]);
     }

@@ -17,7 +17,7 @@
 * [] Finish Beach Bosses
 * [] Add/balance boss reward items to all zones
 #### Grant:
-* [] Implement Combat Delay
+* [] Implement Combat Delay  //i'll need a screen to pull up during the delay and preferably a button to skip it as well. also how long did you want the delay to be?
 * [x] Create Combat Results
 * [x] Implement Boss Reward System
 * [] Create LVL UP System
