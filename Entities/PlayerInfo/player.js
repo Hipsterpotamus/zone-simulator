@@ -29,6 +29,26 @@ class Player extends Entity{
             'feet':['', []],
             'magic':['', []],
         }
+
+        this.gameCombatStats = {
+            'outgoingDmg' : 0,
+            'ticksAlive' : 0,
+            'incomingBlocked' : 0,
+            'hpRegened' : 0,
+            'manaUsed' : 0,
+            'spellsCast' : 0,
+            'itemsUsed' : 0
+        }
+
+        this.combatStats = {
+            'outgoingDmg' : 0,
+            'ticksAlive' : 0,
+            'incomingBlocked' : 0,
+            'hpRegened' : 0,
+            'manaUsed' : 0,
+            'spellsCast' : 0,
+            'itemsUsed' : 0
+        }
     }
 
     addSelectableItem(item) {
@@ -69,6 +89,11 @@ class Player extends Entity{
     }
 
     death() {
+        this.alive = false;
+
+        console.log('game combat stats:');
+        console.log(this.gameCombatStats); //not sure if you want any more than these stats
+
         $('#player-death').removeClass('hidden');
         $('#player-death').addClass('fullViewport');
         let video = $('#player-death')[0];

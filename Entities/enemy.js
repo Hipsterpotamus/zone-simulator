@@ -8,6 +8,20 @@ class Enemy extends Entity{
          this.boss = false;
          this.updateHealthBar(0);
          $('#enemy-health-bar-container').removeClass('hidden');
+
+         this.combatStats = {
+            'gold' : gold,
+            'ticksAlive' : 0,
+            'outgoingDmg' : 0,
+            'incomingBlocked' : 0,
+            'hpRegened' : 0
+        }
+
+        this.gameCombatStats = {
+            'outgoingDmg' : 0,
+            'incomingBlocked' : 0,
+            'hpRegened' : 0
+        }
     }
 
     calcStat(stat) {//should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
@@ -27,6 +41,9 @@ class Enemy extends Entity{
 
     death() {
         this.game.player.changeGold(this.gold, true);
+        this.game.combat.combatStats['totalGoldGain'] += this.gold;
+
+        this.alive = false;
         this.game.zone.changeZoneLevel(this.diffC);
         
         this.updateEntityDisplay();
@@ -103,6 +120,13 @@ class Enemy extends Entity{
             $('#enemy-name').text('Defeated ' + this.name + '!');
 
             //TODO: Display combat stats
+            //this.combatStats = {
+                //'gold' : gold,
+                //'ticksAlive' : 0,
+                //'outgoingDmg' : 0,
+                //'incomingBlocked' : 0,
+                //'hpRegened' : 0
+            //}
         }
     }
 }

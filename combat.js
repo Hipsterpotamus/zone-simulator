@@ -22,9 +22,11 @@ class Combat {
         this.tick = 0;
         this.player;
         this.enemyList;
+        this.selectedEnemy;
         this.lvlHealMult;
         this.delay = msDelay; //change this to change how long between ticks
         this.inCombat = false;
+        this.combatStats;
     }
 
     startCombat(player, enemyList) {
@@ -33,6 +35,22 @@ class Combat {
         this.player = player;
         this.enemyList = enemyList;
         this.lvlHealMult = 0;
+
+        this.player.combatStats = {
+            'outgoingDmg' : 0,
+            'ticksAlive' : 0,
+            'incomingBlocked' : 0,
+            'hpRegened' : 0,
+            'manaUsed' : 0,
+            'spellsCast' : 0,
+            'itemsUsed' : 0
+        };
+        this.startPlayerHp = this.player.hp;
+        this.combatStats = {
+            'totalGoldGain' : 0,
+            'length' : this.tick
+        };
+
         this.enemyList.forEach(enemy => {
             if (enemy.getLvlHealMult() > this.lvlHealMult) {this.lvlHealMult = enemy.getLvlHealMult()};
         });
@@ -96,6 +114,7 @@ class Combat {
         } else {
             this.inCombat = false;
             setBroadcastTitleText('Victory!', true);
+            this.displayCombatStats();
             this.player.cleanStatus();
             this.player.changeHp(this.player.levelheal*this.lvlHealMult);
     
@@ -124,13 +143,38 @@ class Combat {
                 enemy.regenCounter = 0;
             });
         } else {
+            this.player.combatStats.ticksAlive += amount;
+            this.player.gameCombatStats.ticksAlive += amount;
             this.player.attackCounter += amount;
             this.player.regenCounter += amount;
             this.player.manaCounter += amount;
             this.enemyList.forEach(enemy => {
+                enemy.combatStats.ticksAlive += amount;
                 enemy.attackCounter += amount;
                 enemy.regenCounter += amount;
             });
         }
+    }
+
+    displayCombatStats() {
+        let combatStats = {
+            'Gold' : this.combatStats.totalGoldGain,
+            'HpLost' : this.player.hp - this.startPlayerHp,
+            'LengthTicks' : this.tick,
+            'LengthSeconds' : this.tick / (1000 / this.delay),
+
+            'DMGDealt' : this.player.combatStats.outgoingDmg,
+            'DMGBlocked' : this.player.combatStats.incomingBlocked,
+            'HpRegenerated' : this.player.combatStats.hpRegened,
+
+            'ManaUsed' : this.player.combatStats.manaUsed,
+            'SpellsCast' : this.player.combatStats.spellsCast,
+            'ItemsUsed' : this.player.combatStats.itemsUsed
+
+            //enemy stats should be updated per enemy on death in enemy.updateEntityDisplay(), line 117
+        };
+
+        console.log('combat stats:');
+        console.log(combatStats);
     }
 }

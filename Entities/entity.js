@@ -53,7 +53,6 @@ class Entity{
 
         if (this.hp <= 0 && this.alive) {
             this.hp = 0;
-            this.alive = false;
             this.death();
         }
     }
@@ -74,6 +73,8 @@ class Entity{
         if (regen != 0) {
             this.changeHp(regen);
         }
+        this.combatStats.hpRegened += regen;
+        this.gameCombatStats.hpRegened += regen;
     }
 
     calcAs() {
@@ -91,6 +92,11 @@ class Entity{
         if(this.testDodge(opp.accuracy)) {
             let oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'));
             this.changeHp(-oppDMG);
+
+            opp.combatStats.outgoingDmg += oppDMG;
+            this.combatStats.incomingBlocked += (oppDMG - opp.testDmg(0, 0));
+            opp.gameCombatStats.outgoingDmg += oppDMG;
+            this.gameCombatStats.incomingBlocked += (oppDMG - opp.testDmg(0, 0));
 
             this.shatterApplied += opp.testShatter();
             this.bleedApplied += opp.testBleed();

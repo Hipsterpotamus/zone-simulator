@@ -161,13 +161,13 @@ const ITEMLIST = {
   //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
   'firecracker': [5, '(item: deal 20 dmg, lose 2 hp)', 'usable', ['combat', 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 1, 
     function(game){
-        game.combat.enemy.changeHp(-20);
+        game.combat.selectedEnemy.changeHp(-20);
         game.player.changeHp(-2);
   }]],
   
   'throwing eggs': [7, '(3x item: current enemy loses 3 armor)', 'usable', ['combat', "During combat, lower the current enemy's armor by 3", 3, 
     function(game){
-        game.combat.enemy.arm -= 3;
+        game.combat.selectedEnemy.arm -= 3;
   }]],
   
   'bandages': [9, '(4x item: heal 5 hp)', 'usable', ['all', "Heal 5", 4, 
@@ -190,7 +190,7 @@ const ITEMLIST = {
 
 
   'shock': [15, '(spell: 12 mana -> deal 10 dmg)', 'magic', ['electric','hit','deal 10 dmg','Deal 10 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 12, function(game){
-        game.combat.enemy.receiveNonHitDmg(10,game.player);
+        game.combat.selectedEnemy.receiveNonHitDmg(10,game.player);
   }, 0, 0]],
   'growth spurt': [20, '(spell: 15 mana -> gain 3 max hp)', 'magic', ['plant','buff','gain 3 max hp','Gain 3 max hp, includes gain of 3 hp. Infinite uses', 15, function(game){
         game.player.changeMaxHp(3);
@@ -199,7 +199,7 @@ const ITEMLIST = {
         game.player.changeHp(4);
   }, 0, 0]],
   'grass disarm': [13, '(spell: 5 mana -> remove 1 enemy armor)', 'magic', ['plant','debuff','enemy loses one armor','Enemy receives -1 armor, can go negative. Does not interact with shatter. Infinite uses', 5, function(game){
-        game.combat.enemy.changeStat('arm',-1);
+        game.combat.selectedEnemy.changeStat('arm',-1);
   }, 0, 0]],
   'blood let': [26, '(spell: 15 mana -> lose 20 hp, +1 dmg, +1 armor)', 'magic', ['blood','buff','lose 20 hp, +1 dmg, +1 armor','Lose 20 hp, gain a permanent stat buff of +1 dmg and +1 armor. Infinite uses', 15, function(game){
         game.player.changeHp(-20);
@@ -207,7 +207,7 @@ const ITEMLIST = {
         game.player.changeStat('arm', 1);
   }, 0, 0]],
   'chill': [14, '(spell: 10 mana -> enemy loses 5 attack speed)', 'magic', ['ice','debuff','enemy loses 5 attack speed','Enemy receives -5 attack speed. Infinite uses', 10, function(game){
-        game.combat.enemy.changeStat('as',-5);
+        game.combat.selectedEnemy.changeStat('as',-5);
   }, 0, 0]],
 
 
@@ -414,14 +414,14 @@ const ITEMLIST = {
   //name : [price, shopDesc, metatype, [type, usableDesc, onUse, complexStats]]
   'goblin bomb': [20, '(item: deal 50 dmg to non-goblin. gain 5 gold)', 'usable', ['combat', 'During combat, use to deal 50 dmg (bypasses armor) to the current enemy. If the current enemy is of the goblin type, instead deal 0 damage. Gain 5 gold', 1, 
     function(game){
-        if(game.combat.enemy.type != 'goblin'){
-          game.combat.enemy.changeHp(-50);
+        if(game.combat.selectedEnemy.type != 'goblin'){
+          game.combat.selectedEnemy.changeHp(-50);
         }
         game.player.changeGold(5);
   }]],
   'dryad throwing leaves': [28, '(4x item: deal 10 dmg, heal 10)', 'usable', ['combat', "During combat, deal 10 dmg to an enemy (bypasses armor), and heal 10", 4,
   function(game){
-    game.combat.enemy.changeHp(-10);
+    game.combat.selectedEnemy.changeHp(-10);
     game.player.changeHp(10);
   }]],
   'elf bandages': [35, '(15x item: heal 10 hp)', 'usable', ['all', "Heal 10", 15, 
@@ -430,19 +430,19 @@ const ITEMLIST = {
   }]],
   'elven battle book': [18, '(item: if enemy has lower attackspeed, gain 3% dodge permanetly)', 'usable', ['combat', "During combat, if enemy has a lower total attackspeed than you, gain 3% permanent dodge", 1, 
   function(game){
-      if(game.combat.enemy.calcAs()<game.player.calcAs()){
+      if(game.combat.selectedEnemy.calcAs()<game.player.calcAs()){
         game.player.changeStat('dodge', 3);
       }
   }]],
   'dryad battle book': [22, '(item: if enemy has a higher attackspeed, gain 3% lifedrain permanetly)', 'usable', ['combat', "During combat, if enemy has a higher total attackspeed than you, gain 3% permanent lifedrain", 1, 
     function(game){
-        if(game.combat.enemy.calcAs()<game.player.calcAs()){
+        if(game.combat.selectedEnemy.calcAs()<game.player.calcAs()){
           game.player.changeStat('lifedrain', 3);
         }
   }]],
   'goblin sacks': [30, '(4x item: gain 20% of enemy gold payout)', 'usable', ['combat', "During combat, gain 20% of the current enemy's gold pay out", 4, 
     function(game){
-        game.player.changeGold(Math.floor(game.combat.enemy.gold*0.2));
+        game.player.changeGold(Math.floor(game.combat.selectedEnemy.gold*0.2));
   }]],
   'dryad berries': [41, '(4x item: heal 15 hp and gain 1 regen permantely)', 'usable', ['all', "Heal 15 hp and gain 1 regen permanetly",4, 
     function(game){
@@ -463,10 +463,10 @@ const ITEMLIST = {
   }]],
   'dryad root potion': [70, '(item: current enemy armor doubles, but their attack speed halves)', 'usable', ['combat', "During combat, the enemy's base armor grows by the amount of effective armor they currently have (armor - shatter applied). Their attackspeed is set to half.", 1, 
   function(game){
-      if(game.combat.enemy.calcStat('arm')<0){
-        game.combat.enemy.arm+=game.combat.enemy.calcStat('arm')
+      if(game.combat.selectedEnemy.calcStat('arm')<0){
+        game.combat.selectedEnemy.arm+=game.combat.selectedEnemy.calcStat('arm')
       }else{
-        game.combat.enemy.arm += Math.max(game.combat.enemy.calcStat('arm')-game.combat.enemy.shatterApplied, 0)
+        game.combat.selectedEnemy.arm += Math.max(game.combat.selectedEnemy.calcStat('arm')-game.combat.selectedEnemy.shatterApplied, 0)
       }
   }]],
 
@@ -478,9 +478,9 @@ const ITEMLIST = {
   }, 0, 0]],
   'goblin fire dance': [36, '(spell: 15 mana -> you & enemy lose 10 hp. +2 dmg, enemy -2 dmg)', 'magic', ['fire','buff','you & enemy lose 10 hp. you gain +2 dmg, and enemy loses 2 dmg','Deal 10 dmg to the current enemy and yourself (bypasses armor and dodge). You gain a permanent +2 dmg increase as does the current enemy. Infinite uses', 15, function(game){
       game.player.changeHp(-10);
-      game.combat.enemy.changeHp(-10);
+      game.combat.selectedEnemy.changeHp(-10);
       game.player.changeStat('dmg', 2);
-      game.combat.enemy.changeStat('dmg', -2);
+      game.combat.selectedEnemy.changeStat('dmg', -2);
   }, 0, 0]],
   'grass overgrowth': [26, '(spell: 20 mana -> +3 max hp +1 armor -1 speed)', 'magic', ['plant', 'buff','gain 3 max hp, 1 armor, and lose 1 attack speed','Permanently gain 3 max hp, 1 armor, and permanently lose 1 attack speed. Infinite uses', 20, function(game){
       game.player.changeMaxHp(3);
@@ -506,7 +506,7 @@ const ITEMLIST = {
       game.player.changeStat('as', 1);
   }, 0, 0]],
   'rock drop': [38, '(spell: 15 mana -> deal 40 dmg)', 'magic', ['rock', 'status','deal 40 dmg','Deal 40 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 15, function(game){
-      game.combat.enemy.receiveNonHitDmg(40, game.player);
+      game.combat.selectedEnemy.receiveNonHitDmg(40, game.player);
   }, 0, 0]],
 
 
