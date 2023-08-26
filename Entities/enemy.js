@@ -63,7 +63,7 @@ class Enemy extends Entity{
         // if(!this.alive){htmlOutput = '';}
         // $('#enemy-stats').html(htmlOutput);
 
-        let statsList = ['dmg', 'regen', 'arm', 'dodge', 'speed', 'thorn', 'shatter', 'income', 'lifedrain', 'bleed', 'superarmor', 'tear'];
+        let statsList = ['dmg', 'arm', 'regen', 'speed', 'dodge', 'shatter', 'bleed', 'lifedrain', 'thorn', 'superarmor','tear'];
         if (this.accuracy != 100) {statsList.append('accuracy')}
         
         // add visible class to .enemy
