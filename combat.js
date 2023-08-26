@@ -21,47 +21,71 @@ class Combat {
     constructor(msDelay = 20) {
         this.tick = 0;
         this.player;
-        this.enemy;
+        this.enemyList;
         this.delay = msDelay; //change this to change how long between ticks
         this.inCombat = false;
     }
 
-    startCombat(player, enemy) {
+    startCombat(player, enemyList) {
         this.tick = 0;
         this.inCombat = true;
         this.player = player;
-        this.enemy = enemy;
+        this.enemyList = enemyList;
+        this.lvlHealMult = 0;
+        this.enemyList.forEach(enemy => {
+            if (enemy.getLvlHealMult > this.lvlHealMult) {this.lvlHealMult = enemy.getLvlHealMult};
+        });
+
+        //default to have selected enemy be the first one, can add listener to change once frontend is added
+        //will need to ensure selected enemy is alive before changing
+        //will also likely require some changes to enemy.updateEntityDisplay(), as it always outputs to the same div
+        //could easily add a parameter to each enemy that determines it's number or something, or pass in this object so
+        //each enemy has access to the enemyList and can dynamically determine it's position
+        this.selectedEnemy = enemyList[0];
         this.changeCounters(false);
         $('#combatTimer').removeClass('hidden');
         this.combatTick();
     }
 
     combatTick() {
+        if (!this.enemyList.includes(this.selectedEnemy)) {this.selectedEnemy = this.enemyList[0]};
         this.tick += 1;
         this.changeCounters(1);
-        if (this.player.attackCounter >= this.player.calcAs()) {
-            this.player.attackCounter = 0;
-            this.enemy.receiveHitFrom(this.player);
-        }
-        if (this.enemy.attackCounter >= this.enemy.calcAs()) {
-            this.enemy.attackCounter = 0;
-            this.player.receiveHitFrom(this.enemy);
-        }
         if (this.player.regenCounter >= this.player.regenRate) {
             this.player.regenCounter = 0;
             this.player.runRegen();
-        }
-        if (this.enemy.regenCounter >= this.enemy.regenRate) {
-            this.enemy.regenCounter = 0;
-            this.enemy.runRegen();
         }
         if (this.player.manaCounter >= this.player.manaRate){
             this.player.manaCounter = 0;
             this.player.changeMana(this.player.calcStat('manaGen'));
         }
+        if (this.player.attackCounter >= this.player.calcAs()) {
+            this.player.attackCounter = 0;
+            this.selectedEnemy.receiveHitFrom(this.player);
+        }
+
+        this.enemyList.forEach(enemy => {
+            if (enemy.alive) {
+                if (enemy.regenCounter >= enemy.regenRate) {
+                    enemy.regenCounter = 0;
+                    enemy.runRegen();
+                }
+                if (enemy.attackCounter >= enemy.calcAs()) {
+                    enemy.attackCounter = 0;
+                    this.player.receiveHitFrom(enemy);
+                }
+            }
+        });
+
+        this.enemyList.forEach((enemy, index) => {
+            if (!enemy.alive) {
+                this.enemyList.splice(index, 1);  //currently removes enemy from enemyList when the enemy dies
+            }
+        });
+
         this.displayCombatInfo();
 
-        if (this.enemy.alive && this. player.alive) {
+        if (this.player.alive && this.enemyList.length > 0) {
             if (this.delay != 0) {
                 setTimeout(() => this.combatTick(), this.delay);
             } else{
@@ -70,13 +94,23 @@ class Combat {
             
         } else {
             this.inCombat = false;
+            setBroadcastTitleText('Victory!', true);
+            this.player.cleanStatus();
+            this.player.changeHp(this.player.levelheal*this.lvlHealMult);
+    
+            setNextButtonVisible(true);
+        
+            $('#combatTimer').addClass('hidden');
+            $('#enemy-health-bar-container').addClass('hidden');
         }
     }
 
     displayCombatInfo() {
         $('#combatTimer').text(Math.floor(this.tick / (3000))+":"+Math.floor((this.tick%(3000)/50)));
         this.player.updateEntityDisplay();
-        this.enemy.updateEntityDisplay();
+        this.enemyList.forEach(enemy => {
+            enemy.updateEntityDisplay();
+        });
     }
 
     changeCounters(amount) {
@@ -84,14 +118,18 @@ class Combat {
             this.player.attackCounter = 0;
             this.player.regenCounter = 0;
             this.player.manaCounter = 0;
-            this.enemy.attackCounter = 0;
-            this.enemy.regenCounter = 0;
+            this.enemyList.forEach(enemy => {
+                enemy.attackCounter = 0;
+                enemy.regenCounter = 0;
+            });
         } else {
             this.player.attackCounter += amount;
             this.player.regenCounter += amount;
             this.player.manaCounter += amount;
-            this.enemy.attackCounter += amount;
-            this.enemy.regenCounter += amount;
+            this.enemyList.forEach(enemy => {
+                enemy.attackCounter += amount;
+                enemy.regenCounter += amount;
+            });
         }
     }
 }

@@ -26,16 +26,9 @@ class Enemy extends Entity{
     }
 
     death() {
-        setBroadcastTitleText('Victory!', true)
         this.game.player.changeGold(this.gold, true);
         this.game.zone.changeZoneLevel(this.diffC);
-        this.game.player.cleanStatus();
-        this.game.player.changeHp(this.game.player.levelheal*this.getLvlHealMult());
-
-        setNextButtonVisible(true);
-    
-        $('#combatTimer').addClass('hidden');
-        $('#enemy-health-bar-container').addClass('hidden');
+        
         this.updateEntityDisplay();
     }
 

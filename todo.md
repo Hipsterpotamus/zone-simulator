@@ -30,7 +30,6 @@
 
 * [] Add player level up system
 * [] Implement boss reward system
-* [] Add support for multiple enemies
 * [] Add rarity to shop items
 * [] Get all the characters functioning
 
@@ -40,7 +39,7 @@
 * [] Add delay before battle
 
 ### Refactoring
-* [] Update README.md with info on all backend systems
+* [] Document backend systems somewhere
 
 
 

@@ -45,13 +45,13 @@ class Zone {
         const enemyAttributes = selectedEnemyList[Math.floor(Math.random() * selectedEnemyList.length)];
         enemyAttributes[8] += levelAdjustment;
     
-        return new Enemy(this.game, ...enemyAttributes);
+        return [new Enemy(this.game, ...enemyAttributes)];
     }
 
     getBoss(){
         const bossAttributes = this.bossStats[Math.floor(Math.random() * this.bossStats.length)];
     
-        return new Boss(this.game, ...bossAttributes);
+        return [new Boss(this.game, ...bossAttributes)];
     }
 
     getRandomEvent(space) {
