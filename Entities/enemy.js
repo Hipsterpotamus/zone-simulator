@@ -1,5 +1,4 @@
-const statsList = ['dmg', 'arm', 'regen', 'speed', 'dodge', 'shatter', 'bleed', 'lifedrain', 'antiheal', 'thorn', 'superarmor','tear'];
-const percentage_stats = ['dodge', 'lifedrain', 'shatter', 'bleed'];
+
 
 class Enemy extends Entity{
     constructor(game, xp, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
@@ -78,9 +77,9 @@ class Enemy extends Entity{
         // if(!this.alive){htmlOutput = '';}
         // $('#enemy-stats').html(htmlOutput);
 
-        
+        let stats_list_enemy = ['dmg', 'arm', 'regen', 'speed', 'dodge', 'shatter', 'bleed', 'lifedrain', 'antiheal', 'thorn', 'superarmor','tear'];
 
-        if (this.accuracy != 100) {statsList.append('accuracy')}
+        if (this.accuracy != 100) {stats_list_enemy.append('accuracy')}
         
         // add visible class to .enemy
         $('.enemy').addClass('visible');
@@ -89,7 +88,7 @@ class Enemy extends Entity{
         $('#enemy-hp').text(this.hp + '/' + this.maxhp);
         $('#enemy-time').text((this.calcAs()-this.attackCounter));
 
-        statsList.forEach((stat)=>{
+        stats_list_enemy.forEach((stat)=>{
             if (this.calcStatDisplay(stat) > 0) {
                 if ($('#enemy-stat-' + stat).length == 0) {
                     $('#enemy-stats').append(

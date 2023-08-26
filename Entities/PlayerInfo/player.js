@@ -77,6 +77,13 @@ class Player extends Entity{
         );
     }
 
+    calcStatDisplay(stat, tick) { // For displaying in html
+        if (stat=='arm') {return this.testArm()}
+        else if (stat=='speed') {return this.calcAs()}
+        else if (stat=='regen') {return this.calcRegen()}
+        else {return this.calcStat(stat)}
+    }
+
     //other
         
     getByType(metatype){
@@ -121,24 +128,66 @@ class Player extends Entity{
     }
 
     updateEntityDisplay() {
-        let htmlOutput = '';
-        htmlOutput = this.name+' | ';
-        htmlOutput+='hp : '+this.hp+'/'+this.maxhp+' | ';
-        htmlOutput+='dmg : '+this.calcStat('dmg')+' ('+this.dmg+' + '+(this.calcStat('dmg')-this.dmg)+') | ';
-        htmlOutput+='time: '+(this.calcAs()-this.attackCounter)+' | ';
-        if(this.shatterApplied!=0){
-            htmlOutput+='arm : '+Math.max(0,(this.calcStat('arm')-this.shatterApplied))+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+' - '+Math.min(this.calcStat('arm'), this.shatterApplied)+') | ';
-        }else{
-            htmlOutput+='arm : '+this.calcStat('arm')+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+') | ';
-        }
+        // let htmlOutput = '';
+        // htmlOutput = this.name+' | ';
+        // htmlOutput+='hp : '+this.hp+'/'+this.maxhp+' | ';
+        // htmlOutput+='dmg : '+this.calcStat('dmg')+' ('+this.dmg+' + '+(this.calcStat('dmg')-this.dmg)+') | ';
+        // htmlOutput+='time: '+(this.calcAs()-this.attackCounter)+' | ';
+        // if(this.shatterApplied!=0){
+        //     htmlOutput+='arm : '+Math.max(0,(this.calcStat('arm')-this.shatterApplied))+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+' - '+Math.min(this.calcStat('arm'), this.shatterApplied)+') | ';
+        // }else{
+        //     htmlOutput+='arm : '+this.calcStat('arm')+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+') | ';
+        // }
         
-        htmlOutput+='regen : '+this.calcRegen()+' ('+this.regen+' + '+(this.calcRegen()-this.regen)+') | ';
-        if(this.calcStat('dodge')!=0){htmlOutput+='dodge : '+this.calcStat('dodge')+' ('+this.dodge+' + '+(this.calcStat('dodge')-this.dodge)+') | ';}
-        if(this.calcStat('thorn')!=0){htmlOutput+='thorn : '+this.calcStat('thorn')+' ('+this.thorn+' + '+(this.calcStat('thorn')-this.thorn)+') | ';}
-        if(this.calcStat('shatter')!=0){htmlOutput+='shatter : '+this.calcStat('shatter')+' ('+this.shatter+' + '+(this.calcStat('shatter')-this.shatter)+') | ';}
-        if(this.calcStat('lifedrain')!=0){htmlOutput+='lifedrain : '+this.calcStat('lifedrain')+' ('+this.lifedrain+' + '+(this.calcStat('lifedrain')-this.lifedrain)+') | ';}
+        // htmlOutput+='regen : '+this.calcRegen()+' ('+this.regen+' + '+(this.calcRegen()-this.regen)+') | ';
+        // if(this.calcStat('dodge')!=0){htmlOutput+='dodge : '+this.calcStat('dodge')+' ('+this.dodge+' + '+(this.calcStat('dodge')-this.dodge)+') | ';}
+        // if(this.calcStat('thorn')!=0){htmlOutput+='thorn : '+this.calcStat('thorn')+' ('+this.thorn+' + '+(this.calcStat('thorn')-this.thorn)+') | ';}
+        // if(this.calcStat('shatter')!=0){htmlOutput+='shatter : '+this.calcStat('shatter')+' ('+this.shatter+' + '+(this.calcStat('shatter')-this.shatter)+') | ';}
+        // if(this.calcStat('lifedrain')!=0){htmlOutput+='lifedrain : '+this.calcStat('lifedrain')+' ('+this.lifedrain+' + '+(this.calcStat('lifedrain')-this.lifedrain)+') | ';}
 
-        $('#player-stats').html(htmlOutput);
+        // $('#player-stats').html(htmlOutput);
+
+        $('#player-name').text(this.name);
+        $('#player-hp').text(this.hp + '/' + this.maxhp);
+        $('#player-time').text((this.calcAs()-this.attackCounter));
+
+        let stats_list_player = ['dmg', 'arm', 'regen', 'speed', 'dodge', 'shatter', 'bleed', 'lifedrain', 'antiheal', 'thorn', 'superarmor','tear'];
+        if (this.accuracy != 100) {stats_list_player.append('accuracy')}
+
+
+        stats_list_player.forEach((stat)=>{
+            if (this.calcStatDisplay(stat) > 0) {
+                if ($('#player-stat-' + stat).length == 0) {
+                    $('#player-stats').append(
+                        $('<div>', {
+                            // 'text': stat_icons[stat]
+                            'class': 'player-stat has-tail',
+                            'id': 'player-stat-' + stat
+                        })
+                        .append(
+                            $('<div>', {
+                                'class': 'player-stat-icon-container'
+                            }).text(stat))
+                        .append(
+                            $('<div>', {
+                                'class': 'player-stat-value'
+                            }).text(
+                                percentage_stats.includes(stat) ? 
+                                    this.calcStatDisplay(stat) + "%" 
+                                    : this.calcStatDisplay(stat)
+                            )
+                        )
+                    )
+                    $('#player-stat-' + stat + " .player-stat-icon-container").html(stat_icons[stat]);
+                } else {
+                    $('#player-stat-' + stat).find('.player-stat-value').text(this.calcStatDisplay(stat));
+                }
+            } else {
+                $('#player-stat-' + stat).remove();
+            }
+        });
+
+        // updateTailReferences();
     }
 
     updateGoldDisplay() {

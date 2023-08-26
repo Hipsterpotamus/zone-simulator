@@ -1,3 +1,6 @@
+const statsList = ['dmg', 'arm', 'regen', 'speed', 'dodge', 'shatter', 'bleed', 'lifedrain', 'antiheal', 'thorn', 'superarmor','tear'];
+const percentage_stats = ['dodge', 'lifedrain', 'shatter', 'bleed'];
+
 class Entity{
     constructor(name, type, health, attackspeed, damage, armor, gold, regen, complexStats) { 
         this.name = name;

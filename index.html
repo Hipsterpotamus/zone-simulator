@@ -163,11 +163,6 @@
             <div class="game-header">
                 <p class = "header-p on-primary-container-text" id = "zone-text">zone: 1–1</p>
                 <p class = "header-p on-primary-container-text has-tail" id = "gold-text">gold: 0</p>
-                <div class="debug">
-                    <button id = 'go-next-debug'>Force Next Level</button>
-                    <button id = 'instant-battle-debug'>Instant Battle</button>
-                    <button id = 'infinite-money-debug'>Infinite money</button>
-                </div>
             </div>
             <!-- Wave animation -->
             <svg viewbox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg">
@@ -197,12 +192,24 @@
             <div class='non-game-header'>
 
                 <div id="player-box" class="primary-container">
-                    <div id="player-health-bar-container" data-total="1000" data-value="1000">
-                        <div id="player-health-bar">
-                              <div id="player-health-hit-bar"></div>
+                    <div id="player-top-row">
+                        <h2 id="player-name" class='primary on-primary-text'>Ben</h2>
+                        <div id="player-health-bar-container" data-total="1000" data-value="1000">
+                            <div id="player-health-bar">
+                                  <div id="player-health-hit-bar"></div>
+                            </div>
                         </div>
+                        <p id="player-hp">00/00</p>
                     </div>
-                    <p class = "stat-display" id = "player-stats">
+
+                    <div id = "player-stats-row">
+                        <div id="player-stats">
+                            <div class="player-stat">
+                                <div class="player-stat-icon-container">[]</div>
+                                <div class="player-stat-value">10</div>
+                            </div>
+                        </div>
+                        <p id="player-time" class="tertiary on-tertiary-text">100</p>
                         <!-- You<br>
                         hp : 42/67<br>
                         dmg : 10 (2 + 8)<br>
@@ -211,13 +218,13 @@
                         regen : 2 (1 + 1)<br>
                         bleed : 2 (0 + 2)<br> -->
                         
-                    </p>
+                    </div>
                 </div>
 
                 <div id="enemy-box" class="draggable-x translucent">
                     <div id="zone-image" class=""></div>
                     <div id="zone-image-overlay" class="translucent"></div>
-                    <div class = "enemy visible translucent on-surface-text" id = "enemy1">
+                    <div class = "enemy translucent on-surface-text" id = "enemy1">
                         <div id="enemy-health">
                             <div id="enemy-health-bar-container" data-total="1000" data-value="1000">
                                 <div id="enemy-health-bar">
@@ -453,7 +460,12 @@
         
         
 
-
+        <!-- DEBUG -->
+        <div class="debug">
+            <button id = 'go-next-debug'>Force Next Level</button>
+            <button id = 'instant-battle-debug'>Instant Battle</button>
+            <button id = 'infinite-money-debug'>Infinite money</button>
+        </div>
 
 
 
