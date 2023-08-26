@@ -1,8 +1,29 @@
 
 # Todo
 
-## Executive
-* [] Decide what info should be included in combat log
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+### Pre-public Requirements
+
+#### Caden: new combat display & LVL Up display
+* [] Finish new combat display
+* [] Create LVL UP display
+* [] Results/Death Screen
+#### Holden:
+* [] Finish Beach Items
+* [] Finish Beach Enemies
+* [] Finish Beach Events
+* [] Finish Beach Rest Sites
+* [] Finish Beach Bosses
+#### Grant:
+* [] Implement Combat Delay
+* [] Create Combat Results Page
+* [] Implement Boss Reward System
+* [] Create LVL UP System
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+## Executive:
+* [x] Decide what info should be included in combat log
+
 
 * [] Add grasslands boss reward items
 * [] Add forest boss/es
