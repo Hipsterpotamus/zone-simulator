@@ -44,6 +44,8 @@ class Enemy extends Entity{
         this.game.player.changeGold(this.gold, true);
         this.game.combat.combatStats['totalGoldGain'] += this.gold;
 
+        this.game.player.levelInfo.changeXp(this.xp);
+
         this.alive = false;
         this.game.zone.changeZoneLevel(this.diffC);
         

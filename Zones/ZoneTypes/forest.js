@@ -95,6 +95,19 @@ class Forest extends Zone {
             ]
         };
 
+        this.xpDist = {
+            0 : 10,
+            1 : 10,
+            2 : 10,
+            3 : 11,
+            4 : 11,
+            5 : 11,
+            6 : 12,
+            7 : 12,
+            8 : 12
+        }
+        this.bossXp = 30;
+
         this.bossStats = [
             ['the goblin king', 'goblin', 240, -95, 65, 8, 120, 3, 0, {'shatter':55}],//Once we've established the systems for multiple enemies, this fight will primarily revolve around weak goblins high attack rate goblins being summoned by the king with a low attack rate
             ['the elven mystic', 'elf', 186, 0, 36, 2, 120, 8, 0, {'dodge':30,'tear':1}],

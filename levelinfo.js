@@ -14,7 +14,7 @@ class LevelInfo {
         });
     }
 
-    addXp(amount) {
+    changeXp(amount) {
         this.xp += amount;
         if (this.xp >= this.nextLevel) {
             this.xp -= this.nextLevel;

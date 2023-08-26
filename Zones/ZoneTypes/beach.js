@@ -95,6 +95,19 @@ class Beach extends Zone {
             ]
         };
 
+        this.xpDist = {
+            0 : 13,
+            1 : 13,
+            2 : 13,
+            3 : 14,
+            4 : 14,
+            5 : 14,
+            6 : 15,
+            7 : 15,
+            8 : 15
+        }
+        this.bossXp = 40;
+
         this.bossStats = [
             ['hairy g.o.a.t.', 'critter', 115, -25, 13, 2, 75, 1, 0, {'tear':2}]
         ];
