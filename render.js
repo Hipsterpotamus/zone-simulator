@@ -43,20 +43,22 @@ function setNextButtonVisible(visible) {
 }
 
 // Draggable Classes
-$(".draggable").draggable({
-    start: function(event, ui) {
-        if ($(event.originalEvent.target).is("#go-next-button")) {
-            return false; // cancel dragging
+$(function() {
+    $(".draggable").draggable({
+        start: function(event, ui) {
+            if ($(event.originalEvent.target).is("#go-next-button")) {
+                return false;
+            }
         }
-    }
-});
-$(".draggable-x").draggable({
-    axis: "x",
-    start: function(event, ui) {
-        if ($(event.originalEvent.target).is("#go-next-button")) {
-            return false; // cancel dragging
+    });
+    $(".draggable-x").draggable({ 
+        axis: "x",
+        start: function(event, ui) {
+            if ($(event.originalEvent.target).is("#go-next-button")) {
+                return false;
+            }
         }
-    }
+    });
 });
 
 // Theme Buttons
