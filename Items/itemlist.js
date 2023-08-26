@@ -189,24 +189,24 @@ const ITEMLIST = {
   // magic : [price, shopDesc, metatype, [type, shortDescription, longDescription, manaCost, spell, coolDown, usesFinite, complexStats]]
 
 
-  'shock': [25, '(spell: 12 mana -> deal 10 dmg)', 'magic', ['electric','hit','deal 10 dmg','Deal 10 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 12, function(game){
+  'shock': [15, '(spell: 12 mana -> deal 10 dmg)', 'magic', ['electric','hit','deal 10 dmg','Deal 10 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 12, function(game){
         game.combat.enemy.receiveNonHitDmg(10,game.player);
   }, 0, 0]],
-  'growth spurt': [30, '(spell: 15 mana -> gain 3 max hp)', 'magic', ['plant','buff','gain 3 max hp','Gain 3 max hp, includes gain of 3 hp. Infinite uses', 15, function(game){
+  'growth spurt': [20, '(spell: 15 mana -> gain 3 max hp)', 'magic', ['plant','buff','gain 3 max hp','Gain 3 max hp, includes gain of 3 hp. Infinite uses', 15, function(game){
         game.player.changeMaxHp(3);
   }, 0, 0]],
-  'blood splash': [18, '(spell: 8 mana -> heal 4)', 'magic', ['blood','heal','heal 4','Gain 4 hp, does not go over max hp. Infinite uses', 8, function(game){
+  'blood splash': [13, '(spell: 8 mana -> heal 4)', 'magic', ['blood','heal','heal 4','Gain 4 hp, does not go over max hp. Infinite uses', 8, function(game){
         game.player.changeHp(4);
   }, 0, 0]],
-  'grass disarm': [18, '(spell: 5 mana -> remove 1 enemy armor)', 'magic', ['plant','debuff','enemy loses one armor','Enemy receives -1 armor, can go negative. Does not interact with shatter. Infinite uses', 5, function(game){
+  'grass disarm': [13, '(spell: 5 mana -> remove 1 enemy armor)', 'magic', ['plant','debuff','enemy loses one armor','Enemy receives -1 armor, can go negative. Does not interact with shatter. Infinite uses', 5, function(game){
         game.combat.enemy.changeStat('arm',-1);
   }, 0, 0]],
-  'blood let': [38, '(spell: 15 mana -> lose 10 hp, +1 dmg, +1 armor)', 'magic', ['blood','buff','lose 10 hp, +1 dmg, +1 armor','Lose 10 hp, gain a permanent stat buff of +1 dmg and +1 armor. Infinite uses', 15, function(game){
-        game.player.changeHp(-10);
+  'blood let': [26, '(spell: 15 mana -> lose 20 hp, +1 dmg, +1 armor)', 'magic', ['blood','buff','lose 20 hp, +1 dmg, +1 armor','Lose 20 hp, gain a permanent stat buff of +1 dmg and +1 armor. Infinite uses', 15, function(game){
+        game.player.changeHp(-20);
         game.player.changeStat('dmg', 1);
         game.player.changeStat('arm', 1);
   }, 0, 0]],
-  'chill': [26, '(spell: 10 mana -> enemy loses 5 attack speed)', 'magic', ['ice','debuff','enemy loses 5 attack speed','Enemy receives -5 attack speed. Infinite uses', 10, function(game){
+  'chill': [14, '(spell: 10 mana -> enemy loses 5 attack speed)', 'magic', ['ice','debuff','enemy loses 5 attack speed','Enemy receives -5 attack speed. Infinite uses', 10, function(game){
         game.combat.enemy.changeStat('as',-5);
   }, 0, 0]],
 
@@ -572,6 +572,7 @@ const ITEMLIST = {
   'rubber tire': [150, '(26 armor +6 regen +22 dodge chest)', 'chest', ['chest', 0, 26, 6, 0, {'dodge':22}]],
   'swim shirt': [55, '(9 armor +2 regen +20 speed shirt)', 'chest', ['shirt', 0, 9, 2, 20]],
   'pirate captain coat': [250, '(5 armor +10 dmg +10 regen +8 income chestplate)', 'chest', ['jacket', 10, 25, 10, 0,{'income':8}]],
+
 
   'sailor trousers': [80, '(10 armor -15 speed trousers)', 'legs', ['trousers', 0, 10, 0, -15]],
   'beach shorts': [60, '(6 armor +18 speed +5 dodge shorts)', 'legs', ['shorts', 0, 6, 0, 18, {'dodge':5}]],
