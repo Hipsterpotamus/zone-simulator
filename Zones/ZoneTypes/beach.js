@@ -99,6 +99,12 @@ class Beach extends Zone {
             ['hairy g.o.a.t.', 'critter', 115, -25, 13, 2, 75, 1, 0, {'tear':2}]
         ];
 
+        this.bossRewards = [
+            'bossRewardItem1',
+            'bossRewardItem2',
+            'bossRewardItem3'
+        ]
+
         //could assign this in the parent class if this distribution holds across zones
         this.levelDifficultyDist = {
             //zoneLevel : [easyPercent, mediumPercent] (hard is excluded because it is defaulted to)

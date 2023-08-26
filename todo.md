@@ -17,7 +17,7 @@
 #### Grant:
 * [] Implement Combat Delay
 * [] Create Combat Results Page
-* [] Implement Boss Reward System
+* [x] Implement Boss Reward System
 * [] Create LVL UP System
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -50,13 +50,11 @@
 * [] Add combat log list combat stats
 
 * [] Add player level up system
-* [] Implement boss reward system
 * [] Add rarity to shop items
 * [] Get all the characters functioning
 
 ### Fixes
-* [] Add dodge scaling behavior similar to speed
-* [] Make speed/updated dodge changes more clear in practice. maybe adopt percent scaling on them?
+* [] Fix speed scaling to be more intuitive
 * [] Add delay before battle
 
 ### Refactoring

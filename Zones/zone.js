@@ -49,9 +49,15 @@ class Zone {
     }
 
     getBoss(){
-        const bossAttributes = this.bossStats[Math.floor(Math.random() * this.bossStats.length)];
+        let bossAttributes = this.bossStats[Math.floor(Math.random() * this.bossStats.length)];
+        let rewardItem = this.getBossReward();
     
-        return [new Boss(this.game, ...bossAttributes)];
+        return [new Boss(this.game, rewardItem, ...bossAttributes)];
+    }
+
+    getBossReward() {
+        let rewardItem = this.bossRewards[Math.floor(Math.random() * this.bossRewards.length)]
+        return rewardItem;
     }
 
     getRandomEvent(space) {

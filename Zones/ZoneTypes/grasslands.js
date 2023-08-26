@@ -102,6 +102,12 @@ class Grasslands extends Zone {
             ['big fat bison', 'hoofed', 140, -125, 15, 3, 60, 1, 0]
         ];
 
+        this.bossRewards = [
+            'bossRewardItem1',
+            'bossRewardItem2',
+            'bossRewardItem3'
+        ]
+
         //could assign this in the parent class if this distribution holds across zones
         this.levelDifficultyDist = {
             //zoneLevel : [easyPercent, mediumPercent] (hard is excluded because it is defaulted to)

@@ -22,6 +22,7 @@ class Combat {
         this.tick = 0;
         this.player;
         this.enemyList;
+        this.lvlHealMult;
         this.delay = msDelay; //change this to change how long between ticks
         this.inCombat = false;
     }
@@ -33,7 +34,7 @@ class Combat {
         this.enemyList = enemyList;
         this.lvlHealMult = 0;
         this.enemyList.forEach(enemy => {
-            if (enemy.getLvlHealMult > this.lvlHealMult) {this.lvlHealMult = enemy.getLvlHealMult};
+            if (enemy.getLvlHealMult() > this.lvlHealMult) {this.lvlHealMult = enemy.getLvlHealMult()};
         });
 
         //default to have selected enemy be the first one, can add listener to change once frontend is added

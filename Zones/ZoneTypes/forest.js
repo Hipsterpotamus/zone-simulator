@@ -101,6 +101,12 @@ class Forest extends Zone {
             ['the dryad oracle', 'dryad', 280, -80, 42, 20, 120, 3, 0, {'lifedrain':55,'shatter':30}]
         ];
 
+        this.bossRewards = [
+            'bossRewardItem1',
+            'bossRewardItem2',
+            'bossRewardItem3'
+        ]
+
         //could assign this in the parent class if this distribution holds across zones
         this.levelDifficultyDist = {
             //zoneLevel : [easyPercent, mediumPercent] (hard is excluded because it is defaulted to)

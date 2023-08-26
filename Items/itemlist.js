@@ -597,4 +597,20 @@ const ITEMLIST = {
   'fisherman waders': [68, '(9 armor +5 speed +3 income waders)', 'feet', ['waders', 0, 9, 0, 5, {'income':3}]],
   'dolphin fin flippers': [60, '(7 armor +40 speed +5 dodge flippers)', 'feet', ['flippers', 0, 7, 0, 40, {'dodge':5}]],
   'sunken treasure boots': [85, '(13 armor -30 speed +20 shatter +5 income boots)', 'feet', ['boots', 0, 13, 0, -30, {'shatter':20, 'income':5}]],
+
+
+  //bossRewardItems
+  //[shiverMessage, [metatype, [normalItemStats]]
+  'bossRewardItem1' : ['The cold steel of bossRewardItem1 gleams menacingly, sending shivers down your spine.', 
+  ['weapon', ['type', 0, 0, 0, 0]]],
+  'bossRewardItem2' : ['bossRewardItem2 radiates an ominous presence, making you shudder at the thought of its power.', 
+  ['chest', ['type', 0, 0, 0, 0]]],
+  'bossRewardItem3' : ['bossRewardItem3 pulses with arcane energy, causing a chill to ripple through your very soul.', 
+  ['magic', ['all', 'shortDescription', 'longDescription', 0, function(game){
+    console.log('ooooooh boss item spell so epic!');
+}, 0, 0]]],
+
+
+
+
 }
