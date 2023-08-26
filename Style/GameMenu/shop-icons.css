@@ -14,12 +14,12 @@
 /* FORMAT */
 /* <button id="#mudhelmet-purchase" class="head-shop-item">buy mud helmet: 21 gold<br>(2 armor helmet)
     <div class="shop-item-stats">
-        <div class="arm-up"> <SVG HERE> </div>
+        <div class="stat-up"> <SVG HERE> </div>
         <div class="arm-down"> <SVG HERE> </div>
     </div>
   </button> */
 
-.arm-up {
+.shop-item-stats .stat-up {
   background-color: var(--md-sys-color-tertiary);
   padding: 0.5rem;
   border-radius: 100px;
@@ -30,7 +30,7 @@
   z-index: 1;
 }
 
-.arm-down {
+.shop-item-stats .stat-down {
   background-color: var(--md-sys-color-tertiary-container);
   padding: 0.5rem;
   border-radius: 100px;
