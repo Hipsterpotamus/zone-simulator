@@ -157,12 +157,12 @@ class Player extends Entity{
 
         stats_list_player.forEach((stat)=>{
             if (this.calcStatDisplay(stat) > 0) {
-                if ($('#player-stat-' + stat).length == 0) {
+                if ($('.player-stat-' + stat).length == 0) {
                     $('#player-stats').append(
                         $('<div>', {
                             // 'text': stat_icons[stat]
-                            'class': 'player-stat has-tail',
-                            'id': 'player-stat-' + stat
+                            'class': 'player-stat has-tail player-stat-' + stat,
+                            'id': 'stat-' + stat
                         })
                         .append(
                             $('<div>', {
@@ -178,12 +178,12 @@ class Player extends Entity{
                             )
                         )
                     )
-                    $('#player-stat-' + stat + " .player-stat-icon-container").html(stat_icons[stat]);
+                    $('.player-stat-' + stat + " .player-stat-icon-container").html(stat_icons[stat]);
                 } else {
-                    $('#player-stat-' + stat).find('.player-stat-value').text(this.calcStatDisplay(stat));
+                    $('.player-stat-' + stat).find('.player-stat-value').text(this.calcStatDisplay(stat));
                 }
             } else {
-                $('#player-stat-' + stat).remove();
+                $('.player-stat-' + stat).remove();
             }
         });
 
