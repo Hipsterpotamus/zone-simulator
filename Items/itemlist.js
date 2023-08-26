@@ -601,14 +601,14 @@ const ITEMLIST = {
 
   //bossRewardItems
   //[shiverMessage, [metatype, [normalItemStats]]
-  'bossRewardItem1' : ['The cold steel of bossRewardItem1 gleams menacingly, sending shivers down your spine.', 
-  ['weapon', ['type', 0, 0, 0, 0]]],
-  'bossRewardItem2' : ['bossRewardItem2 radiates an ominous presence, making you shudder at the thought of its power.', 
-  ['chest', ['type', 0, 0, 0, 0]]],
-  'bossRewardItem3' : ['bossRewardItem3 pulses with arcane energy, causing a chill to ripple through your very soul.', 
-  ['magic', ['all', 'shortDescription', 'longDescription', 0, function(game){
-    console.log('ooooooh boss item spell so epic!');
-}, 0, 0]]],
+  'hooved javelin' : ['A fleshy javelin emerges from the wreckage of battle. Powerful, but clunky', 
+  ['weapon', ['spear', 32, 5, 0, -100]]],
+  'long grass wand' : ['Pushing past the carcass of the defeated beast, you notice a stick of grass twine bound tightly together. A Simple Magic Wand', 
+  ['weapon', ['wand', 19, 0, 3, 10, {'manaGen':1}]]],
+  'barbed wire blade' : ['In the calamity of combat, a barbed wire fence has been bound up tightly into a blade. Razor sharp, but hurtful', 
+  ['weapon', ['knife', 17, 0, -2, 66]]],
+  'golden garden hoe' : ['Rooting through the carnage, you notice the glimmer of gold surprisingly fashioned to an ordinary tool. Basic, but shiny', 
+  ['weapon', ['misc', 24, 0, 0, -20, {'income':2}]]]
 
 
 
