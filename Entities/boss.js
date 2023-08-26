@@ -11,6 +11,9 @@ class Boss extends Enemy{
 
     death() {
         this.game.player.changeGold(this.gold, true);
+        this.game.combat.combatStats['totalGoldGain'] += this.gold;
+
+        this.alive = false;
         this.game.zone.changeZoneLevel(this.diffC);
         
         this.updateEntityDisplay();

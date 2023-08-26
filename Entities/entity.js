@@ -49,12 +49,13 @@ class Entity{
         }
 
         this.updateHealthBar(amount);
-        this.updateEntityDisplay();
 
         if (this.hp <= 0 && this.alive) {
             this.hp = 0;
             this.death();
-        }
+        } else if (this.hp > 0){
+            this.updateEntityDisplay();
+        };
     }
 
     changeMaxHp(amount) {

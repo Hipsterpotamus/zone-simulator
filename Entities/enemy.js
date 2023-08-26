@@ -119,6 +119,8 @@ class Enemy extends Entity{
             $('#enemy-stats').html('');
             $('#enemy-name').text('Defeated ' + this.name + '!');
 
+            console.log('enemy stats:');
+            console.log(this.combatStats);
             //TODO: Display combat stats
             //this.combatStats = {
                 //'gold' : gold,

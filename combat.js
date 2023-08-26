@@ -70,6 +70,8 @@ class Combat {
         if (!this.enemyList.includes(this.selectedEnemy)) {this.selectedEnemy = this.enemyList[0]};
         this.tick += 1;
         this.changeCounters(1);
+        this.displayCombatInfo();
+
         if (this.player.regenCounter >= this.player.regenRate) {
             this.player.regenCounter = 0;
             this.player.runRegen();
@@ -101,8 +103,6 @@ class Combat {
                 this.enemyList.splice(index, 1);  //currently removes enemy from enemyList when the enemy dies
             }
         });
-
-        this.displayCombatInfo();
 
         if (this.player.alive && this.enemyList.length > 0) {
             if (this.delay != 0) {

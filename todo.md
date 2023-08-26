@@ -38,7 +38,6 @@
 * [] Create combat stats elements and content to display over dead enemy at the end of combat
 
 * [] Add support for multiple enemies (combat logic in combat.js, enemy log behavior in enemy.updateEntityDisplay())
-* [] Fix error messages coming from path.js during combat. line 25: TypeError: Cannot read properties of null (reading 'style'). line 32: TypeError: Cannot read properties of null (reading 'classList')
 * [] Header changing color per-zone
 * [] Make sure 8 stats fit into armor
 * [] Implement "combat timer" element which appears during combat (either in the dead space in the "enemy encounter" tab or rolling on the header)

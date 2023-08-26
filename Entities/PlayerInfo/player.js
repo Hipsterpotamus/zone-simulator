@@ -90,6 +90,7 @@ class Player extends Entity{
 
     death() {
         this.alive = false;
+        this.updateEntityDisplay();
 
         console.log('game combat stats:');
         console.log(this.gameCombatStats); //not sure if you want any more than these stats
