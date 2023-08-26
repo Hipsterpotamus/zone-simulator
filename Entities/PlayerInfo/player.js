@@ -78,10 +78,27 @@ class Player extends Entity{
     }
 
     calcStatDisplay(stat, tick) { // For displaying in html
-        if (stat=='arm') {return this.testArm()}
+
+        // if(this.shatterApplied!=0){
+        //     htmlOutput+='arm : '++' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+' - '+Math.min(this.calcStat('arm'), this.shatterApplied)+') | ';
+        // }else{
+        //     htmlOutput+='arm : '+this.calcStat('arm')+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+') | ';
+        // }
+        // htmlOutput+='regen : '+this.calcRegen()+' ('+this.regen+' + '+(this.calcRegen()-this.regen)+') | ';
+        
+        if (stat=='arm') {
+            if (this.shatterApplied!=0) {
+                return Math.max(0,(this.calcStat('arm')-this.shatterApplied))
+            } else {return this.testArm()}
+        }
         else if (stat=='speed') {return this.calcAs()}
         else if (stat=='regen') {return this.calcRegen()}
         else {return this.calcStat(stat)}
+    }
+
+    calcStatDisplayExtra(stat) {
+        // idk what you want the actual calculation to be. I personally think that the main number should be base stat and the extra should be anything on top (with a +/-)
+        this.calcStat(stat) - this[stat];
     }
 
     //other
@@ -128,24 +145,11 @@ class Player extends Entity{
     }
 
     updateEntityDisplay() {
-        // let htmlOutput = '';
-        // htmlOutput = this.name+' | ';
-        // htmlOutput+='hp : '+this.hp+'/'+this.maxhp+' | ';
-        // htmlOutput+='dmg : '+this.calcStat('dmg')+' ('+this.dmg+' + '+(this.calcStat('dmg')-this.dmg)+') | ';
-        // htmlOutput+='time: '+(this.calcAs()-this.attackCounter)+' | ';
-        // if(this.shatterApplied!=0){
-        //     htmlOutput+='arm : '+Math.max(0,(this.calcStat('arm')-this.shatterApplied))+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+' - '+Math.min(this.calcStat('arm'), this.shatterApplied)+') | ';
-        // }else{
-        //     htmlOutput+='arm : '+this.calcStat('arm')+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+') | ';
-        // }
-        
-        // htmlOutput+='regen : '+this.calcRegen()+' ('+this.regen+' + '+(this.calcRegen()-this.regen)+') | ';
-        // if(this.calcStat('dodge')!=0){htmlOutput+='dodge : '+this.calcStat('dodge')+' ('+this.dodge+' + '+(this.calcStat('dodge')-this.dodge)+') | ';}
-        // if(this.calcStat('thorn')!=0){htmlOutput+='thorn : '+this.calcStat('thorn')+' ('+this.thorn+' + '+(this.calcStat('thorn')-this.thorn)+') | ';}
-        // if(this.calcStat('shatter')!=0){htmlOutput+='shatter : '+this.calcStat('shatter')+' ('+this.shatter+' + '+(this.calcStat('shatter')-this.shatter)+') | ';}
-        // if(this.calcStat('lifedrain')!=0){htmlOutput+='lifedrain : '+this.calcStat('lifedrain')+' ('+this.lifedrain+' + '+(this.calcStat('lifedrain')-this.lifedrain)+') | ';}
+        let htmlOutput = '';
+        htmlOutput = this.name+' | ';
 
-        // $('#player-stats').html(htmlOutput);
+
+
 
         $('#player-name').text(this.name);
         $('#player-hp').text(this.hp + '/' + this.maxhp);
@@ -175,10 +179,21 @@ class Player extends Entity{
                                 percentage_stats.includes(stat) ? 
                                     this.calcStatDisplay(stat) + "%" 
                                     : this.calcStatDisplay(stat)
+                                    // : this.calcStat(stat) - this.stat
                             )
                         )
                     )
                     $('.player-stat-' + stat + " .player-stat-icon-container").html(stat_icons[stat]);
+                    // append another p to .player-stat-value for the extra stat
+                    $('.player-stat-' + stat + " .player-stat-value").append(
+                        $('<p>', {
+                            'class': 'player-stat-extra'
+                        }).text(
+                            "+" + this.calcStatDisplayExtra(stat)
+                        )
+                    )
+                    console.log("appended:" + this.calcStat(stat) - this[stat]);
+
                 } else {
                     $('.player-stat-' + stat).find('.player-stat-value').text(this.calcStatDisplay(stat));
                 }
