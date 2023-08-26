@@ -8,8 +8,10 @@ window.addEventListener("mousemove", function(e){
 
   
 document.addEventListener('DOMContentLoaded', () => {
+  clearTailReferences();
   updateTailReferences();
 });
+
 
 function updateTailReferences() {
   // Get all elements with the '.has-tail' class
@@ -39,6 +41,19 @@ function updateTailReferences() {
     });
   });
 }
+
+// THere is a bug so need to clear these references after the stat div is delete
+// https://stackoverflow.com/questions/9251837/how-to-remove-all-listeners-in-an-element
+function clearTailReferences() {
+    // Get all elements with the '.has-tail' class
+    const elementsWithTail = document.querySelectorAll('.has-tail');
+    elementsWithTail.forEach(element => {
+        element.removeEventListener('mouseover', () => {});
+        element.removeEventListener('mouseout', () => {});
+        element.removeEventListener('click', () => {});
+    });
+}
+
 
 // Double click on Tails to remove them
 document.addEventListener('dblclick', (event) => {

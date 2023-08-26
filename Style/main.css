@@ -31,49 +31,6 @@ body, html {
   color: var(--md-sys-color-on-background);
 }
 
-/* Backgrounds */
-body.zone-1::before {
-  content: "";
-  position: fixed;
-  left: -3%;
-  width: 100%;
-  height: 100%;
-  background: url(../Zones/Images/grassland.png) no-repeat center center fixed;
-  background-size: cover;
-  filter: blur(15px);
-  z-index: -1;
-  opacity: 0.9;
-  transform: scale(1.1);
-}
-
-body.zone-2::before {
-  content: "";
-  position: fixed;
-  left: -3%;
-  width: 100%;
-  height: 100%;
-  background: url(../Zones/Images/forest.png) no-repeat top center fixed;
-  background-size: cover;
-  filter: blur(15px);
-  z-index: -1;
-  opacity: 0.9;
-  transform: scale(1.1);
-}
-
-body.zone-3::before {
-  content: "";
-  position: fixed;
-  left: -3%;
-  width: 100%;
-  height: 100%;
-  background: url(../Zones/Images/beach.png) no-repeat top center fixed;
-  background-size: cover;
-  filter: blur(15px);
-  z-index: -1;
-  opacity: 0.9;
-  transform: scale(1.1);
-}
-
 .hidden{
   display:none;
 }
