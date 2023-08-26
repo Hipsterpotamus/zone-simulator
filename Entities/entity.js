@@ -78,16 +78,7 @@ class Entity{
 
     calcAs() {
         const rawAS = this.calcStat('as');
-        let as;
-        let asScale = this.asScalingPoint;
-        const adjRoot = 3;
-        const adjScalingMult = 4;
-        if (rawAS > asScale) {
-            as = Math.max((100 - asScale) - Math.floor(Math.pow((rawAS - asScale) * adjScalingMult, 1/adjRoot)), 1);
-        } else {
-            as = 100 - rawAS;
-        }
-        return as;
+        return Math.floor(100 * Math.pow((1/2), (rawAS / 100)));
     }
     
     cleanStatus() {

@@ -46,7 +46,7 @@ function setNextButtonVisible(visible) {
 $(function() {
     $(".draggable").draggable({
         start: function(event, ui) {
-            if ($(event.originalEvent.target).is("#go-next-button")) {
+            if ($(event.originalEvent.target).is(".go-next-button")) {
                 return false;
             }
         }
@@ -54,7 +54,7 @@ $(function() {
     $(".draggable-x").draggable({ 
         axis: "x",
         start: function(event, ui) {
-            if ($(event.originalEvent.target).is("#go-next-button")) {
+            if ($(event.originalEvent.target).is(".go-next-button")) {
                 return false;
             }
         }

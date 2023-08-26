@@ -54,7 +54,7 @@
 * [] Get all the characters functioning
 
 ### Fixes
-* [] Fix speed scaling to be more intuitive
+* [] Fix enemy/item speed stats to be more consistent with new scaling
 * [] Add delay before battle
 
 ### Refactoring
