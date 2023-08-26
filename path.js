@@ -111,6 +111,7 @@ class Path {
     }
 
     eventEvent() {
+        setNextButtonVisible(false);
         setBroadcastTitleText('Event');
         let eventInfo = [...this.game.zone.getRandomEvent(this.spaceNumber)];
         let newEvent = new EventCreator(this.game, eventInfo[0], ...eventInfo[1]);
@@ -118,6 +119,7 @@ class Path {
     }
 
     restEvent() {
+        setNextButtonVisible(false);
         setBroadcastTitleText('A Rest');
         let restInfo = this.game.zone.getRandomRest(this.spaceNumber);
         let newRest = new EventCreator(this.game, restInfo[0], ...restInfo[1]);
@@ -138,6 +140,7 @@ class Path {
     }
 
     pathEventEvent() {
+        setNextButtonVisible(false);
         let eventInfo = this.game.zone.getZoneEvent();
         let newEvent = new EventCreator(this.game, eventInfo[0], ...eventInfo[1]);
         newEvent.createElements();

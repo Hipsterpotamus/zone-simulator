@@ -48,7 +48,7 @@ class Enemy extends Entity{
         updateBar(-damage, this.hp, this.maxhp, healthBar, bar, hit);
     }
 
-    updateEntityDisplay(tick = -1) {
+    updateEntityDisplay() {
         // let htmlOutput = '';
         // htmlOutput = this.name+'<br>';
         // htmlOutput+='hp : '+this.hp+'/'+this.maxhp+'<br>';
@@ -71,8 +71,7 @@ class Enemy extends Entity{
         
         $('#enemy-name').text(this.name);
         $('#enemy-hp').text(this.hp + '/' + this.maxhp);
-        if (tick != -1) {$('#enemy-time').text((this.calcAs()-(tick % this.calcAs())));}
-        else {$('#enemy-time').text('');}
+        $('#enemy-time').text((this.calcAs()-this.attackCounter));
 
         // for each stat in statList (if it is > 0), append a div in this format to the #enemy-stats div if it doesn't exist. If it does, then edit it
         // <div class="enemy-stat" id="enemy-stat-[statname]">
@@ -80,7 +79,7 @@ class Enemy extends Entity{
         //     <p class="enemy-stat-value">7</p>
         // </div>
         statsList.forEach((stat)=>{
-            if (this.calcStatDisplay(stat, tick) > 0) {
+            if (this.calcStatDisplay(stat) > 0) {
                 if ($('#enemy-stat-' + stat).length == 0) {
                     $('#enemy-stats').append(
                         $('<div>', {
@@ -93,11 +92,11 @@ class Enemy extends Entity{
                         ).append(
                             $('<p>', {
                                 'class': 'enemy-stat-value'
-                            }).text(this.calcStatDisplay(stat, tick))
+                            }).text(this.calcStatDisplay(stat))
                         )
                     )
                 } else {
-                    $('#enemy-stat-' + stat).find('.enemy-stat-value').text(this.calcStatDisplay(stat, tick));
+                    $('#enemy-stat-' + stat).find('.enemy-stat-value').text(this.calcStatDisplay(stat));
                 }
             } else {
                 $('#enemy-stat-' + stat).remove();

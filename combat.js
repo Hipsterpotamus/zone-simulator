@@ -31,25 +31,32 @@ class Combat {
         this.inCombat = true;
         this.player = player;
         this.enemy = enemy;
+        this.changeCounters(false);
         $('#combatTimer').removeClass('hidden');
         this.combatTick();
     }
 
     combatTick() {
         this.tick += 1;
-        if (this.tick % this.player.calcAs() == 0) {
+        this.changeCounters(1);
+        if (this.player.attackCounter >= this.player.calcAs()) {
+            this.player.attackCounter = 0;
             this.enemy.receiveHitFrom(this.player);
         }
-        if (this.tick % this.enemy.calcAs() == 0) {
+        if (this.enemy.attackCounter >= this.enemy.calcAs()) {
+            this.enemy.attackCounter = 0;
             this.player.receiveHitFrom(this.enemy);
         }
-        if (this.tick % this.player.regenRate == 0) {
+        if (this.player.regenCounter >= this.player.regenRate) {
+            this.player.regenCounter = 0;
             this.player.runRegen();
         }
-        if (this.tick % this.enemy.regenRate == 0) {
+        if (this.enemy.regenCounter >= this.enemy.regenRate) {
+            this.enemy.regenCounter = 0;
             this.enemy.runRegen();
         }
-        if (this.tick % this.player.manaRate == 0){
+        if (this.player.manaCounter >= this.player.manaRate){
+            this.player.manaCounter = 0;
             this.player.changeMana(this.player.calcStat('manaGen'));
         }
         this.displayCombatInfo();
@@ -68,7 +75,23 @@ class Combat {
 
     displayCombatInfo() {
         $('#combatTimer').text(Math.floor(this.tick / (3000))+":"+Math.floor((this.tick%(3000)/50)));
-        this.player.updateEntityDisplay(this.tick);
-        this.enemy.updateEntityDisplay(this.tick);
+        this.player.updateEntityDisplay();
+        this.enemy.updateEntityDisplay();
+    }
+
+    changeCounters(amount) {
+        if (amount === false) { //if false, resets counters
+            this.player.attackCounter = 0;
+            this.player.regenCounter = 0;
+            this.player.manaCounter = 0;
+            this.enemy.attackCounter = 0;
+            this.enemy.regenCounter = 0;
+        } else {
+            this.player.attackCounter += amount;
+            this.player.regenCounter += amount;
+            this.player.manaCounter += amount;
+            this.enemy.attackCounter += amount;
+            this.enemy.regenCounter += amount;
+        }
     }
 }
