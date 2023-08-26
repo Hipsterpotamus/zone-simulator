@@ -536,7 +536,10 @@ const ITEMLIST = {
   'mermaid gloves': [130, '(60 dmg -20 speed +25 lifedrain gloves)', 'weapon', ['gloves', 60, 0, 0, -20, {'lifedrain':25}]],
   'crabwalker claws': [150, '(40 dmg +20 speed -5 regen +20 shatter +80 bleed gloves)', 'weapon', ['gloves', 40, 0, -5, 20, {'shatter':20,'bleed':80}]],
   'turtle shell club': [135, '(90 dmg -40 speed +10 shatter +20 lifedrain club)', 'weapon', ['club', 90, 0, 0, -40, {'lifedrain':20}]],
-
+  'mermaid javelin': [160, '(120 dmg +4 armor -120 speed +25 lifedrain spear),','weapon',['spear',120,4,0,-120,{'lifedrain':25}]],
+  'mermaid water-sling': [120, '(55 dmg -4 armor +20 speed +20 shatter +20 lifedrain spear),','weapon',['spear',55,-4,0,-120,{'shatter':20,'lifedrain':20}]],
+  'turtle boomerang': [180, '(160 dmg +16 armor -100 speed +100 shatter boomerang),','weapon',['boomerang',160,16,0,-100,{'shatter':100}]],
+  'driftwood club': [100, '(88 dmg -85 speed +25 shatter club)','weapon',['club',88,0,0,-85, {'shatter':25}]],
 
   'sailor cap': [60, '(5 armor hat)', 'head', ['hat', 0, 5, 0, 0]],
   'seashell beret': [40, '(2 armor +20 speed hat)', 'head', ['hat', 0, 2, 0, 20]],

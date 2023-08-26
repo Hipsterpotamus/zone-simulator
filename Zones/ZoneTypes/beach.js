@@ -136,7 +136,6 @@ class Beach extends Zone {
             'crabwalker claws',
             'turtle shell club',
 
-
         
             'sailor cap',
             'seashell beret',
