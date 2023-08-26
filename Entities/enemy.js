@@ -1,3 +1,5 @@
+const statsList = ['dmg', 'arm', 'regen', 'speed', 'dodge', 'shatter', 'bleed', 'lifedrain', 'antiheal', 'thorn', 'superarmor','tear'];
+const percentage_stats = ['dodge', 'lifedrain', 'shatter', 'bleed'];
 
 class Enemy extends Entity{
     constructor(game, xp, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
@@ -31,7 +33,7 @@ class Enemy extends Entity{
     
     calcStatDisplay(stat, tick) { // For displaying in html
         if (stat=='arm') {return this.testArm()}
-        else if (stat=='speed') {return (this.calcAs())}
+        else if (stat=='speed') {return this.calcAs()}
         else if (stat=='regen') {return this.calcRegen()}
         else {return this.calcStat(stat)}
     }
@@ -76,7 +78,8 @@ class Enemy extends Entity{
         // if(!this.alive){htmlOutput = '';}
         // $('#enemy-stats').html(htmlOutput);
 
-        let statsList = ['dmg', 'arm', 'regen', 'speed', 'dodge', 'shatter', 'bleed', 'lifedrain', 'thorn', 'superarmor','tear'];
+        
+
         if (this.accuracy != 100) {statsList.append('accuracy')}
         
         // add visible class to .enemy
@@ -86,11 +89,6 @@ class Enemy extends Entity{
         $('#enemy-hp').text(this.hp + '/' + this.maxhp);
         $('#enemy-time').text((this.calcAs()-this.attackCounter));
 
-        // for each stat in statList (if it is > 0), append a div in this format to the #enemy-stats div if it doesn't exist. If it does, then edit it
-        // <div class="enemy-stat" id="enemy-stat-[statname]">
-        //     <p class="enemy-stat-name">dmg</p>
-        //     <p class="enemy-stat-value">7</p>
-        // </div>
         statsList.forEach((stat)=>{
             if (this.calcStatDisplay(stat) > 0) {
                 if ($('#enemy-stat-' + stat).length == 0) {
@@ -102,16 +100,19 @@ class Enemy extends Entity{
                         })
                         .append(
                             $('<div>', {
-                                'class': 'enemy-stat-name'
+                                'class': 'enemy-stat-icon-container'
                             }).text(stat))
                         .append(
                             $('<p>', {
                                 'class': 'enemy-stat-value'
-                            }).text(this.calcStatDisplay(stat))
+                            }).text(
+                                percentage_stats.includes(stat) ? 
+                                    this.calcStatDisplay(stat) + "%" 
+                                    : this.calcStatDisplay(stat)
+                            )
                         )
                     )
-                    $('#enemy-stat-' + stat + " .enemy-stat-name").html(stat_icons[stat]);
-
+                    $('#enemy-stat-' + stat + " .enemy-stat-icon-container").html(stat_icons[stat]);
                 } else {
                     $('#enemy-stat-' + stat).find('.enemy-stat-value').text(this.calcStatDisplay(stat));
                 }

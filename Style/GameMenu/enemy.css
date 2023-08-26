@@ -22,6 +22,14 @@
   height: 100%;
 
   background-color: var(--transparent-background);
+  /* back blur */
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+
+  opacity: 0.97;
+  
+
 }
 
 #enemy-box #zone-image {
@@ -34,10 +42,10 @@
   background-repeat: no-repeat;
   background-position: center;
   object-fit: cover;
+  
 /*   
   padding-left: 30px;
   margin-left: -30px; */
-  /* filter: blur(10px); */
   /* clip so that the outer #enemy-box div contains the backgroudn image */
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%, 0 0%);
 
@@ -108,7 +116,7 @@
 #enemy-stats {
   /* set to an evently spaced grid */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   justify-items: center;
   text-transform: capitalize;
@@ -121,7 +129,6 @@
   /* height: 50%; */
   padding: 0rem;
   margin: 0rem;
-  border-radius: 0.5rem;
   background-color: var(--md-sys-color-secondary);
   color: var(--md-sys-color-on-secondary);
   box-shadow: 0px 0px 10px 0px var(--md-sys-color-shadow);
@@ -129,44 +136,46 @@
   align-items: center;
   /* justify-content: center; */
   margin: 0.75rem;
-  line-height: 1.5rem;
+  line-height: 1rem;
+  
+  border-radius: 1rem;
 }
 
-#enemy-stats .enemy-stat .enemy-stat-name {
+#enemy-stats .enemy-stat .enemy-stat-icon-container {
   background-color: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
   height: 100%;
   width: 50%;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0rem 1rem;
   margin: -1px;
 }
 
 #enemy-stats .enemy-stat .enemy-stat-value {
   width: 100%;
-  padding: 0rem 0.5rem;
+  padding: 0rem 0.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
 
-#enemy-stats svg {
+
+#enemy-stats div svg {
   position: inherit;
   fill: var(--md-sys-color-on-primary-container);
   stroke: var(--md-sys-color-on-primary-container);
   
-  background-color: var(--md-sys-color-primary-container);
+  /* background-color: var(--md-sys-color-primary-container); */
   
-  height: 100%;
-  width: 3rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0rem 1rem;
+  padding: 0rem 0.75rem;
   margin: -1px;
 }

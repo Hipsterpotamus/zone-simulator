@@ -22,13 +22,15 @@ function updateTailReferences() {
     element.addEventListener('mouseover', () => {
       // Get the corresponding tail element and set its display to 'block'
       const tailElement = document.querySelector(`#${element.id}-tail`);
+      if (tailElement == null) {return;}
       tailElement.style.display = 'block';
     });
     
     element.addEventListener('mouseout', () => {
       // Get the corresponding tail element and set its display to 'none'
-    //   if doesn't have .tail-remain class
+          // if doesn't have .tail-remain class
         const tailElement = document.querySelector(`#${element.id}-tail`);
+        if (tailElement == null) {return;}
         if (!tailElement.classList.contains('tail-remain')) {
             tailElement.style.display = 'none';
         }
@@ -42,10 +44,8 @@ function updateTailReferences() {
   });
 }
 
-// THere is a bug so need to clear these references after the stat div is delete
-// https://stackoverflow.com/questions/9251837/how-to-remove-all-listeners-in-an-element
+
 function clearTailReferences() {
-    // Get all elements with the '.has-tail' class
     const elementsWithTail = document.querySelectorAll('.has-tail');
     elementsWithTail.forEach(element => {
         element.removeEventListener('mouseover', () => {});
