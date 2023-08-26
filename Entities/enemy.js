@@ -96,18 +96,22 @@ class Enemy extends Entity{
                 if ($('#enemy-stat-' + stat).length == 0) {
                     $('#enemy-stats').append(
                         $('<div>', {
+                            // 'text': stat_icons[stat]
                             'class': 'enemy-stat has-tail',
                             'id': 'enemy-stat-' + stat
-                        }).append(
-                            $('<p>', {
+                        })
+                        .append(
+                            $('<div>', {
                                 'class': 'enemy-stat-name'
-                            }).text(stat)
-                        ).append(
+                            }).text(stat))
+                        .append(
                             $('<p>', {
                                 'class': 'enemy-stat-value'
                             }).text(this.calcStatDisplay(stat))
                         )
                     )
+                    $('#enemy-stat-' + stat + " .enemy-stat-name").html(stat_icons[stat]);
+
                 } else {
                     $('#enemy-stat-' + stat).find('.enemy-stat-value').text(this.calcStatDisplay(stat));
                 }
