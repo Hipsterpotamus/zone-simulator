@@ -38,6 +38,7 @@
 ## Frontend
 * [] Create combat stats elements and content to display over dead enemy at the end of combat
 
+* [] Fix error messages coming from path.js during combat. line 25: TypeError: Cannot read properties of null (reading 'style'). line 32: TypeError: Cannot read properties of null (reading 'classList')
 * [] Header changing color per-zone
 * [] Make sure 8 stats fit into armor
 * [] Implement "combat timer" element which appears during combat (either in the dead space in the "enemy encounter" tab or rolling on the header)
@@ -55,8 +56,9 @@
 * [] Get all the characters functioning
 
 ### Fixes
+* [] Add dodge scaling behavior similar to speed
+* [] Make speed/updated dodge changes more clear in practice. maybe adopt percent scaling on them?
 * [] Add delay before battle
-* [] Update combat systems so they don't use modulo
 
 ### Refactoring
 * [] Update README.md with info on all backend systems

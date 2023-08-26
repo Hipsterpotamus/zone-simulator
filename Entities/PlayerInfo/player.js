@@ -18,6 +18,8 @@ class Player extends Entity{
         this.manaGen = 1;
         this.totalPurchased = 0;
 
+        this.manaCounter = 0;
+
         this.inv = {
             'usable':['', []],
             'weapon':['', []],
@@ -36,6 +38,7 @@ class Player extends Entity{
     }
 
     changeSelectedItem(item) {
+        this.attackCounter = 0;
         this.inv[item.metatype][0] = item;
         item.updateItemInfo();
         $('#'+item.metatype+'-select').val(item.name);
@@ -91,12 +94,12 @@ class Player extends Entity{
         updateBar(-damage, this.hp, this.maxhp, healthBar, bar, hit);
     }
 
-    updateEntityDisplay(tick = -1) {
+    updateEntityDisplay() {
         let htmlOutput = '';
         htmlOutput = this.name+' | ';
         htmlOutput+='hp : '+this.hp+'/'+this.maxhp+' | ';
         htmlOutput+='dmg : '+this.calcStat('dmg')+' ('+this.dmg+' + '+(this.calcStat('dmg')-this.dmg)+') | ';
-        if (tick != -1) {htmlOutput+='time: '+(this.calcAs()-(tick % this.calcAs()))+' | ';}
+        htmlOutput+='time: '+(this.calcAs()-this.attackCounter)+' | ';
         if(this.shatterApplied!=0){
             htmlOutput+='arm : '+Math.max(0,(this.calcStat('arm')-this.shatterApplied))+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+' - '+Math.min(this.calcStat('arm'), this.shatterApplied)+') | ';
         }else{

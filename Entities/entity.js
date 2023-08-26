@@ -24,6 +24,9 @@ class Entity{
         this.bleedApplied = 0;
         this.antihealApplied = 0;
 
+        this.attackCounter = 0;
+        this.regenCounter = 0;
+
         this.alive = true;
 
         if(complexStats){
