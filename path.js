@@ -172,5 +172,7 @@ class Path {
         this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'chest', 'none', 0, 0, 0, 0));
         this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'legs', 'none', 0, 0, 0, 0));
         this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'feet', 'none', 0, 0, 0, 0));
+
+        this.game.player.changeMana(0);
     }
 }

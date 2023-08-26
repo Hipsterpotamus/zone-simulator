@@ -24,7 +24,7 @@ class Usable extends Item {
                 }
             }else if(this.type == 'all'){
                 this.uses -= 1;
-                this.onUse(game);
+                this.onUse(this.game);
             }
             this.updateItemInfo();
         }else{
