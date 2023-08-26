@@ -12,7 +12,7 @@ class Player extends Entity{
         this.as = 0;
         this.dodge = 0;
         this.gold = 25;
-        this.mana = 15;
+        this.mana = 0;
         this.maxMana = 15;
         this.manaRate = 50;
         this.manaGen = 1;
