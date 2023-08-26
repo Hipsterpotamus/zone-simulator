@@ -62,7 +62,7 @@ class Entity{
     }
 
     calcRegen(){
-        let antihealRegen = Math.max(this.calcStat('regen') - this.antihealApplied, 0);
+        let antihealRegen = Math.max(this.calcStat('regen') - this.antihealApplied, this.calcStat('regen'));
         return antihealRegen - this.bleedApplied;
     }
 
