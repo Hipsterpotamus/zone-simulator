@@ -53,24 +53,43 @@ class Item {
         //     <div class="arm-down"> <SVG HERE> </div>
         // </div>
         let shopItemStats = $('<div>', {
-            'class': 'shop-item-stats'
+            'class': 'shop-item-stats',
+            'id': this.name.replace(/\s/g, '') + '-stats'
         });
         
         // add the stat up/down icon divs based on which stats are affected by the item
         // [type, damage, armor, regen, attackSpeedChange, complexStats]
-        if (this.itemInfo[1] > 0) {
-            let armUp = $('<div>', {
-                'class': 'stat-up shop-stat-dmg'
-            });
-            armUp.appendTo(shopItemStats);
-            $('.shop-stat-dmg').html(stat_icons['dmg'])
-        } else if (this.itemInfo[2] > 0) {
-            let armUp = $('<div>', {
-                'class': 'stat-up shop-stat-arm'
-            });
-            armUp.appendTo(shopItemStats);
-            $('.shop-stat-arm').html(stat_icons['arm'])
+
+        // for stat in stat_icons
+        for (let stat in stat_icons) {
+            if (this.itemInfo[stat] < 0) {
+                let statDown = $('<div>', {
+                    'class': 'stat-down shop-stat-' + stat
+                });
+                statDown.appendTo(shopItemStats);
+                statDown.html(stat_icons[stat])
+            } else if (this.itemInfo[stat] > 0) {
+                let statUp = $('<div>', {
+                    'class': 'stat-up shop-stat-' + stat
+                });
+                statUp.appendTo(shopItemStats);
+                statUp.html(stat_icons[stat])
+            }
         }
+        
+        // if (this.itemInfo[1] > 0) {
+        //     let armUp = $('<div>', {
+        //         'class': 'stat-up shop-stat-dmg'
+        //     });
+        //     armUp.appendTo(shopItemStats);
+        //     $('.shop-stat-dmg').html(stat_icons['dmg'])
+        // } else if (this.itemInfo[2] > 0) {
+        //     let armUp = $('<div>', {
+        //         'class': 'stat-up shop-stat-arm'
+        //     });
+        //     armUp.appendTo(shopItemStats);
+        //     $('.shop-stat-arm').html(stat_icons['arm'])
+        // }
         // add to the button
         shopItemStats.appendTo(this.shopElement);
 

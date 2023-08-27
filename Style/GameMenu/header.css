@@ -16,17 +16,13 @@
     /* color: #fff; */
 }
   
-#game-screen svg {
+#wave-svg {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 4;
     fill: var(--md-sys-color-primary);
     pointer-events: none;
-/*     
-    border:1px solid rgba(255, 255, 255, 0.25);
-    -webkit-backdrop-filter:saturate(180%) blur(15px);
-    backdrop-filter: saturate(180%) blur(15px); */
 }
 
 #sineWave-2 {
