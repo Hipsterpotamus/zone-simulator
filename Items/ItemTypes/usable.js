@@ -3,7 +3,8 @@ class Usable extends Item {
         super(game, name);
         this.itemInfo = itemInfo;
         this.type = false;
-        this.description = '';
+        this.shortDescription = '';
+        this.longDescription = '';
         this.uses = 0;
         
 
@@ -32,16 +33,16 @@ class Usable extends Item {
     }
 
     genShopDesc() {
-        if (game.player.levelInfo.characteristics.mechanical) {
-            return '(' + this.uses * 3 + 'x Item: ' + this.description + ')';
+        if (this.game.player.levelInfo.characteristics.mechanical) {
+            return '(' + '<del>' + this.uses + '</del> ' + this.uses * 2 + 'x Item: ' + this.shortDescription + ')';
         } else {
-            return '(' + this.uses + 'x Item: ' + this.description + ')';
+            return '(' + this.uses + 'x Item: ' + this.shortDescription + ')';
         };
     }
 
     onBuy() {
-        if (game.player.levelInfo.characteristics.mechanical) {
-            this.uses = this.uses * 3;
+        if (this.game.player.levelInfo.characteristics.mechanical) {
+            this.uses = this.uses * 2;
         };
         this.game.player.addSelectableItem(this);
     }
@@ -67,7 +68,7 @@ class Usable extends Item {
     }
 
     updateItemInfo() {
-        $('#usable-select-description').html(this.description+'<br>count : '+this.uses);
+        $('#usable-select-description').html(this.longDescription+'<br>count : '+this.uses);
     }
 
     onUse() {

@@ -256,24 +256,23 @@ const ITEMLIST = {
 //USABLES
 
 //usables grasslands
-    'firecracker': {'metatype': 'usable', 'price': 5, 'uses': 1, 'description': 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 'type': 'combat', 'attack': 20, 'hp': -2},
-    'throwing eggs': {'metatype': 'usable', 'price': 7, 'uses': 3, 'description': "During combat, lower the current enemy's armor by 3", 'type': 'combat', 'enemyArm': -3},
-    'bandages': {'metatype': 'usable', 'price': 9, 'uses': 4, 'description': 'Heal 5', 'type': 'all', 'hp': 5},
-    'first aid kit': {'metatype': 'usable', 'price': 8, 'uses': 1, 'description': 'Heal 20', 'type': 'all', 'hp': 20},
-    'sharpening stone': {'metatype': 'usable', 'price': 26, 'uses': 3, 'description': 'Your currently equipped weapon gains +2 dmg', 'type': 'all', 'weaponDmg': 2},
+'firecracker': {'metatype': 'usable', 'price': 5, 'uses': 1, 'shortDescription': 'deal 20 dmg, lose 2 hp', 'longDescription': 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 'type': 'combat', 'attack': 20, 'hp': -2},
+'throwing eggs': {'metatype': 'usable', 'price': 7, 'uses': 3, 'shortDescription': 'current enemy loses 3 armor', 'longDescription': "During combat, lower the current enemy's armor by 3", 'type': 'combat', 'enemyArm': -3},
+'bandages': {'metatype': 'usable', 'price': 9, 'uses': 4, 'shortDescription': 'heal 5 hp', 'longDescription': 'Heal 5', 'type': 'all', 'hp': 5},
+'first aid kit': {'metatype': 'usable', 'price': 8, 'uses': 1, 'shortDescription': 'heal 20', 'longDescription': 'Heal 20', 'type': 'all', 'hp': 20},
+'sharpening stone': {'metatype': 'usable', 'price': 26, 'uses': 3, 'shortDescription': '+2 dmg on weapon', 'longDescription': 'Your currently equipped weapon gains +2 dmg', 'type': 'all', 'weaponDmg': 2},
 
-//usables forest
-    'goblin bomb': {'metatype': 'usable', 'price': 20, 'uses': 1, 'description': 'During combat, use to deal 50 dmg (bypasses armor) to the current enemy. If the current enemy is of the goblin type, instead deal 0 damage. Gain 5 gold', 'type': 'combat', 'attackNonGoblin': 50, 'gold': 5},
-    'dryad throwing leaves': {'metatype': 'usable', 'price': 28, 'uses': 4, 'description': 'During combat, deal 10 dmg to an enemy (bypasses armor), and heal 10', 'type': 'combat', 'attack': 10, 'hp': 10},
-    'elf bandages': {'metatype': 'usable', 'price': 35, 'uses': 15, 'description': 'Heal 10', 'type': 'all', 'hp': 10},
-    'elven battle book': {'metatype': 'usable', 'price': 18, 'uses': 1, 'description': 'During combat, if enemy has a lower total attackspeed than you, gain 3% permanent dodge', 'type': 'combat', 'conditionalDodge': 3},
-    'dryad battle book': {'metatype': 'usable', 'price': 22, 'uses': 1, 'description': 'During combat, if enemy has a higher total attackspeed than you, gain 3% permanent lifedrain', 'type': 'combat', 'conditionalLifedrain': 3},
-    'goblin sacks': {'metatype': 'usable', 'price': 30, 'uses': 4, 'description': 'During combat, gain 20% of the current enemy\'s gold pay out', 'type': 'combat', 'enemyGoldPayout': 0.2},
-    'dryad berries': {'metatype': 'usable', 'price': 41, 'uses': 4, 'description': 'Heal 15 hp and gain 1 regen permanetly', 'type': 'all', 'hp': 15, 'regen': 1},
-    'pine needle attachments': {'metatype': 'usable', 'price': 58, 'uses': 4, 'description': 'Your currently equipped weapon gains +5 dmg', 'type': 'all', 'weaponDmg': 5},
-    'pine cone attachments': {'metatype': 'usable', 'price': 62, 'uses': 5, 'description': 'Your currently equipped weapon gains +3 shatter', 'type': 'all', 'weaponShatter': 3},
-    'elven nectar': {'metatype': 'usable', 'price': 45, 'uses': 2, 'description': 'During combat, all armor you have lost due to your opponent\'s shatter this combat is removed. However, more shatter can still be gained', 'type': 'combat', 'removeShatter': true},
-    'dryad root potion': {'metatype': 'usable', 'price': 70, 'uses': 1, 'description': 'During combat, the enemy\'s base armor grows by the amount of effective armor they currently have (armor - shatter applied). Their attackspeed is set to half.', 'type': 'combat', 'enemyArmDouble': true, 'enemyAsHalf': true},
+'goblin bomb': {'metatype': 'usable', 'price': 20, 'uses': 1, 'shortDescription': 'deal 50 dmg to non-goblin. gain 5 gold', 'longDescription': 'During combat, use to deal 50 dmg (bypasses armor) to the current enemy. If the current enemy is of the goblin type, instead deal 0 damage. Gain 5 gold', 'type': 'combat', 'attackNonGoblin': 50, 'gold': 5},
+'dryad throwing leaves': {'metatype': 'usable', 'price': 28, 'uses': 4, 'shortDescription': 'deal 10 dmg, heal 10', 'longDescription': 'During combat, deal 10 dmg to an enemy (bypasses armor), and heal 10', 'type': 'combat', 'attack': 10, 'hp': 10},
+'elf bandages': {'metatype': 'usable', 'price': 35, 'uses': 15, 'shortDescription': 'heal 10 hp', 'longDescription': 'Heal 10', 'type': 'all', 'hp': 10},
+'elven battle book': {'metatype': 'usable', 'price': 18, 'uses': 1, 'shortDescription': 'if enemy has lower attackspeed, gain 3% dodge permanetly', 'longDescription': 'During combat, if enemy has a lower total attackspeed than you, gain 3% permanent dodge', 'type': 'combat', 'conditionalDodge': 3},
+'dryad battle book': {'metatype': 'usable', 'price': 22, 'uses': 1, 'shortDescription': 'if enemy has a higher attackspeed, gain 3% lifedrain permanetly', 'longDescription': 'During combat, if enemy has a higher total attackspeed than you, gain 3% permanent lifedrain', 'type': 'combat', 'conditionalLifedrain': 3},
+'goblin sacks': {'metatype': 'usable', 'price': 30, 'uses': 4, 'shortDescription': 'gain 20% of enemy gold payout', 'longDescription': 'During combat, gain 20% of the current enemy\'s gold pay out', 'type': 'combat', 'enemyGoldPayout': 0.2},
+'dryad berries': {'metatype': 'usable', 'price': 41, 'uses': 4, 'shortDescription': 'heal 15 hp and gain 1 regen permantely', 'longDescription': 'Heal 15 hp and gain 1 regen permanetly', 'type': 'all', 'hp': 15, 'regen': 1},
+'pine needle attachments': {'metatype': 'usable', 'price': 58, 'uses': 4, 'shortDescription': '+5 dmg on weapon', 'longDescription': 'Your currently equipped weapon gains +5 dmg', 'type': 'all', 'weaponDmg': 5},
+'pine cone attachments': {'metatype': 'usable', 'price': 62, 'uses': 5, 'shortDescription': '+3 shatter on weapon', 'longDescription': 'Your currently equipped weapon gains +3 shatter', 'type': 'all', 'weaponShatter': 3},
+'elven nectar': {'metatype': 'usable', 'price': 45, 'uses': 2, 'shortDescription': 'remove all shatter applied by opponent', 'longDescription': 'During combat, all armor you have lost due to your opponent\'s shatter this combat is removed. However, more shatter can still be gained', 'type': 'combat', 'removeShatter': true},
+'dryad root potion': {'metatype': 'usable', 'price': 70, 'uses': 1, 'shortDescription': 'current enemy armor doubles, but their attack speed halves', 'longDescription': 'During combat, the enemy\'s base armor grows by the amount of effective armor they currently have (armor - shatter applied). Their attackspeed is set to half.', 'type': 'combat', 'enemyArmDouble': true, 'enemyAsHalf': true},
 
 //usables beach
     //TBD
@@ -309,7 +308,7 @@ const ITEMLIST = {
     'barbed wire blade': {'metatype': 'weapon', 'price': 0, 'type': 'knife', 'dmg': 15, 'regen': -2, 'as': 66, 'bleed' : 20, 'message': 'In the calamity of combat, a barbed wire fence has been bound up tightly into a blade. Razor sharp, even on the handle'},
     'golden garden hoe': {'metatype': 'weapon', 'price': 0, 'type': 'sword', 'dmg': 24, 'as': -20, 'income': 2, 'message': 'Rooting through the carnage, you notice the glimmer of gold surprisingly fashioned to an ordinary tool. Basic, but shiny'},
 
-    'bossUsableExample': {'metatype': 'usable', 'price': 0, 'uses': 0, 'description': 'description', 'type': 'none'},
+    'bossUsableExample': {'metatype': 'usable', 'price': 0, 'uses': 0, 'longDescription': 'description', 'type': 'none'},
     'bossMagicExample': {'metatype': 'magic', 'price': 0, 'shortDescription': 'shortDescription', 'longDescription': 'longDescription', 'manaCost': 0},
     'bossStatExample': {'metatype': 'stat', 'price': 0},
 //boss items forest

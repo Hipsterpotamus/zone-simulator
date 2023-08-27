@@ -88,7 +88,6 @@ class Boss extends Enemy{
         button.on('click', () => {
             this.game.player.levelInfo.changeXp(this.xp);
             $('#content-central-box').empty();
-            this.game.combat.bossRewards = false;
             if (this.game.player.levelInfo.checkLvlUp()) {
                 this.game.player.levelInfo.levelUp(false);
             } else {
