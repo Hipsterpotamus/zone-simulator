@@ -34,16 +34,16 @@ class LevelInfo {
     }
 
     updateNextLevel() { //generic, can be updated to your preferences
-        this.nextLevel = this.level * 20 + 50;
+        this.nextLevel = this.level * 10 + 50;
     }
 
-    levelUp() {
+    levelUp(bossRewards) {
         this.xp -= this.nextLevel;
         this.level += 1;
         this.updateNextLevel();
         setNextButtonVisible(false);
         setBroadcastTitleText('Level Up!');
-        this.createLvlUpElements([this.getCharacteristic(), this.getCharacteristic(), this.getCharacteristic()]);
+        this.createLvlUpElements([this.getCharacteristic(), this.getCharacteristic(), this.getCharacteristic()], bossRewards);
     }
 
     getCharacteristic() { //currently picks a random one
@@ -53,7 +53,7 @@ class LevelInfo {
         return newChar;
     }
 
-    createLvlUpElements(choices) { //used event creation format for now
+    createLvlUpElements(choices, bossRewards) { //used event creation format for now
         setBroadcastTitleText('Level Up!');
 
         const description = 'Choose from one of the characteristics below:'
@@ -72,9 +72,13 @@ class LevelInfo {
             button.on('click', () => {
                 this.characteristics[choice] = true;
                 $('#content-central-box').empty();
-                setNextButtonVisible(true);
+                if (bossRewards) {
+                    bossRewards.giveBossRewards();
+                } else {
+                    setNextButtonVisible(true);
+                }
             });
-            button.appendTo('#content-central-box'); //choices sent to dom
+            button.appendTo('#content-central-box');
         }
     }
 }

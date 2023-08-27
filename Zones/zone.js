@@ -55,14 +55,34 @@ class Zone {
 
     getBoss(){
         let bossAttributes = this.bossStats[Math.floor(Math.random() * this.bossStats.length)];
-        let rewardItem = this.getBossReward();
+        let rewardItems = this.getBossRewards([2, 1, 1, 1]);
         let bossXp = this.bossXp;
     
-        return [new Boss(this.game, bossXp, rewardItem, ...bossAttributes)];
+        return [new Boss(this.game, bossXp, rewardItems, ...bossAttributes)];
     }
 
-    getBossReward() {
-        let rewardItem = this.bossRewards[Math.floor(Math.random() * this.bossRewards.length)]
+    getBossRewards(info) {
+        let rewardItem = [[],[]]
+        for (let i = 0; i < info[0]; i++) {
+            let reward = this.bossWeapon[Math.floor(Math.random() * this.bossWeapon.length)];
+            let item = new Equippable(this.game, reward, ITEMLIST[reward]);
+            rewardItem[0].push(item);  
+        }
+        for (let i = 0; i < info[1]; i++) {
+            let reward = this.bossUsable[Math.floor(Math.random() * this.bossUsable.length)];
+            let item = new Usable(this.game, reward, ITEMLIST[reward]);
+            rewardItem[1].push(item);
+        }
+        for (let i = 0; i < info[2]; i++) {
+            let reward = this.bossMagic[Math.floor(Math.random() * this.bossMagic.length)];
+            let item = new Magic(this.game, reward, ITEMLIST[reward]);
+            rewardItem[1].push(item);  
+        }
+        for (let i = 0; i < info[3]; i++) {
+            let reward = this.bossStat[Math.floor(Math.random() * this.bossStat.length)];
+            let item = new Stat(this.game, reward, ITEMLIST[reward]);
+            rewardItem[1].push(item);  
+        }
         return rewardItem;
     }
 

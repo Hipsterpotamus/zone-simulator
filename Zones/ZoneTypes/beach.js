@@ -112,10 +112,23 @@ class Beach extends Zone {
             ['hairy g.o.a.t.', 'critter', 115, -25, 13, 2, 75, 1, 0, {'tear':2}]
         ];
 
-        this.bossRewards = [
-            'bossRewardItem1',
-            'bossRewardItem2',
-            'bossRewardItem3'
+        this.bossWeapon = [
+            'hooved javelin',
+            'long grass wand',
+            'barbed wire blade',
+            'golden garden hoe'
+        ]
+
+        this.bossUsable = [
+            'bossUsableExample'
+        ]
+
+        this.bossMagic = [
+            'bossMagicExample'
+        ]
+
+        this.bossStat = [
+            'bossStatExample'
         ]
 
         //could assign this in the parent class if this distribution holds across zones

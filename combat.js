@@ -26,6 +26,7 @@ class Combat {
         this.lvlHealMult;
         this.delay = msDelay; //change this to change how long between ticks
         this.inCombat = false;
+        this.bossRewards = false;
         this.combatStats;
     }
 
@@ -124,7 +125,9 @@ class Combat {
                 $('#enemy-health-bar-container').addClass('hidden');
                 
                 if (this.player.levelInfo.checkLvlUp()) {
-                    this.player.levelInfo.levelUp();
+                    this.player.levelInfo.levelUp(this.bossRewards);
+                } else if (this.bossRewards) {
+                    this.bossRewards.giveBossRewards();
                 } else {
                     setNextButtonVisible(true);
                 }
