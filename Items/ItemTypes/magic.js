@@ -31,7 +31,11 @@ class Magic extends Item {
     }
 
     genShopDesc() {
-        return '';
+        return '(Spell: ' + this.manaCost + ' mana - >' + this.shortDescription + ')';
+    }
+
+    onBuy() {
+        this.game.player.addSelectableItem(this);
     }
 
     attemptUse(){

@@ -27,12 +27,27 @@ class Equippable extends Item {
         if(itemInfo){
             Object.keys(itemInfo).forEach((stat)=>{
                 this[stat] = itemInfo[stat];
+                if (stat === 'metatype' || stat === 'price' || stat === 'type' || stat === 'message' ) {
+                    delete this.itemInfo[stat];
+                }
             });
         }
     }
 
     genShopDesc() {
-        return '';
+        let shopDesc = '';
+        Object.keys(this.itemInfo).forEach((stat) => {
+            if (this.itemInfo[stat] > 0) {
+                shopDesc += (shopDesc ? ', ' : '') + '+' + this.itemInfo[stat] + ' ' + stat;
+            } else {
+                shopDesc += (shopDesc ? ', ' : '') + this.itemInfo[stat] + ' ' + stat;
+            }
+        });
+        return '(' + shopDesc + ')';
+    }
+
+    onBuy() {
+        this.game.player.addSelectableItem(this);
     }
 
     changeStat (stat, amount) {

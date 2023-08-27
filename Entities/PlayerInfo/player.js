@@ -53,7 +53,7 @@ class Player extends Entity{
 
     addSelectableItem(item) {
         this.inv[item.metatype][1].push(item);
-        item.appendElement()
+        item.appendToSelect()
         this.changeSelectedItem(item);
     }
 

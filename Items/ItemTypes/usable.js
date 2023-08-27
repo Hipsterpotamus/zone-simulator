@@ -38,7 +38,11 @@ class Usable extends Item {
     }
 
     genShopDesc() {
-        return '';
+        return '(' + this.uses + 'x Item: ' + this.description + ')';
+    }
+
+    onBuy() {
+        this.game.player.addSelectableItem(this);
     }
 
     attemptUse(){

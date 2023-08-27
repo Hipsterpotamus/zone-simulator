@@ -27,6 +27,6 @@ class Boss extends Enemy{
     getRewardItem() {
         let item = ITEMLIST[this.rewardItem];
         notify(item['message'], 10);
-        return new ShopItem(this.game, this.rewardItem, item);
+        return this.game.path.itemShop.generateItem(this.rewardItem, item);
     }
 }

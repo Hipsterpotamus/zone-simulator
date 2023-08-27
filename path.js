@@ -1,12 +1,14 @@
 class Path {
     constructor(game) {
         this.game = game;
-        this.game.zoneNum = 1;
+        this.zoneNum = 1;
         this.maxSpaces;
         this.typeInfo;
         this.setSpaces;
         this.nextSpace;
         this.spaceNumber = 0;
+
+        this.itemShop = new ItemShop(game);
 
         this.playerInit();
     }
@@ -69,7 +71,7 @@ class Path {
         if (this.spaceNumber >= this.maxSpaces) {
             this.spaceNumber = 0;
             this.advanceZone();
-            this.game.zoneNum += 1;
+            this.zoneNum += 1;
         } else {
             this.spaceNumber += 1;
             this.generateNextSpace();
@@ -83,31 +85,7 @@ class Path {
 
     shopEvent() {
         setBroadcastTitleText('Shop');
-
-        const ITEMCATEGORIES = ['weapon', 'head', 'chest', 'legs', 'feet', 'stat', 'usable', 'magic'];
-
-        let shopCode = this.game.zone.shopCode;
-        let shopCodeExpand = [shopCode[0], 0, 0, 0, 0, shopCode[2], shopCode[3], shopCode[4]];
-
-        for (let i = 0; i < shopCode[1]; i++) {
-            const randNum = Math.floor(Math.random() * 4) + 1;
-            shopCodeExpand[randNum] += 1;
-        }
-    
-        ITEMCATEGORIES.forEach((category, index) => {
-            let count = shopCodeExpand[index] || 0;
-            let availableItems = this.game.zone.zoneItemList[category];
-    
-            for (let i = 0; i < count; i++) {
-                if (availableItems.length === 0) {
-                    break;
-                }
-                const searchInd = Math.floor(Math.random() * availableItems.length);
-                let item = availableItems[searchInd];
-                availableItems.splice(searchInd, 1);
-                item.appendShopItem();
-            }
-        });
+        this.itemShop.generateNewShop(this.game.zone.shopCode);
     }
 
     eventEvent() {
@@ -158,13 +136,13 @@ class Path {
     }
 
     displayZoneInfo() {
-        $('#zone-text').text('zone: '+this.game.zoneNum+'–'+this.spaceNumber);
+        $('#zone-text').text('zone: '+this.zoneNum+'–'+this.spaceNumber);
     }
 
     pushZoneItems() {
         this.game.zone.zoneItems.forEach(itemName => {
             let metatype = ITEMLIST[itemName]['metatype'];
-            this.game.zone.zoneItemList[metatype].push(new ShopItem(this.game, itemName, ITEMLIST[itemName]));
+            this.game.zone.zoneItemList[metatype].push(this.itemShop.generateItem(itemName, ITEMLIST[itemName]));
         });
     }
 
