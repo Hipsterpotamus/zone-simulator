@@ -70,13 +70,18 @@ class ShopItem{
         
         // add the stat up/down icon divs based on which stats are affected by the item
         // [type, damage, armor, regen, attackSpeedChange, complexStats]
-        if (this.itemInfo[2] > 0) {
-            console.log('armor up');
+        if (this.itemInfo[1] > 0) {
             let armUp = $('<div>', {
-                'class': 'stat-up'
+                'class': 'stat-up shop-stat-dmg'
             });
             armUp.appendTo(shopItemStats);
-            $('.stat-up').html(stat_icons['arm'])
+            $('.shop-stat-dmg').html(stat_icons['dmg'])
+        } else if (this.itemInfo[2] > 0) {
+            let armUp = $('<div>', {
+                'class': 'stat-up shop-stat-arm'
+            });
+            armUp.appendTo(shopItemStats);
+            $('.shop-stat-arm').html(stat_icons['arm'])
         }
         // add to the button
         shopItemStats.appendTo(this.element);

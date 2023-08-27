@@ -18,6 +18,11 @@
         <div class="arm-down"> <SVG HERE> </div>
     </div>
   </button> */
+.shop-item-stats div svg {
+  /* set icon size */
+  width: 3rem;
+  height: 2rem;
+}
 
 .shop-item-stats .stat-up {
   background-color: var(--md-sys-color-tertiary);
