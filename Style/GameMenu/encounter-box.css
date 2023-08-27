@@ -162,13 +162,13 @@
 }
 
 #content-central-box button.usable-shop-item {
-  border-radius: 50px;
+  border-radius: 32px;
 }
 
 #content-central-box button.magic-shop-item {
   /* shadow */
   
-  border-radius: 50px;
+  border-radius: 32px;
   box-shadow: 0px 0px 10px 0px var(--md-sys-color-tertiary);
 }
 
