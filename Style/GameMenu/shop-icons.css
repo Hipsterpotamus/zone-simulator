@@ -21,6 +21,9 @@
 
 .shop-item-stats .stat-up {
   background-color: var(--md-sys-color-tertiary);
+  /* set stroke color and color */
+  fill: var(--md-sys-color-on-tertiary);
+  stroke: var(--md-sys-color-on-tertiary);
   padding: 0.5rem;
   border-radius: 100px;
   content: "🛡️";
@@ -32,6 +35,9 @@
 
 .shop-item-stats .stat-down {
   background-color: var(--md-sys-color-tertiary-container);
+  fill: var(--md-sys-color-on-tertiary-container);
+  stroke: var(--md-sys-color-on-tertiary-container);
+  
   padding: 0.5rem;
   border-radius: 100px;
   content: "🛡️";

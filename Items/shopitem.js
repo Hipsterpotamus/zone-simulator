@@ -53,10 +53,34 @@ class ShopItem{
         if (this.game.player.levelInfo.characteristics.persuasive) {
             let newPrice = Math.ceil(this.goldPrice / 2);
             this.element.html('buy ' + this.name + ': <del>' + this.goldPrice + '</del> ' + newPrice + ' gold<br>' + this.shopDesc);
-            this.goldPrice = newPrice
         } else {
             this.element.html('buy ' + this.name + ': ' + this.goldPrice + ' gold<br>' + this.shopDesc);
         }
+
+
+
+        // add a div inside the button in this structure
+        // <div class="shop-item-stats">
+        //     <div class="stat-up"> <SVG HERE> </div>
+        //     <div class="arm-down"> <SVG HERE> </div>
+        // </div>
+        let shopItemStats = $('<div>', {
+            'class': 'shop-item-stats'
+        });
+        
+        // add the stat up/down icon divs based on which stats are affected by the item
+        // [type, damage, armor, regen, attackSpeedChange, complexStats]
+        if (this.itemInfo[2] > 0) {
+            console.log('armor up');
+            let armUp = $('<div>', {
+                'class': 'stat-up'
+            });
+            armUp.appendTo(shopItemStats);
+            $('.stat-up').html(stat_icons['arm'])
+        }
+        // add to the button
+        shopItemStats.appendTo(this.element);
+
 
         this.element.on('click', () => {
             this.purchase();
