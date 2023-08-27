@@ -118,11 +118,16 @@ class Combat {
                 this.displayCombatStats();
                 this.player.cleanStatus();
                 this.player.changeHp(this.player.levelheal*this.lvlHealMult);
-        
-                setNextButtonVisible(true);
-            
+
+                            
                 $('#combatTimer').addClass('hidden');
                 $('#enemy-health-bar-container').addClass('hidden');
+                
+                if (this.player.levelInfo.checkLvlUp()) {
+                    this.player.levelInfo.levelUp();
+                } else {
+                    setNextButtonVisible(true);
+                }
             }
         }
     }
