@@ -14,8 +14,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
+
 #enemy-box #zone-image-overlay {
   position: absolute;
   width: 100%;
@@ -51,6 +51,17 @@
 
 }
 
+.enemies {
+  width: 100%;
+  height: 100%;
+  /* center contents */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: var(--md-sys-color-surface); */
+  margin-bottom: 30%;
+}
+
 .enemy {
   -webkit-transform: skewX(3deg);
   -moz-transform: skewX(3deg);
@@ -60,16 +71,14 @@
 
   width: 85%;
   position: relative;
-  /* top:15%; */
-  margin-bottom: 30%;
   border-radius: 32px;
   background-color: var(--transparent-background);
-  /* blur back */
-  /* backdrop-filter: blur(10px); */
+  margin: 1rem;
 }
 
 .enemy {
   display: none; /* hide the element */
+  margin: rem;
 }
 
 .enemy.visible {
@@ -116,9 +125,11 @@
 #enemy-stats {
   /* set to an evently spaced grid */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 8rem)); /* default size is 100px */
   grid-template-rows: 1fr;
   justify-items: center;
+  /* center the items when items don't fill the grid */
+  justify-content: center;
   text-transform: capitalize;
   padding: 1rem;
 }
