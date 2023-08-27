@@ -163,18 +163,18 @@ class Path {
 
     pushZoneItems() {
         this.game.zone.zoneItems.forEach(itemName => {
-            let metatype = ITEMLIST[itemName][2];
-            this.game.zone.zoneItemList[metatype].push(new ShopItem(this.game, itemName, ...ITEMLIST[itemName]));
+            let metatype = ITEMLIST[itemName]['metatype'];
+            this.game.zone.zoneItemList[metatype].push(new ShopItem(this.game, itemName, ITEMLIST[itemName]));
         });
     }
 
     playerInit() {
-        this.game.player.addSelectableItem(new Usable(this.game, 'none', 'usable', 'never', '', 0, ''));
-        this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'weapon', 'none', 0, 0, 0, 0));
-        this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'head', 'none', 0, 0, 0, 0));
-        this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'chest', 'none', 0, 0, 0, 0));
-        this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'legs', 'none', 0, 0, 0, 0));
-        this.game.player.addSelectableItem(new Equippable(this.game, 'none', 'feet', 'none', 0, 0, 0, 0));
+        this.game.player.addSelectableItem(new Usable(this.game, 'none', {'metatype': 'usable'}));
+        this.game.player.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'weapon'}));
+        this.game.player.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'head'}));
+        this.game.player.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'chest'}));
+        this.game.player.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'legs'}));
+        this.game.player.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'feet'}));
 
         this.game.player.changeMana(0);
     }

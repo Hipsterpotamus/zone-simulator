@@ -41,6 +41,9 @@ class Enemy extends Entity{
         return 1;
     }
 
+    changeGold(amount) {
+        this.gold += amount;
+    }
     death() {
         this.game.player.changeGold(this.gold, true);
         this.game.combat.combatStats['totalGoldGain'] += this.gold;

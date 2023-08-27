@@ -20,8 +20,8 @@ const EVENTLIST = {
         {
             text: 'Gain Clothing: gain two armor pieces, lose 1 level heal',
             effect: function(game) {
-                game.player.addSelectableItem(new Equippable(game, 'dirty shirt', 'chest', 'shirt', 0, 1, 0, 0));
-                game.player.addSelectableItem(new Equippable(game, 'dirty pants', 'legs', 'pants', 0, 1, 0, 0));
+                game.player.addSelectableItem(new Equippable(game, 'dirty shirt', {'metatype': 'chest', 'type': 'shirt', 'arm': 1}));
+                game.player.addSelectableItem(new Equippable(game, 'dirty pants', {'metatype': 'legs', 'type': 'pants', 'arm': 1}));
                 game.player.changeStat('levelheal', -1);
             }
         },
@@ -38,7 +38,7 @@ const EVENTLIST = {
             effect: function(game) {
                 if (game.player.gold < 3) { return;}
                 game.player.changeGold(-3);
-                game.player.addSelectableItem(new Equippable(game, 'garden hoe', 'weapon', 'none', 3, 0, 0, 0));
+                game.player.addSelectableItem(new Equippable(game, 'garden hoe', {'metatype': 'weapon', 'type': 'none', 'dmg': 3}));
             }
         },
         {
@@ -69,14 +69,14 @@ const EVENTLIST = {
             text: 'Blow and Wear: alert enemies, gain horn helmet',
             effect: function(game) {
                 game.zone.changeZoneLevel(2);
-                game.player.addSelectableItem(new Equippable(game, 'horn helmet', 'head', 'helmet', 2, 0, 0, 0));
+                game.player.addSelectableItem(new Equippable(game, 'horn helmet', {'metatype': 'head', 'type': 'helmet', 'dmg': 2}));
             }
         },
         {
             text: 'Blow and wield: alert enemies, gain horn sling',
             effect: function(game) {
                 game.zone.changeZoneLevel(2);
-                game.player.addSelectableItem(new Equippable(game, 'horn sling', 'weapon', 'sling', 4, 0, 0, 25));
+                game.player.addSelectableItem(new Equippable(game, 'horn sling', {'metatype': 'weapon', 'type': 'sling', 'dmg': 4, 'as': 50}));
             }
         },
         {

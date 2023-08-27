@@ -1,30 +1,37 @@
-// Purchased from shop
-// Each spell has an appropriate mana cost (and potential other costs including but not limited to hp, further types of mana, etc.)
-// Each spell has a cool down in addition to its mana cost (around 1 second to deter spam clicking)
-// Each spell has a ability which functions similar to a usable item
-// Each spell has an associated button element which on click does the spell's ability after checking for costs
-// Some spells may have finite uses in addition to the above requirements.
-// Each spell has a short description placed on its button and a long description that can be obtained from hovering over.
-
-
 class Magic extends Item {
-    constructor(game, name, metatype, magicElement, type, shortDescription, longDescription, manaCost, onUse, coolDown, usesFinite, complexStats){
-        super(name, metatype);
-        this.game = game;
-        this.magicElement = magicElement;
-        this.type = type;
-        this.shortDescription = shortDescription;
-        this.longDescription = longDescription;
-        this.manaCost = manaCost;
-        this.coolDown = coolDown;
-        this.usesFinite = usesFinite;
-        this.onUse = onUse;
-        
-        if(complexStats){
-            Object.keys(complexStats).forEach((stat)=>{
-                this[stat] = complexStats[stat];
+    constructor(game, name, itemInfo){
+        super(game, name);
+        this.itemInfo = itemInfo;
+        this.type = false;
+        this.shortDescription = false;
+        this.longDescription = false;
+        this.manaCost = false;
+        this.coolDown = false;
+        this.usesFinite = false;
+
+        //possible onUse defaults
+        this.attack = false;
+        this.enemyDmg = false;
+        this.hp = false;
+        this.enemyArm = false;
+        this.maxhp = false;
+        this.dmg = false;
+        this.arm = false;
+        this.as = false;
+        this.enemyAs = false;
+        this.maxMana = false;
+        this.regen = false;
+        this.shatterRecovered = false;
+
+        if(itemInfo){
+            Object.keys(itemInfo).forEach((stat) => {
+                this[stat] = itemInfo[stat];
             });
         }
+    }
+
+    genShopDesc() {
+        return '';
     }
 
     attemptUse(){
@@ -63,5 +70,63 @@ class Magic extends Item {
 
     updateItemInfo() {
         //add stuff here if you want any selectable/equippable behavior for magic items
+    }
+
+    onUse(game) {
+        // Damage to enemy
+        if (this.attack) {
+            this.game.combat.selectedEnemy.receiveNonHitDmg(this.attack, this.game.player);
+        }
+    
+        // Change player HP
+        if (this.hp) {
+            this.game.player.changeHp(this.hp);
+        }
+    
+        // Change enemy armor
+        if (this.enemyArm) {
+            this.game.combat.selectedEnemy.changeStat('arm', this.enemyArm);
+        }
+    
+        // Change player max HP
+        if (this.maxhp) {
+            this.game.player.changeMaxHp(this.maxhp);
+        }
+    
+        // Change player and enemy damage
+        if (this.dmg) {
+            this.game.player.changeStat('dmg', this.dmg);
+        }
+        if (this.enemyDmg) {
+            this.game.combat.selectedEnemy.changeStat('dmg', this.enemyDmg);
+        }
+    
+        // Change player and enemy armor
+        if (this.arm) {
+            this.game.player.changeStat('arm', this.arm);
+        }
+    
+        // Change player and enemy attack speed
+        if (this.as) {
+            this.game.player.changeStat('as', this.as);
+        }
+        if (this.enemyAs) {
+            this.game.combat.selectedEnemy.changeStat('as', this.enemyAs);
+        }
+    
+        // Change player max mana
+        if (this.maxMana) {
+            this.game.player.changeStat('maxMana', this.maxMana);
+        }
+    
+        // Change player regen
+        if (this.regen) {
+            this.game.player.changeStat('regen', this.regen);
+        }
+    
+        // Recover shatter
+        if (this.shatterRecovered) {
+            this.game.player.changeStat('shatterApplied', -Math.min(game.player.shatterApplied, this.shatterRecovered));
+        }
     }
 }

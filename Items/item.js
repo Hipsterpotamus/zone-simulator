@@ -1,7 +1,9 @@
 class Item {
-    constructor(name, metatype) {
+    constructor(game, name) {
+        this.game = game;
         this.name = name;
-        this.metatype = metatype;
+        this.metatype = false;
+        this.price = 0;
     }
 
     appendElement() {

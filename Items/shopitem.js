@@ -1,11 +1,11 @@
 class ShopItem{
-    constructor(game, name, goldPrice, shopDesc, metatype, itemInfo){
+    constructor(game, name, itemInfo){
         this.game = game;
         this.name = name;
-        this.goldPrice = goldPrice;
-        this.shopDesc = shopDesc;
-        this.metatype = metatype;
         this.itemInfo = itemInfo;
+        this.goldPrice = itemInfo['price'];
+        this.shopDesc = 'blank temp';
+        this.metatype = itemInfo['metatype'];
         this.element;
         this.onBuy;
         this.generateItem();
@@ -14,22 +14,22 @@ class ShopItem{
     generateItem() {
         const EQUIPPABLELIST = ['weapon', 'head', 'chest', 'legs', 'feet'];
         if (EQUIPPABLELIST.includes(this.metatype)) {
-            this.onBuy = () => this.game.player.addSelectableItem(new Equippable(this.game, this.name, this.metatype, ...this.itemInfo));
+            this.onBuy = () => this.game.player.addSelectableItem(new Equippable(this.game, this.name, this.itemInfo));
         }
     
         const USABLELIST = ['usable'];
         if (USABLELIST.includes(this.metatype)) {
-            this.onBuy = () => this.game.player.addSelectableItem(new Usable(this.game, this.name, this.metatype, ...this.itemInfo));
+            this.onBuy = () => this.game.player.addSelectableItem(new Usable(this.game, this.name, this.itemInfo));
         }
     
         const STATLIST = ['stat'];
         if (STATLIST.includes(this.metatype)) {
-            this.onBuy = () => new Stat(this.game, this.name, this.metatype, ...this.itemInfo).onUse(this.game);
+            this.onBuy = () => new Stat(this.game, this.name, this.itemInfo).onUse(this.game);
         }
     
         const MAGICLIST = ['magic'];
         if (MAGICLIST.includes(this.metatype)) {
-            this.onBuy = () => this.game.player.addSelectableItem(new Magic(this.game, this.name, this.metatype, ...this.itemInfo));
+            this.onBuy = () => this.game.player.addSelectableItem(new Magic(this.game, this.name, this.itemInfo));
         }
     }
 

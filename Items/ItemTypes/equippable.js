@@ -1,19 +1,22 @@
 class Equippable extends Item {
-    constructor(game, name, metatype, type, dmg, armor, regen, attackSpeedChange, complexStats) {
-        super(name, metatype);
-        this.game = game;
-        this.type = type;
-        this.dmg = dmg;
-        this.arm = armor;
-        this.regen = regen;
-        this.as = attackSpeedChange;
+    constructor(game, name, itemInfo) {
+        super(game, name);
+        this.itemInfo = itemInfo;
+
+        //default equippable stats
+        this.type = false;
+        this.message = false;
+
+        this.dmg = 0;
+        this.arm = 0;
+        this.regen = 0;
+        this.as = 0;
         this.income = 0;
         this.thorn = 0;
         this.dodge = 0;
         this.lifedrain = 0;
         this.thorn = 0;
         this.antiheal = 0;
-        this.dodge = 0;
         this.tear = 0;
         this.shatter = 0;
         this.bleed = 0;
@@ -21,11 +24,15 @@ class Equippable extends Item {
         this.accuracy = 0;
         this.manaGen = 0;
 
-        if(complexStats){
-            Object.keys(complexStats).forEach((stat)=>{
-                this[stat] = complexStats[stat];
+        if(itemInfo){
+            Object.keys(itemInfo).forEach((stat)=>{
+                this[stat] = itemInfo[stat];
             });
         }
+    }
+
+    genShopDesc() {
+        return '';
     }
 
     changeStat (stat, amount) {

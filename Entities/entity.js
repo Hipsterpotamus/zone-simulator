@@ -42,8 +42,16 @@ class Entity{
     }
 
     changeStat (stat, amount) {
-        this[stat] += amount;
-        this.updateEntityDisplay();
+        if (stat == 'gold') {
+            this.changeGold(amount);
+        } else if (stat == 'hp') {
+            this.changeHp(amount);
+        } else if (stat == 'maxhp') {
+            this.changeMaxHp(amount);
+        } else {
+            this[stat] += amount;
+            this.updateEntityDisplay();
+        }
     }
 
     changeHp(amount){
