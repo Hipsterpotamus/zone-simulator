@@ -16,6 +16,7 @@ class LevelInfo {
 
     changeXp(amount) {
         this.xp += amount;
+        console.log(this.xp)
         if (this.xp >= this.nextLevel) {
             this.xp -= this.nextLevel;
             this.level += 1;
@@ -29,7 +30,6 @@ class LevelInfo {
     }
 
     levelUp() { 
-        console.log('level up')
         this.newCharacteristic();
     }
 
@@ -37,6 +37,7 @@ class LevelInfo {
         let charIndex = Math.floor(Math.random() * this.characteristicsOff.length)
         let newChar = this.characteristicsOff[charIndex];
         this.characteristicsOff.splice(charIndex, 1);
+        notify('level up! new charactaristic: ' + newChar, 5);
         console.log(newChar);
         this.characteristics[newChar] = true;
     }

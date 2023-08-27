@@ -9,6 +9,8 @@
 * [] Add combat results to display (combat.displayCombatStats, line 159)
 * [] Create LVL UP display
 * [] Results/Death Screen (player.death, line 91)(current death screen is already epic...)
+
+* Sometimes scroll stops working in the eventbox and idk why, its def possible i broke something but any insight would be appreciated
 #### Holden:
 * [] Finish Beach Items
 * [] Finish Beach Enemies
@@ -51,7 +53,6 @@
 * [] Get all the characters functioning
 
 ### Fixes
-* [] Fix enemy/item speed stats to be more consistent with new scaling
 * [] Add delay before battle
 
 ### Refactoring

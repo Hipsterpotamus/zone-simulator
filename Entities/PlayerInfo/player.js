@@ -114,16 +114,18 @@ class Player extends Entity{
 
     death() {
         this.alive = false;
+        setBroadcastTitleText('You Died :(', true);
         this.updateEntityDisplay();
 
         console.log('game combat stats:');
         console.log(this.gameCombatStats); //not sure if you want any more than these stats
 
-        $('#player-death').removeClass('hidden');
-        $('#player-death').addClass('fullViewport');
-        let video = $('#player-death')[0];
-        video.play();
-        video.addEventListener('ended', function() {$('#player-death').addClass('hidden')});
+        // fuck u caden this was awesome...
+        // $('#player-death').removeClass('hidden');
+        // $('#player-death').addClass('fullViewport');
+        // let video = $('#player-death')[0];
+        // video.play();
+        // video.addEventListener('ended', function() {$('#player-death').addClass('hidden')});
     }
 
     // Not totally sure where you'll want this, depending on if all entities have mana

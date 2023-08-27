@@ -112,16 +112,18 @@ class Combat {
             }
             
         } else {
-            this.inCombat = false;
-            setBroadcastTitleText('Victory!', true);
-            this.displayCombatStats();
-            this.player.cleanStatus();
-            this.player.changeHp(this.player.levelheal*this.lvlHealMult);
-    
-            setNextButtonVisible(true);
+            if (this.player.alive) {
+                this.inCombat = false;
+                setBroadcastTitleText('Victory!', true);
+                this.displayCombatStats();
+                this.player.cleanStatus();
+                this.player.changeHp(this.player.levelheal*this.lvlHealMult);
         
-            $('#combatTimer').addClass('hidden');
-            $('#enemy-health-bar-container').addClass('hidden');
+                setNextButtonVisible(true);
+            
+                $('#combatTimer').addClass('hidden');
+                $('#enemy-health-bar-container').addClass('hidden');
+            }
         }
     }
 

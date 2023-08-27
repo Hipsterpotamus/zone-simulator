@@ -3,7 +3,7 @@ class Usable extends Item {
         super(game, name);
         this.itemInfo = itemInfo;
         this.type = false;
-        this.description = false;
+        this.description = '';
         this.uses = 0;
         
 
