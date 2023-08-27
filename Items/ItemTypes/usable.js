@@ -26,22 +26,23 @@ class Usable extends Item {
         
         if(itemInfo){
             Object.keys(itemInfo).forEach((stat)=>{
-                if (stat === 'uses') {
-                    if (game.player.levelInfo.characteristics.mechanical) {
-                        itemInfo.uses = itemInfo.uses * 2;
-                    };
-                }
-
                 this[stat] = itemInfo[stat];
             });
         }
     }
 
     genShopDesc() {
-        return '(' + this.uses + 'x Item: ' + this.description + ')';
+        if (game.player.levelInfo.characteristics.mechanical) {
+            return '(' + this.uses * 3 + 'x Item: ' + this.description + ')';
+        } else {
+            return '(' + this.uses + 'x Item: ' + this.description + ')';
+        };
     }
 
     onBuy() {
+        if (game.player.levelInfo.characteristics.mechanical) {
+            this.uses = this.uses * 3;
+        };
         this.game.player.addSelectableItem(this);
     }
 

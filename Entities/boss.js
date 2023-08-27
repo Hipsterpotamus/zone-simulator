@@ -29,6 +29,7 @@ class Boss extends Enemy{
     }
 
     giveBossRewards() {
+        this.game.combat.bossRewards = false;
         this.createBossRewardElements1();
     }
 
@@ -88,10 +89,8 @@ class Boss extends Enemy{
             this.game.player.levelInfo.changeXp(this.xp);
             $('#content-central-box').empty();
             this.game.combat.bossRewards = false;
-            if (this.player.levelInfo.checkLvlUp()) {
-                console.log('level up after boss');
-                console.log(this.game);
-                this.player.levelInfo.levelUp(false);
+            if (this.game.player.levelInfo.checkLvlUp()) {
+                this.game.player.levelInfo.levelUp(false);
             } else {
                 setNextButtonVisible(true);
             }

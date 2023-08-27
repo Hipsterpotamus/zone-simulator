@@ -1,14 +1,14 @@
 const CHARACTERISTICS = {
     'persuasive': '-25% reduction on all future shop prices',
-    'mechanical': '+100% uses on all new useables',
-    'vengeful': '+100% weapon dmg when below 30% health',
+    'mechanical': 'x3 uses on all new useables',
+    'vengeful': 'x2 weapon dmg when below 30% health',
     'prescient': 'see the name of the next space',
     'elusive': 'gains +5% dodge for every 10 attack speed',
-    'dominant': 'gains 100% more gold upon killing an enemy/boss in less than 500 ticks/10 seconds',
+    'dominant': 'gains x2 more gold upon killing an enemy/boss in less than 500 ticks/10 seconds',
     'intimidating': 'enemy loses 100% of armor upon start of battle',
-    'precise': 'enemies takes 100% more damage from items, and 100% more from spells',
-    'patient': 'receives a 100% damage increase after 500 ticks/10 seconds',
-    'thrifty': 'gains +100% gold from income'
+    'precise': 'enemies takes x2 more damage from items, and x2 more from spells',
+    'patient': 'receives a x2 damage increase after 500 ticks/10 seconds',
+    'thrifty': 'gains x2 gold from income'
   };
 
 class LevelInfo {
@@ -23,6 +23,7 @@ class LevelInfo {
             this.characteristicsOff.push(char);
             this.characteristics[char] = false;
         });
+        this.characteristics.mechanical = true;
     }
 
     changeXp(amount) {

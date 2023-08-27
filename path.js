@@ -152,7 +152,7 @@ class Path {
     pushZoneItems() {
         this.game.zone.zoneItems.forEach(itemName => {
             let metatype = ITEMLIST[itemName]['metatype'];
-            this.game.zone.zoneItemList[metatype].push(this.itemShop.generateItem(itemName, ITEMLIST[itemName]));
+            this.game.zone.zoneItemList[metatype].push(this.itemShop.generateItem(itemName, structuredClone(ITEMLIST[itemName])));
         });
     }
 
