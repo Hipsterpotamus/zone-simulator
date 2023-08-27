@@ -39,14 +39,19 @@
 
 .shop-item-stats .stat-up {
   order: -1;
-  background-color: var(--md-sys-color-tertiary);
-  fill: var(--md-sys-color-on-tertiary);
-  stroke: var(--md-sys-color-on-tertiary);
+  background-color: var(--md-sys-color-primary);
+  fill: var(--md-sys-color-on-primary);
+  stroke: var(--md-sys-color-on-primary);
+
+  border: 1.5px solid var(--md-sys-color-tertiary-container);
 }
 
 .shop-item-stats .stat-down {
-  background-color: var(--md-sys-color-tertiary-container);
-  fill: var(--md-sys-color-on-tertiary-container);
-  stroke: var(--md-sys-color-on-tertiary-container);
+  background-color: var(--md-sys-color-primary-container);
+  fill: var(--md-sys-color-on-primary-container);
+  stroke: var(--md-sys-color-on-primary-container);
+  
+  border: 1px dashed var(--md-sys-color-tertiary);
+
   
 }
