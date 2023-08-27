@@ -39,15 +39,22 @@ class ShopItem{
             this.onBuy();
             this.element.remove();
             this.updatePurchaseHistory();
+            this.updateShopItems();
         } else {
             notify('Not enough Gold!');
         }
     }
 
+    updateShopItems() {
+        // for all buttons in the shop, add the shop-item-disabled class if the player doesn't have enough gold
+            // There doesn't really seem like a good way to do this currently because the current buttons don't know their own gold price
+            // Is there no Shop class that can hold all the current shop items and update them all at once?
+    }
+
     appendShopItem() {
         this.element = $('<button>', {
             'id': '#' + this.name.replace(/\s/g, '') + '-purchase',
-            'class': this.metatype + '-shop-item',
+            'class': this.metatype + '-shop-item shop-item ' + (this.game.player.gold < this.goldPrice ? 'shop-item-disabled' : ''),
         });
         this.element.appendTo('#content-central-box');
         if (this.game.player.levelInfo.characteristics.persuasive) {
@@ -58,7 +65,7 @@ class ShopItem{
         }
 
 
-
+            // Stat icons on shop buttons
         // add a div inside the button in this structure
         // <div class="shop-item-stats">
         //     <div class="stat-up"> <SVG HERE> </div>

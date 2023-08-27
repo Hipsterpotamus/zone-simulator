@@ -137,14 +137,21 @@
   transition: all 0.2s ease-in-out;
 }
 
+/* if not .shop-item-disabled */
 
-#content-central-box button:hover {
+
+#content-central-box button:not(.shop-item-disabled):hover {
   background-color: var(--md-sys-color-tertiary);
   color: var(--md-sys-color-on-tertiary);
   border-radius: 16px;
   transform: scale(1.1);
 }
-
+.shop-item-disabled {
+  outline-width: 1px;
+  outline-color: var(--md-sys-color-on-tertiary);
+  pointer-events: none;
+  opacity: 0.5;
+}
 
 
 
@@ -155,9 +162,10 @@
   position: relative; /* Add this line */
   /* Other styles */
 }
-.weapon-shop-item::before {
-  /* set content to sowrd icon Style/Icons/Sword.png*/
-  /*content: url(../Icons/Sword.png);*/ /* removed to get rid of error message*/
+
+
+
+/* .weapon-shop-item::before {
   outline-width: 2rem;
   outline-color: var(--md-sys-color-tertiary);
 
@@ -165,14 +173,12 @@
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  /* background-color: var(--md-sys-color-on-tertiary); */
   top: -0.7rem;
   right: -0.7rem;
   z-index: 5;
-  /* font-size: 0.7rem; */
   filter: grayscale(100%);
-  /* center */
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
+
