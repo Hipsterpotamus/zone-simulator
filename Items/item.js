@@ -21,16 +21,15 @@ class Item {
             this.onBuy();
             this.shopElement.remove();
             this.updatePurchaseHistory();
-            this.updateShopItems();
+            this.game.path.itemShop.updateShopItems();
         } else {
             notify('Not enough Gold!');
         }
     }
 
-    updateShopItems() {
-        // for all buttons in the shop, add the shop-item-disabled class if the player doesn't have enough gold
-            // There doesn't really seem like a good way to do this currently because the current buttons don't know their own gold price
-            // Is there no Shop class that can hold all the current shop items and update them all at once?
+    updateShopElement() {
+        const newClass = this.metatype + '-shop-item shop-item ' + (this.game.player.gold < this.price ? 'shop-item-disabled' : '');
+        this.shopElement.attr('class', newClass);
     }
 
     appendToShop() {

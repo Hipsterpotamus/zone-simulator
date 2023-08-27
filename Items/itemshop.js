@@ -33,6 +33,12 @@ class ItemShop {
         });
     }
 
+    updateShopItems() {
+        this.itemsInShop.forEach(item => {
+            item.updateShopElement();
+        });
+    }
+
     generateItem(name, itemInfo) {
         const EQUIPPABLELIST = ['weapon', 'head', 'chest', 'legs', 'feet'];
         if (EQUIPPABLELIST.includes(itemInfo.metatype)) {
