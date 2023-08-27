@@ -89,6 +89,8 @@ class Boss extends Enemy{
             $('#content-central-box').empty();
             this.game.combat.bossRewards = false;
             if (this.player.levelInfo.checkLvlUp()) {
+                console.log('level up after boss');
+                console.log(this.game);
                 this.player.levelInfo.levelUp(false);
             } else {
                 setNextButtonVisible(true);

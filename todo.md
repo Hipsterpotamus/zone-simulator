@@ -53,6 +53,7 @@
 * [] Get all the characters functioning
 
 ### Fixes
+* [] Re-add usable short descs
 * [] Add delay before battle
 
 ### Refactoring

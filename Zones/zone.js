@@ -62,28 +62,36 @@ class Zone {
     }
 
     getBossRewards(info) {
-        let rewardItem = [[],[]]
+        let rewardItems = [[],[]]
         for (let i = 0; i < info[0]; i++) {
-            let reward = this.bossWeapon[Math.floor(Math.random() * this.bossWeapon.length)];
-            let item = new Equippable(this.game, reward, ITEMLIST[reward]);
-            rewardItem[0].push(item);  
+            let index = Math.floor(Math.random() * this.bossWeapon.length);
+            let reward = this.bossWeapon[index];
+            this.bossWeapon.splice(index, 1);
+            let item = new Equippable(this.game, reward, structuredClone(ITEMLIST[reward]));
+            rewardItems[0].push(item);  
         }
         for (let i = 0; i < info[1]; i++) {
-            let reward = this.bossUsable[Math.floor(Math.random() * this.bossUsable.length)];
-            let item = new Usable(this.game, reward, ITEMLIST[reward]);
-            rewardItem[1].push(item);
+            let index = Math.floor(Math.random() * this.bossUsable.length);
+            let reward = this.bossUsable[index];
+            this.bossUsable.splice(index, 1);
+            let item = new Usable(this.game, reward, structuredClone(ITEMLIST[reward]));
+            rewardItems[1].push(item);
         }
         for (let i = 0; i < info[2]; i++) {
-            let reward = this.bossMagic[Math.floor(Math.random() * this.bossMagic.length)];
-            let item = new Magic(this.game, reward, ITEMLIST[reward]);
-            rewardItem[1].push(item);  
+            let index = Math.floor(Math.random() * this.bossMagic.length);
+            let reward = this.bossMagic[index];
+            this.bossMagic.splice(index, 1);
+            let item = new Magic(this.game, reward, structuredClone(ITEMLIST[reward]));
+            rewardItems[1].push(item);  
         }
         for (let i = 0; i < info[3]; i++) {
-            let reward = this.bossStat[Math.floor(Math.random() * this.bossStat.length)];
-            let item = new Stat(this.game, reward, ITEMLIST[reward]);
-            rewardItem[1].push(item);  
+            let index = Math.floor(Math.random() * this.bossStat.length);
+            let reward = this.bossStat[index];
+            this.bossStat.splice(index, 1);
+            let item = new Stat(this.game, reward, structuredClone(ITEMLIST[reward]));
+            rewardItems[1].push(item);  
         }
-        return rewardItem;
+        return rewardItems;
     }
 
     getRandomEvent(space) {
