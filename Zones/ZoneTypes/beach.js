@@ -10,7 +10,7 @@ class Beach extends Zone {
             ['enemy', 50, 20, 10]], //[enemy start, enemy grow, enemy reset],
             { // set consistent levels here
                 0 : 'empty',
-                16 : 'pathEvent',
+                10 : 'pathEvent',
                 20 : 'boss'
             }];
         this.zoneLable = 'beach';
@@ -22,36 +22,36 @@ class Beach extends Zone {
             //  ...
             ///]
             0: [
-                ['large worm', 'bug', 45, 0, 7, 1, 11, 2, 0],
-                ['bark beetle', 'bug', 25, 5, 8, 5, 13, 1, 0],
-                ['shieldbug', 'bug', 36, -24, 6, 5, 12, 1, 0],
-                ['hawk', 'bird', 42, 5, 5, 1, 15, 2, 0, {'dodge':18}],
-                ['owl', 'bird', 60, -15, 5, 2, 14, 1, 0, {'dodge':10}],
-                ['bat', 'bird', 28, -90, 15, 1, 12, 1, 0, {'dodge':25}]
+                ['spiky sand dollar', 'object', 75, 18, 32, 3, 36, 6, 0, {'thorn':6}],
+                ['seastar', 'object', 95, -25, 40, 6, 35, 5, 0, {'thorn':3}],
+                ['living seashell', 'object', 86, -180, 66, 0, 33, 10, 0, {'lifedrain':10,'thorn':4}],
+                ['living sea moss', 'object', 45, -20, 40, 3, 36, 14, 0, {'thorn':2}],
+                ['possessed flotsam', 'object', 60, -15, 28, 2, 35, 11, 0, {'dodge':25,'shatter':30}],
+                ['enchanted sea fossil', 'object', 90, -120, 50, 1, 32, 5, 0, {'dodge':25,'lifedrain':15}]
             ],
             1: [
-                ['boar', 'critter', 60, 35, 7, 1, 14, 2, 0, {'tear':1}],
-                ['elk', 'hoofed', 72, -30, 7, 3, 17, 0, 0],
-                ['wolf', 'critter', 68, 65, 6, 0, 16, 0, 0],
-                ['falcon', 'bird', 48, -75, 9, 2, 15, 1, 0, {'dodge':25}],
-                ['red fox', 'critter', 46, -20, 8, 1, 14, 3, 0],
-                ['koala', 'critter', 52, -95, 12, 0, 6, 4, 0]
+                ['massive pelican', 'bird', 120, -140, 70, 6, 42, 8, 0, {'shatter':30}],
+                ['massive seagull', 'bird', 120, -140, 76, 12, 41, 4, 0, {'shatter':40, 'dodge':10}],
+                ['violent flamingo', 'bird', 90, 100, 40, 2, 43, 9, 0,{'dodge':15}],
+                ['heroic heron', 'bird', 90, -75, 52, 2, 40, 10, 0, {'dodge':25}],
+                ['demon plover', 'bird', 90, 250, 28, 1, 41, 3, 0, {'dodge':28,'bleed':10}],
+                ['large albatross', 'bird', 120, -95, 82, 0, 48, 5, 0,{'dodge':10}]
             ],
             2: [
-                ['green slime', 'slime', 70, 0, 11, 1, 18, 4, 0],
-                ['lime slime', 'slime', 70, 0, 11, 4, 20, 1, 0],
-                ['shrunk elf', 'elf', 50, 40, 8, 0, 19, 5, 0],
-                ['little goblin', 'goblin', 65, 66, 7, 1, 18, 3, 0],
-                ['reindeer', 'hoofed', 90, -65, 18, 1, 21, 3, 0],
-                ['massic termite', 'bug', 80, -33, 13, 3, 22, 0, 0]
+                ['red lobster', 'bug', 120, 0, 50, 1, 53, 10, 0,{'bleed':25}],
+                ['black lobster', 'bug', 110, 0, 51, 10, 52, 1, 0,{'bleed':25}],
+                ['brown lobster', 'bug', 120, 10, 48, 6, 54, 6, 0,{'bleed':25}],
+                ['red scorpion', 'bug', 90, -80, 90, 3, 57, 8, 0,{'bleed':45}],
+                ['black scorpion', 'bug', 85, -85, 98, 3, 57, 8, 0,{'bleed':45}],
+                ['brown scorpion', 'bug', 80, -80, 93, 3, 57, 8, 0,{'bleed':45}]
             ],
             3: [
-                ['brown bear', 'critter', 100, -90, 24, 6, 25, 1, 0, {'tear':2}],
-                ['black bear', 'critter', 100, -70, 20, 6, 25, 1, 0, {'tear':2}],
-                ['moose', 'critter', 140, 33, 16, 3, 29, 3, 0, {'shatter':2}],
-                ['gorilla', 'critter', 95, -25, 17, 7, 26, 1, 0, {'shatter':8}],
-                ['chimpanzee', 'critter', 85, 28, 17, 5, 33, 3, 0, {'dodge':40}],
-                ['anaconda', 'snake', 188, -350, 30, 9, 28, 1, 0, {'shatter':80}]
+                ['iguana', 'reptile', 140, -70, 66, 11, 57, 4, 0, {'tear':2}],
+                ['sea turtle', 'reptile', 230, -400, 100, 20, 59, 0, 0, {'lifedrain':50}],
+                ['sea snake', 'reptile', 140, 120, 42, 5, 56, 7, 0, {'dodge':12}],
+                ['coachwhip', 'reptile', 110, 80, 50, 8, 59, 2, 0, {'bleed':20}],
+                ['turtlean scout', 'reptile', 130, 28, 50, 8, 58, 4, 0, {'dodge':40}],
+                ['turtlean healer', 'reptile', 130, -100, 70, -2, 55, 10, 0, {'lifedrain':40}]
             ],
             4: [
                 ['elven scout', 'elf', 90, 33, 16, 0, 38, 4, 0, {'dodge':25}],
