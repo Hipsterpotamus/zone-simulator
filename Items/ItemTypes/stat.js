@@ -19,11 +19,7 @@ class Stat extends Item {
         let shopDesc = '';
         Object.keys(this.itemInfo).forEach((stat) => {
             if (stat === 'hp') {
-                if (this.itemInfo[stat] > 0) {
-                    shopDesc += (shopDesc ? ', ' : '') + 'heal +' + this.itemInfo[stat] + ' ' + stat;
-                } else {
-                    shopDesc += (shopDesc ? ', ' : '') + 'heal ' + this.itemInfo[stat] + ' ' + stat;
-                }
+                shopDesc += (shopDesc ? ', ' : '') + 'heal ' + this.itemInfo[stat] + ' ' + stat;
             } else {
                 if (this.itemInfo[stat] > 0) {
                     shopDesc += (shopDesc ? ', ' : '') + '+' + this.itemInfo[stat] + ' ' + stat;

@@ -172,7 +172,7 @@ class Player extends Entity{
 
 
         stats_list_player.forEach((stat)=>{
-            if (this.calcStatDisplay(stat) > 0) {
+            if (this.calcStatDisplay(stat) != 0) {
                 if ($('.player-stat-' + stat).length == 0) {
                     $('#player-stats').append(
                         $('<div>', {

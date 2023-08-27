@@ -99,7 +99,7 @@ class Enemy extends Entity{
         $('#enemy-time').text((this.calcAs()-this.attackCounter));
 
         stats_list_enemy.forEach((stat)=>{
-            if (this.calcStatDisplay(stat) > 0) {
+            if (this.calcStatDisplay(stat) != 0) {
                 if ($('.enemy-stat-' + stat).length == 0) {
                     $('#enemy-stats').append(
                         $('<div>', {
