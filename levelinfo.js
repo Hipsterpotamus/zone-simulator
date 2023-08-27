@@ -1,10 +1,10 @@
-const CHARACTERISTICS = ['persuasive', 'mechanical', 'vengeful']//, 'prescient', 'elusive', 'dominant', 'intimidating', 'precise', 'patient', 'thrifty']
+const CHARACTERISTICS = ['persuasive', 'mechanical', 'vengeful', 'prescient', 'elusive', 'dominant', 'intimidating', 'precise', 'patient', 'thrifty']
 
 class LevelInfo {
     constructor() {
         this.xp = 0;
         this.level = 0;
-        this.nextLevel = 100;
+        this.nextLevel = 50;
 
         this.characteristicsOff = [];
         this.characteristics = {};
@@ -16,7 +16,6 @@ class LevelInfo {
 
     changeXp(amount) {
         this.xp += amount;
-        console.log(this.xp)
         if (this.xp >= this.nextLevel) {
             this.xp -= this.nextLevel;
             this.level += 1;
@@ -45,13 +44,13 @@ class LevelInfo {
 
 // i fucked with ur numbers to give a more noticable impact but we can balance later
 
-// Persuasive: -50% reduction on all future shop prices: added
+// Persuasive: -25% reduction on all future shop prices: added
 // Mechanical: +100% uses on all new useables: added
 // Vengeful: +100% weapon dmg when below 30% health: added
-// Prescient: see the name of the next space: unadded
-// Elusive: gains +5% dodge for every 10 attack speed: unadded
-// Dominant: gains 100% more gold upon killing an enemy/boss in less than 10 seconds: unadded
-// Intimidating: enemy loses 100% of armor upon start of battle: unadded
-// Precise: enemies takes 100% more damage from items, and 100% more from spells. : unadded
-// Patient: receives a 100% damage increase after 20 seconds: unadded
-// Thrifty: gains +100% gold from income : unadded
+// Prescient: see the name of the next space: added
+// Elusive: gains +5% dodge for every 10 attack speed: added
+// Dominant: gains 100% more gold upon killing an enemy/boss in less than 500 ticks/10 seconds: added
+// Intimidating: enemy loses 100% of armor upon start of battle: added
+// Precise: enemies takes 100% more damage from items, and 100% more from spells. : added
+// Patient: receives a 100% damage increase after 500 ticks/10 seconds: added
+// Thrifty: gains +100% gold from income : added

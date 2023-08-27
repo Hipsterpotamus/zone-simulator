@@ -256,15 +256,15 @@ const ITEMLIST = {
 //USABLES
 
 //usables grasslands
-    'firecracker': {'metatype': 'usable', 'price': 5, 'uses': 1, 'description': 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 'type': 'combat', 'enemyDmg': 20, 'hp': -2},
+    'firecracker': {'metatype': 'usable', 'price': 5, 'uses': 1, 'description': 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 'type': 'combat', 'attack': 20, 'hp': -2},
     'throwing eggs': {'metatype': 'usable', 'price': 7, 'uses': 3, 'description': "During combat, lower the current enemy's armor by 3", 'type': 'combat', 'enemyArm': -3},
     'bandages': {'metatype': 'usable', 'price': 9, 'uses': 4, 'description': 'Heal 5', 'type': 'all', 'hp': 5},
     'first aid kit': {'metatype': 'usable', 'price': 8, 'uses': 1, 'description': 'Heal 20', 'type': 'all', 'hp': 20},
     'sharpening stone': {'metatype': 'usable', 'price': 26, 'uses': 3, 'description': 'Your currently equipped weapon gains +2 dmg', 'type': 'all', 'weaponDmg': 2},
 
 //usables forest
-    'goblin bomb': {'metatype': 'usable', 'price': 20, 'uses': 1, 'description': 'During combat, use to deal 50 dmg (bypasses armor) to the current enemy. If the current enemy is of the goblin type, instead deal 0 damage. Gain 5 gold', 'type': 'combat', 'enemyDmgNonGoblin': 50, 'gold': 5},
-    'dryad throwing leaves': {'metatype': 'usable', 'price': 28, 'uses': 4, 'description': 'During combat, deal 10 dmg to an enemy (bypasses armor), and heal 10', 'type': 'combat', 'enemyDmg': 10, 'hp': 10},
+    'goblin bomb': {'metatype': 'usable', 'price': 20, 'uses': 1, 'description': 'During combat, use to deal 50 dmg (bypasses armor) to the current enemy. If the current enemy is of the goblin type, instead deal 0 damage. Gain 5 gold', 'type': 'combat', 'attackNonGoblin': 50, 'gold': 5},
+    'dryad throwing leaves': {'metatype': 'usable', 'price': 28, 'uses': 4, 'description': 'During combat, deal 10 dmg to an enemy (bypasses armor), and heal 10', 'type': 'combat', 'attack': 10, 'hp': 10},
     'elf bandages': {'metatype': 'usable', 'price': 35, 'uses': 15, 'description': 'Heal 10', 'type': 'all', 'hp': 10},
     'elven battle book': {'metatype': 'usable', 'price': 18, 'uses': 1, 'description': 'During combat, if enemy has a lower total attackspeed than you, gain 3% permanent dodge', 'type': 'combat', 'conditionalDodge': 3},
     'dryad battle book': {'metatype': 'usable', 'price': 22, 'uses': 1, 'description': 'During combat, if enemy has a higher total attackspeed than you, gain 3% permanent lifedrain', 'type': 'combat', 'conditionalLifedrain': 3},

@@ -10,8 +10,13 @@ class Boss extends Enemy{
     }
 
     death() {
-        this.game.player.changeGold(this.gold, true);
-        this.game.combat.combatStats['totalGoldGain'] += this.gold;
+        if (this.game.player.levelInfo.characteristics.dominant && this.combatStats.ticksAlive < 500) {
+            this.game.combat.combatStats['totalGoldGain'] += this.gold * 2;
+            this.game.player.changeGold(this.gold * 2, true);
+        } else {
+            this.game.combat.combatStats['totalGoldGain'] += this.gold;
+            this.game.player.changeGold(this.gold, true);
+        }
 
         this.game.player.levelInfo.changeXp(this.xp);
 

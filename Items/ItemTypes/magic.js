@@ -55,19 +55,19 @@ class Magic extends Item {
         }
         
     }
-    appendElement() {
-        this.element = $('<button>', {
+    appendToSelect() {
+        this.selectElement = $('<button>', {
             'value': this.name,
             'id': this.name + '-spell-use',
             'class': 'magic-spell'
         });
-        this.element.appendTo('#spell-container');
+        this.selectElement.appendTo('#spell-container');
         let magicHtml = '';
         magicHtml += this.name + '<br>';
         magicHtml += this.manaCost + ' mana <br>';
         magicHtml += this.shortDescription;
-        this.element.html(magicHtml);
-        this.element.on('click', () => { 
+        this.selectElement.html(magicHtml);
+        this.selectElement.on('click', () => { 
             this.attemptUse();
         });
     }
@@ -79,17 +79,23 @@ class Magic extends Item {
     onUse(game) {
         // Damage to enemy
         if (this.attack) {
-            this.game.combat.selectedEnemy.receiveNonHitDmg(this.attack, this.game.player);
+            if (this.game.player.levelInfo.characteristics.precise) {
+                this.game.combat.selectedEnemy.receiveNonHitDmg(this.attack * 2, this.game.player);
+            } else {
+                this.game.combat.selectedEnemy.receiveNonHitDmg(this.attack, this.game.player);
+            }
         }
     
-        // Change player HP
+        // Change player and enemy HP
         if (this.hp) {
             this.game.player.changeHp(this.hp);
         }
-    
-        // Change enemy armor
-        if (this.enemyArm) {
-            this.game.combat.selectedEnemy.changeStat('arm', this.enemyArm);
+        if (this.enemyHp) {
+            if (this.game.player.levelInfo.characteristics.precise) {
+                this.game.combat.selectedEnemy.changeHp(this.hp * 2);
+            } else {
+                this.game.combat.selectedEnemy.changeHp(this.hp);
+            }
         }
     
         // Change player max HP
@@ -108,6 +114,9 @@ class Magic extends Item {
         // Change player and enemy armor
         if (this.arm) {
             this.game.player.changeStat('arm', this.arm);
+        }
+        if (this.enemyArm) {
+            this.game.combat.selectedEnemy.changeStat('arm', this.enemyArm);
         }
     
         // Change player and enemy attack speed

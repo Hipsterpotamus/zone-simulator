@@ -4,6 +4,9 @@ class Enemy extends Entity{
     constructor(game, xp, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
          super(name, type, health, attackspeed, damage, armor, gold, regen, complexStats);
          this.game = game;
+         if (this.game.player.levelInfo.characteristics.intimidating) {
+            this.arm = 0;
+         }
          this.xp = xp;
          this.complexStats = complexStats;
          this.diffC = difficultyCh;
@@ -45,8 +48,14 @@ class Enemy extends Entity{
         this.gold += amount;
     }
     death() {
-        this.game.player.changeGold(this.gold, true);
-        this.game.combat.combatStats['totalGoldGain'] += this.gold;
+        if (this.game.player.levelInfo.characteristics.dominant && this.combatStats.ticksAlive < 500) {
+            this.game.combat.combatStats['totalGoldGain'] += this.gold * 2;
+            this.game.player.changeGold(this.gold * 2, true);
+        } else {
+            this.game.combat.combatStats['totalGoldGain'] += this.gold;
+            this.game.player.changeGold(this.gold, true);
+        }
+
 
         this.game.player.levelInfo.changeXp(this.xp);
 

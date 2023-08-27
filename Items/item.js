@@ -39,7 +39,7 @@ class Item {
         });
         this.shopElement.appendTo('#content-central-box');
         if (this.game.player.levelInfo.characteristics.persuasive) {
-            let newPrice = Math.ceil(this.price / 2);
+            let newPrice = Math.ceil(this.price * 3 / 4);
             this.shopElement.html('buy ' + this.name + ': <del>' + this.price + '</del> ' + newPrice + ' gold<br>' + this.genShopDesc());
         } else {
             this.shopElement.html('buy ' + this.name + ': ' + this.price + ' gold<br>' + this.genShopDesc());

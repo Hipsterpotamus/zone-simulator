@@ -40,7 +40,10 @@ class Path {
             }
         }
         if (this.spaceNumber in this.setSpaces) {this.nextSpace = this.setSpaces[this.spaceNumber];}
-    
+        
+        if (this.game.player.levelInfo.characteristics.prescient) {
+            notify('A chill runs down your spine... You can tell the next space will be a ' + this.nextSpace);
+        }
         this.adjustChances();
     }
 
@@ -58,7 +61,14 @@ class Path {
         this.displayZoneInfo();
         if(this.spaceNumber%3==0 && this.spaceNumber != 0){this.game.zone.changeZoneLevel(1)};
         $('#content-central-box').empty();
-        this.game.player.changeGold(this.game.player.calcStat('income'));
+
+        if (this.game.player.levelInfo.characteristics.thrifty) {
+            this.game.player.changeGold(this.game.player.calcStat('income') * 2);
+        } else {
+            this.game.player.changeGold(this.game.player.calcStat('income'));
+        }
+
+        
         const SPACEKEYS = {'shop' : 'shopEvent', 
         'event' : 'eventEvent', 
         'rest' : 'restEvent', 

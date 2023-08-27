@@ -71,13 +71,21 @@ class Usable extends Item {
 
     onUse() {
         // Damage to enemy
-        if (this.enemyDmg) {
-            this.game.combat.selectedEnemy.changeHp(-this.enemyDmg);
+        if (this.attack) {
+            if (this.game.player.levelInfo.characteristics.precise) {
+                this.game.combat.selectedEnemy.changeHp(-this.attack * 2);
+            } else {
+                this.game.combat.selectedEnemy.changeHp(-this.attack);
+            }
         }
     
         // Damage to enemy, but not if it's a goblin
-        if (this.enemyDmgNonGoblin && this.game.combat.selectedEnemy.type !== 'goblin') {
-            this.game.combat.selectedEnemy.changeHp(-this.enemyDmgNonGoblin);
+        if (this.attackNonGoblin && this.game.combat.selectedEnemy.type !== 'goblin') {
+            if (this.game.player.levelInfo.characteristics.precise) {
+                this.game.combat.selectedEnemy.changeHp(-this.attackNonGoblin * 2);
+            } else {
+                this.game.combat.selectedEnemy.changeHp(-this.attackNonGoblin);
+            }
         }
     
         // Change player HP
