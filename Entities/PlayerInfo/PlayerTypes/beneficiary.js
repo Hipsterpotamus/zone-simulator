@@ -14,3 +14,9 @@ class Beneficiary extends Player {
         this.gold = 25;
     }
 }
+
+
+
+/* You are ben. You don't have any solid memory of how exactly you ended up in the zones, but you do know it was some kind of horrible mistake. You are scared, but in spite of your
+fear you feel the comforting presence of someone or something which is trying to help you in your journey.
+*/
