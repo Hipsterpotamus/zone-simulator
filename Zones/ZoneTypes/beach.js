@@ -49,49 +49,49 @@ class Beach extends Zone {
                 ['iguana', 'reptile', 140, -70, 66, 11, 57, 4, 0, {'tear':2}],
                 ['sea turtle', 'reptile', 230, -400, 100, 20, 59, 0, 0, {'lifedrain':50}],
                 ['sea snake', 'reptile', 140, 120, 42, 5, 56, 7, 0, {'dodge':12}],
-                ['coachwhip', 'reptile', 110, 80, 50, 8, 59, 2, 0, {'bleed':20}],
-                ['turtlean scout', 'reptile', 130, 28, 50, 8, 58, 4, 0, {'dodge':40}],
-                ['turtlean healer', 'reptile', 130, -100, 70, -2, 55, 10, 0, {'lifedrain':40}]
+                ['coachwhip', 'reptile', 100, 40, 45, 8, 59, 2, 0, {'bleed':20}],
+                ['turtlean scout', 'turtlean', 130, -28, 50, 12, 58, 1, 0, {'dodge':40}],
+                ['turtlean healer', 'turtlean', 130, -100, 65, 8, 55, 8, 0, {'lifedrain':40}]
             ],
             4: [
-                ['elven scout', 'elf', 90, 33, 16, 0, 38, 4, 0, {'dodge':25}],
-                ['elven gatherer', 'elf', 115, 22, 23, 1, 44, 7, 0],
-                ['elven rancher', 'elf', 130, -100, 30, 1, 46, 7, 0, {'dodge':15}],
-                ['goblin', 'goblin', 115, 66, 14, 2, 42, 5, 0, {'dodge':16}],
-                ['forest snuffler', 'critter', 180, -300, 26, 2, 8, 4, 0, {'tear':3,'shatter':50}],
-                ['living sap-ooze', 'slime', 120, 70, 6, 0, 33, 4, 0, {'shatter':8}]
+                ['crabwalker officer', 'crabwalker', 130, 75, 35, 12, 62, 4, 0, {'bleed':30,'lifedrain':25,'shatter':30}],
+                ['crabwalker vanguard', 'crabwalker', 130, 75, 35, 4, 63, 12, 0], {'bleed':30,'lifedrain':25,'shatter':30},
+                ['crabwalker tactician', 'crabwalker', 110, 75, 35, 3, 61, 9, 0, {'dodge':40,'bleed':30,'lifedrain':25,'shatter':30}],
+                ['crabwalker sailor', 'crabwalker', 130, 45, 48, 12, 60, 8, 0, {'bleed':30,'lifedrain':12,'shatter':15}],
+                ['crabwalker footsoldier', 'crabwalker', 130, -75, 90, 4, 66, 10, 0, {'bleed':30,'lifedrain':25,'shatter':90}],
+                ['crabwalker legionnaire ', 'crabwalker', 130, 75, 35, 9, 65, 4, 0, {'tear':4,'bleed':50,'lifedrain':25,'shatter':30}]
             ],
             5: [
-                ['pixie', 'fairy', 7, 0, 28, 1, 65, 1, 0, {'dodge':85}],
-                ['sentry bird', 'bird', 140, 50, 21, 1, 42, 3, 0, {'dodge':25}],
-                ['goblin clawer', 'goblin', 125, 25, 27, 5, 47, 1, 0, {'tear':1}],
-                ['elven charger', 'elf', 170, -200, 36, 1, 46, 4, 0, {'dodge':11,'shatter':50}],
-                ['mint slime', 'slime', 130, 0, 28, 1, 49, 4, 0, {'lifedrain':10}],
-                ['forest-green slime', 'slime', 130, 0, 32, 9, 48, 1, 0, {'lifedrain':10}]
+                ['mermaid prole', 'mermaid', 160, 0, 70, 5, 67, 12, 0, {'dodge':15}],
+                ['mermaid watchman', 'mermaid', 160, -50, 105, 6, 66, 12, 0, {'dodge':15}],
+                ['mermaid spear-man', 'mermaid', 160, 25, 56, 6, 68, 12, 0, {'tear':3}],
+                ['mermaid guard', 'mermaid', 180, -30, 85, 10, 67, 12, 0, {'dodge':20}],
+                ['beach slime ', 'slime', 140, 130, 30, 4, 65, 13, 0, {'shatter':50}],
+                ['sand slime', 'slime', 140, 130, 30, 13, 68, 4, 0, {'shatter':50}]
             ],
             6: [
-                ['leaf wisp', 'wisp', 88, -22, 44, -2, 51, 14, 0, {'dodge':12}],
-                ['tree wisp', 'wisp', 88, 22, 44, -4, 53, 14, 0, {'dodge':12}],
-                ['mist wisp', 'wisp', 88, -22, 44, -2, 52, 14, 0, {'dodge':12}],
-                ['spirit snake', 'snake', 65, 30, 27, 2, 53, 2, 0, {'lifedrain':45}],
-                ['goblin ranger', 'goblin', 180, -50, 39, 5, 51, 4, 0, {'dodge':25}],
-                ['walking weed', 'plant', 190, -33, 25, 4, 53, 1, 0,{'lifedrain':25,'shatter':33}]
+                ['crabwalker admiral', 'crabwalker', 230, 75, 50, 13, 66, 4, 0, {'bleed':20}],
+                ['crabwalker corporal', 'crabwalker', 210, 75, 50, 13, 68, 6, 0, {'bleed':20}],
+                ['crabwalker lieutenant', 'crabwalker', 220, 75, 50, 14, 67, 5, 0, {'bleed':20}],
+                ['turtlean rider', 'turtlean', 240, -250, 150, 22, 53, 4, 0, {'lifedrain':45}],
+                ['turtlean strongman', 'turtlean', 240, -350, 150, 22, 51, 4, 0, {'dodge':25}],
+                ['turtlean enbalmer', 'turtlean', 240, -350, 150, 22, 53, 4, 0,{'lifedrain':25,'shatter':33}]
             ],
             7: [
-                ['tribal dryad', 'dryad', 156, 33, 36, 8, 59, 5, 0, {'tear':3}],
-                ['hunter dryad', 'dryad', 156, -33, 41, 12, 58, 3, 0, {'shatter':40}],
-                ['harvesting dryad', 'dryad', 156, -220, 69, 3, 65, 9, 0, {'lifedrain':8}],
-                ['healer dryad', 'dryad', 156, -60, 50, 2, 58, 7, 0,{'lifedrain':28}],
-                ['sprinter dryad', 'dryad', 156, 43, 33, 4, 57, 4, 0, {'dodge':30}],
-                ['knight dryad', 'dryad', 156, -33, 38, 13, 60, 2, 0, {"shatter":80}]
+                ['beach thief', 'human', 210, 33, 61, 8, 71, 5, 0, {'bleed':20,'tear':6}],
+                ['evil surfer', 'human', 230, -50, 73, 12, 72, 10, 0, {'dodge':15}],
+                ['mermaid lancer', 'dryad', 220, -200, 129, 8, 73, 14, 0, {'shatter':80}],
+                ['mermaid catapulter', 'dryad', 260, -340, 250, 24, 71, 4, 0,{'shatter':150}],
+                ['sea cobra', 'reptile', 240, 50, 60, 4, 72, 14, 0, {'lifedrain':30,'bleed':60}],
+                ['giant urchin', 'dryad', 270, -44, 68, 3, 70, 14, 0, {"thorns":40}]
             ],
             8: [
-                ['goblin commander', 'goblin', 170, 50, 44, 2, 82, 2, 0],
-                ['elf chieftain', 'elf', 170, -120, 60, 4, 83, 4, 0, {'dodge':25}],
-                ['forest wisp', 'wisp', 160, 33, 44, -8, 81, 7, 0, {'dodge':12}],
-                ['dryad prince', 'dryad', 190, -25, 50, 3, 83, 11, 0, {'lifedrain':16}],
-                ['possessed grizzly', 'critter', 200, -280, 96, 6, 84, -4, 0, {'tear':4}],
-                ['forest slime', 'slime', 150, 72, 12, 0, 86, 6, 0,{'shatter':8,'lifedrain':25}]
+                ['turtlean headman', 'turtlean', 320, -250, 190, 38, 82, 2, 0,{'thorns':10}],
+                ['mermaid knight', 'elf', 290, 30, 80, 12, 83, 15, 0, {'bleed':55}],
+                ['beach wisp', 'wisp', 222, 111, 66, -22, 81, 16, 0, {'dodge':18}],
+                ['possessed shipwreck', 'object', 450, -35, 65, 26, 83, 0, 0, {'shatter':50,'bleed':50}],
+                ['gargantuan gull', 'bird', 200, -190, 160, 7, 84, 12, 0, {'dodge':25,'tear':4}],
+                ['massive scorpo-lobster', 'bug', 280, 100, 80, 5, 86, 14, 0,{'shatter':20,'lifedrain':25}]
             ]
         };
 
