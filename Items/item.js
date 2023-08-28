@@ -2,6 +2,7 @@ class Item {
     constructor(game, name) {
         this.game = game;
         this.name = name;
+        this.disabled = false;
         this.metatype = false;
         this.price = 0;
     }
@@ -29,6 +30,7 @@ class Item {
 
     updateShopElement() {
         const newClass = this.metatype + '-shop-item shop-item ' + (this.game.player.gold < this.price ? 'shop-item-disabled' : '');
+        if (this.game.player.gold < this.price) {this.disabled = true}
         this.shopElement.attr('class', newClass);
         if (this.game.player.levelInfo.characteristics.persuasive) {
             let newPrice = Math.ceil(this.price * 3 / 4);
@@ -36,23 +38,7 @@ class Item {
         } else {
             this.shopElement.html('buy ' + this.name + ': ' + this.price + ' gold<br>' + this.genShopDesc());
         }
-    }
-
-    appendToShop() {
-        this.shopElement = $('<button>', {
-            'id': '#' + this.name.replace(/\s/g, '') + '-purchase',
-            'class': this.metatype + '-shop-item shop-item ' + (this.game.player.gold < this.price ? 'shop-item-disabled' : ''),
-        });
-        this.shopElement.appendTo('#content-central-box');
-        if (this.game.player.levelInfo.characteristics.persuasive) {
-            let newPrice = Math.ceil(this.price * 3 / 4);
-            this.shopElement.html('buy ' + this.name + ': <del>' + this.price + '</del> ' + newPrice + ' gold<br>' + this.genShopDesc());
-        } else {
-            this.shopElement.html('buy ' + this.name + ': ' + this.price + ' gold<br>' + this.genShopDesc());
-        }
-
-
-            // Stat icons on shop buttons
+        // Stat icons on shop buttons
         let shopItemStats = $('<div>', {
             'class': 'shop-item-stats',
             'id': this.name.replace(/\s/g, '') + '-stats'
@@ -73,6 +59,14 @@ class Item {
             }
         }
         shopItemStats.appendTo(this.shopElement);
+    }
+
+    appendToShop() {
+        this.shopElement = $('<button>', {
+            'id': '#' + this.name.replace(/\s/g, '') + '-purchase'
+        });
+        this.shopElement.appendTo('#content-central-box');
+        this.updateShopElement()
 
         this.shopElement.on('click', () => {
             this.purchase();

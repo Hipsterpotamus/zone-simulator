@@ -33,12 +33,23 @@ class ItemShop {
                 this.itemsInShop.push(item);
             }
         });
+
+        this.updateShopItems();
     }
 
     updateShopItems() {
         if (this.shopOpen) {
+            let disabledItems = [];
             this.itemsInShop.forEach(item => {
                 item.updateShopElement();
+                if (item.disabled) {
+                    item.shopElement.remove();
+                    disabledItems.push(item);
+                }
+            });
+
+            disabledItems.forEach(item => {
+                item.appendToShop();
             });
         }
     }
