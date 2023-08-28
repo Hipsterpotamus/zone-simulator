@@ -90,7 +90,7 @@ class Beach extends Zone {
                 ['mermaid knight', 'elf', 290, 30, 80, 12, 83, 15, 0, {'bleed':55}],
                 ['beach wisp', 'wisp', 222, 111, 66, -22, 81, 16, 0, {'dodge':18}],
                 ['possessed shipwreck', 'object', 450, -35, 65, 26, 83, 0, 0, {'shatter':50,'bleed':50}],
-                ['gargantuan gull', 'bird', 200, -190, 160, 7, 84, 12, 0, {'dodge':25,'tear':4}],
+                ['washed up pirate', 'pirate', 220, 85, 80, 3, 94, 8, 0, {'bleed':60,'tear':5}],
                 ['massive scorpo-lobster', 'bug', 280, 100, 80, 5, 86, 14, 0,{'shatter':20,'lifedrain':25}]
             ]
         };
@@ -173,6 +173,7 @@ class Beach extends Zone {
             'whale tooth axe',
             'iron helmet',
             'steel helmet',
+
             'sailor cap',
             'pirate hat',
             'mermaid headress',
@@ -184,6 +185,7 @@ class Beach extends Zone {
             'crabwalker fedora',
             'fisherman bucket hat',
             'coconut helmet',
+
             'iron chestplate',
             'steel chestplate',
             'seashell chestplate',
@@ -205,6 +207,7 @@ class Beach extends Zone {
             'seaweed wrap skirt',
             'fisherman overalls',
             'surfboard leggings',
+            
             'flip-flops',
             'water shoes',
             'sharkskin boots',
