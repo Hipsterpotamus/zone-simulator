@@ -180,6 +180,12 @@ const ITEMLIST = {
     'triple layer jeans': {'metatype': 'legs', 'price': 90, 'type': 'pants', 'dmg': 0, 'arm': 20, 'regen': 1, 'as': -33},
     'floatie': {'metatype': 'legs', 'price': 90, 'type': 'misc', 'dmg': 6, 'arm': 2, 'regen': 5, 'as': -18},
     'crabwalker-shed loins': {'metatype': 'legs', 'price': 125, 'type': 'pants', 'dmg': 0, 'arm': 10, 'regen': 2, 'as': 5, 'bleed':25},
+    'turtlean leg garb': {'metatype': 'legs', 'price': 160, 'type': 'pants', 'dmg': 0, 'arm': 24, 'regen': 2, 'as': -25, 'thorn':5},
+    'urchin patch pants': {'metatype': 'legs', 'price': 130, 'type': 'pants', 'dmg': 4, 'arm': 6, 'regen': 8, 'as': 10, 'thorn':24},
+    'dolphin leather pants': {'metatype': 'legs', 'price': 102, 'type': 'pants', 'dmg': -3, 'arm': 12, 'regen': 3, 'as': 60},
+    'fisherman overalls': {'metatype': 'legs', 'price': 83, 'type': 'pants', 'dmg': 4, 'arm': 10, 'regen': 0, 'as': 20},
+    'pirate pants': {'metatype': 'legs', 'price': 200, 'type': 'pants', 'dmg': 12, 'arm': 12, 'regen': -1, 'as': 25, 'bleed':25},
+
     // 'sailor trousers': {'metatype': 'legs', 'price': 80, 'type': 'trousers', 'dmg': 0, 'arm': 10, 'regen': 0, 'as': -15},
     // 'beach shorts': {'metatype': 'legs', 'price': 60, 'type': 'shorts', 'dmg': 0, 'arm': 6, 'regen': 0, 'as': 36, 'dodge': 5},
     // 'sharkskin leggings': {'metatype': 'legs', 'price': 95, 'type': 'leggings', 'dmg': 0, 'arm': 13, 'regen': 0, 'as': -25, 'bleed': 10},
