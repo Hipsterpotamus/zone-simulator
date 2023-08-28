@@ -127,7 +127,9 @@ class Player extends Entity{
     calcAsChange(amount) {
         const rawAS = this.calcStat('as');
         const tempAS = rawAS + amount;
-        return Math.round((1 - this.calcAs() / Math.floor(100 * Math.pow((1/2), (tempAS / 100)))) * 1000) / 10;
+        const adjRaw = this.calcAs();
+        const adjTemp = Math.floor(100 * Math.pow((1/2), (tempAS / 100)))
+        return Math.round((adjRaw - adjTemp) / adjRaw * 1000) / 10;
     }
 
     death() {
