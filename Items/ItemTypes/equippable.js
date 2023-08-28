@@ -37,7 +37,7 @@ class Equippable extends Item {
     }
 
     genShopDesc() {
-            const FULLNAMES = {'arm': 'armor', 'dodge': '% dodge', 'regen': 'health regen', 'antiheal': 'anti-heal', 'manaGen': 'mana regen', 'maxMana': 'max mana', 'maxHp': 'max hp'}
+            const FULLNAMES = {'arm': 'armor', 'dodge': '% dodge', 'regen': 'health regen', 'antiheal': 'anti-heal', 'manaGen': 'mana regen', 'maxMana': 'max mana', 'Maxhp': 'max hp'}
             let shopDesc = '';
             Object.keys(this.itemInfo).forEach((stat) => {
                 let value = this.itemInfo[stat];
@@ -48,9 +48,9 @@ class Equippable extends Item {
                     shopDesc += (shopDesc ? ', ' : '') + 'heal ' + value + ' ' + stat;
                 } else if (stat === 'as') {
                     if (value > 0) {
-                        shopDesc += (shopDesc ? ', ' : '') + '+' + value + ' attack speed(' + this.game.player.calcAsChange(value) + ' wait)';
+                        shopDesc += (shopDesc ? ', ' : '') + '+' + value + ' attack speed(' + Math.abs(this.game.player.calcAsChange(value)) + '% faster)';
                     } else {
-                        shopDesc += (shopDesc ? ', ' : '') + value + ' attack speed(+' + this.game.player.calcAsChange(value) + ' wait)';
+                        shopDesc += (shopDesc ? ', ' : '') + value + ' attack speed(' + this.game.player.calcAsChange(value) + '% slower)';
                     }
                 } else {
                     if (value > 0) {
