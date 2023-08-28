@@ -173,6 +173,9 @@ class Combat {
     }
 
     preCombatDelay(player, enemyList, seconds, message) {
+        this.player = player;
+        this.enemyList = enemyList;
+        this.displayCombatInfo();
         setBroadcastTitleText(message + ' begins in:');
         this.second = seconds
         this.timer = $('<p>', {
@@ -190,21 +193,21 @@ class Combat {
             this.tick += seconds * 1000
         });
         button.appendTo('#content-central-box');
-        this.delayTick(player, enemyList, seconds, message)
+        this.delayTick(seconds, message)
     }
 
-    delayTick(player, enemyList, seconds, message) {
+    delayTick(seconds, message) {
         if (this.second > 0) {
             this.tick += 1;
             this.second = seconds - this.tick * this.delay / 1000;
             this.second = Math.round(this.second * 10) / 10;
             this.timer.text(this.second);
-            setTimeout(() => this.delayTick(player, enemyList, seconds, message), this.delay)
+            setTimeout(() => this.delayTick(seconds, message), this.delay)
         } else {
             setEventFormat(false);
             $('#content-central-box').empty()
             setBroadcastTitleText(message + '!', true);
-            this.startCombat(player, enemyList);
+            this.startCombat(this.player, this.enemyList);
         }
     }
 
