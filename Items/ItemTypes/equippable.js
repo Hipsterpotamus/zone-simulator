@@ -50,9 +50,14 @@ class Equippable extends Item {
                     let compareStats = this.game.player.getByType(this.metatype).as;
                     let compareValue = value - compareStats;
                     if (value > 0) {
-                        shopDesc += (shopDesc ? ', ' : '') + '+' + value + ' attack speed(' + this.game.player.calcAsChange(compareValue) + '% faster than current)';
+                        shopDesc += (shopDesc ? ', ' : '') + '+' + value + ' attack speed(';
                     } else {
-                        shopDesc += (shopDesc ? ', ' : '') + value + ' attack speed(' + this.game.player.calcAsChange(compareValue) + '% slower than current)';
+                        shopDesc += (shopDesc ? ', ' : '') + value + ' attack speed(';
+                    }
+                    if (compareValue > 0) {
+                        shopDesc += '+' + this.game.player.calcAsChange(compareValue) + '% higher than current)';
+                    } else {
+                        shopDesc += this.game.player.calcAsChange(compareValue) + '% lower than current)';
                     }
                 } else {
                     if (value > 0) {
