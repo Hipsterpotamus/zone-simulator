@@ -2,9 +2,11 @@ class Item {
     constructor(game, name) {
         this.game = game;
         this.name = name;
-        this.disabled = false;
         this.metatype = false;
         this.price = 0;
+
+        this.disabled = false;
+        this.purchased = false;
     }
 
     appendToSelect() {
@@ -21,6 +23,7 @@ class Item {
             this.game.player.changeGold(-this.price);
             this.onBuy();
             this.shopElement.remove();
+            this.purchased = true;
             this.updatePurchaseHistory();
             this.game.path.itemShop.updateShopItems();
         } else {

@@ -49,7 +49,7 @@ class ItemShop {
             });
 
             disabledItems.forEach(item => {
-                item.appendToShop();
+                if (!item.purchased) {item.appendToShop()};
             });
         }
     }
