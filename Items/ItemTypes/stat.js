@@ -16,7 +16,7 @@ class Stat extends Item {
     }
 
     genShopDesc() {
-        const FULLNAMES = {'arm': 'armor', 'dodge': '% dodge', 'regen': 'health regen', 'antiheal': 'anti-heal', 'manaGen': 'mana regen', 'maxMana': 'max mana', 'Maxhp': 'max hp'}
+        const FULLNAMES = {'arm': 'armor', 'dodge': '% dodge', 'antiheal': 'anti-heal', 'manaGen': 'mana regen', 'maxMana': 'max mana', 'Maxhp': 'max hp'}
         let shopDesc = '';
         Object.keys(this.itemInfo).forEach((stat) => {
             let value = this.itemInfo[stat];

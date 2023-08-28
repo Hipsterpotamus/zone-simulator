@@ -117,11 +117,8 @@ class Path {
 
     enemyEvent() {
         setNextButtonVisible(false);
-        $('#combatTimer').removeClass('hidden');
-        $('#large-tab-title').text('Enemy Encounter');
-        setBroadcastTitleText('Enemy Encounter', true);
         let enemy = this.game.zone.getRandomEnemy();
-        this.game.combat.startCombat(this.game.player, enemy);
+        this.game.combat.preCombatDelay(this.game.player, enemy, 3, 'Enemy Encounter');
     }
 
     emptyEvent() {
@@ -137,13 +134,8 @@ class Path {
 
     bossEvent() {
         setNextButtonVisible(false);
-    
-        setBroadcastTitleText('Boss Battle!', true);
-    
-        $('#combatTimer').removeClass('hidden');
-    
         let boss = this.game.zone.getBoss();
-        this.game.combat.startCombat(this.game.player, boss);       
+        this.game.combat.preCombatDelay(this.game.player, boss, 5, 'Boss Battle');       
     }
 
     displayZoneInfo() {

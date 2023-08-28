@@ -27,7 +27,12 @@ class Combat {
         this.delay = msDelay; //change this to change how long between ticks
         this.inCombat = false;
         this.bossRewards = false;
-        this.combatStats;
+        this.second = 1;
+
+        this.combatStats = {
+            'totalGoldGain' : 0,
+            'length' : this.tick
+        };
     }
 
     startCombat(player, enemyList) {
@@ -114,6 +119,7 @@ class Combat {
             
         } else {
             if (this.player.alive) {
+                this.tick = 0;
                 this.inCombat = false;
                 setBroadcastTitleText('Victory!', true);
                 this.displayCombatStats();
@@ -163,6 +169,42 @@ class Combat {
                 enemy.attackCounter += amount;
                 enemy.regenCounter += amount;
             });
+        }
+    }
+
+    preCombatDelay(player, enemyList, seconds, message) {
+        setBroadcastTitleText(message + ' begins in:');
+        this.second = seconds
+        this.timer = $('<p>', {
+            'class': 'event-description'
+        });
+        this.timer.text(this.second);
+        this.timer.appendTo('#description-container')
+        setEventFormat(true);
+        let button = $('<button>', {
+            'class': 'event-button'
+        });
+        button.text('Start combat now');
+        button.on('click', () => {
+            $('#content-central-box').empty();
+            this.tick += seconds * 1000
+        });
+        button.appendTo('#content-central-box');
+        this.delayTick(player, enemyList, seconds, message)
+    }
+
+    delayTick(player, enemyList, seconds, message) {
+        if (this.second > 0) {
+            this.tick += 1;
+            this.second = seconds - this.tick * this.delay / 1000;
+            this.second = Math.round(this.second * 10) / 10;
+            this.timer.text(this.second);
+            setTimeout(() => this.delayTick(player, enemyList, seconds, message), this.delay)
+        } else {
+            setEventFormat(false);
+            $('#content-central-box').empty()
+            setBroadcastTitleText(message + '!', true);
+            this.startCombat(player, enemyList);
         }
     }
 
