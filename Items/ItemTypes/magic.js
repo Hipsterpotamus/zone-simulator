@@ -31,7 +31,7 @@ class Magic extends Item {
     }
 
     genShopDesc() {
-        return '(Spell: ' + this.manaCost + ' mana - >' + this.shortDescription + ')';
+        return '[Spell: ' + this.manaCost + ' mana - >' + this.shortDescription + ']';
     }
 
     onBuy() {

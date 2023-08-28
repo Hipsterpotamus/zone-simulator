@@ -57,11 +57,13 @@ class Player extends Entity{
         this.changeSelectedItem(item);
     }
 
-    changeSelectedItem(item) {
+    changeSelectedItem(item, itemShop = false) {
         this.attackCounter = 0;
         this.inv[item.metatype][0] = item;
         item.updateItemInfo();
         $('#'+item.metatype+'-select').val(item.name);
+        this.updateEntityDisplay();
+        if (itemShop && itemShop.shopOpen) { itemShop.updateShopItems()};
     }
 
     //generic functions
@@ -77,7 +79,7 @@ class Player extends Entity{
         );
 
         if (stat === 'dodge' && this.levelInfo.characteristics.elusive) {
-            total = Math.max(total, total + Math.floor(this.as / 10) * 5);
+            total = Math.max(total, total + Math.floor(this.calcAs() / 10) * 5);
         }
 
         if (stat === 'dmg' && this.levelInfo.characteristics.patient && this.combatStats.ticksAlive > 500) {
@@ -87,7 +89,7 @@ class Player extends Entity{
         return total;
     }
 
-    calcStatDisplay(stat, tick) { // For displaying in html
+    calcStatDisplay(stat) { // For displaying in html
 
         // if(this.shatterApplied!=0){
         //     htmlOutput+='arm : '++' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+' - '+Math.min(this.calcStat('arm'), this.shatterApplied)+') | ';
@@ -120,6 +122,12 @@ class Player extends Entity{
     changeGold(amount, inCombat = false) {
         this.gold += amount;
         this.updateGoldDisplay();
+    }
+
+    calcAsChange(amount) {
+        const rawAS = this.calcStat('as');
+        const tempAS = rawAS + amount;
+        return Math.floor(100 * Math.pow((1/2), (tempAS / 100))) - this.calcAs();
     }
 
     death() {
@@ -157,6 +165,7 @@ class Player extends Entity{
     }
 
     updateEntityDisplay() {
+        updateManaBar(0, this.mana, this.maxMana);
         let htmlOutput = '';
         htmlOutput = this.name+' | ';
 

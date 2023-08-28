@@ -32,6 +32,7 @@ function startGame() {
         //start game button
         $('#start-game').on('click',function(){
             game = new Game(characterClass);
+            console.log(game); //debug purposes
             game.startGame()
             $('#game-screen').removeClass('hidden');
             $('#start-screen').addClass('hidden');
@@ -43,7 +44,7 @@ function startGame() {
             let newItem = $(this).val();
             game.player.inv[metatype][1].forEach(item => {
                 if (item.name == newItem) {
-                    game.player.changeSelectedItem(item);
+                    game.player.changeSelectedItem(item, game.path.itemShop);
                 }
             });
         });

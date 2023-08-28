@@ -305,7 +305,7 @@ const ITEMLIST = {
 
 //boss items grasslands
     'hooved javelin': {'metatype': 'weapon', 'price': 0, 'type': 'spear', 'dmg': 32, 'arm' : 5, 'as': -100, 'message': 'A fleshy javelin emerges from the wreckage of battle. Powerful, but clunky'},
-    'long grass wand': {'metatype': 'weapon', 'price': 0, 'type': 'wand', 'dmg': 19, 'regen': 3, 'as': 10, 'magaGen': 1, 'message': 'Pushing past the carcass of the defeated beast, you notice a stick of grass twine bound tightly together. A Simple Magic Wand'},
+    'long grass wand': {'metatype': 'weapon', 'price': 0, 'type': 'wand', 'dmg': 19, 'regen': 3, 'as': 10, 'manaGen': 1, 'message': 'Pushing past the carcass of the defeated beast, you notice a stick of grass twine bound tightly together. A Simple Magic Wand'},
     'barbed wire blade': {'metatype': 'weapon', 'price': 0, 'type': 'knife', 'dmg': 15, 'regen': -2, 'as': 66, 'bleed' : 20, 'message': 'In the calamity of combat, a barbed wire fence has been bound up tightly into a blade. Razor sharp, even on the handle'},
     'golden garden hoe': {'metatype': 'weapon', 'price': 0, 'type': 'sword', 'dmg': 24, 'as': -20, 'income': 2, 'message': 'Rooting through the carnage, you notice the glimmer of gold surprisingly fashioned to an ordinary tool. Basic, but shiny'},
 

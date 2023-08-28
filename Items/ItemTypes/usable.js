@@ -36,7 +36,7 @@ class Usable extends Item {
         if (this.game.player.levelInfo.characteristics.mechanical) {
             return '(' + '<del>' + this.uses + '</del> ' + this.uses * 2 + 'x Item: ' + this.shortDescription + ')';
         } else {
-            return '(' + this.uses + 'x Item: ' + this.shortDescription + ')';
+            return '[' + this.uses + 'x Item: ' + this.shortDescription + ']';
         };
     }
 

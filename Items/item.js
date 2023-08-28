@@ -30,6 +30,12 @@ class Item {
     updateShopElement() {
         const newClass = this.metatype + '-shop-item shop-item ' + (this.game.player.gold < this.price ? 'shop-item-disabled' : '');
         this.shopElement.attr('class', newClass);
+        if (this.game.player.levelInfo.characteristics.persuasive) {
+            let newPrice = Math.ceil(this.price * 3 / 4);
+            this.shopElement.html('buy ' + this.name + ': <del>' + this.price + '</del> ' + newPrice + ' gold<br>' + this.genShopDesc());
+        } else {
+            this.shopElement.html('buy ' + this.name + ': ' + this.price + ' gold<br>' + this.genShopDesc());
+        }
     }
 
     appendToShop() {

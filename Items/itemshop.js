@@ -1,6 +1,7 @@
 class ItemShop {
     constructor(game) {
         this.game = game;
+        this.shopOpen = false;
         this.itemsInShop = [];
     }
 
@@ -14,6 +15,7 @@ class ItemShop {
             shopCodeExpand[randNum] += 1;
         }
 
+        this.shopOpen = true;
         this.itemsInShop = [];
     
         ITEMCATEGORIES.forEach((category, index) => {
@@ -34,9 +36,11 @@ class ItemShop {
     }
 
     updateShopItems() {
-        this.itemsInShop.forEach(item => {
-            item.updateShopElement();
-        });
+        if (this.shopOpen) {
+            this.itemsInShop.forEach(item => {
+                item.updateShopElement();
+            });
+        }
     }
 
     generateItem(name, itemInfo) {

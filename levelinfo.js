@@ -1,6 +1,6 @@
 const CHARACTERISTICS = {
     'persuasive': '-25% reduction on all future shop prices',
-    'mechanical': 'x2 uses on all new useables',
+    'mechanical': 'x2 uses on all new items',
     'vengeful': 'x2 weapon dmg when below 30% health',
     'prescient': 'see the name of the next space',
     'elusive': 'gains +5% dodge for every 10 attack speed',

@@ -58,6 +58,7 @@ class Path {
     }
 
     advancePath() {
+        this.itemShop.shopOpen = false;
         this.displayZoneInfo();
         if(this.spaceNumber%3==0 && this.spaceNumber != 0){this.game.zone.changeZoneLevel(1)};
         $('#content-central-box').empty();

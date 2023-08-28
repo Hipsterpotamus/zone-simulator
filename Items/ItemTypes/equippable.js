@@ -11,6 +11,7 @@ class Equippable extends Item {
         this.arm = 0;
         this.regen = 0;
         this.as = 0;
+        this.hp = 0;
         this.income = 0;
         this.thorn = 0;
         this.dodge = 0;
@@ -23,6 +24,7 @@ class Equippable extends Item {
         this.superarmor = 0;
         this.accuracy = 0;
         this.manaGen = 0;
+        this.maxMana = 0;
 
         if(itemInfo){
             Object.keys(itemInfo).forEach((stat)=>{
@@ -35,16 +37,31 @@ class Equippable extends Item {
     }
 
     genShopDesc() {
-        let shopDesc = '';
-        Object.keys(this.itemInfo).forEach((stat) => {
-            if (this.itemInfo[stat] > 0) {
-                shopDesc += (shopDesc ? ', ' : '') + '+' + this.itemInfo[stat] + ' ' + stat;
-            } else {
-                shopDesc += (shopDesc ? ', ' : '') + this.itemInfo[stat] + ' ' + stat;
-            }
-        });
-        return '(' + shopDesc + ')';
-    }
+            const FULLNAMES = {'arm': 'armor', 'dodge': '% dodge', 'regen': 'health regen', 'antiheal': 'anti-heal', 'manaGen': 'mana regen', 'maxMana': 'max mana', 'maxHp': 'max hp'}
+            let shopDesc = '';
+            Object.keys(this.itemInfo).forEach((stat) => {
+                let value = this.itemInfo[stat];
+                if (FULLNAMES[stat]) {
+                    stat = FULLNAMES[stat];
+                }
+                if (stat === 'hp') {
+                    shopDesc += (shopDesc ? ', ' : '') + 'heal ' + value + ' ' + stat;
+                } else if (stat === 'as') {
+                    if (value > 0) {
+                        shopDesc += (shopDesc ? ', ' : '') + '+' + value + ' attack speed(' + this.game.player.calcAsChange(value) + ' wait)';
+                    } else {
+                        shopDesc += (shopDesc ? ', ' : '') + value + ' attack speed(+' + this.game.player.calcAsChange(value) + ' wait)';
+                    }
+                } else {
+                    if (value > 0) {
+                        shopDesc += (shopDesc ? ', ' : '') + '+' + value + ' ' + stat;
+                    } else {
+                        shopDesc += (shopDesc ? ', ' : '') + value + ' ' + stat;
+                    }
+                }
+            });
+            return '[' + shopDesc + ']';
+        }
 
     onBuy() {
         this.game.player.addSelectableItem(this);
