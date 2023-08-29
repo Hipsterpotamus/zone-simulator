@@ -38,12 +38,12 @@
 
 ## Frontend:
 * [] Create combat stats elements and content to display over dead enemy at the end of combat
-
+* [] Flash a color on the enemy/player when they take damage
+* [] Visual indicator for when player or enemy dodges
 * [] Add support for multiple enemies (combat logic in combat.js, enemy log behavior in enemy.updateEntityDisplay())
-* [] Header changing color per-zone
 * [] Make sure 8 stats fit into armor
 * [] Implement "combat timer" element which appears during combat (either in the dead space in the "enemy encounter" tab or rolling on the header)
-* [] Fix but where if displaying a tail on an element is deleted, it makes the tail float forever
+* [x] Fix but where if displaying a tail on an element is deleted, it makes the tail float forever
 
 ## Backend:
 
@@ -56,12 +56,3 @@
 
 ### Refactoring
 * [] Document backend systems somewhere
-
-
-
-# Ideas
-* I think it would be interesting to have a blurred image per-zone in the background with the color mixed it it. Could see it going either way, but I think it might look nice and add a nice effect.
-
-* Flash a color on the enemy/player when they take damage
-* Visual indicator for when player or enemy dodges
-
