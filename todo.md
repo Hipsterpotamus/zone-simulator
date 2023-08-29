@@ -13,7 +13,7 @@
 * Sometimes scroll stops working in the eventbox and idk why, its def possible i broke something but any insight would be appreciated
 #### Holden:
 * [] Finish Beach Items
-* [] Finish Beach Enemies
+* [x] Finish Beach Enemies
 * [] Finish Beach Events
 * [] Finish Beach Rest Sites
 * [] Finish Beach Bosses

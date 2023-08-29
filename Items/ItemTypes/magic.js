@@ -22,6 +22,7 @@ class Magic extends Item {
         this.maxMana = false;
         this.regen = false;
         this.shatterRecovered = false;
+        this.healProportion = false;
 
         if(itemInfo){
             Object.keys(itemInfo).forEach((stat) => {
@@ -53,8 +54,8 @@ class Magic extends Item {
         }else{
             notify('magic spells can only be used during combat!')
         }
-        
     }
+
     appendToSelect() {
         this.selectElement = $('<button>', {
             'value': this.name,
@@ -139,7 +140,17 @@ class Magic extends Item {
     
         // Recover shatter
         if (this.shatterRecovered) {
-            this.game.player.changeStat('shatterApplied', -Math.min(game.player.shatterApplied, this.shatterRecovered));
+            this.game.player.changeStat('shatterApplied', -Math.min(this.game.player.shatterApplied, this.shatterRecovered));
+        }
+
+        // Heal Proportion
+        if (this.healProportion){
+            this.game.player.changeHp(Math.floor(this.healProportion*this.game.combat.enemy.hp))
+        }
+
+        // Weapon dmg
+        if (this.weaponDmg) {
+            this.game.player.getByType('weapon').changeStat('dmg', this.weaponDmg);
         }
     }
 }

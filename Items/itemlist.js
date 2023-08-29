@@ -186,29 +186,18 @@ const ITEMLIST = {
     'fisherman overalls': {'metatype': 'legs', 'price': 83, 'type': 'pants', 'dmg': 4, 'arm': 10, 'regen': 0, 'as': 20},
     'pirate pants': {'metatype': 'legs', 'price': 200, 'type': 'pants', 'dmg': 12, 'arm': 12, 'regen': -1, 'as': 25, 'bleed':25},
 
-    // 'sailor trousers': {'metatype': 'legs', 'price': 80, 'type': 'trousers', 'dmg': 0, 'arm': 10, 'regen': 0, 'as': -15},
-    // 'beach shorts': {'metatype': 'legs', 'price': 60, 'type': 'shorts', 'dmg': 0, 'arm': 6, 'regen': 0, 'as': 36, 'dodge': 5},
-    // 'sharkskin leggings': {'metatype': 'legs', 'price': 95, 'type': 'leggings', 'dmg': 0, 'arm': 13, 'regen': 0, 'as': -25, 'bleed': 10},
-    // 'coral greaves': {'metatype': 'legs', 'price': 100, 'type': 'greaves', 'dmg': 0, 'arm': 15, 'regen': 0, 'as': -30, 'shatter': 15},
-    // 'mermaid tail': {'metatype': 'legs', 'price': 70, 'type': 'tail', 'dmg': 0, 'arm': 5, 'regen': 4, 'as': 50, 'dodge': 8},
-    // 'dolphin leather pants': {'metatype': 'legs', 'price': 85, 'type': 'pants', 'dmg': 0, 'arm': 8, 'regen': 0, 'as': 70, 'accuracy': 5},
-    // 'crab leg guards': {'metatype': 'legs', 'price': 90, 'type': 'leg guards', 'dmg': 0, 'arm': 12, 'regen': 0, 'as': 0, 'lifedrain': 10, 'thorn': 10},
-    // 'seaweed wrap skirt': {'metatype': 'legs', 'price': 75, 'type': 'skirt', 'dmg': 5, 'arm': 8, 'regen': 0, 'as': -10, 'lifedrain': 5},
-    // 'fisherman overalls': {'metatype': 'legs', 'price': 78, 'type': 'overalls', 'dmg': 0, 'arm': 9, 'regen': 0, 'as': 20, 'income': 3},
-    // 'surfboard leggings': {'metatype': 'legs', 'price': 95, 'type': 'leggings', 'dmg': 0, 'arm': 14, 'regen': 3, 'as': -20, 'shatter': 10},
-    
-    'flip-flops': {'metatype': 'feet', 'price': 40, 'type': 'sandals', 'dmg': 0, 'arm': 5, 'regen': 0, 'as': 20},
-    'water shoes': {'metatype': 'feet', 'price': 52, 'type': 'shoes', 'dmg': 0, 'arm': 6, 'regen': 0, 'as': 40},
-    'sharkskin boots': {'metatype': 'feet', 'price': 70, 'type': 'boots', 'dmg': 5, 'arm': 8, 'regen': 0, 'as': 0, 'bleed': 5},
-    'coral sandals': {'metatype': 'feet', 'price': 60, 'type': 'sandals', 'dmg': 0, 'arm': 9, 'regen': 0, 'as': -25, 'shatter': 10},
-    'surfboard shoes': {'metatype': 'feet', 'price': 55, 'type': 'shoes', 'dmg': 0, 'arm': 6, 'regen': 0, 'as': 60},
-    'pirate boots': {'metatype': 'feet', 'price': 75, 'type': 'boots', 'dmg': 0, 'arm': 10, 'regen': 0, 'as': 10, 'dodge': 5, 'income': 2},
-    'jellyfish slippers': {'metatype': 'feet', 'price': 65, 'type': 'slippers', 'dmg': 0, 'arm': 7, 'regen': 0, 'as': 30, 'lifedrain': 10},
-    'crab claw clogs': {'metatype': 'feet', 'price': 80, 'type': 'clogs', 'dmg': 0, 'arm': 12, 'regen': 0, 'as': -20, 'thorn': 15},
-    'seashell sandals': {'metatype': 'feet', 'price': 70, 'type': 'sandals', 'dmg': 0, 'arm': 8, 'regen': 5, 'as': 0, 'accuracy': 10},
-    'fisherman waders': {'metatype': 'feet', 'price': 68, 'type': 'waders', 'dmg': 0, 'arm': 9, 'regen': 0, 'as': 10, 'income': 3},
-    'dolphin fin flippers': {'metatype': 'feet', 'price': 60, 'type': 'flippers', 'dmg': 0, 'arm': 7, 'regen': 0, 'as': 80, 'dodge': 5},
-    'sunken treasure boots': {'metatype': 'feet', 'price': 85, 'type': 'boots', 'dmg': 0, 'arm': 13, 'regen': 0, 'as': -30, 'shatter': 20, 'income': 5},
+    'iron boots': {'metatype': 'feet', 'price': 51, 'type': 'boots', 'dmg': 0, 'arm': 7, 'regen': 0, 'as': 4},
+    'steel boots': {'metatype': 'feet', 'price': 80, 'type': 'boots', 'dmg': 0, 'arm': 10, 'regen': 0, 'as': 6},
+    'water shoes': {'metatype': 'feet', 'price': 78, 'type': 'shoes', 'dmg': 0, 'arm': 6, 'regen': 0, 'as': 30},
+    'coral sandals': {'metatype': 'feet', 'price': 93, 'type': 'sandals', 'dmg': 3, 'arm': 9, 'regen': 0, 'as': -25, 'thorn':8,'shatter': 10},
+    'sharkskin boots': {'metatype': 'feet', 'price': 125, 'type': 'boots', 'dmg': 8, 'arm': 8, 'regen': 0, 'as': 0, 'bleed': 35},
+    'turtle shell shoes': {'metatype': 'feet', 'price': 125, 'type': 'shoes', 'dmg': -2, 'arm': 25, 'regen': 0, 'as': -68},
+    'crab feet shoes': {'metatype': 'feet', 'price': 110, 'type': 'shoes', 'dmg': 6, 'arm': 8, 'regen': 2, 'as': 50, 'bleed':10},
+    'mermaid fin sandals': {'metatype': 'feet', 'price': 140, 'type': 'sandals', 'dmg': 0, 'arm': 10, 'regen': 5, 'as': 15, 'lifedrain':25},
+    'sandbag shoes': {'metatype': 'feet', 'price': 70, 'type': 'shoes', 'dmg': 0, 'arm': 18, 'regen': 0, 'as': -70, 'shatter':10},
+    'pirate boots': {'metatype': 'feet', 'price': 130, 'type': 'boots', 'dmg': 0, 'arm': 10, 'regen': 0, 'as': 20, 'bleed':15, 'income':1},
+    'peglegs': {'metatype': 'feet', 'price': 150, 'type': 'misc', 'dmg': 0, 'arm': 12, 'regen': 0, 'as': 14, 'bleed':25, 'income':4, 'accuracy':-15},
+    'coconut shoes': {'metatype': 'feet', 'price': 110, 'type': 'shoes', 'dmg': 0, 'arm': 15, 'regen': 4, 'as': -20},
 
 //STATS
 
@@ -265,7 +254,37 @@ const ITEMLIST = {
     'transfixed sap': {'metatype': 'stat', 'price': 33, 'maxhp': 18, 'maxMana': 5},
 
 //stats beach
-    //TBD
+    'yellow apple': {'metatype': 'stat', 'price': 30, 'maxhp': 35},
+    'cooked apple': {'metatype': 'stat', 'price': 34, 'maxhp': 28, 'hp': 8},
+    'sea smoothie': {'metatype': 'stat', 'price': 48, 'maxhp': 15, 'levelheal': 15, 'regen':5, 'dmg':4},
+    'coconut': {'metatype': 'stat', 'price': 55, 'armor': 4, 'levelheal': 25, 'hp':30},
+    'crabstew': {'metatype': 'stat', 'price': 50, 'maxhp': 20, 'regen':4},
+    'delicious lobster': {'metatype': 'stat', 'price': 60, 'dmg':3, 'maxhp': 25, 'levelheal':10},
+    'tasty crab': {'metatype': 'stat', 'price': 56, 'dmg':5, 'maxhp': 15, 'regen':3},
+    'popsicle': {'metatype': 'stat', 'price': 80, 'hp':50, 'regen':4},
+    'blue oyster': {'metatype': 'stat', 'price': 36, 'maxhp':15, 'speed':16},
+    'red oyster': {'metatype': 'stat', 'price': 36, 'maxhp':15, 'regen':4},
+    'black oyster': {'metatype': 'stat', 'price': 36, 'maxhp':15, 'dmg':7},
+    'green oyster': {'metatype': 'stat', 'price': 36, 'maxhp':15, 'levelheal':14},
+    'orange oyster': {'metatype': 'stat', 'price': 36, 'maxhp':15, 'arm':6},
+    'grey oyster': {'metatype': 'stat', 'price': 36, 'maxhp':15, 'shatter':20},
+    'golden oyster': {'metatype': 'stat', 'price': 36, 'maxhp':15, 'income':2},
+    'shrimp pallette': {'metatype': 'stat', 'price': 72, 'as': 18},
+    'edible sand': {'metatype': 'stat', 'price': 80, 'arm': 6, 'maxhp': 20},
+    'turtle shell soup': {'metatype': 'stat', 'price': 92, 'arm': 20, 'regen':3, 'as': -10},
+    'magic seashell': {'metatype': 'stat', 'price': 100, 'maxMana': 15, 'manaGen':1, 'as':-10},
+    'playing cards': {'metatype': 'stat', 'price': 60, 'income': 2, 'bleed':15},
+    'pelican heart': {'metatype': 'stat', 'price': 130, 'regen': 8, 'bleed':30},
+    'mystic sand dollar': {'metatype': 'stat', 'price': 80, 'income': 3, 'manaGen':1},
+    'watermelon': {'metatype': 'stat', 'price': 63, 'regen': 2, 'maxhp':20},
+    'pineapple': {'metatype': 'stat', 'price': 59, 'regen': 6, 'thorns':10},
+    'mango': {'metatype': 'stat', 'price': 62, 'maxhp': 25, 'levelheal':15},
+    'kiwi': {'metatype': 'stat', 'price': 61, 'hp': 50, 'levelheal':22},
+    
+
+
+
+
 
 //USABLES
 
@@ -278,19 +297,29 @@ const ITEMLIST = {
 
 //usables forest
     'goblin bomb': {'metatype': 'usable', 'price': 20, 'uses': 1, 'shortDescription': 'deal 50 dmg to non-goblin. gain 5 gold', 'longDescription': 'During combat, use to deal 50 dmg (bypasses armor) to the current enemy. If the current enemy is of the goblin type, instead deal 0 damage. Gain 5 gold', 'type': 'combat', 'attackNonGoblin': 50, 'gold': 5},
-    'dryad throwing leaves': {'metatype': 'usable', 'price': 28, 'uses': 4, 'shortDescription': 'deal 10 dmg, heal 10', 'longDescription': 'During combat, deal 10 dmg to an enemy (bypasses armor), and heal 10', 'type': 'combat', 'attack': 10, 'hp': 10},
-    'elf bandages': {'metatype': 'usable', 'price': 35, 'uses': 15, 'shortDescription': 'heal 10 hp', 'longDescription': 'Heal 10', 'type': 'all', 'hp': 10},
+    'dryad throwing leaves': {'metatype': 'usable', 'price': 41, 'uses': 4, 'shortDescription': 'deal 10 dmg, heal 10', 'longDescription': 'During combat, deal 10 dmg to an enemy (bypasses armor), and heal 10', 'type': 'combat', 'attack': 10, 'hp': 10},
+    'elf bandages': {'metatype': 'usable', 'price': 48, 'uses': 15, 'shortDescription': 'heal 10 hp', 'longDescription': 'Heal 10', 'type': 'all', 'hp': 10},
     'elven battle book': {'metatype': 'usable', 'price': 18, 'uses': 1, 'shortDescription': 'if enemy has lower attackspeed, gain 3% dodge permanetly', 'longDescription': 'During combat, if enemy has a lower total attackspeed than you, gain 3% permanent dodge', 'type': 'combat', 'conditionalDodge': 3},
     'dryad battle book': {'metatype': 'usable', 'price': 22, 'uses': 1, 'shortDescription': 'if enemy has a higher attackspeed, gain 3% lifedrain permanetly', 'longDescription': 'During combat, if enemy has a higher total attackspeed than you, gain 3% permanent lifedrain', 'type': 'combat', 'conditionalLifedrain': 3},
     'goblin sacks': {'metatype': 'usable', 'price': 30, 'uses': 4, 'shortDescription': 'gain 20% of enemy gold payout', 'longDescription': 'During combat, gain 20% of the current enemy\'s gold pay out', 'type': 'combat', 'enemyGoldPayout': 0.2},
-    'dryad berries': {'metatype': 'usable', 'price': 41, 'uses': 4, 'shortDescription': 'heal 15 hp and gain 1 regen permantely', 'longDescription': 'Heal 15 hp and gain 1 regen permanetly', 'type': 'all', 'hp': 15, 'regen': 1},
+    'dryad berries': {'metatype': 'usable', 'price': 61, 'uses': 4, 'shortDescription': 'heal 15 hp and gain 1 regen permantely', 'longDescription': 'Heal 15 hp and gain 1 regen permanetly', 'type': 'all', 'hp': 15, 'regen': 1},
     'pine needle attachments': {'metatype': 'usable', 'price': 58, 'uses': 4, 'shortDescription': '+5 dmg on weapon', 'longDescription': 'Your currently equipped weapon gains +5 dmg', 'type': 'all', 'weaponDmg': 5},
     'pine cone attachments': {'metatype': 'usable', 'price': 62, 'uses': 5, 'shortDescription': '+3 shatter on weapon', 'longDescription': 'Your currently equipped weapon gains +3 shatter', 'type': 'all', 'weaponShatter': 3},
     'elven nectar': {'metatype': 'usable', 'price': 45, 'uses': 2, 'shortDescription': 'remove all shatter applied by opponent', 'longDescription': 'During combat, all armor you have lost due to your opponent\'s shatter this combat is removed. However, more shatter can still be gained', 'type': 'combat', 'removeShatter': true},
     'dryad root potion': {'metatype': 'usable', 'price': 70, 'uses': 1, 'shortDescription': 'current enemy armor doubles, but their attack speed halves', 'longDescription': 'During combat, the enemy\'s base armor grows by the amount of effective armor they currently have (armor - shatter applied). Their attackspeed is set to half.', 'type': 'combat', 'enemyArmDouble': true, 'enemyAsHalf': true},
 
 //usables beach
-    //TBD
+    'shell attachments': {'metatype': 'usable', 'price': 105, 'uses': 5, 'shortDescription': '+6 dmg on weapon', 'longDescription': 'Your currently equipped weapon gains +6 dmg', 'type': 'all', 'weaponDmg': 6},
+    'clam attachments': {'metatype': 'usable', 'price': 95, 'uses': 3, 'shortDescription': '+8 shatter on weapon', 'longDescription': 'Your currently equipped weapon gains +8 shatter', 'type': 'all', 'weaponShatter': 8},
+    'urchin attachments': {'metatype': 'usable', 'price': 110, 'uses': 5, 'shortDescription': '+5 bleed on weapon', 'longDescription': 'Your currently equipped weapon gains +5 bleed', 'type': 'all', 'weaponBleed': 5},
+    'health bundle': {'metatype': 'usable', 'price': 80, 'uses': 2, 'shortDescription': 'heal 100 hp', 'longDescription': 'Heal 100', 'type': 'all', 'hp': 100},
+    'throwing sand': {'metatype': 'usable', 'price':67, 'uses': 4, 'shortDescription': 'current enemy loses 10 armor', 'longDescription': "During combat, lower the current enemy's armor by 10", 'type': 'combat', 'enemyArm': -10},
+    'throwing shells': {'metatype': 'usable', 'price': 75, 'uses': 4, 'shortDescription': 'deal 40 dmg, enemy loses 5 regen', 'longDescription': 'During combat, deal 40 dmg to an enemy (bypasses armor), and apply 5 bleed to enemy\'s regen', 'type': 'combat', 'attack': 40, 'applyBleed': 5},
+    'mermaid ointment': {'metatype': 'usable', 'price': 55, 'uses': 2, 'shortDescription': 'remove all bleed applied by opponent', 'longDescription': 'During combat, all regen you have lost due to your opponent\'s bleed this combat is removed. However, more bleed can still be gained', 'type': 'combat', 'removeBleed': true},
+    'goblin sacks': {'metatype': 'usable', 'price': 50, 'uses': 3, 'shortDescription': 'gain 25% of enemy gold payout', 'longDescription': 'During combat, gain 25% of the current enemy\'s gold pay out', 'type': 'combat', 'enemyGoldPayout': 0.25},
+    'crab legs': {'metatype': 'usable', 'price': 60, 'uses': 5, 'shortDescription': 'heal 50 hp, lose 1 regen', 'longDescription': 'Heal 50 hp and lose 1 regen permanetly', 'type': 'all', 'hp': 50, 'regen': -1},
+    'mermaid gill potion': {'metatype': 'usable', 'price': 89, 'uses': 2, 'shortDescription': 'gain 12 regen, lose 10 armor', 'longDescription': 'Gain 12 regen, lose 10 armor, can go negative.', 'type': 'all', 'regen':12, 'armor':-10},
+    'turtlean shell potion': {'metatype': 'usable', 'price': 83, 'uses': 2, 'shortDescription': 'gain 15 armor, lose 10 regen', 'longDescription': 'Gain 12 regen, lose 10 armor, can go negative.', 'type': 'all', 'armor':15, 'regen':-10},
 
 //MAGIC
 
@@ -303,7 +332,7 @@ const ITEMLIST = {
     'chill': {'metatype': 'magic', 'price': 14, 'shortDescription': 'enemy loses 5 attack speed', 'longDescription': 'Enemy receives -5 attack speed. Infinite uses', 'manaCost': 10, 'enemyAs': -5},
 
 //magic forest
-    'spirit invocation': {'metatype': 'magic', 'price': 25, 'shortDescription': 'gain 5 max mana', 'longDescription': 'Gain 5 max mana permanently, does not come with 3 mana on use. Infinite uses', 'manaCost': 15, 'maxMana': 5},
+    'spirit invocation': {'metatype': 'magic', 'price': 25, 'shortDescription': 'gain 5 max mana', 'longDescription': 'Gain 5 max mana permanently, does not come with 5 mana on use. Infinite uses', 'manaCost': 15, 'maxMana': 5},
     'goblin fire dance': {'metatype': 'magic', 'price': 36, 'shortDescription': 'you & enemy lose 10 hp. you gain +2 dmg, and enemy loses 2 dmg', 'longDescription': 'Deal 10 dmg to the current enemy and yourself (bypasses armor and dodge). You gain a permanent +2 dmg increase as does the current enemy. Infinite uses', 'manaCost': 15, 'hp': -10, 'enemyHp': -10, 'dmg': 2, 'enemyDmg': 2},
     'grass overgrowth': {'metatype': 'magic', 'price': 26, 'shortDescription': 'gain 3 max hp, 1 armor, and lose 1 attack speed', 'longDescription': 'Permanently gain 3 max hp, 1 armor, and permanently lose 1 attack speed. Infinite uses', 'manaCost': 20, 'maxhp': 3, 'arm': 1, 'as': -1},
     'elf rumination': {'metatype': 'magic', 'price': 31, 'shortDescription': 'gain 1 max hp, heal 12', 'longDescription': 'Permanently gain 1 max hp and gain this hp, heal 12. Infinite uses', 'manaCost': 10, 'maxhp': 1, 'hp': 12},
@@ -313,9 +342,15 @@ const ITEMLIST = {
     'rock drop': {'metatype': 'magic', 'price': 38, 'shortDescription': 'deal 40 dmg', 'longDescription': 'Deal 40 dmg to the current enemy. Does not bypass armor or dodge. Infinite uses', 'manaCost': 15, 'attack': 40},
 
 //magic beach
-    //TBD
-
-//BOSS ITEMS
+    'sand wave': {'metatype': 'magic', 'price': 50, 'shortDescription': 'deal 50 dmg, apply 5 shatter', 'longDescription': 'Deal 50 dmg to the current enemy. Does not bypass armor or dodge. Then, apply 5 shatter. Infinite uses', 'manaCost': 18, 'attack': 50},
+    'beach day': {'metatype': 'magic', 'price': 60, 'shortDescription': '+5 to armor and regen', 'longDescription': 'Permanently gain +5 armor +5 regen. Infinite uses', 'manaCost': 25, 'arm': 5, 'regen': 5},
+    'seashell summon': {'metatype': 'magic', 'price': 38, 'shortDescription': 'regain 10 armor from shatter, +2 dmg', 'longDescription': 'Remove the effects of shatter for up to ten armor lost. Does not go positive. Gain 2 dmg permanetly. Infinite uses', 'manaCost': 20, 'shatterRecovered': 10, 'dmg': 2},
+    'blood suck': {'metatype': 'magic', 'price': 65, 'shortDescription': 'lose 25 hp, enemy loses 15 armor', 'longDescription': 'You lose 25 hp, enemy loses 15 armor. Infinite uses', 'manaCost': 18, 'hp': -25, 'enemyArm': -15},
+    'sea chill': {'metatype': 'magic', 'price': 45, 'shortDescription': 'enemy loses 25 attack speed', 'longDescription': 'Enemy receives -25 attack speed. Infinite uses', 'manaCost': 30, 'enemyAs': -25},
+    'heal pull': {'metatype': 'magic', 'price': 52, 'shortDescription': 'heal 20% of enemy hp', 'longDescription': 'You heal 20% of the enemy\'s current hp. Rounds down. Infinite uses', 'manaCost': 18, 'healProportion': 0.2},
+    'mental sharpen': {'metatype': 'magic', 'price': 39, 'shortDescription': '+1 dmg on current weapon', 'longDescription': 'You current weapon selected gains 1 dmg. Infinite uses', 'manaCost': 5, 'weaponDmg': 1},
+    
+    //BOSS ITEMS
 
 //boss items grasslands
     'hooved javelin': {'metatype': 'weapon', 'price': 0, 'type': 'spear', 'dmg': 32, 'arm' : 5, 'as': -100, 'message': 'A fleshy javelin emerges from the wreckage of battle. Powerful, but clunky'},

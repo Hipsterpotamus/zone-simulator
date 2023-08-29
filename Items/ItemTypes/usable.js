@@ -21,7 +21,9 @@ class Usable extends Item {
         this.enemyGoldPayout = false;
         this.regen = false;
         this.weaponShatter = false;
+        this.weaponBleed = false;
         this.removeShatter = false;
+        this.removeBleed = false;
         this.enemyArmDouble = false;
         this.enemyAsHalf = false;
         
@@ -134,7 +136,9 @@ class Usable extends Item {
         if (this.weaponShatter) {
             this.game.player.getByType('weapon').changeStat('shatter', this.weaponShatter);
         }
-    
+ 
+
+
         // Remove shatter
         if (this.removeShatter) {
             this.game.player.changeStat('shatterApplied', -game.player.shatterApplied);
@@ -149,6 +153,19 @@ class Usable extends Item {
         // Halve enemy attack speed
         if (this.enemyAsHalf) {
             this.game.combat.selectedEnemy.changeStat('attackSpeed', this.game.combat.selectedEnemy.calcStat('attackSpeed') / 2);
+        }
+
+        // Apply Bleed
+        if (this.applyBleed){
+           this.game.combat.selectedEnemy.bleedApplied += this.applyBleed;
+        }
+        // Weapon Bleed
+        if (this.weaponBleed){
+            this.game.player.getByType('weapon').changeStat('shatter', this.weaponBleed);
+        }
+        // Remove bleed
+        if (this.removeBleed) {
+            this.game.player.changeStat('bleedApplied', -game.player.bleedApplied);
         }
     }
 }

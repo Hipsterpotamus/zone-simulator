@@ -125,7 +125,7 @@ class Player extends Entity{
             calc += `= ${this.calcStat(stat)}`;
         }
 
-        return calc;
+        //return calc;
     }
 
     calcStatDisplay(stat) { // For displaying in html
