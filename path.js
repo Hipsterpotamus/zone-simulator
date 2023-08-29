@@ -9,8 +9,6 @@ class Path {
         this.spaceNumber = 0;
 
         this.itemShop = new ItemShop(game);
-
-        this.playerInit();
     }
 
     generatePath(maxSpaces, typeInfo, setSpaces) {
@@ -147,16 +145,5 @@ class Path {
             let metatype = ITEMLIST[itemName]['metatype'];
             this.game.zone.zoneItemList[metatype].push(this.itemShop.generateItem(itemName, structuredClone(ITEMLIST[itemName])));
         });
-    }
-
-    playerInit() {
-        this.game.player.addSelectableItem(new Usable(this.game, 'none', {'metatype': 'usable'}));
-        this.game.player.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'weapon'}));
-        this.game.player.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'head'}));
-        this.game.player.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'chest'}));
-        this.game.player.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'legs'}));
-        this.game.player.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'feet'}));
-
-        this.game.player.changeMana(0);
     }
 }

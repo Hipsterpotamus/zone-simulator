@@ -78,7 +78,7 @@ class Entity{
     }
 
     calcRegen(){
-        let antihealRegen = Math.max(this.calcStat('regen') - this.antihealApplied, this.calcStat('regen'));
+        let antihealRegen = Math.max(this.calcStat('regen') - this.antihealApplied, 0);
         return antihealRegen - this.bleedApplied;
     }
 
@@ -117,9 +117,9 @@ class Entity{
             opp.gameCombatStats.outgoingDmg += oppDMG;
             this.gameCombatStats.incomingBlocked += (oppDMG - opp.testDmg(0, 0));
 
-            this.shatterApplied += opp.testShatter();
+            this.shatterApplied = Math.max(this.shatterApplied + opp.testShatter(), this.calcStat('arm'));
             this.bleedApplied += opp.testBleed();
-            this.antihealApplied = opp.antiheal;
+            this.antihealApplied = Math.max(opp.antiheal, this.calcStat('regen'));
 
             this.changeMaxHp(-opp.testTear(this.calcStat('superarmor')));
 

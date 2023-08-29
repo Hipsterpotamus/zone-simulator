@@ -190,7 +190,7 @@ class Combat {
         button.text('Start combat now');
         button.on('click', () => {
             $('#content-central-box').empty();
-            this.tick += seconds * 1000
+            this.tick = seconds * 1000 / this.delay;
         });
         button.appendTo('#content-central-box');
         this.delayTick(seconds, message)

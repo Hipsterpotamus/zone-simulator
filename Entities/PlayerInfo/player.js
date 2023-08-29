@@ -49,6 +49,17 @@ class Player extends Entity{
             'spellsCast' : 0,
             'itemsUsed' : 0
         }
+
+        this.addSelectableItem(new Usable(this.game, 'none', {'metatype': 'usable'}));
+        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'weapon'}));
+        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'head'}));
+        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'chest'}));
+        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'legs'}));
+        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'feet'}));
+
+        this.changeMana(0);
+
+        this.updateEntityDisplay();
     }
 
     addSelectableItem(item) {
@@ -62,7 +73,6 @@ class Player extends Entity{
         this.inv[item.metatype][0] = item;
         item.updateItemInfo();
         $('#'+item.metatype+'-select').val(item.name);
-        this.updateEntityDisplay();
         if (itemShop && itemShop.shopOpen) { itemShop.updateShopItems()};
     }
 
@@ -89,20 +99,37 @@ class Player extends Entity{
         return total;
     }
 
-    calcStatDisplay(stat) { // For displaying in html
+    handleEquipmentStat(type, stat) {
+        const value = this.getByType(type)[stat];
+        if (value === 0) return '';
+        return `${value > 0 ? '+' : ''}${value} from ${type} `;
+    }
 
-        // if(this.shatterApplied!=0){
-        //     htmlOutput+='arm : '++' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+' - '+Math.min(this.calcStat('arm'), this.shatterApplied)+') | ';
-        // }else{
-        //     htmlOutput+='arm : '+this.calcStat('arm')+' ('+this.arm+' + '+(this.calcStat('arm')-this.arm)+') | ';
-        // }
-        // htmlOutput+='regen : '+this.calcRegen()+' ('+this.regen+' + '+(this.calcRegen()-this.regen)+') | ';
-        
-        if (stat=='arm') {
-            if (this.shatterApplied!=0) {
-                return Math.max(0,(this.calcStat('arm')-this.shatterApplied))
-            } else {return this.testArm()}
+    displayCalc(stat) {
+        let calc = `${this[stat]} base `;
+        const equipmentTypes = ['weapon', 'head', 'chest', 'legs', 'feet'];
+        for (const type of equipmentTypes) {
+            calc += this.handleEquipmentStat.call(this, type, stat);
         }
+
+        if (stat === 'speed') {
+            calc = `${this.displayCalc('as')}, squished with 100*(1/2)^(${this.calcStat('as')}/100) = ${this.calcAs()}`;
+        } else if (stat === 'regen') {
+            if (this.antihealApplied > 0) calc += `-${this.antihealApplied} antiheal applied `;
+            if (this.bleedApplied > 0) calc += `-${this.bleedApplied} bleed applied `;
+            calc += `= ${this.calcRegen()}`;
+        } else if (stat === 'arm') {
+            if (this.shatterApplied > 0) calc += `-${this.shatterApplied} shatter taken `;
+            calc += `= ${this.testArm()}`;
+        } else {
+            calc += `= ${this.calcStat(stat)}`;
+        }
+
+        return calc;
+    }
+
+    calcStatDisplay(stat) { // For displaying in html
+        if (stat=='arm') {return this.testArm()}
         else if (stat=='speed') {return this.calcAs()}
         else if (stat=='regen') {return this.calcRegen()}
         else {return this.calcStat(stat)}
@@ -212,10 +239,10 @@ class Player extends Entity{
                         $('<p>', {
                             'class': 'player-stat-extra'
                         }).text(
-                            "+" + this.calcStatDisplayExtra(stat)
+                            this.displayCalc(stat)
                         )
                     )
-                    console.log("appended:" + this.calcStat(stat) - this[stat]);
+                    console.log("appended:" + this.calcStatDisplay(stat) - this[stat]);
 
                 } else {
                     $('.player-stat-' + stat).find('.player-stat-value').text(this.calcStatDisplay(stat));
