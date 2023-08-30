@@ -68,17 +68,22 @@ class Equippable extends Item {
     }
 
     calcComparisons() {
+        let allComps = '';
         if(this.itemInfo){
             Object.keys(this.itemInfo).forEach((stat)=>{
-                console.log(this.genComparison(stat))
+                allComps += this.genComparison(stat) + `
+`;
             });
         } else {
             if(this.game.player.getByType(this.metatype)[itemInfo]){
                 Object.keys(this.game.player.getByType(this.metatype)[itemInfo]).forEach((stat)=>{
-                    console.log(this.genComparison(stat))
+                    allComps += this.genComparison(stat) + `
+`;
                 });
             }
         }
+
+        console.log(allComps);
     }
 
     genComparison(stat) {
@@ -97,8 +102,8 @@ class Equippable extends Item {
             let ownPercent = this.calcAsChange(ownStat, currentStat - currentEquipStat);
             let comparePercent = this.calcAsChange(compStat, currentStat);
             return `${currentEquipStat > 0 ? '+' : ''}${currentEquipStat} ${stat} => ${ownStat > 0 ? '+' : ''}${ownStat} ${stat} (${compStat} ${stat} ${compStat > 0 ? 'higher' : 'lower'})
-            ${currentTickChange > 0 ? '+' : ''}${currentTickChange} ticks => ${ownTickChange > 0 ? '+' : ''}${ownTickChange} ticks (${compareTickChange} ${compareTickChange > 0 ? 'ticks slower' : 'ticks faster'}) 
-            ${currentPercent > 0 ? '+' : ''}${currentPercent}% => ${ownPercent > 0 ? '+' : ''}${ownPercent}% (${comparePercent}% ${comparePercent > 0 ? 'faster' : 'slower'})`;
+${currentTickChange > 0 ? '+' : ''}${currentTickChange} ticks => ${ownTickChange > 0 ? '+' : ''}${ownTickChange} ticks (${compareTickChange} ${compareTickChange > 0 ? 'ticks slower' : 'ticks faster'}) 
+${currentPercent > 0 ? '+' : ''}${currentPercent}% => ${ownPercent > 0 ? '+' : ''}${ownPercent}% (${comparePercent}% ${comparePercent > 0 ? 'faster' : 'slower'})`;
         } else {
             return `${currentEquipStat > 0 ? '+' : ''}${currentEquipStat} ${stat} => ${ownStat > 0 ? '+' : ''}${ownStat} ${stat} (${compStat} ${stat} ${compStat > 0 ? 'higher' : 'lower'})`;
         }
