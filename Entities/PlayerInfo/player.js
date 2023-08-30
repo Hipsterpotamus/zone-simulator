@@ -50,12 +50,12 @@ class Player extends Entity{
             'itemsUsed' : 0
         }
 
-        this.addSelectableItem(new Usable(this.game, 'none', {'metatype': 'usable'}));
-        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'weapon'}));
-        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'head'}));
-        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'chest'}));
-        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'legs'}));
-        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'feet'}));
+        this.addSelectableItem(new Usable(this.game, 'none', {'metatype': 'usable'}), false, false);
+        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'weapon'}), false, false);
+        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'head'}), false, false);
+        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'chest'}), false, false);
+        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'legs'}), false, false);
+        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'feet'}), false, false);
 
         this.changeMana(0);
 
@@ -68,12 +68,13 @@ class Player extends Entity{
         this.changeSelectedItem(item);
     }
 
-    changeSelectedItem(item, itemShop = false) {
+    changeSelectedItem(item, itemShop = false, updateDisplay = true) {
+        if (updateDisplay && item.metatype != 'usable') {item.calcComparisons()}
         this.attackCounter = 0;
         this.inv[item.metatype][0] = item;
-        item.updateItemInfo();
+        if (updateDisplay) {item.updateItemInfo()}
         $('#'+item.metatype+'-select').val(item.name);
-        if (itemShop && itemShop.shopOpen) { itemShop.updateShopItems()};
+        if (itemShop && itemShop.shopOpen) {itemShop.updateShopItems()};
     }
 
     //generic functions

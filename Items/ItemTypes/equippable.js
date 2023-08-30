@@ -47,8 +47,6 @@ class Equippable extends Item {
                 if (stat === 'hp') {
                     shopDesc += (shopDesc ? ', ' : '') + 'heal ' + value + ' ' + stat;
                 } else if (stat === 'as') {
-                    let compareStats = this.game.player.getByType(this.metatype).as;
-                    let compareValue = value - compareStats;
                     if (value > 0) {
                         shopDesc += (shopDesc ? ', ' : '') + '+' + value + ' attack speed';
                     } else {
@@ -66,12 +64,21 @@ class Equippable extends Item {
         }
 
     onBuy() {
+        this.game.player.addSelectableItem(this);
+    }
+
+    calcComparisons() {
         if(this.itemInfo){
             Object.keys(this.itemInfo).forEach((stat)=>{
                 console.log(this.genComparison(stat))
             });
+        } else {
+            if(this.game.player.getByType(this.metatype)[itemInfo]){
+                Object.keys(this.game.player.getByType(this.metatype)[itemInfo]).forEach((stat)=>{
+                    console.log(this.genComparison(stat))
+                });
+            }
         }
-        this.game.player.addSelectableItem(this);
     }
 
     genComparison(stat) {
@@ -84,11 +91,16 @@ class Equippable extends Item {
         }
         if (stat === 'as') {
             let currentPercent = this.calcAsChange(currentEquipStat, currentStat - currentEquipStat);
+            let currentTickChange = this.game.player.calcAsTheory(currentStat) - this.game.player.calcAsTheory(currentStat - currentEquipStat);
+            let ownTickChange = this.game.player.calcAsTheory(currentStat - currentEquipStat + ownStat) - this.game.player.calcAsTheory(currentStat - currentEquipStat);
+            let compareTickChange = ownTickChange - currentTickChange;
             let ownPercent = this.calcAsChange(ownStat, currentStat - currentEquipStat);
             let comparePercent = this.calcAsChange(compStat, currentStat);
-            return `${currentPercent > 0 ? '+' : ''}${currentPercent}% => ${ownPercent > 0 ? '+' : ''}${ownPercent}% (${comparePercent}% ${comparePercent > 0 ? 'faster' : 'slower'})`;
+            return `${currentEquipStat > 0 ? '+' : ''}${currentEquipStat} ${stat} => ${ownStat > 0 ? '+' : ''}${ownStat} ${stat} (${compStat} ${stat} ${compStat > 0 ? 'higher' : 'lower'})
+            ${currentTickChange > 0 ? '+' : ''}${currentTickChange} ticks => ${ownTickChange > 0 ? '+' : ''}${ownTickChange} ticks (${compareTickChange} ${compareTickChange > 0 ? 'ticks slower' : 'ticks faster'}) 
+            ${currentPercent > 0 ? '+' : ''}${currentPercent}% => ${ownPercent > 0 ? '+' : ''}${ownPercent}% (${comparePercent}% ${comparePercent > 0 ? 'faster' : 'slower'})`;
         } else {
-            return `${currentEquipStat > 0 ? '+' : ''}${currentEquipStat} => ${ownStat > 0 ? '+' : ''}${ownStat} (${compStat} ${compStat > 0 ? 'higher' : 'lower'})`;
+            return `${currentEquipStat > 0 ? '+' : ''}${currentEquipStat} ${stat} => ${ownStat > 0 ? '+' : ''}${ownStat} ${stat} (${compStat} ${stat} ${compStat > 0 ? 'higher' : 'lower'})`;
         }
     }
 
