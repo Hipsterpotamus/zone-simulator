@@ -280,7 +280,7 @@ const ITEMLIST = {
     'pineapple': {'metatype': 'stat', 'price': 59, 'regen': 6, 'thorns':10},
     'mango': {'metatype': 'stat', 'price': 62, 'maxhp': 25, 'levelheal':15},
     'kiwi': {'metatype': 'stat', 'price': 61, 'hp': 50, 'levelheal':22},
-    
+    'beach bond': {'metatype': 'stat', 'price': 65, 'income': 5},
 
 
 
@@ -316,10 +316,10 @@ const ITEMLIST = {
     'throwing sand': {'metatype': 'usable', 'price':67, 'uses': 4, 'shortDescription': 'current enemy loses 10 armor', 'longDescription': "During combat, lower the current enemy's armor by 10", 'type': 'combat', 'enemyArm': -10},
     'throwing shells': {'metatype': 'usable', 'price': 75, 'uses': 4, 'shortDescription': 'deal 40 dmg, enemy loses 5 regen', 'longDescription': 'During combat, deal 40 dmg to an enemy (bypasses armor), and apply 5 bleed to enemy\'s regen', 'type': 'combat', 'attack': 40, 'applyBleed': 5},
     'mermaid ointment': {'metatype': 'usable', 'price': 55, 'uses': 2, 'shortDescription': 'remove all bleed applied by opponent', 'longDescription': 'During combat, all regen you have lost due to your opponent\'s bleed this combat is removed. However, more bleed can still be gained', 'type': 'combat', 'removeBleed': true},
-    'goblin sacks': {'metatype': 'usable', 'price': 50, 'uses': 3, 'shortDescription': 'gain 25% of enemy gold payout', 'longDescription': 'During combat, gain 25% of the current enemy\'s gold pay out', 'type': 'combat', 'enemyGoldPayout': 0.25},
-    'crab legs': {'metatype': 'usable', 'price': 60, 'uses': 5, 'shortDescription': 'heal 50 hp, lose 1 regen', 'longDescription': 'Heal 50 hp and lose 1 regen permanetly', 'type': 'all', 'hp': 50, 'regen': -1},
+    'pirate bag': {'metatype': 'usable', 'price': 53, 'uses': 3, 'shortDescription': 'gain 25% of enemy gold payout, deal 5 dmg', 'longDescription': 'During combat, gain 25% of the current enemy\'s gold pay out, then deal 5 dmg (bypasses armor).', 'type': 'combat', 'enemyGoldPayout': 0.25},
+    'crab legs': {'metatype': 'usable', 'price': 70, 'uses': 5, 'shortDescription': 'heal 50 hp, lose 1 regen', 'longDescription': 'Heal 50 hp and lose 1 regen permanetly', 'type': 'all', 'hp': 50, 'regen': -1},
     'mermaid gill potion': {'metatype': 'usable', 'price': 89, 'uses': 2, 'shortDescription': 'gain 12 regen, lose 10 armor', 'longDescription': 'Gain 12 regen, lose 10 armor, can go negative.', 'type': 'all', 'regen':12, 'armor':-10},
-    'turtlean shell potion': {'metatype': 'usable', 'price': 83, 'uses': 2, 'shortDescription': 'gain 15 armor, lose 10 regen', 'longDescription': 'Gain 12 regen, lose 10 armor, can go negative.', 'type': 'all', 'armor':15, 'regen':-10},
+    'turtlean shell potion': {'metatype': 'usable', 'price': 83, 'uses': 2, 'shortDescription': 'gain 15 armor, lose 10 regen', 'longDescription': 'Gain 15 armor, lose 10 regen, can go negative.', 'type': 'all', 'armor':15, 'regen':-10},
 
 //MAGIC
 
@@ -348,7 +348,8 @@ const ITEMLIST = {
     'blood suck': {'metatype': 'magic', 'price': 65, 'shortDescription': 'lose 25 hp, enemy loses 15 armor', 'longDescription': 'You lose 25 hp, enemy loses 15 armor. Infinite uses', 'manaCost': 18, 'hp': -25, 'enemyArm': -15},
     'sea chill': {'metatype': 'magic', 'price': 45, 'shortDescription': 'enemy loses 25 attack speed', 'longDescription': 'Enemy receives -25 attack speed. Infinite uses', 'manaCost': 30, 'enemyAs': -25},
     'heal pull': {'metatype': 'magic', 'price': 52, 'shortDescription': 'heal 20% of enemy hp', 'longDescription': 'You heal 20% of the enemy\'s current hp. Rounds down. Infinite uses', 'manaCost': 18, 'healProportion': 0.2},
-    'mental sharpen': {'metatype': 'magic', 'price': 39, 'shortDescription': '+1 dmg on current weapon', 'longDescription': 'You current weapon selected gains 1 dmg. Infinite uses', 'manaCost': 5, 'weaponDmg': 1},
+    'mental sharpen': {'metatype': 'magic', 'price': 39, 'shortDescription': '+1 dmg on current weapon', 'longDescription': 'The weapon you currently have selected gains 1 dmg. Infinite uses', 'manaCost': 5, 'weaponDmg': 1},
+    'blood infusion': {'metatype': 'magic', 'price': 43, 'shortDescription': 'lose 5 hp, current weapon +5 bleed', 'longDescription': 'Lose 5 hp; the weapon you currently have selected gains 5 bleed. Infinite uses', 'manaCost': 5, 'hp': -5, 'weaponBleed':5},
     
     //BOSS ITEMS
 

@@ -152,5 +152,10 @@ class Magic extends Item {
         if (this.weaponDmg) {
             this.game.player.getByType('weapon').changeStat('dmg', this.weaponDmg);
         }
+
+        // Weapon bleed
+        if (this.weaponBleed) {
+            this.game.player.getByType('weapon').changeStat('bleed', this.weaponBleed);
+        }
     }
 }
