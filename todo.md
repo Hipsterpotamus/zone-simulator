@@ -15,7 +15,7 @@
 * [x] Finish Beach Items
 * [x] Finish Beach Enemies
 * [x] Finish Beach Events
-* [] Finish Beach Rest Sites
+* [x] Finish Beach Rest Sites
 * [] Finish Beach Bosses
 * [] Add/balance boss reward items to all zones
 #### Grant:
