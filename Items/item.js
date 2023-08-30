@@ -19,8 +19,12 @@ class Item {
     }
 
     purchase(){
-        if( this.game.player.gold>=this.price){
-            this.game.player.changeGold(-this.price);
+        let newPrice = this.price;
+        if (this.game.player.levelInfo.characteristics.persuasive) {
+            let newPrice = Math.ceil(this.price * 3 / 4);
+        }
+        if( this.game.player.gold>=newPrice){
+            this.game.player.changeGold(-newPrice);
             this.onBuy();
             this.shopElement.remove();
             this.purchased = true;
