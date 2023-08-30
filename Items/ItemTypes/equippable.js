@@ -50,14 +50,9 @@ class Equippable extends Item {
                     let compareStats = this.game.player.getByType(this.metatype).as;
                     let compareValue = value - compareStats;
                     if (value > 0) {
-                        shopDesc += (shopDesc ? ', ' : '') + '+' + value + ' attack speed(';
+                        shopDesc += (shopDesc ? ', ' : '') + '+' + value + ' attack speed';
                     } else {
-                        shopDesc += (shopDesc ? ', ' : '') + value + ' attack speed(';
-                    }
-                    if (compareValue > 0) {
-                        shopDesc += '+' + this.game.player.calcAsChange(compareValue) + '% higher than current)';
-                    } else {
-                        shopDesc += this.game.player.calcAsChange(compareValue) + '% lower than current)';
+                        shopDesc += (shopDesc ? ', ' : '') + value + ' attack speed';
                     }
                 } else {
                     if (value > 0) {
@@ -71,12 +66,43 @@ class Equippable extends Item {
         }
 
     onBuy() {
+        if(this.itemInfo){
+            Object.keys(this.itemInfo).forEach((stat)=>{
+                console.log(this.genComparison(stat))
+            });
+        }
         this.game.player.addSelectableItem(this);
+    }
+
+    genComparison(stat) {
+        let currentEquipStat = this.game.player.getByType(this.metatype)[stat];
+        let currentStat = this.game.player.calcStat(stat);
+        let ownStat = this[stat];
+        let compStat = ownStat - currentEquipStat;
+        if (currentEquipStat === 0 && ownStat === 0) {
+            return '';
+        }
+        if (stat === 'as') {
+            let currentPercent = this.calcAsChange(currentEquipStat, currentStat - currentEquipStat);
+            let ownPercent = this.calcAsChange(ownStat, currentStat - currentEquipStat);
+            let comparePercent = this.calcAsChange(compStat, currentStat);
+            return `${currentPercent > 0 ? '+' : ''}${currentPercent}% => ${ownPercent > 0 ? '+' : ''}${ownPercent}% (${comparePercent}% ${comparePercent > 0 ? 'faster' : 'slower'})`;
+        } else {
+            return `${currentEquipStat > 0 ? '+' : ''}${currentEquipStat} => ${ownStat > 0 ? '+' : ''}${ownStat} (${compStat} ${compStat > 0 ? 'higher' : 'lower'})`;
+        }
     }
 
     changeStat (stat, amount) {
         this[stat] += amount;
         this.updateItemInfo();
+    }
+
+    calcAsChange(amount, prevAmount) {
+        const rawAS = prevAmount;
+        const tempAS = rawAS + amount;
+        const adjRaw = this.game.player.calcAsTheory(rawAS);
+        const adjTemp = this.game.player.calcAsTheory(tempAS);
+        return Math.round((adjRaw - adjTemp) / adjRaw * 1000) / 10;
     }
 
     updateItemInfo() {

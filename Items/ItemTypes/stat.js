@@ -27,9 +27,9 @@ class Stat extends Item {
                 shopDesc += (shopDesc ? ', ' : '') + 'heal ' + value + ' ' + stat;
             } else if (stat === 'as') {
                 if (value > 0) {
-                    shopDesc += (shopDesc ? ', ' : '') + '+' + value + ' attack speed(' + Math.abs(this.game.player.calcAsChange(value)) + '% faster)';
+                    shopDesc += (shopDesc ? ', ' : '') + '+' + value + ' attack speed';
                 } else {
-                    shopDesc += (shopDesc ? ', ' : '') + value + ' attack speed(' + this.game.player.calcAsChange(value) + '% slower)';
+                    shopDesc += (shopDesc ? ', ' : '') + value + ' attack speed';
                 }
             } else {
                 if (value > 0) {

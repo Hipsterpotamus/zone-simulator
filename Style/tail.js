@@ -63,10 +63,10 @@ document.addEventListener('dblclick', (event) => {
     }
 });
 
-// Hide tails that are currently showing when the element that is being hovered is deleted
-document.addEventListener('DOMNodeRemoved', (event) => {
-    if (event.target.classList.contains('has-tail')) {
-        const tailElement = document.querySelector(`#${event.target.id}-tail`);
-        tailElement.style.display = 'none';
-    }
-});
+// Hide tails that are currently showing when the element that is being hovered is deleted (commented to get rid of errors)
+// document.addEventListener('DOMNodeRemoved', (event) => {
+//     if (event.target.classList.contains('has-tail')) {
+//         const tailElement = document.querySelector(`#${event.target.id}-tail`);
+//         tailElement.style.display = 'none';
+//     }
+// });

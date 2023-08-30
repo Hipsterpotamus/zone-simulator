@@ -151,12 +151,8 @@ class Player extends Entity{
         this.updateGoldDisplay();
     }
 
-    calcAsChange(amount) {
-        const rawAS = this.calcStat('as');
-        const tempAS = rawAS + amount;
-        const adjRaw = this.calcAs();
-        const adjTemp = Math.floor(100 * Math.pow((1/2), (tempAS / 100)))
-        return Math.round((adjRaw - adjTemp) / adjRaw * 1000) / 10;
+    calcAsTheory(amount) {
+        return Math.floor(100 * Math.pow((1/2), (amount / 100)))
     }
 
     death() {

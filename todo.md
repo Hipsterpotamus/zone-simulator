@@ -48,7 +48,6 @@
 ## Backend:
 
 ### New stuff
-* [] Add player level up system
 * [] Add rarity to shop items
 * [] Get all the characters functioning
 

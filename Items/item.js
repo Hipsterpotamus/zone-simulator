@@ -21,7 +21,7 @@ class Item {
     purchase(){
         let newPrice = this.price;
         if (this.game.player.levelInfo.characteristics.persuasive) {
-            let newPrice = Math.ceil(this.price * 3 / 4);
+            newPrice = Math.ceil(this.price * 3 / 4);
         }
         if( this.game.player.gold>=newPrice){
             this.game.player.changeGold(-newPrice);
