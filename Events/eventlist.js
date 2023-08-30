@@ -635,4 +635,83 @@ const EVENTLIST = {
             }
         }
     ]],
+
+    // BEACH REST
+
+    'A Coconut Tree': ["You come to a coconut tree filled to the brim with ripe coconuts.", [
+        {
+            text: 'Rest and Drink: Heal 60 hp',
+            effect: function(game) {
+                game.player.changeHp(35);
+            }
+        },
+        {
+            text: "Fashion Coconuts: Gain 8 armor",
+            effect: function(game) {
+                game.player.changeMaxHp(20);
+                game.player.changeHp(-20);
+            }
+        }
+    ]],
+    'A Scenic Lookout': ["After scaling a slight cliff, you come to a beautiful view.", [
+        {
+            text: 'Relax: Heal 45 hp, Gain 10 max hp',
+            effect: function(game) {
+                game.player.changeMaxHp(10);
+                game.player.changeHp(45);
+            }
+        },
+        {
+            text: "Yoga: Gain 5 level heal and +10 speed",
+            effect: function(game) {
+                game.player.changeStat('levelheal', 5);
+                game.player.changeStat('as', 10);
+            }
+        },
+        {
+            text: "Throw Rocks: Gain +5 dmg",
+            effect: function(game) {
+                game.player.changeStat('dmg', 5);
+            }
+        }
+    ]],
+    'Lazy River': ["You come to a river steadily moving forward at a brisk pace. You hop in looking to cool down.", [
+        {
+            text: 'Wade in Water: Gain +35 max hp',
+            effect: function(game) {
+                game.player.changeMaxHp(25);
+            }
+        },
+        {
+            text: "Train your Swimming: +10 speed +5 dmg",
+            effect: function(game) {
+                game.player.changeStat('as',10);
+                game.player.changeStat('dmg',5);
+            }
+        }
+    ]],
+
+    //BEACH PATH EVENT
+    'A Desert on the Horizon': ["The heat of the beach increases as the remaining bits of shoreline begin to dissipate. You're faced with a dilemma, continue on land into the harsh sun of the desert, or take advantage of a serendipitously placed raft and head towards the ocean.", [
+        {
+            text: 'The Desert: A harsh, but manageable environment ahead',
+            effect: function(game) {
+                game.path.nextSpace = 'rest';
+                game.path.typeInfo[3][1] = 50;
+                game.path.typeInfo[3][2] = 20;
+                game.path.typeInfo[3][3] = 40;
+                // method to give land based boss fight
+            }
+        },
+        {
+            text: "The Ocean: An unpredictable torrent of events and extreme enemies",
+            effect: function(game) {
+                game.path.nextSpace = 'rest';
+                game.path.typeInfo[3][1] = 80;
+                game.path.typeInfo[3][2] = 20;
+                game.path.typeInfo[3][3] = 60;
+                // method to give a water based boss fight
+            }
+        }
+    ]],
 };

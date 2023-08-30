@@ -290,12 +290,12 @@ class Beach extends Zone {
         ];
 
         this.zoneRests = [
-            [1, 19, 'A Tree House', 0.33],
-            [1, 19, 'A Dryad Temple', 0.66],
-            [1, 19, 'A Dam', 1]
+            [1, 19, 'A Coconut Tree', 0.33],
+            [1, 19, 'A Scenic Lookout', 0.75],
+            [1, 19, 'Lazy River', 1]
         ];
 
-        this.pathEvent = 'The End of the Forest';
+        this.pathEvent = 'A Desert on the Horizon';
     }
     
     advanceToNextZone(){
