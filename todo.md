@@ -14,7 +14,7 @@
 #### Holden:
 * [x] Finish Beach Items
 * [x] Finish Beach Enemies
-* [] Finish Beach Events
+* [x] Finish Beach Events
 * [] Finish Beach Rest Sites
 * [] Finish Beach Bosses
 * [] Add/balance boss reward items to all zones
