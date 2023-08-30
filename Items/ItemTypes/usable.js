@@ -11,6 +11,7 @@ class Usable extends Item {
         //possible onUse defaults
         this.enemyDmg = false;
         this.hp = false;
+        this.armor = false;
         this.enemyArm = false;
         this.weaponDmg = false;
         this.count = false;
@@ -96,6 +97,9 @@ class Usable extends Item {
         if (this.hp) {
             this.game.player.changeHp(this.hp);
         }
+        if (this.armor) {
+            this.game.player.changeStat('arm',this.armor);
+        }
     
         // Change enemy armor
         if (this.enemyArm) {
@@ -159,13 +163,17 @@ class Usable extends Item {
         if (this.applyBleed){
            this.game.combat.selectedEnemy.bleedApplied += this.applyBleed;
         }
+
         // Weapon Bleed
         if (this.weaponBleed){
             this.game.player.getByType('weapon').changeStat('shatter', this.weaponBleed);
         }
+
         // Remove bleed
         if (this.removeBleed) {
             this.game.player.changeStat('bleedApplied', -game.player.bleedApplied);
         }
+
+        // 
     }
 }

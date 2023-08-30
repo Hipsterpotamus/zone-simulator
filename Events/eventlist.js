@@ -452,4 +452,187 @@ const EVENTLIST = {
             }
         }
     ]],
+
+    // BEACH EVENTS
+    'A Campfire': ['You come to a cozy looking campfire looks like an ample opportunity for rest. However, with the tide at its lowest point you wonder if you can really afford time to rest', [
+        {
+            text: 'Relax: Heal 55 hp, enemies became stronger',
+            effect: function(game) {
+                let enemyRand = Math.floor(5-(Math.random()*4))
+                game.zone.changeZoneLevel(enemyRand);
+                game.player.changeHp(55);
+            }
+        },
+        {
+            text: 'Journey Onward: Gain 5 max hp',
+            effect: function(game) {
+                game.player.changeMaxHp(5);
+                
+            }
+        }
+    ]],
+    'The Abandoned Surfboards': ['An abandoned surfboard washes onto the shore with little of note beyond two golden fins. Further out in the tattered water of the ocean is another abandoned surfboard which looks far more ornate, although you\'re not sure.', [
+        {
+            text: 'Scrap The First Board: Gain 20 gold',
+            effect: function(game) {
+                game.player.changeGold(20);
+            }
+        },
+        {
+            text: 'Retreive the Second Board: Lose anywhere from 30 to 80 hp, gain 50 to 60 gold',
+            effect: function(game) {
+                let goldObtain = Math.floor(11*Math.random());
+                goldObtain += 50;
+                game.player.changeGold(goldObtain);
+                let hpLoss = Math.floor(51*Math.random());
+                hpLoss += 30;
+                hpLoss = -hpLoss
+                game.player.changeHp(hpLoss);                
+            }
+        }
+    ]],
+    'The Rock Bank': ['Turning the corner of the beach, you see a large bank of rocks being battered by a torrent of tall waves. Under the beating of the water you notice a pile of delectable sea food coalescing together.', [
+        {
+            text: 'Seize The Food: Take anywhere from 40-60 hp. Gain 30 max hp, 8 dmg, 8 armor, and 4 lifedrain',
+            effect: function(game) {
+                let hpLoss = Math.floor(21*Math.random());
+                hpLoss += 40;
+                hpLoss = -hpLoss
+                game.player.changeHp(hpLoss); 
+                game.player.changeMaxHp(30);
+                game.player.changeStat('dmg',8);
+                game.player.changeStat('arm',8); 
+                game.player.changeStat('lifedrain',4); 
+            }
+        },
+        {
+            text: 'Take the Way Around: Heal 20 hp, gain 5 level heal',
+            effect: function(game) {
+                game.player.changeHp(20); 
+                game.player.changeStat('levelheal',5);       
+            }
+        }
+    ]],
+    'A Sandstorm': ['A brutal, but brief sandstorm begins forming around you. What will you do?', [
+        {
+            text: 'Bunker Down: lose 6 armor',
+            effect: function(game) {
+                game.player.changeStat('arm',-6);
+            }
+        },
+        {
+            text: 'Keep Moving: lose 40 hp',
+            effect: function(game) {
+                game.player.changeHp(-40); 
+                
+            }
+        }
+    ]],
+    'Very Happy Tourists': ['You\'re shocked to see what look like day-trippers on this hostile beach. They encourage you to join them for some fun on the beach.', [
+        {
+            text: 'Find an Easy Way Out: Heal 10 hp and 10 level heal.',
+            effect: function(game) {
+                game.player.changeHp(10); 
+                game.player.changeStat('levelheal',10);       
+            }
+        },
+        {
+            text: 'One Way Ticket To Fun: Gain +3 Mana Gen, +10 Max Mana, and add anywhere from +5 to -4 to all of the following stats independently: dmg, arm, regen, max Hp, dodge, lifedrain',
+            effect: function(game) {
+                game.player.changeStat('manaGen',3);
+                game.player.changeStat('maxMana',10);
+                let randDMG = Math.floor(6-(Math.random()*9)) 
+                game.player.changeStat('dmg',randDMG);
+                let randARM = Math.floor(6-(Math.random()*9)) 
+                game.player.changeStat('arm',randARM);
+                let randREGEN = Math.floor(6-(Math.random()*9)) 
+                game.player.changeStat('regen',randREGEN);
+                let randMAXHP = Math.floor(6-(Math.random()*9)) 
+                game.player.changeMaxHp(randMAXHP);
+                let randDODGE = Math.floor(6-(Math.random()*9)) 
+                game.player.changeStat('dodge',randDODGE);
+                let randLIFEDRAIN = Math.floor(6-(Math.random()*9)) 
+                game.player.changeStat('lifedrain',randLIFEDRAIN);
+            }
+        }
+    ]],
+    'A Growing Beach Mold': ['A growing fungus suddenly emerges from the sand and tries to grab hold of your legs. You hesitate for a moment and wonder if you should fight back.', [
+        {
+            text: 'Run: Lose 8 hp',
+            effect: function(game) {
+                game.player.changeHp(-8); 
+            }
+        },
+        {
+            text: 'Fight back: Lose 55 hp and 10 level heal, gain 10 lifedrain',
+            effect: function(game) {
+                game.player.changeHp(-55); 
+                game.player.changeStat('levelheal',-10);  
+                game.player.changeStat('lifedrain',10);
+            }
+        },
+        {
+            text: 'Jump Inside: Lose 50% of current hp and 10 level heal, gain 12 armor',
+            effect: function(game) {
+                game.player.changeHp(-Math.floor(game.player.hp*0.5)); 
+                game.player.changeStat('levelheal',-10);  
+                game.player.changeStat('armor',12);
+            }
+        }
+    ]],
+    'The Life-sized Sand Castle': ['What looked like a dune in the distance was actually a massive man-made(?) sandcastle towering into the sky. You survey the grounds, and question what you should do.', [
+        {
+            text: 'Raid the Vaults: Gain 50 gold',
+            effect: function(game) {
+                game.player.changeGold(50); 
+            }
+        },
+        {
+            text: 'Swim the Moat: Heal 40 hp, gain 5 level heal',
+            effect: function(game) {
+                game.player.changeHp(40); 
+                game.player.changeStat('levelheal',5);  
+            }
+        },
+        {
+            text: 'Raid the Armory: All currently equipped armor pieces gain +4 armor',
+            effect: function(game) {
+                game.player.getByType('head').changeStat('arm',4);
+                game.player.getByType('chest').changeStat('arm',4);
+                game.player.getByType('legs').changeStat('arm',4);
+                game.player.getByType('feet').changeStat('arm',4);
+            }
+        },
+        {
+            text: 'Knock it Over: Anger Enemies, lose 20 hp, gain 10 dmg',
+            effect: function(game) {
+                game.zone.changeZoneLevel(3);
+                game.player.changeHp(-20);
+                game.player.changeStat('dmg',10);
+            }
+        }
+    ]],
+    'A Turtlean Birth': ['It is late in the evening when you notice what look to be small turtles erupting from the ground. They number in the tenths of thousands, but many are trampling and killing each other in the race to the ocean. You scurry away and watch from afar as the carcasses form a macabre pile. Hours later, you notice a handful of these turtles found their way into your bag. They are still alive, and have already grown a remarkable amount. What do you do?', [
+        {
+            text: 'Furnish Gear: +4 armor on all currently equipped weapons and armor',
+            effect: function(game) {
+                game.player.getByType('weapon').changeStat('arm',4);
+                game.player.getByType('head').changeStat('arm',4);
+                game.player.getByType('chest').changeStat('arm',4);
+                game.player.getByType('legs').changeStat('arm',4);
+                game.player.getByType('feet').changeStat('arm',4);
+            }
+        },
+        {
+            text: 'Eat: Gain +50 max hp',
+            effect: function(game) {
+                game.player.changeMaxHp(50);
+            }
+        },
+        {
+            text: 'Spare: Nothing',
+            effect: function(game) {
+            }
+        }
+    ]],
 };

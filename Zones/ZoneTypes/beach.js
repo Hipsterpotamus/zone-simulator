@@ -278,14 +278,14 @@ class Beach extends Zone {
 
         this.zoneEvents = [
             //[first possible space, last possible space, event id]
-            [1, 5, 'A Long River'],
-            [3, 6, "The Wanderer's Trailmix"],
-            [5, 8, "A Bird's Nest"],
-            [6, 10, 'The Trapped Totem'],
-            [9, 12, 'Friendly Elves'],
-            [11, 14, 'A Deep Fog'],
-            [12, 19, 'The Cave Shrine'],
-            [16, 19, 'The Goblin Village']
+            [1, 4, 'A Campfire'],
+            [3, 5, "The Abandoned Surfboards"],
+            [4, 7, "The Rock Bank"],
+            [6, 10, 'A Sandstorm'],
+            [8, 13, 'Very Happy Tourists'],
+            [10, 15, 'A Growing Beach Mold'],
+            [12, 19, 'The Life-sized Sand Castle'],
+            [16, 19, 'A Turtlean Birth']
             
         ];
 
