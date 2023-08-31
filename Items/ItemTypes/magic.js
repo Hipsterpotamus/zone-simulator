@@ -36,7 +36,7 @@ class Magic extends Item {
     }
 
     onBuy() {
-        this.game.player.addSelectableItem(this);
+        this.game.player.addSelectableItem(this, this.game.path.itemShop, true);
     }
 
     attemptUse(){

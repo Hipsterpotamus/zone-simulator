@@ -62,14 +62,14 @@ class Player extends Entity{
         this.updateEntityDisplay();
     }
 
-    addSelectableItem(item) {
+    addSelectableItem(item, itemShop = false, updateDisplay = true) {
         this.inv[item.metatype][1].push(item);
         item.appendToSelect()
-        this.changeSelectedItem(item);
+        this.changeSelectedItem(item, itemShop, updateDisplay);
     }
 
     changeSelectedItem(item, itemShop = false, updateDisplay = true) {
-        if (updateDisplay && item.metatype != 'usable') {item.calcComparisons()}
+        if (updateDisplay && item.metatype != 'usable' && item.metatype != 'magic') {item.calcComparisons()}
         this.attackCounter = 0;
         this.inv[item.metatype][0] = item;
         if (updateDisplay) {item.updateItemInfo()}
