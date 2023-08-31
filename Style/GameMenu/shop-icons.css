@@ -45,6 +45,7 @@
   stroke: var(--md-sys-color-on-primary);
 
   border: 1.5px solid var(--md-sys-color-tertiary-container);
+  z-index: 10;
 }
 
 .shop-item-stats .stat-down {
@@ -55,4 +56,5 @@
   border: 1px dashed var(--md-sys-color-tertiary);
 
   
+  z-index: 10;
 }

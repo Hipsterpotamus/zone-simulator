@@ -120,7 +120,7 @@
 #content-central-box button {
   padding: 1rem;
   margin: 1rem;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
   text-transform: capitalize;
   border: none;
   border-radius: 0.5rem;
@@ -137,8 +137,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* if not .shop-item-disabled */
-
 
 #content-central-box button:not(.shop-item-disabled):hover {
   background-color: var(--md-sys-color-tertiary);
@@ -146,10 +144,10 @@
   border-radius: 16px;
   transform: scale(1.1);
 }
+
 .shop-item-disabled {
   outline-width: 1px;
   outline-color: var(--md-sys-color-on-tertiary);
-  pointer-events: none;
   opacity: 0.5;
 }
 
