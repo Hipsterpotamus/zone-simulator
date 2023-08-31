@@ -117,7 +117,7 @@ class Entity{
             opp.gameCombatStats.outgoingDmg += oppDMG;
             this.gameCombatStats.incomingBlocked += (oppDMG - opp.testDmg(0, 0));
 
-            this.shatterApplied = Math.max(this.shatterApplied + opp.testShatter(), this.calcStat('arm'));
+            this.shatterApplied = Math.min(this.shatterApplied + opp.testShatter(), this.calcStat('arm'));
             this.bleedApplied += opp.testBleed();
             this.antihealApplied = Math.max(opp.antiheal, this.calcStat('regen'));
 

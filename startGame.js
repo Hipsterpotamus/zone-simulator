@@ -44,7 +44,7 @@ function startGame() {
             let newItem = $(this).val();
             game.player.inv[metatype][1].forEach(item => {
                 if (item.name == newItem) {
-                    game.player.changeSelectedItem(item, game.path.itemShop);
+                    game.player.changeSelectedItem(item, game.path.itemShop, true);
                 }
             });
         });
