@@ -48,7 +48,6 @@ class Usable extends Item {
     }
 
     appendToSelect() {
-        // add this item as a button to .items-container with an onlcick function of attemptUse
         this.usableButton = $('<button>', {
             'class': 'usable-button primary on-primary-text hover shadow',
             'id': this.name.replace(/\s/g, '') + '-button'
@@ -81,16 +80,8 @@ class Usable extends Item {
         this.usableButtonDesc.text(this.shortDescription);
         this.usableButtonDesc.appendTo(this.usableButtonInfo);
 
-
-
         this.usableButton.appendTo('.items-container');
-        // this.usableButton.html(`
-        // <div class='usable-item-uses'>${this.uses}</div>
-        // <div class='usable-item-info'>
-        //     <div>${this.name}</div>
-        //     <div>${this.shortDescription}</div>
-        // </div>
-        // `);
+
         this.usableButton.on('click', () => {
             this.attemptUse();
         });
@@ -122,17 +113,11 @@ class Usable extends Item {
 
         }else{
             notify('You are out of uses of ' + this.name + '.')
-
         }
     }
 
     updateItemInfo() {
-        // if none, remove button'
-        
-        // $('#usable-select-description').html(this.longDescription+'<br>count : '+this.uses);
-
         this.usableButtonUses.text(this.uses);
-
         if (this.uses <= 0) {
             this.usableButton.remove();
         }
