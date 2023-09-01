@@ -6,6 +6,10 @@ class Usable extends Item {
         this.shortDescription = '';
         this.longDescription = '';
         this.uses = 0;
+        this.usableButtonUses;
+        this.usableButtonInfo;
+        this.usableButtonName;
+        this.usableButtonDesc;
         
 
         //possible onUse defaults
@@ -43,6 +47,56 @@ class Usable extends Item {
         };
     }
 
+    appendToSelect() {
+        // add this item as a button to .items-container with an onlcick function of attemptUse
+        this.usableButton = $('<button>', {
+            'class': 'usable-button primary on-primary-text hover shadow',
+            'id': this.name.replace(/\s/g, '') + '-button'
+        });
+
+        this.usableButtonUses = $('<div>', {
+            'class': 'usable-item-uses',
+            'id': this.name.replace(/\s/g, '') + '-uses'
+        });
+        this.usableButtonUses.text(this.uses);
+        this.usableButtonUses.appendTo(this.usableButton);
+
+        this.usableButtonInfo = $('<div>', {
+            'class': 'usable-item-info',
+            'id': this.name.replace(/\s/g, '') + '-info'
+        });
+        this.usableButtonInfo.appendTo(this.usableButton);
+
+        this.usableButtonName = $('<div>', {
+            'class': 'usable-item-name',
+            'id': this.name.replace(/\s/g, '') + '-name'
+        });
+        this.usableButtonName.text(this.name);
+        this.usableButtonName.appendTo(this.usableButtonInfo);
+
+        this.usableButtonDesc = $('<div>', {
+            'class': 'usable-item-desc',
+            'id': this.name.replace(/\s/g, '') + '-desc'
+        });
+        this.usableButtonDesc.text(this.shortDescription);
+        this.usableButtonDesc.appendTo(this.usableButtonInfo);
+
+
+
+        this.usableButton.appendTo('.items-container');
+        // this.usableButton.html(`
+        // <div class='usable-item-uses'>${this.uses}</div>
+        // <div class='usable-item-info'>
+        //     <div>${this.name}</div>
+        //     <div>${this.shortDescription}</div>
+        // </div>
+        // `);
+        this.usableButton.on('click', () => {
+            this.attemptUse();
+        });
+
+    }
+
     onBuy() {
         if (this.game.player.levelInfo.characteristics.mechanical) {
             this.uses = this.uses * 2;
@@ -65,13 +119,23 @@ class Usable extends Item {
                 this.onUse(this.game);
             }
             this.updateItemInfo();
+
         }else{
             notify('You are out of uses of ' + this.name + '.')
+
         }
     }
 
     updateItemInfo() {
-        $('#usable-select-description').html(this.longDescription+'<br>count : '+this.uses);
+        // if none, remove button'
+        
+        // $('#usable-select-description').html(this.longDescription+'<br>count : '+this.uses);
+
+        this.usableButtonUses.text(this.uses);
+
+        if (this.uses <= 0) {
+            this.usableButton.remove();
+        }
     }
 
     onUse() {
