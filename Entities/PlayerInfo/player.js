@@ -325,6 +325,6 @@ class Player extends Entity{
     }
 
     updateGoldDisplay() {
-        $('#gold-text').text('gold: '+ this.gold);
+        $('#gold-text-number').text(this.gold);
     }
 }

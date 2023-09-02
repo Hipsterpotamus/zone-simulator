@@ -59,11 +59,7 @@ body, html {
   width:calc(40% - 1px);
 }
 
-#zone-text {
-  border-radius: 0;
-  border-bottom-right-radius: 2rem;
-  padding: 0.5rem 1rem;
-}
+
 
 #combatTimer{
   text-align: center;

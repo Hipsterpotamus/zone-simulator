@@ -1,11 +1,12 @@
 /* Game Menu Header */
 
 .game-header{
-    width:100%;
+    /* width:100%; */
     /* padding:0.9%; */
   
     position: relative;
     z-index: 8;
+    width: max-content;
 }
 
 .game-header p {
@@ -31,6 +32,41 @@
 
 #sineWave-1 {
     fill: var(--md-sys-color-primary-container);
+}
 
+#zone-text {
+    border-radius: 0;
+    border-bottom-right-radius: 2rem;
+    padding: 0.5rem 1.5rem;
+    font-family: 'Martian Mono', monospace;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+#gold-text {
+    padding: 0.5rem;
+    /* width: 5rem; */
+    /* align contents to right */
+    display: flex;
+    justify-content: flex-end;
+    
+    
+    padding-right: 1.5rem;
+    align-items: center;
+
+}
+#gold-text p {
+    padding-left: 0.5rem;
+}
+#gold-text svg {
+    fill: var(--md-sys-color-on-secondary-container);
+    pointer-events: none;
+    /* small */
+    width: 1.5rem;
+    height: 1.5rem;
+    padding-left: 0.5rem;
 }
 

@@ -56,7 +56,7 @@ class BlobCharacter extends Player {
     }
 
     updateGoldDisplay() {
-        $('#gold-text').text('gold: '+ this.hp);
+        $('#gold-text-number').text(this.hp);
         this.updateEntityDisplay();
     }
 }
