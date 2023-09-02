@@ -92,6 +92,7 @@ class Path {
     }
 
     shopEvent() {
+        setEventFormat(false);
         setBroadcastTitleText('Shop');
         this.itemShop.generateNewShop(this.game.zone.getShopCode());
     }

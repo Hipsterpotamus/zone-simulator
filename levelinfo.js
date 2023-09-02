@@ -137,33 +137,30 @@ const CHARACTERISTICS = {
     },
     'resurgent': {
         description: 'Once per combat, upon going below 50% health, heal 10% of max hp.',
-        onHealthDrop: function(maxHp, currentHp) {
-            if (currentHp / maxHp < 0.5) {
-                return Math.ceil(maxHp * 0.1);
+        onHealthDrop: function(player) {
+            if (player.resurgentUses === 0 && player.hp / player.maxHp < 0.5) {
+                return Math.floor(player.maxHp * 0.1);
             }
             return 0;
         }
     },
     'boastful': {
-        description: 'After combat, if total dmg dealt was greater than dmg received, gain a small buff to dmg, armor, and regen. Max of +1 dmg and +(1% of current dmg) for all three stats',
-        onCombatEnd: function(dmgDealt, dmgReceived, baseDmg, baseArmor, baseRegen) {
-            if (dmgDealt > dmgReceived) {
-                return {
-                    newDmg: Math.min(baseDmg + 1, baseDmg * 1.01),
-                    newArmor: Math.min(baseArmor + 1, baseArmor * 1.01),
-                    newRegen: Math.min(baseRegen + 1, baseRegen * 1.01)
-                };
+        description: 'After combat, if total dmg dealt was greater than dmg received, gain a small buff to dmg, armor, and regen. Max of +1 dmg and +(1% of current dmg) for all three stats', //i do not know wtf this means
+        onCombatEnd: function(player) {
+            if (player.combatStats.outgoingDmg > player.combatStats.incomingDmg) {
+                player.changeStat('dmg', 1);
+                player.changeStat('arm', 1);
+                player.changeStat('regen', 1);
             }
-            return { newDmg: baseDmg, newArmor: baseArmor, newRegen: baseRegen };
         }
     },
     'protective': {
-        description: 'Armor gains a permanent 10% buff for each regen you have and regen receives a permanent 10% buff for each armor you have. (Do not interact, the 10% buff to armor from regen does not get factored into the 10% buff to regen from armor).',
-        onCalculateArmorAndRegen: function(baseArmor, baseRegen) {
-            return {
-                newArmor: Math.ceil(baseArmor * (1 + (baseRegen * 0.1))),
-                newRegen: Math.ceil(baseRegen * (1 + (baseArmor * 0.1)))
-            };
+        description: 'Armor gains a permanent 10% buff for each regen you have and regen receives a permanent 10% buff for each armor you have. (Do not interact, the 10% buff to armor from regen does not get factored into the 10% buff to regen from armor).', //this seems insane, lmk if i read it right lmao
+        onCalculateArmor: function(baseArmor, baseRegen) {
+            return baseArmor + baseArmor * baseRegen * 0.1;
+        },
+        onCalculateRegen: function(baseRegen, baseArmor) {
+            return baseRegen + baseRegen * baseArmor * 0.1;
         }
     },
     'elegant': {
@@ -180,11 +177,14 @@ const CHARACTERISTICS = {
     // }
 };
 
+const LEVEL_ONE_XP = 50;
+const XP_SCALE_MULT = 10;
+    
 class LevelInfo {
     constructor() {
         this.xp = 0;
         this.level = 0;
-        this.nextLevel = 50;
+        this.nextLevel = LEVEL_ONE_XP;
 
         this.characteristicsOff = [];
         this.activeCharacteristics = new Set();
@@ -202,7 +202,7 @@ class LevelInfo {
     }
 
     updateNextLevel() { //generic, can be updated to your preferences
-        this.nextLevel = this.level * 10 + 50;
+        this.nextLevel = this.level * XP_SCALE_MULT + LEVEL_ONE_XP;
     }
 
     levelUp(bossRewards) {
@@ -211,7 +211,7 @@ class LevelInfo {
         this.updateNextLevel();
         setNextButtonVisible(false);
         setBroadcastTitleText('Level Up!');
-        this.createLvlUpElements([this.getCharacteristic(), this.getCharacteristic()], bossRewards);
+        this.createLvlUpElements([this.getCharacteristic(), this.getCharacteristic(), this.getCharacteristic()], bossRewards);
     }
 
     getCharacteristic() { //currently picks a random one

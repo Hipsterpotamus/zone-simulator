@@ -21,7 +21,9 @@ class Combat {
     constructor(msDelay = 20) {
         this.tick = 0;
         this.player;
+
         this.playerAttacks = 0;
+
         this.enemyList;
         this.selectedEnemy;
         this.lvlHealMult;
@@ -40,7 +42,11 @@ class Combat {
         this.tick = 0;
         this.inCombat = true;
         this.player = player;
+
         this.playerAttacks = 0;
+        this.player.resurgentUses = 0;
+        this.player.inCombat = true;
+
         if (this.player.levelInfo.activeCharacteristics.has('healthy')) {
             total = CHARACTERISTICS['healthy'].onCombatStart(this.player);
         }
@@ -49,6 +55,7 @@ class Combat {
 
         this.player.combatStats = {
             'outgoingDmg' : 0,
+            'incomingDmg' : 0,
             'ticksAlive' : 0,
             'incomingBlocked' : 0,
             'hpRegened' : 0,
@@ -131,7 +138,14 @@ class Combat {
             if (this.player.alive) {
                 this.tick = 0;
                 this.inCombat = false;
+                this.player.inCombat = false;
+                this.player.resurgentUses = 0;
                 setBroadcastTitleText('Victory!', true);
+
+                if (this.player.levelInfo.activeCharacteristics.has('boastful')) {
+                    CHARACTERISTICS['boastful'].onCombatEnd(this.player);
+                }
+
                 this.displayCombatStats();
                 this.player.cleanStatus();
                 this.player.changeHp(this.player.levelheal*this.lvlHealMult);

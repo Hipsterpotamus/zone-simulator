@@ -20,6 +20,9 @@ class Player extends Entity{
 
         this.manaCounter = 0;
 
+        this.inCombat = false;
+        this.resurgentUses = 0;
+
         this.inv = {
             'usable':['', []],
             'weapon':['', []],
@@ -32,6 +35,7 @@ class Player extends Entity{
 
         this.gameCombatStats = {
             'outgoingDmg' : 0,
+            'incomingDmg' : 0,
             'ticksAlive' : 0,
             'incomingBlocked' : 0,
             'hpRegened' : 0,
@@ -42,6 +46,7 @@ class Player extends Entity{
 
         this.combatStats = {
             'outgoingDmg' : 0,
+            'incomingDmg' : 0,
             'ticksAlive' : 0,
             'incomingBlocked' : 0,
             'hpRegened' : 0,
@@ -80,14 +85,7 @@ class Player extends Entity{
     //generic functions
 
     calcStat(stat) {
-        let total = (
-            this[stat] +
-            this.getByType('weapon')[stat] +
-            this.getByType('head')[stat] +
-            this.getByType('chest')[stat] +
-            this.getByType('legs')[stat] +
-            this.getByType('feet')[stat]
-        );
+        let total = this.calcStatBase(stat);
     
         if (stat === 'dodge' && this.levelInfo.activeCharacteristics.has('elusive')) {
             total = CHARACTERISTICS['elusive'].onCalculateDodge(total, this.calcStat('as'));
@@ -95,6 +93,18 @@ class Player extends Entity{
 
         if (stat === 'shatter' && this.levelInfo.activeCharacteristics.has('brutal')) {
             total = CHARACTERISTICS['brutal'].onCalculateShatter(total);
+        }
+
+        if (stat === 'arm' && this.levelInfo.activeCharacteristics.has('protective')) {
+            total = CHARACTERISTICS['protective'].onCalculateArmor(total, this.calcStatBase('regen'));
+        }
+
+        if (stat === 'regen' && this.levelInfo.activeCharacteristics.has('protective')) {
+            total = CHARACTERISTICS['protective'].onCalculateRegen(total, this.calcStatBase('arm'));
+        }
+
+        if (stat === 'as' && this.levelInfo.activeCharacteristics.has('elegant')) {
+            total = CHARACTERISTICS['elegant'].onCalculateAttackSpeed(total);
         }
     
         if (stat === 'dmg') {
@@ -107,6 +117,17 @@ class Player extends Entity{
         }
     
         return total;
+    }
+
+    calcStatBase(stat) {
+        return (
+            this[stat] +
+            this.getByType('weapon')[stat] +
+            this.getByType('head')[stat] +
+            this.getByType('chest')[stat] +
+            this.getByType('legs')[stat] +
+            this.getByType('feet')[stat]
+        );
     }
 
     changeStat (stat, amount) {
@@ -174,6 +195,32 @@ class Player extends Entity{
     changeGold(amount, inCombat = false) {
         this.gold += amount;
         this.updateGoldDisplay();
+    }
+
+    changeHp(amount){
+        if (amount < 0 && this.inCombat) {
+            this.combatStats.incomingDmg -= amount;
+            this.gameCombatStats.incomingDmg -= amount;
+        }
+        if(amount == 'max') {
+            this.hp = this.maxhp;
+        } else {
+            this.hp = Math.min(this.maxhp, this.hp + amount);
+            if (this.inCombat && this.levelInfo.activeCharacteristics.has('resurgent')) {
+                let preAmount = amount;
+                amount += this.hp + CHARACTERISTICS['resurgent'].onHealthDrop(this);
+                this.hp = Math.min(this.maxhp, this.hp + amount - preAmount);
+            }
+        }
+
+        this.updateHealthBar(amount);
+
+        if (this.hp <= 0 && this.alive) {
+            this.hp = 0;
+            this.death();
+        } else if (this.hp > 0){
+            this.updateEntityDisplay();
+        };
     }
 
     calcAsTheory(amount) {
