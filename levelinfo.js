@@ -9,6 +9,13 @@ const CHARACTERISTICS = {
     'precise': 'enemies takes x1.8 more damage from items, and x1.8 more from spells',
     'patient': 'receives a x1.4 damage increase after 500 ticks/10 seconds',
     'thrifty': 'gains x2 gold from income'
+    //'healthy': 'heal 5% of hp at the start of combat'
+    //'brutal': '+40% to shatter stat'
+    //'studious': 
+    //'committed': +30% to all gained max hp 
+    //'defensive': -5% to all enemy 
+    //'tricky': 25% chance on hit to reflect back 40% of damage taken (that bypassed armor)
+    //'peculiar': 
   };
 
 class LevelInfo {
