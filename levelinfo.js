@@ -13,7 +13,7 @@ const CHARACTERISTICS = {
     //'brutal': '+40% to shatter stat'
     //'studious': 
     //'committed': +30% to all gained max hp 
-    //'defensive': -5% to all enemy 
+    //'defensive': -5% to all enemy dmg and +10% to all future armor gained. (round up)
     //'tricky': 25% chance on hit to reflect back 40% of damage taken (that bypassed armor)
     //'peculiar': 
   };
