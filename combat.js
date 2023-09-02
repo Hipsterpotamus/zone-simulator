@@ -43,6 +43,8 @@ class Combat {
         this.inCombat = true;
         this.player = player;
 
+        startPlayerTimer(this.player.calcAs());
+
         this.playerAttacks = 0;
         this.player.resurgentUses = 0;
         this.player.inCombat = true;
@@ -109,6 +111,7 @@ class Combat {
                 attackMult = attackMult * CHARACTERISTICS['persistent'].onTenthAttack(this.playerAttacks);
             }
             this.selectedEnemy.receiveHitFrom(this.player, attackMult);
+            // startPlayerTimer(this.player.calcAs());
         }
 
         this.enemyList.forEach(enemy => {

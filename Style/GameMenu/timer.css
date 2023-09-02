@@ -1,0 +1,77 @@
+.timer {
+  background: -webkit-linear-gradient(left, var(--md-sys-color-tertiary) 50%, var(--md-sys-color-tertiary-container) 50%);
+  border-radius: 100%;
+  height: calc(var(--size) * 1px);
+  width: calc(var(--size) * 1px);
+  position: relative;
+  
+  -webkit-animation: time calc(var(--timer-duration) * 20ms) steps(1000, start) infinite;
+  animation: time calc(var(--timer-duration) * 20ms) steps(1000, start) infinite;
+  -webkit-mask: radial-gradient(transparent 0%,#000 0%);
+  mask: radial-gradient(transparent 0%,#000 0%);
+  animation-play-state: paused;
+}
+.timer-mask {
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 50%;
+  -webkit-animation: mask calc(var(--timer-duration) * 20ms) steps(500, start) infinite;
+  animation: mask calc(var(--timer-duration) * 20ms) steps(500, start) infinite;
+  -webkit-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+  animation-play-state: paused;
+  
+  background-color: var(--md-sys-color-tertiary-container);
+  
+}
+
+@keyframes time {
+  100% {
+      -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes mask {
+  0% {
+    background: var(--md-sys-color-tertiary-container);
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    background: var(--md-sys-color-tertiary-container);
+    -webkit-transform: rotate(-180deg);
+  }
+  50.000000001% {
+    background: var(--md-sys-color-tertiary);
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    background: var(--md-sys-color-tertiary);
+    -webkit-transform: rotate(-180deg);
+  }
+}
+
+@-webkit-keyframes time {
+  100% {
+      -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes mask {
+  0% {
+      background: var(--md-sys-color-tertiary-container);
+      -webkit-transform: rotate(0deg);
+  }
+  50% {
+      background: var(--md-sys-color-tertiary-container);
+      -webkit-transform: rotate(-180deg);
+  }
+  50.000000001% {
+      background: var(--md-sys-color-tertiary);
+      -webkit-transform: rotate(0deg);
+  }
+  100% {
+      background: var(--md-sys-color-tertiary);
+      -webkit-transform: rotate(-180deg);
+  }
+}

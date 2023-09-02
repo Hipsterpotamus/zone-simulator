@@ -230,3 +230,36 @@ const stat_icons = {
   </svg>`,
 
 }
+
+
+// Timer for Speed
+
+
+
+
+function startPlayerTimer(speed) {
+    const timer_element = document.querySelector('.timer');
+    const timer_element_mask = document.querySelector('.timer-mask');
+    timer_element_mask.style.animationPlayState = 'initial';
+    // change the --timer-duration css variable to the speed
+    document.documentElement.style.setProperty('--timer-duration', `${speed}`);
+
+    
+    timer_element_mask.style.animation = 'none';
+    window.requestAnimationFrame(function(){
+        timer_element_mask.style.animation = 'mask calc(var(--timer-duration) * 20ms) steps(500, start) infinite';
+    });
+}
+
+function stopPlayerTimer() {
+    const timer_element = document.querySelector('.timer');
+    const timer_element_mask = document.querySelector('.timer-mask');
+    timer_element_mask.style.animationPlayState = 'paused';
+
+    // set the background style css to var(--md-sys-color-tertiary-container);
+    timer_element_mask.style.background = 'var(--md-sys-color-tertiary-container)';
+    // timer_element.style.background = 'var(--md-sys-color-tertiary-container)';
+
+    
+
+}
