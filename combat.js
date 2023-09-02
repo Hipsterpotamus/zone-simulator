@@ -48,7 +48,10 @@ class Combat {
         this.player.inCombat = true;
 
         if (this.player.levelInfo.activeCharacteristics.has('healthy')) {
-            total = CHARACTERISTICS['healthy'].onCombatStart(this.player);
+            CHARACTERISTICS['healthy'].onCombatStart(this.player);
+        }
+        if (this.player.name === 'garry') {
+            this.player.calcGarryMult();
         }
         this.enemyList = enemyList;
         this.lvlHealMult = 0;
@@ -101,9 +104,9 @@ class Combat {
         if (this.player.attackCounter >= this.player.calcAs()) {
             this.player.attackCounter = 0;
             this.playerAttacks += 1;
-            let attackMult;
+            let attackMult = 1;
             if (this.player.levelInfo.activeCharacteristics.has('persistent')) {
-                attackMult = CHARACTERISTICS['persistent'].onTenthAttack(this.playerAttacks);
+                attackMult = attackMult * CHARACTERISTICS['persistent'].onTenthAttack(this.playerAttacks);
             }
             this.selectedEnemy.receiveHitFrom(this.player, attackMult);
         }
