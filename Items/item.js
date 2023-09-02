@@ -21,7 +21,13 @@ class Item {
     purchase(){
         let newPrice = this.price;
         if (this.game.player.levelInfo.activeCharacteristics.has('persuasive')) {
-            newPrice = LevelInfo.characteristicHooks['persuasive'].onCalculatePrice(this.game, this.price);
+            newPrice = CHARACTERISTICS['persuasive'].onCalculatePrice(newPrice);
+        }
+        if (this.metatype === 'magic' && this.game.player.levelInfo.activeCharacteristics.has('studious')) {
+            newPrice = CHARACTERISTICS['studious'].onCalculateSpellPrice(newPrice);
+        }
+        if (this.game.player.levelInfo.activeCharacteristics.has('committed')) {
+            newPrice = CHARACTERISTICS['committed'].onExpensivePurchase(this.game.player, newPrice);
         }
         if( this.game.player.gold>=newPrice){
             this.game.player.changeGold(-newPrice);
@@ -40,12 +46,18 @@ class Item {
         if (this.game.player.gold < this.price) {this.disabled = true}
         this.shopElement.attr('class', newClass);
         let displayPrice = this.price;
+        let displayText = 'buy ' + this.name + ': ';
+
         if (this.game.player.levelInfo.activeCharacteristics.has('persuasive')) {
             displayPrice = CHARACTERISTICS['persuasive'].onCalculatePrice(this.price);
-            this.shopElement.html('buy ' + this.name + ': <del>' + this.price + '</del> ' + displayPrice + ' gold<br>' + this.genShopDesc());
+            displayText += '<del>' + this.price + '</del> ' + displayPrice + ' gold<br>' + this.genShopDesc();
+        } else if (this.metatype === 'magic' && this.game.player.levelInfo.activeCharacteristics.has('studious')) {
+            displayPrice = CHARACTERISTICS['studious'].onCalculateSpellPrice(this.price);
+            displayText += '<del>' + this.price + '</del> ' + displayPrice + ' gold<br>' + this.genShopDesc();
         } else {
-            this.shopElement.html('buy ' + this.name + ': ' + this.price + ' gold<br>' + this.genShopDesc());
+            displayText += this.price + ' gold<br>' + this.genShopDesc();
         }
+        this.shopElement.html(displayText);
         // Stat icons on shop buttons
         let shopItemStats = $('<div>', {
             'class': 'shop-item-stats',

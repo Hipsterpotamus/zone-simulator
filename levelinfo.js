@@ -1,20 +1,20 @@
 const CHARACTERISTICS = {
     'persuasive': {
         description: '15% reduction on all future shop prices',
-        onCalculatePrice: function(originalPrice) {
-            return Math.ceil(originalPrice * 0.85);
+        onCalculatePrice: function(basePrice) {
+            return Math.ceil(basePrice * 0.85);
         }
     },
     'mechanical': {
         description: 'x2 uses on all new items',
-        onItemUses: function(originalUses) {
-            return originalUses * 2;
+        onItemUses: function(baseUses) {
+            return baseUses * 2;
         }
     },
     'vengeful': {
         description: 'x1.5 weapon dmg when below 30% health',
-        onCalculateDamage: function(originalDmg, hp, maxHp) {
-            return (hp / maxHp < 0.3) ? Math.ceil(originalDmg * 1.5) : originalDmg;
+        onCalculateDamage: function(baseDmg, hp, maxHp) {
+            return (hp / maxHp < 0.3) ? Math.ceil(baseDmg * 1.5) : baseDmg;
         }
     },
     'prescient': {
@@ -25,8 +25,8 @@ const CHARACTERISTICS = {
     },
     'elusive': {
         description: 'gains +2% dodge for every 10 attack speed',
-        onCalculateDodge: function(originalDodge, attackSpeed) {
-            return originalDodge + Math.max(Math.floor(attackSpeed / 10) * 2, 0);
+        onCalculateDodge: function(baseDodge, attackSpeed) {
+            return baseDodge + Math.max(Math.floor(attackSpeed / 10) * 2, 0);
         }
     },
     'dominant': {
@@ -40,7 +40,7 @@ const CHARACTERISTICS = {
     },
     'intimidating': {
         description: 'enemies start with 25% less armor',
-        onCalculateArmor: function(baseArmor) {
+        onCalculateEnemyArmor: function(baseArmor) {
             return Math.ceil(baseArmor * 0.75);
         }
     },
@@ -52,77 +52,133 @@ const CHARACTERISTICS = {
     },
     'patient': {
         description: 'receives a x1.4 damage increase after 500 ticks/10 seconds',
-        onCalculateDamage: function(originalDmg, ticksAlive) {
-            return (ticksAlive > 500) ? Math.ceil(originalDmg * 1.4) : originalDmg;
+        onCalculateDamage: function(baseDmg, ticksAlive) {
+            return (ticksAlive > 500) ? Math.ceil(baseDmg * 1.4) : baseDmg;
         }
     },
     'thrifty': {
         description: 'gains x2 gold from income',
-        onCalculateIncome: function(originalIncome) {
-            return originalIncome * 2;
+        onCalculateIncome: function(baseIncome) {
+            return baseIncome * 2;
         }
     },
-    // Commented out blocks
-    /*
     'healthy': {
-        description: 'heal 5% of hp at the start of combat',
-        onCombatStart: function(game) {
-            // Logic for healing 5% of hp at the start of combat
+        description: 'heal 5% of max hp at the start of combat',
+        onCombatStart: function(player) {
+            player.changeHp(Math.floor(player.maxHp * 0.05));
         }
     },
     'brutal': {
         description: '+40% to shatter stat',
-        onCalculateShatter: function(game) {
-            // Logic for +40% to shatter stat
+        onCalculateShatter: function(baseShatter) {
+            return Math.floor(baseShatter * 1.4);
         }
     },
     'studious': {
-        description: 'Placeholder for future logic',
-        // Placeholder for future logic
+        description: '-30% price reduction to all magic spells in shops',
+        onCalculateSpellPrice: function(basePrice) {
+            return Math.ceil(basePrice * 0.7);
+        }
     },
-    'committed': {
+    'emergent': {
         description: '+30% to all gained max hp',
-        onMaxHpGained: function(game) {
-            // Logic for +30% to all gained max hp
+        onMaxHpGained: function(baseMaxHp) {
+            return Math.floor(baseMaxHp * 1.3);
         }
     },
     'defensive': {
         description: '-5% to all enemy dmg and +10% to all future armor gained. (round up)',
-        onCalculateEnemyDamage: function(game) {
-            // Logic for -5% to all enemy dmg
+        onCalculateEnemyDamage: function(enemyDmg) {
+            return Math.ceil(enemyDmg * 0.95);
         },
-        onArmorGained: function(game) {
-            // Logic for +10% to all future armor gained
+        onArmorGained: function(baseArmor) {
+            return Math.ceil(baseArmor * 1.1);
         }
     },
     'tricky': {
         description: '25% chance on hit to reflect back 40% of damage taken (that bypassed armor)',
-        onHitReceived: function(game) {
-            // Logic for 25% chance on hit to reflect back 40% of damage taken
+        onHitReceived: function(damageTaken) {
+            if (Math.random() < 0.25) {
+                return Math.floor(damageTaken * 0.4);
+            }
+            return 0;
         }
     },
-    'peculiar': {
-        description: 'Placeholder for future logic',
-        // Placeholder for future logic
-    }
-    */
+    'nimble': {
+        description: '+2 speed for every stat item purchased',
+        onStatItemPurchased: function(itemInfo) {
+            if (itemInfo['as']) {itemInfo['as'] += 2}
+            else {itemInfo['as'] = 2}
+            return itemInfo;
+        }
+    },
+    'persistent': {
+        description: '10th attack of every combat does triple damage.',
+        onTenthAttack: function(attackNum) {
+            return (attackNum === 10) ? 3 : 1;
+        }
+    },
+    'committed': {
+        description: 'receive a 5% dmg buff upon purchasing a shop item which is worth more than 90% of your current bankroll',
+        onExpensivePurchase: function(player, itemPrice) {
+            if (itemPrice >= player.gold * 0.9) {
+                player.changeStat('dmg', Math.floor(player['dmg'] * 0.05));
+            }
+        }
+    },
+    'connected': {
+        description: '+3 shop items offered at each shop by default (1 weapon, 1 armor, 1 stat).',
+        onShopVisit: function(shopCode) {
+            shopCode[0] += 1;
+            shopCode[1] += 1;
+            shopCode[2] += 1;
+            return shopCode;
+        }
+    },
+    'resurgent': {
+        description: 'Once per combat, upon going below 50% health, heal 10% of max hp.',
+        onHealthDrop: function(maxHp, currentHp) {
+            if (currentHp / maxHp < 0.5) {
+                return Math.ceil(maxHp * 0.1);
+            }
+            return 0;
+        }
+    },
+    'boastful': {
+        description: 'After combat, if total dmg dealt was greater than dmg received, gain a small buff to dmg, armor, and regen. Max of +1 dmg and +(1% of current dmg) for all three stats',
+        onCombatEnd: function(dmgDealt, dmgReceived, baseDmg, baseArmor, baseRegen) {
+            if (dmgDealt > dmgReceived) {
+                return {
+                    newDmg: Math.min(baseDmg + 1, baseDmg * 1.01),
+                    newArmor: Math.min(baseArmor + 1, baseArmor * 1.01),
+                    newRegen: Math.min(baseRegen + 1, baseRegen * 1.01)
+                };
+            }
+            return { newDmg: baseDmg, newArmor: baseArmor, newRegen: baseRegen };
+        }
+    },
+    'protective': {
+        description: 'Armor gains a permanent 10% buff for each regen you have and regen receives a permanent 10% buff for each armor you have. (Do not interact, the 10% buff to armor from regen does not get factored into the 10% buff to regen from armor).',
+        onCalculateArmorAndRegen: function(baseArmor, baseRegen) {
+            return {
+                newArmor: Math.ceil(baseArmor * (1 + (baseRegen * 0.1))),
+                newRegen: Math.ceil(baseRegen * (1 + (baseArmor * 0.1)))
+            };
+        }
+    },
+    'elegant': {
+        description: 'When attackspeed is negative, attack speed stat is equal to 75% of it\'s current (true) value.',
+        onCalculateAttackSpeed: function(baseAttackSpeed) {
+            return (baseAttackSpeed < 0) ? Math.ceil(baseAttackSpeed * 0.75) : baseAttackSpeed;
+        }
+    },
+    // 'peculiar': {
+    //     description: 'Placeholder for future desc',
+    //     onPeculiarEvent: function() {
+    //         // Placeholder for future logic
+    //     }
+    // }
 };
-
-    //'healthy': 'heal 5% of hp at the start of combat'
-    //'brutal': '+40% to shatter stat'
-    //'studious': -30% price reduction to all magic spells in shops
-    //'emergent': +30% to all gained max hp 
-    //'defensive': -5% to all enemy dmg and +10% to all future armor gained. (round up)
-    //'tricky': 25% chance on hit to reflect back 40% of damage taken (that bypassed armor)
-    //'nimble': +2 speed for every stat item purchased
-    //'persistent': 10th attack of every combat does triple damage.
-    //'committed': receive a 5% dmg buff upon purchasing a shop item which is worth more than 90% of your current bankroll
-    //'connected': +3 shop items offered at each shop by default (1 weapon, 1 armor, 1 stat).
-    //'resurgent': Once per combat, upon going below 50% health, heal 10% of max hp.
-    //'boastful': After combat, if total dmg dealt was greater than dmg received, gain a small buff to dmg, armor, and regen. Max of +1 dmg and +(1% of current dmg) for all three stats
-    //'protective': Armor gains a permanent 10% buff for each regen you have and regen receives a permanent 10% buff for each armor you have. (Do not interact, the 10% buff to armor from regen does not get factored into the 10% buff to regen from armor).
-    //'elegant': When attackspeed is negative, attack speed stat is equal to 75% of it's current (true) value.
-    //'peculiar': 
 
 class LevelInfo {
     constructor() {

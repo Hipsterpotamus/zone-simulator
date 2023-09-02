@@ -42,16 +42,16 @@ class Entity{
     }
 
     changeStat (stat, amount) {
-        if (stat == 'gold') {
+        if (stat === 'gold') {
             this.changeGold(amount);
-        } else if (stat == 'hp') {
+        } else if (stat === 'hp') {
             this.changeHp(amount);
-        } else if (stat == 'maxhp') {
+        } else if (stat === 'maxhp') {
             this.changeMaxHp(amount);
         } else {
             this[stat] += amount;
-            this.updateEntityDisplay();
         }
+        this.updateEntityDisplay();
     }
 
     changeHp(amount){
@@ -72,7 +72,11 @@ class Entity{
     }
 
     changeMaxHp(amount) {
-        this.maxhp += amount;
+        let newAmount = amount;
+        if (newAmount >= 0 && this.levelInfo.activeCharacteristics.has('emergent')) {
+            newAmount = CHARACTERISTICS['emergent'].onMaxHpGained(amount);
+        }
+        this.maxhp += newAmount;
         this.changeHp(Math.max(amount, 0));
         if (this.hp > this.maxhp) {this.changeHp(this.hp - this.maxhp)};
     }
@@ -102,9 +106,9 @@ class Entity{
         this.antihealApplied = 0;
     }
 
-    receiveHitFrom(opp, damage) {
+    receiveHitFrom(opp, mult = 1) {
         if(this.testDodge(opp.accuracy)) {
-            let oppDMG = opp.testDmg(this.testArm(), this.calcStat('superarmor'));
+            let oppDMG = opp.testDmg(this.testArm(), this.calcStat('superarmor'), mult);
             this.changeHp(-oppDMG);
 
             opp.combatStats.outgoingDmg += oppDMG;
@@ -119,6 +123,11 @@ class Entity{
             this.changeMaxHp(-opp.testTear(this.calcStat('superarmor')));
 
             let oppHpChange = opp.testLifeDrain(oppDMG);
+            
+            if (this.levelInfo.activeCharacteristics.has('tricky')) {
+                oppHpChange -= CHARACTERISTICS['tricky'].onHitReceived(oppDMG);
+            }
+
             oppHpChange -= this.testThorn(opp.calcStat('superarmor'));
             opp.changeHp(oppHpChange);
         }
@@ -126,7 +135,7 @@ class Entity{
 
     receiveNonHitDmg(hitDMG, opp) {
         if(this.testDodge(opp.accuracy)) {
-            let oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'), hitDMG);
+            let oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'), 1, hitDMG);
             this.changeHp(-oppDMG);
 
             let oppHpChange = opp.testLifeDrain(oppDMG);
@@ -143,11 +152,11 @@ class Entity{
         return Math.min(Math.max(this.calcStat('arm')-this.shatterApplied, 0), this.calcStat('arm'));
     }
 
-    testDmg(armor, superarmor, flatDmg) { //flat dmg is utilized when spells or items are used
+    testDmg(armor, superarmor, mult, flatDmg) { //flat dmg is utilized when spells or items are used
         if(flatDmg){
-            return Math.max(flatDmg - armor - superarmor, 0);
+            return Math.max(flatDmg * mult - armor - superarmor, 0);
         }else{
-            return Math.max(this.calcStat('dmg') - armor - superarmor, 0);
+            return Math.max(this.calcStat('dmg') * mult - armor - superarmor, 0);
         }
     }
 

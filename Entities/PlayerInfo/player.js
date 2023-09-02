@@ -92,6 +92,10 @@ class Player extends Entity{
         if (stat === 'dodge' && this.levelInfo.activeCharacteristics.has('elusive')) {
             total = CHARACTERISTICS['elusive'].onCalculateDodge(total, this.calcStat('as'));
         }
+
+        if (stat === 'shatter' && this.levelInfo.activeCharacteristics.has('brutal')) {
+            total = CHARACTERISTICS['brutal'].onCalculateShatter(total);
+        }
     
         if (stat === 'dmg') {
             if (this.levelInfo.activeCharacteristics.has('patient')) {
@@ -103,6 +107,21 @@ class Player extends Entity{
         }
     
         return total;
+    }
+
+    changeStat (stat, amount) {
+        if (stat === 'gold') {
+            this.changeGold(amount);
+        } else if (stat === 'hp') {
+            this.changeHp(amount);
+        } else if (stat === 'maxhp') {
+            this.changeMaxHp(amount);
+        } else if (stat === 'arm' && this.levelInfo.activeCharacteristics.has('defensive')) {
+            this[stat] += CHARACTERISTICS['defensive'].onArmorGained(amount);
+        } else {
+            this[stat] += amount;
+        }
+        this.updateEntityDisplay();
     }
 
     handleEquipmentStat(type, stat) {

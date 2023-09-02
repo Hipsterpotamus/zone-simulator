@@ -21,6 +21,7 @@ class Combat {
     constructor(msDelay = 20) {
         this.tick = 0;
         this.player;
+        this.playerAttacks = 0;
         this.enemyList;
         this.selectedEnemy;
         this.lvlHealMult;
@@ -39,6 +40,10 @@ class Combat {
         this.tick = 0;
         this.inCombat = true;
         this.player = player;
+        this.playerAttacks = 0;
+        if (this.player.levelInfo.activeCharacteristics.has('healthy')) {
+            total = CHARACTERISTICS['healthy'].onCombatStart(this.player);
+        }
         this.enemyList = enemyList;
         this.lvlHealMult = 0;
 
@@ -88,7 +93,12 @@ class Combat {
         }
         if (this.player.attackCounter >= this.player.calcAs()) {
             this.player.attackCounter = 0;
-            this.selectedEnemy.receiveHitFrom(this.player);
+            this.playerAttacks += 1;
+            let attackMult;
+            if (this.player.levelInfo.activeCharacteristics.has('persistent')) {
+                attackMult = CHARACTERISTICS['persistent'].onTenthAttack(this.playerAttacks);
+            }
+            this.selectedEnemy.receiveHitFrom(this.player, attackMult);
         }
 
         this.enemyList.forEach(enemy => {

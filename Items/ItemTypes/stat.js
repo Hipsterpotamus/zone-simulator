@@ -43,6 +43,9 @@ class Stat extends Item {
     }
 
     onBuy() {
+        if (this.game.player.levelInfo.activeCharacteristics.has('nimble')) {
+            this.itemInfo = CHARACTERISTICS['nimble'].onStatItemPurchased(this.itemInfo);
+        }
         this.onUse();
     }
 

@@ -122,7 +122,11 @@ class Zone {
         return [zoneRest, EVENTLIST[zoneRest]];
     }
 
-    getShopType() {
-        return this.shopType;
+    getShopCode() {
+        let fullShopCode = this.shopCode
+        if (this.game.player.levelInfo.activeCharacteristics.has('connected')) {
+            fullShopCode = CHARACTERISTICS['connected'].onShopVisit(fullShopCode);
+        }
+        return fullShopCode;
     }
 }
