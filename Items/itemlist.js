@@ -136,7 +136,7 @@ const ITEMLIST = {
     'shark tooth dagger': {'metatype': 'weapon', 'price': 96, 'type': 'knife', 'dmg': 30, 'arm': 0, 'regen': 0, 'as': 40, 'bleed': 15},
     'pirate cutlass': {'metatype': 'weapon', 'price': 148, 'type': 'sword', 'dmg': 27, 'arm': 0, 'regen': 0, 'as': 50, 'bleed': 10, 'income': 4},
     'seaweed whip': {'metatype': 'weapon', 'price': 80, 'type': 'whip', 'dmg': 36, 'arm': 0, 'regen': 0, 'as': 48},
-    'pirate cannon': {'metatype': 'weapon', 'price': 225, 'type': 'misc', 'dmg': 300, 'arm': 0, 'regen': 0, 'as': -400, 'shatter': 100},
+    'pirate cannon': {'metatype': 'weapon', 'price': 225, 'type': 'misc', 'dmg': 300, 'arm': 0, 'regen': 0, 'as': -320, 'shatter': 100},
     'mermaid gloves': {'metatype': 'weapon', 'price': 130, 'type': 'gloves', 'dmg': 60, 'arm': 0, 'regen': 0, 'as': -20, 'lifedrain': 25},
     'crabwalker claws': {'metatype': 'weapon', 'price': 150, 'type': 'gloves', 'dmg': 40, 'arm': 0, 'regen': -5, 'as': 40, 'shatter': 20, 'bleed': 80},
     'turtle shell club': {'metatype': 'weapon', 'price': 135, 'type': 'club', 'dmg': 90, 'arm': 0, 'regen': 0, 'as': -40, 'lifedrain': 20},

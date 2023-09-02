@@ -32,17 +32,25 @@ const EVENTLIST = {
             }
         }
     ]],
-    'The Traveler': ['A grizzled traveler pushing a cart passes by. He grumbles about dead weight in his cart and offers you a garden hoe for a few gold', [
+    'The Traveler': ['A grizzled traveler pushing a cart passes by. He grumbles about dead weight in his cart and offers you some old items he no longer has a use for', [
         {
-            text: 'Accept: Gain a garden hoe, lose 3 gold',
+            text: 'Buy Garden Hoe: Gain a garden hoe, lose 7 gold',
             effect: function(game) {
-                if (game.player.gold < 3) { return;}
-                game.player.changeGold(-3);
-                game.player.addSelectableItem(new Equippable(game, 'garden hoe', {'metatype': 'weapon', 'type': 'none', 'dmg': 3}));
+                if (game.player.gold < 7) { return;}
+                game.player.changeGold(-7);
+                game.player.addSelectableItem(new Equippable(game, 'garden hoe', {'metatype': 'weapon', 'type': 'none', 'dmg': 8, 'as':-15}));
             }
         },
         {
-            text: 'Reject: gain nothing',
+            text: 'Buy Farmer Hat: Gain a farmer hat, lose 4 gold',
+            effect: function(game) {
+                if (game.player.gold < 4) { return;}
+                game.player.changeGold(-4);
+                game.player.addSelectableItem(new Equippable(game, 'garden hoe', {'metatype': 'head', 'type': 'hat', 'arm': 2}));
+            }
+        },
+        {
+            text: 'Buy Nothing: gain nothing',
             effect: function(game) {
                 
             }
