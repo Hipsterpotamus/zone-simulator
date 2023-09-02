@@ -31,9 +31,9 @@ function startGame() {
     
         //start game button
         $('#start-game').on('click',function(){
-            game = new Game(characterClass);
+            game = new Game();
             console.log(game); //debug purposes
-            game.startGame()
+            game.startNewGame(characterClass)
             $('#game-screen').removeClass('hidden');
             $('#start-screen').addClass('hidden');
         });
