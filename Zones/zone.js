@@ -85,10 +85,10 @@ class Zone {
             rewardItems[1].push(item);  
         }
         for (let i = 0; i < info[3]; i++) {
-            let index = Math.floor(Math.random() * this.bossStat.length);
-            let reward = this.bossStat[index];
-            this.bossStat.splice(index, 1);
-            let item = new Stat(this.game, reward, structuredClone(ITEMLIST[reward]));
+            let index = Math.floor(Math.random() * this.bossArmor.length);
+            let reward = this.bossArmor[index];
+            this.bossArmor.splice(index, 1);
+            let item = new Equippable(this.game, reward, structuredClone(ITEMLIST[reward]));
             rewardItems[1].push(item);  
         }
         return rewardItems;

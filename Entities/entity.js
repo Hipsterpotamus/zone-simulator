@@ -106,7 +106,7 @@ class Entity{
         if(this.testDodge(opp.accuracy)) {
             let oppDMG;
             if (opp.levelInfo.characteristics.vengeful && (this.hp / this.maxhp) < 0.3) {
-                oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'), opp.calcStat('dmg') * 2);
+                oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'), Math.ceil(opp.calcStat('dmg') * 1.5));
             } else {
                 oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'));
             }

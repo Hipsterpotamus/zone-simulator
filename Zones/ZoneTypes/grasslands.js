@@ -123,15 +123,18 @@ class Grasslands extends Zone {
         ]
 
         this.bossUsable = [
-            'bossUsableExample'
+            'animal fat bomb',
+            'ground enforcements'
         ]
 
         this.bossMagic = [
-            'bossMagicExample'
+            'speed sap',
+            'skin graft'
         ]
 
-        this.bossStat = [
-            'bossStatExample'
+        this.bossArmor = [
+            'fat fur coat',
+            'tight straw pants'
         ]
 
         //could assign this in the parent class if this distribution holds across zones

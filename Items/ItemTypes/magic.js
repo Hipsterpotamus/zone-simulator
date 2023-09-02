@@ -81,7 +81,7 @@ class Magic extends Item {
         // Damage to enemy
         if (this.attack) {
             if (this.game.player.levelInfo.characteristics.precise) {
-                this.game.combat.selectedEnemy.receiveNonHitDmg(this.attack * 2, this.game.player);
+                this.game.combat.selectedEnemy.receiveNonHitDmg(Math.ceil(this.attack * 1.8), this.game.player);
             } else {
                 this.game.combat.selectedEnemy.receiveNonHitDmg(this.attack, this.game.player);
             }
@@ -93,7 +93,7 @@ class Magic extends Item {
         }
         if (this.enemyHp) {
             if (this.game.player.levelInfo.characteristics.precise) {
-                this.game.combat.selectedEnemy.changeHp(this.hp * 2);
+                this.game.combat.selectedEnemy.changeHp(Math.ceil(this.hp * 1.8));
             } else {
                 this.game.combat.selectedEnemy.changeHp(this.hp);
             }

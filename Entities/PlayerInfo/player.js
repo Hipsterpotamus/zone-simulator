@@ -90,11 +90,11 @@ class Player extends Entity{
         );
 
         if (stat === 'dodge' && this.levelInfo.characteristics.elusive) {
-            total = Math.max(total, total + Math.floor(this.calcStat('as') / 10) * 5);
+            total = Math.max(total, total + Math.floor(this.calcStat('as') / 10) * 2);
         }
 
         if (stat === 'dmg' && this.levelInfo.characteristics.patient && this.combatStats.ticksAlive > 500) {
-            total = total * 2;
+            total = Math.ceil(total * 1.4);
         }
 
         return total;

@@ -356,14 +356,22 @@ const ITEMLIST = {
 //boss items grasslands
     'hooved javelin': {'metatype': 'weapon', 'price': 0, 'type': 'spear', 'dmg': 32, 'arm' : 5, 'as': -100, 'message': 'A fleshy javelin emerges from the wreckage of battle. Powerful, but clunky'},
     'long grass wand': {'metatype': 'weapon', 'price': 0, 'type': 'wand', 'dmg': 19, 'regen': 3, 'as': 10, 'manaGen': 1, 'message': 'Pushing past the carcass of the defeated beast, you notice a stick of grass twine bound tightly together. A Simple Magic Wand'},
-    'barbed wire blade': {'metatype': 'weapon', 'price': 0, 'type': 'knife', 'dmg': 15, 'regen': -2, 'as': 66, 'bleed' : 20, 'message': 'In the calamity of combat, a barbed wire fence has been bound up tightly into a blade. Razor sharp, even on the handle'},
+    'barbed wire blade': {'metatype': 'weapon', 'price': 0, 'type': 'knife', 'dmg': 11, 'regen': -2, 'as': 66, 'bleed' : 20, 'message': 'In the calamity of combat, a barbed wire fence has been bound up tightly into a blade. Razor sharp, even on the handle'},
     'golden garden hoe': {'metatype': 'weapon', 'price': 0, 'type': 'sword', 'dmg': 24, 'as': -20, 'income': 2, 'message': 'Rooting through the carnage, you notice the glimmer of gold surprisingly fashioned to an ordinary tool. Basic, but shiny'},
 
-    'bossUsableExample': {'metatype': 'usable', 'price': 0, 'uses': 0, 'longDescription': 'description', 'type': 'none'},
-    'bossMagicExample': {'metatype': 'magic', 'price': 0, 'shortDescription': 'shortDescription', 'longDescription': 'longDescription', 'manaCost': 0},
-    'bossStatExample': {'metatype': 'stat', 'price': 0},
+    'animal fat bomb': {'metatype': 'usable', 'price': 0, 'uses': 1, 'shortDescription': 'deal 80 dmg, gain 10 speed on use', 'longDescription': 'Deal 80 dmg to an enemy (bypasses armor), and gain a permanent 10 speed stat.', 'type': 'all', 'attack': 80, 'as':10},
+    'ground enforcements': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'heal 15 hp, gain 2 armor', 'longDescription': 'Heal 15 hp, and gain a permanent 2 armor.', 'type': 'all', 'hp': 15, 'armor':2},
+
+    'speed sap': {'metatype': 'magic', 'price': 0, 'shortDescription': 'heal 5, deal 10 dmg', 'longDescription': 'Deal 10 dmg to enemey (doesn\'t bypass armor), then deal 10 dmg. Infinite Uses', 'manaCost': 5, 'hp':5, 'attack': 10},
+    'skin graft': {'metatype': 'magic', 'price': 0, 'shortDescription': 'lose 4 hp, gain 1 armor', 'longDescription': 'Lose 4 hp, then gain a permanent 1 armor. Infinite Uses', 'manaCost': 8, 'hp':-4, 'arm': 1},
+
+    'fat fur coat': {'metatype': 'chest', 'price': 0, 'type': 'coat', 'arm': 6, 'as': -8},
+    'tight straw pants': {'metatype': 'legs', 'price': 0, 'type': 'pants', 'arm': 4, 'as': 17},
 //boss items forest
-    //TBD
+    'magic thick rod': {'metatype': 'weapon', 'price': 0, 'type': 'wand', 'dmg': 32, 'arm' : 2, 'regen':2, 'manaGen':2, 'as': -20, 'message': 'A glowing stick emerges from the ground serendiptously. Magic, but dull'},
+    'forest scythe': {'metatype': 'weapon', 'price': 0, 'type': 'knife', 'dmg': 66, 'arm' : -3, 'regen': -2, 'as': -60, 'message': 'A harvesting tool of one of the forest races became magically endowed over the course of the fight. Sharp but dangerous'},
+    'pine shiv': {'metatype': 'weapon', 'price': 0, 'type': 'knife', 'dmg': 25, 'as': 65, 'message': 'Admist the wreckage of a torrential battle is a pinecone fashioned into a remarkably sharp point. Fast but weak'},
+    'elven dryad staff': {'metatype': 'weapon', 'price': 0, 'type': 'staff', 'dmg': 30, 'as': -33, 'regen':4, 'manaGen':1, 'lifedrain':25, 'dodge':15, 'message': 'Admist the wreckage of a torrential battle is a pinecone fashioned into a remarkably sharp point. Sharp, fast, but flimsy'},
 
 //boss items beach
     //TBD

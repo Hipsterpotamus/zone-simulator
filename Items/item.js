@@ -21,7 +21,7 @@ class Item {
     purchase(){
         let newPrice = this.price;
         if (this.game.player.levelInfo.characteristics.persuasive) {
-            newPrice = Math.ceil(this.price * 3 / 4);
+            newPrice = Math.ceil(this.price * .85);
         }
         if( this.game.player.gold>=newPrice){
             this.game.player.changeGold(-newPrice);
@@ -40,7 +40,7 @@ class Item {
         if (this.game.player.gold < this.price) {this.disabled = true}
         this.shopElement.attr('class', newClass);
         if (this.game.player.levelInfo.characteristics.persuasive) {
-            let newPrice = Math.ceil(this.price * 3 / 4);
+            let newPrice = Math.ceil(this.price * 0.85);
             this.shopElement.html('buy ' + this.name + ': <del>' + this.price + '</del> ' + newPrice + ' gold<br>' + this.genShopDesc());
         } else {
             this.shopElement.html('buy ' + this.name + ': ' + this.price + ' gold<br>' + this.genShopDesc());

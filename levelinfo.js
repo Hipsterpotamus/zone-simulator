@@ -1,13 +1,13 @@
 const CHARACTERISTICS = {
-    'persuasive': '-25% reduction on all future shop prices',
+    'persuasive': '15% reduction on all future shop prices',
     'mechanical': 'x2 uses on all new items',
-    'vengeful': 'x2 weapon dmg when below 30% health',
+    'vengeful': 'x1.5 weapon dmg when below 30% health',
     'prescient': 'see the name of the next space',
-    'elusive': 'gains +5% dodge for every 10 attack speed',
-    'dominant': 'gains x2 more gold upon killing an enemy/boss in less than 500 ticks/10 seconds',
-    'intimidating': 'enemy loses 100% of armor upon start of battle',
-    'precise': 'enemies takes x2 more damage from items, and x2 more from spells',
-    'patient': 'receives a x2 damage increase after 500 ticks/10 seconds',
+    'elusive': 'gains +2% dodge for every 10 attack speed',
+    'dominant': 'gains x1.25 more gold upon killing an enemy/boss in less than 500 ticks/10 seconds',
+    'intimidating': 'enemies start with 25% less armor',
+    'precise': 'enemies takes x1.8 more damage from items, and x1.8 more from spells',
+    'patient': 'receives a x1.4 damage increase after 500 ticks/10 seconds',
     'thrifty': 'gains x2 gold from income'
   };
 

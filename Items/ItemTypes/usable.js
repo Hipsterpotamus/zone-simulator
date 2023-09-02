@@ -127,7 +127,7 @@ class Usable extends Item {
         // Damage to enemy
         if (this.attack) {
             if (this.game.player.levelInfo.characteristics.precise) {
-                this.game.combat.selectedEnemy.changeHp(-this.attack * 2);
+                this.game.combat.selectedEnemy.changeHp(Math.floor(-this.attack * 1.8));
             } else {
                 this.game.combat.selectedEnemy.changeHp(-this.attack);
             }
@@ -136,7 +136,7 @@ class Usable extends Item {
         // Damage to enemy, but not if it's a goblin
         if (this.attackNonGoblin && this.game.combat.selectedEnemy.type !== 'goblin') {
             if (this.game.player.levelInfo.characteristics.precise) {
-                this.game.combat.selectedEnemy.changeHp(-this.attackNonGoblin * 2);
+                this.game.combat.selectedEnemy.changeHp(Math.floor(-this.attackNonGoblin * 1.8));
             } else {
                 this.game.combat.selectedEnemy.changeHp(-this.attackNonGoblin);
             }
