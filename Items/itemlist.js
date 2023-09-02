@@ -371,8 +371,16 @@ const ITEMLIST = {
     'magic thick rod': {'metatype': 'weapon', 'price': 0, 'type': 'wand', 'dmg': 32, 'arm' : 2, 'regen':2, 'manaGen':2, 'as': -20, 'message': 'A glowing stick emerges from the ground serendiptously. Magic, but dull'},
     'forest scythe': {'metatype': 'weapon', 'price': 0, 'type': 'knife', 'dmg': 66, 'arm' : -3, 'regen': -2, 'as': -60, 'message': 'A harvesting tool of one of the forest races became magically endowed over the course of the fight. Sharp but dangerous'},
     'pine shiv': {'metatype': 'weapon', 'price': 0, 'type': 'knife', 'dmg': 25, 'as': 65, 'message': 'Admist the wreckage of a torrential battle is a pinecone fashioned into a remarkably sharp point. Fast but weak'},
-    'elven dryad staff': {'metatype': 'weapon', 'price': 0, 'type': 'staff', 'dmg': 30, 'as': -33, 'regen':4, 'manaGen':1, 'lifedrain':25, 'dodge':15, 'message': 'Admist the wreckage of a torrential battle is a pinecone fashioned into a remarkably sharp point. Sharp, fast, but flimsy'},
+    'elven dryad staff': {'metatype': 'weapon', 'price': 0, 'type': 'staff', 'dmg': 30, 'as': -33, 'regen':4, 'manaGen':1, 'lifedrain':25, 'dodge':15, 'message': 'Born of an unholy communion of two forest races, rises a nimple staff. '},
 
+    'razor paper stars': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'deal 68 dmg, lose 5 hp', 'longDescription': 'Deal 68 dmg to an enemy (bypasses armor), and lose 5 hp.', 'type': 'all', 'attack': 68, 'hp':-5},
+    'the hungry bag': {'metatype': 'usable', 'price': 0, 'uses': 4, 'shortDescription': 'lose current weapon, gain 20 gold [UNIMPLEMENTED]', 'longDescription': 'Permantely lose your currently equipped weapon, gain 20 gold', 'type': 'all', 'weaponEat':20},
+
+    'speed sap': {'metatype': 'magic', 'price': 0, 'shortDescription': 'heal 5, deal 10 dmg', 'longDescription': 'Deal 10 dmg to enemey (doesn\'t bypass armor), then deal 10 dmg. Infinite Uses', 'manaCost': 5, 'hp':5, 'attack': 10},
+    'skin graft': {'metatype': 'magic', 'price': 0, 'shortDescription': 'lose 4 hp, gain 1 armor', 'longDescription': 'Lose 4 hp, then gain a permanent 1 armor. Infinite Uses', 'manaCost': 8, 'hp':-4, 'arm': 1},
+
+    'fat fur coat': {'metatype': 'chest', 'price': 0, 'type': 'coat', 'arm': 6, 'as': -8},
+    'tight straw pants': {'metatype': 'legs', 'price': 0, 'type': 'pants', 'arm': 4, 'as': 17},
 //boss items beach
     //TBD
 }

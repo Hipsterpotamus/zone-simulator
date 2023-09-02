@@ -223,6 +223,10 @@ class Usable extends Item {
             this.game.player.changeStat('bleedApplied', -game.player.bleedApplied);
         }
 
+        if (this.weaponEat){
+            this.game.player.changeGold(this.weaponEat);
+        }
+
         // 
     }
 }
