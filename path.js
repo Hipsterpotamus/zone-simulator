@@ -137,7 +137,7 @@ class Path {
     }
 
     displayZoneInfo() {
-        $('#zone-text').text('zone: '+this.zoneNum+'–'+this.spaceNumber);
+        $('#zone-text').text(this.zoneNum+'–'+this.spaceNumber);
     }
 
     pushZoneItems() {

@@ -46,11 +46,6 @@ body, html {
   height: 100%;
 }
 
-.header-p{
-  float:left;
-  font-size:10pt;
-  margin:-1px 2.5% 0px 0px;
-}
 
 .non-game-header{
   height:100%;
@@ -62,6 +57,12 @@ body, html {
 
 .fifth-tab#large-tab{
   width:calc(40% - 1px);
+}
+
+#zone-text {
+  border-radius: 0;
+  border-bottom-right-radius: 2rem;
+  padding: 0.5rem 1rem;
 }
 
 #combatTimer{

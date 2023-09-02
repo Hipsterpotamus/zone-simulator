@@ -2,7 +2,7 @@
 
 .game-header{
     width:100%;
-    padding:0.9%;
+    /* padding:0.9%; */
   
     position: relative;
     z-index: 8;
@@ -11,7 +11,7 @@
 .game-header p {
     float: left;
     font-size: 1.75rem;
-    margin: -1px 2.5% 0px 0px;
+    margin: 0px 0px;
     font-weight: bold;
     /* color: #fff; */
 }
