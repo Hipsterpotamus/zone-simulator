@@ -2,19 +2,29 @@ class Robot extends Player {
     constructor(type) {
         super(type);
         this.name = 'Robert'; //fully implemented
-        this.levelheal = 'max';
+        this.levelheal = this.maxhp;
     }
 
-    changeHp(healAmount){
-        if(healAmount == 'max') {
+    changeHp(amount){
+        if(amount == 'max') {
             this.hp = this.maxhp;
         } else {
-            this.hp = Math.min(this.hp, this.hp + amount);
+            amount = Math.max(Math.min(amount + this.calcStat('superarmor'), 0), amount);
+            if (amount < 0 && this.inCombat) {
+                this.combatStats.incomingDmg -= amount;
+                this.gameCombatStats.incomingDmg -= amount;
+            }
+            if (this.inCombat && amount > 0) {amount = 0};
+            this.hp = Math.min(this.maxhp, this.hp + amount);
         }
 
-        if (this.hp <= 0 && amount != 0) {
+        this.updateHealthBar(amount);
+
+        if (this.hp <= 0 && this.alive) {
             this.hp = 0;
-            this.death;
-        }
+            this.death();
+        } else if (this.hp > 0){
+            this.updateEntityDisplay();
+        };
     }
 }

@@ -7,10 +7,8 @@
 #### Caden: new combat display & LVL Up display
 * [] Finish new combat display
 * [] Add combat results to display (combat.displayCombatStats, line 159)
-* [] Create LVL UP display
+* [] Create XP bar
 * [] Results/Death Screen (player.death, line 91)(current death screen is already epic...)
-
-* Sometimes scroll stops working in the eventbox and idk why, its def possible i broke something but any insight would be appreciated
 #### Holden:
 * [x] Finish Beach Items
 * [x] Finish Beach Enemies
@@ -49,10 +47,13 @@
 ## Backend:
 
 ### New stuff
+* [] Add speedup button/slider/something
+
 * [] Add rarity to shop items
 * [] Get all the characters functioning
 
 ### Fixes
+* [] Add burn option to path generation
 
 ### Refactoring
 * [] Document backend systems somewhere

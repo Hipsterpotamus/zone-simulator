@@ -275,7 +275,7 @@ class Player extends Entity{
         $('#player-time').text((this.calcAs()-this.attackCounter));
 
         let stats_list_player = ['dmg', 'arm', 'regen', 'speed', 'dodge', 'shatter', 'bleed', 'lifedrain', 'antiheal', 'thorn', 'superarmor','tear'];
-        if (this.accuracy != 100) {stats_list_player.append('accuracy')}
+        if (this.accuracy != 100) {stats_list_player.push('accuracy')}
 
 
         stats_list_player.forEach((stat)=>{

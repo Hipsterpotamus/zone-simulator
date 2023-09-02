@@ -1,19 +1,21 @@
 class Tank extends Player {
     constructor(type) {
         super(type);
-        this.name = 'tanner'; //fully implemented
+        this.name = 'tanner';
+        this.accuracy = 80;
+        this.as = -100;
     }
 
-    calcStat(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
-        let statBase = Math.floor(calcStatBase(stat));
-        if (stat == 'arm') {
+    calcStatBase(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
+        let statBase = this.calcStatInit(stat);
+        if (stat === 'arm') {
             return statBase * 2;
         } else {
             return statBase;
         }
     }
 
-    calcStatBase(stat) {
+    calcStatInit(stat) {
         return (
             this[stat] +
             this.getByType('weapon')[stat] +

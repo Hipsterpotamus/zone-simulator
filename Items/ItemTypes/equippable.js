@@ -34,6 +34,15 @@ class Equippable extends Item {
                 }
             });
         }
+
+        if (this.name !== 'none' && this.game.player.name === 'maggie') {
+            Object.keys(this.itemInfo).forEach((stat)=>{
+                if (stat !== 'as') {
+                    this.itemInfo[stat] = this.itemInfo[stat] * 2;
+                }
+            });
+            this.price = this.price * 3;
+        }
     }
 
     genShopDesc() {

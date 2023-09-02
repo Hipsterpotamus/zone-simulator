@@ -20,6 +20,7 @@ class Item {
 
     purchase(){
         let newPrice = this.price;
+        if (this.game.player.name === 'florence') {newPrice = Math.ceil(this.price * 1.3)}
         if (this.game.player.levelInfo.activeCharacteristics.has('persuasive')) {
             newPrice = CHARACTERISTICS['persuasive'].onCalculatePrice(newPrice);
         }
@@ -46,6 +47,7 @@ class Item {
         if (this.game.player.gold < this.price) {this.disabled = true}
         this.shopElement.attr('class', newClass);
         let displayPrice = this.price;
+        if (this.game.player.name === 'florence') {displayPrice = Math.ceil(this.price * 1.3)}
         let displayText = 'buy ' + this.name + ': ';
 
         if (this.game.player.levelInfo.activeCharacteristics.has('persuasive')) {
@@ -55,7 +57,7 @@ class Item {
             displayPrice = CHARACTERISTICS['studious'].onCalculateSpellPrice(this.price);
             displayText += '<del>' + this.price + '</del> ' + displayPrice + ' gold<br>' + this.genShopDesc();
         } else {
-            displayText += this.price + ' gold<br>' + this.genShopDesc();
+            displayText += displayPrice + ' gold<br>' + this.genShopDesc();
         }
         this.shopElement.html(displayText);
         // Stat icons on shop buttons

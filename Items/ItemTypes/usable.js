@@ -37,6 +37,8 @@ class Usable extends Item {
                 this[stat] = itemInfo[stat];
             });
         }
+
+        if (this.game.player.name === 'colette') {this.uses = this.uses * 2};
     }
 
     genShopDesc() {
