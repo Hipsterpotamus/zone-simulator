@@ -198,13 +198,14 @@ class Player extends Entity{
     }
 
     changeHp(amount){
-        if (amount < 0 && this.inCombat) {
-            this.combatStats.incomingDmg -= amount;
-            this.gameCombatStats.incomingDmg -= amount;
-        }
         if(amount == 'max') {
             this.hp = this.maxhp;
         } else {
+            amount = Math.max(Math.min(amount + this.calcStat('superarmor'), 0), amount);
+            if (amount < 0 && this.inCombat) {
+                this.combatStats.incomingDmg -= amount;
+                this.gameCombatStats.incomingDmg -= amount;
+            }
             this.hp = Math.min(this.maxhp, this.hp + amount);
             if (this.inCombat && this.levelInfo.activeCharacteristics.has('resurgent')) {
                 let preAmount = amount;

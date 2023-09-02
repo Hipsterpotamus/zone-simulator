@@ -58,7 +58,8 @@ class Entity{
         if(amount == 'max') {
             this.hp = this.maxhp;
         } else {
-                this.hp = Math.min(this.maxhp, this.hp + amount);
+            amount = Math.max(Math.min(amount + this.calcStat('superarmor'), 0), amount);
+            this.hp = Math.min(this.maxhp, this.hp + amount);
         }
 
         this.updateHealthBar(amount);
@@ -108,7 +109,7 @@ class Entity{
 
     receiveHitFrom(opp, mult = 1) {
         if(this.testDodge(opp.accuracy)) {
-            let oppDMG = opp.testDmg(this.testArm(), this.calcStat('superarmor'), mult);
+            let oppDMG = opp.testDmg(this.testArm(), mult);
             this.changeHp(-oppDMG);
 
             opp.combatStats.outgoingDmg += oppDMG;
@@ -120,7 +121,7 @@ class Entity{
             this.bleedApplied += opp.testBleed();
             this.antihealApplied = Math.max(opp.antiheal, this.calcStat('regen'));
 
-            this.changeMaxHp(-opp.testTear(this.calcStat('superarmor')));
+            this.changeMaxHp(-opp.calcStat('tear'));
 
             let oppHpChange = opp.testLifeDrain(oppDMG);
             
@@ -128,14 +129,14 @@ class Entity{
                 oppHpChange -= CHARACTERISTICS['tricky'].onHitReceived(oppDMG);
             }
 
-            oppHpChange -= this.testThorn(opp.calcStat('superarmor'));
+            oppHpChange -= this.calcStat('thorn');
             opp.changeHp(oppHpChange);
         }
     }
 
     receiveNonHitDmg(hitDMG, opp) {
         if(this.testDodge(opp.accuracy)) {
-            let oppDMG =  opp.testDmg(this.testArm(), this.calcStat('superarmor'), 1, hitDMG);
+            let oppDMG =  opp.testDmg(this.testArm(), 1, hitDMG);
             this.changeHp(-oppDMG);
 
             let oppHpChange = opp.testLifeDrain(oppDMG);
@@ -152,11 +153,11 @@ class Entity{
         return Math.min(Math.max(this.calcStat('arm')-this.shatterApplied, 0), this.calcStat('arm'));
     }
 
-    testDmg(armor, superarmor, mult, flatDmg) { //flat dmg is utilized when spells or items are used
+    testDmg(armor, mult, flatDmg) { //flat dmg is utilized when spells or items are used
         if(flatDmg){
-            return Math.max(flatDmg * mult - armor - superarmor, 0);
+            return Math.max(flatDmg * mult - armor, 0);
         }else{
-            return Math.max(this.calcStat('dmg') * mult - armor - superarmor, 0);
+            return Math.max(this.calcStat('dmg') * mult - armor, 0);
         }
     }
 
@@ -174,13 +175,5 @@ class Entity{
         let bleed = Math.floor(this.calcStat('bleed')/10);
         if(Math.random()<((this.calcStat('bleed')%10)/10)){bleed+=1;}
         return bleed;
-    }
-
-    testThorn(superarmor) {
-        return Math.max(this.calcStat('thorn') - superarmor, 0);
-    }
-
-    testTear(superarmor) {
-        return Math.max(this.calcStat('tear') - superarmor, 0);
     }
 }

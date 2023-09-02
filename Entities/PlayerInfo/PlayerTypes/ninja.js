@@ -1,22 +1,22 @@
 class Ninja extends Player {
     constructor(type) {
         super(type);
-        this.name = 'nina'; //fully implemented
+        this.name = 'nina';
         this.dodge = 33;
     }
 
-    calcStat(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
-        let statBase = this.calcStatBase(stat);
+    calcStatBase(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
+        let statBase = this.calcStatInit(stat);
         if (stat == 'dmg') {
             return Math.floor(statBase * 1.2);
         } else if (stat == 'arm') {
-            return Math.floor(statBase / 2);
+            return Math.floor(statBase * 0.5);
         } else {
             return statBase;
         }
     }
 
-    calcStatBase(stat) {
+    calcStatInit(stat) {
         return (
             this[stat] +
             this.getByType('weapon')[stat] +

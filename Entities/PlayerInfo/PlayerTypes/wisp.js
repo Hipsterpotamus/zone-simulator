@@ -1,20 +1,24 @@
 class Wisp extends Player {
     constructor(type) {
         super(type);
-        this.name = 'willow'; //not implemented
+        this.name = 'willow';
         this.arm = 3;
         this.dodge = 25;
         this.maxhp = 1;
         this.hp = 1;
+        this.changeHp(-1);
     }
-    calcStat(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
+
+    calcStatBase(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
+        let statBase = this.calcStatInit(stat);
         if(stat=='superarmor'){
-            return this.calcStatBase(stat) + this.calcStatBase('arm');
+            return statBase + this.calcStat('arm');
         }else{
-            return this.calcStatBase(stat);
+            return statBase;
         }
     }
-    calcStatBase(stat){
+
+    calcStatInit(stat){
         return (
             this[stat] +
             this.getByType('weapon')[stat] +
@@ -24,6 +28,7 @@ class Wisp extends Player {
             this.getByType('feet')[stat]
         );
     }
+
     changeMaxHp(amount){
         if(amount>0){
             notify('Willow cannot go over 1 max hp!')    
