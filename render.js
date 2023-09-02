@@ -256,10 +256,6 @@ function stopPlayerTimer() {
     const timer_element_mask = document.querySelector('.timer-mask');
     timer_element_mask.style.animationPlayState = 'paused';
 
-    // set the background style css to var(--md-sys-color-tertiary-container);
     timer_element_mask.style.background = 'var(--md-sys-color-tertiary-container)';
-    // timer_element.style.background = 'var(--md-sys-color-tertiary-container)';
-
-    
-
+    timer_element_mask.style.animation = 'none';
 }

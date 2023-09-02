@@ -147,6 +147,7 @@ class Combat {
                 this.player.inCombat = false;
                 this.player.resurgentUses = 0;
                 setBroadcastTitleText('Victory!', true);
+                stopPlayerTimer();
 
                 if (this.player.levelInfo.activeCharacteristics.has('boastful')) {
                     CHARACTERISTICS['boastful'].onCombatEnd(this.player);
