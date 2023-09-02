@@ -40,11 +40,12 @@ class Usable extends Item {
     }
 
     genShopDesc() {
-        if (this.game.player.levelInfo.characteristics.mechanical) {
-            return '(' + '<del>' + this.uses + '</del> ' + this.uses * 2 + 'x Item: ' + this.shortDescription + ')';
-        } else {
-            return '[' + this.uses + 'x Item: ' + this.shortDescription + ']';
-        };
+        let displayUses = this.uses;
+        if (this.game.player.levelInfo.activeCharacteristics.has('mechanical')) {
+            displayUses = CHARACTERISTICS['mechanical'].onItemUses(this.uses);
+            return '(' + '<del>' + this.uses + '</del> ' + displayUses + 'x Item: ' + this.shortDescription + ')';
+        }
+        return '[' + displayUses + 'x Item: ' + this.shortDescription + ']';
     }
 
     appendToSelect() {
@@ -89,9 +90,9 @@ class Usable extends Item {
     }
 
     onBuy() {
-        if (this.game.player.levelInfo.characteristics.mechanical) {
-            this.uses = this.uses * 2;
-        };
+        if (this.game.player.levelInfo.activeCharacteristics.has('mechanical')) {
+            this.uses = CHARACTERISTICS['mechanical'].onItemUses(this.uses);
+        }
         this.game.player.addSelectableItem(this, this.game.path.itemShop, true);
     }
 
@@ -124,22 +125,23 @@ class Usable extends Item {
     }
 
     onUse() {
+        const calculateDamage = (baseDamage) => {
+            if (this.game.player.levelInfo.activeCharacteristics.has('precise')) {
+                return CHARACTERISTICS['precise'].onCalculateDamage(baseDamage);
+            }
+            return baseDamage;
+        };
+    
         // Damage to enemy
         if (this.attack) {
-            if (this.game.player.levelInfo.characteristics.precise) {
-                this.game.combat.selectedEnemy.changeHp(Math.floor(-this.attack * 1.8));
-            } else {
-                this.game.combat.selectedEnemy.changeHp(-this.attack);
-            }
+            const damageToEnemy = -calculateDamage(this.attack);
+            this.game.combat.selectedEnemy.changeHp(damageToEnemy);
         }
     
         // Damage to enemy, but not if it's a goblin
         if (this.attackNonGoblin && this.game.combat.selectedEnemy.type !== 'goblin') {
-            if (this.game.player.levelInfo.characteristics.precise) {
-                this.game.combat.selectedEnemy.changeHp(Math.floor(-this.attackNonGoblin * 1.8));
-            } else {
-                this.game.combat.selectedEnemy.changeHp(-this.attackNonGoblin);
-            }
+            const damageToNonGoblinEnemy = -calculateDamage(this.attackNonGoblin);
+            this.game.combat.selectedEnemy.changeHp(damageToNonGoblinEnemy);
         }
     
         // Change player HP

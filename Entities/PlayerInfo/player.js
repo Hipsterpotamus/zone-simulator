@@ -79,7 +79,7 @@ class Player extends Entity{
 
     //generic functions
 
-    calcStat(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation     
+    calcStat(stat) {
         let total = (
             this[stat] +
             this.getByType('weapon')[stat] +
@@ -88,15 +88,20 @@ class Player extends Entity{
             this.getByType('legs')[stat] +
             this.getByType('feet')[stat]
         );
-
-        if (stat === 'dodge' && this.levelInfo.characteristics.elusive) {
-            total = Math.max(total, total + Math.floor(this.calcStat('as') / 10) * 2);
+    
+        if (stat === 'dodge' && this.levelInfo.activeCharacteristics.has('elusive')) {
+            total = CHARACTERISTICS['elusive'].onCalculateDodge(total, this.calcStat('as'));
         }
-
-        if (stat === 'dmg' && this.levelInfo.characteristics.patient && this.combatStats.ticksAlive > 500) {
-            total = Math.ceil(total * 1.4);
+    
+        if (stat === 'dmg') {
+            if (this.levelInfo.activeCharacteristics.has('patient')) {
+                total = CHARACTERISTICS['patient'].onCalculateDamage(total, this.combatStats.ticksAlive);
+            }
+            if (this.levelInfo.activeCharacteristics.has('vengeful')) {
+                total = CHARACTERISTICS['vengeful'].onCalculateDamage(total, this.hp, this.maxhp);
+            }
         }
-
+    
         return total;
     }
 

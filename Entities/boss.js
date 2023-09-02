@@ -10,21 +10,21 @@ class Boss extends Enemy{
     }
 
     death() {
-        if (this.game.player.levelInfo.characteristics.dominant && this.combatStats.ticksAlive < 500) {
-            this.game.combat.combatStats['totalGoldGain'] += Math.floor(this.gold * 1.25);
-            this.game.player.changeGold(this.gold * 2, true);
-        } else {
-            this.game.combat.combatStats['totalGoldGain'] += this.gold;
-            this.game.player.changeGold(this.gold, true);
+        let goldToGain = this.gold;
+        if (this.game.player.levelInfo.activeCharacteristics.has('dominant')) {
+            goldToGain = CHARACTERISTICS['dominant'].onCalculateGold(this.gold, this.combatStats.ticksAlive);
         }
-
+    
+        this.game.combat.combatStats['totalGoldGain'] += goldToGain;
+        this.game.player.changeGold(goldToGain, true);
+    
         this.alive = false;
         this.game.zone.changeZoneLevel(this.diffC);
         
         this.updateEntityDisplay();
-
+    
         this.game.player.levelInfo.changeXp(this.xp);
-
+    
         this.game.combat.bossRewards = this;
     }
 

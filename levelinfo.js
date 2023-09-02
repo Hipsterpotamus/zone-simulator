@@ -1,22 +1,112 @@
 const CHARACTERISTICS = {
-    'persuasive': '15% reduction on all future shop prices',
-    'mechanical': 'x2 uses on all new items',
-    'vengeful': 'x1.5 weapon dmg when below 30% health',
-    'prescient': 'see the name of the next space',
-    'elusive': 'gains +2% dodge for every 10 attack speed',
-    'dominant': 'gains x1.25 more gold upon killing an enemy/boss in less than 500 ticks/10 seconds',
-    'intimidating': 'enemies start with 25% less armor',
-    'precise': 'enemies takes x1.8 more damage from items, and x1.8 more from spells',
-    'patient': 'receives a x1.4 damage increase after 500 ticks/10 seconds',
-    'thrifty': 'gains x2 gold from income'
-    //'healthy': 'heal 5% of hp at the start of combat'
-    //'brutal': '+40% to shatter stat'
-    //'studious': 
-    //'committed': +30% to all gained max hp 
-    //'defensive': -5% to all enemy dmg and +10% to all future armor gained. (round up)
-    //'tricky': 25% chance on hit to reflect back 40% of damage taken (that bypassed armor)
-    //'peculiar': 
-  };
+    'persuasive': {
+        description: '15% reduction on all future shop prices',
+        onCalculatePrice: function(originalPrice) {
+            return Math.ceil(originalPrice * 0.85);
+        }
+    },
+    'mechanical': {
+        description: 'x2 uses on all new items',
+        onItemUses: function(originalUses) {
+            return originalUses * 2;
+        }
+    },
+    'vengeful': {
+        description: 'x1.5 weapon dmg when below 30% health',
+        onCalculateDamage: function(originalDmg, hp, maxHp) {
+            return (hp / maxHp < 0.3) ? Math.ceil(originalDmg * 1.5) : originalDmg;
+        }
+    },
+    'prescient': {
+        description: 'see the name of the next space',
+        onNotifyNextSpace: function(nextSpace) {
+            notify('A chill runs down your spine... You can tell the next space will be a ' + nextSpace);
+        }
+    },
+    'elusive': {
+        description: 'gains +2% dodge for every 10 attack speed',
+        onCalculateDodge: function(originalDodge, attackSpeed) {
+            return originalDodge + Math.max(Math.floor(attackSpeed / 10) * 2, 0);
+        }
+    },
+    'dominant': {
+        description: 'gains x1.25 more gold upon killing an enemy/boss in less than 500 ticks/10 seconds',
+        onCalculateGold: function(baseGold, ticksAlive) {
+            if (ticksAlive < 500) {
+                return Math.floor(baseGold * 1.25);
+            }
+            return baseGold;
+        }
+    },
+    'intimidating': {
+        description: 'enemies start with 25% less armor',
+        onCalculateArmor: function(baseArmor) {
+            return Math.ceil(baseArmor * 0.75);
+        }
+    },
+    'precise': {
+        description: 'enemies takes x1.8 more damage from items, and x1.8 more from spells',
+        onCalculateDamage: function(baseDamage) {
+            return Math.floor(baseDamage * 1.8);
+        }
+    },
+    'patient': {
+        description: 'receives a x1.4 damage increase after 500 ticks/10 seconds',
+        onCalculateDamage: function(originalDmg, ticksAlive) {
+            return (ticksAlive > 500) ? Math.ceil(originalDmg * 1.4) : originalDmg;
+        }
+    },
+    'thrifty': {
+        description: 'gains x2 gold from income',
+        onCalculateIncome: function(originalIncome) {
+            return originalIncome * 2;
+        }
+    },
+    // Commented out blocks
+    /*
+    'healthy': {
+        description: 'heal 5% of hp at the start of combat',
+        onCombatStart: function(game) {
+            // Logic for healing 5% of hp at the start of combat
+        }
+    },
+    'brutal': {
+        description: '+40% to shatter stat',
+        onCalculateShatter: function(game) {
+            // Logic for +40% to shatter stat
+        }
+    },
+    'studious': {
+        description: 'Placeholder for future logic',
+        // Placeholder for future logic
+    },
+    'committed': {
+        description: '+30% to all gained max hp',
+        onMaxHpGained: function(game) {
+            // Logic for +30% to all gained max hp
+        }
+    },
+    'defensive': {
+        description: '-5% to all enemy dmg and +10% to all future armor gained. (round up)',
+        onCalculateEnemyDamage: function(game) {
+            // Logic for -5% to all enemy dmg
+        },
+        onArmorGained: function(game) {
+            // Logic for +10% to all future armor gained
+        }
+    },
+    'tricky': {
+        description: '25% chance on hit to reflect back 40% of damage taken (that bypassed armor)',
+        onHitReceived: function(game) {
+            // Logic for 25% chance on hit to reflect back 40% of damage taken
+        }
+    },
+    'peculiar': {
+        description: 'Placeholder for future logic',
+        // Placeholder for future logic
+    }
+    */
+};
 
 class LevelInfo {
     constructor() {
@@ -25,10 +115,9 @@ class LevelInfo {
         this.nextLevel = 50;
 
         this.characteristicsOff = [];
-        this.characteristics = {};
-        Object.keys(CHARACTERISTICS).forEach((char)=>{
+        this.activeCharacteristics = new Set();
+        Object.keys(CHARACTERISTICS).forEach((char) => {
             this.characteristicsOff.push(char);
-            this.characteristics[char] = false;
         });
     }
 
@@ -50,7 +139,7 @@ class LevelInfo {
         this.updateNextLevel();
         setNextButtonVisible(false);
         setBroadcastTitleText('Level Up!');
-        this.createLvlUpElements([this.getCharacteristic(), this.getCharacteristic(), this.getCharacteristic()], bossRewards);
+        this.createLvlUpElements([this.getCharacteristic(), this.getCharacteristic()], bossRewards);
     }
 
     getCharacteristic() { //currently picks a random one
@@ -75,9 +164,9 @@ class LevelInfo {
             let button = $('<button>', {
                 'class': 'event-button'
             });
-            button.text(choice + ': ' + CHARACTERISTICS[choice]);
+            button.text(choice + ': ' + CHARACTERISTICS[choice].description);
             button.on('click', () => {
-                this.characteristics[choice] = true;
+                this.activeCharacteristics.add(choice);
                 $('#content-central-box').empty();
                 if (bossRewards) {
                     bossRewards.giveBossRewards();

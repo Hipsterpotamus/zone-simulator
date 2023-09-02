@@ -77,14 +77,18 @@ class Magic extends Item {
         //add stuff here if you want any selectable/equippable behavior for magic items
     }
 
-    onUse(game) {
+    onUse() {
+        const calculateDamage = (baseDamage) => {
+            if (this.game.player.levelInfo.activeCharacteristics.has('precise')) {
+                return CHARACTERISTICS['precise'].onCalculateDamage(baseDamage);
+            }
+            return baseDamage;
+        };
+    
         // Damage to enemy
         if (this.attack) {
-            if (this.game.player.levelInfo.characteristics.precise) {
-                this.game.combat.selectedEnemy.receiveNonHitDmg(Math.ceil(this.attack * 1.8), this.game.player);
-            } else {
-                this.game.combat.selectedEnemy.receiveNonHitDmg(this.attack, this.game.player);
-            }
+            const damageToEnemy = calculateDamage(this.attack);
+            this.game.combat.selectedEnemy.receiveNonHitDmg(damageToEnemy, this.game.player);
         }
     
         // Change player and enemy HP
@@ -92,11 +96,8 @@ class Magic extends Item {
             this.game.player.changeHp(this.hp);
         }
         if (this.enemyHp) {
-            if (this.game.player.levelInfo.characteristics.precise) {
-                this.game.combat.selectedEnemy.changeHp(Math.ceil(this.hp * 1.8));
-            } else {
-                this.game.combat.selectedEnemy.changeHp(this.hp);
-            }
+            const damageToEnemyHp = calculateDamage(this.enemyHp);
+            this.game.combat.selectedEnemy.changeHp(damageToEnemyHp);
         }
     
         // Change player max HP
