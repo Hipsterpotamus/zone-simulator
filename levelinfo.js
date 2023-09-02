@@ -108,6 +108,22 @@ const CHARACTERISTICS = {
     */
 };
 
+    //'healthy': 'heal 5% of hp at the start of combat'
+    //'brutal': '+40% to shatter stat'
+    //'studious': -30% price reduction to all magic spells in shops
+    //'emergent': +30% to all gained max hp 
+    //'defensive': -5% to all enemy dmg and +10% to all future armor gained. (round up)
+    //'tricky': 25% chance on hit to reflect back 40% of damage taken (that bypassed armor)
+    //'nimble': +2 speed for every stat item purchased
+    //'persistent': 10th attack of every combat does triple damage.
+    //'committed': receive a 5% dmg buff upon purchasing a shop item which is worth more than 90% of your current bankroll
+    //'connected': +3 shop items offered at each shop by default (1 weapon, 1 armor, 1 stat).
+    //'resurgent': Once per combat, upon going below 50% health, heal 10% of max hp.
+    //'boastful': After combat, if total dmg dealt was greater than dmg received, gain a small buff to dmg, armor, and regen. Max of +1 dmg and +(1% of current dmg) for all three stats
+    //'protective': Armor gains a permanent 10% buff for each regen you have and regen receives a permanent 10% buff for each armor you have. (Do not interact, the 10% buff to armor from regen does not get factored into the 10% buff to regen from armor).
+    //'elegant': When attackspeed is negative, attack speed stat is equal to 75% of it's current (true) value.
+    //'peculiar': 
+
 class LevelInfo {
     constructor() {
         this.xp = 0;
@@ -178,16 +194,3 @@ class LevelInfo {
         }
     }
 }
-
-// i fucked with ur numbers to give a more noticable impact but we can balance later
-
-// Persuasive: -25% reduction on all future shop prices: added
-// Mechanical: +100% uses on all new useables: added
-// Vengeful: +100% weapon dmg when below 30% health: added
-// Prescient: see the name of the next space: added
-// Elusive: gains +5% dodge for every 10 attack speed: added
-// Dominant: gains 100% more gold upon killing an enemy/boss in less than 500 ticks/10 seconds: added
-// Intimidating: enemy loses 100% of armor upon start of battle: added
-// Precise: enemies takes 100% more damage from items, and 100% more from spells. : added
-// Patient: receives a 100% damage increase after 500 ticks/10 seconds: added
-// Thrifty: gains +100% gold from income : added
