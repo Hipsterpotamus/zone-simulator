@@ -363,7 +363,7 @@ const ITEMLIST = {
     'ground enforcements': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'heal 15 hp, gain 2 armor', 'longDescription': 'Heal 15 hp, and gain a permanent 2 armor.', 'type': 'all', 'hp': 15, 'armor':2},
 
     'speed sap': {'metatype': 'magic', 'price': 0, 'shortDescription': 'heal 5, deal 10 dmg', 'longDescription': 'Deal 10 dmg to enemey (doesn\'t bypass armor), then deal 10 dmg. Infinite Uses', 'manaCost': 5, 'hp':5, 'attack': 10},
-    'skin graft': {'metatype': 'magic', 'price': 0, 'shortDescription': 'lose 4 hp, gain 1 armor', 'longDescription': 'Lose 4 hp, then gain a permanent 1 armor. Infinite Uses', 'manaCost': 8, 'hp':-4, 'arm': 1},
+    'skin graft': {'metatype': 'magic', 'price': 0, 'shortDescription': 'lose 8 hp, gain 1 armor', 'longDescription': 'Lose 4 hp, then gain a permanent 1 armor. Infinite Uses', 'manaCost': 8, 'hp':-8, 'arm': 1},
 
     'fat fur coat': {'metatype': 'chest', 'price': 0, 'type': 'coat', 'arm': 6, 'as': -8},
     'tight straw pants': {'metatype': 'legs', 'price': 0, 'type': 'pants', 'arm': 4, 'as': 17},
@@ -376,11 +376,11 @@ const ITEMLIST = {
     'razor paper stars': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'deal 68 dmg, lose 5 hp', 'longDescription': 'Deal 68 dmg to an enemy (bypasses armor), and lose 5 hp.', 'type': 'all', 'attack': 68, 'hp':-5},
     'the hungry bag': {'metatype': 'usable', 'price': 0, 'uses': 4, 'shortDescription': 'lose current weapon, gain 20 gold [UNIMPLEMENTED]', 'longDescription': 'Permantely lose your currently equipped weapon, gain 20 gold', 'type': 'all', 'weaponEat':20},
 
-    'speed sap': {'metatype': 'magic', 'price': 0, 'shortDescription': 'heal 5, deal 10 dmg', 'longDescription': 'Deal 10 dmg to enemey (doesn\'t bypass armor), then deal 10 dmg. Infinite Uses', 'manaCost': 5, 'hp':5, 'attack': 10},
-    'skin graft': {'metatype': 'magic', 'price': 0, 'shortDescription': 'lose 4 hp, gain 1 armor', 'longDescription': 'Lose 4 hp, then gain a permanent 1 armor. Infinite Uses', 'manaCost': 8, 'hp':-4, 'arm': 1},
+    'river draft': {'metatype': 'magic', 'price': 0, 'shortDescription': 'gain 5 speed, lose 2 armor', 'longDescription': 'Gain 5 attack speed permanently, lose 2 base armor (can go negative). Infinite Uses', 'manaCost': 10, 'arm':-2, 'as': 5},
+    'wood chuck': {'metatype': 'magic', 'price': 0, 'shortDescription': 'deal 35 dmg, gain 1 dmg', 'longDescription': 'Deal 35 dmg to enemy (doesn\'t bypass armor), gain 1 dmg permanently. Infinite Uses', 'manaCost': 15, 'dmg':1, 'attack': 35},
 
-    'fat fur coat': {'metatype': 'chest', 'price': 0, 'type': 'coat', 'arm': 6, 'as': -8},
-    'tight straw pants': {'metatype': 'legs', 'price': 0, 'type': 'pants', 'arm': 4, 'as': 17},
+    'magician\'s vest': {'metatype': 'chest', 'price': 0, 'type': 'coat', 'arm': 7, 'manaGen': 2, 'income':1, 'dodge':8, 'as': -22},
+    'light leave leggings': {'metatype': 'legs', 'price': 0, 'type': 'pants', 'arm': 3, 'regen':2, 'as': 45},
 //boss items beach
     //TBD
 }

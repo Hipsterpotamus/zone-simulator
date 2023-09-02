@@ -127,13 +127,13 @@ class Forest extends Zone {
         ]
 
         this.bossMagic = [
-            'speed sap',
-            'skin graft'
+            'river draft',
+            'wood chuck'
         ]
 
         this.bossArmor = [
-            'fat fur coat',
-            'tight straw pants'
+            'magician\'s vest',
+            'light leave leggings'
         ]
 
         //could assign this in the parent class if this distribution holds across zones
