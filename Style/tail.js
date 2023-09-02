@@ -36,11 +36,37 @@ function updateTailReferences() {
         }
     });
 
-    element.addEventListener('click', () => {
-      // Get the corresponding tail element and toggle the '.tail-remain' class
-      const tailElement = document.querySelector(`#${element.id}-tail`);
-      tailElement.classList.toggle('tail-remain');
+    // element.addEventListener('click', () => {
+    //   // Get the corresponding tail element and toggle the '.tail-remain' class
+    //   const tailElement = document.querySelector(`#${element.id}-tail`);
+    //   tailElement.classList.toggle('tail-remain');
+    // });
+
+
+    let isDragging = false;
+
+    element.addEventListener('mousedown', (event) => {
+      // Set isDragging to false initially
+      isDragging = false;
+      // Listen for mousemove events
+      document.addEventListener('mousemove', onMouseMove);
     });
+    
+    element.addEventListener('mouseup', (event) => {
+      // Remove the mousemove event listener
+      document.removeEventListener('mousemove', onMouseMove);
+      // Check if the mouse was moved
+      if (!isDragging) {
+        // Get the corresponding tail element and toggle the '.tail-remain' class
+        const tailElement = document.querySelector(`#${element.id}-tail`);
+        tailElement.classList.toggle('tail-remain');
+      }
+    });
+    
+    function onMouseMove(event) {
+      // Set isDragging to true if the mouse is moved
+      isDragging = true;
+    }
   });
 }
 
