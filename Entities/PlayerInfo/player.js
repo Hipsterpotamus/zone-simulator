@@ -55,7 +55,10 @@ class Player extends Entity{
             'itemsUsed' : 0
         }
 
-        // this.addSelectableItem(new Usable(this.game, 'none', {'metatype': 'usable'}), false, false);
+        this.initPlayerDisplay();
+    }
+
+    initPlayerDisplay() {
         this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'weapon'}), false, false);
         this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'head'}), false, false);
         this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'chest'}), false, false);

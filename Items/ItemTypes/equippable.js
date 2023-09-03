@@ -35,7 +35,7 @@ class Equippable extends Item {
             });
         }
 
-        if (this.name !== 'none' && this.game.player.name === 'maggie') {
+        if (this.name !== 'none' && this.game !== undefined && this.game.player.name === 'maggie') {
             Object.keys(this.itemInfo).forEach((stat)=>{
                 if (stat !== 'as') {
                     this.itemInfo[stat] = this.itemInfo[stat] * 2;
@@ -156,7 +156,7 @@ ${currentPercent > 0 ? '+' : ''}${currentPercent}% => ${ownPercent > 0 ? '+' : '
         }
         if(this.name=='none'){
             statOutput = '';
-        } else {
+        } else if (this.game !== undefined){
             this.game.player.updateEntityDisplay();
         }
         
