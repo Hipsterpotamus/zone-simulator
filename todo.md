@@ -54,6 +54,7 @@
 
 ### Fixes
 * [] Add burn option to path generation
+* [] Make it so events can't appear multiple times
 
 ### Refactoring
 * [] Document backend systems somewhere
