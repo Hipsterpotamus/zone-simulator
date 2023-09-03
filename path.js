@@ -121,6 +121,7 @@ class Path {
 
     emptyEvent() {
         setBroadcastTitleText(this.game.zone.zoneMessage, true);
+        if (this.game.player.name === 'ben') {this.game.player.giveGift(this.zoneNum)};
     }
 
     pathEventEvent() {

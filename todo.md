@@ -50,7 +50,6 @@
 * [] Add speedup button/slider/something
 
 * [] Add rarity to shop items
-* [] Get all the characters functioning
 
 ### Fixes
 * [] Add burn option to path generation
