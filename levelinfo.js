@@ -65,7 +65,7 @@ const CHARACTERISTICS = {
     'healthy': {
         description: 'heal 5% of max hp at the start of combat',
         onCombatStart: function(player) {
-            player.changeHp(Math.floor(player.maxHp * 0.05));
+            player.changeHp(Math.floor(player.maxhp * 0.05));
         }
     },
     'brutal': {

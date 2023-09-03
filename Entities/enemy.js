@@ -2,8 +2,8 @@ class Enemy extends Entity{
     constructor(game, xp, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
          super(name, type, health, attackspeed, damage, armor, gold, regen, complexStats);
          this.game = game;
-        if (this.game.player.levelInfo.activeCharacteristics.has('dominant')) {
-            this.arm = CHARACTERISTICS['dominant'].onCalculateEnemyArmor(this.arm);
+        if (this.game.player.levelInfo.activeCharacteristics.has('intimidating')) {
+            this.arm = CHARACTERISTICS['intimidating'].onCalculateEnemyArmor(this.arm);
         }
         if (this.game.player.levelInfo.activeCharacteristics.has('defensive')) {
             this.dmg = CHARACTERISTICS['defensive'].onCalculateEnemyDamage(this.dmg);
