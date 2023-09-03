@@ -79,6 +79,7 @@ class Player extends Entity{
     changeSelectedItem(item, itemShop = false, updateDisplay = true) {
         if (updateDisplay && item.metatype != 'usable' && item.metatype != 'magic') {item.calcComparisons()}
         this.attackCounter = 0;
+        if (this.inv[item.metatype][0] != '') {this.inv[item.metatype][0].income = 0};
         this.inv[item.metatype][0] = item;
         if (updateDisplay) {item.updateItemInfo()}
         $('#'+item.metatype+'-select').val(item.name);

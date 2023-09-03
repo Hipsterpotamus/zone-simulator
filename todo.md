@@ -52,7 +52,6 @@
 * [] Add rarity to shop items
 
 ### Fixes
-* [] Make it so events can't appear multiple times
 
 ### Refactoring
 * [] Figure out a better way to call event format and implement across codebase
