@@ -46,7 +46,7 @@ const EVENTLIST = {
             effect: function(game) {
                 if (game.player.gold < 4) { return;}
                 game.player.changeGold(-4);
-                game.player.addSelectableItem(new Equippable(game, 'garden hoe', {'metatype': 'head', 'type': 'hat', 'arm': 2}));
+                game.player.addSelectableItem(new Equippable(game, 'farmer hat', {'metatype': 'head', 'type': 'hat', 'arm': 2}));
             }
         },
         {
