@@ -157,10 +157,10 @@ const CHARACTERISTICS = {
     'protective': {
         description: 'Armor gains a permanent 10% buff for each regen you have and regen receives a permanent 10% buff for each armor you have. (Do not interact, the 10% buff to armor from regen does not get factored into the 10% buff to regen from armor).', //this seems insane, lmk if i read it right lmao
         onCalculateArmor: function(baseArmor, baseRegen) {
-            return baseArmor + baseArmor * baseRegen * 0.1;
+            return baseArmor + Math.floor(baseArmor * baseRegen * 0.1);
         },
         onCalculateRegen: function(baseRegen, baseArmor) {
-            return baseRegen + baseRegen * baseArmor * 0.1;
+            return baseRegen + Math.floor(baseRegen * baseArmor * 0.1);
         }
     },
     'elegant': {
