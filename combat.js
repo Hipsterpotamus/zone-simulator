@@ -90,6 +90,9 @@ class Combat {
     }
 
     combatTick() {
+        if (this.player.attackCounter === 0) {
+            startPlayerTimer(this.player.calcAs() * 1.3);
+        }
         if (!this.enemyList.includes(this.selectedEnemy)) {this.selectedEnemy = this.enemyList[0]};
         this.tick += 1;
         this.changeCounters(1);
@@ -111,7 +114,6 @@ class Combat {
                 attackMult = attackMult * CHARACTERISTICS['persistent'].onTenthAttack(this.playerAttacks);
             }
             this.selectedEnemy.receiveHitFrom(this.player, attackMult);
-            // startPlayerTimer(this.player.calcAs());
         }
 
         this.enemyList.forEach(enemy => {

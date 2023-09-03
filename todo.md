@@ -54,5 +54,7 @@
 ### Fixes
 
 ### Refactoring
+* [] Update combat systems to run in deltatime? for better communication with frontend
+
 * [] Figure out a better way to call event format and implement across codebase
 * [] Document backend systems somewhere
