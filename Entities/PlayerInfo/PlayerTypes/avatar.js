@@ -54,6 +54,7 @@ class Avatar extends Player {
                 avatarItem[stat] += item[stat];
             });
         }
+        avatarItem.as -= 25;
         avatarItem.updateItemInfo();
     }
 }

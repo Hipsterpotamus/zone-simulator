@@ -5,7 +5,8 @@ class Zone {
         this.game = game;
         this.zoneLevel = 1;
         this.minZoneLevel = 1;
-        this.zoneItemList = {}
+        this.zoneItemList = {};
+        this.usedEvents = [];
         ITEMCATEGORIES.forEach(element => {
             this.zoneItemList[element] = [];
         });
@@ -97,12 +98,18 @@ class Zone {
     getRandomEvent(space) {
         let eventPool = [];
         this.zoneEvents.forEach(element => {
-            if (space >= element[0] && space <= element[1]) {
+            if (space >= element[0] && space <= element[1] && !this.usedEvents.includes(element[2])) {
                 eventPool.push(element[2]);
             }
         });
-        const selectedEvent = eventPool[Math.floor(Math.random() * eventPool.length)];
-        return [selectedEvent, EVENTLIST[selectedEvent]];
+        let selectedEvent;
+        if (eventPool.length === 0) {
+            return this.getRandomRest(space);
+        } else {
+            selectedEvent = eventPool[Math.floor(Math.random() * eventPool.length)];
+            this.usedEvents.push(selectedEvent);
+            return [selectedEvent, EVENTLIST[selectedEvent]];
+        }
     }
 
     getZoneEvent() {
