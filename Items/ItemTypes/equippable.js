@@ -110,11 +110,11 @@ class Equippable extends Item {
             let compareTickChange = ownTickChange - currentTickChange;
             let ownPercent = this.calcAsChange(ownStat, currentStat - currentEquipStat);
             let comparePercent = this.calcAsChange(compStat, currentStat);
-            return `${currentEquipStat > 0 ? '+' : ''}${currentEquipStat} ${stat} => ${ownStat > 0 ? '+' : ''}${ownStat} ${stat} (${compStat} ${stat} ${compStat > 0 ? 'higher' : 'lower'})
-${currentTickChange > 0 ? '+' : ''}${currentTickChange} ticks => ${ownTickChange > 0 ? '+' : ''}${ownTickChange} ticks (${compareTickChange} ${compareTickChange > 0 ? 'ticks slower' : 'ticks faster'}) 
-${currentPercent > 0 ? '+' : ''}${currentPercent}% => ${ownPercent > 0 ? '+' : ''}${ownPercent}% (${comparePercent}% ${comparePercent > 0 ? 'faster' : 'slower'})`;
+            return `${currentEquipStat > 0 ? '+' : ''}${currentEquipStat} ${stat} => ${ownStat > 0 ? '+' : ''}${ownStat} ${stat} (${Math.abs(compStat)} ${stat} ${compStat > 0 ? 'higher' : 'lower'})
+${currentTickChange > 0 ? '+' : ''}${currentTickChange} ticks => ${ownTickChange > 0 ? '+' : ''}${ownTickChange} ticks (${Math.abs(compareTickChange)} ${compareTickChange > 0 ? 'ticks slower' : 'ticks faster'}) 
+${currentPercent > 0 ? '+' : ''}${currentPercent}% => ${ownPercent > 0 ? '+' : ''}${ownPercent}% (${Math.abs(comparePercent)}% ${comparePercent > 0 ? 'faster' : 'slower'})`;
         } else {
-            return `${currentEquipStat > 0 ? '+' : ''}${currentEquipStat} ${stat} => ${ownStat > 0 ? '+' : ''}${ownStat} ${stat} (${compStat} ${stat} ${compStat > 0 ? 'higher' : 'lower'})`;
+            return `${currentEquipStat > 0 ? '+' : ''}${currentEquipStat} ${stat} => ${ownStat > 0 ? '+' : ''}${ownStat} ${stat} (${Math.abs(compStat)} ${stat} ${compStat > 0 ? 'higher' : 'lower'})`;
         }
     }
 

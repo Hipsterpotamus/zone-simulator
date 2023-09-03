@@ -52,8 +52,8 @@
 * [] Add rarity to shop items
 
 ### Fixes
-* [] Add burn option to path generation
 * [] Make it so events can't appear multiple times
 
 ### Refactoring
+* [] Figure out a better way to call event format and implement across codebase
 * [] Document backend systems somewhere

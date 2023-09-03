@@ -4,10 +4,10 @@ class Beach extends Zone {
         this.maxZoneLevel = 9;
         this.shopCode = [3,3,3,2,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber]
         this.pathGen = [20, //max spaces,
-            [['shop', 50, 15, 0], //[shop start, shop grow, shop reset],
-            ['event', 30, 15, 0], //[event start, event grow, event reset],
-            ['rest', 5, 5, 5], //[rest start, rest grow, rest reset],
-            ['enemy', 50, 20, 10]], //[enemy start, enemy grow, enemy reset],
+            [['shop', 50, 15, 0, 1], //[shop start, shop grow, shop reset, shop burn],
+            ['event', 30, 15, 0, 1], //[event start, event grow, event reset, event burn],
+            ['rest', 5, 5, 5, 1], //[rest start, rest grow, rest reset, rest burn],
+            ['enemy', 50, 20, 10, 0]], //[enemy start, enemy grow, enemy reset, enemy burn],
             { // set consistent levels here
                 0 : 'empty',
                 10 : 'pathEvent',

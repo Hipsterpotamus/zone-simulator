@@ -6,6 +6,7 @@ class Path {
         this.typeInfo;
         this.setSpaces;
         this.nextSpace;
+        this.burnCounters;
         this.spaceNumber = 0;
 
         this.itemShop = new ItemShop(game);
@@ -15,6 +16,7 @@ class Path {
         this.maxSpaces = maxSpaces;
         this.typeInfo = typeInfo;
         this.setSpaces = setSpaces;
+        this.burnCounters = {};
 
         this.pushZoneItems();
 
@@ -22,23 +24,34 @@ class Path {
     }
 
     generateNextSpace() {
-        this.nextSpace;
+        this.nextSpace = null;
         let total = 0;
         this.typeInfo.forEach(element => {
+            const type = element[0];
+            if (this.burnCounters[type] > 0) return;
             total += element[1];
         });
+        if (total === 0) {
+            this.nextSpace = 'enemy';
+            return;
+        }
         const rand = Math.random();
         let runningTotal = 0;
         for (let i = 0; i < this.typeInfo.length; i++) {
             const element = this.typeInfo[i];
+            const type = element[0];
+            if (this.burnCounters[type] > 0) continue;
+
             runningTotal += element[1] / total;
             if (runningTotal > rand) {
-                this.nextSpace = element[0];
+                this.nextSpace = type;
                 break;
             }
         }
-        if (this.spaceNumber in this.setSpaces) {this.nextSpace = this.setSpaces[this.spaceNumber];}
-        
+
+        if (this.spaceNumber in this.setSpaces) {
+            this.nextSpace = this.setSpaces[this.spaceNumber];
+        }
         if (this.game.player.levelInfo.activeCharacteristics.has('prescient')) {
             CHARACTERISTICS['prescient'].onNotifyNextSpace(this.nextSpace);
         }
@@ -47,8 +60,11 @@ class Path {
 
     adjustChances() {
         this.typeInfo.forEach(element => {
-            if (element[0] == this.nextSpace) {
+            const type = element[0];
+            const burnValue = element[4];
+            if (type == this.nextSpace) {
                 element[1] = element[3];
+                this.burnCounters[type] = burnValue;
             } else {
                 element[1] += element[2];
             }
@@ -66,6 +82,12 @@ class Path {
             income = CHARACTERISTICS['thrifty'].onCalculateIncome(income);
         }
         this.game.player.changeGold(income);
+
+        for (const type in this.burnCounters) {
+            if (this.burnCounters[type] > 0) {
+                this.burnCounters[type]--;
+            }
+        }
         
         const SPACEKEYS = {'shop' : 'shopEvent', 
         'event' : 'eventEvent', 
