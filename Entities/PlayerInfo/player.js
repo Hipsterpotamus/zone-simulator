@@ -79,7 +79,11 @@ class Player extends Entity{
     changeSelectedItem(item, itemShop = false, updateDisplay = true) {
         if (updateDisplay && item.metatype != 'usable' && item.metatype != 'magic') {item.calcComparisons()}
         this.attackCounter = 0;
-        if (this.inv[item.metatype][0] != '') {this.inv[item.metatype][0].income = 0};
+        let prevItem = this.inv[item.metatype][0];
+        if (prevItem != '' && prevItem.income != 0) {
+            prevItem.income = 0;
+            notify(`The luster of ${prevItem.name} fades away... You won't get any more income from this item`)
+        }
         this.inv[item.metatype][0] = item;
         if (updateDisplay) {item.updateItemInfo()}
         $('#'+item.metatype+'-select').val(item.name);
