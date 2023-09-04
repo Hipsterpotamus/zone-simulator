@@ -153,7 +153,15 @@ function updateBar(depleted, newValue, maxValue, barContainer, bar, hit) {
         hit.css({'width': '0'});
         bar.css('width', barWidth + "%");
     }, 500);
+
+    // if decreasing, animate
+    if (depleted > 0) {
+        bar.addClass('hit-stable');
+        setTimeout(function(){bar.removeClass('hit-stable');}, 400);
+    }
+
     return "done"
+
 }
 
 // Toast Bar

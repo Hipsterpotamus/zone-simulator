@@ -11,7 +11,17 @@
   mask: radial-gradient(transparent 0%,#000 0%);
   animation-play-state: paused;
   /* add border to make it look like a ring */
+  
+  transform: scale(1);
+  transition: transform 0.1s ease-in-out;
 }
+
+.timer.land {
+  transform: scale(1.5);
+  transition: transform 0.15s ease-in;
+}
+
+
 
 .timer-mask {
   border-radius: 100% 0 0 100% / 50% 0 0 50%;

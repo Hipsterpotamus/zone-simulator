@@ -180,13 +180,21 @@ class Entity{
     setAttackTimer(time, speed, color) {
         this.timer.style.background = `-webkit-linear-gradient(left, var(--md-sys-color-${color}) 50%, var(--md-sys-color-${color}-container) 50%)`;
 
-
         if (time/speed < 0.5) {
             this.timermask.style.background = `var(--md-sys-color-${color}-container)`;
             this.timermask.style.webkitTransform = `rotate(${time/speed*-1}turn)`;
         } else { 
             this.timermask.style.background = `var(--md-sys-color-${color})`;
             this.timermask.style.webkitTransform = `rotate(${(time/speed*-1)-0.5}turn)`;
+        }
+
+        if (time/speed > .90) {
+            this.timer.classList.add('land');
+            setTimeout(() => {
+                this.timer.classList.remove('land');
+            }, 200);
+        } else {
+            this.timer.classList.remove('land');
         }
     }
 }

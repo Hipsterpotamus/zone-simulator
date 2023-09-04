@@ -258,7 +258,7 @@ class Player extends Entity{
         this.mana = this.mana + amount;
         this.mana = (this.mana >= this.maxMana) ? this.maxMana : this.mana;
         if(this.mana>this.maxMana){}
-        updateManaBar(amount, this.mana, this.maxMana);
+        updateManaBar(amount * -1, this.mana, this.maxMana);
     }
 
 
