@@ -52,7 +52,7 @@ class Usable extends Item {
 
     appendToSelect() {
         this.usableButton = $('<button>', {
-            'class': 'usable-button primary on-primary-text hover shadow',
+            'class': 'usable-button primary on-primary-text shadow hover',
             'id': this.name.replace(/\s/g, '') + '-button'
         });
 
@@ -89,6 +89,17 @@ class Usable extends Item {
             this.attemptUse();
         });
 
+        this.usableButton.hover(() => {
+            this.usableButtonDesc.text(this.longDescription);
+        }, () => {
+            this.usableButtonName.text(this.name);
+            this.usableButtonDesc.text(this.shortDescription);
+        });
+
+    }
+
+    displayDescription(description) {
+        
     }
 
     onBuy() {
