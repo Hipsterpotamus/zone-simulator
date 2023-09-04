@@ -380,17 +380,20 @@
 
                 <!-- Spell Box -->
                 <div class="large-tab-row primary-container on-primary-container-text" id="magic-tab-row" >
-                    <div class = 'fifth-magic-row'><p id = 'mana-count-title'>mana: 0</p></div>
-                    <div id="mana-bar-container" data-total="1000" data-value="1000">
-                        <div id="mana-bar">
-                              <div id="mana-hit-bar"></div>
+                    <div class="magic-tab-mana-container">
+                        <div id="mana-bar-container" data-total="1000" data-value="1000">
+                            <div id="mana-bar">
+                                <div id="mana-hit-bar"></div>
+                            </div>
                         </div>
+                        <div class = 'tertiary on-tertiary-text shadow has-tail' id = 'mana-count-title'></div>
                     </div>
-                    <div class = 'four-fifth-magic-row' id = 'spell-container'>
-                        spells:<br>
+
+                    
+                    <div class = 'spell-container' id = 'spell-container'>
+                        
                         
                     </div>
-                    [WIP]
                 </div>
 
             </div>
@@ -403,6 +406,9 @@
         </div>
 
         <!-- Tails -->
+        <div id="mana-count-title-tail" class="hidden draggable tail">
+            <p>Mana is used to cast spells. It regenerates over time.</p>
+        </div>
         <div id='broadcast-title-tail' class="hidden draggable tail"> <!-- Info on event/shop title box -->
             <p>Press (→) on the right when you are ready to go next.</p>
             <p><em>Shop:</em> Purchase useful equipment and items.</p>

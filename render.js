@@ -134,24 +134,24 @@ $(function() {
 // Health/Mana Bars
 
 function updateManaBar(cost, newValue, maxMana) { // cost of spell, new Mana value, max Mana value
-    $('#mana-count-title').text('mana: '+newValue+'/'+maxMana);
+    $('#mana-count-title').text(newValue);
     var manaBar = $('#mana-bar-container'),
         bar = manaBar.find('#mana-bar'),
         hit = manaBar.find('#mana-hit-bar');
-    updateBar(cost, newValue, maxMana, manaBar, bar, hit);
+    updateBar(cost, newValue, maxMana, manaBar, bar, hit, 'height');
 }
 
-function updateBar(depleted, newValue, maxValue, barContainer, bar, hit) {
-    var barWidth = (newValue / maxValue * 100) + "%";
-    bar.css('width', barWidth);
-    var hitWidth = (depleted / maxValue) * 100 + "%";
+function updateBar(depleted, newValue, maxValue, barContainer, bar, hit, direction='width') {
+    var barSize = (newValue / maxValue * 100) + "%";
+    bar.css(direction, barSize);
+    var hitSize = (depleted / maxValue) * 100 + "%";
 
     // show hit bar and animate
-    hit.css('width', hitWidth);
+    hit.css(direction, hitSize);
     barContainer.data('value', newValue);
     setTimeout(function(){ // Show hit bar for 0.5s
-        hit.css({'width': '0'});
-        bar.css('width', barWidth + "%");
+        hit.css({direction: '0'});
+        bar.css(direction, barSize + "%");
     }, 500);
 
     // if decreasing, animate
@@ -161,7 +161,6 @@ function updateBar(depleted, newValue, maxValue, barContainer, bar, hit) {
     }
 
     return "done"
-
 }
 
 // Toast Bar
