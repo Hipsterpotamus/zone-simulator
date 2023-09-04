@@ -176,4 +176,17 @@ class Entity{
         if(Math.random()<((this.calcStat('bleed')%10)/10)){bleed+=1;}
         return bleed;
     }
+
+    setAttackTimer(time, speed, color) {
+        this.timer.style.background = `-webkit-linear-gradient(left, var(--md-sys-color-${color}) 50%, var(--md-sys-color-${color}-container) 50%)`;
+
+
+        if (time/speed < 0.5) {
+            this.timermask.style.background = `var(--md-sys-color-${color}-container)`;
+            this.timermask.style.webkitTransform = `rotate(${time/speed*-1}turn)`;
+        } else { 
+            this.timermask.style.background = `var(--md-sys-color-${color})`;
+            this.timermask.style.webkitTransform = `rotate(${(time/speed*-1)-0.5}turn)`;
+        }
+    }
 }

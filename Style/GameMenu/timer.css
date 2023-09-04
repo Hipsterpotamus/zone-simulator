@@ -10,7 +10,9 @@
   -webkit-mask: radial-gradient(transparent 0%,#000 0%);
   mask: radial-gradient(transparent 0%,#000 0%);
   animation-play-state: paused;
+  /* add border to make it look like a ring */
 }
+
 .timer-mask {
   border-radius: 100% 0 0 100% / 50% 0 0 50%;
   height: 100%;
@@ -74,4 +76,28 @@
       background: var(--md-sys-color-tertiary);
       -webkit-transform: rotate(-180deg);
   }
+}
+#player-time {
+ 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+  margin: 0;
+  width: 2rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-shadow: 0px 0px 5px var(--md-sys-color-on-tertiary-container); */
+  /* set text color to be inverse of background */
+  
+  mix-blend-mode: difference;
+
+  /* make not affected by mask so its above it */
+  z-index: 2;
+  display: none;
+
 }

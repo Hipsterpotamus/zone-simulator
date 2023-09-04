@@ -23,6 +23,9 @@ class Player extends Entity{
         this.inCombat = false;
         this.resurgentUses = 0;
 
+        this.timer = document.querySelector('#player-stats-row .timer');
+        this.timermask = document.querySelector('#player-stats-row .timer .timer-mask');
+
         this.inv = {
             'usable':['', []],
             'weapon':['', []],
@@ -237,7 +240,6 @@ class Player extends Entity{
     death() {
         this.alive = false;
         setBroadcastTitleText('You Died :(', true);
-        stopPlayerTimer();
         this.updateEntityDisplay();
 
         console.log('game combat stats:');
@@ -280,6 +282,9 @@ class Player extends Entity{
         $('#player-name').text(this.name);
         $('#player-hp').text(this.hp + '/' + this.maxhp);
         $('#player-time').text((this.calcAs()-this.attackCounter));
+
+        
+        this.setAttackTimer(this.calcAs()-this.attackCounter, this.calcAs(), 'tertiary');
 
         let stats_list_player = ['dmg', 'arm', 'regen', 'speed', 'dodge', 'shatter', 'bleed', 'lifedrain', 'antiheal', 'thorn', 'superarmor','tear'];
         if (this.accuracy != 100) {stats_list_player.push('accuracy')}
@@ -330,6 +335,7 @@ class Player extends Entity{
 
         // updateTailReferences();
     }
+
 
     updateGoldDisplay() {
         $('#gold-text-number').text(this.gold);
