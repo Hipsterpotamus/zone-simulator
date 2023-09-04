@@ -30,7 +30,7 @@ class Wisp extends Player {
 
     changeMaxHp(amount){
         if(amount>0){
-            notify('Willow cannot go over 1 max hp!')    
+            notify('Willow cannot go over 1 max HP!')    
         }else{
             this.maxhp += amount;
             this.changeHp(Math.max(amount, 0));
