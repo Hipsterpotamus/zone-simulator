@@ -216,9 +216,7 @@ class Player extends Entity{
             }
             this.hp = Math.min(this.maxhp, this.hp + amount);
             if (this.inCombat && this.levelInfo.activeCharacteristics.has('resurgent')) {
-                let preAmount = amount;
-                amount += this.hp + CHARACTERISTICS['resurgent'].onHealthDrop(this);
-                this.hp = Math.min(this.maxhp, this.hp + amount - preAmount);
+                this.hp = Math.min(this.maxhp, this.hp + CHARACTERISTICS['resurgent'].onHealthDrop(this));
             }
         }
 
@@ -239,6 +237,7 @@ class Player extends Entity{
     death() {
         this.alive = false;
         setBroadcastTitleText('You Died :(', true);
+        stopPlayerTimer();
         this.updateEntityDisplay();
 
         console.log('game combat stats:');

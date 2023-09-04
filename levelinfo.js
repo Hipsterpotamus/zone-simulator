@@ -138,8 +138,9 @@ const CHARACTERISTICS = {
     'resurgent': {
         description: 'Once per combat, upon going below 50% health, heal 10% of max hp.',
         onHealthDrop: function(player) {
-            if (player.resurgentUses === 0 && player.hp / player.maxHp < 0.5) {
-                return Math.floor(player.maxHp * 0.1);
+            if (player.resurgentUses === 0 && player.hp / player.maxhp < 0.5) {
+                player.resurgentUses += 1;
+                return Math.floor(player.maxhp * 0.1);
             }
             return 0;
         }
@@ -191,6 +192,8 @@ class LevelInfo {
         Object.keys(CHARACTERISTICS).forEach((char) => {
             this.characteristicsOff.push(char);
         });
+
+        this.activeCharacteristics.add('resurgent')
     }
 
     changeXp(amount) {
