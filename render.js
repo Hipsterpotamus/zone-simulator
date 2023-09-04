@@ -133,11 +133,16 @@ $(function() {
 
 // Health/Mana Bars
 
-function updateManaBar(cost, newValue, maxMana) { // cost of spell, new Mana value, max Mana value
+function updateManaBar(cost, newValue, maxMana, manaGen) { // cost of spell, new Mana value, max Mana value
     $('#mana-count-title').text(newValue);
+    $('#mana-count-title-tail p').text(
+        `${newValue}/${maxMana} Mana \n${manaGen} Mana Regen`
+    );
+    $('#mana-count-title-tail p').html($('#mana-count-title-tail p').html().replace(/\n/g,'<br/>'));
+
     var manaBar = $('#mana-bar-container'),
-        bar = manaBar.find('#mana-bar'),
-        hit = manaBar.find('#mana-hit-bar');
+    bar = manaBar.find('#mana-bar'),
+    hit = manaBar.find('#mana-hit-bar');
     updateBar(cost, newValue, maxMana, manaBar, bar, hit, 'height');
 }
 

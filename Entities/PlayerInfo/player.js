@@ -253,12 +253,11 @@ class Player extends Entity{
         // video.addEventListener('ended', function() {$('#player-death').addClass('hidden')});
     }
 
-    // Not totally sure where you'll want this, depending on if all entities have mana
     changeMana(amount) { // For when mana is used is by spells
         this.mana = this.mana + amount;
         this.mana = (this.mana >= this.maxMana) ? this.maxMana : this.mana;
         if(this.mana>this.maxMana){}
-        updateManaBar(amount * -1, this.mana, this.maxMana);
+        updateManaBar(amount * -1, this.mana, this.maxMana, this.calcStat('manaGen'));
     }
 
 
@@ -272,7 +271,7 @@ class Player extends Entity{
     }
 
     updateEntityDisplay() {
-        updateManaBar(0, this.mana, this.maxMana);
+        updateManaBar(0, this.mana, this.maxMana, this.calcStat('manaGen'));
         let htmlOutput = '';
         htmlOutput = this.name+' | ';
 
