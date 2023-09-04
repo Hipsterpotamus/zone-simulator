@@ -192,8 +192,6 @@ class LevelInfo {
         Object.keys(CHARACTERISTICS).forEach((char) => {
             this.characteristicsOff.push(char);
         });
-
-        this.activeCharacteristics.add('resurgent')
     }
 
     changeXp(amount) {
