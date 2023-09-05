@@ -16,8 +16,14 @@
   
   font-family: 'Martian Mono', monospace;
   font-size: 1.5vh;
+
+  /* add a solid shadow */
+  box-shadow: 
+    -5px 5px 0px -1px var(--md-sys-color-primary),
+    -10px 10px 0px -1px var(--md-sys-color-primary-container);
+
 }
-#encounter-container::before,
+/* #encounter-container::before,
 #encounter-container::after {
   content: '';
   position: absolute;
@@ -31,14 +37,14 @@
 #encounter-container::before {
   width: 6rem;
   height: 6rem;
-  right: 2rem;
+  left: 2rem;
   bottom: -6rem;
 }
 
 #encounter-container::after {
   bottom: -8rem;
-  right: -2rem;
-}
+  left: -2rem;
+} */
 
 
 /* Title */
