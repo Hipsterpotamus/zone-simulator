@@ -81,6 +81,10 @@ class Enemy extends Entity{
         updateBar(-damage, this.hp, this.maxhp, healthBar, bar, hit);
     }
 
+    animateDodge() {
+        
+    }
+
     updateEntityDisplay() {
         
         // let htmlOutput = '';
