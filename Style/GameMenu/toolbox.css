@@ -147,6 +147,7 @@
   
   
   overflow-y: scroll;
+  overflow-x: hidden;
   /* scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
@@ -185,8 +186,19 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.spell-container button {
-  width: 90%;
+.spell-container .magic-spell {
+  /* clear default li styling */
+  list-style-type: none;
+  /* center */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  font-size: 10pt;
+
+  width: 10rem;
   padding: 0.5rem 1rem;
   text-transform: capitalize;
   border: none;
@@ -196,14 +208,10 @@
   color: var(--md-sys-color-on-primary);
   
   cursor: pointer;
-  
-  outline-offset: -2px;
 
   margin: 0.5rem;
   box-shadow: 0 1px 0.2rem var(--md-sys-color-tertiary);
 
-  
-  
   transition: all 0.1s ease-in-out;
 
   animation: spell-button 5s linear infinite;
@@ -211,15 +219,15 @@
   background-size: 600%;
 }
 
-.spell-container button:first-child {
+.spell-container .magic-spell:first-child {
   margin-top: 1rem;
 }
 
-.spell-container button:last-child {
+.spell-container .magic-spell:last-child {
   margin-bottom: 1rem;
 }
 
-#magic-tab-row button:hover {
+#magic-tab-row .magic-spell:hover {
   animation: spell-button 1s linear infinite;
   
   box-shadow: 0 2px 0.5rem var(--md-sys-color-tertiary);

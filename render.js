@@ -59,6 +59,7 @@ $(function() {
             }
         }
     });
+    $( ".sortable" ).sortable();
 });
 
 // Theme Buttons

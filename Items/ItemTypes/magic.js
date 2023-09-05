@@ -57,7 +57,7 @@ class Magic extends Item {
     }
 
     appendToSelect() {
-        this.selectElement = $('<button>', {
+        this.selectElement = $('<li>', {
             'value': this.name,
             'id': this.name + '-spell-use',
             'class': 'magic-spell'
