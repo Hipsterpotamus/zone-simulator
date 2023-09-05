@@ -149,6 +149,8 @@ class Entity{
         }
     }
 
+    animateDodge() {}
+
     testDodge(accuracy) {
         return Math.random() > (this.calcStat('dodge') / accuracy);
     }
