@@ -85,7 +85,7 @@ class Enemy extends Entity{
         $('#enemy').addClass('dodge-animation');
         setTimeout(function() {
             $('#enemy').removeClass('dodge-animation');
-        }, 500);
+        }, 800);
     }
 
     updateEntityDisplay() {
