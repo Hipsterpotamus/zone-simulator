@@ -16,8 +16,14 @@
   
   font-family: 'Martian Mono', monospace;
   font-size: 1.5vh;
+
+  /* add a solid shadow */
+  box-shadow: 
+    -5px 5px 0px -1px var(--md-sys-color-primary),
+    -10px 10px 0px -1px var(--md-sys-color-primary-container);
+
 }
-#encounter-container::before,
+/* #encounter-container::before,
 #encounter-container::after {
   content: '';
   position: absolute;
@@ -31,14 +37,14 @@
 #encounter-container::before {
   width: 6rem;
   height: 6rem;
-  right: 2rem;
+  left: 2rem;
   bottom: -6rem;
 }
 
 #encounter-container::after {
   bottom: -8rem;
-  right: -2rem;
-}
+  left: -2rem;
+} */
 
 
 /* Title */
@@ -117,7 +123,7 @@
 }
 
 /* shop/encounter buttons */
-#content-central-box button {
+#content-central-box .shop-item {
   padding: 1rem;
   margin: 1rem;
   margin-bottom: 0.5rem;
@@ -126,6 +132,9 @@
   border-radius: 0.5rem;
   z-index: 2;
   font-family: 'Martian Mono', monospace;
+
+  /* center text */
+  text-align: center;
 
   
   background-color: var(--md-sys-color-tertiary-variant);
@@ -136,13 +145,12 @@
   
   transition: all 0.2s ease-in-out;
 }
-
-
-#content-central-box button:not(.shop-item-disabled):hover {
+#content-central-box .shop-item:not(.shop-item-disabled):hover {
   background-color: var(--md-sys-color-tertiary);
   color: var(--md-sys-color-on-tertiary);
   border-radius: 16px;
   transform: scale(1.1);
+  z-index: 5;
 }
 
 .shop-item-disabled {
@@ -151,19 +159,17 @@
   opacity: 0.5;
 }
 
-
-
-#content-central-box button.stat-shop-item {
+#content-central-box .shop-item.stat-shop-item {
   /* border-radius: 50px; */
   /* dotted */
   outline: 4px dashed var(--md-sys-color-tertiary);
 }
 
-#content-central-box button.usable-shop-item {
+#content-central-box .shop-item.usable-shop-item {
   border-radius: 32px;
 }
 
-#content-central-box button.magic-shop-item {
+#content-central-box .shop-item.magic-shop-item {
   /* shadow */
   
   border-radius: 32px;
@@ -194,3 +200,29 @@
   align-items: center;
 } */
 
+/* Non-shop Buttons in the Game Box */
+#content-central-box button {
+  padding: 1rem;
+  margin: 1rem;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+  border: none;
+  border-radius: 0.5rem;
+  z-index: 2;
+  font-family: 'Martian Mono', monospace;
+
+  
+  background-color: var(--md-sys-color-tertiary-variant);
+  color: var(--md-sys-color-tertiary);
+  cursor: pointer;
+  outline: 4px solid var(--md-sys-color-tertiary);
+  outline-offset: -2px;
+  
+  transition: all 0.2s ease-in-out;
+}
+#content-central-box button:not(.shop-item-disabled):hover {
+  background-color: var(--md-sys-color-tertiary);
+  color: var(--md-sys-color-on-tertiary);
+  border-radius: 16px;
+  transform: scale(1.1);
+}

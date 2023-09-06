@@ -43,7 +43,7 @@ class Combat {
         this.inCombat = true;
         this.player = player;
 
-        startPlayerTimer(this.player.calcAs());
+        // startPlayerTimer(this.player.calcAs());
 
         this.playerAttacks = 0;
         this.player.resurgentUses = 0;
@@ -91,7 +91,7 @@ class Combat {
 
     combatTick() {
         if (this.player.attackCounter === 0) {
-            startPlayerTimer(this.player.calcAs() * 1.3);
+            // startPlayerTimer(this.player.calcAs() * 1.3);
         }
         if (!this.enemyList.includes(this.selectedEnemy)) {this.selectedEnemy = this.enemyList[0]};
         this.tick += 1;
@@ -149,7 +149,7 @@ class Combat {
                 this.player.inCombat = false;
                 this.player.resurgentUses = 0;
                 setBroadcastTitleText('Victory!', true);
-                stopPlayerTimer();
+                // stopPlayerTimer();
 
                 if (this.player.levelInfo.activeCharacteristics.has('boastful')) {
                     CHARACTERISTICS['boastful'].onCombatEnd(this.player);

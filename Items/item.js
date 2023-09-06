@@ -80,11 +80,16 @@ class Item {
                 statUp.html(stat_icons[stat])
             }
         }
-        shopItemStats.appendTo(this.shopElement);
+        // if shopItemStats has children, append it to the shopElement
+        if (shopItemStats.children().length > 0) {
+            shopItemStats.appendTo(this.shopElement);
+        }
+
+        
     }
 
     appendToShop() {
-        this.shopElement = $('<button>', {
+        this.shopElement = $('<div>', {
             'id': '#' + this.name.replace(/\s/g, '') + '-purchase'
         });
         this.shopElement.appendTo('#content-central-box');

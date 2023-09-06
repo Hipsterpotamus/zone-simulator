@@ -49,15 +49,15 @@ class Magic extends Item {
                 this.game.player.gameCombatStats.spellsCast += 1;
                 this.onUse(this.game);
             }else{
-                notify('not enough mana!');
+                notify('Insufficent Mana - ' + this.manaCost + ' mana required.');
             }
         }else{
-            notify('magic spells can only be used during combat!')
+            notify('Magic spells can only be used during combat!')
         }
     }
 
     appendToSelect() {
-        this.selectElement = $('<button>', {
+        this.selectElement = $('<li>', {
             'value': this.name,
             'id': this.name + '-spell-use',
             'class': 'magic-spell'

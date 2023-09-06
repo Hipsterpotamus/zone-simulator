@@ -1,13 +1,14 @@
 
 
 /* create a floating icon that appears at the bottom of the button of #content-central-box button.arm-up*/
-#content-central-box button .shop-item-stats {
+#content-central-box .shop-item .shop-item-stats {
   
-  position: absolute;
+  position: inherit;
   display: flex;
   flex-direction: row;
-  
+  margin-bottom: -2.5rem;
 }
+
 
 /* FORMAT */
 /* <button id="#mudhelmet-purchase" class="head-shop-item">buy mud helmet: 21 gold<br>(2 armor helmet)
@@ -34,9 +35,10 @@
   border-radius: 100px;
   width: 1rem;
   height: 1rem;
-  margin: 0.2rem;
+  margin: 0.2rem -0.2rem;
   z-index: 5;
 }
+
 
 .shop-item-stats .stat-up {
   order: -1;

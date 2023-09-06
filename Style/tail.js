@@ -1,9 +1,21 @@
 window.addEventListener("mousemove", function(e){
     // only select .tail that doesn't have .tail-remain
-    $('.tail:not(.tail-remain)').css({
-        left:  e.pageX - 60,
-        top:   e.pageY + 15
-    });
+    // if mouse is in the top half of the screen, show tail on bottom, else show tail on top
+    //  get tail height
+    let tailHeight = $('.tail.tail-visible:not(.tail-remain)').height();
+    let tailWidth = $('.tail.tail-visible:not(.tail-remain)').width();
+
+    if (e.pageY < window.innerHeight / 2) {
+        $('.tail.tail-visible:not(.tail-remain)').css({
+            left:  e.pageX - 60,
+            top:   e.pageY + 15
+        });
+    } else {
+        $('.tail.tail-visible:not(.tail-remain)').css({
+            left:  e.pageX - 60,
+            top:   e.pageY - tailHeight - 25
+        });
+    }
 });
 
   
@@ -24,6 +36,7 @@ function updateTailReferences() {
       const tailElement = document.querySelector(`#${element.id}-tail`);
       if (tailElement == null) {return;}
       tailElement.style.display = 'block';
+      tailElement.classList.toggle('tail-visible');
     });
     
     element.addEventListener('mouseout', () => {
@@ -33,6 +46,7 @@ function updateTailReferences() {
         if (tailElement == null) {return;}
         if (!tailElement.classList.contains('tail-remain')) {
             tailElement.style.display = 'none';
+            tailElement.classList.toggle('tail-visible');
         }
     });
 

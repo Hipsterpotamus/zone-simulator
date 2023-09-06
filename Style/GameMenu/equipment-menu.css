@@ -10,7 +10,7 @@
   border-radius: 32px;
   /* center contents */
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
 
@@ -31,7 +31,7 @@
 .equipment-box .equipment-item {
   /* width: fit-content; */
   height: 11rem;
-  width: 13.5%;
+  width: 14.5%;
   border-radius: 20px;
   padding: 1rem;
   margin: 0.5rem;
@@ -42,9 +42,6 @@
   z-index: 4;
 }
 
-.equipment-box .equipment-item:last-child {
-  margin-right: 1.5rem;
-}
 
 /*
 #weapon-select {

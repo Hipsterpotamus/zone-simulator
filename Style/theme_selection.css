@@ -35,6 +35,17 @@
   border: none;
   cursor: pointer;
 }
+.theme-buttons button:last-child {
+  margin-right: 0;
+}
+
+.theme-buttons svg {
+  margin: 0rem;
+  padding: 0.5rem;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+}
 
 
 .ocea-button {

@@ -59,6 +59,7 @@ $(function() {
             }
         }
     });
+    $( ".sortable" ).sortable();
 });
 
 // Theme Buttons
@@ -133,26 +134,38 @@ $(function() {
 
 // Health/Mana Bars
 
-function updateManaBar(cost, newValue, maxMana) { // cost of spell, new Mana value, max Mana value
-    $('#mana-count-title').text('mana: '+newValue+'/'+maxMana);
+function updateManaBar(cost, newValue, maxMana, manaGen) { // cost of spell, new Mana value, max Mana value
+    $('#mana-count-title').text(newValue);
+    $('#mana-count-title-tail p').text(
+        `${newValue}/${maxMana} Mana \n${manaGen} Mana Regen`
+    );
+    $('#mana-count-title-tail p').html($('#mana-count-title-tail p').html().replace(/\n/g,'<br/>'));
+
     var manaBar = $('#mana-bar-container'),
-        bar = manaBar.find('#mana-bar'),
-        hit = manaBar.find('#mana-hit-bar');
-    updateBar(cost, newValue, maxMana, manaBar, bar, hit);
+    bar = manaBar.find('#mana-bar'),
+    hit = manaBar.find('#mana-hit-bar');
+    updateBar(cost, newValue, maxMana, manaBar, bar, hit, 'height');
 }
 
-function updateBar(depleted, newValue, maxValue, barContainer, bar, hit) {
-    var barWidth = (newValue / maxValue * 100) + "%";
-    bar.css('width', barWidth);
-    var hitWidth = (depleted / maxValue) * 100 + "%";
+function updateBar(depleted, newValue, maxValue, barContainer, bar, hit, direction='width') {
+    var barSize = (newValue / maxValue * 100) + "%";
+    bar.css(direction, barSize);
+    var hitSize = (depleted / maxValue) * 100 + "%";
 
     // show hit bar and animate
-    hit.css('width', hitWidth);
+    hit.css(direction, hitSize);
     barContainer.data('value', newValue);
     setTimeout(function(){ // Show hit bar for 0.5s
-        hit.css({'width': '0'});
-        bar.css('width', barWidth + "%");
+        hit.css({direction: '0'});
+        bar.css(direction, barSize + "%");
     }, 500);
+
+    // if decreasing, animate
+    if (depleted > 0) {
+        bar.addClass('hit-stable');
+        setTimeout(function(){bar.removeClass('hit-stable');}, 400);
+    }
+
     return "done"
 }
 
@@ -229,33 +242,4 @@ const stat_icons = {
     <path d="M 12.08 9.242 L 12.08 16.526 M 12.08 9.242 L 9.652 11.67 M 12.08 9.242 L 14.508 11.67" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="" transform="matrix(1, 0, 0, 1, 3.552713678800501e-15, 1.7763568394002505e-15)"/>
   </svg>`,
 
-}
-
-
-// Timer for Speed
-
-
-
-
-function startPlayerTimer(speed) {
-    const timer_element = document.querySelector('.timer');
-    const timer_element_mask = document.querySelector('.timer-mask');
-    timer_element_mask.style.animationPlayState = 'initial';
-    // change the --timer-duration css variable to the speed
-    document.documentElement.style.setProperty('--timer-duration', `${speed}`);
-
-    
-    timer_element_mask.style.animation = 'none';
-    window.requestAnimationFrame(function(){
-        timer_element_mask.style.animation = 'mask calc(var(--timer-duration) * 20ms) steps(500, start) infinite';
-    });
-}
-
-function stopPlayerTimer() {
-    const timer_element = document.querySelector('.timer');
-    const timer_element_mask = document.querySelector('.timer-mask');
-    timer_element_mask.style.animationPlayState = 'paused';
-
-    timer_element_mask.style.background = 'var(--md-sys-color-tertiary-container)';
-    timer_element_mask.style.animation = 'none';
 }

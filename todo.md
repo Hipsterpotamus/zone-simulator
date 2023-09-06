@@ -21,7 +21,6 @@
 * [x] Create Combat Results
 * [x] Implement Boss Reward System
 * [x] Create LVL UP System
-* [] Sharpening stone (and I assume similar items) can be used even with no weapon
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 ## Executive:

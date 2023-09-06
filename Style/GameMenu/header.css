@@ -63,6 +63,7 @@
 }
 #gold-text svg {
     fill: var(--md-sys-color-on-secondary-container);
+    
     pointer-events: none;
     /* small */
     width: 1.5rem;

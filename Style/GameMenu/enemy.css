@@ -110,10 +110,16 @@
   align-items: center;
 }
 
-#enemy-time {
+#enemy-name-box .timer {
+  
   position: absolute;
-  right: 1.5rem;
-  color: var(--md-sys-color-primary-container)
+  right: 1rem;
+
+}
+
+#enemy-time {
+  color: var(--md-sys-color-primary-container);
+  display: none;
 }
 
 #enemy-name {

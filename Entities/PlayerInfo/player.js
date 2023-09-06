@@ -23,6 +23,9 @@ class Player extends Entity{
         this.inCombat = false;
         this.resurgentUses = 0;
 
+        this.timer = document.querySelector('#player-stats-row .timer');
+        this.timermask = document.querySelector('#player-stats-row .timer .timer-mask');
+
         this.inv = {
             'usable':['', []],
             'weapon':['', []],
@@ -216,9 +219,7 @@ class Player extends Entity{
             }
             this.hp = Math.min(this.maxhp, this.hp + amount);
             if (this.inCombat && this.levelInfo.activeCharacteristics.has('resurgent')) {
-                let preAmount = amount;
-                amount += this.hp + CHARACTERISTICS['resurgent'].onHealthDrop(this);
-                this.hp = Math.min(this.maxhp, this.hp + amount - preAmount);
+                this.hp = Math.min(this.maxhp, this.hp + CHARACTERISTICS['resurgent'].onHealthDrop(this));
             }
         }
 
@@ -252,12 +253,11 @@ class Player extends Entity{
         // video.addEventListener('ended', function() {$('#player-death').addClass('hidden')});
     }
 
-    // Not totally sure where you'll want this, depending on if all entities have mana
     changeMana(amount) { // For when mana is used is by spells
         this.mana = this.mana + amount;
         this.mana = (this.mana >= this.maxMana) ? this.maxMana : this.mana;
         if(this.mana>this.maxMana){}
-        updateManaBar(amount, this.mana, this.maxMana);
+        updateManaBar(amount * -1, this.mana, this.maxMana, this.calcStat('manaGen'));
     }
 
 
@@ -271,7 +271,7 @@ class Player extends Entity{
     }
 
     updateEntityDisplay() {
-        updateManaBar(0, this.mana, this.maxMana);
+        updateManaBar(0, this.mana, this.maxMana, this.calcStat('manaGen'));
         let htmlOutput = '';
         htmlOutput = this.name+' | ';
 
@@ -281,6 +281,9 @@ class Player extends Entity{
         $('#player-name').text(this.name);
         $('#player-hp').text(this.hp + '/' + this.maxhp);
         $('#player-time').text((this.calcAs()-this.attackCounter));
+
+        
+        this.setAttackTimer(this.calcAs()-this.attackCounter, this.calcAs(), 'tertiary');
 
         let stats_list_player = ['dmg', 'arm', 'regen', 'speed', 'dodge', 'shatter', 'bleed', 'lifedrain', 'antiheal', 'thorn', 'superarmor','tear'];
         if (this.accuracy != 100) {stats_list_player.push('accuracy')}
@@ -331,6 +334,7 @@ class Player extends Entity{
 
         // updateTailReferences();
     }
+
 
     updateGoldDisplay() {
         $('#gold-text-number').text(this.gold);

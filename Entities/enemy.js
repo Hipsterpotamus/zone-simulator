@@ -9,12 +9,12 @@ class Enemy extends Entity{
             this.dmg = CHARACTERISTICS['defensive'].onCalculateEnemyDamage(this.dmg);
         }
         
-         this.xp = xp;
-         this.complexStats = complexStats;
-         this.diffC = difficultyCh;
-         this.boss = false;
-         this.updateHealthBar(0);
-         $('#enemy-health-bar-container').removeClass('hidden');
+        this.xp = xp;
+        this.complexStats = complexStats;
+        this.diffC = difficultyCh;
+        this.boss = false;
+        this.updateHealthBar(0);
+        $('#enemy-health-bar-container').removeClass('hidden');
 
          this.combatStats = {
             'gold' : gold,
@@ -29,6 +29,11 @@ class Enemy extends Entity{
             'incomingBlocked' : 0,
             'hpRegened' : 0
         }
+
+        this.enemyNumber = 1;
+        this.timer = document.querySelector(`#enemy-timer-${this.enemyNumber}`);
+        this.timermask = document.querySelector(`#enemy-timer-${this.enemyNumber} .timer-mask`);
+        
     }
 
     calcStat(stat) {//should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
@@ -76,7 +81,15 @@ class Enemy extends Entity{
         updateBar(-damage, this.hp, this.maxhp, healthBar, bar, hit);
     }
 
+    animateDodge() {
+        $('#enemy').addClass('dodge-animation');
+        setTimeout(function() {
+            $('#enemy').removeClass('dodge-animation');
+        }, 800);
+    }
+
     updateEntityDisplay() {
+        
         // let htmlOutput = '';
         // htmlOutput = this.name+'<br>';
         // htmlOutput+='hp : '+this.hp+'/'+this.maxhp+'<br>';
@@ -101,6 +114,7 @@ class Enemy extends Entity{
         $('#enemy-name').text(this.name);
         $('#enemy-hp').text(this.hp + '/' + this.maxhp);
         $('#enemy-time').text((this.calcAs()-this.attackCounter));
+        this.setAttackTimer(this.calcAs()-this.attackCounter, this.calcAs(), 'primary');
 
         stats_list_enemy.forEach((stat)=>{
             if (this.calcStatDisplay(stat) != 0) {

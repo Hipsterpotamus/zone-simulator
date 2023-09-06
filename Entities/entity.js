@@ -131,6 +131,8 @@ class Entity{
 
             oppHpChange -= this.calcStat('thorn');
             opp.changeHp(oppHpChange);
+        } else {
+            opp.animateDodge();
         }
     }
 
@@ -142,8 +144,12 @@ class Entity{
             let oppHpChange = opp.testLifeDrain(oppDMG);
             // oppHpChange -= this.testThorn(opp.calcStat('superarmor')); Will need to think if
             opp.changeHp(oppHpChange);
+        } else {
+            opp.animateDodge();
         }
     }
+
+    animateDodge() {}
 
     testDodge(accuracy) {
         return Math.random() > (this.calcStat('dodge') / accuracy);
@@ -175,5 +181,26 @@ class Entity{
         let bleed = Math.floor(this.calcStat('bleed')/10);
         if(Math.random()<((this.calcStat('bleed')%10)/10)){bleed+=1;}
         return bleed;
+    }
+
+    setAttackTimer(time, speed, color) {
+        this.timer.style.background = `-webkit-linear-gradient(left, var(--md-sys-color-${color}) 50%, var(--md-sys-color-${color}-container) 50%)`;
+
+        if (time/speed < 0.5) {
+            this.timermask.style.background = `var(--md-sys-color-${color}-container)`;
+            this.timermask.style.webkitTransform = `rotate(${time/speed*-1}turn)`;
+        } else { 
+            this.timermask.style.background = `var(--md-sys-color-${color})`;
+            this.timermask.style.webkitTransform = `rotate(${(time/speed*-1)-0.5}turn)`;
+        }
+
+        if (time/speed > .90) {
+            this.timer.classList.add('land');
+            setTimeout(() => {
+                this.timer.classList.remove('land');
+            }, 200);
+        } else {
+            this.timer.classList.remove('land');
+        }
     }
 }

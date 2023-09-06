@@ -6,7 +6,6 @@ class Wisp extends Player {
         this.dodge = 25;
         this.maxhp = 1;
         this.hp = 1;
-        this.changeHp(-1);
     }
 
     calcStatBase(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
@@ -31,7 +30,7 @@ class Wisp extends Player {
 
     changeMaxHp(amount){
         if(amount>0){
-            notify('Willow cannot go over 1 max hp!')    
+            notify('Willow cannot go over 1 max HP!')    
         }else{
             this.maxhp += amount;
             this.changeHp(Math.max(amount, 0));
