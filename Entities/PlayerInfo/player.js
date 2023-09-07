@@ -203,6 +203,15 @@ class Player extends Entity{
         return this.inv[metatype][0];
     }
 
+    testDmg(armor, mult, flatDmg, weaponHit = false) { //flat dmg is utilized when spells or items are used
+        if(flatDmg){
+            return Math.max(flatDmg * mult - armor, 0);
+        }else{
+            if (weaponHit) {this.getByType('weapon').doDamage()}
+            return Math.max(this.calcStat('dmg') * mult - armor, 0);
+        }
+    }
+
     changeGold(amount, inCombat = false) {
         this.gold += amount;
         this.updateGoldDisplay();

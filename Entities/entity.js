@@ -109,13 +109,13 @@ class Entity{
 
     receiveHitFrom(opp, mult = 1) {
         if(this.testDodge(opp.accuracy)) {
-            let oppDMG = opp.testDmg(this.testArm(), mult);
+            let oppDMG = opp.testDmg(this.testArm(), mult, false, true);
             this.changeHp(-oppDMG);
 
             opp.combatStats.outgoingDmg += oppDMG;
-            this.combatStats.incomingBlocked += (oppDMG - opp.testDmg(0, 0));
+            this.combatStats.incomingBlocked += (oppDMG - opp.testDmg(0, 1));
             opp.gameCombatStats.outgoingDmg += oppDMG;
-            this.gameCombatStats.incomingBlocked += (oppDMG - opp.testDmg(0, 0));
+            this.gameCombatStats.incomingBlocked += (oppDMG - opp.testDmg(0, 1));
 
             this.shatterApplied = Math.min(this.shatterApplied + opp.testShatter(), this.calcStat('arm'));
             this.bleedApplied += opp.testBleed();

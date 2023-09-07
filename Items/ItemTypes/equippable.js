@@ -24,7 +24,7 @@ class Equippable extends Item {
         this.superarmor = 0;
         this.accuracy = 0;
         this.manaGen = 0;
-        this.maxMana = 0;
+        this.maxMana = 0
 
         if(itemInfo){
             Object.keys(itemInfo).forEach((stat)=>{
@@ -35,6 +35,10 @@ class Equippable extends Item {
             });
         }
 
+        if (this.metatype === 'weapon') {
+            this.durability = 50; //default durability
+        } 
+
         if (this.name !== 'none' && this.game !== undefined && this.game.player.name === 'maggie') {
             Object.keys(this.itemInfo).forEach((stat)=>{
                 if (stat !== 'as') {
@@ -43,6 +47,17 @@ class Equippable extends Item {
             });
             this.price = this.price * 3;
         }
+    }
+
+    doDamage() {
+        this.durability -= 1;
+        console.log(this.durability)
+        if (this.durability === 0) {
+            this.itemInfo['dmg'] = this.dmg;
+            this.dmg = 0;
+            this.durability = -1;
+        } else if (this.durability < -1) {this.durability = -1}
+        this.updateItemInfo();
     }
 
     genShopDesc() {
@@ -138,6 +153,7 @@ ${currentPercent > 0 ? '+' : ''}${currentPercent}% => ${ownPercent > 0 ? '+' : '
             statOutput+='SPEED: '+displayWithSign(this.as)+'<br>'
             statOutput+='ARMOR: '+displayWithSign(this.arm)+'<br>';
             statOutput+='REGEN: '+displayWithSign(this.regen)+'<br>';
+            statOutput+='DURABILITY: '+displayWithSign(this.durability)+'<br>';
             
             if(this.dodge){statOutput+='DODGE: '+displayWithSign(this.dodge)+'<br>';}
             if(this.shatter){statOutput+='SHATTER: '+displayWithSign(this.shatter)+'<br>';}
