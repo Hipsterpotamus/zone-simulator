@@ -36,7 +36,7 @@ class Equippable extends Item {
         }
 
         if (this.metatype === 'weapon' && !this.durability) {
-            this.durability = 50; //default durability
+            this.durability = 10; //default durability
         } 
 
         if (this.name !== 'none' && this.game !== undefined && this.game.player.name === 'maggie') {
@@ -49,13 +49,21 @@ class Equippable extends Item {
         }
     }
 
-    doDamage() {
-        this.durability -= 1;
-        if (this.durability === 0) {
-            this.itemInfo['dmg'] = this.dmg;
-            this.dmg = 0;
-            this.durability = -1;
-        } else if (this.durability < -1) {this.durability = -1}
+    changeDurability(amount) {
+        if (amount <= 0) {
+            if (this.durability !== 'broken') {this.durability += amount}
+            if (this.durability !== 'broken' && this.durability <= 0) {
+                this.itemInfo['dmg'] = this.dmg;
+                this.dmg = Math.ceil(this.dmg * 0.25);
+                this.durability = 'broken';
+            }
+        } else {
+            if (this.durability === 'broken') {
+                this.durability = 0;
+                this.dmg = this.itemInfo['dmg'];
+            }
+            this.durability += amount;
+        }
         this.updateItemInfo();
     }
 

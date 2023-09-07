@@ -207,7 +207,7 @@ class Player extends Entity{
         if(flatDmg){
             return Math.max(flatDmg * mult - armor, 0);
         }else{
-            if (weaponHit) {this.getByType('weapon').doDamage()}
+            if (weaponHit) {this.getByType('weapon').changeDurability(-1)}
             return Math.max(this.calcStat('dmg') * mult - armor, 0);
         }
     }
