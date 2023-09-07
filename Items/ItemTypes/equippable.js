@@ -35,7 +35,7 @@ class Equippable extends Item {
             });
         }
 
-        if (this.metatype === 'weapon') {
+        if (this.metatype === 'weapon' && !this.durability) {
             this.durability = 50; //default durability
         } 
 
@@ -51,7 +51,6 @@ class Equippable extends Item {
 
     doDamage() {
         this.durability -= 1;
-        console.log(this.durability)
         if (this.durability === 0) {
             this.itemInfo['dmg'] = this.dmg;
             this.dmg = 0;
