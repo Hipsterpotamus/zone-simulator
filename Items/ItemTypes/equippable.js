@@ -36,7 +36,7 @@ class Equippable extends Item {
         }
 
         if (this.metatype === 'weapon' && !this.durability) {
-            this.durability = 10; //default durability
+            this.durability = 50; //default durability
         } 
 
         if (this.name !== 'none' && this.game !== undefined && this.game.player.name === 'maggie') {
