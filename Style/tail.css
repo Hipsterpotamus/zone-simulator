@@ -20,4 +20,36 @@
 
   }
   
-  
+[data-text]:hover:after {
+    /* opacity: 1; */
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+
+    transform: scale(1) translateY(0%);
+}
+
+[data-text]:after {
+    content: attr(data-text);
+    color: var(--text-color);
+    /* font-size: 150%; */
+    position: absolute;
+    transform: scale(0) translateY(200%);
+
+    top: -20%;
+    left: -20%;
+
+
+    z-index: 9999;
+    visibility: hidden;
+
+    background:var(--transparent-background);
+    border:1px solid rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter:saturate(180%) blur(15px);
+    backdrop-filter: saturate(180%) blur(15px);
+    box-shadow: 0.5rem 0.6rem 2rem rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    padding: 1rem;
+}
+/* [data-title] {
+    position: inherit;
+} */
