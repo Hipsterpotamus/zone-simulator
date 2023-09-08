@@ -20,7 +20,14 @@
 
   }
   
+
+  
 [data-text]:hover {
+    z-index: 999999;
+}
+
+/* set parent of [data-text]:hover to higher z index */
+[data-text]:hover ~ * {
     z-index: 999999;
 }
 
