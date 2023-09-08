@@ -22,27 +22,21 @@
   
 
   
-[data-text]:hover {
+[data-text-title]:hover {
     z-index: 999999;
 }
 
-/* set parent of [data-text]:hover to higher z index */
-[data-text]:hover ~ * {
+[data-text-title]:hover:before {
+}
+
+[data-text]:hover {
     z-index: 999999;
 }
 
 [data-text]:hover:after {
     transition: all 0.1s ease 0.5s;
     visibility: visible;
-
-    transform: scale(1) translateY(0%);
     display: block;
-    position: absolute;
-    /* make the position be relative to the cursor */
-
-    /* top: -25%;
-    left: -20%; */
-    padding: 0.5rem;
     content:attr(data-text);
 
     background:var(--transparent-background);
@@ -52,11 +46,30 @@
     box-shadow: 0.5rem 0.6rem 2rem rgba(0, 0, 0, 0.3);
     border-radius: 16px;
     padding: 1rem;
-    animation: linear 0.75s grow;
+    /* animation: linear 0.75s grow; */
     position: fixed;
     transform: translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) + 10));
     z-index: 9999;
-    /* set position */
+}
+
+[data-text]:hover:after:after {
+    
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+    display: block;
+    content:attr(data-text-title);
+
+    background:var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    border:1px solid rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter:saturate(180%) blur(15px);
+    backdrop-filter: saturate(180%) blur(15px);
+    box-shadow: 0.5rem 0.6rem 2rem rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    padding: 0.25rem 0.5rem;
+    /* animation: linear 0.75s grow; */
+    position: fixed;
+    z-index: 999999;
 }
 
 /* create a short animation that starts small and grows to full size and moves up slightly */
