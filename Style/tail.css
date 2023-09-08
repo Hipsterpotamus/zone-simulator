@@ -48,11 +48,11 @@
     padding: 1rem;
     /* animation: linear 0.75s grow; */
     position: fixed;
-    transform: translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) + 10));
+    transform: translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) - 10px));
     z-index: 9999;
 }
 
-[data-text]:hover:after:after {
+[data-text]:hover:before {
     
     transition: all 0.1s ease 0.5s;
     visibility: visible;
@@ -68,7 +68,10 @@
     border-radius: 16px;
     padding: 0.25rem 0.5rem;
     /* animation: linear 0.75s grow; */
+    
     position: fixed;
+    transform: translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) - 30px));
+
     z-index: 999999;
 }
 
