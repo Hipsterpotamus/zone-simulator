@@ -186,6 +186,12 @@ function setBackgroundZone(zoneNumber) {
     $('#zone-image').css('background-image', 'url(Zones/Images/zone-'+zoneNumber+'.png)');
 }
 
+// change the background of the #player-name div to be filled based on the amount of xp, so it's a kind of progress bar
+function setPlayerXpBar(xp, xpToNextLevel) {
+    var xpBar = $('#player-name');
+    // cahnge the background of xp bar
+    xpBar.css('background-image', 'linear-gradient(to right, var(--md-sys-color-primary), var(--md-sys-color-primary) ' + (xp/xpToNextLevel*100) + '%, var(--md-sys-color-primary-container) ' + (xp/xpToNextLevel*100) + '%, var(--md-sys-color-primary-container))');
+}
 
 // create an html element that is a string that is the literal html
 const stat_icons = {

@@ -196,6 +196,7 @@ class LevelInfo {
 
     changeXp(amount) {
         this.xp += amount;
+        setPlayerXpBar(this.xp, this.nextLevel);
     }
 
     checkLvlUp() {
