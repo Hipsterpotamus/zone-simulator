@@ -150,7 +150,7 @@ class Combat {
                 this.inCombat = false;
                 this.player.inCombat = false;
                 this.player.resurgentUses = 0;
-                setBroadcastTitleText('Victory!', true);
+                
                 // stopPlayerTimer();
 
                 if (this.player.levelInfo.activeCharacteristics.has('boastful')) {
@@ -247,22 +247,35 @@ class Combat {
     }
 
     displayCombatStats() {
+        setBroadcastTitleText('Victory!');
         let combatStats = {
             'Gold' : this.combatStats.totalGoldGain,
-            'HpLost' : this.player.hp - this.startPlayerHp,
-            'LengthTicks' : this.tick,
-            'LengthSeconds' : this.tick / (1000 / this.delay),
+            'HP Lost' : this.player.hp - this.startPlayerHp,
+            'Length (Ticks)' : this.tick,
+            'Length (Seconds)' : this.tick / (1000 / this.delay),
 
-            'DMGDealt' : this.player.combatStats.outgoingDmg,
-            'DMGBlocked' : this.player.combatStats.incomingBlocked,
-            'HpRegenerated' : this.player.combatStats.hpRegened,
+            'DMG Dealt' : this.player.combatStats.outgoingDmg,
+            'DMG Blocked' : this.player.combatStats.incomingBlocked,
+            'HP Regenerated' : this.player.combatStats.hpRegened,
 
-            'ManaUsed' : this.player.combatStats.manaUsed,
-            'SpellsCast' : this.player.combatStats.spellsCast,
-            'ItemsUsed' : this.player.combatStats.itemsUsed
-
-            //enemy stats should be updated per enemy on death in enemy.updateEntityDisplay(), line 117
+            'Mana Used' : this.player.combatStats.manaUsed,
+            'Spells Cast' : this.player.combatStats.spellsCast,
+            'Items Used' : this.player.combatStats.itemsUsed
         };
+
+        // add a new div to #content-central-box to hold the stats
+        let combatStatsDiv = $('<div>', {
+            'class': 'combat-stats'
+        });
+        combatStatsDiv.appendTo('#content-central-box');
+        for (let stat in combatStats) {
+            let combatStat = $('<p>', {
+                'class': 'combat-stat'
+            });
+            combatStat.appendTo(combatStatsDiv);
+            combatStat.html('<b>' + stat + '</b>: ' + combatStats[stat]);
+        }
+        
 
         console.log('combat stats:');
         console.log(combatStats);

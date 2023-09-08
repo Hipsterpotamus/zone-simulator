@@ -207,6 +207,7 @@
   justify-items: center;
   justify-content: center;
   margin: 0rem 1rem;
+  /* height: 100%; */
 }
 
 .combat-stats p {
@@ -217,4 +218,14 @@
   padding: 0.5rem;
   border-radius: 16px;
   width: 100%;
+}
+
+.combat-stat {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  width: 80%;
 }

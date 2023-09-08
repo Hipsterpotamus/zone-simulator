@@ -181,7 +181,7 @@ class Enemy extends Entity{
                 '<p><b>Time Alive:</b> ' + this.combatStats.ticksAlive + '</p>' +
                 '<p><b>Outgoing Damage:</b> ' + this.combatStats.outgoingDmg + '</p>' +
                 '<p><b>Incoming Blocked:</b> ' + this.combatStats.incomingBlocked + '</p>' +
-                '<p><b>Health Regenerated:</b> ' + this.combatStats.hpRegened + '</p>' +
+                '<p><b>HP Regenerated:</b> ' + this.combatStats.hpRegened + '</p>' +
                 '<p><b>Experience Gained:</b> ' + this.xp + '</p>'
                 
             );
