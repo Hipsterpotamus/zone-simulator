@@ -156,11 +156,13 @@ class Enemy extends Entity{
         updateTailReferences();
 
         if (!this.alive) {
-            $('#enemy-stats').html('');
+            $('#enemy1').find('#enemy-stats').remove();
+            $('#enemy1').find('#enemy-hp').text('');
             $('#enemy-name').text('Defeated ' + this.name + '!');
 
             console.log('enemy stats:');
             console.log(this.combatStats);
+
             //TODO: Display combat stats
             //this.combatStats = {
                 //'gold' : gold,
@@ -169,6 +171,21 @@ class Enemy extends Entity{
                 //'incomingBlocked' : 0,
                 //'hpRegened' : 0
             //}
+
+            // add a new div to #enemy1 with the combat stats
+            let combatStats = $('<div>', {
+                'class': 'combat-stats'
+            });
+            combatStats.html(
+                '<p><b>Gold</b>: ' + this.combatStats.gold + '</p>' +
+                '<p><b>Time Alive:</b> ' + this.combatStats.ticksAlive + '</p>' +
+                '<p><b>Outgoing Damage:</b> ' + this.combatStats.outgoingDmg + '</p>' +
+                '<p><b>Incoming Blocked:</b> ' + this.combatStats.incomingBlocked + '</p>' +
+                '<p><b>Health Regenerated:</b> ' + this.combatStats.hpRegened + '</p>' +
+                '<p><b>Experience Gained:</b> ' + this.xp + '</p>'
+                
+            );
+            combatStats.appendTo('#enemy1');
         }
     }
 }

@@ -196,3 +196,25 @@
   padding: 0rem 0.75rem;
   margin: -1px;
 }
+
+.combat-stats {
+  padding: 1rem;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Adjust 200px to your needs */
+  column-gap: 2rem;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  justify-content: center;
+  margin: 0rem 1rem;
+}
+
+.combat-stats p {
+  background-color: var(--md-sys-color-secondary);
+  color: var(--md-sys-color-on-secondary);
+  
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 16px;
+  width: 100%;
+}
