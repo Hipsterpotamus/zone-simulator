@@ -141,9 +141,10 @@ class Enemy extends Entity{
                         )
                     )
                     $('.enemy-stat-' + stat + " .enemy-stat-icon-container").html(stat_icons[stat]);
-                    $('.enemy-stat-' + stat + " .enemy-stat-icon-container").attr('data-text', "TEST")
+                    $('.enemy-stat-' + stat + " .enemy-stat-icon-container").attr('data-text', "Damage\nHow many Hit Points the opponent loses on each attack.")
                 } else {
                     $('.enemy-stat-' + stat).find('.enemy-stat-value').text(this.calcStatDisplay(stat));
+                    
                 }
             } else {
                 $('.enemy-stat-' + stat).remove();

@@ -45,7 +45,8 @@
     padding: 1rem;
     animation: linear 0.75s grow;
     position: fixed;
-    transform: translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 200%));
+    transform: translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 150%));
+    z-index: 9999;
     /* set position */
 }
 
@@ -64,10 +65,10 @@
         opacity: 0;
     }
     70% {
-        transform: scale(1.05) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 205%));
+        transform: scale(1.05) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 155%));
         opacity: 1;
     }
     100% {
-        transform: scale(1) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 200%));
+        transform: scale(1) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 150%));
     }
 }
