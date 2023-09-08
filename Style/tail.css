@@ -47,8 +47,10 @@
     border-radius: 16px;
     padding: 1rem;
     animation: linear 0.75s grow;
-    position: fixed;
-    transform: translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) - 10px));
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+
+    /* transform: translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) - 10px)); */
     z-index: 9999;
 }
 
@@ -68,15 +70,18 @@
     border-radius: 16px;
     padding: 0.25rem 0.5rem;
     /* animation: linear 0.75s grow; */
+
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
     
-    position: fixed;
-    transform: translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) - 30px));
+    /* position: fixed; */
+    /* transform: translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) - 30px)); */
 
     z-index: 999999;
 }
 
 /* create a short animation that starts small and grows to full size and moves up slightly */
-@keyframes grow {
+/* @keyframes grow {
     0% {
         transform: scale(0) translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) - 10px + 50%));
         opacity: 0;
@@ -96,4 +101,4 @@
     100% {
         transform: scale(1) translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) - 10px + 150%));
     }
-}
+} */
