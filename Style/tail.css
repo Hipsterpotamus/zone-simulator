@@ -20,7 +20,9 @@
 
   }
   
-
+[data-text]:hover {
+    z-index: 999999;
+}
 
 [data-text]:hover:after {
     transition: all 0.1s ease 0.5s;
@@ -45,7 +47,7 @@
     padding: 1rem;
     animation: linear 0.75s grow;
     position: fixed;
-    transform: translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 150%));
+    transform: translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) + 10));
     z-index: 9999;
     /* set position */
 }
@@ -53,22 +55,22 @@
 /* create a short animation that starts small and grows to full size and moves up slightly */
 @keyframes grow {
     0% {
-        transform: scale(0) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) + 50%));
+        transform: scale(0) translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) + 10 + 50%));
         opacity: 0;
     }
     49% {
-        transform: scale(0) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) + 50%));
+        transform: scale(0) translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) + 10 + 50%));
         opacity: 0;
     }
     50% {
-        transform: scale(0) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) + 50%));
+        transform: scale(0) translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) + 10 + 50%));
         opacity: 0;
     }
     70% {
-        transform: scale(1.05) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 155%));
+        transform: scale(1.05) translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) + 10 + 155%));
         opacity: 1;
     }
     100% {
-        transform: scale(1) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 150%));
+        transform: scale(1) translate(calc( (var(--mouse-x) - var(--element-x)) - (var(--element-width) / 2) ), calc(var(--mouse-y) - var(--element-y) + var(--element-height) + 10 + 150%));
     }
 }

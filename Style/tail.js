@@ -1,22 +1,22 @@
-window.addEventListener("mousemove", function(e){
-    // only select .tail that doesn't have .tail-remain
-    // if mouse is in the top half of the screen, show tail on bottom, else show tail on top
-    //  get tail height
-    let tailHeight = $('.tail.tail-visible:not(.tail-remain)').height();
-    let tailWidth = $('.tail.tail-visible:not(.tail-remain)').width();
+// window.addEventListener("mousemove", function(e){
+//     // only select .tail that doesn't have .tail-remain
+//     // if mouse is in the top half of the screen, show tail on bottom, else show tail on top
+//     //  get tail height
+//     let tailHeight = $('.tail.tail-visible:not(.tail-remain)').height();
+//     let tailWidth = $('.tail.tail-visible:not(.tail-remain)').width();
 
-    if (e.pageY < window.innerHeight / 2) {
-        $('.tail.tail-visible:not(.tail-remain)').css({
-            left:  e.pageX - 60,
-            top:   e.pageY + 15
-        });
-    } else {
-        $('.tail.tail-visible:not(.tail-remain)').css({
-            left:  e.pageX - 60,
-            top:   e.pageY - tailHeight - 25
-        });
-    }
-});
+//     if (e.pageY < window.innerHeight / 2) {
+//         $('.tail.tail-visible:not(.tail-remain)').css({
+//             left:  e.pageX - 60,
+//             top:   e.pageY + 15
+//         });
+//     } else {
+//         $('.tail.tail-visible:not(.tail-remain)').css({
+//             left:  e.pageX - 60,
+//             top:   e.pageY - tailHeight - 25
+//         });
+//     }
+// });
 
 document.addEventListener('mousemove', function(event) {
   document.documentElement.style.setProperty('--mouse-x', event.clientX + 'px');
@@ -24,6 +24,9 @@ document.addEventListener('mousemove', function(event) {
   // get position of the element that is being hovered
   document.documentElement.style.setProperty('--element-x', event.target.getBoundingClientRect().left + 'px');
   document.documentElement.style.setProperty('--element-y', event.target.getBoundingClientRect().top + 'px');
+  // get the width and height of the element that is being hovered
+  document.documentElement.style.setProperty('--element-width', event.target.getBoundingClientRect().width + 'px');
+  document.documentElement.style.setProperty('--element-height', event.target.getBoundingClientRect().height + 'px');
   console.log(event.clientX + 'px');
   console.log(event.clientY + 'px');
 });
