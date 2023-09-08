@@ -5,9 +5,9 @@
 ### Pre-public Requirements
 
 #### Caden: new combat display & LVL Up display
-* [] Finish new combat display
-* [] Add combat results to display (combat.displayCombatStats, line 159)
-* [] Create XP bar
+* [x] Finish new combat display
+* [x] Add combat results to display (combat.displayCombatStats, line 159)
+* [x] Create XP bar
 * [] Results/Death Screen (player.death, line 91)(current death screen is already epic...)
 #### Holden:
 * [x] Finish Beach Items

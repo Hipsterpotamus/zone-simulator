@@ -210,15 +210,6 @@
   /* height: 100%; */
 }
 
-.combat-stats p {
-  background-color: var(--md-sys-color-secondary);
-  color: var(--md-sys-color-on-secondary);
-  
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 16px;
-  width: 100%;
-}
 
 .combat-stat {
   background-color: var(--md-sys-color-primary);
@@ -228,4 +219,23 @@
   padding: 0.5rem 1rem;
   border-radius: 16px;
   width: 80%;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.combat-stat-enemy {
+  background-color: var(--md-sys-color-secondary);
+  color: var(--md-sys-color-on-secondary);
+  
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 16px;
+  width: 100%;
+}
+
+/* grow on hover */
+.combat-stat:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0px 0px 10px 0px var(--md-sys-color-shadow);
 }

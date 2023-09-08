@@ -9,6 +9,7 @@ class Enemy extends Entity{
             this.dmg = CHARACTERISTICS['defensive'].onCalculateEnemyDamage(this.dmg);
         }
         
+        this.htmlElements = {};
         this.xp = xp;
         this.complexStats = complexStats;
         this.diffC = difficultyCh;
@@ -89,6 +90,74 @@ class Enemy extends Entity{
         }, 800);
     }
 
+    // This creates the shell of the new enemy div and saves it's components to this.htmlElements
+    // This should only be called once per enemy, on creation
+    initializeEntityDisplay() {
+        // Create the enemy div
+        this.htmlElements.enemyDiv = $('<div>', {
+            'class': 'enemy translucent on-surface-text',
+            'id': 'enemy1'
+        });
+
+        // Create the enemy health bar
+        this.htmlElements.enemyHealth = $('<div>', {
+            'id': 'enemy-health'
+        });
+        this.htmlElements.enemyHealthBarContainer = $('<div>', {
+            'id': 'enemy-health-bar-container',
+            'data-total': this.maxhp,
+            'data-value': this.hp
+        });
+        this.htmlElements.enemyHealthBar = $('<div>', {
+            'id': 'enemy-health-bar'
+        });
+        this.htmlElements.enemyHealthHitBar = $('<div>', {
+            'id': 'enemy-health-hit-bar'
+        });
+        this.htmlElements.enemyHealthBar.appendTo(this.htmlElements.enemyHealthBarContainer);
+        this.htmlElements.enemyHealthHitBar.appendTo(this.htmlElements.enemyHealthBar);
+        this.htmlElements.enemyHealthBarContainer.appendTo(this.htmlElements.enemyHealth);
+        this.htmlElements.enemyHp = $('<p>', {
+            'id': 'enemy-hp'
+        });
+        this.htmlElements.enemyHp.appendTo(this.htmlElements.enemyHealth);
+        this.htmlElements.enemyHealth.appendTo(this.htmlElements.enemyDiv);
+
+        // Create the enemy name box
+        this.htmlElements.enemyNameBox = $('<div>', {
+            'id': 'enemy-name-box',
+            'class': 'secondary on-secondary-text'
+        });
+        this.htmlElements.enemyName = $('<h2>', {
+            'id': 'enemy-name'
+        });
+        this.htmlElements.enemyName.appendTo(this.htmlElements.enemyNameBox);
+        this.htmlElements.enemyTimer = $('<div>', {
+            'class': 'timer draggable',
+            'id': 'enemy-timer-1',
+            'style': '--duration: 100;--size: 30;'
+        });
+        this.htmlElements.enemyTimerMask = $('<div>', {
+            'class': 'timer-mask'
+        });
+        this.htmlElements.enemyTimerMask.appendTo(this.htmlElements.enemyTimer);
+        this.htmlElements.enemyTime = $('<p>', {
+            'class': 'enemy-time primary-container-text'
+        });
+        this.htmlElements.enemyTime.appendTo(this.htmlElements.enemyTimer);
+        this.htmlElements.enemyTimer.appendTo(this.htmlElements.enemyNameBox);
+        this.htmlElements.enemyNameBox.appendTo(this.htmlElements.enemyDiv);
+
+        // Create the enemy stats box
+        this.htmlElements.enemyStats = $('<div>', {
+            'id': 'enemy-stats'
+        });
+        this.htmlElements.enemyStats.appendTo(this.htmlElements.enemyDiv);
+
+        // Append the enemy div to the enemies div
+        this.htmlElements.enemyDiv.appendTo('#enemies');
+    }
+
     updateEntityDisplay() {
         
         // let htmlOutput = '';
@@ -156,7 +225,8 @@ class Enemy extends Entity{
         updateTailReferences();
 
         if (!this.alive) {
-            $('#enemy1').find('#enemy-stats').remove();
+            // set contents to empty
+            $('#enemy1').find('#enemy-stats').html('');
             $('#enemy1').find('#enemy-hp').text('');
             $('#enemy-name').text('Defeated ' + this.name + '!');
 
@@ -173,19 +243,26 @@ class Enemy extends Entity{
             //}
 
             // add a new div to #enemy1 with the combat stats
-            let combatStats = $('<div>', {
+            this.htmlElements.combatStats = $('<div>', {
                 'class': 'combat-stats'
             });
-            combatStats.html(
-                '<p><b>Gold</b>: ' + this.combatStats.gold + '</p>' +
-                '<p><b>Time Alive:</b> ' + this.combatStats.ticksAlive + '</p>' +
-                '<p><b>Outgoing Damage:</b> ' + this.combatStats.outgoingDmg + '</p>' +
-                '<p><b>Incoming Blocked:</b> ' + this.combatStats.incomingBlocked + '</p>' +
-                '<p><b>HP Regenerated:</b> ' + this.combatStats.hpRegened + '</p>' +
-                '<p><b>Experience Gained:</b> ' + this.xp + '</p>'
-                
+            this.htmlElements.combatStats.html(
+                '<p class="combat-stat combat-stat-enemy"><b>Gold</b>: ' + this.combatStats.gold + '</p>' +
+                '<p class="combat-stat combat-stat-enemy"><b>Time Alive:</b> ' + this.combatStats.ticksAlive + '</p>' +
+                '<p class="combat-stat combat-stat-enemy"><b>Outgoing Damage:</b> ' + this.combatStats.outgoingDmg + '</p>' +
+                '<p class="combat-stat combat-stat-enemy"><b>Incoming Blocked:</b> ' + this.combatStats.incomingBlocked + '</p>' +
+                '<p class="combat-stat combat-stat-enemy"><b>HP Regenerated:</b> ' + this.combatStats.hpRegened + '</p>' +
+                '<p class="combat-stat combat-stat-enemy"><b>Experience Gained:</b> ' + this.xp + '</p>'
             );
-            combatStats.appendTo('#enemy1');
+            this.htmlElements.combatStats.appendTo('#enemy1');
+        } else {
+            // remove the combat stats div
+            if (this.htmlElements.combatStats) {
+                this.htmlElements.combatStats.remove();
+            }
+            // remove any combat stat divs in #enemy1 
+                // TO REMOVE this will not be needed once multiple enemies are implemented
+            $('#enemy1').find('.combat-stats').remove();
         }
     }
 }
