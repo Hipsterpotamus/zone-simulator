@@ -18,6 +18,13 @@ window.addEventListener("mousemove", function(e){
     }
 });
 
+document.addEventListener('mousemove', function(event) {
+  document.documentElement.style.setProperty('--mouse-x', event.clientX + 'px');
+  document.documentElement.style.setProperty('--mouse-y', event.clientY + 'px');
+  console.log(event.clientX + 'px');
+  console.log(event.clientY + 'px');
+});
+
   
 document.addEventListener('DOMContentLoaded', () => {
   clearTailReferences();

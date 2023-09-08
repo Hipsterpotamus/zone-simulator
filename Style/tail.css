@@ -29,8 +29,10 @@
     transform: scale(1) translateY(0%);
     display: block;
     position: absolute;
-    top: -25%;
-    left: -20%;
+    /* make the position be relative to the cursor */
+
+    /* top: -25%;
+    left: -20%; */
     padding: 0.5rem;
     content:attr(data-text);
 
@@ -41,7 +43,12 @@
     box-shadow: 0.5rem 0.6rem 2rem rgba(0, 0, 0, 0.3);
     border-radius: 16px;
     padding: 1rem;
-    animation: linear 0.5s grow;
+    animation: linear 0.75s grow;
+    position: absolute;
+    /* transform: translate(calc(var(--mouse-x) - 50%), calc(var(--mouse-y) - 50%)); */
+    /* set position */
+    top: 10px;
+    left: 10px;
 }
 
 /* create a short animation that starts small and grows to full size and moves up slightly */
@@ -63,6 +70,6 @@
         opacity: 1;
     }
     100% {
-        transform: scale(1) translateY(0%);
+        transform: scale(1) translate(calc(var(--mouse-x) - 50%), calc(var(--mouse-y) - 50%));
     }
 }

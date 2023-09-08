@@ -123,7 +123,7 @@ class Enemy extends Entity{
                         $('<div>', {
                             // 'text': stat_icons[stat]
                             'class': 'enemy-stat has-tail enemy-stat-' + stat,
-                            'id': 'stat-' + stat
+                            'id': 'stat-' + stat,
                         })
                         .append(
                             $('<div>', {
@@ -140,6 +140,7 @@ class Enemy extends Entity{
                         )
                     )
                     $('.enemy-stat-' + stat + " .enemy-stat-icon-container").html(stat_icons[stat]);
+                    $('.enemy-stat-' + stat + " .enemy-stat-icon-container").attr('data-text', "TEST")
                 } else {
                     $('.enemy-stat-' + stat).find('.enemy-stat-value').text(this.calcStatDisplay(stat));
                 }
