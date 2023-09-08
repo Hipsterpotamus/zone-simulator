@@ -43,8 +43,6 @@ class Combat {
         this.inCombat = true;
         this.player = player;
 
-        // startPlayerTimer(this.player.calcAs());
-
         this.playerAttacks = 0;
         this.player.resurgentUses = 0;
         this.player.inCombat = true;
@@ -77,6 +75,10 @@ class Combat {
         this.enemyList.forEach(enemy => {
             if (enemy.getLvlHealMult() > this.lvlHealMult) {this.lvlHealMult = enemy.getLvlHealMult()};
         });
+
+        for (let i = 0; i < enemyList.length; i++) {
+            enemyList[i].enemyNumber = i + 1;
+        }
 
         //default to have selected enemy be the first one, can add listener to change once frontend is added
         //will need to ensure selected enemy is alive before changing

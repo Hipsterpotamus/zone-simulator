@@ -127,8 +127,9 @@ class Beach extends Zone {
             'bossMagicExample'
         ]
 
-        this.bossStat = [
-            'bossStatExample'
+        this.bossArmor = [
+            'magician\'s vest',
+            'light leave leggings'
         ]
 
         //could assign this in the parent class if this distribution holds across zones
