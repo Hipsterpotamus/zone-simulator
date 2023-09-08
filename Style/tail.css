@@ -44,32 +44,30 @@
     border-radius: 16px;
     padding: 1rem;
     animation: linear 0.75s grow;
-    position: absolute;
-    /* transform: translate(calc(var(--mouse-x) - 50%), calc(var(--mouse-y) - 50%)); */
+    position: fixed;
+    transform: translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 200%));
     /* set position */
-    top: 10px;
-    left: 10px;
 }
 
 /* create a short animation that starts small and grows to full size and moves up slightly */
 @keyframes grow {
     0% {
-        transform: scale(0) translateY(200%);
+        transform: scale(0) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) + 50%));
         opacity: 0;
     }
     49% {
-        transform: scale(0) translateY(200%);
+        transform: scale(0) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) + 50%));
         opacity: 0;
     }
     50% {
-        transform: scale(0) translateY(200%);
+        transform: scale(0) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) + 50%));
         opacity: 0;
     }
     70% {
-        transform: scale(1.05) translateY(-5%);
+        transform: scale(1.05) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 205%));
         opacity: 1;
     }
     100% {
-        transform: scale(1) translate(calc(var(--mouse-x) - 50%), calc(var(--mouse-y) - 50%));
+        transform: scale(1) translate(calc(var(--mouse-x) - var(--element-x) - 50%), calc(var(--mouse-y) - var(--element-y) - 200%));
     }
 }

@@ -21,6 +21,9 @@ window.addEventListener("mousemove", function(e){
 document.addEventListener('mousemove', function(event) {
   document.documentElement.style.setProperty('--mouse-x', event.clientX + 'px');
   document.documentElement.style.setProperty('--mouse-y', event.clientY + 'px');
+  // get position of the element that is being hovered
+  document.documentElement.style.setProperty('--element-x', event.target.getBoundingClientRect().left + 'px');
+  document.documentElement.style.setProperty('--element-y', event.target.getBoundingClientRect().top + 'px');
   console.log(event.clientX + 'px');
   console.log(event.clientY + 'px');
 });
