@@ -179,12 +179,19 @@ class Enemy extends Entity{
         if (this.accuracy != 100) {stats_list_enemy.append('accuracy')}
         
         // add visible class to .enemy
-        $('.enemy').addClass('visible');
+        $('.enemy').addClass('visible');    // OLD
+        // this.htmlElements.enemyDiv.addClass('visible'); // NEW
         
-        $('#enemy-name').text(this.name);
-        $('#enemy-hp').text(this.hp + '/' + this.maxhp);
-        $('#enemy-time').text((this.calcAs()-this.attackCounter));
+        // this.htmlElements.enemyName.text(this.name);   // NEW
+        $('#enemy-name').text(this.name);               // OLD
+        // this.htmlElements.enemyHp.text(this.hp + '/' + this.maxhp); // NEW
+        $('#enemy-hp').text(this.hp + '/' + this.maxhp);            // OLD
+        // this.htmlElements.enemyTime.text((this.calcAs()-this.attackCounter)); // NEW
+        $('#enemy-time').text((this.calcAs()-this.attackCounter));      // OLD
+
+        // this will need modified for new enemy display creation
         this.setAttackTimer(this.calcAs()-this.attackCounter, this.calcAs(), 'primary');
+
 
         stats_list_enemy.forEach((stat)=>{
             if (this.calcStatDisplay(stat) != 0) {
