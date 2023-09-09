@@ -83,7 +83,7 @@ class Player extends Entity{
         if (updateDisplay && item.metatype != 'usable' && item.metatype != 'magic') {item.calcComparisons()}
         this.attackCounter = 0;
         let prevItem = this.inv[item.metatype][0];
-        if (prevItem != '' && (prevItem.income != 0 || !prevItem.income)) {
+        if (prevItem != '' && prevItem.income != 0 && !prevItem.income) {
             prevItem.income = 0;
             notify(`The luster of ${prevItem.name} fades away... You won't get any more income from this item`)
         }
