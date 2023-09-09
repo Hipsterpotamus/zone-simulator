@@ -58,13 +58,16 @@ class Entity{
     }
 
     changeTempStat (stat, amount, type = 'flat') { //types are currently 'flat' and 'percent'
-        if (!this.tempStats[stat] || !this.tempStats[stat][type]) {
+        if (!this.tempStats[stat]) {
+            this.tempStats[stat] = {};
+        }
+        if (!this.tempStats[stat][type]) {
             this.tempStats[stat][type] = amount;
         } else {
             this.tempStats[stat][type] += amount;
             if (this.tempStats[stat][type] === 0) {
                 delete(this.tempStats[stat][type]);
-                if (!Object.keys(this.tempStats[stat]).length) {delete(this.tempStats[stat])}
+                if (Object.keys(this.tempStats[stat]).length === 0) {delete(this.tempStats[stat])}
             }
         }
     }
@@ -75,23 +78,25 @@ class Entity{
             calcStat += this.tempStats[stat].flat;
         }
         if (this.tempStats[stat] && this.tempStats[stat].percent) {
-            calcStat *= 1 + this.tempStats[stat].percent * 0.01;
+            calcStat = Math.floor(calcStat * (1 + this.tempStats[stat].percent * 0.01));
         }
         return calcStat;
     }
 
     changeTimedStat (stat, amount, ticks, type = 'percent') { //types are currently 'flat' and 'percent'
-        if (!this.timedStats[stat] || !this.timedStats[stat][type]) {
-            if (amount > 0) {
-                this.timedStats[stat][type].amount = amount;
-                this.timedStats[stat][type].ticks = ticks;
-            }
+        if (!this.timedStats[stat]) {
+            this.timedStats[stat] = {};
+        }
+        if (!this.timedStats[stat][type]) {
+            this.timedStats[stat][type] = {};
+            this.timedStats[stat][type].amount = amount;
+            this.timedStats[stat][type].ticks = ticks;
         } else {
             this.timedStats[stat][type].amount += amount;
             this.timedStats[stat][type].ticks += ticks;
-            if (this.timedStats[stat][type].amount === 0 || this.timedStats[stat][type].tick <= 0) {
+            if (this.timedStats[stat][type].amount === 0 || this.timedStats[stat][type].ticks <= 0) {
                 delete(this.timedStats[stat][type]);
-                if (!Object.keys(this.timedStats[stat]).length) {delete(this.timedStats[stat])}
+                if (Object.keys(this.timedStats[stat]).length === 0) {delete(this.timedStats[stat])}
             }
         }
     }
@@ -99,24 +104,26 @@ class Entity{
     calcTimedStatChange(stat, base) {
         let calcStat = base;
         if (this.timedStats[stat] && this.timedStats[stat].flat && this.timedStats[stat].flat.amount) {
-            calcStat += this.tempStats[stat].flat.amount;
+            calcStat += this.timedStats[stat].flat.amount;
         }
-        if (this.tempStats[stat] && this.tempStats[stat].percent && this.tempStats[stat].percent.amount) {
-            calcStat *= 1 + this.tempStats[stat].percent.amount * 0.01;
+        if (this.timedStats[stat] && this.timedStats[stat].percent && this.timedStats[stat].percent.amount) {
+            calcStat = Math.floor(calcStat * (1 + this.timedStats[stat].percent.amount * 0.01));
         }
         return calcStat;
     }
 
     changeTimedStatCounters (ticks) {
-        if (this.timedStats) {
+        if (Object.keys(this.timedStats).length !== 0) {
             Object.keys(this.timedStats).forEach((stat)=>{
-                Object.keys(stat).forEach((type)=>{
-                    type.ticks += ticks;
-                    if (type.ticks <= 0) {
-                        delete(this.timedStats[stat][type]);
-                        if (!Object.keys(this.timedStats[stat]).length) {delete(this.timedStats[stat])}
-                    }
-                });
+                if (Object.keys(this.timedStats[stat]).length !== 0) {
+                    Object.keys(this.timedStats[stat]).forEach((type)=>{
+                        this.timedStats[stat][type].ticks += ticks;
+                        if (this.timedStats[stat][type].ticks <= 0) {
+                            delete(this.timedStats[stat][type]);
+                            if (Object.keys(this.timedStats[stat]).length === 0) {delete(this.timedStats[stat])}
+                        }
+                    });
+                }
             });
         }
     }
