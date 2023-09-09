@@ -33,22 +33,11 @@ class Physician extends Player {
     }
 
     calcStatBase(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
-        let statBase = this.calcStatInit(stat);
+        let statBase = this.calcStatCore(stat);
         if (stat === 'bleed' || stat === 'tear' || stat === 'shatter') {
             return 0;
         } else {
             return statBase;
         }
-    }
-
-    calcStatInit(stat) {
-        return (
-            this[stat] +
-            this.getByType('weapon')[stat] +
-            this.getByType('head')[stat] +
-            this.getByType('chest')[stat] +
-            this.getByType('legs')[stat] +
-            this.getByType('feet')[stat]
-        );
     }
 }

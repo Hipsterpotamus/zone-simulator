@@ -38,6 +38,7 @@ class Enemy extends Entity{
     }
 
     calcStat(stat) {//should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
+        if (stat in this.tempStats) {return (this[stat] + this.tempStats[stat]);}
         return (this[stat]);
     }
     
@@ -236,10 +237,6 @@ class Enemy extends Entity{
             $('#enemy1').find('#enemy-stats').html('');
             $('#enemy1').find('#enemy-hp').text('');
             $('#enemy-name').text('Defeated ' + this.name + '!');
-
-            console.log('enemy stats:');
-            console.log(this.combatStats);
-
             //TODO: Display combat stats
             //this.combatStats = {
                 //'gold' : gold,

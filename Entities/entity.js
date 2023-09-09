@@ -39,6 +39,8 @@ class Entity{
                 this[stat] = complexStats[stat];
             });
         }
+
+        this.tempStats = {};
     }
 
     changeStat (stat, amount) {

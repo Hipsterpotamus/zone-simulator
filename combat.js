@@ -146,7 +146,6 @@ class Combat {
             
         } else {
             if (this.player.alive) {
-                this.tick = 0;
                 this.inCombat = false;
                 this.player.inCombat = false;
                 this.player.resurgentUses = 0;
@@ -158,6 +157,7 @@ class Combat {
                 }
 
                 this.displayCombatStats();
+                this.tick = 0;
                 this.player.cleanStatus();
                 this.player.changeHp(this.player.levelheal*this.lvlHealMult);
 
@@ -275,9 +275,5 @@ class Combat {
             combatStat.appendTo(combatStatsDiv);
             combatStat.html('<b>' + stat + '</b>: ' + combatStats[stat]);
         }
-        
-
-        console.log('combat stats:');
-        console.log(combatStats);
     }
 }

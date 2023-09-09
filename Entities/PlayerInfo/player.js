@@ -130,15 +130,17 @@ class Player extends Entity{
         return total;
     }
 
-    calcStatBase(stat) {
-        return (
-            this[stat] +
-            this.getByType('weapon')[stat] +
-            this.getByType('head')[stat] +
-            this.getByType('chest')[stat] +
-            this.getByType('legs')[stat] +
-            this.getByType('feet')[stat]
-        );
+    calcStatBase(stat) {return this.calcStatCore(stat)};
+
+    calcStatCore(stat) {
+        let fullStat = this[stat] +
+        this.getByType('weapon')[stat] +
+        this.getByType('head')[stat] +
+        this.getByType('chest')[stat] +
+        this.getByType('legs')[stat] +
+        this.getByType('feet')[stat]
+        if (stat in this.tempStats) {return (fullStat + this.tempStats[stat])}
+        return fullStat
     }
 
     changeStat (stat, amount) {
