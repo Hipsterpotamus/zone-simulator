@@ -50,10 +50,12 @@
 ### New stuff
 * [] Add speedup button/slider/something
 * [] Add rarity to shop items
+* [] Add drop items to enemies
 
 ### Fixes
 
 ### Refactoring
+* [] Reformat enemies to use dictionary system
 * [] Update combat systems to run in deltatime? for better communication with frontend
 
 * [] Figure out a better way to call event format and implement across codebase
