@@ -34,6 +34,10 @@ class Enemy extends Entity{
         this.enemyNumber = 1;
         this.timer = document.querySelector(`#enemy-timer-${this.enemyNumber}`);
         this.timermask = document.querySelector(`#enemy-timer-${this.enemyNumber} .timer-mask`);
+
+        
+        //this.dodge = 100;
+        //uncomment above to test dodge animation
         
     }
 
@@ -84,7 +88,6 @@ class Enemy extends Entity{
     }
 
     animateDodge() {
-        console.log('enemy dodge')
         $('#enemy').addClass('dodge-animation');
         setTimeout(function() {
             $('#enemy').removeClass('dodge-animation');

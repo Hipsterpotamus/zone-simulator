@@ -134,7 +134,8 @@ class Entity{
             oppHpChange -= this.calcStat('thorn');
             opp.changeHp(oppHpChange);
         } else {
-            opp.animateDodge();
+            console.log(this.name + ' dodge');
+            this.animateDodge();
         }
     }
 
@@ -147,7 +148,8 @@ class Entity{
             // oppHpChange -= this.testThorn(opp.calcStat('superarmor')); Will need to think if
             opp.changeHp(oppHpChange);
         } else {
-            opp.animateDodge();
+            console.log(this.name + ' dodge');
+            this.animateDodge();
         }
     }
 
