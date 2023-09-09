@@ -56,6 +56,17 @@ class Entity{
         this.updateEntityDisplay();
     }
 
+    changeTempStat (stat, amount) {
+        if (!this.tempStats[stat]) {
+            if (amount > 0) {this.tempStats[stat] = amount}
+        } else {
+            this.tempStats[stat] += amount
+            if (this.tempStats[stat] <= 0) {
+                delete(this.tempStats[stat]);
+            }
+        }
+    }
+
     changeHp(amount){
         if(amount == 'max') {
             this.hp = this.maxhp;
@@ -107,6 +118,7 @@ class Entity{
         this.shatterApplied = 0;
         this.bleedApplied = 0;
         this.antihealApplied = 0;
+        this.tempStats = {};
     }
 
     receiveHitFrom(opp, mult = 1) {
