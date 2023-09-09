@@ -156,7 +156,8 @@ class Combat {
                     CHARACTERISTICS['boastful'].onCombatEnd(this.player);
                 }
 
-                this.displayCombatStats();
+                //hacky fix for combat stats eating levelup/boss rewards- will improve later with event display overhaul
+                if (!this.player.levelInfo.checkLvlUp() && !this.bossRewards) {this.displayCombatStats()}
                 this.tick = 0;
                 this.player.cleanStatus();
                 this.player.changeHp(this.player.levelheal*this.lvlHealMult);
