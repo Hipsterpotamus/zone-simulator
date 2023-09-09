@@ -42,8 +42,11 @@ class Enemy extends Entity{
     }
 
     calcStat(stat) {//should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
-        if (stat in this.tempStats) {return (this[stat] + this.tempStats[stat]);}
-        return (this[stat]);
+        let statCalc = this[stat];
+
+        statCalc = this.calcTempStatChange(stat, statCalc);
+        statCalc = this.calcTimedStatChange(stat, statCalc);
+        return statCalc;
     }
     
     calcStatDisplay(stat, tick) { // For displaying in html

@@ -199,10 +199,12 @@ class Combat {
             this.player.attackCounter += amount;
             this.player.regenCounter += amount;
             this.player.manaCounter += amount;
+            this.player.changeTimedStatCounters(-amount);
             this.enemyList.forEach(enemy => {
                 enemy.combatStats.ticksAlive += amount;
                 enemy.attackCounter += amount;
                 enemy.regenCounter += amount;
+                enemy.changeTimedStatCounters(-amount);
             });
         }
     }

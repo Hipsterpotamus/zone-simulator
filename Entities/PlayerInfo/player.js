@@ -133,14 +133,16 @@ class Player extends Entity{
     calcStatBase(stat) {return this.calcStatCore(stat)};
 
     calcStatCore(stat) {
-        let fullStat = this[stat] +
+        let statCalc = this[stat] +
         this.getByType('weapon')[stat] +
         this.getByType('head')[stat] +
         this.getByType('chest')[stat] +
         this.getByType('legs')[stat] +
         this.getByType('feet')[stat]
-        if (stat in this.tempStats) {return (fullStat + this.tempStats[stat])}
-        return fullStat
+
+        statCalc = this.calcTempStatChange(stat, statCalc);
+        statCalc = this.calcTimedStatChange(stat, statCalc);
+        return statCalc;
     }
 
     changeStat (stat, amount) {

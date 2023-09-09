@@ -41,6 +41,7 @@ class Entity{
         }
 
         this.tempStats = {};
+        this.timedStats = {};
     }
 
     changeStat (stat, amount) {
@@ -56,14 +57,67 @@ class Entity{
         this.updateEntityDisplay();
     }
 
-    changeTempStat (stat, amount) {
-        if (!this.tempStats[stat]) {
-            if (amount > 0) {this.tempStats[stat] = amount}
+    changeTempStat (stat, amount, type = 'flat') { //types are currently 'flat' and 'percent'
+        if (!this.tempStats[stat] || !this.tempStats[stat][type]) {
+            this.tempStats[stat][type] = amount;
         } else {
-            this.tempStats[stat] += amount
-            if (this.tempStats[stat] <= 0) {
-                delete(this.tempStats[stat]);
+            this.tempStats[stat][type] += amount;
+            if (this.tempStats[stat][type] === 0) {
+                delete(this.tempStats[stat][type]);
+                if (!Object.keys(this.tempStats[stat]).length) {delete(this.tempStats[stat])}
             }
+        }
+    }
+
+    calcTempStatChange(stat, base) {
+        let calcStat = base;
+        if (this.tempStats[stat] && this.tempStats[stat].flat) {
+            calcStat += this.tempStats[stat].flat;
+        }
+        if (this.tempStats[stat] && this.tempStats[stat].percent) {
+            calcStat *= 1 + this.tempStats[stat].percent * 0.01;
+        }
+        return calcStat;
+    }
+
+    changeTimedStat (stat, amount, ticks, type = 'percent') { //types are currently 'flat' and 'percent'
+        if (!this.timedStats[stat] || !this.timedStats[stat][type]) {
+            if (amount > 0) {
+                this.timedStats[stat][type].amount = amount;
+                this.timedStats[stat][type].ticks = ticks;
+            }
+        } else {
+            this.timedStats[stat][type].amount += amount;
+            this.timedStats[stat][type].ticks += ticks;
+            if (this.timedStats[stat][type].amount === 0 || this.timedStats[stat][type].tick <= 0) {
+                delete(this.timedStats[stat][type]);
+                if (!Object.keys(this.timedStats[stat]).length) {delete(this.timedStats[stat])}
+            }
+        }
+    }
+
+    calcTimedStatChange(stat, base) {
+        let calcStat = base;
+        if (this.timedStats[stat] && this.timedStats[stat].flat && this.timedStats[stat].flat.amount) {
+            calcStat += this.tempStats[stat].flat.amount;
+        }
+        if (this.tempStats[stat] && this.tempStats[stat].percent && this.tempStats[stat].percent.amount) {
+            calcStat *= 1 + this.tempStats[stat].percent.amount * 0.01;
+        }
+        return calcStat;
+    }
+
+    changeTimedStatCounters (ticks) {
+        if (this.timedStats) {
+            Object.keys(this.timedStats).forEach((stat)=>{
+                Object.keys(stat).forEach((type)=>{
+                    type.ticks += ticks;
+                    if (type.ticks <= 0) {
+                        delete(this.timedStats[stat][type]);
+                        if (!Object.keys(this.timedStats[stat]).length) {delete(this.timedStats[stat])}
+                    }
+                });
+            });
         }
     }
 
@@ -119,6 +173,7 @@ class Entity{
         this.bleedApplied = 0;
         this.antihealApplied = 0;
         this.tempStats = {};
+        this.timedStats = {};
     }
 
     receiveHitFrom(opp, mult = 1) {
@@ -127,9 +182,9 @@ class Entity{
             this.changeHp(-oppDMG);
 
             opp.combatStats.outgoingDmg += oppDMG;
-            this.combatStats.incomingBlocked += (oppDMG - opp.testDmg(0, 1));
+            this.combatStats.incomingBlocked += (opp.testDmg(0, 1) - oppDMG);
             opp.gameCombatStats.outgoingDmg += oppDMG;
-            this.gameCombatStats.incomingBlocked += (oppDMG - opp.testDmg(0, 1));
+            this.gameCombatStats.incomingBlocked += (opp.testDmg(0, 1) - oppDMG);
 
             this.shatterApplied = Math.min(this.shatterApplied + opp.testShatter(), this.calcStat('arm'));
             this.bleedApplied += opp.testBleed();
