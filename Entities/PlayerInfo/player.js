@@ -117,12 +117,13 @@ class Player extends Entity{
                 }
             }
         } else if (['weapon', 'head', 'chest', 'legs', 'feet'].includes(itemMetatype)) {
+            console.log(itemName, itemMetatype)
             if (this.inv[itemMetatype][0] !== '' && this.inv[itemMetatype][0].name === itemName) {
                 this.inv[itemMetatype][0] = '';
             }
             for (let i = 0; i < this.inv[itemMetatype][1].length; i++) {
                 if (this.inv[itemMetatype][1][i].name === itemName) {
-                    $(`#${itemMetatype}-select option[value=${itemName}]`).remove();
+                    $(`#${itemMetatype}-select option[value="${itemName.replace(/ /g, '\\ ')}"]`).remove();
                     this.inv[itemMetatype][1].splice(i, 1);
                     break;
                 }

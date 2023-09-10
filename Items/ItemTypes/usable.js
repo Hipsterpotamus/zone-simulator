@@ -245,7 +245,7 @@ class Usable extends Item {
         }
 
         if (this.weaponEat){
-            this.game.player.removeItem(this.game.player.inv.weapon[0], 'weapon')
+            this.game.player.removeItem(this.game.player.inv.weapon[0].name, 'weapon')
         }
 
 
