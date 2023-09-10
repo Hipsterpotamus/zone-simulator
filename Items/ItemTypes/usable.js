@@ -139,11 +139,7 @@ class Usable extends Item {
     updateItemInfo() {
         this.usableButtonUses.text(this.uses);
         if (this.uses <= 0) {
-            const index = this.game.player.inv.usable.indexOf(this);
-            if (index > -1) {
-                this.game.player.inv.usable.splice(index, 1);
-            }
-            this.usableButton.remove();
+            this.game.player.removeItem(this.name, this.metatype);
         }
     }
 
@@ -249,7 +245,7 @@ class Usable extends Item {
         }
 
         if (this.weaponEat){
-            this.game.player.changeGold(this.weaponEat);
+            this.game.player.removeItem(this.game.player.inv.weapon[0], 'weapon')
         }
 
 

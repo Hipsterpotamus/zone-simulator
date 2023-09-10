@@ -381,7 +381,7 @@ const ITEMLIST = {
     'elven dryad staff': {'metatype': 'weapon', 'price': 0, 'type': 'staff', 'dmg': 30, 'as': -33, 'regen':4, 'manaGen':1, 'lifedrain':25, 'dodge':15, 'message': 'Born of an unholy communion of two forest races, rises a nimple staff. '},
 
     'razor paper stars': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'deal 68 dmg, lose 5 hp', 'longDescription': 'Deal 68 dmg to an enemy (bypasses armor), and lose 5 hp.', 'type': 'all', 'attack': 68, 'hp':-5},
-    'the hungry bag': {'metatype': 'usable', 'price': 0, 'uses': 4, 'shortDescription': 'lose current weapon, gain 20 gold [UNIMPLEMENTED]', 'longDescription': 'Permantely lose your currently equipped weapon, gain 20 gold', 'type': 'all', 'weaponEat':20},
+    'the hungry bag': {'metatype': 'usable', 'price': 0, 'uses': 4, 'shortDescription': 'lose current weapon, gain 20 gold', 'longDescription': 'Permanently lose your currently equipped weapon, gain 20 gold', 'type': 'all', 'weaponEat': true, 'gold': 20},
 
     'river draft': {'metatype': 'magic', 'price': 0, 'shortDescription': 'gain 5 speed, lose 2 armor', 'longDescription': 'Gain 5 attack speed permanently, lose 2 base armor (can go negative). Infinite Uses', 'manaCost': 10, 'arm':-2, 'as': 5},
     'wood chuck': {'metatype': 'magic', 'price': 0, 'shortDescription': 'deal 35 dmg, gain 1 dmg', 'longDescription': 'Deal 35 dmg to enemy (doesn\'t bypass armor), gain 1 dmg permanently. Infinite Uses', 'manaCost': 15, 'dmg':1, 'attack': 35},

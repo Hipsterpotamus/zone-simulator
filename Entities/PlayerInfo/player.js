@@ -99,6 +99,37 @@ class Player extends Entity{
         }
     }
 
+    removeItem(itemName, itemMetatype) {
+        if (itemMetatype === 'usable') {
+            for (let i = 0; i < this.inv.usable.length; i++) {
+                if (this.inv.usable[i].name === itemName) {
+                    this.inv.usable[i].usableButton.remove();
+                    this.inv.usable.splice(i, 1);
+                    break;
+                }
+            }
+        } else if (itemMetatype === 'magic') {
+            for (let i = 0; i < this.inv.magic.length; i++) {
+                if (this.inv.magic[i].name === itemName) {
+                    this.inv.magic[i].selectElement.remove();
+                    this.inv.magic.splice(i, 1);
+                    break;
+                }
+            }
+        } else if (['weapon', 'head', 'chest', 'legs', 'feet'].includes(itemMetatype)) {
+            if (this.inv[itemMetatype][0] !== '' && this.inv[itemMetatype][0].name === itemName) {
+                this.inv[itemMetatype][0] = '';
+            }
+            for (let i = 0; i < this.inv[itemMetatype][1].length; i++) {
+                if (this.inv[itemMetatype][1][i].name === itemName) {
+                    $(`#${itemMetatype}-select option[value=${itemName}]`).remove();
+                    this.inv[itemMetatype][1].splice(i, 1);
+                    break;
+                }
+            }
+        }
+    }
+
     changeSelectedItem(item, itemShop = false) {
         item.calcComparisons()
         this.attackCounter = 0;

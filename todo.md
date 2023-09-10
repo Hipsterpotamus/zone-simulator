@@ -37,8 +37,8 @@
 ## Frontend:
 * [] Tail to data-text changes for speed improvements
 * [] Fix non-smooth animation on MP bar
-* [] Create combat stats elements and content to display over dead enemy at the end of combat
-* [] Flash a color on the enemy/player when they take damage
+* [x] Create combat stats elements and content to display over dead enemy at the end of combat
+* [x] Flash a color on the enemy/player when they take damage
 * [x] Visual indicator for when player or enemy dodges
 * [] Add support for multiple enemies (combat logic in combat.js, enemy log behavior in enemy.updateEntityDisplay())
 * [x] Make sure 8 stats fit into armor
@@ -50,12 +50,10 @@
 ### New stuff
 * [] Add speedup button/slider/something
 * [] Add rarity to shop items
-* [] Add drop items to enemies
 
 ### Fixes
 
 ### Refactoring
-* [] Reformat enemies to use dictionary system
 * [] Update combat systems to run in deltatime? for better communication with frontend
 
 * [] Figure out a better way to call event format and implement across codebase
