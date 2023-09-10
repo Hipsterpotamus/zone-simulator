@@ -2,19 +2,16 @@ const statsList = ['dmg', 'arm', 'regen', 'speed', 'dodge', 'shatter', 'bleed', 
 const percentage_stats = ['dodge', 'lifedrain', 'shatter', 'bleed'];
 
 class Entity{
-    constructor(name, type, health, attackspeed, damage, armor, gold, regen, complexStats) { 
-        this.name = name;
+    constructor() {
         this.levelInfo = new LevelInfo();
-
-        this.type = type;
-        this.hp = health;
-        this.maxhp = health;
-        this.as = attackspeed;
+        this.hp = 0;
+        this.maxhp = 0;
+        this.as = 0;
         this.asScalingPoint = 50;
-        this.dmg = damage;
-        this.arm = armor;
-        this.gold = gold;
-        this.regen = regen;
+        this.dmg = 0;
+        this.arm = 0;
+        this.gold = 0;
+        this.regen = 0;
         this.lifedrain = 0;
         this.thorn = 0;
         this.antiheal = 0;
@@ -33,12 +30,6 @@ class Entity{
         this.regenCounter = 0;
 
         this.alive = true;
-
-        if(complexStats){
-            Object.keys(complexStats).forEach((stat)=>{
-                this[stat] = complexStats[stat];
-            });
-        }
 
         this.tempStats = {};
         this.timedStats = {};

@@ -1,7 +1,8 @@
 class Player extends Entity{
     constructor(type) {
-        super('', type, 0, 0, 0, 0, 0, 0, '');
+        super();
         //default stats- can be specified further in char classes
+        this.type = type;
         this.hp = 100;
         this.maxhp = 100;
         this.dmg = 1;

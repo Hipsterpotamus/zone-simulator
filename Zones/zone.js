@@ -25,7 +25,7 @@ class Zone {
 
     getRandomEnemy() {
         const randomValue = Math.random();
-        const enemyStats = { ...this.enemyStats };
+        const enemyStats = { ...this.zoneEnemies};
         let levelAdjustment = 0;
         let selectedEnemyList;
     
@@ -47,19 +47,26 @@ class Zone {
             enemyLvl = adjZoneLevel + 1;
         }
     
-        const enemyAttributes = selectedEnemyList[Math.floor(Math.random() * selectedEnemyList.length)];
-        enemyAttributes[8] += levelAdjustment;
-        let enemyXp = this.xpDist[enemyLvl];
+        const enemyName = selectedEnemyList[Math.floor(Math.random() * selectedEnemyList.length)];
+        const enemyXp = this.xpDist[enemyLvl];
+        const enemyInfo = structuredClone(ENEMYLIST[enemyName]);
+
+        let newEnemy = new Enemy(this.game, enemyXp, enemyName, enemyInfo);
+        newEnemy.levelAdjustment = levelAdjustment;
     
-        return [new Enemy(this.game, enemyXp, ...enemyAttributes)];
+        return [newEnemy];
     }
 
     getBoss(){
-        let bossAttributes = this.bossStats[Math.floor(Math.random() * this.bossStats.length)];
-        let rewardItems = this.getBossRewards([2, 1, 1, 1]);
-        let bossXp = this.bossXp;
+        const bossName = this.zoneBosses[Math.floor(Math.random() * this.zoneBosses.length)];
+        const rewardItems = this.getBossRewards([2, 1, 1, 1]);
+        const bossXp = this.bossXp;
+        const bossInfo = structuredClone(ENEMYLIST[bossName]);
+
+        let newBoss = new Boss(this.game, bossXp, bossName, bossInfo);
+        newBoss.rewardItems = rewardItems;
     
-        return [new Boss(this.game, bossXp, rewardItems, ...bossAttributes)];
+        return [newBoss];
     }
 
     getBossRewards(info) {

@@ -77,7 +77,7 @@ class Combat {
         });
 
         for (let i = 0; i < enemyList.length; i++) {
-            enemyList[i].enemyNumber = i + 1;
+            enemyList[i].setEnemyNumber(i + 1);
         }
 
         //default to have selected enemy be the first one, can add listener to change once frontend is added
@@ -213,6 +213,9 @@ class Combat {
     preCombatDelay(player, enemyList, seconds, message) {
         this.player = player;
         this.enemyList = enemyList;
+        for (let i = 0; i < this.enemyList.length; i++) {
+            this.enemyList[i].setEnemyNumber(i + 1);
+        }
         this.displayCombatInfo();
         setBroadcastTitleText(message + ' begins in:');
         this.second = seconds

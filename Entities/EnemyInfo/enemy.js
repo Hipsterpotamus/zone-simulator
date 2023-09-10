@@ -1,7 +1,22 @@
 class Enemy extends Entity{
-    constructor(game, xp, name, type, health, attackspeed, damage, armor, gold, regen, difficultyCh, complexStats) {
-         super(name, type, health, attackspeed, damage, armor, gold, regen, complexStats);
+    constructor(game, xp, name, enemyInfo) {
+         super();
          this.game = game;
+         this.xp = xp;
+         this.name = name;
+         this.enemyInfo = enemyInfo;
+
+         if(enemyInfo){
+            Object.keys(enemyInfo).forEach((stat)=>{
+                this[stat] = enemyInfo[stat];
+                if (stat === 'type' || stat === 'gold') {
+                    delete this.enemyInfo[stat];
+                }
+            });
+        }
+
+        this.maxhp = this.hp;
+
         if (this.game.player.levelInfo.activeCharacteristics.has('intimidating')) {
             this.arm = CHARACTERISTICS['intimidating'].onCalculateEnemyArmor(this.arm);
         }
@@ -10,15 +25,12 @@ class Enemy extends Entity{
         }
         
         this.htmlElements = {};
-        this.xp = xp;
-        this.complexStats = complexStats;
-        this.diffC = difficultyCh;
         this.boss = false;
         this.updateHealthBar(0);
         $('#enemy-health-bar-container').removeClass('hidden');
 
          this.combatStats = {
-            'gold' : gold,
+            'gold' : this.gold,
             'ticksAlive' : 0,
             'outgoingDmg' : 0,
             'incomingBlocked' : 0,
@@ -31,14 +43,16 @@ class Enemy extends Entity{
             'hpRegened' : 0
         }
 
-        this.enemyNumber = 1;
-        this.timer = document.querySelector(`#enemy-timer-${this.enemyNumber}`);
-        this.timermask = document.querySelector(`#enemy-timer-${this.enemyNumber} .timer-mask`);
-
         
         //this.dodge = 100;
         //uncomment above to test dodge animation
         
+    }
+
+    setEnemyNumber(number) {
+        this.enemyNumber = number;
+        this.timer = document.querySelector(`#enemy-timer-${this.enemyNumber}`);
+        this.timermask = document.querySelector(`#enemy-timer-${this.enemyNumber} .timer-mask`);
     }
 
     calcStat(stat) {//should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation
@@ -258,11 +272,11 @@ class Enemy extends Entity{
             });
             this.htmlElements.combatStats.html(
                 '<p class="combat-stat combat-stat-enemy"><b>Gold</b>: ' + this.combatStats.gold + '</p>' +
+                '<p class="combat-stat combat-stat-enemy"><b>Experience:</b> ' + this.xp + '</p>' +
                 '<p class="combat-stat combat-stat-enemy"><b>Time Alive:</b> ' + this.combatStats.ticksAlive + '</p>' +
                 '<p class="combat-stat combat-stat-enemy"><b>Outgoing Damage:</b> ' + this.combatStats.outgoingDmg + '</p>' +
                 '<p class="combat-stat combat-stat-enemy"><b>Incoming Blocked:</b> ' + this.combatStats.incomingBlocked + '</p>' +
-                '<p class="combat-stat combat-stat-enemy"><b>HP Regenerated:</b> ' + this.combatStats.hpRegened + '</p>' +
-                '<p class="combat-stat combat-stat-enemy"><b>Experience Gained:</b> ' + this.xp + '</p>'
+                '<p class="combat-stat combat-stat-enemy"><b>HP Regenerated:</b> ' + this.combatStats.hpRegened + '</p>'
             );
             this.htmlElements.combatStats.appendTo('#enemy1');
         } else {
