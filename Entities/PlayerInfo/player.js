@@ -63,18 +63,18 @@ class Player extends Entity{
     }
 
     initPlayerDisplay() {
-        this.addItem(new Equippable(this.game, 'none', {'metatype': 'weapon'}), false, false);
-        this.addItem(new Equippable(this.game, 'none', {'metatype': 'head'}), false, false);
-        this.addItem(new Equippable(this.game, 'none', {'metatype': 'chest'}), false, false);
-        this.addItem(new Equippable(this.game, 'none', {'metatype': 'legs'}), false, false);
-        this.addItem(new Equippable(this.game, 'none', {'metatype': 'feet'}), false, false);
+        this.addItem(new Equippable(this.game, 'none', {'metatype': 'weapon'}));
+        this.addItem(new Equippable(this.game, 'none', {'metatype': 'head'}));
+        this.addItem(new Equippable(this.game, 'none', {'metatype': 'chest'}));
+        this.addItem(new Equippable(this.game, 'none', {'metatype': 'legs'}));
+        this.addItem(new Equippable(this.game, 'none', {'metatype': 'feet'}));
 
         this.changeMana(0);
 
         this.updateEntityDisplay();
     }
 
-    addItem(item, itemShop = false, updateDisplay = true) {
+    addItem(item, itemShop = false) {
         if (item.metatype === 'usable') {
             let itemExists = false;
             for (let i = 0; i < this.inv.usable.length; i++) {
@@ -95,12 +95,12 @@ class Player extends Entity{
         } else if (['weapon', 'head', 'chest', 'legs', 'feet'].includes(item.metatype)) {
             this.inv[item.metatype][1].push(item);
             item.appendToSelect()
-            this.changeSelectedItem(item, itemShop, updateDisplay)
+            this.changeSelectedItem(item, itemShop)
         }
     }
 
-    changeSelectedItem(item, itemShop = false, updateDisplay = true) {
-        if (updateDisplay && item.metatype != 'usable' && item.metatype != 'magic') {item.calcComparisons()}
+    changeSelectedItem(item, itemShop = false) {
+        item.calcComparisons()
         this.attackCounter = 0;
 
         let prevItem = this.inv[item.metatype][0]; //kill income of item when switched
@@ -110,7 +110,7 @@ class Player extends Entity{
         }
 
         this.inv[item.metatype][0] = item;
-        if (updateDisplay) {item.updateItemInfo()}
+        item.updateItemInfo()
         $('#'+item.metatype+'-select').val(item.name);
         if (itemShop && itemShop.shopOpen) {itemShop.updateShopItems()};
     }

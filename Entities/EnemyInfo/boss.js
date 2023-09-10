@@ -1,7 +1,6 @@
 class Boss extends Enemy{
     constructor(game, xp, name, enemyInfo) {
         super(game, xp, name, enemyInfo);
-        this.rewardItems = rewardItems;
         this.boss = true;
     }
 

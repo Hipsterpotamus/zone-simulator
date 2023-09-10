@@ -16,25 +16,44 @@ class Avatar extends Player {
     }
 
     initPlayerDisplay() {
-        this.addItem(new Equippable(this.game, 'Avatar\'s Staff', {'metatype': 'weapon'}), false, false);
-        this.addItem(new Equippable(this.game, 'Avatar\'s Hat', {'metatype': 'head'}), false, false);
-        this.addItem(new Equippable(this.game, 'Avatar\'s Shirt', {'metatype': 'chest'}), false, false);
-        this.addItem(new Equippable(this.game, 'Avatar\'s Pants', {'metatype': 'legs'}), false, false);
-        this.addItem(new Equippable(this.game, 'Avatar\'s Shoes', {'metatype': 'feet'}), false, false);
+        this.addItem(new Equippable(this.game, 'Avatar\'s Staff', {'metatype': 'weapon'}));
+        this.addItem(new Equippable(this.game, 'Avatar\'s Hat', {'metatype': 'head'}));
+        this.addItem(new Equippable(this.game, 'Avatar\'s Shirt', {'metatype': 'chest'}));
+        this.addItem(new Equippable(this.game, 'Avatar\'s Pants', {'metatype': 'legs'}));
+        this.addItem(new Equippable(this.game, 'Avatar\'s Shoes', {'metatype': 'feet'}));
 
         this.changeMana(0);
 
         this.updateEntityDisplay();
     }
-
-    addItem(item, itemShop = false, updateDisplay = true) {
-        if (item.metatype != 'usable' && item.metatype != 'magic' && this.inv[item.metatype][0] != '') {
-            this.mergeEquippable(item);
-            if (itemShop && itemShop.shopOpen) {itemShop.updateShopItems()};
-        } else {
-            this.inv[item.metatype][1].push(item);
+    
+    addItem(item, itemShop = false) {
+        if (item.metatype === 'usable') {
+            let itemExists = false;
+            for (let i = 0; i < this.inv.usable.length; i++) {
+                if (this.inv.usable[i].name === item.name) {
+                    this.inv.usable[i].uses += (item.uses || 0);
+                    this.inv.usable[i].updateItemInfo()
+                    itemExists = true;
+                    break;
+                }
+            }
+            if (!itemExists) {
+                this.inv.usable.push(item);
+                item.appendToSelect()
+            }
+        } else if (item.metatype === 'magic') {
+            this.inv.magic.push(item);
             item.appendToSelect()
-            this.changeSelectedItem(item, itemShop, updateDisplay);
+        } else if (['weapon', 'head', 'chest', 'legs', 'feet'].includes(item.metatype)) {
+            if (this.inv[item.metatype][0] != '') {
+                this.mergeEquippable(item);
+                if (itemShop && itemShop.shopOpen) {itemShop.updateShopItems()};
+            } else {
+                this.inv[item.metatype][1].push(item);
+                item.appendToSelect()
+                this.changeSelectedItem(item, itemShop, updateDisplay);
+            }
         }
     }
 

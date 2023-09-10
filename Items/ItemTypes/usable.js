@@ -112,7 +112,7 @@ class Usable extends Item {
         if (this.game.player.levelInfo.activeCharacteristics.has('mechanical')) {
             this.uses = CHARACTERISTICS['mechanical'].onItemUses(this.uses);
         }
-        this.game.player.addItem(this, this.game.path.itemShop, true);
+        this.game.player.addItem(this);
     }
 
     attemptUse(){

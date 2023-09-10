@@ -95,7 +95,7 @@ class Equippable extends Item {
         }
 
     onBuy() {
-        this.game.player.addItem(this, this.game.path.itemShop, true);
+        this.game.player.addItem(this, this.game.path.itemShop);
     }
 
     calcComparisons() {
@@ -114,7 +114,7 @@ class Equippable extends Item {
             }
         }
 
-        console.log(allComps);
+        if (allComps != '') {console.log(allComps)};
     }
 
     genComparison(stat) {
