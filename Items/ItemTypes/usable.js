@@ -31,6 +31,12 @@ class Usable extends Item {
         this.removeBleed = false;
         this.enemyArmDouble = false;
         this.enemyAsHalf = false;
+        this.killBug = false;
+
+        this.tempDmg = false;
+        this.tempArm = false;
+        this.tempRegen = false;
+        this.tempSpeed = false;
         
         if(itemInfo){
             Object.keys(itemInfo).forEach((stat)=>{
@@ -242,6 +248,23 @@ class Usable extends Item {
             this.game.player.changeGold(this.weaponEat);
         }
 
+
+        if (this.tempDmg){
+            this.game.player.changeTempStat('dmg',this.tempDmg);
+        }
+        if (this.tempArm){
+            this.game.player.changeTempStat('ar,',this.tempArm);
+        }
+        if (this.tempRegen){
+            this.game.player.changeTempStat('regen',this.tempRegen);
+        }
+        if (this.tempSpeed){
+            this.game.player.changeTempStat('as',this.tempSpeed);
+        }
+
+        if(this.killBug & this.game.combat.selectedEnemy.type == 'bug'){
+            this.game.combat.selectedEnemy.changeHp(-99999);
+        }
         // 
     }
 }
