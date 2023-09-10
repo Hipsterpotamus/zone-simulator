@@ -295,6 +295,7 @@ const ITEMLIST = {
     'stinger': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'deal 5 dmg', 'longDescription': 'During combat, use to deal 5 damage (bypasses armor) to the current enemy', 'type': 'combat', 'attack':5},
     'bug spray': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'deal 99999 dmg to bug type enemy', 'longDescription': 'During combat, if the current enemy is bug type, deal 99999 dmg', 'type': 'combat', 'killBug':true},
     'small morsel': {'metatype': 'usable', 'price': 0, 'uses': 1, 'shortDescription': 'gain 1 temporary dmg, armor, and regen', 'longDescription': 'During combat, use to gain 1 dmg, 1 armor, and 1 regen until end of combat', 'type': 'combat', 'tempDmg':1, 'tempArm': 1, 'tempRegen':1},
+    'pile of sugar': {'metatype': 'usable', 'price': 0, 'uses': 1, 'shortDescription': 'gain 15 attack speed', 'longDescription': 'During combat, use to gain 25 attack speed until end of combat', 'type': 'combat', 'tempSpeed':25},
 
     //purchase usables grasslands
     'firecracker': {'metatype': 'usable', 'price': 5, 'uses': 1, 'shortDescription': 'deal 20 dmg, lose 2 hp', 'longDescription': 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 'type': 'combat', 'attack': 20, 'hp': -2},
@@ -382,7 +383,7 @@ const ITEMLIST = {
     'elven dryad staff': {'metatype': 'weapon', 'price': 0, 'type': 'staff', 'dmg': 30, 'as': -33, 'regen':4, 'manaGen':1, 'lifedrain':25, 'dodge':15, 'message': 'Born of an unholy communion of two forest races, rises a nimple staff. '},
 
     'razor paper stars': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'deal 68 dmg, lose 5 hp', 'longDescription': 'Deal 68 dmg to an enemy (bypasses armor), and lose 5 hp.', 'type': 'all', 'attack': 68, 'hp':-5},
-    'the hungry bag': {'metatype': 'usable', 'price': 0, 'uses': 4, 'shortDescription': 'lose current weapon, gain 20 gold', 'longDescription': 'Permanently lose your currently equipped weapon, gain 20 gold', 'type': 'all', 'weaponEat': true, 'gold': 20},
+    'the hungry bag': {'metatype': 'usable', 'price': 0, 'uses': 4, 'shortDescription': 'lose current weapon, gain 20 gold [UNIMPLEMENTED]', 'longDescription': 'Permantely lose your currently equipped weapon, gain 20 gold', 'type': 'all', 'weaponEat':20},
 
     'river draft': {'metatype': 'magic', 'price': 0, 'shortDescription': 'gain 5 speed, lose 2 armor', 'longDescription': 'Gain 5 attack speed permanently, lose 2 base armor (can go negative). Infinite Uses', 'manaCost': 10, 'arm':-2, 'as': 5},
     'wood chuck': {'metatype': 'magic', 'price': 0, 'shortDescription': 'deal 35 dmg, gain 1 dmg', 'longDescription': 'Deal 35 dmg to enemy (doesn\'t bypass armor), gain 1 dmg permanently. Infinite Uses', 'manaCost': 15, 'dmg':1, 'attack': 35},
