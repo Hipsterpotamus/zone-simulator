@@ -2,21 +2,15 @@ class Avatar extends Player {
     constructor(type) {
         super(type);
         this.name = 'ava';
-
-        this.getByType('weapon').name = 'Avatar\'s Staff';
         this.getByType('weapon').updateItemInfo()
-        this.getByType('head').name = 'Avatar\'s Hat';
         this.getByType('head').updateItemInfo()
-        this.getByType('chest').name = 'Avatar\'s Shirt';
         this.getByType('chest').updateItemInfo()
-        this.getByType('legs').name = 'Avatar\'s Pants';
         this.getByType('legs').updateItemInfo()
-        this.getByType('feet').name = 'Avatar\'s Shoes';
         this.getByType('feet').updateItemInfo()
     }
 
     initPlayerDisplay() {
-        this.addItem(new Equippable(this.game, 'Avatar\'s Staff', {'metatype': 'weapon'}));
+        this.addItem(new Equippable(this.game, 'Avatar\'s Staff', {'metatype': 'weapon', 'durability': 10000000}));
         this.addItem(new Equippable(this.game, 'Avatar\'s Hat', {'metatype': 'head'}));
         this.addItem(new Equippable(this.game, 'Avatar\'s Shirt', {'metatype': 'chest'}));
         this.addItem(new Equippable(this.game, 'Avatar\'s Pants', {'metatype': 'legs'}));
@@ -52,16 +46,14 @@ class Avatar extends Player {
             } else {
                 this.inv[item.metatype][1].push(item);
                 item.appendToSelect()
-                this.changeSelectedItem(item, itemShop, updateDisplay);
+                this.changeSelectedItem(item, itemShop);
             }
         }
     }
 
-    changeSelectedItem(item, itemShop = false, updateDisplay = true) {
-        if (updateDisplay && item.metatype != 'usable' && item.metatype != 'magic') {item.calcComparisons()}
+    changeSelectedItem(item, itemShop = false) {
         this.attackCounter = 0;
         this.inv[item.metatype][0] = item;
-        if (updateDisplay) {item.updateItemInfo()}
         $('#'+item.metatype+'-select').val(item.name);
         if (itemShop && itemShop.shopOpen) {itemShop.updateShopItems()};
     }

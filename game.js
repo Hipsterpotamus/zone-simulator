@@ -14,8 +14,5 @@ class Game {
         this.zone = new Grasslands(this);
         this.path = new Path(this);
         this.path.generatePath(...this.zone.pathGen);
-
-        
-        this.player.addItem(new Usable(this, 'testItem', ITEMLIST['the hungry bag']))
     }
 }
