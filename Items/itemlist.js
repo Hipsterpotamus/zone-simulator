@@ -288,7 +288,14 @@ const ITEMLIST = {
 
 //USABLES
 
-//usables grasslands
+//dropped usables grasslands
+    'pulled teeth': {'metatype': 'usable', 'price': 0, 'uses': 2, 'shortDescription': 'gain 2 temporary dmg', 'longDescription': 'During combat, use to gain 2 dmg until end of combat', 'type': 'combat', 'tempDmg':2},
+    'fur patches': {'metatype': 'usable', 'price': 0, 'uses': 2, 'shortDescription': 'gain 2 temporary armor', 'longDescription': 'During combat, use to gain 2 armor until end of combat', 'type': 'combat', 'tempArm':2},
+    'splendid meat': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'gain 1 temporary regen', 'longDescription': 'During combat, use to gain 1 regen until end of combat', 'type': 'combat', 'tempRegen':1},
+    'stinger': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'deal 5 dmg', 'longDescription': 'During combat, use to deal 5 damage (bypasses armor) to the current enemy', 'type': 'combat', 'attack':5},
+    'bug spray': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'deal 99999 dmg to bug type enemy', 'longDescription': 'During combat, if the current enemy is bug type, deal 99999 dmg', 'type': 'combat', 'killBug':true},
+
+    //purchase usables grasslands
     'firecracker': {'metatype': 'usable', 'price': 5, 'uses': 1, 'shortDescription': 'deal 20 dmg, lose 2 hp', 'longDescription': 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 'type': 'combat', 'attack': 20, 'hp': -2},
     'throwing eggs': {'metatype': 'usable', 'price': 7, 'uses': 3, 'shortDescription': 'current enemy loses 3 armor', 'longDescription': "During combat, lower the current enemy's armor by 3", 'type': 'combat', 'enemyArm': -3},
     'bandages': {'metatype': 'usable', 'price': 9, 'uses': 4, 'shortDescription': 'heal 5 hp', 'longDescription': 'Heal 5 hp', 'type': 'all', 'hp': 5},
