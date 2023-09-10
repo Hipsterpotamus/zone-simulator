@@ -48,6 +48,8 @@
 ## Backend:
 
 ### New stuff
+* [] Add more easily customizable shops
+
 * [] Add speedup button/slider/something
 * [] Add rarity to shop items
 

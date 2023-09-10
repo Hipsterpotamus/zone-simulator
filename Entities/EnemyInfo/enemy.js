@@ -5,6 +5,8 @@ class Enemy extends Entity{
          this.xp = xp;
          this.name = name;
          this.enemyInfo = enemyInfo;
+
+         this.levelAdjustment = 0;
          this.dropItem = 'none'; //default drop item- supports 'none' or specific item name currently
          //lmk if you want a random option
 
