@@ -20,8 +20,8 @@ const EVENTLIST = {
         {
             text: 'Gain Clothing: gain two armor pieces, lose 1 level heal',
             effect: function(game) {
-                game.player.addSelectableItem(new Equippable(game, 'dirty shirt', {'metatype': 'chest', 'type': 'shirt', 'arm': 1}));
-                game.player.addSelectableItem(new Equippable(game, 'dirty pants', {'metatype': 'legs', 'type': 'pants', 'arm': 1}));
+                game.player.addItem(new Equippable(game, 'dirty shirt', {'metatype': 'chest', 'type': 'shirt', 'arm': 1}));
+                game.player.addItem(new Equippable(game, 'dirty pants', {'metatype': 'legs', 'type': 'pants', 'arm': 1}));
                 game.player.changeStat('levelheal', -1);
             }
         },
@@ -38,7 +38,7 @@ const EVENTLIST = {
             effect: function(game) {
                 if (game.player.gold < 7) { return;}
                 game.player.changeGold(-7);
-                game.player.addSelectableItem(new Equippable(game, 'garden hoe', {'metatype': 'weapon', 'type': 'none', 'dmg': 8, 'as':-15}));
+                game.player.addItem(new Equippable(game, 'garden hoe', {'metatype': 'weapon', 'type': 'none', 'dmg': 8, 'as':-15}));
             }
         },
         {
@@ -46,7 +46,7 @@ const EVENTLIST = {
             effect: function(game) {
                 if (game.player.gold < 4) { return;}
                 game.player.changeGold(-4);
-                game.player.addSelectableItem(new Equippable(game, 'farmer hat', {'metatype': 'head', 'type': 'hat', 'arm': 2}));
+                game.player.addItem(new Equippable(game, 'farmer hat', {'metatype': 'head', 'type': 'hat', 'arm': 2}));
             }
         },
         {
@@ -77,14 +77,14 @@ const EVENTLIST = {
             text: 'Blow and Wear: alert enemies, gain horn helmet',
             effect: function(game) {
                 game.zone.changeZoneLevel(2);
-                game.player.addSelectableItem(new Equippable(game, 'horn helmet', {'metatype': 'head', 'type': 'helmet', 'dmg': 2}));
+                game.player.addItem(new Equippable(game, 'horn helmet', {'metatype': 'head', 'type': 'helmet', 'dmg': 2}));
             }
         },
         {
             text: 'Blow and wield: alert enemies, gain horn sling',
             effect: function(game) {
                 game.zone.changeZoneLevel(2);
-                game.player.addSelectableItem(new Equippable(game, 'horn sling', {'metatype': 'weapon', 'type': 'sling', 'dmg': 4, 'as': 50}));
+                game.player.addItem(new Equippable(game, 'horn sling', {'metatype': 'weapon', 'type': 'sling', 'dmg': 4, 'as': 50}));
             }
         },
         {

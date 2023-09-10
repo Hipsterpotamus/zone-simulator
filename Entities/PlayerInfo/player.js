@@ -28,13 +28,13 @@ class Player extends Entity{
         this.timermask = document.querySelector('#player-stats-row .timer .timer-mask');
 
         this.inv = {
-            'usable':['', []],
             'weapon':['', []],
             'head':['', []],
             'chest':['', []],
             'legs':['', []],
             'feet':['', []],
-            'magic':['', []],
+            'magic':[],
+            'usable':[]
         }
 
         this.gameCombatStats = {
@@ -63,31 +63,52 @@ class Player extends Entity{
     }
 
     initPlayerDisplay() {
-        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'weapon'}), false, false);
-        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'head'}), false, false);
-        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'chest'}), false, false);
-        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'legs'}), false, false);
-        this.addSelectableItem(new Equippable(this.game, 'none', {'metatype': 'feet'}), false, false);
+        this.addItem(new Equippable(this.game, 'none', {'metatype': 'weapon'}), false, false);
+        this.addItem(new Equippable(this.game, 'none', {'metatype': 'head'}), false, false);
+        this.addItem(new Equippable(this.game, 'none', {'metatype': 'chest'}), false, false);
+        this.addItem(new Equippable(this.game, 'none', {'metatype': 'legs'}), false, false);
+        this.addItem(new Equippable(this.game, 'none', {'metatype': 'feet'}), false, false);
 
         this.changeMana(0);
 
         this.updateEntityDisplay();
     }
 
-    addSelectableItem(item, itemShop = false, updateDisplay = true) {
-        this.inv[item.metatype][1].push(item);
-        item.appendToSelect()
-        this.changeSelectedItem(item, itemShop, updateDisplay);
+    addItem(item, itemShop = false, updateDisplay = true) {
+        if (item.metatype === 'usable') {
+            let itemExists = false;
+            for (let i = 0; i < this.inv.usable.length; i++) {
+                if (this.inv.usable[i].name === item.name) {
+                    this.inv.usable[i].uses += (item.uses || 0);
+                    this.inv.usable[i].updateItemInfo()
+                    itemExists = true;
+                    break;
+                }
+            }
+            if (!itemExists) {
+                this.inv.usable.push(item);
+                item.appendToSelect()
+            }
+        } else if (item.metatype === 'magic') {
+            this.inv.magic.push(item);
+            item.appendToSelect()
+        } else if (['weapon', 'head', 'chest', 'legs', 'feet'].includes(item.metatype)) {
+            this.inv[item.metatype][1].push(item);
+            item.appendToSelect()
+            this.changeSelectedItem(item, itemShop, updateDisplay)
+        }
     }
 
     changeSelectedItem(item, itemShop = false, updateDisplay = true) {
         if (updateDisplay && item.metatype != 'usable' && item.metatype != 'magic') {item.calcComparisons()}
         this.attackCounter = 0;
-        let prevItem = this.inv[item.metatype][0];
-        if (prevItem != '' && prevItem.income != 0 && !prevItem.income) {
+
+        let prevItem = this.inv[item.metatype][0]; //kill income of item when switched
+        if (prevItem != '' && prevItem.income != 0) {
             prevItem.income = 0;
             notify(`The luster of ${prevItem.name} fades away... You won't get any more income from this item`)
         }
+
         this.inv[item.metatype][0] = item;
         if (updateDisplay) {item.updateItemInfo()}
         $('#'+item.metatype+'-select').val(item.name);

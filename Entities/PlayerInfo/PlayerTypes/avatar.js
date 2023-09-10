@@ -16,18 +16,18 @@ class Avatar extends Player {
     }
 
     initPlayerDisplay() {
-        this.addSelectableItem(new Equippable(this.game, 'Avatar\'s Staff', {'metatype': 'weapon'}), false, false);
-        this.addSelectableItem(new Equippable(this.game, 'Avatar\'s Hat', {'metatype': 'head'}), false, false);
-        this.addSelectableItem(new Equippable(this.game, 'Avatar\'s Shirt', {'metatype': 'chest'}), false, false);
-        this.addSelectableItem(new Equippable(this.game, 'Avatar\'s Pants', {'metatype': 'legs'}), false, false);
-        this.addSelectableItem(new Equippable(this.game, 'Avatar\'s Shoes', {'metatype': 'feet'}), false, false);
+        this.addItem(new Equippable(this.game, 'Avatar\'s Staff', {'metatype': 'weapon'}), false, false);
+        this.addItem(new Equippable(this.game, 'Avatar\'s Hat', {'metatype': 'head'}), false, false);
+        this.addItem(new Equippable(this.game, 'Avatar\'s Shirt', {'metatype': 'chest'}), false, false);
+        this.addItem(new Equippable(this.game, 'Avatar\'s Pants', {'metatype': 'legs'}), false, false);
+        this.addItem(new Equippable(this.game, 'Avatar\'s Shoes', {'metatype': 'feet'}), false, false);
 
         this.changeMana(0);
 
         this.updateEntityDisplay();
     }
 
-    addSelectableItem(item, itemShop = false, updateDisplay = true) {
+    addItem(item, itemShop = false, updateDisplay = true) {
         if (item.metatype != 'usable' && item.metatype != 'magic' && this.inv[item.metatype][0] != '') {
             this.mergeEquippable(item);
             if (itemShop && itemShop.shopOpen) {itemShop.updateShopItems()};

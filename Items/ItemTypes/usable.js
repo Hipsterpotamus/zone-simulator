@@ -112,7 +112,7 @@ class Usable extends Item {
         if (this.game.player.levelInfo.activeCharacteristics.has('mechanical')) {
             this.uses = CHARACTERISTICS['mechanical'].onItemUses(this.uses);
         }
-        this.game.player.addSelectableItem(this, this.game.path.itemShop, true);
+        this.game.player.addItem(this, this.game.path.itemShop, true);
     }
 
     attemptUse(){
@@ -139,6 +139,10 @@ class Usable extends Item {
     updateItemInfo() {
         this.usableButtonUses.text(this.uses);
         if (this.uses <= 0) {
+            const index = this.game.player.inv.usable.indexOf(this);
+            if (index > -1) {
+                this.game.player.inv.usable.splice(index, 1);
+            }
             this.usableButton.remove();
         }
     }
