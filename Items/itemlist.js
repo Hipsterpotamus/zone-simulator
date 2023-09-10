@@ -294,6 +294,7 @@ const ITEMLIST = {
     'splendid meat': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'gain 1 temporary regen', 'longDescription': 'During combat, use to gain 1 regen until end of combat', 'type': 'combat', 'tempRegen':1},
     'stinger': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'deal 5 dmg', 'longDescription': 'During combat, use to deal 5 damage (bypasses armor) to the current enemy', 'type': 'combat', 'attack':5},
     'bug spray': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'deal 99999 dmg to bug type enemy', 'longDescription': 'During combat, if the current enemy is bug type, deal 99999 dmg', 'type': 'combat', 'killBug':true},
+    'small morsel': {'metatype': 'usable', 'price': 0, 'uses': 1, 'shortDescription': 'gain 1 temporary dmg, armor, and regen', 'longDescription': 'During combat, use to gain 1 dmg, 1 armor, and 1 regen until end of combat', 'type': 'combat', 'tempDmg':1, 'tempArm': 1, 'tempRegen':1},
 
     //purchase usables grasslands
     'firecracker': {'metatype': 'usable', 'price': 5, 'uses': 1, 'shortDescription': 'deal 20 dmg, lose 2 hp', 'longDescription': 'During combat, use to deal 20 damage (bypasses armor) to the current enemy, lose 2 hp', 'type': 'combat', 'attack': 20, 'hp': -2},
