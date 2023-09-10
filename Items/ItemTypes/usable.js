@@ -38,6 +38,9 @@ class Usable extends Item {
         this.tempRegen = false;
         this.tempSpeed = false;
         
+        this.applyWeak = false;
+
+
         if(itemInfo){
             Object.keys(itemInfo).forEach((stat)=>{
                 this[stat] = itemInfo[stat];
@@ -112,7 +115,7 @@ class Usable extends Item {
         if (this.game.player.levelInfo.activeCharacteristics.has('mechanical')) {
             this.uses = CHARACTERISTICS['mechanical'].onItemUses(this.uses);
         }
-        this.game.player.addItem(this);
+        this.game.player.addItem(this, this.game.path.itemShop, true);
     }
 
     attemptUse(){
@@ -139,7 +142,7 @@ class Usable extends Item {
     updateItemInfo() {
         this.usableButtonUses.text(this.uses);
         if (this.uses <= 0) {
-            this.game.player.removeItem(this.name, this.metatype);
+            this.usableButton.remove();
         }
     }
 
@@ -245,7 +248,7 @@ class Usable extends Item {
         }
 
         if (this.weaponEat){
-            this.game.player.removeItem(this.game.player.inv.weapon[0].name, 'weapon')
+            this.game.player.changeGold(this.weaponEat);
         }
 
 
@@ -262,9 +265,16 @@ class Usable extends Item {
             this.game.player.changeTempStat('as',this.tempSpeed);
         }
 
+        if (this.applyWeak){
+            this.game.combat.selectedEnemy.changeTimedStat('dmg', -40, (this.applyWeak*50), 'percent');
+        }
+
         if(this.killBug & this.game.combat.selectedEnemy.type == 'bug'){
             this.game.combat.selectedEnemy.changeHp(-99999);
         }
+
         // 
+
+
     }
 }
