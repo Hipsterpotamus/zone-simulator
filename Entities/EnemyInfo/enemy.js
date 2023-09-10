@@ -5,6 +5,8 @@ class Enemy extends Entity{
          this.xp = xp;
          this.name = name;
          this.enemyInfo = enemyInfo;
+         this.dropItem = 'none'; //default drop item- supports 'none' or specific item name currently
+         //lmk if you want a random option
 
          if(enemyInfo){
             Object.keys(enemyInfo).forEach((stat)=>{
@@ -78,6 +80,16 @@ class Enemy extends Entity{
         this.gold += amount;
     }
 
+    getDropItem() {
+        if (this.dropItem === 'none') {return false}
+        else {
+            let item = this.game.path.itemShop.generateItem(this.dropItem, structuredClone(ITEMLIST[this.dropItem]));
+            item.uses = 1;
+            item.price = 0;
+            return item;
+        }
+    }
+
     death() {
     let goldToGain = this.gold;
     if (this.game.player.levelInfo.activeCharacteristics.has('dominant')) {
@@ -86,9 +98,11 @@ class Enemy extends Entity{
 
     this.game.combat.combatStats['totalGoldGain'] += goldToGain;
     this.game.player.changeGold(goldToGain, true);
+    let dropItem = this.getDropItem();
+    if (dropItem) {dropItem.onBuy()};
 
     this.alive = false;
-    this.game.zone.changeZoneLevel(this.diffC);
+    this.game.zone.changeZoneLevel(this.levelAdjustment);
     
     this.updateEntityDisplay();
 
