@@ -340,9 +340,6 @@ class Player extends Entity{
         let htmlOutput = '';
         htmlOutput = this.name+' | ';
 
-
-
-        console.log(this.name)
         $('#player-name').text(this.name);
         $('#player-hp').text(this.hp + '/' + this.maxhp);
         $('#player-time').text((this.calcAs()-this.attackCounter));
