@@ -9,6 +9,7 @@ class Enemy extends Entity{
          this.levelAdjustment = 0;
          this.dropItem = 'none'; //default drop item- supports 'none' or specific item name currently
          //lmk if you want a random option
+         this.dropItemUses = 'none';
 
          if(enemyInfo){
             Object.keys(enemyInfo).forEach((stat)=>{
@@ -86,7 +87,7 @@ class Enemy extends Entity{
         if (this.dropItem === 'none') {return false}
         else {
             let item = this.game.path.itemShop.generateItem(this.dropItem, structuredClone(ITEMLIST[this.dropItem]));
-            item.uses = 1;
+            if (this.dropItemUses !== 'none') {item.uses = this.dropItemUses}
             item.price = 0;
             return item;
         }

@@ -18,7 +18,7 @@ class Boss extends Enemy{
         this.game.player.changeGold(goldToGain, true);
     
         this.alive = false;
-        this.game.zone.changeZoneLevel(this.diffC);
+        this.game.zone.changeZoneLevel(this.levelAdjustment);
         
         this.updateEntityDisplay();
     
