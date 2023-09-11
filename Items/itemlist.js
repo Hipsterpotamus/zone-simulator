@@ -301,7 +301,7 @@ const ITEMLIST = {
     'collected food': {'metatype': 'usable', 'price': 0, 'uses': 5, 'shortDescription': 'heal 3 hp', 'longDescription': 'Heal 3 hp', 'type': 'all', 'hp': 3},
     'antenna send': {'metatype': 'usable', 'price': 0, 'uses': 1, 'shortDescription': 'apply 10 seconds of weak', 'longDescription': 'During combat, give current enemy 10 seconds of weak [40% dmg reduction].', 'type': 'combat', 'applyWeak': 10},
     'mandible grips': {'metatype': 'usable', 'price': 0, 'uses': 3, 'shortDescription': 'deal 5 dmg, apply 3 seconds of weak', 'longDescription': 'During combat, give current enemy 3 seconds of weak [40% dmg reduction], deal 5 dmg to enemy (bypass armor).', 'type': 'combat', 'applyWeak': 3, 'attack':5},
-    'chitin spread': {'metatype': 'usable', 'price': 0, 'uses': 2, 'shortDescription': 'gain 3 temporary armor', 'longDescription': 'During combat, use to gain 3 armor until end of combat', 'type': 'combat', 'applyWeak': 3, 'attack':5},
+    'chitin spread': {'metatype': 'usable', 'price': 0, 'uses': 2, 'shortDescription': 'gain 3 temporary armor', 'longDescription': 'During combat, use to gain 3 armor until end of combat', 'type': 'combat', 'tempArm':3},
     'sharp ear': {'metatype': 'usable', 'price': 0, 'uses': 2, 'shortDescription': 'deal 12 dmg, lose 4 hp', 'longDescription': 'During combat, use to deal 12 dmg (bypasses armor) to the current enemy, lose 4 hp.', 'type': 'combat', 'attack': 12, 'hp': -4},
 
     //purchase usables grasslands
