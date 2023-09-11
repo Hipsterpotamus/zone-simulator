@@ -115,7 +115,7 @@ class Usable extends Item {
         if (this.game.player.levelInfo.activeCharacteristics.has('mechanical')) {
             this.uses = CHARACTERISTICS['mechanical'].onItemUses(this.uses);
         }
-        this.game.player.addItem(this, this.game.path.itemShop, true);
+        this.game.player.addItem(this);
     }
 
     attemptUse(){
@@ -142,7 +142,7 @@ class Usable extends Item {
     updateItemInfo() {
         this.usableButtonUses.text(this.uses);
         if (this.uses <= 0) {
-            this.usableButton.remove();
+            this.game.player.removeItem(this.name, this.metatype);
         }
     }
 
@@ -244,11 +244,11 @@ class Usable extends Item {
 
         // Remove bleed
         if (this.removeBleed) {
-            this.game.player.changeStat('bleedApplied', -game.player.bleedApplied);
+            this.game.player.changeStat('bleedApplied', -this.game.player.bleedApplied);
         }
 
         if (this.weaponEat){
-            this.game.player.changeGold(this.weaponEat);
+            this.game.player.removeItem(this.game.player.inv.weapon[0].name, 'weapon')
         }
 
 
