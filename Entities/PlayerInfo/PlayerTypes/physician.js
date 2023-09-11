@@ -1,7 +1,9 @@
 class Physician extends Player {
     constructor(type) {
         super(type);
-        this.name = 'phillip'; //implimented heal modifier but cannot find bleed
+        this.name = 'phillip';
+        
+        this.initPlayerDisplay();
     }
 
     changeHp(amount){

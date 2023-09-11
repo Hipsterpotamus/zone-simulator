@@ -58,8 +58,6 @@ class Player extends Entity{
             'spellsCast' : 0,
             'itemsUsed' : 0
         }
-
-        this.initPlayerDisplay();
     }
 
     initPlayerDisplay() {
@@ -344,7 +342,7 @@ class Player extends Entity{
 
 
 
-
+        console.log(this.name)
         $('#player-name').text(this.name);
         $('#player-hp').text(this.hp + '/' + this.maxhp);
         $('#player-time').text((this.calcAs()-this.attackCounter));

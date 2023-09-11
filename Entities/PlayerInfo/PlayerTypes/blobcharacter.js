@@ -4,6 +4,8 @@ class BlobCharacter extends Player {
         this.name = 'Bob';
 
         this.gold = this.maxhp;
+        
+        this.initPlayerDisplay();
     }
 
     changeMaxHp(amount) {

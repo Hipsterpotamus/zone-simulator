@@ -3,6 +3,8 @@ class Robot extends Player {
         super(type);
         this.name = 'Robert'; //fully implemented
         this.levelheal = this.maxhp;
+        
+        this.initPlayerDisplay();
     }
 
     changeHp(amount){

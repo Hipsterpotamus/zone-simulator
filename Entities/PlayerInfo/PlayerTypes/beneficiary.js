@@ -12,6 +12,8 @@ class Beneficiary extends Player {
         this.as = 0;
         this.dodge = 0;
         this.gold = 25;
+
+        this.initPlayerDisplay();
     }
 
     giveGift(zoneNum) {

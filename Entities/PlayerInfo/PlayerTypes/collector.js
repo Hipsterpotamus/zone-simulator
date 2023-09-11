@@ -3,6 +3,8 @@ class Collector extends Player {
         super(type);
         this.name = 'colette';
         this.levelheal = 0;
+        
+        this.initPlayerDisplay();
     }
 
     changeStat (stat, amount) {

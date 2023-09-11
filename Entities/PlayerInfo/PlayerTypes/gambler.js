@@ -4,6 +4,8 @@ class Gambler extends Player {
         this.name = 'garry';
 
         this.garryMult = 1;
+        
+        this.initPlayerDisplay();
     }
 
     calcGarryMult() {

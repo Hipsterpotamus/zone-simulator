@@ -4,6 +4,8 @@ class Tank extends Player {
         this.name = 'tanner';
         this.accuracy = 80;
         this.as = -100;
+        
+        this.initPlayerDisplay();
     }
 
     calcStatBase(stat) { //should be used with: dmg, arm, dodge, thorn, shatter, income, lifedrain, bleed, accuracy, superarmor, tear, and any new stats with a generic calculation

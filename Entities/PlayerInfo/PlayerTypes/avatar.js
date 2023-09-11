@@ -7,6 +7,8 @@ class Avatar extends Player {
         this.getByType('chest').updateItemInfo()
         this.getByType('legs').updateItemInfo()
         this.getByType('feet').updateItemInfo()
+
+        this.initPlayerDisplay();
     }
 
     initPlayerDisplay() {
