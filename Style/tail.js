@@ -1,22 +1,22 @@
-window.addEventListener("mousemove", function(e){
-    // only select .tail that doesn't have .tail-remain
-    // if mouse is in the top half of the screen, show tail on bottom, else show tail on top
-    //  get tail height
-    let tailHeight = $('.tail.tail-visible:not(.tail-remain)').height();
-    let tailWidth = $('.tail.tail-visible:not(.tail-remain)').width();
+// window.addEventListener("mousemove", function(e){
+//     // only select .tail that doesn't have .tail-remain
+//     // if mouse is in the top half of the screen, show tail on bottom, else show tail on top
+//     //  get tail height
+//     let tailHeight = $('.tail.tail-visible:not(.tail-remain)').height();
+//     let tailWidth = $('.tail.tail-visible:not(.tail-remain)').width();
 
-    if (e.pageY < window.innerHeight / 2) {
-        $('.tail.tail-visible:not(.tail-remain)').css({
-            left:  e.pageX - 60,
-            top:   e.pageY + 15
-        });
-    } else {
-        $('.tail.tail-visible:not(.tail-remain)').css({
-            left:  e.pageX - 60,
-            top:   e.pageY - tailHeight - 25
-        });
-    }
-});
+//     if (e.pageY < window.innerHeight / 2) {
+//         $('.tail.tail-visible:not(.tail-remain)').css({
+//             left:  e.pageX - 60,
+//             top:   e.pageY + 15
+//         });
+//     } else {
+//         $('.tail.tail-visible:not(.tail-remain)').css({
+//             left:  e.pageX - 60,
+//             top:   e.pageY - tailHeight - 25
+//         });
+//     }
+// });
 
 
 // For popups (not tails)
@@ -32,10 +32,10 @@ document.addEventListener('mousemove', function(event) {
 });
 
   
-document.addEventListener('DOMContentLoaded', () => {
-  clearTailReferences();
-  updateTailReferences();
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   clearTailReferences();
+//   updateTailReferences();
+// });
 
 
 function updateTailReferences() {
@@ -109,12 +109,12 @@ function clearTailReferences() {
 
 
 // Double click on Tails to remove them
-document.addEventListener('dblclick', (event) => {
-    if (event.target.classList.contains('tail-remain')) {
-        event.target.classList.remove('tail-remain');
-        event.target.style.display = 'none';
-    }
-});
+// document.addEventListener('dblclick', (event) => {
+//     if (event.target.classList.contains('tail-remain')) {
+//         event.target.classList.remove('tail-remain');
+//         event.target.style.display = 'none';
+//     }
+// });
 
 // Hide tails that are currently showing when the element that is being hovered is deleted (commented to get rid of errors)
 // document.addEventListener('DOMNodeRemoved', (event) => {
