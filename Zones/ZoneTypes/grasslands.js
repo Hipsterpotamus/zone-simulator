@@ -1,7 +1,7 @@
 class Grasslands extends Zone {
     constructor(zoneLevel = 1) {
         super(zoneLevel);
-        this.maxZoneLevel = 9;
+        this.maxZoneLevel = 6;
         this.shopCode = [3,2,2,1,1]; //shop gen [weaponNumber, armorNumber, statNumber, usableNumber, magicNumber]
         this.pathGen = [20, //max spaces,
             [['shop', 85, 15, 0, 2], //[shop start, shop grow, shop reset, shop burn],
@@ -19,27 +19,21 @@ class Grasslands extends Zone {
         this.zoneMessage = 'Flowing grass, and a dusty trail...';
         //could also do this through classes if you wanted to add more complex behavior to individual enemies
         this.zoneEnemies = {
-            0: ['lady bug', 'ant', 'cricket', 'grasshopper', 'fly', 'worm'],
-            1: ['caterpillar', 'centipede', 'flea', 'mantis', 'dragon fly', 'moth'],
-            2: ['black beetle', 'blue beetle', 'red beetle', 'green beetle', 'yellow beetle', 'brown beetle'],
-            3: ['rabbit', 'bunny', 'hare', 'bunny-rabbit', 'guinea pig', 'pika'],
-            4: ['mole', 'prairie dog', 'gopher', 'ground squirrel', 'mole-rat', 'meerkat'],
-            5: ['sparrow', 'swallow', 'lark', 'dove', 'burrow owl', 'quail'],
-            6: ['prairie dog', 'badger', 'ferret', 'jackrabbit', 'skunk', 'weasel'],
-            7: ['deer', 'antelope', 'impala', 'wildebeast', 'pronghorn', 'gazelle'],
-            8: ['fox', 'coyote', 'mongoose', 'bobcat', 'jackal', 'hyena']
+            0: ['lady bug', 'ant', 'cricket', 'grasshopper', 'fly', 'worm', 'caterpillar', 'centipede', 'flea'],
+            1: ['mantis', 'dragon fly', 'moth','black beetle', 'blue beetle', 'red beetle', 'green beetle', 'yellow beetle', 'brown beetle'],
+            2: ['rabbit', 'bunny', 'hare', 'bunny-rabbit', 'guinea pig', 'pika', 'mole', 'prairie dog', 'gopher'],
+            3: ['ground squirrel', 'mole-rat', 'meerkat','sparrow', 'swallow', 'lark', 'dove', 'burrow owl', 'quail'],
+            4: ['prairie dog', 'badger', 'ferret', 'jackrabbit', 'skunk', 'weasel', 'deer', 'antelope', 'impala'],
+            5: ['wildebeast', 'pronghorn', 'gazelle', 'fox', 'coyote', 'mongoose', 'bobcat', 'jackal', 'hyena']
         };
 
         this.xpDist = {
-            0 : 8,
-            1 : 8,
+            0 : 6,
+            1 : 7,
             2 : 8,
             3 : 9,
-            4 : 9,
-            5 : 9,
-            6 : 10,
-            7 : 10,
-            8 : 10
+            4 : 10,
+            5 : 11
         }
         this.bossXp = 20;
 
@@ -76,12 +70,9 @@ class Grasslands extends Zone {
             1: [0.50, 1.00],
             2: [0.35, 0.80],
             3: [0.35, 0.80],
-            4: [0.35, 0.80],
-            5: [0.35, 0.85],
-            6: [0.35, 0.80],
-            7: [0.30, 0.75],
-            8: [0, 0.25],
-            9: [0, 0]
+            4: [0.30, 0.75],
+            5: [0, 0.25],
+            6: [0, 0]
         }
         
         this.zoneItems = [

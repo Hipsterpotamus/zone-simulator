@@ -76,14 +76,14 @@ const EVENTLIST = {
         {
             text: 'Blow and Wear: alert enemies, gain horn helmet',
             effect: function(game) {
-                game.zone.changeZoneLevel(2);
+                game.zone.changeZoneLevel(1);
                 game.player.addItem(new Equippable(game, 'horn helmet', {'metatype': 'head', 'type': 'helmet', 'dmg': 2}));
             }
         },
         {
             text: 'Blow and wield: alert enemies, gain horn sling',
             effect: function(game) {
-                game.zone.changeZoneLevel(2);
+                game.zone.changeZoneLevel(1);
                 game.player.addItem(new Equippable(game, 'horn sling', {'metatype': 'weapon', 'type': 'sling', 'dmg': 4, 'as': 50}));
             }
         },
@@ -210,7 +210,7 @@ const EVENTLIST = {
         {
             text: 'Jump in: enemies randomized, +5 speed',
             effect: function(game) {
-                let enemyRand = Math.floor(1.5-(Math.random()*4))
+                let enemyRand = Math.floor(1.5-(Math.random()*2))
                 game.zone.changeZoneLevel(enemyRand);
             }
         },
@@ -614,7 +614,7 @@ const EVENTLIST = {
         {
             text: 'Knock it Over: Anger Enemies, lose 20 hp, gain 10 dmg',
             effect: function(game) {
-                game.zone.changeZoneLevel(3);
+                game.zone.changeZoneLevel(2);
                 game.player.changeHp(-20);
                 game.player.changeStat('dmg',10);
             }
